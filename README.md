@@ -1,4 +1,26 @@
-specification
-=============
+Signal K Specification
+======================
 
-Signal K is a JSON-based format for storing and sharing marine data from different sources (e.g. nmea 0183, 2000, seatalk, etc)
+This repository contains the (working) specification for Signal K, defined in JSON Schema files.
+
+
+Usage
+-----
+
+The `master` branch contains the latest version of the Schema. When making changes, please clone this repo to your local machine and set up a new branch (`git checkout -b branch_name`). Send in a pull request for every change, put it up for discussion in the mailing list and then (if a consensus has been reached) merge it into master. 
+
+
+Docson
+------
+
+You can browse the Schema using the supplied docson viewer. Just open index.html from a local webserver (otherwise the XHR requests won't work) in your preferred browser to get started. 
+
+
+Signal K
+--------
+
+The Free and Open Source universal marine data exchange
+
+SignalK is about publishing a common modern and open data format for marine use. A format for the modern boat, compatible with NMEA, friendly to WiFi, cellphones, tablets, and the Internet. A format available to everyone, where anyone can contribute.
+
+To get started, see the summary page and have a look through Navgauge Issue #4 to get a feel for where we started. Then join the mailinglist by sending an email to signalk+subscribe@googlegroups.com or follow the discussion via the Signal K Google Groups forum.
