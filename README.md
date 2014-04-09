@@ -7,7 +7,7 @@ This repository contains the (working) specification for Signal K, defined in JS
 Usage
 -----
 
-The `master` branch contains the latest version of the Schema. When making changes, please clone this repo to your local machine and set up a new branch (`git checkout -b branch_name`). Send in a pull request for every change, put it up for discussion in the mailing list and then (if a consensus has been reached) merge it into master. 
+The `master` branch contains the latest version of the Schema. When making changes, please clone this repo to your local machine and set up a new branch (`git checkout -b branch_name`). Send in a pull request for every change, put it up for discussion in the mailing list and then (when a consensus has been reached) merge it into master. 
 
 
 Docson
