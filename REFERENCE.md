@@ -16,3 +16,15 @@ In this file the different schema's in `/schemas` are documented: their purpose,
 - `groups/navigation.json`: a schema describing the navigation sub-object. Present in each vessel (see `vessel.json`).
 
 - `vessels.json`: current version, for reference. Will be removed once TODO is completed. 
+
+
+Based on the above, the different schema's and their relationship to each other could be read like this:
+
+```
+definition.json
+signalk.json
+    |- vessel.json
+        |- communication.json
+        |- environmental.json
+        |- navigation.json
+```
