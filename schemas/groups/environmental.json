@@ -8,7 +8,197 @@
 
     "properties": {
 
-    	
+        "airPressureChangeRateAlarm": {
+            "type": "object",
+            "description": "Change per hour which will cause an alarm in kPa",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "airPressure": {
+            "type": "object",
+            "description": "Current air pressure in kPa",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+        
+        "airTemp": {
+            "type": "object",
+            "description": "Current air temperature in degrees Centigrade",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "currentDirection": {
+            "type": "object",
+            "description": "Direction of water current in degrees true",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "currentSpeed": {
+            "type": "object",
+            "description": "Speed of water current in m/s",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "depthBelowKeel": {
+            "type": "object",
+            "description": "Depth below keel in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "depthBelowTransducer": {
+            "type": "object",
+            "description": "Depth below Transducer in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "depth": {
+            "type": "object",
+            "description": "Depth from surface in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "humidity": {
+            "type": "object",
+            "description": "Current relative humidity as percentage",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "salinity": {
+            "type": "object",
+            "description": "Water salinity",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "tideHeightHigh": {
+            "type": "object",
+            "description": "Next high tide in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "tideHeightNow": {
+            "type": "object",
+            "description": "The current tide height in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "tideLowHeight": {
+            "type": "object",
+            "description": "The next low tide height in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "tideLowTime": {
+            "type": "object",
+            "description": "Time of the next low tide in UTC",
+            "properties": {
+                "$ref": "../definitions.json/definitions/stringValue"
+            }
+        },
+
+        "tideTimeHigh": {
+            "type": "object",
+            "description": "Time of next high tide in UTC",
+            "properties": {
+                "$ref": "../definitions.json/definitions/stringValue"
+            }
+        },
+
+        "transducerToKeel": {
+            "type": "object",
+            "description": "Depth in meters between transducer and bottom of the keel.",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "waterLineToTransducer": {
+            "type": "number",
+            "description": "Depth transducer is below the water in meters",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "waterTemp": {
+            "type": "object",
+            "description": "Current water temperature in degrees Centigrade",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windDirectionApparent": {
+            "type": "object",
+            "description": "Apparent wind direction, -180 to +180 degrees from the bow. Negative numbers to port.",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windDirectionChangeAlarm": {
+            "type": "object",
+            "description": "The number of degrees the wind needs to shift to raise an alarm",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windDirectionTrue": {
+            "type": "object",
+            "description": "The wind direction relative to true north, in compass degrees, 0 = North",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windSpeedAlarm": {
+            "type": "object",
+            "description": "The speed in m/s above which a wind alarm will be raised",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windSpeedTrue": {
+            "type": "object",
+            "description": "True wind speed in m/s",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
+
+        "windSpeedApparent": {
+            "type": "object",
+            "description": "Apparent wind speed in m/s",
+            "properties": {
+                "$ref": "../definitions.json/definitions/numberValue"
+            }
+        },
 
     	"timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
     	"source": { "$ref": "../definitions.json/definitions/source" }
