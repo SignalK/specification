@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+
+    "id": "https://signalk.github.io/specification/schemas/vessel.json#",
+    "description": "An object describing an individual Vessel.",
+    "title": "Vessel",
+
+    "properties": {
+    	"vesselUid": {
+    		"type": "object",
+    		"description": "FIXME: AM I USING 'NAME' PROPERLY HERE? KEY NAME SHOULD BE EITHER MMSI OR UUID -- @fabdrol.",
+			
+			"name": {
+				"oneOf": [
+					{ "$ref": "definitions.json/definitions/mmsi" },
+					{ "$ref": "definitions.json/definitions/uuid" }
+				]
+			},
+
+			"properties": {
+				"communication": { "$ref": "groups/communication.json" },
+				"environmental": { "$ref": "groups/environmental.json" },
+				"navigation": { "$ref": "groups/navigation.json" }, 
+				
+				"mmsi": { "$ref": "definitions.json/definitions/mmsi" },
+				"source": { "$ref": "definitions.json/definitions/source" },
+				"timestamp": { "$ref": "definitions.json/definitions/timestamp" }
+			}
+		}
+    }
+}
