@@ -280,10 +280,10 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
             var result;
             if(target) {
                 result = options.fn(target);
+                delete target.__ref;
             } else {
                 result = new Handlebars.SafeString("<span class='signature-type-ref'>"+schema.$ref+"</span>");
             }
-            delete target.__ref;
             return result;
         }
     });
