@@ -22,6 +22,7 @@
 				"communication": { "$ref": "groups/communication.json" },
 				"environmental": { "$ref": "groups/environmental.json" },
 				"navigation": { "$ref": "groups/navigation.json" }, 
+				"alarms": { "$ref": "groups/alarms.json" }, 
 				
 				"mmsi": { "$ref": "definitions.json/definitions/mmsi" },
 				"source": { "$ref": "definitions.json/definitions/source" },

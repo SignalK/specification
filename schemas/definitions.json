@@ -79,6 +79,31 @@
                 "timestamp": { "$ref": "#/definitions/timestamp" },
                 "source": { "$ref": "#/definitions/source" }
             }
+        },
+	"alarmValue": {
+            "type": "object",
+            "description": "The possible states of an alarm.",
+            "properties": {
+                "items": { 
+		    "type": "string",
+		    "enum": [ "disabled", "enabled", "firing", "silent" ]
+		  },
+                "timestamp": { "$ref": "#/definitions/timestamp" },
+                "source": { "$ref": "#/definitions/source" }
+            }
+        },
+	"alarmMethod": {
+            "type": "array",
+            "description": "The methods an alarm will use to raise attention",
+	    "items": {
+		"type": "string",
+		"enum": [ "message", "sound", "sms", "email", "dsc" ]
+	      },
+	      "timestamp": { "$ref": "#/definitions/timestamp" },
+	      "source": { "$ref": "#/definitions/source" }
+            
         }
+
+
     }
 }
