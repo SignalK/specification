@@ -100,13 +100,18 @@
 
         "gnss": {
             "type": "object",
-            "description": "FIXME Global satellite navigation meta information",
+            "description": "Global satellite navigation meta information",
             "properties": {
                 "source": { "$ref": "../definitions.json/definitions/source" },
                 "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
 
-
-
+                "quality": { "type": "number" },
+                "satellites": { "type": "number" },
+                "antennaAltitude": { "type": "number" },
+                "horizontalDilution": { "type": "number" },
+                "geoidalSeparation": { "type": "number" },
+                "differentialAge": { "type": "number" },
+                "differentialReference": { "type": "number" }
             }
         },
 
