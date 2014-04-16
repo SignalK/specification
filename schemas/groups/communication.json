@@ -67,8 +67,8 @@
             ]
         },
 
-    	"timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-    	"source": { "$ref": "../definitions.json/definitions/source" }
+    	"timestamp": { "$ref": "../definitions.json#/definitions/timestamp" },
+    	"source": { "$ref": "../definitions.json#/definitions/source" }
     }
 
 }

@@ -1,0 +1,172 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/routes.json#",
+    "title": "routes",
+    "description": "Resources to aid in navigation and operation of the vessel",
+    "properties": {
+        "charts": {
+            "uuid": {
+                "type": "object",
+                "description": "A chart",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Chart common name"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Chart number"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the chart"
+                    },
+                    "distance": {
+                        "description": "Total distance from start to end",
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                    },
+                    "waypoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Pointer to waypoint uuid"
+                        }
+                    },
+                    "timestamp": {
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "source": {
+                        "$ref": "../definitions.json#/definitions/source"
+                    }
+                }
+            }
+        },
+        "routes": {
+            "type": "object",
+            "description": "A holder for routes, each named with a UUID",
+            "additionalProperties": {
+                "type": "object",
+                "description": "A route, named with a UUID",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Routes common name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the route"
+                    },
+                    "distance": {
+                        "description": "Total distance from start to end",
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                    },
+                    "waypoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Pointers to waypoint uuid"
+                        }
+                    },
+                    "timestamp": {
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "source": {
+                        "$ref": "../definitions.json#/definitions/source"
+                    }
+                }
+            }
+        },
+        "regions": {
+            "type": "object",
+            "description": "A holder for regions, each named with a UUID",
+            "additionalProperties": {
+                "type": "object",
+                "description": "A region of interest, named with a UUID",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "area common name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the region"
+                    },
+                    "waypoints": {
+                        "type": "array",
+                        "description": "The set of waypoints that define the edges of the region",
+                        "items": {
+                            "type": "string",
+                            "description": "Pointer to waypoint uuid"
+                        }
+                    },
+                    "timestamp": {
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "source": {
+                        "$ref": "../definitions.json#/definitions/source"
+                    }
+                }
+            }
+        },
+        "waypoints": {
+            "type": "object",
+            "description": "A holder for waypoints, each named with a UUID",
+            "additionalProperties": {
+                "type": "object",
+                "description": "A waypoint, named with a UUID",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "waypoint common name"
+                    },
+                    "position": {
+                        "type": "object",
+                        "description": "The position of the waypoint in 3 dimensions",
+                        "properties": {
+                            "source": {
+                                "$ref": "../definitions.json#/definitions/source"
+                            },
+                            "timestamp": {
+                                "$ref": "../definitions.json#/definitions/timestamp"
+                            },
+                            "longitude": {
+                                "type": "number",
+                                "description": "In decimal notation (4.98765245)"
+                            },
+                            "latitude": {
+                                "type": "number",
+                                "description": "In decimal notation (52.0987654)"
+                            },
+                            "altitude": {
+                                "type": "number",
+                                "description": "METERS"
+                            }
+                        }
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the waypoint"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of waypoint",
+                        "enum": [
+                            "location",
+                            "fish",
+                            "hazard",
+                            "anchorage",
+                            "mark"
+                        ]
+                    },
+                    "timestamp": {
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "source": {
+                        "$ref": "../definitions.json#/definitions/source"
+                    }
+                }
+            }
+        }
+    }
+}
