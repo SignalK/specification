@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    
+    "id": "https://signalk.github.io/specification/schemas/def_loader.json#",
+    "title": "def_loader",
+    "description": "Nasty hack to get the definitions loaded first, so they resolve nicely",
+
+    "properties": {
+    	
+    	"stringValue": { "$ref": "definitions.json#/definitions/stringValue" },
+    	"floatValue": { "$ref": "definitions.json#/definitions/floatValue" },
+    	"nullValue": { "$ref": "definitions.json#/definitions/nullValue" },
+    	"alarmValue": { "$ref": "definitions.json#/definitions/alarmValue" },
+    	"alarmMethod": { "$ref": "definitions.json#/definitions/alarmMethod" }
+    }
+}

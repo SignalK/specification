@@ -9,20 +9,22 @@
     "properties": {
     	"self": {
     		"type": "string",
-    		"description": "This holds the key (MMSI or other unique ID) of the local boat in the vessels array.",
+    		"description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array.",
     		"required": true
     	},
     	
     	"vessels": {
     		"type": "object",
     		"required": true,
-    		"description": "A wrapper object for vessel objects, each describing vessels in range, including localboat.",
+    		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
 		"additionalProperties": { "$ref": "vessel.json#" } 
     	},
-	"resources": { "$ref": "groups/resources.json#" },
+		"resources": { 
+			"description": "resources to aid in navigation and operation of the vessel",
+			"$ref": "groups/resources.json#" },
     	
     	"source": { "$ref": "definitions.json#/definitions/source" },
     	"timestamp": { "$ref": "definitions.json#/definitions/timestamp" },
-    	"version": { "$ref": "defintions.json#/definitions/version" }
+    	"version": { "$ref": "definitions.json#/definitions/version" }
     }
 }

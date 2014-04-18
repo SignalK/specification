@@ -1,30 +1,38 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
+     "id": "https://signalk.github.io/specification/schemas/definitions.json#",
+     "title": "definitions",
+    "description": "Reusable definitions of core object types",
     "definitions": {
         "timestamp": {
-            "type": "string", 
+            "type": "string",
             "required": false,
             "description": "ISO-8601 (UTC) string representing date and time when the data was recorded.",
             "example": "2014-04-10T08:33:53Z"
         },
-
         "source": {
             "type": "object",
             "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
-            "required": ["label", "type"],
+            "required": [
+                "label",
+                "type"
+            ],
             "properties": {
-                "label": { "type": "string" },
-                "type": { "type": "string", "default": "NMEA2000" }
+                "label": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "default": "NMEA2000"
+                }
             }
         },
-
         "version": {
             "type": "string",
             "description": "Version of the Signal K root object.",
             "example": "0.1"
         },
-
         "mmsi": {
             "type": "string",
             "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
@@ -32,7 +40,6 @@
             "maxLength": 9,
             "minLength": 9
         },
-
         "uuid": {
             "type": "string",
             "description": "UUID assigned by the implementation of the Signal K server to vessels that don't have a MMSI. Has to be 8 characters (chosen so one could use the first block in a RFC4122 UUID), to distinguish from MMSI.",
@@ -40,70 +47,106 @@
             "minLength": 8,
             "example": "550E8AB0"
         },
-
         "stringValue": {
             "type": "object",
             "description": "Data should be of type string.",
             "properties": {
-                "value": { "type": "string" },
-                "timestamp": { "$ref": "#/definitions/timestamp" },
-                "source": { "$ref": "#/definitions/source" }
+                "value": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                }
             }
         },
-
         "numberValue": {
             "type": "object",
             "description": "Data should be of type number.",
             "properties": {
-                "value": { "type": "number" },
-                "timestamp": { "$ref": "#/definitions/timestamp" },
-                "source": { "$ref": "#/definitions/source" }
+                "value": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                }
             }
         },
-
         "floatValue": {
             "type": "object",
             "description": "Data should be of type float/double.",
             "properties": {
-                "value": { "type": "number" },
-                "timestamp": { "$ref": "#/definitions/timestamp" },
-                "source": { "$ref": "#/definitions/source" }
+                "value": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                }
             }
         },
-
         "nullValue": {
             "type": "object",
             "description": "Data should be of type NULL.",
             "properties": {
-                "value": { "type": "null" },
-                "timestamp": { "$ref": "#/definitions/timestamp" },
-                "source": { "$ref": "#/definitions/source" }
+                "value": {
+                    "type": "null"
+                },
+                "timestamp": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                }
             }
         },
-	"alarmValue": {
+        "alarmValue": {
             "type": "object",
             "description": "The possible states of an alarm.",
             "properties": {
-                "items": { 
-		    "type": "string",
-		    "enum": [ "disabled", "enabled", "firing", "silent" ]
-		  },
-                "timestamp": { "$ref": "#/definitions/timestamp" },
-                "source": { "$ref": "#/definitions/source" }
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "disabled",
+                        "enabled",
+                        "firing",
+                        "silent"
+                    ]
+                },
+                "timestamp": {
+                    "$ref": "#/definitions/timestamp"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                }
             }
         },
-	"alarmMethod": {
+        "alarmMethod": {
             "type": "array",
             "description": "The methods an alarm will use to raise attention",
-	    "items": {
-		"type": "string",
-		"enum": [ "message", "sound", "sms", "email", "dsc" ]
-	      },
-	      "timestamp": { "$ref": "#/definitions/timestamp" },
-	      "source": { "$ref": "#/definitions/source" }
-            
+            "items": {
+                "type": "string",
+                "enum": [
+                    "message",
+                    "sound",
+                    "sms",
+                    "email",
+                    "dsc"
+                ]
+            },
+            "timestamp": {
+                "$ref": "#/definitions/timestamp"
+            },
+            "source": {
+                "$ref": "#/definitions/source"
+            }
         }
-
-
     }
 }

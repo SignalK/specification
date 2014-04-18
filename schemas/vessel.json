@@ -3,35 +3,44 @@
     "$schema": "http://json-schema.org/draft-03/schema",
     "id": "https://signalk.github.io/specification/schemas/vessel.json#",
     "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
-    "title": "Vessel",
+    "title": "vessel",
     "properties": {
         "mmsi": {
+        	"description": "mmsi number",
             "$ref": "definitions.json#/definitions/mmsi"
+        },
+         "source": {
+         	"description": "source of this data",
+            "$ref": "definitions.json#/definitions/source"
+        },
+        "timestamp": {
+            "$ref": "definitions.json#/definitions/timestamp"
         },
         "name": {
             "type": "string",
             "description": "The common name of the vessel"
         },
         "communication": {
+        	"description": "Communication data",
             "$ref": "groups/communication.json#"
         },
-        "environmental": {
-            "$ref": "groups/environmental.json#"
+       "environment": {
+       		"description": "Environmental data",
+            "$ref": "groups/environment.json#"
         },
         "navigation": {
+        	"description": "Navigation data",
             "$ref": "groups/navigation.json#"
         },
+        
         "alarms": {
+        	"description": "Alarm  data",
             "$ref": "groups/alarms.json#"
         },
-	"steering": {
+		"steering": {
+			"description": "Vessel steering data",
             "$ref": "groups/steering.json#"
-        },
-        "source": {
-            "$ref": "definitions.json#/definitions/source"
-        },
-        "timestamp": {
-            "$ref": "definitions.json#/definitions/timestamp"
         }
+       
     }
 }
