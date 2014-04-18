@@ -6,32 +6,42 @@
     "description": "Resources to aid in navigation and operation of the vessel",
     "properties": {
         "charts": {
-            "uuid": {
+            "type": "object",
+            "description": "A holder for charts, each named with their chart code",
+            "additionalProperties": {
                 "type": "object",
                 "description": "A chart",
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Chart common name"
+                        "description": "chart common name"
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Chart number"
+                        "description": "chart number"
                     },
                     "description": {
                         "type": "string",
-                        "description": "A description of the chart"
+                        "description": "a description of the chart"
                     },
-                    "distance": {
-                        "description": "Total distance from start to end",
-                        "$ref": "../definitions.json#/definitions/numberValue"
+                    "tilemapUrl": {
+                        "type": "string",
+                        "description": "a url to the tilemap of the chart for use in TMS chartplotting apps"
                     },
-                    "waypoints": {
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "description": "Pointer to waypoint uuid"
-                        }
+                    "chartUrl": {
+                        "type": "string",
+                        "description": "a url to the chart files storage location"
+                    },
+                    "chartFormat": {
+                        "type": "string",
+                        "description": "the format of the chart",
+                        "enum": [
+                            "gif",
+                            "geotiff",
+                            "kap",
+                            "png",
+                            "jpg"
+                        ]
                     },
                     "timestamp": {
                         "$ref": "../definitions.json#/definitions/timestamp"
