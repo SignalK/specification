@@ -6,11 +6,11 @@
     "title": "vessel",
     "properties": {
         "mmsi": {
-        	"description": "mmsi number",
+            "description": "mmsi number",
             "$ref": "definitions.json#/definitions/mmsi"
         },
-         "source": {
-         	"description": "source of this data",
+        "source": {
+            "description": "source of this data",
             "$ref": "definitions.json#/definitions/source"
         },
         "timestamp": {
@@ -21,26 +21,32 @@
             "description": "The common name of the vessel"
         },
         "communication": {
-        	"description": "Communication data",
+            "description": "Communication data",
             "$ref": "groups/communication.json#"
         },
-       "environment": {
-       		"description": "Environmental data",
+        "environment": {
+            "description": "Environmental data",
             "$ref": "groups/environment.json#"
         },
         "navigation": {
-        	"description": "Navigation data",
+            "description": "Navigation data",
             "$ref": "groups/navigation.json#"
         },
-        
+        "propulsion": {
+            "description": "Engine  data",
+            "$ref": "groups/propulsion.json#"
+        },
         "alarms": {
-        	"description": "Alarm  data",
+            "description": "Alarm  data",
             "$ref": "groups/alarms.json#"
         },
-		"steering": {
-			"description": "Vessel steering data",
+        "steering": {
+            "description": "Vessel steering data",
             "$ref": "groups/steering.json#"
+        },
+        "tanks": {
+            "description": "tanks on this vessel",
+            "$ref": "groups/tanks.json#"
         }
-       
     }
 }
