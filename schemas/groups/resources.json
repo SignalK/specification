@@ -7,6 +7,7 @@
     "properties": {
         "charts": {
             "type": "object",
+	    "title": "chart",
             "description": "A holder for charts, each named with their chart code",
             "additionalProperties": {
                 "type": "object",
@@ -54,6 +55,7 @@
         },
         "routes": {
             "type": "object",
+	    "title": "route",
             "description": "A holder for routes, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
@@ -87,8 +89,46 @@
                 }
             }
         },
+	"notes": {
+            "type": "object",
+	    "title": "notes",
+            "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
+            "additionalProperties": {
+                "type": "object",
+                "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "area common name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A textual description of the note"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Pointer to region uuid",
+                    },
+		    "mimeType": {
+                        "type": "string",
+                        "description": "MIME type of the note",
+                    },
+		    "url": {
+                        "type": "string",
+                        "description": "location of the note",
+                    },
+                    "timestamp": {
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "source": {
+                        "$ref": "../definitions.json#/definitions/source"
+                    }
+                }
+            }
+        },
         "regions": {
             "type": "object",
+	    "title": "region",
             "description": "A holder for regions, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
@@ -121,6 +161,7 @@
         },
         "waypoints": {
             "type": "object",
+	    "title": "waypoint",
             "description": "A holder for waypoints, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
