@@ -23,8 +23,8 @@
 			"description": "resources to aid in navigation and operation of the vessel",
 			"$ref": "groups/resources.json#" },
     	
-    	"source": { "$ref": "definitions.json#/definitions/source" },
-    	"timestamp": { "$ref": "definitions.json#/definitions/timestamp" },
+    	"source": { "description":"Source of this data", "$ref": "definitions.json#/definitions/source" },
+    	"timestamp": { "description":"timestamp of the last update to this data", "$ref": "definitions.json#/definitions/timestamp" },
     	"version": { "$ref": "definitions.json#/definitions/version" }
     }
 }

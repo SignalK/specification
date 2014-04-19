@@ -61,6 +61,25 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
             return text;
         }
     });
+    
+    Handlebars.registerHelper('example', function(schema) {
+        var example = schema.example;
+
+        if( !example ) return "";
+        var text = example;
+        
+        return text;
+         
+    });
+    Handlebars.registerHelper('units', function(schema) {
+        var units = schema.units;
+
+        if( !units ) return "";
+        var text = units;
+        
+        return text;
+         
+    });
 
     Handlebars.registerHelper('equals', function(lvalue, rvalue, options) {
         if (arguments.length < 3)

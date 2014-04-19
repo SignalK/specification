@@ -26,10 +26,10 @@
                         "off",
                         "alarm"
                     ],
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },
@@ -41,10 +41,10 @@
                         "normal",
                         "accurate"
                     ],
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },
@@ -68,10 +68,10 @@
                         "wind",
                         "gps"
                     ],
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },

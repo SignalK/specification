@@ -18,10 +18,10 @@
 	    "title": "currentRoute",
             "description": "The current route if one is active",
             "properties": {
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
                 },
                 "bearingActual": {
@@ -37,18 +37,18 @@
                     "description": "The course required to make the next waypoint in degrees true"
                 },
                 "eta": {
-                    "type": "string",
-                    "description": "The estimated time of arrival at the end of the current route",
-                    "example": "2014-03-24T00:15:41Z"
+                    "$ref": "../definitions.json#/definitions/timestamp",
+                    "description": "The estimated time of arrival at the end of the current route"
+                    
                 },
                 "route": {
                     "type": "string",
                     "description": "A pointer to the current route, found in the routes list"
                 },
                 "startTime": {
-                    "type": "string",
-                    "description": "The time this route was activated in UTC",
-                    "example": "2014-03-24T00:15:41Z"
+                    "$ref": "../definitions.json#/definitions/timestamp",
+                    "description": "The time this route was activated in UTC"
+                    
                 },
                 "waypoint": {
                     "type": "object",
@@ -56,7 +56,7 @@
                     "description": "The last and next waypoints data",
                     "properties": {
                         "lastTime": {
-                            "type": "string",
+                            "$ref": "../definitions.json#/definitions/timestamp",
                             "description": "The time the last waypoint was reached in UTC"
                         },
                         "last": {
@@ -64,7 +64,7 @@
                             "description": "The last waypoint, a pointer to the list of waypoints"
                         },
                         "nextEta": {
-                            "type": "string",
+                            "$ref": "../definitions.json#/definitions/timestamp",
                             "description": "Estimated time of arrival at the next waypoint",
                             "example": "2014-03-24T00:15:41Z"
                         },
@@ -89,10 +89,11 @@
             "description": "The intended destination of this trip",
             "type": "object",
             "properties": {
-                "source": {
+		"eta" : {"$ref": "../definitions.json#/definitions/timestamp"},
+                "source": { "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
                 },
                 "longitude": {
@@ -118,10 +119,10 @@
 	    "title": "gnss",
             "description": "FIXME Global satellite navigation meta information",
             "properties": {
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
                 }
             }
@@ -139,10 +140,10 @@
 	    "title": "position",
             "description": "The position of the vessel in 3 dimensions",
             "properties": {
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
                 },
                 "longitude": {
@@ -188,10 +189,10 @@
 	    "title": "state",
             "description": "Current navigational state of the vessel",
             "properties": {
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
                 },
                 "value": {
@@ -211,10 +212,10 @@
                 }
             }
         },
-        "timestamp": {
+        "timestamp": { "description":"timestamp of the last update to this data",
             "$ref": "../definitions.json#/definitions/timestamp"
         },
-        "source": {
+        "source": { "description":"Source of this data",
             "$ref": "../definitions.json#/definitions/source"
         }
     }

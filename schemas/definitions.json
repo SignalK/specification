@@ -8,7 +8,8 @@
         "timestamp": {
             "type": "string",
             "required": false,
-            "description": "ISO-8601 (UTC) string representing date and time when the data was recorded.",
+            "description": "ISO-8601 (UTC) string representing date and time.",
+	    "units": "ISO-8601 (UTC)",
             "example": "2014-04-10T08:33:53Z"
         },
         "source": {
@@ -54,7 +55,7 @@
                 "value": {
                     "type": "string"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
                 "source": {
@@ -69,7 +70,7 @@
                 "value": {
                     "type": "number"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
                 "source": {
@@ -84,10 +85,10 @@
                 "value": {
                     "type": "number"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "#/definitions/source"
                 }
             }
@@ -99,10 +100,10 @@
                 "value": {
                     "type": "null"
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "#/definitions/source"
                 }
             }
@@ -120,10 +121,10 @@
                         "silent"
                     ]
                 },
-                "timestamp": {
+                "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": {
+                "source": { "description":"Source of this data",
                     "$ref": "#/definitions/source"
                 }
             }
@@ -141,10 +142,10 @@
                     "dsc"
                 ]
             },
-            "timestamp": {
+            "timestamp": { "description":"timestamp of the last update to this data",
                 "$ref": "#/definitions/timestamp"
             },
-            "source": {
+            "source": { "description":"Source of this data",
                 "$ref": "#/definitions/source"
             }
         }

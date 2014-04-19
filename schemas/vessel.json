@@ -13,7 +13,7 @@
             "description": "source of this data",
             "$ref": "definitions.json#/definitions/source"
         },
-        "timestamp": {
+        "timestamp": { "description":"timestamp of the last update to this data",
             "$ref": "definitions.json#/definitions/timestamp"
         },
         "name": {

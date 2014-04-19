@@ -44,10 +44,10 @@
                             "jpg"
                         ]
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -80,10 +80,10 @@
                             "description": "Pointers to waypoint uuid"
                         }
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -107,20 +107,20 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Pointer to region uuid",
+                        "description": "Pointer to region uuid"
                     },
 		    "mimeType": {
                         "type": "string",
-                        "description": "MIME type of the note",
+                        "description": "MIME type of the note"
                     },
 		    "url": {
                         "type": "string",
-                        "description": "location of the note",
+                        "description": "location of the note"
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -150,10 +150,10 @@
                             "description": "Pointer to waypoint uuid"
                         }
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -175,10 +175,10 @@
                         "type": "object",
                         "description": "The position of the waypoint in 3 dimensions",
                         "properties": {
-                            "source": {
+                            "source": { "description":"Source of this data",
                                 "$ref": "../definitions.json#/definitions/source"
                             },
-                            "timestamp": {
+                            "timestamp": { "description":"timestamp of the last update to this data",
                                 "$ref": "../definitions.json#/definitions/timestamp"
                             },
                             "longitude": {
@@ -210,10 +210,10 @@
                             "mark"
                         ]
                     },
-                    "timestamp": {
+                    "timestamp": { "description":"timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": {
+                    "source": { "description":"Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
