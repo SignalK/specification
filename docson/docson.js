@@ -55,11 +55,30 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         if( !description ) return "";
         var text = description;
         if(marked) {
-            marked.setOptions({gfm: true, breaks: true})
+            marked.setOptions({gfm: true, breaks: true});
             return new Handlebars.SafeString(marked(text));
         } else {
             return text;
         }
+    });
+    
+    Handlebars.registerHelper('example', function(schema) {
+        var example = schema.example;
+
+        if( !example ) return "";
+        var text = example;
+        
+        return text;
+         
+    });
+    Handlebars.registerHelper('units', function(schema) {
+        var units = schema.units;
+
+        if( !units ) return "";
+        var text = units;
+        
+        return text;
+         
     });
 
     Handlebars.registerHelper('equals', function(lvalue, rvalue, options) {
@@ -80,7 +99,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
     Handlebars.registerHelper('primitive', function(schema, options) {
         if(schema.type && schema.type != "object" && schema.type != "array" || schema.enum) {
-            return withType(this, options, true)
+            return withType(this, options, true);
         }
     });
 
@@ -113,7 +132,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
     var sub = function(schema) {
         return schema.type == "array" || schema.allOf || schema.anyOf || schema.oneOf || schema.not || schema.additionalProperties;
-    }
+    };
 
     Handlebars.registerHelper('sub', function(schema, options) {
         if(sub(schema) || (schema.type && schema.type != "object" && schema.type != "array") || schema.enum) {
@@ -128,8 +147,9 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
     });
 
     var simpleSchema = function(schema) {
-        var result = schema.description===undefined && schema.title===undefined && schema.id===undefined;
+        var result = schema.description===undefined && schema.title===undefined && schema.id===undefined ;
         result &= schema.properties===undefined;
+        //console.log("simple schema = "+result);
         return result;
     };
 
@@ -153,7 +173,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         var result = options.fn(schema);
         delete schema.__type;
         return result;
-    }
+    };
 
     Handlebars.registerHelper('complex', function(schema, options) {
         if(!simpleSchema(schema) && !schema.$ref || schema.properties) {
@@ -168,14 +188,14 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
     });
 
     Handlebars.registerHelper('obj', function(schema, options) {
-        if(schema.properties || schema.type == "object") {
+        if(schema.properties ||schema.definitions || schema.type == "object") {
             return withType(schema, options);
         }
     });
 
     var pushBox = function(schema) {
         boxes[boxes.length-1].push(schema);
-    }
+    };
 
     Handlebars.registerHelper('box', function(schema, options) {
         if(schema) {
@@ -185,7 +205,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
     });
 
     Handlebars.registerHelper('boxId', function() {
-        return boxes[boxes.length-1].length
+        return boxes[boxes.length-1].length;
     });
 
     Handlebars.registerHelper('boxes', function(options) {
@@ -194,12 +214,17 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
             box.__boxId = k+1;
             result=result+options.fn(box);
         });
-        boxes[boxes.length-1] = []
+        boxes[boxes.length-1] = [];
         return result;
     });
 
     var resolveIdRef = function(ref) {
         if(stack) {
+        	if(ref.contains("definitions.json")){
+        		var segments= ref.split("#");
+        		ref="definitions.json#"+segments[1];
+        	}
+        	//console.log("Resolving :"+ref);
             var i;
             for(i=stack.length-1; i>=0; i--) {
                 if(stack[i][ref]) {
@@ -221,7 +246,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
             console.log(e);
             return null;
         }
-    }
+    };
 
     var resolveRef = function(ref) {
         if(ref.indexOf("#") == 0) {
@@ -229,7 +254,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         } else {
             return resolveIdRef(ref);
         }
-    }
+    };
 
     var getName = function(schema) {
         if(!schema) {
@@ -239,7 +264,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         name = !name && schema.id ? schema.id: name;
         name = !name ? schema.__name: name;
         return name;
-    }
+    };
 
     Handlebars.registerHelper('name', function(schema, options) {
         schema.__name = getName(schema);
@@ -254,12 +279,23 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
             if(ref == "#") {
                 name = "<root>";
             } else {
-                name = ref.replace("#", "/")
+                name = ref.replace("#", "/");
             }
         }
         var segments = name.split("/");
         name = segments[segments.length-1];
         return name;
+    };
+    
+    function getDescendantProp(obj, desc) {
+    	if(desc.startsWith("/")){
+    		desc=desc.substring(1);
+    	}
+        var arr = desc.split("/");
+        //console.log("getDesc:"+arr);
+        while(arr.length && (obj = obj[arr.shift()]));
+       // console.log("getDescObj:"+JSON.stringify(obj));
+        return obj;
     }
 
     function renderSchema(schema) {
@@ -294,7 +330,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
     Handlebars.registerHelper('signature', function(schema, keyword, schemas) {
         if(!schemas) {
-            schemas = []
+            schemas = [];
         }
         schemas = schemas instanceof Array ? schemas : [schemas];
         return new Handlebars.SafeString(signatureTemplate({ schema: schema, keyword: keyword, schemas: schemas}));
@@ -306,20 +342,83 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
     function init() {
         $.when( $.get(docson.templateBaseUrl+"/box.html").done(function(content) {
-            source = content
+            source = content;
             boxTemplate = Handlebars.compile(source);
         }), $.get(docson.templateBaseUrl+"/signature.html").done(function(content) {
-            source = content
+            source = content;
             signatureTemplate = Handlebars.compile(source);
         })).always(function() {
             ready.resolve();
         });
     };
+    var refs = {};
+   
+    function recurseSchema(curSchema){
+   	 traverse(curSchema).forEach(function(item) {
+            // Fix Swagger weird generation for array.
+            if(item && item.$ref == "array") {
+                delete item.$ref;
+                item.type ="array";
+            }
 
+            // Fetch external schema
+            if(this.key === "$ref") {
+            	
+            	//console.log("Found:"+item);
+                if((/.+#/).test(item)) {
+                	
+                    var segments = item.split("#");
+                    if(segments[0].contains("definitions.json" )){
+                    	segments[0]="definitions.json";
+                	}else if( segments[1].contains("/definitions/")){
+                    	segments[0]="definitions.json";
+                	}else{
+                		console.log("Found:"+item);
+                	}
+                 
+                    $.ajax({ url: "schemas/"+segments[0],async: false}).done(function(content) {
+                    	if(!segments[0].contains("definitions.json")){
+                    		console.log("Recursing:"+"schemas/"+segments[0]);
+                    	}
+                    	//recurse
+                    	 recurseSchema(content);
+                    	//console.log("item = "+JSON.stringify(content));
+                        if(typeof content != "object") {
+                            try {
+                                content = JSON.parse(content);
+                            } catch(e) {
+                                console.error("Unable to parse "+segments[0], e);
+                            }
+                        }
+                        
+                        //trim the content to the object (definition) we want
+                        if(segments[1]){
+                        	//console.log("definition="+segments[1]);
+                        	var prop = getDescendantProp(content,segments[1]);
+                        	//console.log(JSON.stringify(prop));
+                        	content=prop;
+                        }
+                        if(content) {
+                        	//console.log(item +" = "+JSON.stringify(content).substring(0,240));
+                            refs[item] = content;
+                            //console.log(refs);
+                        }
+                      
+                    });
+                    
+                    //refsPromise = p.done(refsPromise);
+                
+                }
+            }
+        });
+   	 //return refsPromise;
+   };
+   
     docson.doc = function(element, schema, ref) {
         var d = $.Deferred();
         init();
         ready.done(function() {
+        	 $('#load').show();
             if(typeof element == "string") {
                 element = $("#"+element);
             }
@@ -327,41 +426,27 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
                 schema = JSON.parse(schema);
             }
 
-            var refsPromise = $.Deferred().resolve().promise();
-            var refs = {};
-
-            traverse(schema).forEach(function(item) {
-                // Fix Swagger weird generation for array.
-                if(item && item.$ref == "array") {
-                    delete item.$ref;
-                    item.type ="array";
-                }
-
-                // Fetch external schema
-                if(this.key === "$ref") {
-                    if((/^https?:\/\//).test(item)) {
-                        var segments = item.split("#");
-                        var p = $.get(segments[0]).then(function(content) {
-                            if(typeof content != "object") {
-                                try {
-                                    content = JSON.parse(content);
-                                } catch(e) {
-                                    console.error("Unable to parse "+segments[0], e);
-                                }
-                            }
-                            if(content) {
-                                refs[item] = content;
-                            }
-                        });
-                        refsPromise = p.then(refsPromise)
-                    }
-                }
+            //var refsPromise = $.Deferred().resolve().promise();
+            //load definitions first
+            $.ajax({ url: "schemas/def_loader_pre.json",async: false}).done(function(content) {
+            	recurseSchema(content);
             });
-
-            refsPromise.done(function() {
+            $.ajax({ url: "schemas/def_loader.json",async: false}).done(function(content) {
+            	recurseSchema(content);
+            });
+            	
+            
+            recurseSchema(schema);
+            $("#load").hide();
+            //var defer = $.when.apply($, requests);
+           // defer.done(function(){
+           // refsPromise.done(function() {
+            	
                 stack.push(refs);
+                //console.log("promise.done = "+JSON.stringify(refs));
                 var target = schema;
                 if(ref) {
+                	//console.log("promise.done.ref = "+ref);
                     ref = ref[0] !== '/' ? '/'+ref : ref;
                     target = jsonpointer.get(schema, ref);
                     stack.push( schema );
@@ -394,13 +479,15 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
                     });
                 }
                 element.find(".box-title").each(function() {
+                	
                    var ref = $(this).attr("ref");
+                   //console.log("promise.done.element.find.boxtitle = "+ref);
                    if(ref) {
                        if(window.location.href.indexOf("docson/index.html") > -1) {
                            $(this).find(".box-name").css("cursor", "pointer").attr("title", "Open in new window")
                            .hover(
-                               function(){ $(this).addClass('link') },
-                               function(){ $(this).removeClass('link') })
+                               function(){ $(this).addClass('link');},
+                               function(){ $(this).removeClass('link'); })
                            .click(function() {
                                 var url = window.location.href+"$$expand";
                                 if(ref !=="<root>") {
@@ -454,10 +541,11 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
                     resized();
                 });
             });
+        
             d.resolve();
-        })
+     //   });
         return d.promise();
-    }
-
+    };
+    
     return docson;
 });

@@ -50,6 +50,12 @@
                     {{#if not}}
                         {{signature this "not" not}}
                     {{/if}}
+                    {{#if units}}
+                     	<br/><span class="signature-type-any">units: {{units this}}</span>
+                     {{/if}}
+                     {{#if example}}
+                     	<br/><span class="signature-type-any">example: {{example this}}</span>
+                     {{/if}}
                 </div>
             </div>
             <div class="signature-box-container">
@@ -66,6 +72,7 @@
             <div class="signature">
                 <div class="signature-header">
                     <div class="property-name {{#contains ../required @key}}required{{/contains}}">{{@key}}</div>
+                    
                     <div class="signature-type">
                         {{#main this}}
                             {{signature this null this}}
@@ -88,7 +95,14 @@
                         {{#if not}}
                             {{signature this "not" not}}
                         {{/if}}
+                        {{#if units}}
+                        	<br/><span class="signature-type-any">units: {{units this}}</span>
+                        {{/if}}
+                        {{#if example}}
+                        	<br/><span class="signature-type-any">example: {{example this}}</span>
+                        {{/if}}
                     </div>
+                    
                     <div class="signature-description desc">{{desc this}}</div>
                 </div>
                 <div class="signature-box-container">
@@ -101,6 +115,7 @@
             </div>
             {{/each}}
         {{/if}}
+        
     </div>
     <div class="source">
         <pre class="json-schema">
