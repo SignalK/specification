@@ -43,8 +43,10 @@
                             "png",
                             "jpg",
 			    "kml",
+			    "wkt",
+			    "topojson",
 			    "geojson",
-			    "topojson"
+			    "gpx"
 
                         ]
                     },
