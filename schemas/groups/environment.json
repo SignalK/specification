@@ -26,6 +26,7 @@
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "depth": {
+	    "title": "depth",
             "type": "object",
             "description": "Depth related data",
             "properties": {
@@ -61,6 +62,7 @@
         },
         "tide": {
             "type": "object",
+	    "title": "tide",
             "description": "Tide data",
             "properties": {
                 "heightHigh": {
@@ -91,6 +93,7 @@
         },
         "wind": {
             "type": "object",
+	    "title": "wind",
             "description": "Wind data.",
             "properties": {
                 "directionApparent": {

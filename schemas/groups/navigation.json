@@ -15,6 +15,7 @@
         },
         "currentRoute": {
             "type": "object",
+	    "title": "currentRoute",
             "description": "The current route if one is active",
             "properties": {
                 "source": {
@@ -51,6 +52,7 @@
                 },
                 "waypoint": {
                     "type": "object",
+		    "title": "waypoint",
                     "description": "The last and next waypoints data",
                     "properties": {
                         "lastTime": {
@@ -83,6 +85,7 @@
             "description": "The magnetic variation (declination) at the current position"
         },
         "destination": {
+	    "title": "destination",
             "description": "The intended destination of this trip",
             "type": "object",
             "properties": {
@@ -112,6 +115,7 @@
         },
         "gnss": {
             "type": "object",
+	    "title": "gnss",
             "description": "FIXME Global satellite navigation meta information",
             "properties": {
                 "source": {
@@ -132,6 +136,7 @@
         },
         "position": {
             "type": "object",
+	    "title": "position",
             "description": "The position of the vessel in 3 dimensions",
             "properties": {
                 "source": {
@@ -180,6 +185,7 @@
         },
         "state": {
             "type": "object",
+	    "title": "state",
             "description": "Current navigational state of the vessel",
             "properties": {
                 "source": {

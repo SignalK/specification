@@ -15,6 +15,7 @@
         },
         "autopilot": {
         	"type":"object",
+	    "title": "autopilot",
             "description": "Autopilot data",
             "properties": {
                 "state": {
