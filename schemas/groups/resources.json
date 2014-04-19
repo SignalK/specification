@@ -41,7 +41,11 @@
                             "geotiff",
                             "kap",
                             "png",
-                            "jpg"
+                            "jpg",
+			    "kml",
+			    "geojson",
+			    "topojson"
+
                         ]
                     },
                     "timestamp": { "description":"timestamp of the last update to this data",
