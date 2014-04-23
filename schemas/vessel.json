@@ -47,6 +47,9 @@
         "tanks": {
             "description": "tanks on this vessel",
             "$ref": "groups/tanks.json#"
-        }
+        },
+	"resources": { 
+	    "description": "resources to aid in navigation and operation of the vessel. These are unique to the vessel, rather than communally interesting, eg wiring diagrams, maintenance schedules, etc. Resources likely to be shared, eg charts, waypoints, etc are in the vessels.resources area",
+	    "$ref": "groups/resources.json#" },
     }
 }

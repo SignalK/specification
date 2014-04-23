@@ -17,7 +17,10 @@
     		"type": "object",
     		"required": true,
     		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
-		"additionalProperties": { "$ref": "vessel.json#" } 
+		"patternProperties": {
+			  "^[2-7][0-9]{8,8}$": { "$ref": "vessel.json#" },
+			  "^[A-F0-9]{8,8}$": { "$ref": "vessel.json#" } 
+		 }
     	},
 		"resources": { 
 			"description": "resources to aid in navigation and operation of the vessel",
