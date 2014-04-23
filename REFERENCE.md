@@ -50,6 +50,7 @@ Adding to the Signal K schema
 Using the Signal K model
 ------------------------
 
+* all data is UTF-8
 * the model is designed so that any incoming message can simply be merged into the currently held model since all keys are unique. 
 * each message must start from the root element, but need only contain the keys of interest. eg a given message will be a filtered partial copy of the whole model. It may contain one key, or a whole branch of keys.
 * if a device receives an unknown key it can be ignored by that device.

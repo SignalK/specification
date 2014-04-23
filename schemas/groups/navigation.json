@@ -1,30 +1,29 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-
     "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
     "description": "Schema describing the navigation child-object of a Vessel.",
     "title": "navigation",
-
     "properties": {
-
-    	"courseOverGroundMagnetic": {
+        "courseOverGroundMagnetic": {
             "description": "",
-            "$ref": "../definitions.json/definitions/numberValue"
+            "$ref": "../definitions.json#/definitions/numberValue"
         },
-
         "courseOverGroundTrue": {
             "description": "",
-            "$ref": "../definitions.json/definitions/numberValue"
+            "$ref": "../definitions.json#/definitions/numberValue"
         },
-
         "currentRoute": {
             "type": "object",
+	    "title": "currentRoute",
             "description": "The current route if one is active",
             "properties": {
-                "source": { "$ref": "../definitions.json/definitions/source" },
-                "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
                 "bearingActual": {
                     "type": "number",
                     "description": "The current bearing of the next waypoint in degrees true"
@@ -38,138 +37,164 @@
                     "description": "The course required to make the next waypoint in degrees true"
                 },
                 "eta": {
-                    "type": "string",
-                    "description": "The estimated time of arrival at the end of the current route",
-                    "example": "2014-03-24T00:15:41Z"
+                    "$ref": "../definitions.json#/definitions/timestamp",
+                    "description": "The estimated time of arrival at the end of the current route"
+                    
                 },
                 "route": {
                     "type": "string",
                     "description": "A pointer to the current route, found in the routes list"
                 },
                 "startTime": {
-                    "type": "string",
-                    "description": "The time this route was activated in UTC",
-                    "example": "2014-03-24T00:15:41Z"
+                    "$ref": "../definitions.json#/definitions/timestamp",
+                    "description": "The time this route was activated in UTC"
+                    
                 },
-                "waypointLastTime": {
-                    "type": "string",
-                    "description": "The time the last waypoint was reached in UTC"
-                },
-                "waypointLast": {
-                    "type": "string",
-                    "description": "The last waypoint, a pointer to the list of waypoints"
-                },
-                "waypointNextEta": {
-                    "type": "string",
-                    "description": "Estimated time of arrival at the next waypoint",
-                    "example": "2014-03-24T00:15:41Z"
-                },
-                "waypointNext": {
-                    "type": "string",
-                    "description": "A pointer to the next waypoint, found in the waypoints list"
-                },
-                "xte": {
-                    "type": "number",
-                    "description": "Cross track error in METERS"
+                "waypoint": {
+                    "type": "object",
+		    "title": "waypoint",
+                    "description": "The last and next waypoints data",
+                    "properties": {
+                        "lastTime": {
+                            "$ref": "../definitions.json#/definitions/timestamp",
+                            "description": "The time the last waypoint was reached in UTC"
+                        },
+                        "last": {
+                            "type": "string",
+                            "description": "The last waypoint, a pointer to the list of waypoints"
+                        },
+                        "nextEta": {
+                            "$ref": "../definitions.json#/definitions/timestamp",
+                            "description": "Estimated time of arrival at the next waypoint",
+                            "example": "2014-03-24T00:15:41Z"
+                        },
+                        "next": {
+                            "type": "string",
+                            "description": "A pointer to the next waypoint, found in the waypoints list"
+                        },
+                        "xte": {
+                            "type": "number",
+                            "description": "Cross track error in METERS"
+                        }
+                    }
                 }
             }
         },
-        
         "magneticVariation": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "The magnetic variation (declination) at the current position"
         },
-
         "destination": {
+	    "title": "destination",
             "description": "The intended destination of this trip",
             "type": "object",
             "properties": {
-                "source": { "$ref": "../definitions.json/definitions/source" },
-                "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-
-                "longitude": { "type": "number", "description": "In decimal notation (4.98765245)" },
-                "latitude": { "type": "number", "description": "In decimal notation (52.0987654)" },
-                "altitude": { "type": "number", "description": "METERS" }
+		"eta" : {"$ref": "../definitions.json#/definitions/timestamp"},
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "In decimal notation (4.98765245)"
+                },
+                "latitude": {
+                    "type": "number",
+                    "description": "In decimal notation (52.0987654)"
+                },
+                "altitude": {
+                    "type": "number",
+                    "description": "METERS"
+                }
             }
         },
-
         "drift": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "The tidal drift at the current location in m/s"
         },
-
         "gnss": {
             "type": "object",
+	    "title": "gnss",
             "description": "FIXME Global satellite navigation meta information",
             "properties": {
-                "source": { "$ref": "../definitions.json/definitions/source" },
-                "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-
-
-
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                }
             }
         },
-
         "headingMagnetic": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Current magnetic heading of the vessels in degrees"
         },
-
         "headingTrue": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "The current true heading of the vessel in degrees"
         },
-
         "position": {
             "type": "object",
+	    "title": "position",
             "description": "The position of the vessel in 3 dimensions",
             "properties": {
-                "source": { "$ref": "../definitions.json/definitions/source" },
-                "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-
-                "longitude": { "type": "number", "description": "In decimal notation (4.98765245)" },
-                "latitude": { "type": "number", "description": "In decimal notation (52.0987654)" },
-                "altitude": { "type": "number", "description": "METERS" }
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "In decimal notation (4.98765245)"
+                },
+                "latitude": {
+                    "type": "number",
+                    "description": "In decimal notation (52.0987654)"
+                },
+                "altitude": {
+                    "type": "number",
+                    "description": "METERS"
+                }
             }
         },
-
         "pitch": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
         },
-
         "rateOfTurn": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
         },
-
         "roll": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
         },
-
         "set": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Tidal set in m/s"
         },
-
         "speedOverGround": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed over ground, in m/s"
         },
-
         "speedThroughWater": {
-            "$ref": "../definitions.json/definitions/numberValue",
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed through the water in m/s"
         },
-
         "state": {
             "type": "object",
+	    "title": "state",
             "description": "Current navigational state of the vessel",
             "properties": {
-                "source": { "$ref": "../definitions.json/definitions/source" },
-                "timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
                 "value": {
                     "type": "string",
                     "enum": [
@@ -187,9 +212,11 @@
                 }
             }
         },
-
-    	"timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-    	"source": { "$ref": "../definitions.json/definitions/source" }
+        "timestamp": { "description":"timestamp of the last update to this data",
+            "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "source": { "description":"Source of this data",
+            "$ref": "../definitions.json#/definitions/source"
+        }
     }
-
 }
