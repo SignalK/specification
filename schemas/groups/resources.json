@@ -6,7 +6,7 @@
     "description": "Resources to aid in navigation and operation of the vessel",
     "properties": {
         "charts": {
-            "type": "object",
+        "type": "object",
 	    "title": "chart",
             "description": "A holder for charts, each named with their chart code",
             "additionalProperties": {

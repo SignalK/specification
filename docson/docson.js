@@ -188,7 +188,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
     });
 
     Handlebars.registerHelper('obj', function(schema, options) {
-        if(schema.properties ||schema.definitions || schema.type == "object") {
+        if(schema.properties ||schema.patternProperties || schema.definitions || schema.type == "object") {
             return withType(schema, options);
         }
     });
@@ -373,13 +373,14 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
                 	}else if( segments[1].contains("/definitions/")){
                     	segments[0]="definitions.json";
                 	}else{
-                		console.log("Found:"+item);
+                		console.log("Found:"+segments[0]);
                 	}
                  
                     $.ajax({ url: "schemas/"+segments[0],async: false}).done(function(content) {
-                    	if(!segments[0].contains("definitions.json")){
-                    		console.log("Recursing:"+"schemas/"+segments[0]);
-                    	}
+                    		//console.log("got :"+segments[0]);
+                    	//if(!segments[0].contains("+.json")){
+                    	//	console.log("Recursing:"+"schemas/"+segments[0]);
+                    	//}
                     	//recurse
                     	 recurseSchema(content);
                     	//console.log("item = "+JSON.stringify(content));

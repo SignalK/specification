@@ -16,8 +16,12 @@
     	"vessels": {
     		"type": "object",
     		"required": true,
-    		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
-		"additionalProperties": { "$ref": "vessel.json#" } 
+    		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel. ",
+			"patternProperties": {
+				  "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
+				  	  		"description": "This regex pattern is used for validation of an MMSI or UUID identifier for the vessel",
+				  			"$ref": "vessel.json#" } 
+			 }
     	},
 		"resources": { 
 			"description": "resources to aid in navigation and operation of the vessel",
