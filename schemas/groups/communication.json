@@ -58,7 +58,7 @@
         "crewNames": {
             "type": "array",
             "description": "Array with the names of the crew",
-            "allOf": [
+            "additionalProperties": [
                 { 
                     "type": "string",
                     "description": "Name of a crew member of the vessel.",
@@ -67,8 +67,8 @@
             ]
         },
 
-    	"timestamp": { "$ref": "../definitions.json/definitions/timestamp" },
-    	"source": { "$ref": "../definitions.json/definitions/source" }
+    	"timestamp": { "$ref": "../definitions.json#/definitions/timestamp" },
+    	"source": { "$ref": "../definitions.json#/definitions/source" }
     }
 
 }

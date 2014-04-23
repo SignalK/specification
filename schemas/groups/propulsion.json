@@ -1,0 +1,85 @@
+{
+    "type": "object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+ 	"id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+    "title": "propulsion",
+    "description": "holder for engines",
+    "additionalProperties": {
+        "type": "object",
+		"title": "engine",
+        "description": "an engine, named by a unique name within this vessel",
+        "properties": {
+            "engineType": {
+                "type": "string",
+                "description": "The type of engine",
+                "enum": [
+                    "diesil inboard",
+                    "petrol inboard",
+                    "petrol outboard",
+                    "electric"
+                ]
+            },
+            "state": {
+                "type": "string",
+                "description": "The current state of the engine",
+                "enum": [
+                    "stopped",
+                    "started",
+                    "unusable"
+                ]
+            },
+            "rpm": {
+                "description": "engine rpm",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "rpmAlarm": {
+                "description": "engine rpm alarm (rpm limit)",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "engineTemperature": {
+                "description": "engine temperature in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "engineTemperatureAlarm": {
+                "description": "engine temperature alarm in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "oilTemperature": {
+                "description": "oil temperature in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "oilTemperatureAlarm": {
+                "description": "oil temperature alarm in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "oilPressure": {
+                "description": "oil pressure in Kpa",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "oilPressureAlarm": {
+                "description": "oil pressure alarm in Kpa",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "waterTemp": {
+                "description": "water temperature in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "waterTempAlarm": {
+                "description": "water temperature alarm in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "exhaustTemp": {
+                "description": "",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "exhaustTempAlarm": {
+                "description": "exhaust temperature alarm in degrees C",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "fuelUsageRate": {
+                "description": "fuel usage in liters/hour",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            }
+        }
+    }
+}

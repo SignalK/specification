@@ -1,32 +1,52 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-
     "id": "https://signalk.github.io/specification/schemas/vessel.json#",
-    "description": "An object describing an individual Vessel.",
-    "title": "Vessel",
-
+    "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
+    "title": "vessel",
     "properties": {
-    	"vesselUid": {
-    		"type": "object",
-    		"description": "FIXME: AM I USING 'NAME' PROPERLY HERE? KEY NAME SHOULD BE EITHER MMSI OR UUID -- @fabdrol.",
-			
-			"name": {
-				"oneOf": [
-					{ "$ref": "definitions.json/definitions/mmsi" },
-					{ "$ref": "definitions.json/definitions/uuid" }
-				]
-			},
-
-			"properties": {
-				"communication": { "$ref": "groups/communication.json" },
-				"environmental": { "$ref": "groups/environmental.json" },
-				"navigation": { "$ref": "groups/navigation.json" }, 
-				
-				"mmsi": { "$ref": "definitions.json/definitions/mmsi" },
-				"source": { "$ref": "definitions.json/definitions/source" },
-				"timestamp": { "$ref": "definitions.json/definitions/timestamp" }
-			}
-		}
+        "mmsi": {
+            "description": "mmsi number",
+            "$ref": "definitions.json#/definitions/mmsi"
+        },
+        "source": {
+            "description": "source of this data",
+            "$ref": "definitions.json#/definitions/source"
+        },
+        "timestamp": { "description":"timestamp of the last update to this data",
+            "$ref": "definitions.json#/definitions/timestamp"
+        },
+        "name": {
+            "type": "string",
+            "description": "The common name of the vessel"
+        },
+        "communication": {
+            "description": "Communication data",
+            "$ref": "groups/communication.json#"
+        },
+        "environment": {
+            "description": "Environmental data",
+            "$ref": "groups/environment.json#"
+        },
+        "navigation": {
+            "description": "Navigation data",
+            "$ref": "groups/navigation.json#"
+        },
+        "propulsion": {
+            "description": "Engine  data",
+            "$ref": "groups/propulsion.json#"
+        },
+        "alarms": {
+            "description": "Alarm  data",
+            "$ref": "groups/alarms.json#"
+        },
+        "steering": {
+            "description": "Vessel steering data",
+            "$ref": "groups/steering.json#"
+        },
+        "tanks": {
+            "description": "tanks on this vessel",
+            "$ref": "groups/tanks.json#"
+        }
     }
 }

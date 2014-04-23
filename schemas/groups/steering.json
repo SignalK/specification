@@ -1,0 +1,109 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/steering.json#",
+    "description": "Schema describing the steering child-object of a vessel.",
+    "title": "steering",
+    "properties": {
+        "rudderAngle": {
+            "description": "Current rudder angle, 0 is amidships, +ve is rudder to Starboard",
+            "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "rudderAngleTarget": {
+            "description": "The offset the rudder should move to, in degrees, 0 is amidships, +ve is rudder to Starboard",
+            "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "autopilot": {
+        	"type":"object",
+	    "title": "autopilot",
+            "description": "Autopilot data",
+            "properties": {
+                "state": {
+                    "type": "string",
+                    "description": "Autopilot state",
+                    "enum": [
+                        "on",
+                        "off",
+                        "alarm"
+                    ],
+                    "source": { "description":"Source of this data",
+                        "$ref": "../definitions.json#/definitions/source"
+                    },
+                    "timestamp": { "description":"timestamp of the last update to this data",
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    }
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Operational mode",
+                    "enum": [
+                        "powersave",
+                        "normal",
+                        "accurate"
+                    ],
+                    "source": { "description":"Source of this data",
+                        "$ref": "../definitions.json#/definitions/source"
+                    },
+                    "timestamp": { "description":"timestamp of the last update to this data",
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    }
+                },
+                "targetHeadingNorth": {
+                    "description": "Target heading for autopilot in degrees true",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "targetHeadingMagnetic": {
+                    "description": "Target heading for autopilot in magnetic degrees",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "alarmHeadingXte": {
+                    "description": "Meters off course before an alarm sounds",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "headingSource": {
+                    "type": "string",
+                    "description": "Current source of heading information",
+                    "enum": [
+                        "compass",
+                        "wind",
+                        "gps"
+                    ],
+                    "source": { "description":"Source of this data",
+                        "$ref": "../definitions.json#/definitions/source"
+                    },
+                    "timestamp": { "description":"timestamp of the last update to this data",
+                        "$ref": "../definitions.json#/definitions/timestamp"
+                    }
+                },
+                "deadZone": {
+                    "description": "Dead zone to ignore for rudder corrections (in degrees)",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "backlash": {
+                    "description": "Slack in the rudder drive mechanism in degrees",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "gain": {
+                    "description": "Autohelm gain, higher number equals more rudder movement for a given turn",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "maxDriveAmps": {
+                    "description": "Maximum amperage to use to drive servo",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "maxDriveRate": {
+                    "description": "Maximum degrees/sec to turn the rudder",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "portLock": {
+                    "description": "Position of servo on port lock",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "starboardLock": {
+                    "description": "Position of servo on starboard lock",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                }
+            }
+        }
+    }
+}
