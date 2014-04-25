@@ -286,11 +286,11 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         name = segments[segments.length-1];
         return name;
     };
-    
+
     function getDescendantProp(obj, desc) {
-    	if(desc.startsWith("/")){
-    		desc=desc.substring(1);
-    	}
+        if(desc.indexOf("/") == 0){
+            desc=desc.substring(1);
+        }
         var arr = desc.split("/");
         //console.log("getDesc:"+arr);
         while(arr.length && (obj = obj[arr.shift()]));
