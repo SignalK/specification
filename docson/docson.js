@@ -220,11 +220,11 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
     var resolveIdRef = function(ref) {
         if(stack) {
-        	if(ref.contains("definitions.json")){
-        		var segments= ref.split("#");
-        		ref="definitions.json#"+segments[1];
-        	}
-        	//console.log("Resolving :"+ref);
+            if(ref.indexOf("definitions.json") > -1){
+                var segments = ref.split("#");
+                ref = "definitions.json#" + segments[1];
+            }
+            //console.log("Resolving :"+ref);
             var i;
             for(i=stack.length-1; i>=0; i--) {
                 if(stack[i][ref]) {
@@ -286,11 +286,11 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
         name = segments[segments.length-1];
         return name;
     };
-    
+
     function getDescendantProp(obj, desc) {
-    	if(desc.startsWith("/")){
-    		desc=desc.substring(1);
-    	}
+        if(desc.indexOf("/") == 0){
+            desc=desc.substring(1);
+        }
         var arr = desc.split("/");
         //console.log("getDesc:"+arr);
         while(arr.length && (obj = obj[arr.shift()]));
@@ -363,27 +363,25 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
 
             // Fetch external schema
             if(this.key === "$ref") {
-            	
-            	//console.log("Found:"+item);
+                //console.log("Found:"+item);
                 if((/.+#/).test(item)) {
-                	
                     var segments = item.split("#");
-                    if(segments[0].contains("definitions.json" )){
-                    	segments[0]="definitions.json";
-                	}else if( segments[1].contains("/definitions/")){
-                    	segments[0]="definitions.json";
-                	}else{
-                		console.log("Found:"+segments[0]);
-                	}
-                 
+                    if(segments[0].indexOf("definitions.json") > -1) {
+                        segments[0] = "definitions.json";
+                    } else if(segments[1].indexOf("/definitions/") > -1) {
+                        segments[0] = "definitions.json";
+                    } else {
+                        console.log("Found:" + segments[0]);
+                    }
+
                     $.ajax({ url: "schemas/"+segments[0],async: false}).done(function(content) {
-                    		//console.log("got :"+segments[0]);
-                    	//if(!segments[0].contains("+.json")){
-                    	//	console.log("Recursing:"+"schemas/"+segments[0]);
-                    	//}
-                    	//recurse
-                    	 recurseSchema(content);
-                    	//console.log("item = "+JSON.stringify(content));
+                        //console.log("got :"+segments[0]);
+                        //if(!segments[0].indexOf(".json") > -1){
+                        //  console.log("Recursing:"+"schemas/"+segments[0]);
+                        //}
+                        //recurse
+                        recurseSchema(content);
+                        //console.log("item = "+JSON.stringify(content));
                         if(typeof content != "object") {
                             try {
                                 content = JSON.parse(content);
@@ -391,7 +389,7 @@ define(["docson/lib/jquery", "docson/lib/handlebars", "docson/lib/highlight", "d
                                 console.error("Unable to parse "+segments[0], e);
                             }
                         }
-                        
+
                         //trim the content to the object (definition) we want
                         if(segments[1]){
                         	//console.log("definition="+segments[1]);
