@@ -47,9 +47,18 @@
                     {{#if additionalProperties}}
                         {{signature this "map" additionalProperties}}
                     {{/if}}
+                    {{#if patternProperties}}
+                        {{signature this "map" patternProperties}}
+                    {{/if}}
                     {{#if not}}
                         {{signature this "not" not}}
                     {{/if}}
+                    {{#if units}}
+                     	<br/><span class="signature-type-any">units: {{units this}}</span>
+                     {{/if}}
+                     {{#if example}}
+                     	<br/><span class="signature-type-any">example: {{example this}}</span>
+                     {{/if}}
                 </div>
             </div>
             <div class="signature-box-container">
@@ -66,6 +75,7 @@
             <div class="signature">
                 <div class="signature-header">
                     <div class="property-name {{#contains ../required @key}}required{{/contains}}">{{@key}}</div>
+                    
                     <div class="signature-type">
                         {{#main this}}
                             {{signature this null this}}
@@ -85,10 +95,71 @@
                         {{#if additionalProperties}}
                             {{signature this "map" additionalProperties}}
                         {{/if}}
+                        {{#if patternProperties}}
+                            {{signature this "map" patternProperties}}
+                        {{/if}}
                         {{#if not}}
                             {{signature this "not" not}}
                         {{/if}}
+                        {{#if units}}
+                        	<br/><span class="signature-type-any">units: {{units this}}</span>
+                        {{/if}}
+                        {{#if example}}
+                        	<br/><span class="signature-type-any">example: {{example this}}</span>
+                        {{/if}}
                     </div>
+                    
+                    <div class="signature-description desc">{{desc this}}</div>
+                </div>
+                <div class="signature-box-container">
+                {{#boxes}}
+                    <div class="box-container" boxid="{{__boxId}}">
+                        {{schema this}}
+                    </div>
+                {{/boxes}}
+                </div>
+            </div>
+            {{/each}}
+        {{/if}}
+        {{#if patternProperties}}
+            {{#each patternProperties}}
+            <div class="signature">
+                <div class="signature-header">
+                    <div class="property-name {{#contains ../required @key}}required{{/contains}}">{{@key}}</div>
+                    
+                    <div class="signature-type">
+                        {{#main this}}
+                            {{signature this null this}}
+                        {{/main}}
+                        {{#equals type "array"}}
+                            {{signature this "array" items}}
+                        {{/equals}}
+                        {{#if allOf}}
+                            {{signature this "all of" allOf}}
+                        {{/if}}
+                        {{#if anyOf}}
+                            {{signature this "any of" anyOf}}
+                        {{/if}}
+                        {{#if oneOf}}
+                            {{signature this "one of" oneOf}}
+                        {{/if}}
+                        {{#if additionalProperties}}
+                            {{signature this "map" additionalProperties}}
+                        {{/if}}
+                        {{#if patternProperties}}
+                            {{signature this "map" patternProperties}}
+                        {{/if}}
+                        {{#if not}}
+                            {{signature this "not" not}}
+                        {{/if}}
+                        {{#if units}}
+                        	<br/><span class="signature-type-any">units: {{units this}}</span>
+                        {{/if}}
+                        {{#if example}}
+                        	<br/><span class="signature-type-any">example: {{example this}}</span>
+                        {{/if}}
+                    </div>
+                    
                     <div class="signature-description desc">{{desc this}}</div>
                 </div>
                 <div class="signature-box-container">

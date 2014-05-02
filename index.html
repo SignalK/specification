@@ -1,3 +1,7 @@
+---
+title: Specification
+layout: specpage
+---
 <!DOCTYPE html>
 <!--
   ~ Copyright 2013 Laurent Bovet <laurent.bovet@windmaster.ch>
@@ -14,6 +18,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -48,6 +53,7 @@
                                 try {
                                     docson.doc("doc", schema, segments[1]).done(function() {
                                         maybeExpand(segments);
+                                        $("#load").hide();
                                     });
                                 } catch (e) {
                                     error("Could not parse schema: " + e.message + "<pre>" + $('<pre/>').text(schema).html() + "</pre>");
@@ -74,6 +80,7 @@
                                     try {
                                         docson.doc("doc", event.data.definitions, event.data.type).done(function() {
                                             maybeExpand(segments);
+                                            $("#load").hide();
                                         });
                                     } catch (e) {
                                         error("Could not parse schema: " + e.message + "<pre>" + $('<pre/>').text(event.data.definitions).html() + "</pre>");
@@ -91,10 +98,12 @@
                         window.addEventListener("message", receiveMessage, false);
                         var host = window.opener || window.parent;
                         host.postMessage( { id: "docson", action: "ready", url: url}, "*");
+                        
                     } else {
                         $("#doc").empty();
                         $("#form").show();
                     }
+                   
                 }
 
                 function maybeExpand(segments) {
@@ -125,6 +134,10 @@
         body {
             font-family: verdana, helvetica;
         }
+        #load {
+            border: none;
+		   display: none;
+		}
 
         #form {
             display: none;
@@ -143,9 +156,12 @@
     </style>
 </head>
 <body>
+
+<div><p>This page uses a lot of javascript, if you see messages about slow scripts just press 'continue' and be patient</p></div>
+<div id="load"><img src="imgs/loading1.gif"/></div>
 <div id="form">
     Please enter a schema URL:
-    <input type="text" id="url" size="60">
+    <input type="text" id="url" size="60" value="schemas/signalk.json">
 </div>
 <div id="doc"></div>
 </body>
