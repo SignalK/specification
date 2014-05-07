@@ -129,11 +129,11 @@
                 },
                 "quality": {
                     "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Quality of the sattelite fix"
+                    "description": "Quality of the satellite fix"
                 },
                 "satellites": {
                     "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Number of sattelites"
+                    "description": "Number of satellites"
                 },
                 "antennaAltitude": {
                     "$ref": "../definitions.json#/definitions/numberValue",
