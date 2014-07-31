@@ -13,14 +13,14 @@
     		"required": true
     	},
     	
-    	"vessels": {
+    	"sources": {
     		"type": "object",
     		"required": true,
-    		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel. ",
+    		"description": "A wrapper object for source objects (vessels, marinas, etc), each describing Signal K sources in network range, including this vessel. ",
 			"patternProperties": {
 				  "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
-				  	  		"description": "This regex pattern is used for validation of an MMSI or UUID identifier for the vessel",
-				  			"$ref": "vessel.json#" } 
+				  	  		"description": "This regex pattern is used for validation of an MMSI or UUID identifier for the source",
+				  			"$ref": "source.json#" } 
 			 }
     	},
 		"resources": { 

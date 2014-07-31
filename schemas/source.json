@@ -1,9 +1,9 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/vessel.json#",
-    "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
-    "title": "vessel",
+    "id": "https://signalk.github.io/specification/schemas/source.json#",
+    "description": "An object describing a Signal K source (can be a vessel, marina, ground station, etc). It is part of the sources object, identified using MMSI or a UUID",
+    "title": "source",
     "properties": {
         "mmsi": {
             "description": "mmsi number",
