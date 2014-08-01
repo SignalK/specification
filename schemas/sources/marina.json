@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/sources/marina.json#",
+    "description": "An object describing a Signal K vessel source type.",
+    "title": "marina",
+    "required": [ "source_type", "source", "timestamp", "name" ],
+    "properties": {
+        "source_type": { 
+            "description": "Type of source. Defines what properties a source object can have.",
+            "$ref": "../definitions.json#/definitions/source_type" 
+        },
+        "source": {
+            "description": "source of this data",
+            "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": { "description":"timestamp of the last update to this data",
+            "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "name": {
+            "type": "string",
+            "description": "The common name of the vessel"
+        },
+        "mmsi": {
+            "description": "mmsi number",
+            "$ref": "../definitions.json#/definitions/mmsi"
+        },
+        "uid": {
+            "description": "unique identifier",
+            "$ref": "../definitions.json#/definitions/uid"
+        }
+    }
+}
