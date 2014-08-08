@@ -4,31 +4,36 @@
     
     "id": "https://signalk.github.io/specification/schemas/signalk.json#",
     "title": "SignalK",
-    "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
+    "description": "Root schema of Signal K. Contains the list of source objects plus a reference to the local server (also contained in the sources list).",
 
     "properties": {
     	"self": {
     		"type": "string",
-    		"description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array.",
+    		"description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the sources array.",
     		"required": true
     	},
     	
-    	"vessels": {
+    	"sources": {
     		"type": "object",
     		"required": true,
-    		"description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel. ",
+    		"description": "An object holding one or more source objects (vessels, marinas, etc), each describing Signal K sources in network range, including this server. ",
 			"patternProperties": {
-				  "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
-				  	  		"description": "This regex pattern is used for validation of an MMSI or UUID identifier for the vessel",
-				  			"$ref": "vessel.json#" } 
-			 }
+				"(^[0-9]{9,9}$|^[A-F0-9]{8,8}$)": {
+				    "description": "This regex pattern is used for validation of an MMSI or UUID identifier for the source. Source has to conform to one of the following schemas, depending on it's type.",
+				  	"oneOf": [
+                        { "$ref": "sources/vessel.json#" },
+                        { "$ref": "sources/marina.json#" }
+                    ]
+                } 
+			}
     	},
+
 		"resources": { 
-			"description": "resources to aid in navigation and operation of the vessel",
-			"$ref": "groups/resources.json#" },
+			"$ref": "groups/resources.json#" 
+        },
     	
-    	"source": { "description":"Source of this data", "$ref": "definitions.json#/definitions/source" },
-    	"timestamp": { "description":"timestamp of the last update to this data", "$ref": "definitions.json#/definitions/timestamp" },
+    	"source": { "$ref": "definitions.json#/definitions/source" },
+    	"timestamp": { "$ref": "definitions.json#/definitions/timestamp" },
     	"version": { "$ref": "definitions.json#/definitions/version" }
     }
 }
