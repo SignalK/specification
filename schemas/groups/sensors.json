@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/sensors.json#",
+    "description": "An object describing an individual sensor. It should be an object in vessel, named using a unique name or UUID",
+    "title": "sensor",
+    "properties": {
+        "source": {
+            "description": "source of this data",
+            "$ref": "definitions.json#/definitions/source"
+        },
+        "timestamp": {
+            "description": "timestamp of the last update to this data",
+            "$ref": "definitions.json#/definitions/timestamp"
+        },
+        "name": {
+            "type": "string",
+            "description": "The common name of the sensor"
+        },
+        "sensorType": {
+            "type": "string",
+            "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
+        },
+        "sensorData": {
+            "type": "string",
+            "description": "The data of the sensor data. FIXME - need to ref the definitions of sensor types"
+        },
+	"fromBow": {
+             "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "The distance in meters from the bow to the sensor location"
+        },
+	"fromCenter": {
+             "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "The distance in meters from the centerline to the sensor location, -ve to starboard, +ve to port"
+        }
+    }
+}

@@ -242,6 +242,53 @@
                 }
             }
         },
+
+	"anchor": {
+            "type": "object",
+	    "title": "anchor",
+            "description": "The anchor data, for anchor watch etc",
+            "properties": {
+                "source": { "description":"Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+		"maxRadius": {
+			    "$ref": "../definitions.json#/definitions/numberValue",
+			    "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat"
+			},
+		"currentRadius": {
+			    "$ref": "../definitions.json#/definitions/numberValue",
+			    "description": "Current distance to anchor in meters"
+			},
+		"position": {
+			    "type": "object",
+			    "title": "position",
+			    "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
+			    "properties": {
+				"source": { "description":"Source of this data",
+				    "$ref": "../definitions.json#/definitions/source"
+				},
+				"timestamp": { "description":"timestamp of the last update to this data",
+				    "$ref": "../definitions.json#/definitions/timestamp"
+				},
+				"longitude": {
+				    "type": "number",
+				    "description": "In decimal notation (4.98765245)"
+				},
+				"latitude": {
+				    "type": "number",
+				    "description": "In decimal notation (52.0987654)"
+				},
+				"altitude": {
+				    "type": "number",
+				    "description": "METERS"
+				}
+			    }
+			}
+            }
+        },
         "timestamp": { "description":"timestamp of the last update to this data",
             "$ref": "../definitions.json#/definitions/timestamp"
         },
