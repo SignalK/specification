@@ -116,14 +116,44 @@
         },
         "gnss": {
             "type": "object",
-	    "title": "gnss",
-            "description": "FIXME Global satellite navigation meta information",
+	        "title": "gnss",
+            "description": "Global satellite navigation meta information",
             "properties": {
-                "source": { "description":"Source of this data",
+                "source": { 
+                    "description":"Source of this data",
                     "$ref": "../definitions.json#/definitions/source"
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "quality": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Quality of the satellite fix"
+                },
+                "satellites": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Number of satellites"
+                },
+                "antennaAltitude": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Altitude of antenna"
+                },
+                "horizontalDilution": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Horizontal position error"
+                },
+                "geoidalSeparation": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Difference between WGS84 earth ellipsoid and mean sea level"
+                },
+                "differentialAge": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Age of DGPS data in seconds"
+                },
+                "differentialReference": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "ID of DGPS base station"
                 }
             }
         },
