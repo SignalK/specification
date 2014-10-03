@@ -1,0 +1,57 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/sensors.json#",
+    "description": "An object describing the vessels primary dimensions and statistics.",
+    "title": "design",
+    "properties": {
+        "source": {
+            "description": "source of this data",
+            "$ref": "definitions.json#/definitions/source"
+        },
+        "timestamp": {
+            "description": "timestamp of the last update to this data",
+            "$ref": "definitions.json#/definitions/timestamp"
+        },
+        "name": {
+            "type": "string",
+            "description": "The common name of the sensor"
+        },
+        "displacement": {
+            "type": "string",
+            "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
+        },
+        "draft": {
+            "type": "string",
+            "description": "From waterline to bottom of keel in meters"
+        },
+        "canoeDraft": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "From waterline to bottom of canoe hull in meters, eg without keel"
+        },
+        "loa": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Length over all in meters (includes spars, bow pulpits etc.)"
+        },
+        "loh": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Length over the hull in meters  (not including spars, bow pulpits etc.)"
+        },
+        "lwl": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Length of waterline in meters "
+        },
+        "beam": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Hull beam in meters"
+        },
+        "sailArea": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Sail area in square meters (total sail area which includes all the fore-triangle, the main, and other normal sails present {like half the area of mizzens on ketches and yawls and all the foresail area on schooners}.  It does not include stay sails nor does it include spinnakers and jibs in the fore triangle.)"
+        },
+        "airHeight": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Total height of the vessel in meters "
+        }
+    }
+}
