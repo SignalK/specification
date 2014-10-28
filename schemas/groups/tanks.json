@@ -5,34 +5,34 @@
     "description": "Schema describing the tankage of a vessel.",
     "title": "tanks",
     "additionalProperties": {
-    	"type": "object",
-		"title": "tank",
+        "type": "object",
+        "title": "tank",
         "description": "a tank, named by a unique name within this vessel",
         "properties": {
-	        "tankType": {
-	            "type": "string",
-	            "description": "The type of waypoint",
-	            "enum": [
-	                "petrol",
-	                "water",
-	                "holding",
-	                "lpg",
-	                "diesil",
-	                "rum"
-	            ]
-	        },
-	        "capacity": {
-	            "description": "total tank capacity in liters",
-	            "$ref": "../definitions.json#/definitions/numberValue"
-	        },
-	        "level": {
-	            "description": "current tank contents in liters",
-	            "$ref": "../definitions.json#/definitions/numberValue"
-	        },
-	        "alarmLevel": {
-	            "description": "tank alarm raised at this capacity in liters ",
-	            "$ref": "../definitions.json#/definitions/numberValue"
-	        }
-	     }
+            "tankType": {
+                "type": "string",
+                "description": "The type of waypoint",
+                "enum": [
+                    "petrol",
+                    "water",
+                    "holding",
+                    "lpg",
+                    "diesil",
+                    "rum"
+                ]
+            },
+            "capacity": {
+                "description": "total tank capacity in liters",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "level": {
+                "description": "current tank contents in liters",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "alarmLevel": {
+                "description": "tank alarm raised at this capacity in liters ",
+                "$ref": "../definitions.json#/definitions/numberValue"
+            }
+        }
     }
 }

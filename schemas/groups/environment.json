@@ -26,7 +26,7 @@
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "depth": {
-	    "title": "depth",
+            "title": "depth",
             "type": "object",
             "description": "Depth related data",
             "properties": {
@@ -62,7 +62,7 @@
         },
         "tide": {
             "type": "object",
-	    "title": "tide",
+            "title": "tide",
             "description": "Tide data",
             "properties": {
                 "heightHigh": {
@@ -93,7 +93,7 @@
         },
         "wind": {
             "type": "object",
-	    "title": "wind",
+            "title": "wind",
             "description": "Wind data.",
             "properties": {
                 "angleApparent": {
@@ -130,10 +130,12 @@
                 }
             }
         },
-        "timestamp": { "description":"timestamp of the last update to this data",
+        "timestamp": {
+            "description": "timestamp of the last update to this data",
             "$ref": "../definitions.json#/definitions/timestamp"
         },
-        "source": { "description":"Source of this data",
+        "source": {
+            "description": "Source of this data",
             "$ref": "../definitions.json#/definitions/source"
         }
     }
