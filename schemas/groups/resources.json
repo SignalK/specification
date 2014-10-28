@@ -6,8 +6,8 @@
     "description": "Resources to aid in navigation and operation of the vessel",
     "properties": {
         "charts": {
-        "type": "object",
-	    "title": "chart",
+            "type": "object",
+            "title": "chart",
             "description": "A holder for charts, each named with their chart code",
             "additionalProperties": {
                 "type": "object",
@@ -42,18 +42,19 @@
                             "kap",
                             "png",
                             "jpg",
-			    "kml",
-			    "wkt",
-			    "topojson",
-			    "geojson",
-			    "gpx"
-
+                            "kml",
+                            "wkt",
+                            "topojson",
+                            "geojson",
+                            "gpx"
                         ]
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -61,7 +62,7 @@
         },
         "routes": {
             "type": "object",
-	    "title": "route",
+            "title": "route",
             "description": "A holder for routes, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
@@ -86,18 +87,20 @@
                             "description": "Pointers to waypoint uuid"
                         }
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
         },
-	"notes": {
+        "notes": {
             "type": "object",
-	    "title": "notes",
+            "title": "notes",
             "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
             "additionalProperties": {
                 "type": "object",
@@ -115,18 +118,20 @@
                         "type": "string",
                         "description": "Pointer to region uuid"
                     },
-		    "mimeType": {
+                    "mimeType": {
                         "type": "string",
                         "description": "MIME type of the note"
                     },
-		    "url": {
+                    "url": {
                         "type": "string",
                         "description": "location of the note"
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -134,7 +139,7 @@
         },
         "regions": {
             "type": "object",
-	    "title": "region",
+            "title": "region",
             "description": "A holder for regions, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
@@ -156,10 +161,12 @@
                             "description": "Pointer to waypoint uuid"
                         }
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }
@@ -167,7 +174,7 @@
         },
         "waypoints": {
             "type": "object",
-	    "title": "waypoint",
+            "title": "waypoint",
             "description": "A holder for waypoints, each named with a UUID",
             "additionalProperties": {
                 "type": "object",
@@ -181,10 +188,12 @@
                         "type": "object",
                         "description": "The position of the waypoint in 3 dimensions",
                         "properties": {
-                            "source": { "description":"Source of this data",
+                            "source": {
+                                "description": "Source of this data",
                                 "$ref": "../definitions.json#/definitions/source"
                             },
-                            "timestamp": { "description":"timestamp of the last update to this data",
+                            "timestamp": {
+                                "description": "timestamp of the last update to this data",
                                 "$ref": "../definitions.json#/definitions/timestamp"
                             },
                             "longitude": {
@@ -216,10 +225,12 @@
                             "mark"
                         ]
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     },
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     }
                 }

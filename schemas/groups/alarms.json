@@ -1,118 +1,93 @@
- {
-	"type":"object",
-	"id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
-	"title":"alarms",
-	"description":"Alarms, their state, and actions.",
-	"required":false,
-	"properties":{
-		"anchorAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"anchorAlarmState": {
-			
-			"description": "Anchor alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"autopilotAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"autopilotAlarmState": {
-			
-			"description": "Autopilot alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"engineAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"engineAlarmState": {
-			
-			"description": "Engine alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"fireAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"fireAlarmState": {
-			
-			"description": "Fire alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"gasAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"gasAlarmState": {
-			
-			"description": "Gas alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"gpsAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"gpsAlarmState": {
-			
-			"description": "GPS alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"maydayAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"maydayAlarmState": {
-			
-			"description": "Mayday alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"panpanAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"panpanAlarmState": {
-			
-			"description": "Pan Pan alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"powerAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"powerAlarmState": {
-			
-			"description": "Power alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-		},
-		"silentInterval": {
-			
-			"description": "Silent interval for temporarily suspended alarms",
-			"$ref": "../definitions.json#/definitions/numberValue"
-		},
-		"windAlarmMethod": {
-			
-			"description": "Method to use to raise alarms",
-			"$ref": "../definitions.json#/definitions/alarmMethod"
-		},
-		"windAlarmState": {
-			
-			"description": "Wind alarm state",
-			"$ref": "../definitions.json#/definitions/alarmValue"
-			
-		}
-	}
+{
+    "type": "object",
+    "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
+    "title": "alarms",
+    "description": "Alarms, their state, and actions.",
+    "required": false,
+    "properties": {
+        "anchorAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "anchorAlarmState": {
+            "description": "Anchor alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "autopilotAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "autopilotAlarmState": {
+            "description": "Autopilot alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "engineAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "engineAlarmState": {
+            "description": "Engine alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "fireAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "fireAlarmState": {
+            "description": "Fire alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "gasAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "gasAlarmState": {
+            "description": "Gas alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "gpsAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "gpsAlarmState": {
+            "description": "GPS alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "maydayAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "maydayAlarmState": {
+            "description": "Mayday alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "panpanAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "panpanAlarmState": {
+            "description": "Pan Pan alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "powerAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "powerAlarmState": {
+            "description": "Power alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        },
+        "silentInterval": {
+            "description": "Silent interval for temporarily suspended alarms",
+            "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "windAlarmMethod": {
+            "description": "Method to use to raise alarms",
+            "$ref": "../definitions.json#/definitions/alarmMethod"
+        },
+        "windAlarmState": {
+            "description": "Wind alarm state",
+            "$ref": "../definitions.json#/definitions/alarmValue"
+        }
+    }
 }
-		
-	
-

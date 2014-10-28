@@ -25,12 +25,12 @@
             "type": "string",
             "description": "The data of the sensor data. FIXME - need to ref the definitions of sensor types"
         },
-	"fromBow": {
-             "$ref": "../definitions.json#/definitions/numberValue",
+        "fromBow": {
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "The distance in meters from the bow to the sensor location"
         },
-	"fromCenter": {
-             "$ref": "../definitions.json#/definitions/numberValue",
+        "fromCenter": {
+            "$ref": "../definitions.json#/definitions/numberValue",
             "description": "The distance in meters from the centerline to the sensor location, -ve to starboard, +ve to port"
         }
     }

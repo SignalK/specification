@@ -26,7 +26,7 @@
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "depth": {
-	    "title": "depth",
+            "title": "depth",
             "type": "object",
             "description": "Depth related data",
             "properties": {
@@ -62,7 +62,7 @@
         },
         "tide": {
             "type": "object",
-	    "title": "tide",
+            "title": "tide",
             "description": "Tide data",
             "properties": {
                 "heightHigh": {
@@ -93,11 +93,15 @@
         },
         "wind": {
             "type": "object",
-	    "title": "wind",
+            "title": "wind",
             "description": "Wind data.",
             "properties": {
-                "directionApparent": {
-                    "description": "Apparent wind direction, -180 to +180 degrees from the bow. Negative numbers to port.",
+                "angleApparent": {
+                    "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "angleTrue": {
+                    "description": "'True' wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "directionChangeAlarm": {
@@ -106,6 +110,10 @@
                 },
                 "directionTrue": {
                     "description": "The wind direction relative to true north, in compass degrees, 0 = North",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "directionMagnetic": {
+                    "description": "The wind direction relative to magnetic north, in compass degrees, 0 = North",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "speedAlarm": {
@@ -122,10 +130,12 @@
                 }
             }
         },
-        "timestamp": { "description":"timestamp of the last update to this data",
+        "timestamp": {
+            "description": "timestamp of the last update to this data",
             "$ref": "../definitions.json#/definitions/timestamp"
         },
-        "source": { "description":"Source of this data",
+        "source": {
+            "description": "Source of this data",
             "$ref": "../definitions.json#/definitions/source"
         }
     }

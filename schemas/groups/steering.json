@@ -14,8 +14,8 @@
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "autopilot": {
-        	"type":"object",
-	    "title": "autopilot",
+            "type": "object",
+            "title": "autopilot",
             "description": "Autopilot data",
             "properties": {
                 "state": {
@@ -26,10 +26,12 @@
                         "off",
                         "alarm"
                     ],
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },
@@ -41,10 +43,12 @@
                         "normal",
                         "accurate"
                     ],
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },
@@ -68,10 +72,12 @@
                         "wind",
                         "gps"
                     ],
-                    "source": { "description":"Source of this data",
+                    "source": {
+                        "description": "Source of this data",
                         "$ref": "../definitions.json#/definitions/source"
                     },
-                    "timestamp": { "description":"timestamp of the last update to this data",
+                    "timestamp": {
+                        "description": "timestamp of the last update to this data",
                         "$ref": "../definitions.json#/definitions/timestamp"
                     }
                 },
