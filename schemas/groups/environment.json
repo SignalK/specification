@@ -96,8 +96,12 @@
 	    "title": "wind",
             "description": "Wind data.",
             "properties": {
-                "directionApparent": {
-                    "description": "Apparent wind direction, -180 to +180 degrees from the bow. Negative numbers to port.",
+                "angleApparent": {
+                    "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "angleTrue": {
+                    "description": "'True' wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "directionChangeAlarm": {
@@ -106,6 +110,10 @@
                 },
                 "directionTrue": {
                     "description": "The wind direction relative to true north, in compass degrees, 0 = North",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "directionMagnetic": {
+                    "description": "The wind direction relative to magnetic north, in compass degrees, 0 = North",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "speedAlarm": {
