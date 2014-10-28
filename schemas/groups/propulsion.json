@@ -1,12 +1,12 @@
 {
     "type": "object",
-	"$schema": "http://json-schema.org/draft-03/schema",
- 	"id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
     "title": "propulsion",
     "description": "holder for engines",
     "additionalProperties": {
         "type": "object",
-		"title": "engine",
+        "title": "engine",
         "description": "an engine, named by a unique name within this vessel",
         "properties": {
             "engineType": {

@@ -1,74 +1,66 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-
     "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
     "description": "Schema describing the communication child-object of a Vessel.",
     "title": "communication",
-
     "properties": {
         "callsignDsc": {
             "type": "string",
             "description": "Callsign for DSC communication",
             "example": "ZL1234"
         },
-
         "callsignHf": {
             "type": "string",
             "description": "Callsign for HF communication",
             "example": "ZL3RTH"
         },
-
         "callsignVhf": {
             "type": "string",
             "description": "Callsign for VHF communication",
             "example": "ZM2038"
         },
-
         "cellPhone": {
             "type": "string",
             "description": "Cellphone number of skipper",
             "example": "+64xxxxxx"
         },
-
         "emailHf": {
             "type": "string",
             "description": "Email address to be used for HF email (Winmail, Airmail, Sailmail)",
             "example": "motu@xxx.co.nz"
         },
-
         "email": {
             "type": "string",
             "description": "Regular email for the skipper",
             "example": "robert@xxx.co.nz"
         },
-
         "satPhone": {
             "type": "string",
             "description": "Satellite phone number for vessel.",
             "example": "+64xxxxxx"
         },
-
         "skipperName": {
             "type": "string",
             "description": "Full name of the skipper of the vessel.",
             "example": "Fabian Tollenaar"
         },
-
         "crewNames": {
             "type": "array",
             "description": "Array with the names of the crew",
             "additionalProperties": [
-                { 
+                {
                     "type": "string",
                     "description": "Name of a crew member of the vessel.",
                     "example": "Catherine"
                 }
             ]
         },
-
-    	"timestamp": { "$ref": "../definitions.json#/definitions/timestamp" },
-    	"source": { "$ref": "../definitions.json#/definitions/source" }
+        "timestamp": {
+            "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "source": {
+            "$ref": "../definitions.json#/definitions/source"
+        }
     }
-
 }
