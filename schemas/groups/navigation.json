@@ -18,14 +18,6 @@
             "title": "currentRoute",
             "description": "The current route if one is active",
             "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
                 "bearingActual": {
                     "type": "number",
                     "description": "The current bearing of the next waypoint in degrees true"
@@ -299,14 +291,6 @@
                     }
                 }
             }
-        },
-        "timestamp": {
-            "description": "timestamp of the last update to this data",
-            "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-            "description": "Source of this data",
-            "$ref": "../definitions.json#/definitions/source"
         }
     }
 }
