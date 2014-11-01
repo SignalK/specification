@@ -39,6 +39,8 @@ Validation against SignalK schema can be done
 - by explicitly calling validate packaged as an npm module
 - by using a Chai assertion, available in the npm module
 
+As you can see in the example below the current implementation assumes that the input is a subtree under vessels.imsi path.
+
 ```
 echo '{"navigation":{"courseOverGroundTru":{"value":70.1,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"},"speedOverGround":{"value":0.01,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"}}}' | bin/signalk-validate
 Unknown property (not in schema):/vessels/230099999/navigation/courseOverGroundTru
