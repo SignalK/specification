@@ -32,7 +32,6 @@ You can browse the Schema using the supplied docson viewer. Just open
 index.html from a local webserver (otherwise the XHR requests won't work) in
 your preferred browser to get started. 
 
-=======
 Validation
 ----------
 Validation against SignalK schema can be done
