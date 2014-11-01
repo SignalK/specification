@@ -48,14 +48,6 @@
                             "geojson",
                             "gpx"
                         ]
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
@@ -86,14 +78,6 @@
                             "type": "string",
                             "description": "Pointers to waypoint uuid"
                         }
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
@@ -125,14 +109,6 @@
                     "url": {
                         "type": "string",
                         "description": "location of the note"
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
@@ -160,14 +136,6 @@
                             "type": "string",
                             "description": "Pointer to waypoint uuid"
                         }
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
@@ -224,14 +192,6 @@
                             "anchorage",
                             "mark"
                         ]
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
                     }
                 }
             }
