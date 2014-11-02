@@ -114,9 +114,24 @@
                 }
             }
         },
-        "drift": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "The tidal drift at the current location in m/s"
+        "current": {
+            "type": "object",
+            "title": "current",
+            "description": "Direction and strength of current affecting the vessel",
+            "properties": {
+                "drift": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The current drift at the current location in m/s"
+                },
+                "setTrue": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Direction of the current"
+                },
+                "setMagnetic": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Direction of the current"
+                }
+            }
         },
         "gnss": {
             "type": "object",
