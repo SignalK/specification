@@ -235,6 +235,14 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed through the water in m/s"
         },
+        "log": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Log value in nm"
+        },
+        "logTrip": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Trip log value in nm"
+        },
         "state": {
             "type": "object",
             "title": "state",
