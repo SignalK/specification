@@ -215,6 +215,10 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
         },
+        "yaw": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Yaw in degrees"
+        },
         "rateOfTurn": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
