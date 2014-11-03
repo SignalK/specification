@@ -112,7 +112,7 @@
                     "description": "The speed in m/s above which a wind alarm will be raised",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
-                "speedOverWater": {
+                "speedTrue": {
                     "description": "Wind speed over water in m/s (as calculated from speedApparent and vessel's speed through water)",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
