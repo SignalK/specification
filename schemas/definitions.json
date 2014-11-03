@@ -26,6 +26,14 @@
                 "type": {
                     "type": "string",
                     "default": "NMEA2000"
+                },
+                "src": {
+                    "type": "string",
+                    "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data"
+                },
+                "pgn": {
+                    "type": "string",
+                    "description": "NMEA2000 pgn of the source message"
                 }
             }
         },

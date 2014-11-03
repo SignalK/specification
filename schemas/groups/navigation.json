@@ -106,9 +106,24 @@
                 }
             }
         },
-        "drift": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "The tidal drift at the current location in m/s"
+        "current": {
+            "type": "object",
+            "title": "current",
+            "description": "Direction and strength of current affecting the vessel",
+            "properties": {
+                "drift": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The current drift at the current location in m/s"
+                },
+                "setTrue": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Direction of the current"
+                },
+                "setMagnetic": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Direction of the current"
+                }
+            }
         },
         "gnss": {
             "type": "object",
@@ -192,6 +207,10 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
         },
+        "yaw": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Yaw in degrees"
+        },
         "rateOfTurn": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
@@ -211,6 +230,14 @@
         "speedThroughWater": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed through the water in m/s"
+        },
+        "log": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Log value in nm"
+        },
+        "logTrip": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Trip log value in nm"
         },
         "state": {
             "type": "object",

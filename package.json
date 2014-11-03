@@ -1,0 +1,32 @@
+{
+  "name": "signalk-schema",
+  "version": "0.0.1",
+  "description": "SignalK specification schema as an npm module with tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SignalK/specification.git"
+  },
+  "keywords": [
+    "signalk",
+    "nmea",
+    "marine",
+    "navigation",
+    "n2k",
+    "nmea200"
+  ],
+  "author": "SignalK group",
+  "license": "https://creativecommons.org/licenses/by-sa/2.0/legalcode",
+  "bugs": {
+    "url": "https://github.com/SignalK/specification/issues"
+  },
+  "homepage": "https://github.com/SignalK/specification",
+  "dependencies": {
+    "chai": "1.9",
+    "tv4": "latest",
+    "JSONStream" : "0.7"
+  }
+}

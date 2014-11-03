@@ -17,14 +17,6 @@
             "description": "Current air temperature in degrees Centigrade",
             "$ref": "../definitions.json#/definitions/numberValue"
         },
-        "currentDirection": {
-            "description": "Direction of water current in degrees true",
-            "$ref": "../definitions.json#/definitions/numberValue"
-        },
-        "currentSpeed": {
-            "description": "Speed of water current in m/s",
-            "$ref": "../definitions.json#/definitions/numberValue"
-        },
         "depth": {
             "title": "depth",
             "type": "object",
@@ -121,7 +113,11 @@
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "speedTrue": {
-                    "description": "True wind speed in m/s",
+                    "description": "Wind speed over water in m/s (as calculated from speedApparent and vessel's speed through water)",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "speedOverGround": {
+                    "description": "Wind speed over ground in m/s (as calculated from speedApparent and vessel's speed over ground)",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "speedApparent": {
