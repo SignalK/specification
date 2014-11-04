@@ -25,7 +25,10 @@
     	},
 		"resources": { 
 			"description": "resources to aid in navigation and operation of the vessel",
-			"$ref": "groups/resources.json#" }
-    	"version": { "$ref": "definitions.json#/definitions/version" }
+			"$ref": "groups/resources.json#"
+            },
+        "version": {
+            "$ref": "definitions.json#/definitions/version"
+        }
     }
 }
