@@ -3,9 +3,7 @@ function chaiAsPromised(chai, utils) {
 
   var Assertion = chai.Assertion
 
-  console.log('installing');
   Assertion.addProperty('validSignalK', function () {    
-    console.log('asserting');
     var result = validate(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
