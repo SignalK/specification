@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    
+    "id": "https://signalk.github.io/specification/schemas/delta.json#",
+    "title": "SignalK Delta message schema",
+    "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",
+    "definitions": {
+      "pathvalue": {
+        "type": "object",
+        "properties": {
+            "path": {
+                "type": "string",
+                "required": true
+                },
+                "value": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+        },
+        "properties": {
+           "context": {
+              "type": "string",
+              "description": "The context path of the updates, eg. the path from the root of the SignalK data model where the paths in the updates section start.",
+              "required": true
+              },
+
+              "updates": {
+                "type": "array",
+                "description": "The updates",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "source": {
+                            "$ref": "./definitions.json#/definitions/source"
+                            },
+                            "timestamp": {
+                                "$ref": "./definitions.json#/definitions/timestamp"
+                                },
+                                "values": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "path": {
+                                                "type": "string",
+                                                "required": true
+                                                },
+                                                "value": {
+                                                    "required": true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
