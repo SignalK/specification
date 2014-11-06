@@ -1,15 +1,15 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-     "id": "https://signalk.github.io/specification/schemas/definitions.json#",
-     "title": "definitions",
+    "id": "https://signalk.github.io/specification/schemas/definitions.json#",
+    "title": "definitions",
     "description": "Reusable definitions of core object types",
     "definitions": {
         "timestamp": {
             "type": "string",
             "required": false,
             "description": "ISO-8601 (UTC) string representing date and time.",
-	    "units": "ISO-8601 (UTC)",
+            "units": "ISO-8601 (UTC)",
             "example": "2014-04-10T08:33:53Z"
         },
         "source": {
