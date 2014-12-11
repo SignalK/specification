@@ -111,17 +111,22 @@
             "title": "current",
             "description": "Direction and strength of current affecting the vessel",
             "properties": {
+                "timestamp": {"$ref": "../defintions.json#/definitions/timestamp"},
+                "source": {"$ref": "../definitions.json#/definitions/source"},
                 "drift": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The current drift at the current location in m/s"
+                    "type": "number",
+                    "description": "The speed component of the water current vector in m/s",
+                    "example": 3.12
                 },
                 "setTrue": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Direction of the current"
+                    "type": "number",
+                    "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
+                    "example": 123.45
                 },
                 "setMagnetic": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Direction of the current"
+                    "type": "number",
+                    "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
+                    "example": 131.22
                 }
             }
         },
