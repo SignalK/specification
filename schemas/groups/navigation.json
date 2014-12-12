@@ -224,10 +224,6 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
         },
-        "set": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Tidal set in m/s"
-        },
         "speedOverGround": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed over ground, in m/s"
