@@ -211,21 +211,36 @@
                 }
             }
         },
-        "pitch": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
-        },
-        "yaw": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Yaw in degrees"
+        "attitude": {
+            "type": "object",
+            "title": "Attitude",
+            "description": "Vessel attitude: roll, pitch and yaw",
+            "properties": {
+                "roll": {
+                    "type": "number",
+                    "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
+                },
+                "pitch": {
+                    "type": "number",
+                    "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
+                },
+                "yaw": {
+                    "type": "number",
+                    "description": "Yaw in degrees"
+                },
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                }
+            }
         },
         "rateOfTurn": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
-        },
-        "roll": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
         },
         "set": {
             "$ref": "../definitions.json#/definitions/numberValue",
