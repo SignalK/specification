@@ -13,10 +13,10 @@
             "description": "",
             "$ref": "../definitions.json#/definitions/numberValue"
         },
-        "currentRoute": {
+        "activeRoute": {
             "type": "object",
-            "title": "currentRoute",
-            "description": "The current route if one is active",
+            "title": "Active Route",
+            "description": "The currently active route",
             "properties": {
                 "bearingActual": {
                     "type": "number",
