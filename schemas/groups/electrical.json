@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/electrical.json#",
+    "description": "Schema describing the electrical child-object of a Vessel.",
+    "title": "electrical",
+    "additionalProperties": {
+        "type": "object",
+        "title": "battery",
+        "description": "a battery, one or many within the vessel"
+    },
+    "properties": {
+        "ID": {
+            "type": "string",
+            "description": "Primary purpose of battery",
+            "enum": [
+                "Starter",
+                "Starter port",
+                "Starter starboard",
+                "House",
+                "House port",
+                "House starboard",
+                "Bow thruster",
+                "Propulsion",
+                "Multipurpose",
+                "Auxiliary"
+            ]
+        },
+        "voltage": {
+            "type": "number",
+            "description": "Measured voltage of battery at battery"
+        },
+        "amperage": {
+            "type": "number",
+            "description": "Measured amperage into/out-of battery (+charging, -discharging)"
+        },
+        "temperature": {
+            "type": "number",
+            "description": "Temperature of battery, in degrees celsius"
+        },
+        "stateOfCharge": {
+            "type": "number",
+            "description": "Remaining Watt-hour capacity of battery"
+        },
+        "capacity": {
+            "type": "number",
+            "description": "Current Watt-hour capacity of battery"
+        },
+        "nonimalCapacity": {
+            "type": "number",
+            "description": "Designed Watt-hour capacity of battery"
+        },
+        "nonimalVoltage": {
+            "type": "number",
+            "description": "Designed 'voltage' of battery"
+        }
+    }
+}
