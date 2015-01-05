@@ -4,7 +4,7 @@
     "id": "https://signalk.github.io/specification/schemas/groups/electrical.json#",
     "description": "Schema describing the electrical child-object of a Vessel.",
     "title": "electrical",
-    "additionalProperties": {
+    "properties": {
         "type": "object",
         "title": "battery",
         "description": "a battery, one or many within the vessel"
@@ -27,65 +27,84 @@
                 "description": "Date battery was installed"
             },
 
-
-            "voltageMeasured": {
-                "type": "number",
-                "description": "Measured voltage of battery at battery"
-            },
-            "voltageNominal": {
-                "type": "number",
-                "description": "Designed 'voltage' of battery (12v, 24v, 32v, 48v, 144v)"
-            },
-            "voltageUpperLimit": {
-                "type": "number",
-                "description": "Upper operational limit of battery voltage"
-            },
-            "voltageUpperFault": {
-                "type": "number",
-                "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
-            },
-            "voltageLowerLimit": {
-                "type": "number",
-                "description": "Lower operational limit of battery voltage"
-            },
-            "voltageLowerFault": {
-                "type": "number",
-                "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
-            },
-
-            "currentMeasured": {
-                "type": "number",
-                "description": "Measured amperage into/out-of battery (+charging, -discharging)"
-            },
-            "currentDischargeLimit": {
-                "type": "number",
-                "description": "Operational current limit for battery discharge"
-            },
-            "currentRechargeLimit": {
-                "type": "number",
-                "description": "Operational current limit for battery recharging"
+            "voltage": {
+                "type": "object",
+                "title": "voltage",
+                "properties":  {
+                    "measured": {
+                        "type": "number",
+                        "description": "Measured voltage of battery at battery"
+                    },
+                    "nominal": {
+                        "type": "number",
+                        "description": "Designed 'voltage' of battery (12v, 24v, 32v, 48v, 144v)"
+                    },
+                    "limitUpper": {
+                        "type": "number",
+                        "description": "Upper operational limit of battery voltage"
+                    },
+                    "limitLower": {
+                        "type": "number",
+                        "description": "Lower operational limit of battery voltage"
+                    },
+                    "faultUpper": {
+                        "type": "number",
+                        "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+                    },
+                    "faultLower": {
+                        "type": "number",
+                        "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                    }
+                }
             },
 
-            "temperatureMeasured": {
-                "type": "number",
-                "description": "Temperature of battery, in degrees Celsius"
+            "current": {
+                "type": "object",
+                "title": "current",
+                "properties": {
+                    "measured": {
+                        "type": "number",
+                        "description": "Measured amperage into/out-of battery (+charging, -discharging)"
+                    },
+                    "limitDischarge": {
+                        "type": "number",
+                        "description": "Operational current limit for battery discharge"
+                    },
+                    "limitRecharge": {
+                        "type": "number",
+                        "description": "Operational current limit for battery recharging"
+                    }
+                }
             },
-            "temperatureLowerDischageLimit": {
-                "type": "number",
-                "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius"
+
+            "temperature": {
+                "type": "object",
+                "title": "temperature",
+                "properties": {
+                    "measured": {
+                        "type": "number",
+                        "description": "Temperature of battery, in degrees Celsius"
+                    },
+
+                    "limitDischageLower": {
+                        "type": "number",
+                        "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius"
+                    },
+                    "limitDischageUpper": {
+                        "type": "number",
+                        "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius"
+                    },
+                    "limitRechargeLower": {
+                        "type": "number",
+                        "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius"
+                    },
+                    "limitRechargeUpper": {
+                        "type": "number",
+                        "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius"
+                    }
+                }
             },
-            "temperatureLowerRechargeLimit": {
-                "type": "number",
-                "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius"
-            },
-            "temperatureUpperDischageLimit": {
-                "type": "number",
-                "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius"
-            },
-            "temperatureLowerRechargeLimit": {
-                "type": "number",
-                "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius"
-            },
+
 
             "mode": {
                 "type": "string",
@@ -103,22 +122,30 @@
                     "other"
                 ]
             },
-            "capacityRemaining": {
-                "type": "number",
-                "description": "Watt-hours remaining in battery (StateOfCharge)"
+
+            "capacity": {
+                "type": "object",
+                "title": "capacity",
+                "properties":{
+                    "nominal": {
+                        "type": "number",
+                        "description": "Designed (specified) Watt-hour capacity of battery"
+                    },
+                    "actual": {
+                        "type": "number",
+                        "description": "Current (actual) Watt-hour capacity of battery"
+                    },
+                    "remaining": {
+                        "type": "number",
+                        "description": "Watt-hours remaining in battery (StateOfCharge)"
+                    },
+                    "dischargeLimit": {
+                        "type": "number",
+                        "description": "Minimum number of Watt-hours to be left in the battery while discharging"
+                    }
+                }
             },
-            "capacityDischargeLimit": {
-                "type": "number",
-                "description": "Minimum number of Watt-hours to be left in the battery while discharging"
-            },
-            "capacityNominal": {
-                "type": "number",
-                "description": "Designed (specified) Watt-hour capacity of battery"
-            },
-            "capacityActual": {
-                "type": "number",
-                "description": "Current (actual) Watt-hour capacity of battery"
-            },
+
             "LifetimeDischarge": {
                 "type": "number",
                 "description": "Cumulative Watt-hours discharged from battery over operational lifetime of battery"
@@ -132,10 +159,10 @@
 
 
 
-        "additionalProperties": {
-            "type": "object",
-            "title": "chargingSource",
-            "description": "And energy source that can be used to recharge a battery.  Solar, Alternator, shore power. ."
+    "properties": {
+        "type": "object",
+        "title": "chargingSource",
+        "description": "Any energy source which can be used to recharge a battery: Solar, Alternator, shore power. ."
         },
         "properties": {
             "name": {
