@@ -1,7 +1,7 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/groups/routes.json#",
+    "id": "https://signalk.github.io/specification/schemas/groups/resources.json#",
     "title": "resources",
     "description": "Resources to aid in navigation and operation of the vessel",
     "properties": {
