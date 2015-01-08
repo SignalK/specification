@@ -4,7 +4,7 @@
   "description": "SignalK specification schema as an npm module with tests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,9 @@
   },
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
+    "JSONStream": "0.7",
     "chai": "1.9",
-    "tv4": "latest",
-    "JSONStream" : "0.7"
+    "mocha": "^2.1.0",
+    "tv4": "latest"
   }
 }
