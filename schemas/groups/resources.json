@@ -1,7 +1,7 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/groups/routes.json#",
+    "id": "https://signalk.github.io/specification/schemas/groups/resources.json#",
     "title": "resources",
     "description": "Resources to aid in navigation and operation of the vessel",
     "properties": {
@@ -142,33 +142,6 @@
 		      }
 		  }
 		}
-=======
-            "additionalProperties": {
-                "type": "object",
-                "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
-                "properties": {
-                    "title": {
-                        "type": "string",
-                        "description": "area common name"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "A textual description of the note"
-                    },
-                    "region": {
-                        "type": "string",
-                        "description": "Pointer to region uuid"
-                    },
-                    "mimeType": {
-                        "type": "string",
-                        "description": "MIME type of the note"
-                    },
-                    "url": {
-                        "type": "string",
-                        "description": "location of the note"
-                    }
-                }
->>>>>>> ec73b2604657d4497ed2426b16a3d9e0f0d2501d
             }
         },
         "regions": {
