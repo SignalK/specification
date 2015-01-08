@@ -12,12 +12,12 @@ describe('Multiple values', function() {
           "value": 102.29,
           "source": "options.actisense-115-129026",
           "options": {
-            "nmea1-RMC": {
+            "nmea1-GP-RMC": {
               "value": 99.2900009155,
               "source": "/dev/ttyUSB1",
               "timestamp": "2014-08-15-16:00:00.081",
             },
-            "nmea0-RMA": {
+            "nmea0-GP-RMA": {
               "value": 99.90234,
               "source": "/dev/ttyUSB0",
               "timestamp": "2014-08-15-16:00:00.081",
