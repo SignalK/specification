@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var JSONStream = require('JSONStream');
+var stream = require('stream');
+var util = require('util');
+var Transform = stream.Transform
+var validate = require('../index.js').validate;
+
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+
+function Validator(options) {
+  Transform.call(this, {objectMode: true});
+}
+util.inherits(Validator, Transform);
+
+Validator.prototype._transform = function (msg) {
+  var result = validate(msg);
+  result.errors.forEach(function(error) {
+    console.error(error.message + ':' + error.dataPath);
+  });
+};
+
+process.stdin.pipe(JSONStream.parse()).pipe(new Validator()).pipe(JSONStream.stringify(false)).pipe(process.stdout);

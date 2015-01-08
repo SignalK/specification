@@ -15,7 +15,7 @@ it up for discussion in the mailing list and then (when a consensus has been
 reached) merge it into `master`.
 
 The `gh-pages` branch contains the currently published version of the Schema.
-Once changes have been aproved and merged into `master` and we are ready to
+Once changes have been approved and merged into `master` and we are ready to
 publish an update, checkout the `gh-pages` branch and rebase it on top of
 `master`: 
 ```shell
@@ -31,6 +31,33 @@ Docson
 You can browse the Schema using the supplied docson viewer. Just open
 index.html from a local webserver (otherwise the XHR requests won't work) in
 your preferred browser to get started. 
+
+Validation
+----------
+Validation against SignalK schema can be done
+- with a command line validator accepting JSON from stdin
+- by explicitly calling validate packaged as an npm module
+- by using a Chai assertion, available in the npm module
+
+As you can see in the example below the current implementation assumes that the input is a subtree under vessels.mmsi path.
+
+```
+echo '{"navigation":{"courseOverGroundTru":{"value":70.1,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"},"speedOverGround":{"value":0.01,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"}}}' | bin/signalk-validate
+Unknown property (not in schema):/vessels/230099999/navigation/courseOverGroundTru
+```
+
+```
+var validate = require('signalk-schema').validate;
+var result = validate(msg);
+  result.errors.forEach(function(error) {
+    console.error(error.message + ':' + error.dataPath);
+  });
+```
+
+```
+chai.use(require('signalk-schema).chaiModule);
+tree.should.be.validSignalK;
+```
 
 
 Signal K

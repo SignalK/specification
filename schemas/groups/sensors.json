@@ -5,14 +5,6 @@
     "description": "An object describing an individual sensor. It should be an object in vessel, named using a unique name or UUID",
     "title": "sensor",
     "properties": {
-        "source": {
-            "description": "source of this data",
-            "$ref": "definitions.json#/definitions/source"
-        },
-        "timestamp": {
-            "description": "timestamp of the last update to this data",
-            "$ref": "definitions.json#/definitions/timestamp"
-        },
         "name": {
             "type": "string",
             "description": "The common name of the sensor"

@@ -13,18 +13,18 @@
             "description": "",
             "$ref": "../definitions.json#/definitions/numberValue"
         },
-        "currentRoute": {
+        "activeRoute": {
             "type": "object",
-            "title": "currentRoute",
-            "description": "The current route if one is active",
+            "title": "Active Route",
+            "description": "The currently active route",
             "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
                 "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
+                    "$ref": "../definitions.json#/definitions/timestamp",
+                    "description": "Time of last update to active route"
+                },
+                "source": {
+                    "$ref": "../definitions.json#/definitions/source",
+                    "description": "Source of last update to active route"
                 },
                 "bearingActual": {
                     "type": "number",
@@ -114,9 +114,29 @@
                 }
             }
         },
-        "drift": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "The tidal drift at the current location in m/s"
+        "current": {
+            "type": "object",
+            "title": "current",
+            "description": "Direction and strength of current affecting the vessel",
+            "properties": {
+                "timestamp": {"$ref": "../defintions.json#/definitions/timestamp"},
+                "source": {"$ref": "../definitions.json#/definitions/source"},
+                "drift": {
+                    "type": "number",
+                    "description": "The speed component of the water current vector in m/s",
+                    "example": 3.12
+                },
+                "setTrue": {
+                    "type": "number",
+                    "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
+                    "example": 123.45
+                },
+                "setMagnetic": {
+                    "type": "number",
+                    "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
+                    "example": 131.22
+                }
+            }
         },
         "gnss": {
             "type": "object",
@@ -200,6 +220,10 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
         },
+        "yaw": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Yaw in degrees"
+        },
         "rateOfTurn": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
@@ -208,10 +232,6 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
         },
-        "set": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Tidal set in m/s"
-        },
         "speedOverGround": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed over ground, in m/s"
@@ -219,6 +239,14 @@
         "speedThroughWater": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel speed through the water in m/s"
+        },
+        "log": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Log value in nm"
+        },
+        "logTrip": {
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "Trip log value in nm"
         },
         "state": {
             "type": "object",
@@ -299,14 +327,6 @@
                     }
                 }
             }
-        },
-        "timestamp": {
-            "description": "timestamp of the last update to this data",
-            "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-            "description": "Source of this data",
-            "$ref": "../definitions.json#/definitions/source"
         }
     }
 }

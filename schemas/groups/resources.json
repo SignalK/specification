@@ -106,6 +106,7 @@
             "type": "object",
             "title": "notes",
             "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
+
              "patternProperties": {
 		"(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
 		  "type": "object",
@@ -141,6 +142,33 @@
 		      }
 		  }
 		}
+=======
+            "additionalProperties": {
+                "type": "object",
+                "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "area common name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A textual description of the note"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Pointer to region uuid"
+                    },
+                    "mimeType": {
+                        "type": "string",
+                        "description": "MIME type of the note"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "location of the note"
+                    }
+                }
+>>>>>>> ec73b2604657d4497ed2426b16a3d9e0f0d2501d
             }
         },
         "regions": {
@@ -178,71 +206,64 @@
 		      }
 		  }
 		}
+
             }
         },
         "waypoints": {
             "type": "object",
             "title": "waypoint",
             "description": "A holder for waypoints, each named with a UUID",
-           "patternProperties": {
-				  "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
-                "type": "object",
-                "description": "A waypoint, named with a UUID",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "description": "waypoint common name"
-                    },
-                    "position": {
-                        "type": "object",
-                        "description": "The position of the waypoint in 3 dimensions",
-                        "properties": {
-                            "source": {
-                                "description": "Source of this data",
-                                "$ref": "../definitions.json#/definitions/source"
-                            },
-                            "timestamp": {
-                                "description": "timestamp of the last update to this data",
-                                "$ref": "../definitions.json#/definitions/timestamp"
-                            },
-                            "longitude": {
-                                "type": "number",
-                                "description": "In decimal notation (4.98765245)"
-                            },
-                            "latitude": {
-                                "type": "number",
-                                "description": "In decimal notation (52.0987654)"
-                            },
-                            "altitude": {
-                                "type": "number",
-                                "description": "METERS"
-                            }
-                        }
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "A description of the waypoint"
-                    },
-                    "type": {
-                        "type": "string",
-                        "description": "The type of waypoint",
-                        "enum": [
-                            "location",
-                            "fish",
-                            "hazard",
-                            "anchorage",
-                            "mark"
-                        ]
-                    },
-                    "timestamp": {
-                        "description": "timestamp of the last update to this data",
-                        "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "source": {
-                        "description": "Source of this data",
-                        "$ref": "../definitions.json#/definitions/source"
-                    }
-		  }
+            "patternProperties": {
+		"(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
+		  "type": "object",
+		  "description": "A waypoint, named with a UUID",
+		  "properties": {
+		      "name": {
+			  "type": "string",
+			  "description": "waypoint common name"
+		      },
+		      "position": {
+			  "type": "object",
+			  "description": "The position of the waypoint in 3 dimensions",
+			  "properties": {
+			      "source": {
+				  "description": "Source of this data",
+				  "$ref": "../definitions.json#/definitions/source"
+			      },
+			      "timestamp": {
+				  "description": "timestamp of the last update to this data",
+				  "$ref": "../definitions.json#/definitions/timestamp"
+			      },
+			      "longitude": {
+				  "type": "number",
+				  "description": "In decimal notation (4.98765245)"
+			      },
+			      "latitude": {
+				  "type": "number",
+				  "description": "In decimal notation (52.0987654)"
+			      },
+			      "altitude": {
+				  "type": "number",
+				  "description": "METERS"
+			      }
+			  }
+		      },
+		      "description": {
+			  "type": "string",
+			  "description": "A description of the waypoint"
+		      },
+		      "type": {
+			  "type": "string",
+			  "description": "The type of waypoint",
+			  "enum": [
+			      "location",
+			      "fish",
+			      "hazard",
+			      "anchorage",
+			      "mark"
+			  ]
+		      }
+		    }
 		}
             }
         }
