@@ -1,0 +1,146 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/electrical_ac.json#",
+    "description": "Schema describing electric measurements pertaining to shore power, AC generators, etc.",
+    "title": "AC Electrical Properties",
+    "properties": {
+        "bus1": {
+            "type": "object",
+            "title": "Bus #1",
+            "description": "Main AC power bus on the vessel",
+            "properties": {
+                "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "lineLineVoltage": {
+                    "type": "integer",
+                    "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
+                    "units": "Vrms",
+                    "minimum": 0,
+                    "maximum": 64255,
+                    "example": 480
+                },
+                "lineNeutralVoltage": {
+                    "type": "integer",
+                    "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
+                    "units": "Vrms",
+                    "minimum": 0,
+                    "maximum": 64255,
+                    "example": 277
+                },
+                "frequency": {
+                    "type": "number",
+                    "description": "Average frequency of the bus.",
+                    "units": "Hz",
+                    "minimum": 0,
+                    "maximum": 501.9921875,
+                    "example": 60.0
+                },
+                "phaseA": {
+                    "type": "object",
+                    "title": "Bus #1, Phase A",
+                    "properties": {
+                        "timestamp": {
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "lineLineVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase A and phase B.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 480
+                        },
+                        "lineNeutralVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase A and neutral.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 277
+                        },
+                        "frequency": {
+                            "type": "number",
+                            "description": "Bus phase A frequency.",
+                            "units": "Hz",
+                            "minimum": 0,
+                            "maximum": 501.9921875,
+                            "example": 60.0
+                        }
+                    }
+                },
+                "phaseB": {
+                    "type": "object",
+                    "title": "Bus #1, Phase B",
+                    "properties": {
+                        "timestamp": {
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "lineLineVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase B and phase C.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 480
+                        },
+                        "lineNeutralVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase B and neutral.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 277
+                        },
+                        "frequency": {
+                            "type": "number",
+                            "description": "Bus phase B frequency.",
+                            "units": "Hz",
+                            "minimum": 0,
+                            "maximum": 501.9921875,
+                            "example": 60.0
+                        }
+                    }
+                },
+                "phaseC": {
+                    "type": "object",
+                    "title": "Bus #1, Phase C",
+                    "properties": {
+                        "timestamp": {
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "lineLineVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase C and phase A.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 480
+                        },
+                        "lineNeutralVoltage": {
+                            "type": "integer",
+                            "description": "RMS voltage measured between bus phase C and neutral.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 277
+                        },
+                        "frequency": {
+                            "type": "number",
+                            "description": "Bus phase C frequency.",
+                            "units": "Hz",
+                            "minimum": 0,
+                            "maximum": 501.9921875,
+                            "example": 60.0
+                        }
+                    }
+                }
+            },
+            "utility": {
+            },
+            "generator": {
+            }
+        }
+    }
+}
