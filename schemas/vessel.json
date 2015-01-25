@@ -29,6 +29,16 @@
             "description": "Engine  data",
             "$ref": "groups/propulsion.json#"
         },
+        "electrical": {
+            "type": "object",
+            "description": "Electrical data",
+            "properties": {
+                "ac": {
+                    "description": "AC electrical data",
+                    "$ref": "groups/electrical_ac.json#"
+                }
+            }
+        },
         "alarms": {
             "description": "Alarm  data",
             "$ref": "groups/alarms.json#"

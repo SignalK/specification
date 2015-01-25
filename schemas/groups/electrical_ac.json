@@ -10,39 +10,15 @@
             "title": "Bus #1",
             "description": "Main AC power bus on the vessel",
             "properties": {
-                "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "lineLineVoltage": {
-                    "type": "integer",
-                    "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
-                    "units": "Vrms",
-                    "minimum": 0,
-                    "maximum": 64255,
-                    "example": 480
-                },
-                "lineNeutralVoltage": {
-                    "type": "integer",
-                    "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
-                    "units": "Vrms",
-                    "minimum": 0,
-                    "maximum": 64255,
-                    "example": 277
-                },
-                "frequency": {
-                    "type": "number",
-                    "description": "Average frequency of the bus.",
-                    "units": "Hz",
-                    "minimum": 0,
-                    "maximum": 501.9921875,
-                    "example": 60.0
-                },
                 "phaseA": {
                     "type": "object",
                     "title": "Bus #1, Phase A",
                     "properties": {
                         "timestamp": {
                             "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "source": {
+                            "$ref": "../definitions.json#/definitions/source"
                         },
                         "lineLineVoltage": {
                             "type": "integer",
@@ -77,6 +53,9 @@
                         "timestamp": {
                             "$ref": "../definitions.json#/definitions/timestamp"
                         },
+                        "source": {
+                            "$ref": "../definitions.json#/definitions/source"
+                        },
                         "lineLineVoltage": {
                             "type": "integer",
                             "description": "RMS voltage measured between bus phase B and phase C.",
@@ -110,6 +89,9 @@
                         "timestamp": {
                             "$ref": "../definitions.json#/definitions/timestamp"
                         },
+                        "source": {
+                            "$ref": "../definitions.json#/definitions/source"
+                        },
                         "lineLineVoltage": {
                             "type": "integer",
                             "description": "RMS voltage measured between bus phase C and phase A.",
@@ -135,12 +117,48 @@
                             "example": 60.0
                         }
                     }
+                },
+                "average": {
+                    "type": "object",
+                    "title": "Bus #1, Average",
+                    "properties": {
+                        "timestamp": {
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "source": {
+                            "$ref": "../definitions.json#/definitions/source"
+                        },
+                        "lineLineVoltage": {
+                            "type": "integer",
+                            "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 480
+                        },
+                        "lineNeutralVoltage": {
+                            "type": "integer",
+                            "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
+                            "units": "Vrms",
+                            "minimum": 0,
+                            "maximum": 64255,
+                            "example": 277
+                        },
+                        "frequency": {
+                            "type": "number",
+                            "description": "Average frequency of the bus.",
+                            "units": "Hz",
+                            "minimum": 0,
+                            "maximum": 501.9921875,
+                            "example": 60.0
+                        }
+                    }
                 }
-            },
-            "utility": {
-            },
-            "generator": {
             }
+        },
+        "utility": {
+        },
+        "generator": {
         }
     }
 }
