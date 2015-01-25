@@ -5,217 +5,322 @@
     "description": "Schema describing the electrical child-object of a Vessel.",
     "title": "electrical",
     "properties": {
-        "type": "object",
-        "title": "battery",
-        "description": "a battery, one or many within the vessel"
-        },
-        "properties": {
-            "name": {
-                "type": "string",
-                "description": "Primary purpose and location of battery (house, starter, starterPort, etc.)"
-            },
-            "manufactureName": {
-                "type": "string",
-                "description": "Manufactures name"
-            },
-            "manufactureModel": {
-                "type": "string",
-                "description": "Model or Part number(s) of battery"
-            },
-            "dateInstalled": {
-                "type": "date",
-                "description": "Date battery was installed"
-            },
 
-            "voltage": {
-                "type": "object",
-                "title": "voltage",
-                "properties":  {
-                    "measured": {
-                        "type": "number",
-                        "description": "Measured voltage of battery at battery"
-                    },
-                    "nominal": {
-                        "type": "number",
-                        "description": "Designed 'voltage' of battery (12v, 24v, 32v, 48v, 144v)"
-                    },
-                    "limitUpper": {
-                        "type": "number",
-                        "description": "Upper operational limit of battery voltage"
-                    },
-                    "limitLower": {
-                        "type": "number",
-                        "description": "Lower operational limit of battery voltage"
-                    },
-                    "faultUpper": {
-                        "type": "number",
-                        "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
-                    },
-                    "faultLower": {
-                        "type": "number",
-                        "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+        "battery": {
+            "type": "object",
+            "title": "Battery",
+            "description": "Batteries, one or many, within the vessel",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique ID of battery (house, starter1, thruster, etc.)"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Installed location of battery on vessel"
+                },
+                "purpose":{
+                    "type": "string",
+                    "description": "Primary usage of battery (house, starter, reserve, etc.)"
+                },
+                "manufactureName": {
+                    "type": "string",
+                    "description": "Manufactures name"
+                },
+                "manufactureModel": {
+                    "type": "string",
+                    "description": "Model or Part number(s) of battery"
+                },
+                "chemistry":{
+                    "type": "string",
+                    "description": "Type of battery FLA, LiFePO4, etc."
+                },
+                "dateInstalled": {
+                    "type": "date",
+                    "description": "Date battery was installed/placed into service"
+                },
+
+                "voltage": {
+                    "type": "object",
+                    "title": "voltage",
+                    "properties":  {
+                        "measured": {
+                            "description": "Measured voltage of battery at battery",
+                            "$ref": "../definitions.json#/definitions/numberValue"
+                        },
+                        "nominal": {
+                            "type": "number",
+                            "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
+                        },
+                        "limitUpper": {
+                            "type": "number",
+                            "description": "Upper operational limit of battery voltage"
+                        },
+                        "limitLower": {
+                            "type": "number",
+                            "description": "Lower operational limit of battery voltage"
+                        },
+                        "faultUpper": {
+                            "type": "number",
+                            "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+                        },
+                        "faultLower": {
+                            "type": "number",
+                            "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                        }
                     }
-                }
-            },
+                },
 
-            "current": {
-                "type": "object",
-                "title": "current",
-                "properties": {
-                    "measured": {
-                        "type": "number",
-                        "description": "Measured amperage into/out-of battery (+charging, -discharging)"
-                    },
-                    "limitDischarge": {
-                        "type": "number",
-                        "description": "Operational current limit for battery discharge"
-                    },
-                    "limitRecharge": {
-                        "type": "number",
-                        "description": "Operational current limit for battery recharging"
+                "current": {
+                    "type": "object",
+                    "title": "current",
+                    "properties": {
+                        "measured": {
+                            "description": "Measured amperage into/out-of battery (+charging, -discharging)",
+                            "$ref": "../definitions.json#/definitions/numberValue"
+                        },
+                        "limitDischarge": {
+                            "type": "number",
+                            "description": "Operational current limit for battery discharge"
+                        },
+                        "limitRecharge": {
+                            "type": "number",
+                            "description": "Operational current limit for battery recharging"
+                        }
                     }
-                }
-            },
+                },
 
-            "temperature": {
-                "type": "object",
-                "title": "temperature",
-                "properties": {
-                    "measured": {
-                        "type": "number",
-                        "description": "Temperature of battery, in degrees Celsius"
-                    },
+                "temperature": {
+                    "type": "object",
+                    "title": "temperature",
+                    "properties": {
+                        "measured": {
+                            "type": "number",
+                            "description": "Temperature of battery, in degrees Celsius"
+                        },
 
-                    "limitDischageLower": {
-                        "type": "number",
-                        "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius"
-                    },
-                    "limitDischageUpper": {
-                        "type": "number",
-                        "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius"
-                    },
-                    "limitRechargeLower": {
-                        "type": "number",
-                        "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius"
-                    },
-                    "limitRechargeUpper": {
-                        "type": "number",
-                        "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius"
+                        "limitDischageLower": {
+                            "type": "number",
+                            "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius"
+                        },
+                        "limitDischageUpper": {
+                            "type": "number",
+                            "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius"
+                        },
+                        "limitRechargeLower": {
+                            "type": "number",
+                            "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius"
+                        },
+                        "limitRechargeUpper": {
+                            "type": "number",
+                            "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius"
+                        }
                     }
-                }
-            },
+                },
 
 
-            "mode": {
-                "type": "string",
-                "description": "Current operational mode of battery",
-                "enum": [
-                    "unknown/varied",
-                    "faulted",
-                    "chargingBulk",
-                    "chargingAcceptance",
-                    "chargingOvercharge",
-                    "chargingFloat",
-                    "chargingEqualize",
-                    "discharging",
-                    "disconnnected",
-                    "other"
-                ]
-            },
+                "mode": {
+                    "type": "string",
+                    "description": "Operational mode of battery",
+                    "enum": [
+                        "unknown/varied",
+                        "faulted",
+                        "chargingBulk",
+                        "chargingAcceptance",
+                        "chargingOvercharge",
+                        "chargingFloat",
+                        "chargingEqualize",
+                        "discharging",
+                        "disconnnected",
+                        "other"
+                    ]
+                },
 
-            "capacity": {
-                "type": "object",
-                "title": "capacity",
-                "properties":{
-                    "nominal": {
-                        "type": "number",
-                        "description": "Designed (specified) Watt-hour capacity of battery"
-                    },
-                    "actual": {
-                        "type": "number",
-                        "description": "Current (actual) Watt-hour capacity of battery"
-                    },
-                    "remaining": {
-                        "type": "number",
-                        "description": "Watt-hours remaining in battery (StateOfCharge)"
-                    },
-                    "dischargeLimit": {
-                        "type": "number",
-                        "description": "Minimum number of Watt-hours to be left in the battery while discharging"
+                "capacity": {
+                    "type": "object",
+                    "title": "capacity",
+                    "properties":{
+                        "nominal": {
+                            "type": "number",
+                            "description": "Designed (specified) Watt-hour capacity of battery"
+                        },
+                        "actual": {
+                            "type": "number",
+                            "description": "Current (actual) Watt-hour capacity of battery"
+                        },
+                        "remaining": {
+                            "type": "number",
+                            "description": "Watt-hours remaining in battery (StateOfCharge)"
+                        },
+                        "dischargeLimit": {
+                            "type": "number",
+                            "description": "Minimum number of Watt-hours to be left in the battery while discharging"
+                        }
                     }
-                }
-            },
+                },
 
-            "LifetimeDischarge": {
-                "type": "number",
-                "description": "Cumulative Watt-hours discharged from battery over operational lifetime of battery"
-            },
-            "LifetimeRecharge": {
-                "type": "number",
-                "description": "Cumulative Watt-hours recharged into battery over operational lifetime of battery"
+                "lifetimeDischarge": {
+                    "type": "number",
+                    "description": "Cumulative KWh discharged from battery over operational lifetime of battery"
+                },
+                "lifetimeRecharge": {
+                    "type": "number",
+                    "description": "Cumulative KWh recharged into battery over operational lifetime of battery"
+                }
             }
         },
 
+        "dcSource": {
+            "type": "object",
+            "title": "DC (charging) Source",
+            "description": "Any DC power source.  Typicaly used to recharge a battery, but can also be DC/DC converters, combiners, etc.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique ID of DC Source (alternator, DCGeneator, solar1, inverterCharger, Combiner1, etc.)"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Installed location of DC Source on vessel"
+                },
+                "manufactureName": {
+                    "type": "string",
+                    "description": "Manufactures name"
+                },
+                "manufactureModel": {
+                    "type": "string",
+                    "description": "Model or Part number"
+                },
+                "dateInstalled": {
+                    "type": "date",
+                    "description": "Date DC Source was installed"
+                },
+                "powerSource": {
+                    "type": "string",
+                    "description": "NAME of Power source (if applicable)"
+                },
+                "associatedBattery": {
+                    "type": "string",
+                    "description": "NAME of battery DC Source is assocated with (if applicable)"
+                },
 
-
-
-    "properties": {
-        "type": "object",
-        "title": "chargingSource",
-        "description": "Any energy source which can be used to recharge a battery: Solar, Alternator, shore power. ."
+                "mode": {
+                    "type": "string",
+                    "description": "Operational mode of DC source",
+                    "enum": [
+                        "unknown/varied",
+                        "faulted",
+                        "disabled",
+                        "chargingBulk",
+                        "chargingAcceptance",
+                        "chargingOvercharge",
+                        "chargingFloat",
+                        "chargingEqualize",
+                        "discharging",
+                        "constantVoltage",
+                        "connected",
+                        "disconnnected",
+                        "other"
+                    ]
+                },
+                "voltageMeasured": {
+                    "type": "number",
+                    "description": "Measured voltage at DC Source output terminals"
+                },
+                "currentMeasured": {
+                    "type": "number",
+                    "description": "Measured amperage being provided by DC source"
+                },
+                "currentCapability": {
+                    "type": "number",
+                    "description": "Maximum amperage DC source is capable of supplying"
+                },
+                "temperature": {
+                        "type": "number",
+                        "description": "Internal temperature"
+                }
+            }
         },
-        "properties": {
-            "name": {
-                "type": "string",
-                "description": "Description and location (alternatorPort, DCGeneator, solar1, inverterCharger, etc.)"
-            },
-            "manufactureName": {
-                "type": "string",
-                "description": "Manufactures name"
-            },
-            "manufactureModel": {
-                "type": "string",
-                "description": "Model or Part number(s) of battery"
-            },
-            "dateInstalled": {
-                "type": "date",
-                "description": "Date battery was installed"
-            },
 
-            "associatedBattery": {
-                "type": "string",
-                "description": "Battery name charger is assocated with"
-            },
-            "voltageMeasured": {
-                "type": "number",
-                "description": "Measured voltage at charging source"
-            },
+        "acSource": {
+            "type": "object",
+            "title": "AC Power Source",
+            "description": "Any AC power source.  Typicaly Shore Power, Inverter, Generator.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique ID of AC Source (Shore1, Generator, Inverter1, Inverter-charger, etc.)"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Installed location of AC Source on vessel"
+                },
+                "manufactureName": {
+                    "type": "string",
+                    "description": "Manufactures name"
+                },
+                "manufactureModel": {
+                    "type": "string",
+                    "description": "Model or Part number"
+                },
+                "dateInstalled": {
+                    "type": "date",
+                    "description": "Date AC Source was installed"
+                },
 
-            "currentMeasured": {
-                "type": "number",
-                "description": "Measured amperage being provided by charging source"
-            },
-
-            "currentCapacity": {
-                "type": "number",
-                "description": "Maximum amperage charging source is capable of supplying"
-            },
-
-            "mode": {
-                "type": "string",
-                "description": "Current operational mode of charging source",
-                "enum": [
-                    "unknown/varied",
-                    "faulted",
-                    "chargingBulk",
-                    "chargingAcceptance",
-                    "chargingOvercharge",
-                    "chargingFloat",
-                    "chargingEqualize",
-                    "discharging",
-                    "disconnnected",
-                    "other"
-                ]
+                "powerSource": {
+                    "type": "string",
+                    "description": "NAME of Power source (if applicable).  e.g.: Battery Name for inverter"
+                },
+                "leg":{
+                    "type": "string",
+                    "description":"AC leg(s) power source is associated with"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Operational mode of AC source",
+                    "enum": [
+                        "unknown/varied",
+                        "faulted",
+                        "reversedPolarity",
+                        "groundFault",
+                        "disabled",
+                        "enabled",
+                        "passthrough",
+                        "starting",
+                        "stopping",
+                        "other"
+                    ]
+                },
+                "voltageMeasured": {
+                    "type": "number",
+                    "description": "Measured RMS voltage at AC Source output terminals"
+                },
+                "currentMeasured": {
+                    "type": "number",
+                    "description": "Measured RMS amperage being provided by AC source"
+                },
+                "powerMeasuredReal": {
+                    "type": "number",
+                    "description": "Measured real power in W being provided by AC source"
+                },
+                "powerMeasuredReactive": {
+                    "type": "number",
+                    "description": "Measured reactive power in VAr being provided by AC source"
+                },
+                "frequencyMeasured": {
+                    "type": "number",
+                    "description": "Measured frequency of AC Source, in Hertz"
+                },
+                "currentCapability": {
+                    "type": "number",
+                    "description": "Maximum amperage AC source is capable of supplying"
+                },
+                "temperature": {
+                    "type": "number",
+                    "description": "Internal temperature"
+                }
             }
         }
+    }
 }
