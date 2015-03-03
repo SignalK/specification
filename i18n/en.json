@@ -1,0 +1,13 @@
+{
+  "@metadata": {
+    "locale": "en"
+  },
+  "environment.depth.belowTransducer": {
+    "shortName:": "DBT",
+    "longName": "Depth Below Transducer"
+  },
+  "navigation.courseOverGroundTrue": {
+    "shortName": "COG(t)",
+    "longName": "Course Over Ground, true"
+  }
+}
