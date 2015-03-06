@@ -1,0 +1,25 @@
+{
+    "context": "vessels.366982330.navigation",
+    "updates": [
+        {
+            "values": [
+                {
+                    "path": "position.longitude",
+                    "value": 173.1693
+                },
+                {
+                    "path": "position.latitude",
+                    "value": -41.156426
+                },
+                {
+                    "path": "position.altitude",
+                    "value": 0
+                },
+                {
+                    "path": "courseOverGroundTrue",
+                    "value": 245.69
+                }
+            ]
+        }
+    ]
+}
