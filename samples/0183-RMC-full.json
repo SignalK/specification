@@ -48,7 +48,21 @@
 					},
 
 					"value": 245.69
-				}
+				},
+                "speedOverGround": {
+                    "timestamp": "2015-03-07T13:40:27.707+13:00",
+                    "meta": {
+                        "shortName": "SOG",
+                        "displayName": "SOG (Knots)"
+                    },
+                    "source": "sources.gps_0183_RMC",
+                    "_attr": {
+                        "_mode": 644,
+                        "_owner": "self",
+                        "_group": "self"
+                    },
+                    "value": 0.025722222222000005
+                }
 			}
 		}
 	},

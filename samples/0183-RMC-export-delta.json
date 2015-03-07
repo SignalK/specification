@@ -26,6 +26,18 @@
                 {
                     "path": "courseOverGroundTrue",
                     "value": 245.69
+                },
+                {
+                    "path": "courseOverGroundTrue.timestamp",
+                    "value": "2015-03-07T12:37:10.523+13:00"
+                },
+                {
+                    "path": "speedOverGround",
+                    "value": 0.025722222222000005
+                },
+                {
+                    "path": "speedOverGround.timestamp",
+                    "value": "2015-03-07T12:37:10.523+13:00"
                 }
             ],
             "source": "sources.gps_0183_RMC"
