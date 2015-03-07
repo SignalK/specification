@@ -2,13 +2,9 @@
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
     "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
-    "description": "Schema describing the tankage of a vessel.",
-    "title": "tanks",
-    "additionalProperties": {
-        "type": "object",
-        "title": "tank",
-        "description": "a tank, named by a unique name within this vessel",
-        "properties": {
+    "description": "a tank, named by a unique name within this vessel",
+    "title": "tank",
+    "properties": {
             "tankType": {
                 "type": "string",
                 "description": "The type of waypoint",
@@ -35,4 +31,4 @@
             }
         }
     }
-}
+
