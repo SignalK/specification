@@ -30,6 +30,10 @@
                     "type": "number",
                     "description": "The current bearing of the next waypoint in degrees true"
                 },
+                "distanceActual": {
+                    "type": "number",
+                    "description": "The current distance to the next waypoint in METERS or nautical miles"
+                },
                 "bearingDirect": {
                     "type": "number",
                     "description": "The bearing in degrees true from last waypoint to the next waypoint"
