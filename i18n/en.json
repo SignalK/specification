@@ -185,14 +185,16 @@
     "longName": "Depth in Meters"
   },
   "environment.depth.belowKeel": {
-    "shortName": "Depth Below Keel",
-    "longName": "Depth Below Keel in Meters"
+    "shortName": "DBK",
+    "longName": "Depth Below Keel",
+    "unit": "m"
   },
 
 
   "environment.depth.belowTransducer": {
-    "shortName": "Depth Below Transducer",
-    "longName": "Depth Below Transducer in Meters"
+    "shortName": "DBT",
+    "longName": "Depth Below Transducer",
+    "unit": "m"
   },
   "environment.depth.belowSurface": {
     "shortName": "Depth Below Surface",
@@ -275,11 +277,11 @@
     "longName": "True Wind Speed in Meters/Second"
   },
   "environment.wind.speedOverGround": {
-    "shortName": "Speed Over Ground",
+    "shortName": "TWS",
     "longName": "Wind Speed Over Ground in Meters/Second"
   },
   "environment.wind.speedApparent": {
-    "shortName": "Speed Apparent",
+    "shortName": "AWS",
     "longName": "Apparent Wind Speed in Meters/Second"
   },
 
@@ -488,12 +490,14 @@
     "longName": "Roll in Degrees"
   },
   "navigation.speedOverGround": {
-    "shortName": "Speed Over Ground",
-    "longName": "Speed Over Ground in Meters/Second"
+    "shortName": "SOG",
+    "longName": "Speed Over Ground",
+    "unit": "mps"
   },
   "navigation.speedThroughWater": {
-    "shortName": "Speed Through Water",
-    "longName": "Speed Through Water in Meters/Second"
+    "shortName": "STW",
+    "longName": "Speed Through Water",
+    "unit": "mps"
   },
   "navigation.log": {
     "shortName": "Log",
