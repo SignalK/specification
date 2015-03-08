@@ -63,3 +63,4 @@ function validateDelta(delta, ignoreContext) {
 module.exports.validate = validate;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
+module.exports.i18n = require('./i18n/');
