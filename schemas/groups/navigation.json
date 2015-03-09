@@ -32,7 +32,7 @@
                 },
                 "distanceActual": {
                     "type": "number",
-                    "description": "The current distance to the next waypoint in METERS or nautical miles"
+                    "description": "The current distance to the next waypoint in METERS"
                 },
                 "bearingDirect": {
                     "type": "number",
