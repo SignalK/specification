@@ -46,7 +46,7 @@
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "leeway": {
-            "description": "Current leeway in degrees Centigrade.",
+            "description": "Current leeway in degrees.",
             "$ref": "../definitions.json#/definitions/numberValue"
         },
         "tackMagnetic": {
