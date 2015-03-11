@@ -32,7 +32,7 @@
                 },
                 "distanceActual": {
                     "type": "number",
-                    "description": "The current distance to the next waypoint in METERS"
+                    "description": "The current distance to the next waypoint in meters"
                 },
                 "bearingDirect": {
                     "type": "number",
@@ -246,11 +246,11 @@
         },
         "log": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Log value in nm"
+            "description": "Log value in meters"
         },
         "logTrip": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Trip log value in nm"
+            "description": "Trip log value in meters"
         },
         "state": {
             "type": "object",
