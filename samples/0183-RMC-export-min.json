@@ -1,0 +1,18 @@
+{
+	"vessels": 
+	{
+		"366982330": 
+		{
+			"navigation": 
+			{
+				"position": 
+				{
+					"longitude": 173.1693,
+					"latitude": -41.156426,
+					"altitude": 0
+				},
+				"courseOverGroundTrue": 245.69
+			}
+		}
+	}
+}

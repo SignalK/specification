@@ -26,8 +26,17 @@
             "$ref": "groups/navigation.json#"
         },
         "propulsion": {
-            "description": "Engine  data",
-            "$ref": "groups/propulsion.json#"
+	  "type":"object",
+	  "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+	  "title":"propulsion",
+          "description": "Engine  data",
+	  "required":false,
+	  "patternProperties": {
+		  "(^[A-Za-z0-9]+$)": {
+			"description": "This regex pattern is used for validation UUID identifier for the tank",
+			"$ref": "groups/propulsion.json#"
+			}
+		}
         },
         "alarms": {
             "description": "Alarm  data",
@@ -38,25 +47,33 @@
             "$ref": "groups/steering.json#"
         },
         "tanks": {
-            "description": "tanks on this vessel",
-            "$ref": "groups/tanks.json#"
-        },
-        "design": {
+	  "type":"object",
+	  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
+	  "title":"tanks",
+	  "description":"tanks on this vessel",
+	  "required":false,
+	  "patternProperties": {
+		  "(^[A-Za-z0-9]+$)": {
+			"description": "This regex pattern is used for validation UUID identifier for the tank",
+			  "$ref": "groups/tanks.json#" 
+			  }
+		  }
+	},
+	"design": {
             "description": "Design data of this vessel",
             "$ref": "groups/design.json#"
         },
-        "sensors":{
-            "type":"object",
-            "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
-            "title":"sensors",
-            "description":"Sensors, their state, and data.",
-            "required":false,
-            "patternProperties": {
-                "(^[A-Za-z0-9]+$)": {
-                    "description": "This regex pattern is used for validation UUID identifier for the sensor",
-                    "$ref": "sensors.json#"
-                }
-            }
-        }
+	"sensors":{
+	  "type":"object",
+	  "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
+	  "title":"sensors",
+	  "description":"Sensors, their state, and data.",
+	  "required":false,
+	  "patternProperties": {
+		"(^[A-Za-z0-9]+$)": {
+		      "description": "This regex pattern is used for validation UUID identifier for the sensor",
+			"$ref": "groups/sensors.json#" } 
+			 }
+		}
     }
 }
