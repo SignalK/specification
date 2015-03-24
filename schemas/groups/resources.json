@@ -9,7 +9,6 @@
             "type": "object",
             "title": "chart",
             "description": "A holder for charts, each named with their chart code",
-
              "patternProperties": {
 		"(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)": {
 		    "type": "object",
@@ -61,7 +60,6 @@
 			}
 		    }
 		}
-
             }
         },
         "routes": {

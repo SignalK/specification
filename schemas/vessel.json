@@ -47,7 +47,6 @@
             "$ref": "groups/steering.json#"
         },
         "tanks": {
-
 	  "type":"object",
 	  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
 	  "title":"tanks",
