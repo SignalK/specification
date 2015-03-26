@@ -72,8 +72,13 @@
 	  "patternProperties": {
 		"(^[A-Za-z0-9]+$)": {
 		      "description": "This regex pattern is used for validation UUID identifier for the sensor",
-			"$ref": "groups/sensors.json#" } 
-			 }
+			"$ref": "groups/sensors.json#" 
+			} 
 		}
+	},
+	"performance": {
+            "description": "Performance data",
+            "$ref": "groups/performance.json#"
+        }
     }
 }
