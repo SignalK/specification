@@ -39,11 +39,11 @@
             <span class="type-pattern">/{{pattern}}/</span>
         {{/if}}
         {{#if enum}}
+            <ul class="type-enum">
             {{#each enum}}
-            <ul>
-                <li><span class="type-enum">{{this}}</span></li>
-                </ul>
+                <li>{{this}}</li>
             {{/each}}
+            </ul>
         {{/if}}
         {{#exists default}}
             <span class="type-keyword">default</span>
@@ -76,11 +76,11 @@
             <span class="type-pattern">/{{pattern}}/</span>
         {{/if}}
         {{#if enum}}
+            <ul class="type-enum">
             {{#each enum}}
-            	<ul>
-                <li><span class="type-enum">{{this}}</span></li>
-                </ul>
+                <li>{{this}}</li>
             {{/each}}
+            </ul>
         {{/if}}
         {{#exists default}}
             <span class="type-keyword">default</span>
