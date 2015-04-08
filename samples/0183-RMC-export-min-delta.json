@@ -18,6 +18,10 @@
                 {
                     "path": "courseOverGroundTrue",
                     "value": 245.69
+                },
+                {
+                    "path": "speedOverGround",
+                    "value": 0.025722222222000005
                 }
             ]
         }
