@@ -33,10 +33,18 @@ function validate(tree) {
   var definitions = require('./schemas/definitions.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 
-  ['navigation', 'environment', 'propulsion', 'resources', 'sensors', 'steering', 'tanks'].forEach(function(name) {
-    var subSchema = require('./schemas/groups/' + name + '.json');
-    tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + name + '.json', subSchema);
-  });
+  var subSchemas = {
+    'navigation': require('./schemas/groups/navigation.json'),
+    'environment': require('./schemas/groups/environment.json'),
+    'propulsion': require('./schemas/groups/propulsion.json'),
+    'resources': require('./schemas/groups/resources.json'),
+    'sensors': require('./schemas/groups/sensors.json'),
+    'steering': require('./schemas/groups/steering.json'),
+    'tanks': require('./schemas/groups/tanks.json')
+  };
+  for (var schema in subSchemas) {
+    tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + name + '.json', subSchemas[schema]);
+  }
 
   var validTree = {
     vessels: {
