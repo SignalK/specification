@@ -27,7 +27,7 @@ describe('Delta validation', function() {
     msg.should.not.be.validSignalKDelta;
   });
 
-  it('Object value is valid', function() {
+  it('Object, null, number and boolean values are valid in delta', function() {
     var msg = {
       "updates": [{
         "source": {
@@ -53,6 +53,12 @@ describe('Delta validation', function() {
       }],
       "context": "vessels.123456789"
     };
+    msg.should.be.validSignalKDelta;
+    msg.updates[0].values[0].value = null;
+    msg.should.be.validSignalKDelta;
+    msg.updates[0].values[0].value = 1.0;
+    msg.should.be.validSignalKDelta;
+    msg.updates[0].values[0].value = true;
     msg.should.be.validSignalKDelta;
   });
 });

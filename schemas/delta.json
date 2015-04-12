@@ -35,7 +35,9 @@
                                     "type": [
                                       "string",
                                       "number",
-                                      "object"
+                                      "object",
+                                      "boolean",
+                                      "null"
                                     ],
                                     "required": true,
                                     "additionalProperties": true
