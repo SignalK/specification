@@ -43,7 +43,7 @@ function validate(tree) {
     'tanks': require('./schemas/groups/tanks.json')
   };
   for (var schema in subSchemas) {
-    tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + name + '.json', subSchemas[schema]);
+    tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
 
   var validTree = {

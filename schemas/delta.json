@@ -32,7 +32,15 @@
                                     "required": true
                                 },
                                 "value": {
-                                    "required": true
+                                    "type": [
+                                      "string",
+                                      "number",
+                                      "object",
+                                      "boolean",
+                                      "null"
+                                    ],
+                                    "required": true,
+                                    "additionalProperties": true
                                 }
                             }
                         }
