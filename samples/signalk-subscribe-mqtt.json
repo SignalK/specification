@@ -1,0 +1,18 @@
+{
+    "context": "vessels.self",
+    "websocket.connectionkey":"d2f691ac-a5ed-4cb7-b361-9072a24ce6bc",
+    "reply-to":"signalk.3202a939-1681-4a74-ad4b-3a90212e4f33.vessels.self.navigation",
+    "subscribe": [
+        {
+                    "path": "navigation.speedThroughWater",
+                    "period": 1000,
+                    "format": "delta",
+                    "policy": "ideal",
+                    "minPeriod": 200
+                },
+         {
+                    "path": "navigation.logTrip",
+                    "period": 10000
+                }
+        ]
+}

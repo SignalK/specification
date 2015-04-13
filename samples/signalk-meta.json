@@ -1,0 +1,14 @@
+{"meta": 
+	{
+	  "displayName": "Tachometer, Engine 1",
+	  "shortName": "RPM",
+	  "warnMethod": "visual",
+	  "alarmMethod": "sound",
+	  "zones": [
+		[0, 500, "alarm"],
+		[500, 3000, "normal"],
+		[3000, 3500, "warn"],
+		[3500, 4000, "alarm"]
+	  ]
+	}
+}
