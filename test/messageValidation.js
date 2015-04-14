@@ -7,4 +7,9 @@ describe('Message validation', function() {
     var subscribe =  require('../samples/signalk-subscribe');
     subscribe.should.be.validSubscriptionMessage;
   });
+
+  it('Simple unsubscribe validates', function() {
+    var subscribe =  require('../samples/signalk-unsubscribe');
+    subscribe.should.be.validUnsubscriptionMessage;
+  });
 });
