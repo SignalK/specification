@@ -5,42 +5,154 @@
     "description": "An object describing the vessels primary dimensions and statistics.",
     "title": "design",
     "properties": {
-        "name": {
-            "type": "string",
-            "description": "The common name of the sensor"
-        },
         "displacement": {
-            "type": "string",
-            "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "The displacement of the vessel, measured in kilogram"
         },
+        
         "draft": {
-            "type": "string",
-            "description": "From waterline to bottom of keel in meters"
+            "type": "object",
+            "title": "draft",
+            "description": "The draft of the vessel, in centimeters",
+            "properties": {
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "minimum": { 
+                    "description": "The minimum draft of the vessel in centimeters",
+                    "type": "number"
+                },
+                "maximum": { 
+                    "description": "The maximum draft of the vessel in centimeters",
+                    "type": "number"
+                }
+            }
         },
+        
         "canoeDraft": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "From waterline to bottom of canoe hull in meters, eg without keel"
         },
-        "loa": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length over all in meters (includes spars, bow pulpits etc.)"
+
+        "length": {
+            "type": "object",
+            "title": "length",
+            "description": "The various lengths of the vessel",
+            "properties": {
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "overall": {
+                    "type": "number",
+                    "description": "Length overall in meters"
+                },
+                "hull": {
+                    "type": "number",
+                    "description": "Length of hull in meters"
+                },
+                "waterline": {
+                    "type": "number",
+                    "description": "Length at waterline in meters"
+                }
+            }
         },
-        "loh": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length over the hull in meters  (not including spars, bow pulpits etc.)"
+
+        "keel": {
+            "type": "object",
+            "title": "keel",
+            "description": "Information about the vessel's keel",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of keel (fixed or variable).",
+                    "enum": [ "fixed", "variable" ]
+                },
+
+                "state": {
+                    "type": "number",
+                    "description": "A number indicating how far up or down the keel is (in case of a variable keel) where 0 indicates 'all the way up' and 1 indicates 'all the way down'"
+                },
+
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+            }
         },
-        "lwl": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length of waterline in meters "
+        
+        "sails": {
+            "type": "object",
+            "title": "sails",
+            "description": "Information about the vessels sails",
+            "properties": {
+                "available": {
+                    "type": "object",
+                    "description": "An object containing a description of each sail available to the vessel crew",
+                    "patternProperties": {
+                        "(^[a-zA-Z0-9]$)": {
+                            "description": "Each sail is identified by a unique name, containing only alphanumeric characters.",
+                            "$ref": "../definitions.json#/definitions/sail" 
+                        }
+                    }
+                },
+
+                "active": {
+                    "type": "object",
+                    "description": "An object containing a description of the sails currently in use.",
+                    "patternProperties": {
+                        "(^[a-zA-Z0-9]$)": {
+                            "description": "Each sail is identified by a unique name, containing only alphanumeric characters.",
+                            "$ref": "../definitions.json#/definitions/sail" 
+                        }
+                    }
+                },
+
+                "area": {
+                    "type": "object",
+                    "description": "An object containing information about the area of the sails.",
+                    "properties": {
+                        "total": {
+                            "description": "The total area of all sails on the vessel, measured in square meters.",
+                            "type": "number"
+                        },
+
+                        "active": {
+                            "description": "The total area of the sails currently in use on the vessel, measured in square meters.",
+                            "type": "number"
+                        }
+                    }
+                },
+
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+            }
         },
+
         "beam": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Hull beam in meters"
         },
-        "sailArea": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Sail area in square meters (total sail area which includes all the fore-triangle, the main, and other normal sails present {like half the area of mizzens on ketches and yawls and all the foresail area on schooners}.  It does not include stay sails nor does it include spinnakers and jibs in the fore triangle.)"
-        },
+
         "airHeight": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Total height of the vessel in meters "
