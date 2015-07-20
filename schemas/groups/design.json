@@ -30,13 +30,12 @@
                 "maximum": { 
                     "description": "The maximum draft of the vessel in centimeters",
                     "type": "number"
+                },
+                "canoe": { 
+                    "description": "The draft of the vessel without it's keel/centerboard",
+                    "type": "number"
                 }
             }
-        },
-        
-        "canoeDraft": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "From waterline to bottom of canoe hull in meters, eg without keel"
         },
 
         "length": {
@@ -74,13 +73,18 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "The type of keel (fixed or variable).",
-                    "enum": [ "fixed", "variable" ]
+                    "description": "The type of keel.",
+                    "enum": [ "long", "micky_mouse", "fin", "flare", "bulb", "wing", "centerboard", "kanting", "lifting", "daggerboard" ]
                 },
 
-                "state": {
+                "angle": {
                     "type": "number",
-                    "description": "A number indicating how far up or down the keel is (in case of a variable keel) where 0 indicates 'all the way up' and 1 indicates 'all the way down'"
+                    "description": "A number indicating at which angle the keel currently is (in case of a canting keel)."
+                },
+
+                "lift": {
+                  "type": "number",
+                  "description": "A number indicating wether the keel is up or down (in case of a lifting keel, centreboard or daggerboard) where 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down."
                 },
 
                 "source": {
@@ -150,12 +154,37 @@
 
         "beam": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Hull beam in meters"
+            "description": "Beam length in meters"
         },
 
         "airHeight": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Total height of the vessel in meters "
+            "description": "Total height of the vessel in meters"
+        },
+
+        "rigging": {
+            "type": "object",
+            "title": "rigging",
+            "description": "Information about the vessels' rigging",
+            "properties": {
+                "configuration": {
+                    "type": "string",
+                    "description": "The configuration of the rigging. Example: 'sloop' or 'gaff cutter'"
+                },
+                "masts": {
+                    "type": "number",
+                    "description": "The number of masts on the vessel."
+                },
+
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+            }
         }
     }
 }
