@@ -12,11 +12,11 @@ Please treat this the same as the specification itself: when making changes, mak
 ## TODO
 
 - [x] Decide on a versioning system
-- [ ] @contributors: Finalise the `design` group [#65](https://github.com/SignalK/specification/pull/65)
-- [ ] @contributors: Finalise the `sensors` group and define it's usage more clearly
-- [ ] @rob42: Review/rewrite the `alarms` group
-- [ ] @fabdrol: Come up with a `sails` group, remove `sails` from design 
-- [ ] @contributors: Review the `resources` group
+- [ ] Finalise the `design` group [#65](https://github.com/SignalK/specification/pull/65)
+- [ ] Finalise the `sensors` group and define it's usage more clearly
+- [ ] Review/rewrite the `alarms` group (@rob42)
+- [ ] Come up with a `sails` group, remove `sails` from design (@fabdrol)
+- [ ] Review the `resources` group
 - [ ] Hygiene
   - [ ] Review all open PRs and branches, merge where required and 
   - [ ] Check for empty descriptions to every property and object
