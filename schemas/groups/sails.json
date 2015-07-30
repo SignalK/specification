@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "https://signalk.github.io/specification/schemas/groups/sails.json#",
+    "description": "An object describing the vessels sails if the vessel is a sailboat.",
+    "title": "sails",
+    "properties": {
+        "available": {
+            "type": "object",
+            "description": "An object containing a description of each sail available to the vessel crew",
+            "patternProperties": {
+                "(^[a-zA-Z0-9]$)": {
+                    "description": "Each sail is identified by a unique name, containing only alphanumeric characters.",
+                    "$ref": "../definitions.json#/definitions/sail" 
+                }
+            }
+        },
+
+        "area": {
+            "type": "object",
+            "description": "An object containing information about the area of the sails.",
+            "properties": {
+                "total": {
+                    "description": "The total area of all sails on the vessel, measured in square meters.",
+                    "type": "number"
+                },
+
+                "active": {
+                    "description": "The total area of the sails currently in use on the vessel, measured in square meters.",
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
