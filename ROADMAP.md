@@ -18,9 +18,8 @@ Please treat this the same as the specification itself: when making changes, mak
 - [ ] Come up with a `sails` group, remove `sails` from design (@fabdrol)
 - [ ] Review the `resources` group
 - [ ] Hygiene
-  - [ ] Review all open PRs and branches, merge where required and 
-  - [ ] Check for empty descriptions to every property and object
-  - [ ] Do we need *required* properties on everyting - even if it's not required?
+  - [ ] Add metadata to all groups (min, max, unit, descriptions, etc)
+  - [ ] Review all open PRs and branches, merge where required and remove when not 
   - [ ] Check for FIXMEs
 - [ ] Clean-up the repo (`master` branch contains stable spec, `development` branch for active development and topic branches for new features)
 - [ ] Update documentation and publish blog posts and news on our first stable release. 
