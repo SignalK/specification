@@ -38,54 +38,6 @@
             }
         },
 
-        "sail": {
-            "type": "object",
-            "description": "An object describing a single sail.",
-            "properties": {
-                "brand": {
-                    "type": "string",
-                    "description": "The brand of the sail."
-                },
-
-                "type": {
-                    "type": "string",
-                    "description": "The type of sail (e.g. J1 or genaker)"
-                },
-
-                "material": {
-                    "type": "string",
-                    "description": "The material the sail's made of (e.g. canvas)"
-                },
-
-                "area": {
-                    "type": "number",
-                    "description": "The area of the sail, measured in square meters"
-                },
-
-                "name": {
-                    "type": "string",
-                    "description": "A unique name for the sail"
-                },
-
-                "label": {
-                    "type": "string",
-                    "description": "A label to distinguish this sail from another similar sail (e.g. 'training genaker' and 'race genaker')"
-                },
-
-                "minimumWind": {
-                    "type": "number",
-                    "description": "The minimum wind speed this sail can be used with, measured in m/s",
-                    "default": 0
-                },
-
-                "maximumWind": {
-                    "type": "number",
-                    "description": "The maximum wind speed this sail can be used with, measured in m/s",
-                    "default": 666
-                }
-            }
-        },
-
         "version": {
             "type": "string",
             "description": "Version of the Signal K root object.",
