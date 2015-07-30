@@ -64,7 +64,7 @@
                 "name": {
                     "type": "string",
                     "required": true,
-                    "description": "An identifier by which the crew identifies a sail",
+                    "description": "An unique identifier by which the crew identifies a sail",
                     "example": "J1"
                 },
                 "type": {
@@ -94,6 +94,16 @@
                   "type": "number",
                   "required": true,
                   "description": "The total area of this sail in square meters (m2)"
+                },
+                "minimumWind": {
+                    "type": "number",
+                    "description": "The minimum wind speed this sail can be used with, measured in m/s",
+                    "default": 0
+                },
+                "maximumWind": {
+                    "type": "number",
+                    "description": "The maximum wind speed this sail can be used with, measured in m/s",
+                    "default": 666
                 },
                 "timestamp": { "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
