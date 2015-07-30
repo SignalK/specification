@@ -5,6 +5,22 @@ This repository contains the (working) specification for Signal K, defined in
 JSON Schema files.
 
 
+Signal K
+--------
+
+The Free and Open Source universal marine data exchange
+
+SignalK is about publishing a common modern and open data format for marine
+use. A format for the modern boat, compatible with NMEA, friendly to WiFi,
+cellphones, tablets, and the Internet. A format available to everyone, where
+anyone can contribute.
+
+To get started, see the summary page and have a look through Navgauge Issue #4
+to get a feel for where we started. Then join the mailinglist by sending an
+email to signalk+subscribe@googlegroups.com or follow the discussion via the
+Signal K Google Groups forum.
+
+
 Usage
 -----
 
@@ -32,8 +48,10 @@ You can browse the Schema using the supplied docson viewer. Just open
 index.html from a local webserver (otherwise the XHR requests won't work) in
 your preferred browser to get started. 
 
+
 Validation
 ----------
+
 Validation against SignalK schema can be done
 - with a command line validator accepting JSON from stdin
 - by explicitly calling validate packaged as an npm module
@@ -58,19 +76,3 @@ var result = validate(msg);
 chai.use(require('signalk-schema).chaiModule);
 tree.should.be.validSignalK;
 ```
-
-
-Signal K
---------
-
-The Free and Open Source universal marine data exchange
-
-SignalK is about publishing a common modern and open data format for marine
-use. A format for the modern boat, compatible with NMEA, friendly to WiFi,
-cellphones, tablets, and the Internet. A format available to everyone, where
-anyone can contribute.
-
-To get started, see the summary page and have a look through Navgauge Issue #4
-to get a feel for where we started. Then join the mailinglist by sending an
-email to signalk+subscribe@googlegroups.com or follow the discussion via the
-Signal K Google Groups forum.

@@ -21,5 +21,5 @@ Please treat this the same as the specification itself: when making changes, mak
   - [ ] Add metadata to all groups (min, max, unit, descriptions, etc)
   - [ ] Review all open PRs and branches, merge where required and remove when not 
   - [ ] Check for FIXMEs
-- [ ] Clean-up the repo (`master` branch contains stable spec, `development` branch for active development and topic branches for new features)
+- [x] Clean-up the repo
 - [ ] Update documentation and publish blog posts and news on our first stable release. 
