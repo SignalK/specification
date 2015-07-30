@@ -28,6 +28,14 @@
                 "active": {
                     "description": "The total area of the sails currently in use on the vessel, measured in square meters.",
                     "type": "number"
+                },
+
+                "timestamp": { "description":"timestamp of the last update to this data",
+                    "$ref": "#/definitions/timestamp"
+                },
+                
+                "source": { "description":"Source of this data",
+                    "$ref": "#/definitions/source"
                 }
             }
         }
