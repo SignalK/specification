@@ -4,6 +4,7 @@
     "id": "https://signalk.github.io/specification/schemas/definitions.json#",
     "title": "definitions",
     "description": "Reusable definitions of core object types",
+    
     "definitions": {
         "timestamp": {
             "type": "string",
@@ -12,25 +13,31 @@
             "units": "ISO-8601 (UTC)",
             "example": "2014-04-10T08:33:53Z"
         },
+        
         "source": {
             "type": "object",
             "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
+            
             "required": [
                 "label",
                 "type"
             ],
+        
             "properties": {
                 "label": {
                     "type": "string"
                 },
+        
                 "type": {
                     "type": "string",
                     "default": "NMEA2000"
                 },
+            
                 "src": {
                     "type": "string",
                     "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data"
                 },
+            
                 "pgn": {
                     "type": "string",
                     "description": "NMEA2000 pgn of the source message"
@@ -43,6 +50,7 @@
             "description": "Version of the Signal K root object.",
             "example": "0.1"
         },
+        
         "mmsi": {
             "type": "string",
             "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
@@ -50,6 +58,7 @@
             "maxLength": 9,
             "minLength": 9
         },
+
         "uuid": {
             "type": "string",
             "description": "UUID assigned by the implementation of the Signal K server to vessels that don't have a MMSI. Has to be 8 characters (chosen so one could use the first block in a RFC4122 UUID), to distinguish from MMSI.",
@@ -61,6 +70,7 @@
         "sail": {
             "type": "object",
             "description": "'sail' data type.",
+            
             "properties": {
                 "name": {
                     "type": "string",
@@ -92,9 +102,9 @@
                     "description": "Indicates wether this sail is currently in use or not"
                 },
                 "area": {
-                  "type": "number",
-                  "required": true,
-                  "description": "The total area of this sail in square meters (m2)"
+                    "type": "number",
+                    "required": true,
+                    "description": "The total area of this sail in square meters (m2)"
                 },
                 "minimumWind": {
                     "type": "number",
@@ -106,11 +116,20 @@
                     "description": "The maximum wind speed this sail can be used with, measured in m/s",
                     "default": 666
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
                 "source": {
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
@@ -122,14 +141,24 @@
                 "value": {
                     "type": "string"
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
                 "source": {
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
+
         "numberValue": {
             "type": "object",
             "description": "Data should be of type number.",
@@ -137,14 +166,26 @@
                 "value": {
                     "type": "number"
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+        
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
+        
                 "source": {
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
+
         "floatValue": {
             "type": "object",
             "description": "Data should be of type float/double.",
@@ -152,14 +193,27 @@
                 "value": {
                     "type": "number"
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+        
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": { "description":"Source of this data",
+                
+                "source": { 
+                    "description":"Source of this data",
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
+
         "nullValue": {
             "type": "object",
             "description": "Data should be of type NULL.",
@@ -167,14 +221,26 @@
                 "value": {
                     "type": "null"
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": { "description":"Source of this data",
+        
+                "source": { 
+                    "description":"Source of this data",
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
+        
         "alarmValue": {
             "type": "object",
             "description": "The possible states of an alarm.",
@@ -188,141 +254,196 @@
                         "silent"
                     ]
                 },
-                "timestamp": { "description":"timestamp of the last update to this data",
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
                     "$ref": "#/definitions/timestamp"
                 },
-                "source": { "description":"Source of this data",
+                
+                "source": { 
+                    "description":"Source of this data",
                     "$ref": "#/definitions/source"
+                },
+
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+                
+                "meta": {
+                  "$ref": "#/definitions/meta"
                 }
             }
         },
+
         "alarmMethod": {
-            "type": "array",
+            "type": "object",
             "description": "The methods an alarm will use to raise attention",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "message",
-                    "sound",
-                    "sms",
-                    "email",
-                    "dsc"
-                ]
-            },
-            "timestamp": { "description":"timestamp of the last update to this data",
-                "$ref": "#/definitions/timestamp"
-            },
-            "source": { "description":"Source of this data",
-                "$ref": "#/definitions/source"
+
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "message": "string",
+                        "sound": "string",
+                        "sms": "string",
+                        "email": "string",
+                        "dsc": "string"
+                    }
+                },
+                
+                "timestamp": { 
+                    "description":"timestamp of the last update to this data",
+                    "$ref": "#/definitions/timestamp"
+                },
+
+                "source": { 
+                    "description":"Source of this data",
+                    "$ref": "#/definitions/source"
+                },
+                
+                "_attr": {
+                  "$ref": "#/definitions/_attr"
+                },
+
+                "meta": {
+                  "$ref": "#/definitions/meta"
+                }
             }
         },
-           "_attr": {		 
-			  "type": "object",
-			  "title": "_attr schema.",
-			  "description": "Filesystem specific data, eg security, possibly more later.",
-			  "properties": {
-				"_mode": {
-				  "type": "integer",
-				  "title": "_mode schema.",
-				  "description": "Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`",
-				  "default": 644
-				},
-				"_owner": {
-				  "type": "string",
-				  "title": "_owner schema.",
-				  "description": "The owner of this resource.",
-				  "default": "self"
-				},
-				"_group": {
-				  "type": "string",
-				  "title": "_group schema.",
-				  "description": "The group owning this resource.",
-				  "default": "self"
-				}
-			  }
-			}
-    },
-    "meta": {
-		"type": "object",
-		"title": "Meta schema.",
-		"description": "Provides meta data to enable alarm and display configuration.",
-		"properties": {
-			"displayName": {
-				"type": "string",
-				"title": "DisplayName schema.",
-				"description": "A display name for this value.",
-				"example": "Tachometer, Engine 1"
-			},
-			"shortName": {
-				"type": "string",
-				"title": "ShortName schema.",
-				"description": "A short name for this value.",
-				"example": "RPM"
-			},
-			"warnMethod": {
-				"type": "string",
-				"title": "WarnMethod schema.",
-				"description": "The method to use to raise the warning.",
-				"default": "visual",
-				"enum": [
-					"visual",
-					"sound"
-				]
-			},
-			"alarmMethod": {
-				"type": "string",
-				"title": "AlarmMethod schema.",
-				"description": "The method to use to raise the alarm",
-				"default": "sound",
-				"enum": [
-					"visual",
-					"sound"
-				]
-			},
-			"zones": {
-				"type": "array",
-				"title": "Zones schema.",
-				"description": "The zones defining the range of values for this signalk value.",
-				"items": [
-					{
-						"type": "array",
-						"title": "zone",
-						"description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
-						"items": [
-							{
-								"id": "bottom",
-								"type": "decimal",
-								"title": "Bottom",
-								"description": "The lowest number in this zone",
-								"name": "bottom",
-								"example": 3500
-							},
-							{
-								"id": "top",
-								"type": "decimal",
-								"title": "top",
-								"description": "The highest value in this zone",
-								"name": "1",
-								"example": 4000
-							},
-							{
-								"id": "alarmState",
-								"type": "string",
-								"title": "alarmState",
-								"description": "The alarm state when the value is in this zone.",
-								"name": "alarmState",
-								"default": "normal",
-								"enum": [
-									"normal",
-									"warn",
-									"alarm"
-								]
-							}
-						]
-					}
-				]
-			}
-		}
-	}
-    
+        
+        "_attr": {		 
+            "type": "object",
+            "title": "_attr schema.",
+            "description": "Filesystem specific data, eg security, possibly more later.",
+            "properties": {
+                "_mode": {
+                    "type": "integer",
+                    "title": "_mode schema.",
+                    "description": "Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`",
+                    "default": 644
+                },
+        
+                "_owner": {
+                    "type": "string",
+                    "title": "_owner schema.",
+                    "description": "The owner of this resource.",
+                    "default": "self"
+                },
+        
+                "_group": {
+                    "type": "string",
+                    "title": "_group schema.",
+                    "description": "The group owning this resource.",
+                    "default": "self"
+                }
+            }
+        },
+
+        "meta": {
+            "type": "object",
+            "title": "Meta schema.",
+            "description": "Provides meta data to enable alarm and display configuration.",
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "title": "DisplayName schema.",
+                    "description": "A display name for this value.",
+                    "example": "Tachometer, Engine 1"
+                },
+
+                "longName": {
+                    "type": "string",
+                    "title": "LongName schema.",
+                    "description": "A long name for this value.",
+                    "example": "Tachometer, Engine 1"
+                },
+            
+                "shortName": {
+                    "type": "string",
+                    "title": "ShortName schema.",
+                    "description": "A short name for this value.",
+                    "example": "RPM"
+                },
+
+                "guageType": {
+                    "type": "string",
+                    "title": "guageType schema.",
+                    "description": "The type of gauge necessary to display this value.",
+                    "example": "sparkline"
+                },
+
+                "unit": {
+                    "type": "string",
+                    "title": "unit schema.",
+                    "description": "The SI unit of this value.",
+                    "example": "m/s"
+                },
+            
+                "warnMethod": {
+                    "type": "string",
+                    "title": "WarnMethod schema.",
+                    "description": "The method to use to raise the warning.",
+                    "default": "visual",
+                    "enum": [
+                        "visual",
+                        "sound"
+                    ]
+                },
+            
+                "alarmMethod": {
+                    "type": "string",
+                    "title": "AlarmMethod schema.",
+                    "description": "The method to use to raise the alarm",
+                    "default": "sound",
+                    "enum": [
+                        "visual",
+                        "sound"
+                    ]
+                },
+                
+                "zones": {
+                    "type": "array",
+                    "title": "Zones schema.",
+                    "description": "The zones defining the range of values for this signalk value.",
+                    "items": [
+                        {
+                            "type": "array",
+                            "title": "zone",
+                            "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
+                            "items": [
+                                {
+                                    "id": "bottom",
+                                    "type": "number",
+                                    "title": "Bottom",
+                                    "description": "The lowest number in this zone",
+                                    "name": "bottom",
+                                    "example": 3500
+                                },
+                                {
+                                    "id": "top",
+                                    "type": "number",
+                                    "title": "top",
+                                    "description": "The highest value in this zone",
+                                    "name": "1",
+                                    "example": 4000
+                                },
+                                {
+                                    "id": "alarmState",
+                                    "type": "string",
+                                    "title": "alarmState",
+                                    "description": "The alarm state when the value is in this zone.",
+                                    "name": "alarmState",
+                                    "default": "normal",
+                                    "enum": [
+                                        "normal",
+                                        "warn",
+                                        "alarm"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
 }
