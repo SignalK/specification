@@ -251,15 +251,12 @@
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
         },
-<<<<<<< HEAD
-        
+
         "roll": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
         },
-
-=======
->>>>>>> 47022c1aff475d6a67ae91466b1902d83a67f994
+        
         "set": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Tidal set in m/s"
