@@ -4,11 +4,7 @@
             "belowKeel": {
                 "value": 3.4,
                 "timestamp": "2015-03-06T16:57:53.643+13:00",
-<<<<<<< HEAD
                 "source": { "label": "sources.depth_0183_DBK", "type": "NMEA0183" },
-=======
-                "source": "sources.depth_0183_DBK",
->>>>>>> 08021e333aa061401df6ad024944b20092c48624
                 "_attr": {
                     "_mode": 644,
                     "_owner": "self",
