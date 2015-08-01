@@ -23,6 +23,24 @@ function chaiAsPromised(chai, utils) {
       , 'expected #{this} to not be valid SignalK delta'
       );
   });
+  Assertion.addProperty('validSubscribeMessage', function () {
+    var result = validateWithSchema(msg, 'messages/subscribe');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK subscribe message'
+      );
+  });
+  Assertion.addProperty('validUnsubscribeMessage', function () {
+    var result = validateWithSchema(msg, 'messages/unsubscribe');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK unsubscribe message'
+      );
+  });
 }
 
 function validate(tree) {
@@ -65,6 +83,13 @@ function validateDelta(delta, ignoreContext) {
     delta.context = 'ignored the context, so place a placeholder there';
   }
   var valid = tv4.validateMultiple(delta, deltaSchema, true, true);
+  return valid;
+}
+
+function validateWithSchema(msg, schemaName) { 
+  var tv4 = require('tv4');
+  var schema = require('./schemas/' + schemaName);
+  var valid = tv4.validateResult(msg,schema, true, true);
   return valid;
 }
 

@@ -24,10 +24,6 @@
             "level": {
                 "description": "current tank contents in liters",
                 "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "alarmLevel": {
-                "description": "tank alarm raised at this capacity in liters",
-                "$ref": "../definitions.json#/definitions/numberValue"
             }
         }
     }
