@@ -38,6 +38,16 @@
 			}
 		}
         },
+        "electrical": {
+            "type": "object",
+            "description": "Electrical data",
+            "properties": {
+                "ac": {
+                    "description": "AC electrical data",
+                    "$ref": "groups/electrical_ac.json#"
+                }
+            }
+        },
         "alarms": {
 	    "type":"object",
 	    "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
