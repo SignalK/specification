@@ -19,9 +19,9 @@
                     "warnMethod": "visual",
                     "alarmMethod": "sound",
                     "zones": [
-                        [0.0,1.5,"alarm"],
-                        [1.5,3.0,"warn" ],
-                        [3.0,9999.9,"normal"]
+                        [0.0,1.5,"alarm", "Running aground!"],
+                        [1.5,3.0,"warn" , "Shallow water!"],
+                        [3.0,9999.9,"normal",""]
                     ]
                 }
             }

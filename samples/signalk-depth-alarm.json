@@ -1,0 +1,14 @@
+{
+"alarm":{
+    "environment": {
+	"depth": {
+	    "belowKeel": {
+		"alarmMethod": "sound",
+		"alarmState": "ALARM",
+		"message": "Running aground!"
+		}
+	    }
+	}
+    }
+}
+

@@ -60,10 +60,6 @@
                     "description": "Target heading for autopilot in magnetic degrees",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
-                "alarmHeadingXte": {
-                    "description": "Meters off course before an alarm sounds",
-                    "$ref": "../definitions.json#/definitions/numberValue"
-                },
                 "headingSource": {
                     "type": "string",
                     "description": "Current source of heading information",

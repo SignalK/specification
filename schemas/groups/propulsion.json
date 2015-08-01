@@ -28,48 +28,24 @@
                 "description": "engine rpm",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
-            "rpmAlarm": {
-                "description": "engine rpm alarm (rpm limit)",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
             "engineTemperature": {
                 "description": "engine temperature in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "engineTemperatureAlarm": {
-                "description": "engine temperature alarm in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "oilTemperature": {
                 "description": "oil temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
-            "oilTemperatureAlarm": {
-                "description": "oil temperature alarm in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
             "oilPressure": {
                 "description": "oil pressure in Kpa",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "oilPressureAlarm": {
-                "description": "oil pressure alarm in Kpa",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "waterTemp": {
                 "description": "water temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
-            "waterTempAlarm": {
-                "description": "water temperature alarm in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
             "exhaustTemp": {
                 "description": "",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "exhaustTempAlarm": {
-                "description": "exhaust temperature alarm in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "fuelUsageRate": {
