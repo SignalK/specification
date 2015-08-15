@@ -28,3 +28,10 @@ node_modules
 # FS stuff
 .DS_Store
 thumbs.db
+
+# Everything else that's not required for displaying the schemas
+bin
+samples
+test
+index.js
+package.json
