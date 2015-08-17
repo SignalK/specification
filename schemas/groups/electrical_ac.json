@@ -221,7 +221,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Utility phase A lead/lag status.",
                                     "example": "Leading"
                                 }
@@ -317,7 +322,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Utility phase B lead/lag status.",
                                     "example": "Leading"
                                 }
@@ -413,7 +423,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Utility phase C lead/lag status.",
                                     "example": "Leading"
                                 }
@@ -640,7 +655,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Generator phase A lead/lag status.",
                                     "example": "Leading"
                                 }
@@ -736,7 +756,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Generator phase B lead/lag status.",
                                     "example": "Leading"
                                 }
@@ -832,7 +857,12 @@
                                     "example": 0.97
                                 },
                                 "powerFactorLagging": {
-                                    "enum": ["Leading", "Lagging", "Error", "Not Available"],
+                                    "enum": [
+                                        "leading",
+                                        "lagging",
+                                        "error",
+                                        "not available"
+                                    ],
                                     "description": "Generator phase C lead/lag status.",
                                     "example": "Leading"
                                 }

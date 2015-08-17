@@ -293,16 +293,16 @@
                 "value": {
                     "type": "string",
                     "enum": [
-                        "Under way using engine",
-                        "At anchor",
-                        "Not under command",
-                        "Restricted manoeuverability",
-                        "Constrained by her draught",
-                        "Moored",
-                        "Aground",
-                        "Engaged in Fishing",
-                        "Under way sailing",
-                        "Not defined (example)"
+                        "under way using engine",
+                        "at anchor",
+                        "not under command",
+                        "restricted maneuverability",
+                        "constrained by her draught",
+                        "moored",
+                        "aground",
+                        "engaged in fishing",
+                        "under way sailing",
+                        "not defined (example)"
                     ]
                 }
             }

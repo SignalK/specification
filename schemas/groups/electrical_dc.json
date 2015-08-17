@@ -199,11 +199,11 @@
                     "type": "string",
                     "description": "Operational mode of battery",
                     "enum": [
-                        "chargingBulk",
-                        "chargingAcceptance",
-                        "chargingOvercharge",
-                        "chargingFloat",
-                        "chargingEqualize",
+                        "charging bulk",
+                        "charging acceptance",
+                        "charging overcharge",
+                        "charging float",
+                        "charging equalize",
                         "discharging",
                         "unknown",
                         "other"
