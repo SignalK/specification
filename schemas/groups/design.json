@@ -74,7 +74,18 @@
                 "type": {
                     "type": "string",
                     "description": "The type of keel.",
-                    "enum": [ "long", "micky_mouse", "fin", "flare", "bulb", "wing", "centerboard", "kanting", "lifting", "daggerboard" ]
+                    "enum": [
+                        "long",
+                        "micky_mouse",
+                        "fin",
+                        "flare",
+                        "bulb",
+                        "wing",
+                        "centerboard",
+                        "kanting",
+                        "lifting",
+                        "daggerboard"
+                    ]
                 },
 
                 "angle": {
