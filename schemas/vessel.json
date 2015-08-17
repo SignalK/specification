@@ -6,7 +6,7 @@
     "title": "vessel",
     "properties": {
         "mmsi": {
-            "description": "mmsi number",
+            "description": "MMSI number",
             "$ref": "definitions.json#/definitions/mmsi"
         },
         "name": {
@@ -29,7 +29,7 @@
 	  "type":"object",
 	  "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
 	  "title":"propulsion",
-          "description": "Engine  data",
+          "description": "Engine data",
 	  "required":false,
 	  "patternProperties": {
 		  "(^[A-Za-z0-9]+$)": {
@@ -69,7 +69,7 @@
 	  "type":"object",
 	  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
 	  "title":"tanks",
-	  "description":"tanks on this vessel",
+	  "description":"Tanks on this vessel",
 	  "required":false,
 	  "patternProperties": {
 		  "(^[A-Za-z0-9]+$)": {
