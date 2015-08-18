@@ -13,7 +13,7 @@
         "draft": {
             "type": "object",
             "title": "draft",
-            "description": "The draft of the vessel, in centimeters",
+            "description": "The draft of the vessel, in meters",
             "properties": {
                 "source": {
                     "description": "Source of this data",
@@ -24,11 +24,11 @@
                     "$ref": "../definitions.json#/definitions/timestamp"
                 },
                 "minimum": { 
-                    "description": "The minimum draft of the vessel in centimeters",
+                    "description": "The minimum draft of the vessel in meters",
                     "type": "number"
                 },
                 "maximum": { 
-                    "description": "The maximum draft of the vessel in centimeters",
+                    "description": "The maximum draft of the vessel in meters",
                     "type": "number"
                 },
                 "canoe": { 
@@ -95,7 +95,8 @@
 
                 "lift": {
                   "type": "number",
-                  "description": "A number indicating wether the keel is up or down (in case of a lifting keel, centreboard or daggerboard) where 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down."
+                  "description": "In the case of a lifting keel, centreboard or daggerboard, the percent of the keel which is submerged. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
+                  "example": 0.8
                 },
 
                 "source": {
@@ -122,7 +123,7 @@
         "rigging": {
             "type": "object",
             "title": "rigging",
-            "description": "Information about the vessels' rigging",
+            "description": "Information about the vessel's rigging",
             "properties": {
                 "configuration": {
                     "type": "string",
