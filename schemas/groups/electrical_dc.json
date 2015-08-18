@@ -20,13 +20,13 @@
                     "type": "string",
                     "description": "Installed location of device on vessel"
                 },
-                "manufactureName": {
+                "manufacturerName": {
                     "type": "string",
-                    "description": "Manufactures name"
+                    "description": "Manufacturer's name"
                 },
-                "manufactureModel": {
+                "manufacturerModel": {
                     "type": "string",
-                    "description": "Model or Part number"
+                    "description": "Model or part number"
                 },
                 "dateInstalled": {
                     "type": "string",
@@ -43,12 +43,12 @@
         "dcSource": {
             "type": "object",
             "title": "DC Source",
-            "description": " DC power source common values",
+            "description": "DC power source common values",
             "properties": {
 
                 "associatedBus": {
                     "type": "string",
-                    "description": "Name of BUS source is associated with (if applicable, may = NILL)"
+                    "description": "Name of BUS source is associated with (if applicable, may = NULL)"
                 },
 
                 "voltage": {
@@ -56,7 +56,7 @@
                     "properties": {
                         "measured": {
                             "type": "object",
-                            "description": "Measured voltage of  DC Source terminals",
+                            "description": "Measured voltage of DC Source terminals",
                             "properties": {
                                 "value"    : {"type": "number"},
                                 "source"   : {"type": "string"},
@@ -104,15 +104,15 @@
                         },
                         "warnLower": {
                             "type": "number",
-                            "description": "Lower operational voltage limit"
+                            "description": "Lower operational current limit"
                         },
                         "faultUpper": {
                             "type": "number",
-                            "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+                            "description": "Upper fault limit of battery current - BMS may disconnect battery"
                         },
                         "faultLower": {
                             "type": "number",
-                            "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                            "description": "Lower fault limit of battery current - BMS may disconnect battery"
                         }
                     }
                 },
@@ -154,7 +154,7 @@
         "acSource": {
             "type": "object",
             "title": "AC Source",
-            "description": " AC power source common values",
+            "description": "AC power source common values",
             "properties": {
 
                 "associatedBus": {
@@ -222,11 +222,11 @@
                     "title": "temperature",
                     "description": "Additional / unique temperatures associated with a battery",
                     "properties": {
-                        "limitDischageLower": {
+                        "limitDischargeLower": {
                             "type": "number",
                             "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius"
                         },
-                        "limitDischageUpper": {
+                        "limitDischargeUpper": {
                             "type": "number",
                             "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius"
                         },
@@ -248,30 +248,30 @@
                     "properties": {
                         "nominal": {
                             "type": "number",
-                            "description": "Designed (specified) Watt-hour capacity of battery"
+                            "description": "The watt-hour capacity of battery as specified by the manufacturer"
                         },
                         "actual": {
                             "type": "number",
-                            "description": "Current (actual) Watt-hour capacity of battery"
+                            "description": "The measured watt-hour capacity of battery. This may change over time and will likely deviate from the nominal capacity."
                         },
                         "remaining": {
                             "type": "number",
-                            "description": "Watt-hours remaining in battery (StateOfCharge)"
+                            "description": "Watt-hours remaining in battery"
                         },
                         "dischargeLimit": {
                             "type": "number",
-                            "description": "Minimum number of Watt-hours to be left in the battery while discharging"
+                            "description": "Minimum number of watt-hours to be left in the battery while discharging"
                         }
                     }
                 },
 
                 "lifetimeDischarge": {
                     "type": "number",
-                    "description": "Cumulative KWh discharged from battery over operational lifetime of battery"
+                    "description": "Cumulative kWh discharged from battery over operational lifetime of battery"
                 },
                 "lifetimeRecharge": {
                     "type": "number",
-                    "description": "Cumulative KWh recharged into battery over operational lifetime of battery"
+                    "description": "Cumulative kWh recharged into battery over operational lifetime of battery"
                 }
             }
         },
@@ -281,7 +281,7 @@
         "inverter": {
             "type": "object",
             "title": "Inverter",
-            "description": "DC to AC Inverter, one or many, within the vessel",
+            "description": "DC to AC inverter, one or many, within the vessel",
             "required": ["ID"],
             "properties": {
                 "ID": {"$ref": "#/definitions/identity"},
