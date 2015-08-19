@@ -6,8 +6,12 @@
     "title": "vessel",
     "properties": {
         "mmsi": {
-            "description": "MMSI number",
+            "description": "MMSI number of the vessel, if available.",
             "$ref": "definitions.json#/definitions/mmsi"
+        },
+        "uuid": {
+            "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
+            "$ref": "definitions.json#/definitions/uuid"
         },
         "name": {
             "type": "string",
