@@ -3,13 +3,13 @@
     "$schema": "http://json-schema.org/draft-03/schema",
     "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
     "title": "propulsion",
-    "description": "an engine, named by a unique name within this vessel",
+    "description": "An engine, named by a unique name within this vessel",
         "properties": {
             "engineType": {
                 "type": "string",
                 "description": "The type of engine",
                 "enum": [
-                    "diesil inboard",
+                    "diesel inboard",
                     "petrol inboard",
                     "petrol outboard",
                     "electric"
@@ -25,31 +25,31 @@
                 ]
             },
             "rpm": {
-                "description": "engine rpm",
+                "description": "Engine rpm",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "engineTemperature": {
-                "description": "engine temperature in degrees C",
+                "description": "Engine temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "oilTemperature": {
-                "description": "oil temperature in degrees C",
+                "description": "Oil temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "oilPressure": {
-                "description": "oil pressure in Kpa",
+                "description": "Oil pressure in kPa",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "waterTemp": {
-                "description": "water temperature in degrees C",
+                "description": "Water temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "exhaustTemp": {
-                "description": "",
+                "description": "Exhaust temperature in degrees C",
                 "$ref": "../definitions.json#/definitions/numberValue"
             },
             "fuelUsageRate": {
-                "description": "fuel usage in liters/hour",
+                "description": "Fuel usage in liters/hour",
                 "$ref": "../definitions.json#/definitions/numberValue"
             }
         }
