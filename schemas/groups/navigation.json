@@ -78,7 +78,7 @@
                         },
                         "xte": {
                             "type": "number",
-                            "description": "Cross track error in METERS"
+                            "description": "Cross track error in meters"
                         }
                     }
                 }
@@ -106,15 +106,17 @@
                 },
                 "longitude": {
                     "type": "number",
-                    "description": "In decimal notation (4.98765245)"
+                    "description": "Longitude of the destination in decimal degrees",
+                    "example": 4.98765245
                 },
                 "latitude": {
                     "type": "number",
-                    "description": "In decimal notation (52.0987654)"
+                    "description": "Latitude of the destination in decimal degrees",
+                    "example": 52.0987654
                 },
                 "altitude": {
                     "type": "number",
-                    "description": "METERS"
+                    "description": "Altitude of the destination in meters"
                 }
             }
         },
@@ -165,7 +167,7 @@
                 },
                 "antennaAltitude": {
                     "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Altitude of antenna"
+                    "description": "Altitude of antenna in meters"
                 },
                 "horizontalDilution": {
                     "$ref": "../definitions.json#/definitions/numberValue",
@@ -208,15 +210,17 @@
                 },
                 "longitude": {
                     "type": "number",
-                    "description": "In decimal notation (4.98765245)"
+                    "description": "Longitude of boat in decimal degrees",
+                    "example": 4.98765245
                 },
                 "latitude": {
                     "type": "number",
-                    "description": "In decimal notation (52.0987654)"
+                    "description": "Latitude of boat in decimal degrees",
+                    "example": 52.0987654
                 },
                 "altitude": {
                     "type": "number",
-                    "description": "METERS"
+                    "description": "Altitude of boat in meters"
                 }
             }
         },
@@ -343,15 +347,17 @@
                         },
                         "longitude": {
                             "type": "number",
-                            "description": "In decimal notation (4.98765245)"
+                            "description": "Longitude of the anchor in decimal degrees",
+                            "example": 4.98765245
                         },
                         "latitude": {
                             "type": "number",
-                            "description": "In decimal notation (52.0987654)"
+                            "description": "Latitude of the anchor in decimal degrees",
+                            "example": 52.0987654
                         },
                         "altitude": {
                             "type": "number",
-                            "description": "METERS"
+                            "description": "Altitude of the anchor in meters"
                         }
                     }
                 }
