@@ -16,27 +16,27 @@
 		    "properties": {
 			"name": {
 			    "type": "string",
-			    "description": "chart common name"
+			    "description": "Chart common name"
 			},
 			"identifier": {
 			    "type": "string",
-			    "description": "chart number"
+			    "description": "Chart number"
 			},
 			"description": {
 			    "type": "string",
-			    "description": "a description of the chart"
+			    "description": "A description of the chart"
 			},
 			"tilemapUrl": {
 			    "type": "string",
-			    "description": "a url to the tilemap of the chart for use in TMS chartplotting apps"
+			    "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
 			},
 			"chartUrl": {
 			    "type": "string",
-			    "description": "a url to the chart files storage location"
+			    "description": "A url to the chart file's storage location"
 			},
 			"chartFormat": {
 			    "type": "string",
-			    "description": "the format of the chart",
+			    "description": "The format of the chart",
 			    "enum": [
 				"gif",
 				"geotiff",
@@ -73,7 +73,7 @@
 		  "properties": {
 		      "name": {
 			  "type": "string",
-			  "description": "Routes common name"
+			  "description": "Route's common name"
 		      },
 		      "description": {
 			  "type": "string",
@@ -87,7 +87,7 @@
 			  "type": "array",
 			  "items": {
 			      "type": "string",
-			      "description": "Pointers to waypoint uuid"
+			      "description": "Pointers to waypoint UUIDs"
 			  }
 		      },
 		      "timestamp": {
@@ -114,7 +114,7 @@
 		  "properties": {
 		      "title": {
 			  "type": "string",
-			  "description": "area common name"
+			  "description": "Note's common name"
 		      },
 		      "description": {
 			  "type": "string",
@@ -122,7 +122,7 @@
 		      },
 		      "region": {
 			  "type": "string",
-			  "description": "Pointer to region uuid"
+			  "description": "Pointer to region UUID"
 		      },
 		      "mimeType": {
 			  "type": "string",
@@ -130,7 +130,7 @@
 		      },
 		      "url": {
 			  "type": "string",
-			  "description": "location of the note"
+			  "description": "Location of the note"
 		      },
 		      "timestamp": {
 			  "description": "timestamp of the last update to this data",
@@ -155,7 +155,7 @@
 		  "properties": {
 		      "name": {
 			  "type": "string",
-			  "description": "area common name"
+			  "description": "Region's common name"
 		      },
 		      "description": {
 			  "type": "string",
@@ -166,7 +166,7 @@
 			  "description": "The set of waypoints that define the edges of the region",
 			  "items": {
 			      "type": "string",
-			      "description": "Pointer to waypoint uuid"
+			      "description": "Pointer to waypoint UUID"
 			  }
 		      },
 		      "timestamp": {
@@ -193,7 +193,7 @@
 		  "properties": {
 		      "name": {
 			  "type": "string",
-			  "description": "waypoint common name"
+			  "description": "Waypoint's common name"
 		      },
 		      "position": {
 			  "type": "object",
@@ -217,7 +217,7 @@
 			      },
 			      "altitude": {
 				  "type": "number",
-				  "description": "METERS"
+				  "description": "In meters"
 			      }
 			  }
 		      },
