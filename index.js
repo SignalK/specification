@@ -100,6 +100,13 @@ function validateWithSchema(msg, schemaName) {
 }
 
 module.exports.validateFull = validateFull;
+module.exports.validateVessel = function(vesselData) {
+  return validateFull({
+      'vessels': {
+        '230099999': vesselData
+      }
+    });
+}
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
