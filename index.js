@@ -3,8 +3,8 @@ function chaiAsPromised(chai, utils) {
 
   var Assertion = chai.Assertion
 
-  Assertion.addProperty('validSignalK', function () {    
-    var result = validate(this._obj);
+  function checkValidFullSignalK () { 
+    var result = validateFull(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
     this.assert(
@@ -12,7 +12,17 @@ function chaiAsPromised(chai, utils) {
       , message
       , 'expected #{this} to not be valid SignalK'
       );
-  });  
+  }
+  Assertion.addProperty('validSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validSignalKVessel', function() {
+    this._obj = {
+      'vessels': {
+        '230099999': this._obj
+      }
+    }
+    checkValidFullSignalK.call(this);
+  });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
@@ -43,7 +53,7 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
-function validate(tree) {
+function validateFull(tree) {
   var tv4 = require('tv4');
   var signalkSchema = require('./schemas/signalk.json');
   var vesselSchema = require('./schemas/vessel.json');
@@ -64,12 +74,8 @@ function validate(tree) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
 
-  var validTree = {
-    vessels: {
-      '230099999': tree
-    }
-  }
-  var valid = tv4.validateMultiple(validTree, signalkSchema, true, true);
+//  console.log(JSON.stringify(tree, null, 2))
+  var valid = tv4.validateMultiple(tree, signalkSchema, true, true);
   return valid;
 }
 
@@ -93,7 +99,7 @@ function validateWithSchema(msg, schemaName) {
   return valid;
 }
 
-module.exports.validate = validate;
+module.exports.validateFull = validateFull;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
