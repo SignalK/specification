@@ -74,7 +74,6 @@ function validateFull(tree) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
 
-//  console.log(JSON.stringify(tree, null, 2))
   var valid = tv4.validateMultiple(tree, signalkSchema, true, true);
   return valid;
 }
