@@ -141,7 +141,7 @@
                 "timestamp": {
                     "description": "timestamp of the last update to this data",
                     "$ref": "../definitions.json#/definitions/timestamp"
-                },
+                }
             }
         }
     }
