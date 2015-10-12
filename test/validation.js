@@ -12,7 +12,7 @@ describe('Delta validation', function() {
         "source": {
           "label": "",
           "type": "NMEA2000",
-          "pgn": "127251",
+          "pgn": 127251,
           "src": "204"
         },
         "timestamp": "2013-10-08T15:47:28.263Z",
@@ -33,7 +33,7 @@ describe('Delta validation', function() {
         "source": {
           "label": "",
           "type": "NMEA2000",
-          "pgn": "129025",
+          "pgn": 129025,
           "src": "160"
         },
         "values": [{
