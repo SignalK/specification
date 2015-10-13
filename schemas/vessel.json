@@ -4,14 +4,37 @@
     "id": "https://signalk.github.io/specification/schemas/vessel.json#",
     "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
     "title": "vessel",
+    "anyOf": [
+        {"required": ["mmsi"]},
+        {"required": ["uuid"]}
+      ],
     "properties": {
         "mmsi": {
             "description": "MMSI number of the vessel, if available.",
             "$ref": "definitions.json#/definitions/mmsi"
         },
         "uuid": {
-            "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
-            "$ref": "definitions.json#/definitions/uuid"
+            "type": "object",
+            "title": "Uuid",
+            "description": "Uuid identifier",
+            "required": ["value", "checksum"],
+            "properties": {
+              "value": {
+                  "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+                  "minLength": 36,
+                  "maxLength": 36,
+                  "example": "de305d54-75b4-431b-adb2-eb6b9e546014"
+              },
+              "checksum": {
+                  "description": "CRC-32 checksum of the uuid value in canonical format",
+                  "type": "string",
+                  "minLength": 8,
+                  "maxLength": 8,
+                  "example": "74a93ec0"
+              }
+            }
         },
         "name": {
             "type": "string",
