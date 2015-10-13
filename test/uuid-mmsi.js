@@ -20,14 +20,14 @@ describe('No id', function() {
 describe('MMSI id', function() {
   it('just mmsi validates', function() {
     var msg = {
-      "mmsi": "123456789"
+      "mmsi": "230099999"
     }
     msg.should.be.validSignalKVessel;
   });
 
   it('validates with uuid', function() {
     var msg = _.clone(validVessel);
-    msg.mmsi = "123456789";
+    msg.mmsi = "230099999";
     msg.should.be.validSignalKVessel;
   });
 });
