@@ -75,6 +75,10 @@ function validateFull(tree) {
   }
 
   var valid = tv4.validateMultiple(tree, signalkSchema, true, true);
+  var result = tv4.validateResult(tree, signalkSchema, true, true);
+  //Hack: validateMultiple marks anyOf last match incorrectly as not valid with banUnknownProperties
+  //https://github.com/geraintluff/tv4/issues/128
+  valid.valid = result.valid;
   return valid;
 }
 
