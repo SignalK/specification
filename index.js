@@ -19,7 +19,7 @@ function chaiAsPromised(chai, utils) {
     var vessel = this._obj;
     this._obj = {
       'vessels': {
-        '230099999': this._obj
+        'mmsi:230099999': this._obj
       }
     }
     checkValidFullSignalK.call(this);
@@ -138,7 +138,7 @@ module.exports.validateFull = validateFull;
 module.exports.validateVessel = function(vesselData) {
   return validateFull({
       'vessels': {
-        '230099999': vesselData
+        'mmsi:230099999': vesselData
       }
     });
 }
