@@ -23,9 +23,12 @@
   "bugs": {
     "url": "https://github.com/SignalK/specification/issues"
   },
+  "bin": {
+    "signalk-validate-full": "bin/validate.js"
+  },
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
-    "JSONStream": "0.7",
+    "JSONStream": "^0.7.4",
     "chai": "1.9",
     "mocha": "^2.1.0",
     "tv4": "latest"
