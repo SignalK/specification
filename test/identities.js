@@ -3,6 +3,13 @@ chai.Should();
 chai.use(require('../index.js').chaiModule);
 var _ = require('lodash')
 
+describe('Identies in the full tree', function() {
+  it("Different identities validate", function() {
+    require('./data/identities.json').should.be.validSignalK;
+  });
+});
+
+
 var validVessel ={
   "uuid": {
     "value" : "de305d54-75b4-431b-adb2-eb6b9e546014",

@@ -6,9 +6,14 @@
     "title": "vessel",
     "anyOf": [
         {"required": ["mmsi"]},
+        {"required": ["href"]},
         {"required": ["uuid"]}
-      ],
+      ],    
     "properties": {
+        "href": {
+            "description": "Url based identity href of the vessel, if available",
+            "type": "string"
+        },
         "mmsi": {
             "description": "MMSI number of the vessel, if available.",
             "$ref": "definitions.json#/definitions/mmsi"
