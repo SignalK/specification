@@ -4,11 +4,18 @@ chai.use(require('../index.js').chaiModule);
 var _ = require('lodash')
 
 describe('Identies in the full tree', function() {
-  it("Different identities validate", function() {
+  it("Different identities are valid", function() {
     require('./data/identities.json').should.be.validSignalK;
   });
 });
 
+describe('Context in delta', function() {
+  it("Different contexts in delta are valid", function() {
+    require('./data/identities-delta.json').forEach(function(delta) {
+      delta.should.be.validSignalKDelta
+    });
+  });
+});
 
 var validVessel ={
   "uuid": {
@@ -91,6 +98,7 @@ describe('UUID:', function() {
     assertInvalidSignalKVessel(msg);
   });
 });
+
 
 function assertInvalidSignalKVessel(msg) {
   var result;
