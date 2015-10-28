@@ -11,7 +11,7 @@ describe('Tree validation', function() {
   it('mmsi: vessel property', function() {
     var msg = {
       vessels: {
-        "mmsi:230099999": {
+        "urn:mmsi:230099999": {
           "mmsi": "230099999"
         }
       }
@@ -22,7 +22,7 @@ describe('Tree validation', function() {
   it('signalk: vessel property', function() {
     var msg = {
       vessels: {
-        "uuid:de305d54-75b4-431b-adb2-eb6b9e546014": {
+        "urn:uuid:de305d54-75b4-431b-adb2-eb6b9e546014": {
           "uuid": {
             "value" : "de305d54-75b4-431b-adb2-eb6b9e546014",
             "checksum": "74a93ec0"
@@ -31,7 +31,7 @@ describe('Tree validation', function() {
       }
     }
     msg.should.be.validSignalK;
-    msg.vessels["uuid:de305d54-75b4-431b-adb2-eb6b9e546014"].mmsi = "230099999";
+    msg.vessels["urn:uuid:de305d54-75b4-431b-adb2-eb6b9e546014"].mmsi = "230099999";
     msg.should.be.validSignalK;
   });
 

@@ -15,7 +15,7 @@
             "required": true,
             "description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
             "patternProperties": {
-                "(^mmsi:[2-7][0-9]{8,8}$|^uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$)|^href:.*$": {
+                "(^urn:mmsi:[2-7][0-9]{8,8}$|^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$)|^(https*|mailto):.*$": {
                     "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the vessel",
                     "$ref": "vessel.json#" }
             }

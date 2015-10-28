@@ -6,11 +6,11 @@
     "title": "vessel",
     "anyOf": [
         {"required": ["mmsi"]},
-        {"required": ["href"]},
+        {"required": ["url"]},
         {"required": ["uuid"]}
       ],    
     "properties": {
-        "href": {
+        "url": {
             "description": "Url based identity href of the vessel, if available",
             "type": "string"
         },

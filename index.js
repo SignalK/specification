@@ -19,7 +19,7 @@ function chaiAsPromised(chai, utils) {
     var vessel = this._obj;
     this._obj = {
       'vessels': {
-        'mmsi:230099999': this._obj
+        'urn:mmsi:230099999': this._obj
       }
     }
     checkValidFullSignalK.call(this);
