@@ -6,6 +6,7 @@ chai.use(require('../index.js').chaiModule);
 
 describe('Delta validation', function() {
   it('Simple path with value is valid and not when modified', function() {
+    //msg with both N2K and NMEA0183 source information, schema not clever enough for this
     var msg = {
       context: 'bar',
       updates: [{
@@ -13,7 +14,9 @@ describe('Delta validation', function() {
           "label": "",
           "type": "NMEA2000",
           "pgn": 127251,
-          "src": "204"
+          "src": "204",
+          "sentence": "GLL",
+          "talker": "II"
         },
         "timestamp": "2013-10-08T15:47:28.263Z",
         "values": [{
