@@ -92,8 +92,12 @@
                     "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
-                "angleTrue": {
-                    "description": "'True' wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
+                "angleTrueGround": {
+                    "description": "'True' wind angle based on Speed Over Ground (SOG), -180 to +180 degrees from the bow. Negative numbers to port.",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "angleTrueWater": {
+                    "description": "'True' wind angle based on Speed Through Water (STW), -180 to +180 degrees from the bow. Negative numbers to port.",
                     "$ref": "../definitions.json#/definitions/numberValue"
                 },
                 "directionChangeAlarm": {
