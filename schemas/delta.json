@@ -7,8 +7,7 @@
     "properties": {
         "context": {
             "type": "string",
-            "description": "The context path of the updates, eg. the path from the root of the SignalK data model where the paths in the updates section start.",
-            "required": true
+            "description": "The context path of the updates, eg. the top level path plus object identifier."
         },
         "updates": {
             "type": "array",
@@ -32,7 +31,15 @@
                                     "required": true
                                 },
                                 "value": {
-                                    "required": true
+                                    "type": [
+                                      "string",
+                                      "number",
+                                      "object",
+                                      "boolean",
+                                      "null"
+                                    ],
+                                    "required": true,
+                                    "additionalProperties": true
                                 }
                             }
                         }

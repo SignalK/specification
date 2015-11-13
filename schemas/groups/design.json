@@ -1,49 +1,148 @@
 {
     "type": "object",
     "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/sensors.json#",
+    "id": "https://signalk.github.io/specification/schemas/groups/design.json#",
     "description": "An object describing the vessels primary dimensions and statistics.",
     "title": "design",
     "properties": {
-        "name": {
-            "type": "string",
-            "description": "The common name of the sensor"
-        },
         "displacement": {
-            "type": "string",
-            "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "description": "The displacement of the vessel, measured in kilogram"
         },
+        
         "draft": {
-            "type": "string",
-            "description": "From waterline to bottom of keel in meters"
+            "type": "object",
+            "title": "draft",
+            "description": "The draft of the vessel, in meters",
+            "properties": {
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "minimum": { 
+                    "description": "The minimum draft of the vessel in meters",
+                    "type": "number"
+                },
+                "maximum": { 
+                    "description": "The maximum draft of the vessel in meters",
+                    "type": "number"
+                },
+                "canoe": { 
+                    "description": "The draft of the vessel without it's keel/centerboard",
+                    "type": "number"
+                }
+            }
         },
-        "canoeDraft": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "From waterline to bottom of canoe hull in meters, eg without keel"
+
+        "length": {
+            "type": "object",
+            "title": "length",
+            "description": "The various lengths of the vessel",
+            "properties": {
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "overall": {
+                    "type": "number",
+                    "description": "Length overall in meters"
+                },
+                "hull": {
+                    "type": "number",
+                    "description": "Length of hull in meters"
+                },
+                "waterline": {
+                    "type": "number",
+                    "description": "Length at waterline in meters"
+                }
+            }
         },
-        "loa": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length over all in meters (includes spars, bow pulpits etc.)"
+
+        "keel": {
+            "type": "object",
+            "title": "keel",
+            "description": "Information about the vessel's keel",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of keel.",
+                    "enum": [
+                        "long",
+                        "micky_mouse",
+                        "fin",
+                        "flare",
+                        "bulb",
+                        "wing",
+                        "centerboard",
+                        "kanting",
+                        "lifting",
+                        "daggerboard"
+                    ]
+                },
+
+                "angle": {
+                    "type": "number",
+                    "description": "A number indicating at which angle the keel currently is (in case of a canting keel)."
+                },
+
+                "lift": {
+                  "type": "number",
+                  "description": "In the case of a lifting keel, centreboard or daggerboard, the percent of the keel which is submerged. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
+                  "example": 0.8
+                },
+
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                },
+            }
         },
-        "loh": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length over the hull in meters  (not including spars, bow pulpits etc.)"
-        },
-        "lwl": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Length of waterline in meters "
-        },
+
         "beam": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Hull beam in meters"
+            "description": "Beam length in meters"
         },
-        "sailArea": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Sail area in square meters (total sail area which includes all the fore-triangle, the main, and other normal sails present {like half the area of mizzens on ketches and yawls and all the foresail area on schooners}.  It does not include stay sails nor does it include spinnakers and jibs in the fore triangle.)"
-        },
+
         "airHeight": {
             "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Total height of the vessel in meters "
+            "description": "Total height of the vessel in meters"
+        },
+
+        "rigging": {
+            "type": "object",
+            "title": "rigging",
+            "description": "Information about the vessel's rigging",
+            "properties": {
+                "configuration": {
+                    "type": "string",
+                    "description": "The configuration of the rigging. Example: 'sloop' or 'gaff cutter'"
+                },
+                "masts": {
+                    "type": "number",
+                    "description": "The number of masts on the vessel."
+                },
+
+                "source": {
+                    "description": "Source of this data",
+                    "$ref": "../definitions.json#/definitions/source"
+                },
+                "timestamp": {
+                    "description": "timestamp of the last update to this data",
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                }
+            }
         }
     }
 }
