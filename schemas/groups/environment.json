@@ -7,16 +7,22 @@
   "properties": {
     "airPressureChangeRateAlarm": {
       "description": "Change per hour which will cause an alarm in kPa",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Kilo Pascal (kPa)"
     },
+
     "airPressure": {
       "description": "Current air pressure in kPa",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Kilo Pascal (kPa)"
     },
+    
     "airTemp": {
-      "description": "Current air temperature in degrees Centigrade",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Current air temperature in degrees Celsius",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+    
     "depth": {
       "title": "depth",
       "type": "object",
@@ -24,58 +30,84 @@
       "properties": {
         "belowKeel": {
           "description": "Depth below keel in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+
         "belowTransducer": {
           "description": "Depth below Transducer in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+        
         "belowSurface": {
           "description": "Depth from surface in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+        
         "transducerToKeel": {
           "description": "Depth in meters from the transducer to the bottom of the keel.",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+        
         "surfaceToTransducer": {
           "description": "Depth transducer is below the water in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         }
       }
     },
+
     "humidity": {
       "description": "Current relative humidity as percentage",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percentage (%)"
     },
+    
     "salinity": {
-      "description": "Water salinity",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Water salinity, measured in parts per thousand",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Parts per thousand (‰)"
     },
+    
     "current": {
       "type": "object",
       "title": "current",
       "description": "Direction and strength of current affecting the vessel",
       "properties": {
-        "timestamp": {"$ref": "../defintions.json#/definitions/timestamp"},
-        "source": {"$ref": "../definitions.json#/definitions/source"},
+        "timestamp": {
+          "$ref": "../defintions.json#/definitions/timestamp"
+        },
+        
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        
         "drift": {
           "type": "number",
           "description": "The speed component of the water current vector in m/s",
-          "example": 3.12
+          "example": 3.12,
+          "units": "Meters per second (m/s)"
         },
+
         "setTrue": {
           "type": "number",
           "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
-          "example": 123.45
+          "example": 123.45,
+          "units": "Arc degrees (°), true"
         },
+
         "setMagnetic": {
           "type": "number",
           "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
-          "example": 131.22
+          "example": 131.22,
+          "units": "Arc degrees (°), magnetic"
         }
       }
     },
+
     "tide": {
       "type": "object",
       "title": "tide",
@@ -83,30 +115,40 @@
       "properties": {
         "heightHigh": {
           "description": "Next high tide in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+
         "heightNow": {
           "description": "The current tide height in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+        
         "heightLow": {
           "description": "The next low tide height in meters",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters (m)"
         },
+        
         "timeLow": {
           "description": "Time of the next low tide in UTC",
-          "$ref": "../definitions.json#/definitions/stringValue"
+          "$ref": "../definitions.json#/definitions/timestamp"
         },
+        
         "timeHigh": {
           "description": "Time of next high tide in UTC",
-          "$ref": "../definitions.json#/definitions/stringValue"
+          "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
     },
+
     "waterTemp": {
-      "description": "Current water temperature in degrees Centigrade",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Current water temperature in degrees Celcius",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+    
     "wind": {
       "type": "object",
       "title": "wind",
@@ -114,46 +156,64 @@
       "properties": {
         "angleApparent": {
           "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+
         "angleTrueGround": {
           "description": "'True' wind angle based on Speed Over Ground (SOG), -180 to +180 degrees from the bow. Negative numbers to port.",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+        
         "angleTrueWater": {
           "description": "'True' wind angle based on Speed Through Water (STW), -180 to +180 degrees from the bow. Negative numbers to port.",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+        
         "directionChangeAlarm": {
           "description": "The number of degrees the wind needs to shift to raise an alarm",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+        
         "directionTrue": {
           "description": "The wind direction relative to true north, in compass degrees, 0 = North",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+        
         "directionMagnetic": {
           "description": "The wind direction relative to magnetic north, in compass degrees, 0 = North",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Arc degrees (°)"
         },
+        
         "speedAlarm": {
           "description": "The speed in m/s above which a wind alarm will be raised",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters per second (m/s)"
         },
+        
         "speedTrue": {
           "description": "Wind speed over water in m/s (as calculated from speedApparent and vessel's speed through water)",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters per second (m/s)"
         },
+        
         "speedOverGround": {
           "description": "Wind speed over ground in m/s (as calculated from speedApparent and vessel's speed over ground)",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters per second (m/s)"
         },
+        
         "speedApparent": {
           "description": "Apparent wind speed in m/s",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Meters per second (m/s)"
         }
       }
     }
-
   }
 }

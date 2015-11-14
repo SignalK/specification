@@ -7,7 +7,8 @@
   "properties": {
     "displacement": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The displacement of the vessel, measured in kilogram"
+      "description": "The displacement of the vessel, measured in kilogram",
+      "units": "Kilogram (kg)"
     },
     
     "draft": {
@@ -27,17 +28,20 @@
         
         "minimum": { 
           "description": "The minimum draft of the vessel in meters",
-          "type": "number"
+          "type": "number",
+          "units": "Meters (m)"
         },
         
         "maximum": { 
           "description": "The maximum draft of the vessel in meters",
-          "type": "number"
+          "type": "number",
+          "units": "Meters (m)"
         },
         
         "canoe": { 
           "description": "The draft of the vessel without it's keel/centerboard",
-          "type": "number"
+          "type": "number",
+          "units": "Meters (m)"
         }
       }
     },
@@ -59,17 +63,20 @@
         
         "overall": {
           "type": "number",
-          "description": "Length overall in meters"
+          "description": "Length overall in meters",
+          "units": "Meters (m)"
         },
         
         "hull": {
           "type": "number",
-          "description": "Length of hull in meters"
+          "description": "Length of hull in meters",
+          "units": "Meters (m)"
         },
         
         "waterline": {
           "type": "number",
-          "description": "Length at waterline in meters"
+          "description": "Length at waterline in meters",
+          "units": "Meters (m)"
         }
       }
     },
@@ -98,7 +105,8 @@
 
         "angle": {
           "type": "number",
-          "description": "A number indicating at which angle the keel currently is (in case of a canting keel)."
+          "description": "A number indicating at which angle the keel currently is (in case of a canting keel).",
+          "units": "Arc degrees (°)"
         },
 
         "lift": {
@@ -121,12 +129,14 @@
 
     "beam": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Beam length in meters"
+      "description": "Beam length in meters",
+      "units": "Meters (m)"
     },
 
     "airHeight": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Total height of the vessel in meters"
+      "description": "Total height of the vessel in meters",
+      "units": "Meters (m)"
     },
 
     "rigging": {

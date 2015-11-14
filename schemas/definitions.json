@@ -46,6 +46,30 @@
       "example": "1.0"
     },
 
+    "units": {
+      "type": "string",
+      "description": "",
+      "enum": [
+        "Liters (l)",
+        "Arc degrees (°)",
+        "Arc degrees per second (°/s)",
+        "Amperage (A)",
+        "Amperage per hour (Ah)",
+        "Voltage (V)",
+        "Wattage (W)",
+        "Wattage per hour (Wh)",
+        "Resistance, Ohm (Ω)",
+        "Square meters (m2)",
+        "Meters (m)",
+        "Degree Celcius (°C)",
+        "Pascal (Pa)",
+        "Kilo Pascal (kPa)",
+        "Liters per hour (L/h)",
+        "Percentage (%)",
+        "Meters per second (m/s)"
+      ]
+    },
+
     "mmsi": {
       "type": "string",
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
@@ -103,23 +127,25 @@
         "area": {
           "type": "number",
           "required": true,
-          "description": "The total area of this sail in square meters (m2)"
+          "description": "The total area of this sail in square meters",
+          "units": "Square meters (m2)"
         },
 
         "minimumWind": {
           "type": "number",
           "description": "The minimum wind speed this sail can be used with, measured in m/s",
+          "units": "Meters per second (m/s)",
           "default": 0
         },
 
         "maximumWind": {
           "type": "number",
           "description": "The maximum wind speed this sail can be used with, measured in m/s",
+          "units": "Meters per second (m/s)",
           "default": 666
         },
 
         "timestamp": {
-          "description": "timestamp of the last update to this data",
           "$ref": "#/definitions/timestamp"
         },
 
@@ -146,7 +172,6 @@
         },
         
         "timestamp": {
-          "description": "timestamp of the last update to this data",
           "$ref": "#/definitions/timestamp"
         },
     
@@ -173,7 +198,6 @@
         },
 
         "timestamp": {
-          "description": "timestamp of the last update to this data",
           "$ref": "#/definitions/timestamp"
         },
   
@@ -200,12 +224,10 @@
         },
   
         "timestamp": {
-          "description": "timestamp of the last update to this data",
           "$ref": "#/definitions/timestamp"
         },
   
         "source": {
-          "description": "Source of this data",
           "$ref": "#/definitions/source"
         },
 
@@ -228,12 +250,10 @@
         },
   
         "timestamp": {
-          "description": "timestamp of the last update to this data",
           "$ref": "#/definitions/timestamp"
         },
   
         "source": {
-          "description": "Source of this data",
           "$ref": "#/definitions/source"
         },
 
@@ -250,7 +270,7 @@
     "_attr": {
       "type": "object",
       "title": "_attr schema.",
-      "description": "Filesystem specific data, eg security, possibly more later.",
+      "description": "Filesystem specific data, e.g. security, possibly more later.",
       "properties": {
         "_mode": {
           "type": "integer",
@@ -308,9 +328,9 @@
           "example": "sparkline"
         },
   
-        "unit": {
+        "units": {
           "type": "string",
-          "title": "unit schema.",
+          "title": "units schema.",
           "description": "The SI unit of this value.",
           "example": "m/s"
         },

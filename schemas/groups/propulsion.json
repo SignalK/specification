@@ -6,51 +6,98 @@
   "description": "An engine, named by a unique name within this vessel",
   "properties": {
     "engineType": {
-      "type": "string",
+      "type": "object",
       "description": "The type of engine",
-      "enum": [
-        "diesel inboard",
-        "petrol inboard",
-        "petrol outboard",
-        "electric"
-      ]
+      "properties": { 
+        "value": {
+          "type": "string",
+          "enum": [
+            "diesel inboard",
+            "diesel outboard",
+            "petrol inboard",
+            "petrol outboard",
+            "electric inboard",
+            "electric outboard"
+          ]
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
     },
+
     "state": {
-      "type": "string",
+      "type": "object",
       "description": "The current state of the engine",
-      "enum": [
-        "stopped",
-        "started",
-        "unusable"
-      ]
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "stopped",
+            "started",
+            "unusable"
+          ]
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
     },
+
     "rpm": {
       "description": "Engine rpm",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Revolutions per minute (RPM)"
     },
+
     "engineTemperature": {
       "description": "Engine temperature in degrees C",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+
     "oilTemperature": {
       "description": "Oil temperature in degrees C",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+
     "oilPressure": {
       "description": "Oil pressure in kPa",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Kilo Pascal (kPa)"
     },
+
     "waterTemp": {
       "description": "Water temperature in degrees C",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+
     "exhaustTemp": {
       "description": "Exhaust temperature in degrees C",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Degree Celcius (°C)"
     },
+
     "fuelUsageRate": {
       "description": "Fuel usage in liters/hour",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Liters per hour (L/h)"
     }
   }
 }
