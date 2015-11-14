@@ -1,0 +1,16 @@
+{
+  "vessels": {
+    "urn:uuid:de305d54-75b4-431b-adb2-eb6b9e546014": {
+      "uuid": {
+        "value": "de305d54-75b4-431b-adb2-eb6b9e546014",
+        "checksum": "74a93ec0"
+      }
+    },
+    "urn:mmsi:230099999": {
+      "mmsi": "230099999"
+    },
+    "https://vessels.signalk.org/someboatidentity": {
+      "url": "https://vessels.signalk.org/someboatidentity"
+    }
+  }
+}

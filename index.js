@@ -16,12 +16,21 @@ function chaiAsPromised(chai, utils) {
   Assertion.addProperty('validSignalK', checkValidFullSignalK);
   Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
   Assertion.addProperty('validSignalKVessel', function() {
+    var vessel = this._obj;
     this._obj = {
       'vessels': {
-        '230099999': this._obj
+        'urn:mmsi:230099999': this._obj
       }
     }
     checkValidFullSignalK.call(this);
+    if (vessel.uuid) {
+      var crc = crc32(vessel.uuid.value).toString(16);
+      this.assert(
+         crc === vessel.uuid.checksum,
+         "Uuid checksum error: crc32(" + vessel.uuid.value + ") != " +  vessel.uuid.checksum,
+         "Expected uuid checksum to fail"
+      );
+    }
   });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
@@ -75,6 +84,10 @@ function validateFull(tree) {
   }
 
   var valid = tv4.validateMultiple(tree, signalkSchema, true, true);
+  var result = tv4.validateResult(tree, signalkSchema, true, true);
+  //Hack: validateMultiple marks anyOf last match incorrectly as not valid with banUnknownProperties
+  //https://github.com/geraintluff/tv4/issues/128
+  valid.valid = result.valid;
   return valid;
 }
 
@@ -97,12 +110,35 @@ function validateWithSchema(msg, schemaName) {
   var valid = tv4.validateResult(msg,schema, true, true);
   return valid;
 }
+var crcTable = function(){
+    var c;
+    var crcTable = [];
+    for(var n =0; n < 256; n++){
+        c = n;
+        for(var k =0; k < 8; k++){
+            c = ((c&1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1));
+        }
+        crcTable[n] = c;
+    }
+    return crcTable;
+}()
+
+function crc32 (str){
+    var crc = 0 ^ (-1);
+
+    for (var i = 0; i < str.length; i++ ) {
+        crc = (crc >>> 8) ^ crcTable[(crc ^ str.charCodeAt(i)) & 0xFF];
+    }
+
+    return (crc ^ (-1)) >>> 0;
+};
+
 
 module.exports.validateFull = validateFull;
 module.exports.validateVessel = function(vesselData) {
   return validateFull({
       'vessels': {
-        '230099999': vesselData
+        'mmsi:230099999': vesselData
       }
     });
 }
