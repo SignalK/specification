@@ -1,333 +1,333 @@
 {
-    "type": "object",
-    "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
-    "description": "Schema describing the navigation child-object of a Vessel.",
-    "title": "navigation",
-    "properties": {
-        "courseOverGroundMagnetic": {
-            "description": "",
-            "$ref": "../definitions.json#/definitions/numberValue"
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
+  "description": "Schema describing the navigation child-object of a Vessel.",
+  "title": "navigation",
+  "properties": {
+    "courseOverGroundMagnetic": {
+      "description": "",
+      "$ref": "../definitions.json#/definitions/numberValue"
+    },
+    "courseOverGroundTrue": {
+      "description": "",
+      "$ref": "../definitions.json#/definitions/numberValue"
+    },
+    "activeRoute": {
+      "type": "object",
+      "title": "Active Route",
+      "description": "The currently active route",
+      "properties": {
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Time of last update to active route"
         },
-        "courseOverGroundTrue": {
-            "description": "",
-            "$ref": "../definitions.json#/definitions/numberValue"
+        "source": {
+          "$ref": "../definitions.json#/definitions/source",
+          "description": "Source of last update to active route"
         },
-        "activeRoute": {
-            "type": "object",
-            "title": "Active Route",
-            "description": "The currently active route",
-            "properties": {
-                "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp",
-                    "description": "Time of last update to active route"
-                },
-                "source": {
-                    "$ref": "../definitions.json#/definitions/source",
-                    "description": "Source of last update to active route"
-                },
-                "bearingActual": {
-                    "type": "number",
-                    "description": "The current bearing of the next waypoint in degrees true"
-                },
-                "distanceActual": {
-                    "type": "number",
-                    "description": "The current distance to the next waypoint in meters"
-                },
-                "bearingDirect": {
-                    "type": "number",
-                    "description": "The bearing in degrees true from last waypoint to the next waypoint"
-                },
-                "courseRequired": {
-                    "type": "number",
-                    "description": "The course required to make the next waypoint in degrees true"
-                },
-                "eta": {
-                    "$ref": "../definitions.json#/definitions/timestamp",
-                    "description": "The estimated time of arrival at the end of the current route"
-                },
-                "route": {
-                    "type": "string",
-                    "description": "A pointer to the current route, found in the routes list"
-                },
-                "startTime": {
-                    "$ref": "../definitions.json#/definitions/timestamp",
-                    "description": "The time this route was activated in UTC"
-                },
-                "waypoint": {
-                    "type": "object",
-                    "title": "waypoint",
-                    "description": "The last and next waypoints data",
-                    "properties": {
-                        "lastTime": {
-                            "$ref": "../definitions.json#/definitions/timestamp",
-                            "description": "The time the last waypoint was reached in UTC"
-                        },
-                        "last": {
-                            "type": "string",
-                            "description": "The last waypoint, a pointer to the list of waypoints"
-                        },
-                        "nextEta": {
-                            "$ref": "../definitions.json#/definitions/timestamp",
-                            "description": "Estimated time of arrival at the next waypoint",
-                            "example": "2014-03-24T00:15:41Z"
-                        },
-                        "next": {
-                            "type": "string",
-                            "description": "A pointer to the next waypoint, found in the waypoints list"
-                        },
-                        "xte": {
-                            "type": "number",
-                            "description": "Cross track error in meters"
-                        }
-                    }
-                }
+        "bearingActual": {
+          "type": "number",
+          "description": "The current bearing of the next waypoint in degrees true"
+        },
+        "distanceActual": {
+          "type": "number",
+          "description": "The current distance to the next waypoint in meters"
+        },
+        "bearingDirect": {
+          "type": "number",
+          "description": "The bearing in degrees true from last waypoint to the next waypoint"
+        },
+        "courseRequired": {
+          "type": "number",
+          "description": "The course required to make the next waypoint in degrees true"
+        },
+        "eta": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "The estimated time of arrival at the end of the current route"
+        },
+        "route": {
+          "type": "string",
+          "description": "A pointer to the current route, found in the routes list"
+        },
+        "startTime": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "The time this route was activated in UTC"
+        },
+        "waypoint": {
+          "type": "object",
+          "title": "waypoint",
+          "description": "The last and next waypoints data",
+          "properties": {
+            "lastTime": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "The time the last waypoint was reached in UTC"
+            },
+            "last": {
+              "type": "string",
+              "description": "The last waypoint, a pointer to the list of waypoints"
+            },
+            "nextEta": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "Estimated time of arrival at the next waypoint",
+              "example": "2014-03-24T00:15:41Z"
+            },
+            "next": {
+              "type": "string",
+              "description": "A pointer to the next waypoint, found in the waypoints list"
+            },
+            "xte": {
+              "type": "number",
+              "description": "Cross track error in meters"
             }
+          }
+        }
+      }
+    },
+    "magneticVariation": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "The magnetic variation (declination) at the current position"
+    },
+    "destination": {
+      "title": "destination",
+      "description": "The intended destination of this trip",
+      "type": "object",
+      "properties": {
+        "eta": {
+          "$ref": "../definitions.json#/definitions/timestamp"
         },
-        "magneticVariation": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "The magnetic variation (declination) at the current position"
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
         },
-        "destination": {
-            "title": "destination",
-            "description": "The intended destination of this trip",
-            "type": "object",
-            "properties": {
-                "eta": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "longitude": {
-                    "type": "number",
-                    "description": "Longitude of the destination in decimal degrees",
-                    "example": 4.98765245
-                },
-                "latitude": {
-                    "type": "number",
-                    "description": "Latitude of the destination in decimal degrees",
-                    "example": 52.0987654
-                },
-                "altitude": {
-                    "type": "number",
-                    "description": "Altitude of the destination in meters"
-                }
-            }
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
         },
-        "gnss": {
-            "type": "object",
-            "title": "gnss",
-            "description": "Global satellite navigation meta information",
-            "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "quality": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Quality of the satellite fix"
-                },
-                "satellites": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Number of satellites"
-                },
-                "antennaAltitude": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Altitude of antenna in meters"
-                },
-                "horizontalDilution": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Horizontal position error"
-                },
-                "geoidalSeparation": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Difference between WGS84 earth ellipsoid and mean sea level"
-                },
-                "differentialAge": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Age of DGPS data in seconds"
-                },
-                "differentialReference": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "ID of DGPS base station"
-                }
-            }
+        "longitude": {
+          "type": "number",
+          "description": "Longitude of the destination in decimal degrees",
+          "example": 4.98765245
         },
-        "headingMagnetic": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Current magnetic heading of the vessels in degrees"
+        "latitude": {
+          "type": "number",
+          "description": "Latitude of the destination in decimal degrees",
+          "example": 52.0987654
         },
-        "headingTrue": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "The current true heading of the vessel in degrees"
+        "altitude": {
+          "type": "number",
+          "description": "Altitude of the destination in meters"
+        }
+      }
+    },
+    "gnss": {
+      "type": "object",
+      "title": "gnss",
+      "description": "Global satellite navigation meta information",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "quality": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Quality of the satellite fix"
+        },
+        "satellites": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of satellites"
+        },
+        "antennaAltitude": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Altitude of antenna in meters"
+        },
+        "horizontalDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Horizontal position error"
+        },
+        "geoidalSeparation": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Difference between WGS84 earth ellipsoid and mean sea level"
+        },
+        "differentialAge": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Age of DGPS data in seconds"
+        },
+        "differentialReference": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "ID of DGPS base station"
+        }
+      }
+    },
+    "headingMagnetic": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Current magnetic heading of the vessels in degrees"
+    },
+    "headingTrue": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "The current true heading of the vessel in degrees"
+    },
+    "position": {
+      "type": "object",
+      "title": "position",
+      "description": "The position of the vessel in 3 dimensions",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude of boat in decimal degrees",
+          "example": 4.98765245
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude of boat in decimal degrees",
+          "example": 52.0987654
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude of boat in meters"
+        }
+      }
+    },
+    "attitude": {
+      "type": "object",
+      "title": "Attitude",
+      "description": "Vessel attitude: roll, pitch and yaw",
+      "properties": {
+        "roll": {
+          "type": "number",
+          "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
+        },
+        "pitch": {
+          "type": "number",
+          "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
+        },
+        "yaw": {
+          "type": "number",
+          "description": "Yaw in degrees"
+        },
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+    "rateOfTurn": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Rate of turn in degrees per second"
+    },
+    "speedOverGround": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Vessel speed over ground, in m/s"
+    },
+    "speedThroughWater": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Vessel speed through the water in m/s"
+    },
+    "log": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Log value in meters"
+    },
+    "logTrip": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Trip log value in meters"
+    },
+    "state": {
+      "type": "object",
+      "title": "state",
+      "description": "Current navigational state of the vessel",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "under way using engine",
+            "at anchor",
+            "not under command",
+            "restricted maneuverability",
+            "constrained by her draught",
+            "moored",
+            "aground",
+            "engaged in fishing",
+            "under way sailing",
+            "not defined (example)"
+          ]
+        }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "title": "anchor",
+      "description": "The anchor data, for anchor watch etc",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "maxRadius": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat"
+        },
+        "currentRadius": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Current distance to anchor in meters"
         },
         "position": {
-            "type": "object",
-            "title": "position",
-            "description": "The position of the vessel in 3 dimensions",
-            "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "longitude": {
-                    "type": "number",
-                    "description": "Longitude of boat in decimal degrees",
-                    "example": 4.98765245
-                },
-                "latitude": {
-                    "type": "number",
-                    "description": "Latitude of boat in decimal degrees",
-                    "example": 52.0987654
-                },
-                "altitude": {
-                    "type": "number",
-                    "description": "Altitude of boat in meters"
-                }
+          "type": "object",
+          "title": "position",
+          "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
+          "properties": {
+            "source": {
+              "description": "Source of this data",
+              "$ref": "../definitions.json#/definitions/source"
+            },
+            "timestamp": {
+              "description": "timestamp of the last update to this data",
+              "$ref": "../definitions.json#/definitions/timestamp"
+            },
+            "longitude": {
+              "type": "number",
+              "description": "Longitude of the anchor in decimal degrees",
+              "example": 4.98765245
+            },
+            "latitude": {
+              "type": "number",
+              "description": "Latitude of the anchor in decimal degrees",
+              "example": 52.0987654
+            },
+            "altitude": {
+              "type": "number",
+              "description": "Altitude of the anchor in meters"
             }
-        },
-        "attitude": {
-            "type": "object",
-            "title": "Attitude",
-            "description": "Vessel attitude: roll, pitch and yaw",
-            "properties": {
-                "roll": {
-                    "type": "number",
-                    "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
-                },
-                "pitch": {
-                    "type": "number",
-                    "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
-                },
-                "yaw": {
-                    "type": "number",
-                    "description": "Yaw in degrees"
-                },
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                }
-            }
-        },
-        "rateOfTurn": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Rate of turn in degrees per second"
-        },
-        "speedOverGround": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Vessel speed over ground, in m/s"
-        },
-        "speedThroughWater": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Vessel speed through the water in m/s"
-        },
-        "log": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Log value in meters"
-        },
-        "logTrip": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Trip log value in meters"
-        },
-        "state": {
-            "type": "object",
-            "title": "state",
-            "description": "Current navigational state of the vessel",
-            "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "value": {
-                    "type": "string",
-                    "enum": [
-                        "under way using engine",
-                        "at anchor",
-                        "not under command",
-                        "restricted maneuverability",
-                        "constrained by her draught",
-                        "moored",
-                        "aground",
-                        "engaged in fishing",
-                        "under way sailing",
-                        "not defined (example)"
-                    ]
-                }
-            }
-        },
-        "anchor": {
-            "type": "object",
-            "title": "anchor",
-            "description": "The anchor data, for anchor watch etc",
-            "properties": {
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
-                },
-                "timestamp": {
-                    "description": "timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "maxRadius": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat"
-                },
-                "currentRadius": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "Current distance to anchor in meters"
-                },
-                "position": {
-                    "type": "object",
-                    "title": "position",
-                    "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-                    "properties": {
-                        "source": {
-                            "description": "Source of this data",
-                            "$ref": "../definitions.json#/definitions/source"
-                        },
-                        "timestamp": {
-                            "description": "timestamp of the last update to this data",
-                            "$ref": "../definitions.json#/definitions/timestamp"
-                        },
-                        "longitude": {
-                            "type": "number",
-                            "description": "Longitude of the anchor in decimal degrees",
-                            "example": 4.98765245
-                        },
-                        "latitude": {
-                            "type": "number",
-                            "description": "Latitude of the anchor in decimal degrees",
-                            "example": 52.0987654
-                        },
-                        "altitude": {
-                            "type": "number",
-                            "description": "Altitude of the anchor in meters"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
