@@ -120,30 +120,6 @@
                 }
             }
         },
-        "current": {
-            "type": "object",
-            "title": "current",
-            "description": "Direction and strength of current affecting the vessel",
-            "properties": {
-                "timestamp": {"$ref": "../defintions.json#/definitions/timestamp"},
-                "source": {"$ref": "../definitions.json#/definitions/source"},
-                "drift": {
-                    "type": "number",
-                    "description": "The speed component of the water current vector in m/s",
-                    "example": 3.12
-                },
-                "setTrue": {
-                    "type": "number",
-                    "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
-                    "example": 123.45
-                },
-                "setMagnetic": {
-                    "type": "number",
-                    "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
-                    "example": 131.22
-                }
-            }
-        },
         "gnss": {
             "type": "object",
             "title": "gnss",
@@ -254,16 +230,6 @@
         "rateOfTurn": {
             "$ref": "../definitions.json#/definitions/numberValue",
             "description": "Rate of turn in degrees per second"
-        },
-
-        "roll": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
-        },
-        
-        "set": {
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "description": "Tidal set in m/s"
         },
         "speedOverGround": {
             "$ref": "../definitions.json#/definitions/numberValue",
