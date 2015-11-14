@@ -32,5 +32,9 @@
     "chai": "1.9",
     "mocha": "^2.1.0",
     "tv4": "latest"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "tv4": "^1.2.7"
   }
 }
