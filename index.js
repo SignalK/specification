@@ -53,9 +53,8 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
-function validateFull(tree) {
+function getTv4() {
   var tv4 = require('tv4');
-  var signalkSchema = require('./schemas/signalk.json');
   var vesselSchema = require('./schemas/vessel.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/vessel.json', vesselSchema);
   var definitions = require('./schemas/definitions.json');
@@ -68,13 +67,19 @@ function validateFull(tree) {
     'resources': require('./schemas/groups/resources.json'),
     'sensors': require('./schemas/groups/sensors.json'),
     'steering': require('./schemas/groups/steering.json'),
-    'tanks': require('./schemas/groups/tanks.json')
+    'tanks': require('./schemas/groups/tanks.json'),
+    'sources': require('./schemas/groups/sources.json')
   };
   for (var schema in subSchemas) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
+  return tv4;
+}
 
-  var valid = tv4.validateMultiple(tree, signalkSchema, true, true);
+function validateFull(tree) {
+  var signalkSchema = require('./schemas/signalk.json');
+
+  var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
   return valid;
 }
 
@@ -109,3 +114,4 @@ module.exports.validateVessel = function(vesselData) {
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
+module.exports.getTv4 = getTv4;
