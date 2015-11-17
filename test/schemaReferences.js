@@ -2,8 +2,8 @@ var assert = require('chai').assert
 
 var signalk = require('../');
 
-describe('Schema references', function() {
-  it('all references are valid', function() {
+describe('Schema:', function() {
+  it('no missing references', function() {
     var signalkSchema = require('../schemas/signalk.json');
     var tv4 = signalk.getTv4();
 
