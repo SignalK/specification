@@ -38,7 +38,7 @@
             "patternProperties": {
                 "(^[A-Za-z0-9]+$)": {
                     "description": "This regex pattern is used for validation UUID identifier for the tank",
-                    "$ref": "groups/propulsion.json#"
+                    "$ref": "propulsion.json#"
                 }
             }
         },
@@ -61,7 +61,7 @@
             "patternProperties": {
                 "(^[A-Za-z0-9]+$)": {
                     "description": "This regex pattern is used for validation of the path of the alarm",
-                    "$ref": "groups/alarms.json#"
+                    "$ref": "alarms.json#"
                 }
             }
         },
@@ -78,7 +78,7 @@
             "patternProperties": {
                 "(^[A-Za-z0-9]+$)": {
                     "description": "This regex pattern is used for validation UUID identifier for the tank",
-                    "$ref": "groups/tanks.json#"
+                    "$ref": "tanks.json#"
                 }
             }
         },
@@ -95,7 +95,7 @@
             "patternProperties": {
                 "(^[A-Za-z0-9]+$)": {
                     "description": "This regex pattern is used for validation UUID identifier for the sensor",
-                    "$ref": "groups/sensors.json#"
+                    "$ref": "sensors.json#"
                 }
             }
         },
