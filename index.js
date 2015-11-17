@@ -61,8 +61,13 @@ function getTv4() {
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 
   var subSchemas = {
+    'alarms': require('./schemas/groups/alarms.json'),
+    'communication': require('./schemas/groups/communication.json'),
+    'design': require('./schemas/groups/design.json'),
     'navigation': require('./schemas/groups/navigation.json'),
+    'electrical_ac': require('./schemas/groups/electrical_ac.json'),
     'environment': require('./schemas/groups/environment.json'),
+    'performance': require('./schemas/groups/performance.json'),
     'propulsion': require('./schemas/groups/propulsion.json'),
     'resources': require('./schemas/groups/resources.json'),
     'sensors': require('./schemas/groups/sensors.json'),
