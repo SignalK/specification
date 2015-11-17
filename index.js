@@ -67,8 +67,7 @@ function getTv4() {
     'resources': require('./schemas/groups/resources.json'),
     'sensors': require('./schemas/groups/sensors.json'),
     'steering': require('./schemas/groups/steering.json'),
-    'tanks': require('./schemas/groups/tanks.json'),
-    'sources': require('./schemas/groups/sources.json')
+    'tanks': require('./schemas/groups/tanks.json')
   };
   for (var schema in subSchemas) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
