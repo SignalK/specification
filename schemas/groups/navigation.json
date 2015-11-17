@@ -125,7 +125,7 @@
             "title": "current",
             "description": "Direction and strength of current affecting the vessel",
             "properties": {
-                "timestamp": {"$ref": "../defintions.json#/definitions/timestamp"},
+                "timestamp": {"$ref": "../definitions.json#/definitions/timestamp"},
                 "source": {"$ref": "../definitions.json#/definitions/source"},
                 "drift": {
                     "type": "number",
