@@ -8,7 +8,6 @@ describe('Schema:', function() {
     var tv4 = signalk.getTv4();
 
     tv4.validate({}, signalkSchema);
-//    console.log(tv4.getMissingUris());
-    assert.lengthOf(tv4.getMissingUris(), 0, 'There should be no missing schema uris');
+    assert.lengthOf(tv4.getMissingUris(), 0, 'There should be no missing schema uris, but found ' + tv4.getMissingUris());
   })
 });
