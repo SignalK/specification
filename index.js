@@ -71,6 +71,7 @@ function getTv4() {
     'propulsion': require('./schemas/groups/propulsion.json'),
     'resources': require('./schemas/groups/resources.json'),
     'sensors': require('./schemas/groups/sensors.json'),
+    'sources': require('./schemas/groups/sources.json'),
     'steering': require('./schemas/groups/steering.json'),
     'tanks': require('./schemas/groups/tanks.json')
   };
