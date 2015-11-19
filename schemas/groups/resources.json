@@ -92,7 +92,7 @@
             "distance": {
               "description": "Total distance from start to end, measured in meters",
               "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "Meters (m)"
+              "units": "m"
             },
   
             "waypoints": {
@@ -248,7 +248,7 @@
                 "altitude": {
                   "type": "number",
                   "description": "Altitude in meters",
-                  "units": "Meters (m)"
+                  "units": "m"
                 }
               }
             },

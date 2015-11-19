@@ -61,43 +61,43 @@
     "rpm": {
       "description": "Engine rpm",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Revolutions per minute (RPM)"
+      "units": "RPM"
     },
 
     "engineTemperature": {
       "description": "Engine temperature in degrees C",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Degree Celcius (°C)"
+      "units": "°C"
     },
 
     "oilTemperature": {
       "description": "Oil temperature in degrees C",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Degree Celcius (°C)"
+      "units": "°C"
     },
 
     "oilPressure": {
       "description": "Oil pressure in kPa",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Kilo Pascal (kPa)"
+      "units": "kPa"
     },
 
     "waterTemp": {
       "description": "Water temperature in degrees C",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Degree Celcius (°C)"
+      "units": "°C"
     },
 
     "exhaustTemp": {
       "description": "Exhaust temperature in degrees C",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Degree Celcius (°C)"
+      "units": "°C"
     },
 
     "fuelUsageRate": {
       "description": "Fuel usage in liters/hour",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Liters per hour (L/h)"
+      "units": "l/h"
     }
   }
 }

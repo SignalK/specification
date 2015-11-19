@@ -50,23 +50,23 @@
       "type": "string",
       "description": "",
       "enum": [
-        "Liters (l)",
-        "Arc degrees (°)",
-        "Arc degrees per second (°/s)",
-        "Amperage (A)",
-        "Amperage per hour (Ah)",
-        "Voltage (V)",
-        "Wattage (W)",
-        "Wattage per hour (Wh)",
-        "Resistance, Ohm (Ω)",
-        "Square meters (m2)",
-        "Meters (m)",
-        "Degree Celcius (°C)",
-        "Pascal (Pa)",
-        "Kilo Pascal (kPa)",
-        "Liters per hour (L/h)",
-        "Percentage (%)",
-        "Meters per second (m/s)"
+        "l",
+        "°",
+        "°/s",
+        "A",
+        "Ah",
+        "V",
+        "W",
+        "Wh",
+        "Ω",
+        "m2",
+        "m",
+        "°C",
+        "Pa",
+        "kPa",
+        "l/h",
+        "%",
+        "m/s"
       ]
     },
 
@@ -128,20 +128,20 @@
           "type": "number",
           "required": true,
           "description": "The total area of this sail in square meters",
-          "units": "Square meters (m2)"
+          "units": "m2"
         },
 
         "minimumWind": {
           "type": "number",
           "description": "The minimum wind speed this sail can be used with, measured in m/s",
-          "units": "Meters per second (m/s)",
+          "units": "m/s",
           "default": 0
         },
 
         "maximumWind": {
           "type": "number",
           "description": "The maximum wind speed this sail can be used with, measured in m/s",
-          "units": "Meters per second (m/s)",
+          "units": "m/s",
           "default": 666
         },
 

@@ -74,13 +74,13 @@
         "targetHeadingNorth": {
           "description": "Target heading for autopilot in degrees true",
           "$ref": "../definitions.json#/definitions/numberValue", 
-          "units": "Arc degrees (°), true"
+          "units": "°"
         },
 
         "targetHeadingMagnetic": {
           "description": "Target heading for autopilot in magnetic degrees",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "Arc degrees (°), magnetic"
+          "units": "°"
         },
 
         "headingSource": {
@@ -111,13 +111,13 @@
         "deadZone": {
           "description": "Dead zone to ignore for rudder corrections (in degrees)",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "Arc degrees (°)"
+          "units": "°"
         },
 
         "backlash": {
           "description": "Slack in the rudder drive mechanism in degrees",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "Arc degrees (°)"
+          "units": "°"
         },
 
         "gain": {
@@ -128,13 +128,13 @@
         "maxDriveAmps": {
           "description": "Maximum amperage to use to drive servo",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "Amperage (A)"
+          "units": "A"
         },
 
         "maxDriveRate": {
           "description": "Maximum degrees/sec to turn the rudder",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "Arc degrees per second (°/s)"
+          "units": "°/s"
         },
 
         "portLock": {

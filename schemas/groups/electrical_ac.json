@@ -25,7 +25,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase A and phase B.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -34,7 +34,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase A and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -43,7 +43,7 @@
             "frequency": {
               "type": "number",
               "description": "Bus phase A frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -66,7 +66,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase B and phase C.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -75,7 +75,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase B and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -83,7 +83,7 @@
             "frequency": {
               "type": "number",
               "description": "Bus phase B frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -106,7 +106,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase C and phase A.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -115,7 +115,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase C and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -124,7 +124,7 @@
             "frequency": {
               "type": "number",
               "description": "Bus phase C frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -147,7 +147,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -156,7 +156,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -165,7 +165,7 @@
             "frequency": {
               "type": "number",
               "description": "Average frequency of the bus.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -195,7 +195,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase A and phase B.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -204,7 +204,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase A and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -213,7 +213,7 @@
             "frequency": {
               "type": "number",
               "description": "Utility phase A frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -234,7 +234,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase A reactive power",
-                  "units": "Volt-ampere reactive (VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -278,7 +278,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Utility phase A real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -287,7 +287,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Utility phase A apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -311,7 +311,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase B and phase C.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -320,7 +320,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase B and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -329,7 +329,7 @@
             "frequency": {
               "type": "number",
               "description": "Utility phase B frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -350,7 +350,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase B reactive power",
-                  "units": "Volt-ampere (reactive, VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -393,7 +393,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Utility phase B real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -402,7 +402,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Utility phase B apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -427,7 +427,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase C and phase A.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -436,7 +436,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase C and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -445,7 +445,7 @@
             "frequency": {
               "type": "number",
               "description": "Utility phase C frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -466,7 +466,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase C reactive power",
-                  "units": "Volt-ampere (reactive, VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -509,7 +509,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Utility phase C real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -518,7 +518,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Utility phase C apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -543,7 +543,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase utility connection.",
-              "units": "Volt-ampere (reactive, VAr)",
+              "units": "VAr",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -552,7 +552,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase utility connection.",
-              "units": "Volt-ampere (reactive, VAr)",
+              "units": "VAr",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -561,7 +561,7 @@
             "frequency": {
               "type": "number",
               "description": "Average frequency of the utility connection.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -584,7 +584,7 @@
             "totalExport": {
               "type": "number",
               "description": "Total watt hours exported by the utility",
-              "units": "Watts per hour (Wh)",
+              "units": "Wh",
               "minimum": 0,
               "maximum": 4211081215,
               "example": 12000
@@ -593,7 +593,7 @@
             "totalImport": {
               "type": "number",
               "description": "Total watt hours imported by the utility",
-              "units": "Watts per hour (Wh)",
+              "units": "Wh",
               "minimum": 0,
               "maximum": 4211081215,
               "example": 12000
@@ -616,7 +616,7 @@
             "reactivePower": {
               "type": "number",
               "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-              "units": "Volt-ampere (reactive, VAr)",
+              "units": "VAr",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
@@ -659,7 +659,7 @@
             "realPower": {
               "type": "number",
               "description": "Total real power delivered by the utility. Real power must be signed since power may flow in both directions.",
-              "units": "Watts (W)",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500
@@ -668,7 +668,7 @@
             "apparentPower": {
               "type": "number",
               "description": "Total apparent power delivered by the utility. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
-              "units": "Volt-ampere (apparent, VA)",
+              "units": "VA",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500
@@ -698,7 +698,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase A and phase B.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -707,7 +707,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase A and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -716,7 +716,7 @@
             "frequency": {
               "type": "number",
               "description": "Generator phase A frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -737,7 +737,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase A reactive power",
-                  "units": "Volt-ampere (reactive, VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -780,7 +780,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Generator phase A real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -789,7 +789,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Generator phase A apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -814,7 +814,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase B and phase C.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -823,7 +823,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase B and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -832,7 +832,7 @@
             "frequency": {
               "type": "number",
               "description": "Generator phase B frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -853,7 +853,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase B reactive power",
-                  "units": "Volt-ampere (reactive, VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -896,7 +896,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Generator phase B real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -905,7 +905,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Generator phase B apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -930,7 +930,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase C and phase A.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -939,7 +939,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase C and neutral.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -948,7 +948,7 @@
             "frequency": {
               "type": "number",
               "description": "Generator phase C frequency.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -969,7 +969,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase C reactive power",
-                  "units": "Volt-ampere (reactive, VAr)",
+                  "units": "VAr",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -1012,7 +1012,7 @@
                 "realPower": {
                   "type": "number",
                   "description": "Generator phase C real power.",
-                  "units": "Watts (W)",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -1021,7 +1021,7 @@
                 "apparentPower": {
                   "type": "number",
                   "description": "Generator phase C apparent power.",
-                  "units": "Volt-ampere (apparent, VA)",
+                  "units": "VA",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -1046,7 +1046,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase generator.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -1055,7 +1055,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase generator.",
-              "units": "RMS Voltage (Vrms)",
+              "units": "Vrms",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -1064,7 +1064,7 @@
             "frequency": {
               "type": "number",
               "description": "Average frequency of the generator output.",
-              "units": "Hertz (Hz)",
+              "units": "Hz",
               "minimum": 0,
               "maximum": 501.9921875,
               "example": 60.0
@@ -1087,7 +1087,7 @@
             "totalExport": {
               "type": "number",
               "description": "Total watt hours exported by the generator",
-              "units": "Watts per hour (Wh)",
+              "units": "Wh",
               "minimum": 0,
               "maximum": 4211081215,
               "example": 12000
@@ -1096,7 +1096,7 @@
             "totalImport": {
               "type": "number",
               "description": "Total watt hours imported by the generator",
-              "units": "Watts per hour (Wh)",
+              "units": "Wh",
               "minimum": 0,
               "maximum": 4211081215,
               "example": 12000
@@ -1119,7 +1119,7 @@
             "reactivePower": {
               "type": "number",
               "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-              "units": "Volt-ampere (reactive, VAr)",
+              "units": "VAr",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
@@ -1157,7 +1157,7 @@
             "realPower": {
               "type": "number",
               "description": "Total real power delivered by the generator. Real power must be signed since power may flow in both directions.",
-              "units": "Watts (w)",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500
@@ -1166,7 +1166,7 @@
             "apparentPower": {
               "type": "number",
               "description": "Total apparent power delivered by the generator. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
-              "units": "Volt-ampere (apparent, VA)",
+              "units": "VA",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500

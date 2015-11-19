@@ -6,13 +6,17 @@
   "title": "navigation",
   "properties": {
     "courseOverGroundMagnetic": {
-      "description": "",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Course over ground (magnetic), measured in arc degrees.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°"
     },
+
     "courseOverGroundTrue": {
-      "description": "",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Course over ground (true), measured in arc degrees.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°"
     },
+
     "activeRoute": {
       "type": "object",
       "title": "Active Route",
@@ -22,38 +26,51 @@
           "$ref": "../definitions.json#/definitions/timestamp",
           "description": "Time of last update to active route"
         },
+
         "source": {
           "$ref": "../definitions.json#/definitions/source",
           "description": "Source of last update to active route"
         },
+
         "bearingActual": {
           "type": "number",
-          "description": "The current bearing of the next waypoint in degrees true"
+          "description": "The current bearing of the next waypoint in degrees true",
+          "units": "°"
         },
+
         "distanceActual": {
           "type": "number",
-          "description": "The current distance to the next waypoint in meters"
+          "description": "The current distance to the next waypoint in meters",
+          "units": "m"
         },
+
         "bearingDirect": {
           "type": "number",
-          "description": "The bearing in degrees true from last waypoint to the next waypoint"
+          "description": "The bearing in degrees true from last waypoint to the next waypoint",
+          "units": "°"
         },
+
         "courseRequired": {
           "type": "number",
-          "description": "The course required to make the next waypoint in degrees true"
+          "description": "The course required to make the next waypoint in degrees true",
+          "units": "°"
         },
+
         "eta": {
           "$ref": "../definitions.json#/definitions/timestamp",
           "description": "The estimated time of arrival at the end of the current route"
         },
+
         "route": {
           "type": "string",
           "description": "A pointer to the current route, found in the routes list"
         },
+
         "startTime": {
           "$ref": "../definitions.json#/definitions/timestamp",
           "description": "The time this route was activated in UTC"
         },
+
         "waypoint": {
           "type": "object",
           "title": "waypoint",
@@ -63,31 +80,39 @@
               "$ref": "../definitions.json#/definitions/timestamp",
               "description": "The time the last waypoint was reached in UTC"
             },
+
             "last": {
               "type": "string",
               "description": "The last waypoint, a pointer to the list of waypoints"
             },
+
             "nextEta": {
               "$ref": "../definitions.json#/definitions/timestamp",
               "description": "Estimated time of arrival at the next waypoint",
               "example": "2014-03-24T00:15:41Z"
             },
+
             "next": {
               "type": "string",
               "description": "A pointer to the next waypoint, found in the waypoints list"
             },
+
             "xte": {
               "type": "number",
-              "description": "Cross track error in meters"
+              "description": "Cross track error in meters",
+              "units": "m"
             }
           }
         }
       }
     },
+
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The magnetic variation (declination) at the current position"
+      "description": "The magnetic variation (declination) at the current position",
+      "units": "°"
     },
+
     "destination": {
       "title": "destination",
       "description": "The intended destination of this trip",
@@ -96,30 +121,37 @@
         "eta": {
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+
         "source": {
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+
         "longitude": {
           "type": "number",
           "description": "Longitude of the destination in decimal degrees",
           "example": 4.98765245
         },
+
         "latitude": {
           "type": "number",
           "description": "Latitude of the destination in decimal degrees",
           "example": 52.0987654
         },
+
         "altitude": {
           "type": "number",
-          "description": "Altitude of the destination in meters"
+          "description": "Altitude of the destination in meters",
+          "units": "m"
         }
       }
     },
+
     "gnss": {
       "type": "object",
       "title": "gnss",
@@ -129,48 +161,63 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+
         "quality": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Quality of the satellite fix"
         },
+
         "satellites": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Number of satellites"
         },
+
         "antennaAltitude": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Altitude of antenna in meters"
+          "description": "Altitude of antenna in meters",
+          "units": "m"
         },
+
         "horizontalDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Horizontal position error"
         },
+
         "geoidalSeparation": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Difference between WGS84 earth ellipsoid and mean sea level"
         },
+
         "differentialAge": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Age of DGPS data in seconds"
+          "description": "Age of DGPS data in seconds",
+          "units": "s"
         },
+
         "differentialReference": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "ID of DGPS base station"
         }
       }
     },
+
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading of the vessels in degrees"
+      "description": "Current magnetic heading of the vessels in degrees",
+      "units": "°"
     },
+
     "headingTrue": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The current true heading of the vessel in degrees"
+      "description": "The current true heading of the vessel in degrees",
+      "units": "°"
     },
+
     "position": {
       "type": "object",
       "title": "position",
@@ -180,26 +227,31 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+
         "longitude": {
           "type": "number",
           "description": "Longitude of boat in decimal degrees",
           "example": 4.98765245
         },
+
         "latitude": {
           "type": "number",
           "description": "Latitude of boat in decimal degrees",
           "example": 52.0987654
         },
+
         "altitude": {
           "type": "number",
           "description": "Altitude of boat in meters"
         }
       }
     },
+
     "attitude": {
       "type": "object",
       "title": "Attitude",
@@ -207,46 +259,64 @@
       "properties": {
         "roll": {
           "type": "number",
-          "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve"
+          "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve",
+          "units": "°"
         },
+
         "pitch": {
           "type": "number",
-          "description": "Pitch in degrees, 0 is horizontal, +ve is bow up"
+          "description": "Pitch in degrees, 0 is horizontal, +ve is bow up",
+          "units": "°"
         },
+
         "yaw": {
           "type": "number",
-          "description": "Yaw in degrees"
+          "description": "Yaw in degrees",
+          "units": "°"
         },
+
         "source": {
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
     },
+
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn in degrees per second"
+      "description": "Rate of turn in degrees per second",
+      "units": "°/s"
     },
+
     "speedOverGround": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed over ground, in m/s"
+      "description": "Vessel speed over ground, in m/s",
+      "units": "m/s"
     },
+
     "speedThroughWater": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed through the water in m/s"
+      "description": "Vessel speed through the water in m/s",
+      "units": "m/s"
     },
+
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Log value in meters"
+      "description": "Log value in meters",
+      "units": "m"
     },
+
     "logTrip": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Trip log value in meters"
+      "description": "Trip log value in meters",
+      "units": "m"
     },
+
     "state": {
       "type": "object",
       "title": "state",
@@ -256,10 +326,12 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+        
         "value": {
           "type": "string",
           "enum": [
@@ -277,6 +349,7 @@
         }
       }
     },
+
     "anchor": {
       "type": "object",
       "title": "anchor",
@@ -286,18 +359,24 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
+
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+        
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat"
+          "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat",
+          "units": "m"
         },
+        
         "currentRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Current distance to anchor in meters"
+          "description": "Current distance to anchor in meters",
+          "units": "m"
         },
+        
         "position": {
           "type": "object",
           "title": "position",
@@ -307,23 +386,28 @@
               "description": "Source of this data",
               "$ref": "../definitions.json#/definitions/source"
             },
+
             "timestamp": {
               "description": "timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
+            
             "longitude": {
               "type": "number",
               "description": "Longitude of the anchor in decimal degrees",
               "example": 4.98765245
             },
+            
             "latitude": {
               "type": "number",
               "description": "Latitude of the anchor in decimal degrees",
               "example": 52.0987654
             },
+            
             "altitude": {
               "type": "number",
-              "description": "Altitude of the anchor in meters"
+              "description": "Altitude of the anchor in meters",
+              "units": "m"
             }
           }
         }

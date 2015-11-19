@@ -68,36 +68,36 @@
                 "measured": {
                   "description": "Measured voltage of DC Source terminals",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)"
+                  "units": "V"
                 },
 
                 "nominal": {
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)",
+                  "units": "V",
                   "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
                 },
 
                 "warnUpper": {
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)",
+                  "units": "V",
                   "description": "Upper operational voltage limit"
                 },
 
                 "warnLower": {
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)",
+                  "units": "V",
                   "description": "Lower operational voltage limit"
                 },
 
                 "faultUpper": {
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)",
+                  "units": "V",
                   "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
                 },
 
                 "faultLower": {
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)",
+                  "units": "V",
                   "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
                 }
               }
@@ -109,31 +109,31 @@
                 "measured": {
                   "description": "Measured amperage being '+' provided (or '-' consumed) by DC source",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Amperage (A)"
+                  "units": "A"
                 },
 
                 "warnUpper": {
                   "description": "Upper operational current limit",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Amperage (A)"
+                  "units": "A"
                 },
 
                 "warnLower": {
                   "description": "Lower operational current limit",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Amperage (A)"
+                  "units": "A"
                 },
 
                 "faultUpper": {
                   "description": "Upper fault limit of battery current - BMS may disconnect battery",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Amperage (A)"
+                  "units": "A"
                 },
 
                 "faultLower": {
                   "description": "Lower fault limit of battery current - BMS may disconnect battery",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Amperage (A)"
+                  "units": "A"
                 }
               }
             },
@@ -145,31 +145,31 @@
                 "measured": {
                   "description": "Temperature of device, in degrees Celsius",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Degree Celcius (°C)"
+                  "units": "°C"
                 },
 
                 "warnUpper": {
                   "description": "Upper operational temperature limit",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Degree Celcius (°C)"
+                  "units": "°C"
                 },
 
                 "warnLower": {
                   "description": "Lower operational temperature limit",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Degree Celcius (°C)"
+                  "units": "°C"
                 },
 
                 "faultUpper": {
                   "description": "Upper fault limit of temperature - device may disable",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Degree Celcius (°C)"
+                  "units": "°C"
                 },
 
                 "faultLower": {
                   "description": "Lower fault limit of temperature  - device may disable",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Degree Celcius (°C)"
+                  "units": "°C"
                 }
               }
             }
@@ -192,7 +192,7 @@
                 "measured": {
                   "description": "Measured voltage at AC Source terminals",
                   "#ref": "../defintions.json#/definitions/numberValue",
-                  "units": "Voltage (V)"
+                  "units": "V"
                 }
               }
             }
@@ -256,25 +256,25 @@
             "limitDischargeLower": {
               "type": "number",
               "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
-              "units": "Degree Celcius (°C)"
+              "units": "°C"
             },
 
             "limitDischargeUpper": {
               "type": "number",
               "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
-              "units": "Degree Celcius (°C)"
+              "units": "°C"
             },
 
             "limitRechargeLower": {
               "type": "number",
               "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
-              "units": "Degree Celcius (°C)"
+              "units": "°C"
             },
 
             "limitRechargeUpper": {
               "type": "number",
               "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
-              "units": "Degree Celcius (°C)"
+              "units": "°C"
             },
 
             "timestamp": {
@@ -294,25 +294,25 @@
             "nominal": {
               "type": "number",
               "description": "The watt-hour capacity of battery as specified by the manufacturer",
-              "units": "Watts per hour (Wh)"
+              "units": "Wh"
             },
 
             "actual": {
               "type": "number",
               "description": "The measured watt-hour capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
-              "units": "Watts per hour (Wh)"
+              "units": "Wh"
             },
 
             "remaining": {
               "type": "number",
               "description": "Watt-hours remaining in battery",
-              "units": "Watts per hour (Wh)"
+              "units": "Wh"
             },
 
             "dischargeLimit": {
               "type": "number",
               "description": "Minimum number of watt-hours to be left in the battery while discharging",
-              "units": "Watts per hour (Wh)"
+              "units": "Wh"
             }
           }
         },
@@ -320,13 +320,13 @@
         "lifetimeDischarge": {
           "type": "number",
           "description": "Cumulative Wh discharged from battery over operational lifetime of battery",
-          "units": "Watts per hour (Wh)"
+          "units": "Wh"
         },
 
         "lifetimeRecharge": {
           "type": "number",
           "description": "Cumulative Wh recharged into battery over operational lifetime of battery",
-          "units": "Watts per hour (Wh)"
+          "units": "Wh"
         }
       }
     },

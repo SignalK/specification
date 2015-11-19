@@ -23,18 +23,19 @@
         "total": {
           "description": "The total area of all sails on the vessel, measured in square meters.",
           "type": "number",
-          "units": "Square meters (m2)"
+          "units": "m2"
         },
 
         "active": {
           "description": "The total area of the sails currently in use on the vessel, measured in square meters.",
           "type": "number",
-          "units": "Square meters (m2)"
+          "units": "m2"
         },
 
         "timestamp": { 
           "description":"timestamp of the last update to this data",
-          "$ref": "#/definitions/timestamp"
+          "$ref": "#/definitions/timestamp",
+          "units": "ISO-8601 (UTC)"
         },
         
         "source": { 

@@ -26,13 +26,13 @@
 
     "capacity": {
       "description": "Total tank capacity in liters",
-      "units": "Liters (l)",
+      "units": "l",
       "$ref": "../definitions.json#/definitions/numberValue"
     },
 
     "level": {
       "description": "Current tank contents in liters",
-      "units": "Liters (l)",
+      "units": "l",
       "$ref": "../definitions.json#/definitions/numberValue"
     }
   }
