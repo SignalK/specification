@@ -135,12 +135,14 @@
         "longitude": {
           "type": "number",
           "description": "Longitude of the destination in decimal degrees",
+          "units": "°",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
           "description": "Latitude of the destination in decimal degrees",
+          "units": "°",
           "example": 52.0987654
         },
 
@@ -236,12 +238,14 @@
         "longitude": {
           "type": "number",
           "description": "Longitude of boat in decimal degrees",
+          "units": "°",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
           "description": "Latitude of boat in decimal degrees",
+          "units": "°",
           "example": 52.0987654
         },
 
@@ -395,12 +399,14 @@
             "longitude": {
               "type": "number",
               "description": "Longitude of the anchor in decimal degrees",
+              "units": "°",
               "example": 4.98765245
             },
             
             "latitude": {
               "type": "number",
               "description": "Latitude of the anchor in decimal degrees",
+              "units": "°",
               "example": 52.0987654
             },
             

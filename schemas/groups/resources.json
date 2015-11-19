@@ -237,12 +237,14 @@
 
                 "longitude": {
                   "type": "number",
-                  "description": "Longitude, in decimal notation (4.98765245)"
+                  "description": "Longitude, in decimal notation (4.98765245)",
+                  "units": "°"
                 },
 
                 "latitude": {
                   "type": "number",
-                  "description": "Latitude, in decimal notation (52.0987654)"
+                  "description": "Latitude, in decimal notation (52.0987654)",
+                  "units": "°"
                 },
 
                 "altitude": {
