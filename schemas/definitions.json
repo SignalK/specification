@@ -39,7 +39,12 @@
         }
       }
     },
-    
+
+    "sourceRef": {
+      "type": "string",
+      "description": "Reference to the source under vessel's sources"
+    },
+
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
@@ -201,8 +206,8 @@
           "$ref": "#/definitions/timestamp"
         },
   
-        "source": {
-          "$ref": "#/definitions/source"
+        "$source": {
+          "$ref": "#/definitions/sourceRef"
         },
 
         "_attr": {
@@ -211,6 +216,38 @@
   
         "meta": {
           "$ref": "#/definitions/meta"
+        },
+        "values": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+               "$ref": "#/definitions/valuesNumberValue"
+            }
+          }
+        },
+         "pgn": {
+           "type": "number"
+         },
+         "sentence": {
+           "type": "string"
+         }
+      }
+    },
+
+    "valuesNumberValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+         "type": "number"
+        },
+        "timestamp": {
+         "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+         "type": "number"
+        },
+        "sentence": {
+         "type": "string"
         }
       }
     },
