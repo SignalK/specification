@@ -78,7 +78,7 @@
       "description": "Direction and strength of current affecting the vessel",
       "properties": {
         "timestamp": {
-          "$ref": "../defintions.json#/definitions/timestamp"
+          "$ref": "../definitions.json#/definitions/timestamp"
         },
         
         "source": {
