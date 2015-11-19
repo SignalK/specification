@@ -1,107 +1,122 @@
 {
-    "type": "object",
-    "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/vessel.json#",
-    "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
-    "title": "vessel",
-    "properties": {
-        "mmsi": {
-            "description": "MMSI number of the vessel, if available.",
-            "$ref": "definitions.json#/definitions/mmsi"
-        },
-        "uuid": {
-            "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
-            "$ref": "definitions.json#/definitions/uuid"
-        },
-        "name": {
-            "type": "string",
-            "description": "The common name of the vessel"
-        },
-        "communication": {
-            "description": "Communication data",
-            "$ref": "groups/communication.json#"
-        },
-        "environment": {
-            "description": "Environmental data",
-            "$ref": "groups/environment.json#"
-        },
-        "navigation": {
-            "description": "Navigation data",
-            "$ref": "groups/navigation.json#"
-        },
-        "propulsion": {
-            "type": "object",
-            "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
-            "title": "propulsion",
-            "description": "Engine data",
-            "required": false,
-            "patternProperties": {
-                "(^[A-Za-z0-9]+$)": {
-                    "description": "This regex pattern is used for validation UUID identifier for the tank",
-                    "$ref": "groups/propulsion.json#"
-                }
-            }
-        },
-        "electrical": {
-            "type": "object",
-            "description": "Electrical data",
-            "properties": {
-                "ac": {
-                    "description": "AC electrical data",
-                    "$ref": "groups/electrical_ac.json#"
-                }
-            }
-        },
-        "alarms": {
-            "type": "object",
-            "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
-            "title": "alarms",
-            "description": "Alarms currently raised",
-            "required": false,
-            "patternProperties": {
-                "(^[A-Za-z0-9]+$)": {
-                    "description": "This regex pattern is used for validation of the path of the alarm",
-                    "$ref": "groups/alarms.json#"
-                }
-            }
-        },
-        "steering": {
-            "description": "Vessel steering data",
-            "$ref": "groups/steering.json#"
-        },
-        "tanks": {
-            "type": "object",
-            "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
-            "title": "tanks",
-            "description": "Tanks on this vessel",
-            "required": false,
-            "patternProperties": {
-                "(^[A-Za-z0-9]+$)": {
-                    "description": "This regex pattern is used for validation UUID identifier for the tank",
-                    "$ref": "groups/tanks.json#"
-                }
-            }
-        },
-        "design": {
-            "description": "Design data of this vessel",
-            "$ref": "groups/design.json#"
-        },
-        "sensors": {
-            "type": "object",
-            "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
-            "title": "sensors",
-            "description": "Sensors, their state, and data.",
-            "required": false,
-            "patternProperties": {
-                "(^[A-Za-z0-9]+$)": {
-                    "description": "This regex pattern is used for validation UUID identifier for the sensor",
-                    "$ref": "groups/sensors.json#"
-                }
-            }
-        },
-        "performance": {
-            "description": "Performance data",
-            "$ref": "groups/performance.json#"
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/vessel.json#",
+  "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
+  "title": "vessel",
+  "properties": {
+    "mmsi": {
+      "description": "MMSI number of the vessel, if available.",
+      "$ref": "definitions.json#/definitions/mmsi",
+      "units": "MMSI"
+    },
+
+    "uuid": {
+      "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
+      "$ref": "definitions.json#/definitions/uuid",
+      "units": "UUIDv4"
+    },
+
+    "name": {
+      "type": "string",
+      "description": "The common name of the vessel"
+    },
+
+    "communication": {
+      "description": "Communication data",
+      "$ref": "groups/communication.json#"
+    },
+
+    "environment": {
+        "description": "Environmental data",
+        "$ref": "groups/environment.json#"
+    },
+    
+    "navigation": {
+      "description": "Navigation data",
+      "$ref": "groups/navigation.json#"
+    },
+
+    "propulsion": {
+      "type": "object",
+      "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+      "title": "propulsion",
+      "description": "Engine data",
+      "required": false,
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation UUID identifier for the tank",
+          "$ref": "groups/propulsion.json#"
         }
+      }
+    },
+
+    "electrical": {
+      "type": "object",
+      "description": "Electrical data",
+      "properties": {
+        "ac": {
+          "description": "AC electrical data",
+          "$ref": "groups/electrical_ac.json#"
+        }
+      }
+    },
+
+    "alarms": {
+      "type": "object",
+      "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
+      "title": "alarms",
+      "description": "Alarms currently raised",
+      "required": false,
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation of the path of the alarm",
+          "$ref": "groups/alarms.json#"
+        }
+      }
+    },
+
+    "steering": {
+      "description": "Vessel steering data",
+      "$ref": "groups/steering.json#"
+    },
+
+    "tanks": {
+      "type": "object",
+      "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
+      "title": "tanks",
+      "description": "Tanks on this vessel",
+      "required": false,
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation UUID identifier for the tank",
+          "$ref": "groups/tanks.json#"
+        }
+      }
+    },
+
+    "design": {
+      "description": "Design data of this vessel",
+      "$ref": "groups/design.json#"
+    },
+
+    "sensors": {
+      "type": "object",
+      "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
+      "title": "sensors",
+      "description": "Sensors, their state, and data.",
+      "required": false,
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation UUID identifier for the sensor",
+          "$ref": "groups/sensors.json#"
+        }
+      }
+    },
+
+    "performance": {
+      "description": "Performance data",
+      "$ref": "groups/performance.json#"
     }
+  }
 }

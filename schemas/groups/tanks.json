@@ -1,30 +1,39 @@
 {
-    "type": "object",
-    "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
-    "description": "a tank, named by a unique name within this vessel",
-    "title": "tank",
-    "properties": {
-            "tankType": {
-                "type": "string",
-                "description": "The type of waypoint",
-                "enum": [
-                    "petrol",
-                    "water",
-                    "holding",
-                    "lpg",
-                    "diesil",
-                    "rum"
-                ]
-            },
-            "capacity": {
-                "description": "total tank capacity in liters",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "level": {
-                "description": "current tank contents in liters",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            }
-        }
-    }
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
+  "description": "A tank, named by a unique identifier",
+  "title": "tank",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
+    },
 
+    "type": {
+      "type": "string",
+      "description": "The type of tank",
+      "enum": [
+        "petrol",
+        "fresh water",
+        "greywater",
+        "holding",
+        "lpg",
+        "diesel",
+        "rum"
+      ]
+    },
+
+    "capacity": {
+      "description": "Total tank capacity in liters",
+      "units": "l",
+      "$ref": "../definitions.json#/definitions/numberValue"
+    },
+
+    "level": {
+      "description": "Current tank contents in liters",
+      "units": "l",
+      "$ref": "../definitions.json#/definitions/numberValue"
+    }
+  }
+}

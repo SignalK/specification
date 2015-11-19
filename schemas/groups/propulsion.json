@@ -1,57 +1,103 @@
 {
-    "type": "object",
-    "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
-    "title": "propulsion",
-    "description": "An engine, named by a unique name within this vessel",
-        "properties": {
-            "engineType": {
-                "type": "string",
-                "description": "The type of engine",
-                "enum": [
-                    "diesel inboard",
-                    "petrol inboard",
-                    "petrol outboard",
-                    "electric"
-                ]
-            },
-            "state": {
-                "type": "string",
-                "description": "The current state of the engine",
-                "enum": [
-                    "stopped",
-                    "started",
-                    "unusable"
-                ]
-            },
-            "rpm": {
-                "description": "Engine rpm",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "engineTemperature": {
-                "description": "Engine temperature in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "oilTemperature": {
-                "description": "Oil temperature in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "oilPressure": {
-                "description": "Oil pressure in kPa",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "waterTemp": {
-                "description": "Water temperature in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "exhaustTemp": {
-                "description": "Exhaust temperature in degrees C",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            },
-            "fuelUsageRate": {
-                "description": "Fuel usage in liters/hour",
-                "$ref": "../definitions.json#/definitions/numberValue"
-            }
-        }
-    }
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+  "title": "propulsion",
+  "description": "An engine, named by a unique name within this vessel",
+  "properties": {
+    "engineType": {
+      "type": "object",
+      "description": "The type of engine",
+      "properties": { 
+        "value": {
+          "type": "string",
+          "enum": [
+            "diesel inboard",
+            "diesel outboard",
+            "petrol inboard",
+            "petrol outboard",
+            "electric inboard",
+            "electric outboard"
+          ]
+        },
 
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+
+    "state": {
+      "type": "object",
+      "description": "The current state of the engine",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "stopped",
+            "started",
+            "unusable"
+          ]
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+
+    "rpm": {
+      "description": "Engine rpm",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "RPM"
+    },
+
+    "engineTemperature": {
+      "description": "Engine temperature in degrees C",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°C"
+    },
+
+    "oilTemperature": {
+      "description": "Oil temperature in degrees C",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°C"
+    },
+
+    "oilPressure": {
+      "description": "Oil pressure in kPa",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "kPa"
+    },
+
+    "waterTemp": {
+      "description": "Water temperature in degrees C",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°C"
+    },
+
+    "exhaustTemp": {
+      "description": "Exhaust temperature in degrees C",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "°C"
+    },
+
+    "fuelUsageRate": {
+      "description": "Fuel usage in liters/hour",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "l/h"
+    }
+  }
+}
