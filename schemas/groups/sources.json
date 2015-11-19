@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "id": "https://signalk.github.io/specification/schemas/groups/sources.json#",
+  "title": "sources",
+  "description": "Metadata about the sources, eg. buses and connected sensors",
+  "patternProperties": {
+    ".*": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "anyOf": [
+            {"required": ["src", "pgns"]},
+            {"required": ["sentences"]}
+          ],
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "pgns": {
+              "type": "object",
+              "patternProperties": {
+                "[0-9]*": {
+                  "$ref": "#/definitions/timestamp"
+                }
+              }
+            },
+            "sentences": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z][A-Z][A-Z]$": {
+                  "$ref": "#/definitions/timestamp"
+                }
+              }
+            }            
+          }
+        }
+      },
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
