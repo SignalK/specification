@@ -1,58 +1,3 @@
-function chaiAsPromised(chai, utils) {
-  "use strict";
-
-  var Assertion = chai.Assertion
-
-  function checkValidFullSignalK () { 
-    var result = validateFull(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
-      ' (' + (result.errors.length-1) + ' other errors not reported here)';
-    this.assert(
-      result.valid
-      , message
-      , 'expected #{this} to not be valid SignalK'
-      );
-  }
-  Assertion.addProperty('validSignalK', checkValidFullSignalK);
-  Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
-  Assertion.addProperty('validSignalKVessel', function() {
-    this._obj = {
-      'vessels': {
-        'urn:mrn:imo:mmsi:230099999': this._obj
-      }
-    }
-    checkValidFullSignalK.call(this);
-  });
-  Assertion.addProperty('validSignalKDelta', function () {
-    var result = validateDelta(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
-      ' (' + (result.errors.length-1) + ' other errors not reported here)';
-    this.assert(
-      result.valid
-      , message
-      , 'expected #{this} to not be valid SignalK delta'
-      );
-  });
-  Assertion.addProperty('validSubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/subscribe');
-    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
-    this.assert(
-      result.valid
-      , message
-      , 'expected #{this} to not be valid SignalK subscribe message'
-      );
-  });
-  Assertion.addProperty('validUnsubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/unsubscribe');
-    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
-    this.assert(
-      result.valid
-      , message
-      , 'expected #{this} to not be valid SignalK unsubscribe message'
-      );
-  });
-}
-
 function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('./schemas/vessel.json');
@@ -111,6 +56,64 @@ function validateWithSchema(msg, schemaName) {
   var valid = tv4.validateResult(msg,schema, true, true);
   return valid;
 }
+
+function chaiAsPromised(chai, utils) {
+  "use strict";
+
+  var Assertion = chai.Assertion
+
+  function checkValidFullSignalK () { 
+    var result = validateFull(this._obj);
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK'
+      );
+  }
+  Assertion.addProperty('validSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validSignalKVessel', function() {
+    this._obj = {
+      'vessels': {
+        'urn:mrn:imo:mmsi:230099999': this._obj
+      }
+    }
+    checkValidFullSignalK.call(this);
+  });
+  Assertion.addProperty('validSignalKDelta', function () {
+    var result = validateDelta(this._obj);
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK delta'
+      );
+  });
+  Assertion.addProperty('validSubscribeMessage', function () {
+    var result = validateWithSchema(msg, 'messages/subscribe');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK subscribe message'
+      );
+  });
+  Assertion.addProperty('validUnsubscribeMessage', function () {
+    var result = validateWithSchema(msg, 'messages/unsubscribe');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK unsubscribe message'
+      );
+  });
+}
+
+
+
 
 module.exports.validateFull = validateFull;
 module.exports.validateVessel = function(vesselData) {
