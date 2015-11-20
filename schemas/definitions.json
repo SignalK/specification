@@ -36,6 +36,14 @@
         "pgn": {
           "type": "number",
           "description": "NMEA2000 pgn of the source message"
+        },
+        "sentence": {
+          "type": "string",
+          "description": "Sentence type of the source NMEA0183 sentence"
+        },
+        "talker": {
+          "type": "string",
+          "description": "Talker id of the source NMEA0183 sentence"
         }
       }
     },
