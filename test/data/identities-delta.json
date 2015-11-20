@@ -1,0 +1,17 @@
+[
+  {
+    "updates": [ ]
+  },
+  {
+    "context": "vessels['uuid:de305d54-75b4-431b-adb2-eb6b9e546014']",
+    "updates": [ ]
+  },
+  {
+    "context": "vessels['mmsi:230099999']",
+    "updates": [ ]
+  },
+  {
+    "context": "vessels['href:vessels.signalk.org/someboatidentity']",
+    "updates": [ ]
+  }
+]
