@@ -5,9 +5,9 @@
   "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
   "title": "vessel",
   "anyOf": [
-    { "required": "mmsi" },
-    { "required": "url" },
-    { "required": "uuid" }
+    { "required": ["mmsi"] },
+    { "required": ["url"] },
+    { "required": ["uuid"] }
   ],
   "properties": {
     "url": {
