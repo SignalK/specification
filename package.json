@@ -33,6 +33,7 @@
     "tv4": "^1.2.7"
   },
   "devDependencies": {
+    "lodash": "^3.10.1",
     "mocha": "^2.1.0"
   }
 }

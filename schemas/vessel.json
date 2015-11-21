@@ -4,17 +4,26 @@
   "id": "https://signalk.github.io/specification/schemas/vessel.json#",
   "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
   "title": "vessel",
+  "anyOf": [
+    { "required": ["mmsi"] },
+    { "required": ["url"] },
+    { "required": ["uuid"] }
+  ],
   "properties": {
+    "url": {
+      "description": "URL based identity of the vessel, if available.",
+      "$ref": "definitions.json#/definitions/url"
+    },
+
     "mmsi": {
       "description": "MMSI number of the vessel, if available.",
-      "$ref": "definitions.json#/definitions/mmsi",
-      "units": "MMSI"
+      "$ref": "definitions.json#/definitions/mmsi"
     },
 
     "uuid": {
-      "description": "A unique ID in UUID v4 format if a MMSI isn't available.",
+      "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
       "$ref": "definitions.json#/definitions/uuid",
-      "units": "UUIDv4"
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
     },
 
     "name": {
