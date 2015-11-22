@@ -8,13 +8,13 @@
     "courseOverGroundMagnetic": {
       "description": "Course over ground (magnetic), measured in arc degrees.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "courseOverGroundTrue": {
       "description": "Course over ground (true), measured in arc degrees.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "activeRoute": {
@@ -35,7 +35,7 @@
         "bearingActual": {
           "type": "number",
           "description": "The current bearing of the next waypoint in degrees true",
-          "units": "°"
+          "units": "deg"
         },
 
         "distanceActual": {
@@ -47,13 +47,13 @@
         "bearingDirect": {
           "type": "number",
           "description": "The bearing in degrees true from last waypoint to the next waypoint",
-          "units": "°"
+          "units": "deg"
         },
 
         "courseRequired": {
           "type": "number",
           "description": "The course required to make the next waypoint in degrees true",
-          "units": "°"
+          "units": "deg"
         },
 
         "eta": {
@@ -110,7 +110,7 @@
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
-      "units": "°"
+      "units": "deg"
     },
 
     "destination": {
@@ -135,14 +135,14 @@
         "longitude": {
           "type": "number",
           "description": "Longitude of the destination in decimal degrees",
-          "units": "°",
+          "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
           "description": "Latitude of the destination in decimal degrees",
-          "units": "°",
+          "units": "deg",
           "example": 52.0987654
         },
 
@@ -211,13 +211,13 @@
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Current magnetic heading of the vessels in degrees",
-      "units": "°"
+      "units": "deg"
     },
 
     "headingTrue": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The current true heading of the vessel in degrees",
-      "units": "°"
+      "units": "deg"
     },
 
     "position": {
@@ -238,14 +238,14 @@
         "longitude": {
           "type": "number",
           "description": "Longitude of boat in decimal degrees",
-          "units": "°",
+          "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
           "description": "Latitude of boat in decimal degrees",
-          "units": "°",
+          "units": "deg",
           "example": 52.0987654
         },
 
@@ -264,19 +264,19 @@
         "roll": {
           "type": "number",
           "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve",
-          "units": "°"
+          "units": "deg"
         },
 
         "pitch": {
           "type": "number",
           "description": "Pitch in degrees, 0 is horizontal, +ve is bow up",
-          "units": "°"
+          "units": "deg"
         },
 
         "yaw": {
           "type": "number",
           "description": "Yaw in degrees",
-          "units": "°"
+          "units": "deg"
         },
 
         "source": {
@@ -294,7 +294,7 @@
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn in degrees per second",
-      "units": "°/s"
+      "units": "deg/s"
     },
 
     "speedOverGround": {
@@ -399,14 +399,14 @@
             "longitude": {
               "type": "number",
               "description": "Longitude of the anchor in decimal degrees",
-              "units": "°",
+              "units": "deg",
               "example": 4.98765245
             },
             
             "latitude": {
               "type": "number",
               "description": "Latitude of the anchor in decimal degrees",
-              "units": "°",
+              "units": "deg",
               "example": 52.0987654
             },
             

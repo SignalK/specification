@@ -74,13 +74,13 @@
         "targetHeadingNorth": {
           "description": "Target heading for autopilot in degrees true",
           "$ref": "../definitions.json#/definitions/numberValue", 
-          "units": "°"
+          "units": "deg"
         },
 
         "targetHeadingMagnetic": {
           "description": "Target heading for autopilot in magnetic degrees",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
 
         "headingSource": {
@@ -111,13 +111,13 @@
         "deadZone": {
           "description": "Dead zone to ignore for rudder corrections (in degrees)",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
 
         "backlash": {
           "description": "Slack in the rudder drive mechanism in degrees",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
 
         "gain": {
@@ -134,7 +134,7 @@
         "maxDriveRate": {
           "description": "Maximum degrees/sec to turn the rudder",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°/s"
+          "units": "deg/s"
         },
 
         "portLock": {
