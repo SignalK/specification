@@ -64,7 +64,7 @@ function chaiAsPromised(chai, utils) {
 
   function checkValidFullSignalK () { 
     var result = validateFull(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+    var message = result.errors.length === 0 ? '' : result.errors[result.errors.length-1].message + ':' + result.errors[result.errors.length-1].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
     this.assert(
       result.valid
