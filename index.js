@@ -82,6 +82,15 @@ function chaiAsPromised(chai, utils) {
     }
     checkValidFullSignalK.call(this);
   });
+  Assertion.addProperty('validSignalKVesselIgnoringIdentity', function() {
+    this._obj.mmsi = '230099999';
+    this._obj = {
+      'vessels': {
+        'urn:mrn:imo:mmsi:230099999': this._obj
+      }
+    }
+    checkValidFullSignalK.call(this);
+  });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
