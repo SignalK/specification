@@ -20,7 +20,7 @@
     "airTemp": {
       "description": "Current air temperature in degrees Celsius",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°C"
+      "units": "C"
     },
     
     "depth": {
@@ -69,7 +69,7 @@
     "salinity": {
       "description": "Water salinity, measured in parts per thousand",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "‰"
+      "units": "ppt"
     },
     
     "current": {
@@ -96,14 +96,14 @@
           "type": "number",
           "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
           "example": 123.45,
-          "units": "°"
+          "units": "deg"
         },
 
         "setMagnetic": {
           "type": "number",
           "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
           "example": 131.22,
-          "units": "°"
+          "units": "deg"
         }
       }
     },
@@ -146,7 +146,7 @@
     "waterTemp": {
       "description": "Current water temperature in degrees Celcius",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°C"
+      "units": "C"
     },
     
     "wind": {
@@ -157,37 +157,37 @@
         "angleApparent": {
           "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
 
         "angleTrueGround": {
           "description": "'True' wind angle based on Speed Over Ground (SOG), -180 to +180 degrees from the bow. Negative numbers to port.",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
         
         "angleTrueWater": {
           "description": "'True' wind angle based on Speed Through Water (STW), -180 to +180 degrees from the bow. Negative numbers to port.",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
         
         "directionChangeAlarm": {
           "description": "The number of degrees the wind needs to shift to raise an alarm",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
         
         "directionTrue": {
           "description": "The wind direction relative to true north, in compass degrees, 0 = North",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
         
         "directionMagnetic": {
           "description": "The wind direction relative to magnetic north, in compass degrees, 0 = North",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "deg"
         },
         
         "speedAlarm": {

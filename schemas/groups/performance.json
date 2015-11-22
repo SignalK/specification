@@ -32,7 +32,7 @@
     "beatAngle": {
       "description": "The true wind beat angle for the best velocity made good based on current current polar and trueWindSpeed.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "beatAngleVelocityMadeGood": {
@@ -50,7 +50,7 @@
     "gybeAngle": {
       "description": "The true wind gybe angle for the best velocity made good downwind based on current polar and trueWindSpeed.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "gybeAngleVelocityMadeGood": {
@@ -68,19 +68,19 @@
     "leeway": {
       "description": "Current leeway in degrees.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "tackMagnetic": {
       "description": "Magnetic heading on opposite tack.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     },
 
     "tackTrue": {
       "description": "True heading on opposite tack.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "°"
+      "units": "deg"
     }
   }
 }

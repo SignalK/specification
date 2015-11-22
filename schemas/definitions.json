@@ -56,26 +56,111 @@
 
     "units": {
       "type": "string",
-      "description": "",
-      "enum": [
-        "l",
-        "°",
-        "°/s",
-        "A",
-        "Ah",
-        "V",
-        "W",
-        "Wh",
-        "Ω",
-        "m2",
-        "m",
-        "°C",
-        "Pa",
-        "kPa",
-        "l/h",
-        "%",
-        "m/s"
-      ]
+      "description": "Allowed units of physical quantities. Units should all be (derived) SI units.",
+      "properties": {
+        "l": {
+          "display": "l",
+          "quantity": "Volume",
+          "quantityDisplay": "V",
+          "description": "Volume in liters"
+        },
+        "l/s": {
+          "display": "l/s",
+          "quantity": "Flow",
+          "quantityDisplay": "F",
+          "description": "Liquid or gas flow in liters per second"
+        },
+        "deg": {
+          "display": "\u00b0",
+          "quantity": "Angle",
+          "quantityDisplay": "\u2220",
+          "description": "Angular arc in degrees"
+        },
+        "deg/s": {
+          "display": "\u00b0/s",
+          "quantity": "Rotation",
+          "quantityDisplay": "\u03c9",
+          "description": "Angular frequency in degrees per second"
+        },
+        "A": {
+          "display": "A",
+          "quantity": "Current",
+          "quantityDisplay": "i",
+          "description": "Electrical current in ampere"
+        },
+        "Ah": {
+          "display": "Ah",
+          "quantity": "Charge",
+          "quantityDisplay": "Q",
+          "description": "Electrical charge in ampere-hour"
+        },
+        "V": {
+          "display": "V",
+          "quantity": "Voltage",
+          "quantityDisplay": "V",
+          "description": "Electrical potential in volt"
+        },
+        "W": {
+          "display": "W",
+          "quantity": "Power",
+          "quantityDisplay": "P",
+          "description": "Electrical power in watt"
+        },
+        "Wh": {
+          "display": "Wh",
+          "quantity": "Energy",
+          "quantityDisplay": "Q",
+          "description": "Electrical energy in watt-hour"
+        },
+        "ohm": {
+          "display": "\u2126",
+          "quantity": "Resistance",
+          "quantityDisplay": "R",
+          "description": "Electrical resistance in ohm"
+        },
+        "m": {
+          "display": "m",
+          "quantity": "Distance",
+          "quantityDisplay": "d",
+          "description": "Distance in meters"
+        },
+        "m/s": {
+          "display": "m/s",
+          "quantity": "Velocity",
+          "quantityDisplay": "v",
+          "description": "Velocity in meters per second"
+        },
+        "m2": {
+          "display": "\u33a1",
+          "quantity": "Area",
+          "quantityDisplay": "A",
+          "description": "(Surface) area in square meters"
+        },
+        "C": {
+          "display": "\u2103",
+          "quantity": "Temperature",
+          "quantityDisplay": "t",
+          "description": "Temperature in degrees Celcius"
+        },
+        "Pa": {
+          "display": "Pa",
+          "quantity": "Pressure",
+          "quantityDisplay": "P",
+          "description": "Pressure in pascal"
+        },
+        "kPa": {
+          "display": "kPa",
+          "quantity": "Pressure",
+          "quantityDisplay": "P",
+          "description": "Pressure in kilo pascal"
+        },
+        "%": {
+          "display": "%",
+          "quantity": "Ratio",
+          "quantityDisplay": "\u03c6",
+          "description": "Relative value in percentage"
+        }
+      }
     },
 
     "mmsi": {
@@ -345,7 +430,7 @@
         "units": {
           "type": "string",
           "title": "units schema.",
-          "description": "The SI unit of this value.",
+          "description": "The (derived) SI unit of this value.",
           "example": "m/s"
         },
 	"timeout": {

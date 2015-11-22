@@ -106,7 +106,7 @@
         "angle": {
           "type": "number",
           "description": "A number indicating at which angle the keel currently is (in case of a canting keel).",
-          "units": "°"
+          "units": "deg"
         },
 
         "lift": {
