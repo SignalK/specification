@@ -335,9 +335,9 @@
           "example": "RPM"
         },
   
-        "guageType": {
+        "gaugeType": {
           "type": "string",
-          "title": "guageType schema.",
+          "title": "gaugeType schema.",
           "description": "The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
