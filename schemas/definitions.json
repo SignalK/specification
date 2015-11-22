@@ -433,12 +433,12 @@
           "description": "The (derived) SI unit of this value.",
           "example": "m/s"
         },
-	"timeout": {
-	  "type": "number",
-	  "title": "Timeout",
-	  "description": "The timeout in millisecs, after which this data is invalid",
-	  "example": 2000
-	},
+        "timeout": {
+          "type": "number",
+          "title": "Timeout",
+          "description": "The timeout in millisecs, after which this data is invalid",
+          "example": 2000
+        },
         "warnMethod": {
           "type": "string",
           "title": "WarnMethod schema.",
