@@ -23,7 +23,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase A and phase B.",
               "units": "V",
               "minimum": 0,
@@ -32,7 +32,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase A and neutral.",
               "units": "V",
               "minimum": 0,
@@ -41,7 +41,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Bus phase A frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -64,7 +64,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase B and phase C.",
               "units": "V",
               "minimum": 0,
@@ -73,7 +73,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase B and neutral.",
               "units": "V",
               "minimum": 0,
@@ -81,7 +81,7 @@
               "example": 277
             },
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Bus phase B frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -104,7 +104,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase C and phase A.",
               "units": "V",
               "minimum": 0,
@@ -113,7 +113,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between bus phase C and neutral.",
               "units": "V",
               "minimum": 0,
@@ -122,7 +122,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Bus phase C frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -145,7 +145,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
               "units": "V",
               "minimum": 0,
@@ -154,7 +154,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
               "units": "V",
               "minimum": 0,
@@ -163,7 +163,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average frequency of the bus.",
               "units": "Hz",
               "minimum": 0,
@@ -193,7 +193,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase A and phase B.",
               "units": "V",
               "minimum": 0,
@@ -202,7 +202,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase A and neutral.",
               "units": "V",
               "minimum": 0,
@@ -211,7 +211,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Utility phase A frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -232,16 +232,16 @@
                 },
 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase A reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase A power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -276,7 +276,7 @@
                 },
                 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase A real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -285,9 +285,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase A apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -309,7 +309,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase B and phase C.",
               "units": "V",
               "minimum": 0,
@@ -318,7 +318,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase B and neutral.",
               "units": "V",
               "minimum": 0,
@@ -327,7 +327,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Utility phase B frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -348,16 +348,16 @@
                 },
 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase B reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase B power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -391,7 +391,7 @@
                 },
                 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase B real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -400,9 +400,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase B apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -425,7 +425,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase C and phase A.",
               "units": "V",
               "minimum": 0,
@@ -434,7 +434,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between utility phase C and neutral.",
               "units": "V",
               "minimum": 0,
@@ -443,7 +443,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Utility phase C frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -464,16 +464,16 @@
                 },
 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase C reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase C power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -507,7 +507,7 @@
                 },
                 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase C real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -516,9 +516,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Utility phase C apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -541,25 +541,25 @@
             },
             
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase utility connection.",
-              "units": "var",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase utility connection.",
-              "units": "var",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average frequency of the utility connection.",
               "units": "Hz",
               "minimum": 0,
@@ -582,7 +582,7 @@
             },
             
             "totalExport": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours exported by the utility",
               "units": "Wh",
               "minimum": 0,
@@ -591,7 +591,7 @@
             },
 
             "totalImport": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours imported by the utility",
               "units": "Wh",
               "minimum": 0,
@@ -614,16 +614,16 @@
             },
 
             "reactivePower": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-              "units": "var",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
             },
 
             "powerFactor": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average power factor for utility.",
               "minimum": -1.0,
               "maximum": 1.0,
@@ -657,8 +657,10 @@
             },
 
             "realPower": {
-              "type": "number",
-              "description": "Total real power delivered by the utility. Real power must be signed since power may flow in both directions.",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "description": "Total real power delivered by the utility",
+              "comment": "Real power must be signed since power may flow in both directions.",
               "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
@@ -666,9 +668,9 @@
             },
 
             "apparentPower": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total apparent power delivered by the utility. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
-              "units": "VA",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500
@@ -696,7 +698,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase A and phase B.",
               "units": "V",
               "minimum": 0,
@@ -705,7 +707,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase A and neutral.",
               "units": "V",
               "minimum": 0,
@@ -714,7 +716,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Generator phase A frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -735,16 +737,16 @@
                 },
 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase A reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase A power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -778,7 +780,7 @@
                 },
 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase A real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -787,9 +789,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase A apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -812,7 +814,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase B and phase C.",
               "units": "V",
               "minimum": 0,
@@ -821,7 +823,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase B and neutral.",
               "units": "V",
               "minimum": 0,
@@ -830,7 +832,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Generator phase B frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -851,16 +853,16 @@
                 },
 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase B reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase B power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -894,7 +896,7 @@
                 },
 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase B real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -903,9 +905,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase B apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -928,7 +930,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase C and phase A.",
               "units": "V",
               "minimum": 0,
@@ -937,7 +939,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "RMS voltage measured between generator phase C and neutral.",
               "units": "V",
               "minimum": 0,
@@ -946,7 +948,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Generator phase C frequency.",
               "units": "Hz",
               "minimum": 0,
@@ -967,16 +969,16 @@
                 },
                 
                 "reactivePower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase C reactive power",
-                  "units": "var",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
                 },
 
                 "powerFactor": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase C power factor",
                   "minimum": -1.0,
                   "maximum": 1.0,
@@ -1010,7 +1012,7 @@
                 },
 
                 "realPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase C real power.",
                   "units": "W",
                   "minimum": -2000000000,
@@ -1019,9 +1021,9 @@
                 },
 
                 "apparentPower": {
-                  "type": "number",
+                  "#ref": "../definitions.json#/definitions/numberValue",
                   "description": "Generator phase C apparent power.",
-                  "units": "VA",
+                  "units": "W",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 10500
@@ -1044,7 +1046,7 @@
             },
 
             "lineLineVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase generator.",
               "units": "V",
               "minimum": 0,
@@ -1053,7 +1055,7 @@
             },
 
             "lineNeutralVoltage": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase generator.",
               "units": "V",
               "minimum": 0,
@@ -1062,7 +1064,7 @@
             },
 
             "frequency": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average frequency of the generator output.",
               "units": "Hz",
               "minimum": 0,
@@ -1085,7 +1087,7 @@
             },
 
             "totalExport": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours exported by the generator",
               "units": "Wh",
               "minimum": 0,
@@ -1094,7 +1096,7 @@
             },
 
             "totalImport": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours imported by the generator",
               "units": "Wh",
               "minimum": 0,
@@ -1117,17 +1119,17 @@
             },
 
             "reactivePower": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Reactive power",
               "comment": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power",
-              "units": "var",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
             },
 
             "powerFactor": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Average power factor for the generator.",
               "minimum": -1.0,
               "maximum": 1.0,
@@ -1156,7 +1158,7 @@
             },
             
             "realPower": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total real power delivered by the generator. Real power must be signed since power may flow in both directions.",
               "units": "W",
               "minimum": -2000000000,
@@ -1165,9 +1167,9 @@
             },
 
             "apparentPower": {
-              "type": "number",
+              "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total apparent power delivered by the generator. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
-              "units": "VA",
+              "units": "W",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 10500
