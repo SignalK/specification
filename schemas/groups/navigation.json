@@ -40,7 +40,7 @@
 
         "distanceActual": {
           "type": "number",
-          "description": "The current distance to the next waypoint in meters",
+          "description": "The current distance to the next waypoint",
           "units": "m"
         },
 
@@ -99,7 +99,7 @@
 
             "xte": {
               "type": "number",
-              "description": "Cross track error in meters",
+              "description": "Cross track error",
               "units": "m"
             }
           }
@@ -148,7 +148,7 @@
 
         "altitude": {
           "type": "number",
-          "description": "Altitude of the destination in meters",
+          "description": "Altitude of the destination",
           "units": "m"
         }
       }
@@ -181,7 +181,7 @@
 
         "antennaAltitude": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Altitude of antenna in meters",
+          "description": "Altitude of antenna",
           "units": "m"
         },
 
@@ -251,7 +251,7 @@
 
         "altitude": {
           "type": "number",
-          "description": "Altitude of boat in meters"
+          "description": "Altitude of boat"
         }
       }
     },
@@ -311,13 +311,13 @@
 
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Log value in meters",
+      "description": "Log value",
       "units": "m"
     },
 
     "logTrip": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Trip log value in meters",
+      "description": "Trip log value",
       "units": "m"
     },
 
@@ -371,13 +371,13 @@
         
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat",
+          "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
           "units": "m"
         },
         
         "currentRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Current distance to anchor in meters",
+          "description": "Current distance to anchor",
           "units": "m"
         },
         
@@ -412,7 +412,7 @@
             
             "altitude": {
               "type": "number",
-              "description": "Altitude of the anchor in meters",
+              "description": "Altitude of the anchor",
               "units": "m"
             }
           }

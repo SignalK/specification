@@ -29,31 +29,31 @@
       "description": "Depth related data",
       "properties": {
         "belowKeel": {
-          "description": "Depth below keel in meters",
+          "description": "Depth below keel",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "belowTransducer": {
-          "description": "Depth below Transducer in meters",
+          "description": "Depth below Transducer",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
         
         "belowSurface": {
-          "description": "Depth from surface in meters",
+          "description": "Depth from surface",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
         
         "transducerToKeel": {
-          "description": "Depth in meters from the transducer to the bottom of the keel.",
+          "description": "Depth from the transducer to the bottom of the keel",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
         
         "surfaceToTransducer": {
-          "description": "Depth transducer is below the water in meters",
+          "description": "Depth transducer is below the water",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         }
@@ -114,19 +114,19 @@
       "description": "Tide data",
       "properties": {
         "heightHigh": {
-          "description": "Next high tide in meters",
+          "description": "Next high tide",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightNow": {
-          "description": "The current tide height in meters",
+          "description": "The current tide height",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
         
         "heightLow": {
-          "description": "The next low tide height in meters",
+          "description": "The next low tide height",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
