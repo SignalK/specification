@@ -112,6 +112,18 @@
           "quantityDisplay": "V",
           "description": "Electrical potential in volt"
         },
+        "VA": {
+          "display": "VA",
+          "quantity": "Apparent power",
+          "quantityDisplay": "S",
+          "description": "Apparent power in volt-ampere"
+        },
+        "var": {
+          "display": "var",
+          "quantity": "Reactive power",
+          "quantityDisplay": "Q",
+          "description": "Reactive power in reactive volt-ampere"
+        },
         "W": {
           "display": "W",
           "quantity": "Power",

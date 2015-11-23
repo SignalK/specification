@@ -25,7 +25,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase A and phase B.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -34,7 +34,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase A and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -66,7 +66,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase B and phase C.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -75,7 +75,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase B and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -106,7 +106,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase C and phase A.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -115,7 +115,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between bus phase C and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -147,7 +147,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -156,7 +156,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -195,7 +195,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase A and phase B.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -204,7 +204,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase A and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -234,7 +234,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase A reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -311,7 +311,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase B and phase C.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -320,7 +320,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase B and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -350,7 +350,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase B reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -427,7 +427,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase C and phase A.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -436,7 +436,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between utility phase C and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -466,7 +466,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Utility phase C reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -543,7 +543,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase utility connection.",
-              "units": "VAr",
+              "units": "var",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -552,7 +552,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase utility connection.",
-              "units": "VAr",
+              "units": "var",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -616,7 +616,7 @@
             "reactivePower": {
               "type": "number",
               "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-              "units": "VAr",
+              "units": "var",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
@@ -698,7 +698,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase A and phase B.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -707,7 +707,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase A and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -737,7 +737,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase A reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -814,7 +814,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase B and phase C.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -823,7 +823,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase B and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -853,7 +853,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase B reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -930,7 +930,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase C and phase A.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -939,7 +939,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "RMS voltage measured between generator phase C and neutral.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -969,7 +969,7 @@
                 "reactivePower": {
                   "type": "number",
                   "description": "Generator phase C reactive power",
-                  "units": "VAr",
+                  "units": "var",
                   "minimum": -2000000000,
                   "maximum": 2211081215,
                   "example": 5000
@@ -1046,7 +1046,7 @@
             "lineLineVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase generator.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 480
@@ -1055,7 +1055,7 @@
             "lineNeutralVoltage": {
               "type": "number",
               "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase generator.",
-              "units": "Vrms",
+              "units": "V",
               "minimum": 0,
               "maximum": 64255,
               "example": 277
@@ -1118,8 +1118,9 @@
 
             "reactivePower": {
               "type": "number",
-              "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-              "units": "VAr",
+              "description": "Reactive power",
+              "comment": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power",
+              "units": "var",
               "minimum": -2000000000,
               "maximum": 2211081215,
               "example": 5000
