@@ -6,15 +6,15 @@
   "title": "environment",
   "properties": {
     "airPressureChangeRateAlarm": {
-      "description": "Change per hour which will cause an alarm in kPa",
+      "description": "Change per hour which will cause an alarm",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "kPa"
+      "units": "Pa"
     },
 
     "airPressure": {
-      "description": "Current air pressure in kPa",
+      "description": "Current air pressure",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "kPa"
+      "units": "Pa"
     },
     
     "airTemp": {

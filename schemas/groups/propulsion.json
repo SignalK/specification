@@ -77,9 +77,9 @@
     },
 
     "oilPressure": {
-      "description": "Oil pressure in kPa",
+      "description": "Oil pressure",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "kPa"
+      "units": "Pa"
     },
 
     "waterTemp": {

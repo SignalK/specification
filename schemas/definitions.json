@@ -148,12 +148,6 @@
           "quantityDisplay": "P",
           "description": "Pressure in pascal"
         },
-        "kPa": {
-          "display": "kPa",
-          "quantity": "Pressure",
-          "quantityDisplay": "P",
-          "description": "Pressure in kilo pascal"
-        },
         "%": {
           "display": "%",
           "quantity": "Ratio",
