@@ -83,16 +83,22 @@
           "description": "Liquid or gas flow in cubic meters per second"
         },
         "deg": {
-          "display": "\u00b0",
+          "display": "\u33ad",
           "quantity": "Angle",
           "quantityDisplay": "\u2220",
-          "description": "Angular arc in degrees"
+          "description": "Angular arc in radians"
         },
-        "deg/s": {
-          "display": "\u00b0/s",
+        "rad": {
+          "display": "\u33ad",
+          "quantity": "Angle",
+          "quantityDisplay": "\u2220",
+          "description": "Angular arc in radians"
+        },
+        "rad/s": {
+          "display": "\u33ad/s",
           "quantity": "Rotation",
           "quantityDisplay": "\u03c9",
-          "description": "Angular frequency in degrees per second"
+          "description": "Angular frequency in radians per second"
         },
         "A": {
           "display": "A",
@@ -166,11 +172,11 @@
           "quantityDisplay": "m",
           "description": "Mass in kilogram"
         },
-        "%": {
-          "display": "%",
+        "ratio": {
+          "display": "",
           "quantity": "Ratio",
           "quantityDisplay": "\u03c6",
-          "description": "Relative value in percentage"
+          "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%"
         }
       }
     },

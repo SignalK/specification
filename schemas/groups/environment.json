@@ -94,16 +94,16 @@
 
         "setTrue": {
           "type": "number",
-          "description": "The direction component of the water current vector in decimal degrees referenced to true (geographic) north",
+          "description": "The direction component of the water current vector referenced to true (geographic) north",
           "example": 123.45,
-          "units": "deg"
+          "units": "rad"
         },
 
         "setMagnetic": {
           "type": "number",
-          "description": "The direction component of the water current vector in decimal degrees referenced to magnetic north",
+          "description": "The direction component of the water current vector referenced to magnetic north",
           "example": 131.22,
-          "units": "deg"
+          "units": "rad"
         }
       }
     },
@@ -155,39 +155,39 @@
       "description": "Wind data.",
       "properties": {
         "angleApparent": {
-          "description": "Apparent wind angle, -180 to +180 degrees from the bow. Negative numbers to port.",
+          "description": "Apparent wind angle, negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
 
         "angleTrueGround": {
-          "description": "'True' wind angle based on Speed Over Ground (SOG), -180 to +180 degrees from the bow. Negative numbers to port.",
+          "description": "True wind angle based on speed over ground, negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
         
         "angleTrueWater": {
-          "description": "'True' wind angle based on Speed Through Water (STW), -180 to +180 degrees from the bow. Negative numbers to port.",
+          "description": "True wind angle based on speed through water, negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
         
         "directionChangeAlarm": {
-          "description": "The number of degrees the wind needs to shift to raise an alarm",
+          "description": "The angle the wind needs to shift to raise an alarm",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
         
         "directionTrue": {
-          "description": "The wind direction relative to true north, in compass degrees, 0 = North",
+          "description": "The wind direction relative to true north",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
         
         "directionMagnetic": {
-          "description": "The wind direction relative to magnetic north, in compass degrees, 0 = North",
+          "description": "The wind direction relative to magnetic north",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "deg"
+          "units": "rad"
         },
         
         "speedAlarm": {

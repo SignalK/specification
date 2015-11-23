@@ -6,15 +6,15 @@
   "title": "navigation",
   "properties": {
     "courseOverGroundMagnetic": {
-      "description": "Course over ground (magnetic), measured in arc degrees.",
+      "description": "Course over ground (magnetic)",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "deg"
+      "units": "rad"
     },
 
     "courseOverGroundTrue": {
-      "description": "Course over ground (true), measured in arc degrees.",
+      "description": "Course over ground (true)",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "deg"
+      "units": "rad"
     },
 
     "activeRoute": {
@@ -34,8 +34,8 @@
 
         "bearingActual": {
           "type": "number",
-          "description": "The current bearing of the next waypoint in degrees true",
-          "units": "deg"
+          "description": "The current bearing of the next waypoint relative to true North",
+          "units": "rad"
         },
 
         "distanceActual": {
@@ -46,14 +46,14 @@
 
         "bearingDirect": {
           "type": "number",
-          "description": "The bearing in degrees true from last waypoint to the next waypoint",
-          "units": "deg"
+          "description": "The bearing relative to true North from last waypoint to the next waypoint",
+          "units": "rad"
         },
 
         "courseRequired": {
           "type": "number",
-          "description": "The course required to make the next waypoint in degrees true",
-          "units": "deg"
+          "description": "The course relative to true North towards the next waypoint",
+          "units": "rad"
         },
 
         "eta": {
@@ -110,7 +110,7 @@
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
-      "units": "deg"
+      "units": "rad"
     },
 
     "destination": {
@@ -134,14 +134,14 @@
 
         "longitude": {
           "type": "number",
-          "description": "Longitude of the destination in decimal degrees",
+          "description": "Longitude of the destination",
           "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
-          "description": "Latitude of the destination in decimal degrees",
+          "description": "Latitude of the destination",
           "units": "deg",
           "example": 52.0987654
         },
@@ -210,14 +210,14 @@
 
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading of the vessels in degrees",
-      "units": "deg"
+      "description": "Current magnetic heading of the vessels",
+      "units": "rad"
     },
 
     "headingTrue": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The current true heading of the vessel in degrees",
-      "units": "deg"
+      "description": "The current true heading of the vessel",
+      "units": "rad"
     },
 
     "position": {
@@ -237,20 +237,21 @@
 
         "longitude": {
           "type": "number",
-          "description": "Longitude of boat in decimal degrees",
+          "description": "Longitude of boat",
           "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
-          "description": "Latitude of boat in decimal degrees",
+          "description": "Latitude of boat",
           "units": "deg",
           "example": 52.0987654
         },
 
         "altitude": {
           "type": "number",
+          "units": "m",
           "description": "Altitude of boat"
         }
       }
@@ -263,20 +264,20 @@
       "properties": {
         "roll": {
           "type": "number",
-          "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve",
-          "units": "deg"
+          "description": "Vessel roll, +ve is list to starboard",
+          "units": "rad"
         },
 
         "pitch": {
           "type": "number",
-          "description": "Pitch in degrees, 0 is horizontal, +ve is bow up",
-          "units": "deg"
+          "description": "Pitch, +ve is bow up",
+          "units": "rad"
         },
 
         "yaw": {
           "type": "number",
-          "description": "Yaw in degrees",
-          "units": "deg"
+          "description": "Yaw, +ve is heading change to starboard",
+          "units": "rad"
         },
 
         "source": {
@@ -293,8 +294,8 @@
 
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn in degrees per second",
-      "units": "deg/s"
+      "description": "Rate of turn",
+      "units": "rad/s"
     },
 
     "speedOverGround": {
@@ -398,14 +399,14 @@
             
             "longitude": {
               "type": "number",
-              "description": "Longitude of the anchor in decimal degrees",
+              "description": "Longitude of the anchor",
               "units": "deg",
               "example": 4.98765245
             },
             
             "latitude": {
               "type": "number",
-              "description": "Latitude of the anchor in decimal degrees",
+              "description": "Latitude of the anchor",
               "units": "deg",
               "example": 52.0987654
             },
