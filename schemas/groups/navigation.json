@@ -68,7 +68,7 @@
 
         "startTime": {
           "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The time this route was activated in UTC"
+          "description": "The time this route was activated"
         },
 
         "waypoint": {
@@ -78,7 +78,7 @@
           "properties": {
             "lastTime": {
               "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached in UTC"
+              "description": "The time the last waypoint was reached"
             },
 
             "last": {
@@ -197,7 +197,7 @@
 
         "differentialAge": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Age of DGPS data in seconds",
+          "description": "Age of DGPS data",
           "units": "s"
         },
 

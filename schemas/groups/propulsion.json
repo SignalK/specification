@@ -58,13 +58,13 @@
       }
     },
 
-    "rpm": {
-      "description": "Engine rpm",
+    "revolutions": {
+      "description": "Engine revolutions",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "RPM"
+      "units": "Hz"
     },
 
-    "engineTemperature": {
+    "temperature": {
       "description": "Engine temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
@@ -82,22 +82,22 @@
       "units": "Pa"
     },
 
-    "waterTemp": {
+    "waterTemperature": {
       "description": "Water temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
     },
 
-    "exhaustTemp": {
+    "exhaustTemperature": {
       "description": "Exhaust temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
     },
 
-    "fuelUsageRate": {
-      "description": "Fuel usage in liters/hour",
+    "fuelRate": {
+      "description": "Fuel consumption rate",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "l/h"
+      "units": "m3/s"
     }
   }
 }

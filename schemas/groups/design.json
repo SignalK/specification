@@ -7,7 +7,7 @@
   "properties": {
     "displacement": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The displacement of the vessel, measured in kilogram",
+      "description": "The displacement of the vessel",
       "units": "kg"
     },
     

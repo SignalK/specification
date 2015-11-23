@@ -62,19 +62,25 @@
           "display": "s",
           "quantity": "Time",
           "quantityDisplay": "T",
-          "description": "Elapsed time (interval)"
+          "description": "Elapsed time (interval) in seconds"
         },
-        "l": {
-          "display": "l",
+        "Hz": {
+          "display": "Hz",
+          "quantity": "Frequency",
+          "quantityDisplay": "F",
+          "description": "Frequency in Herz"
+        },
+        "m3": {
+          "display": "m\u00b3",
           "quantity": "Volume",
           "quantityDisplay": "V",
-          "description": "Volume in liters"
+          "description": "Volume in cubic meters"
         },
-        "l/s": {
-          "display": "l/s",
+        "m3/s": {
+          "display": "m3/s",
           "quantity": "Flow",
           "quantityDisplay": "F",
-          "description": "Liquid or gas flow in liters per second"
+          "description": "Liquid or gas flow in cubic meters per second"
         },
         "deg": {
           "display": "\u00b0",
@@ -153,6 +159,12 @@
           "quantity": "Pressure",
           "quantityDisplay": "P",
           "description": "Pressure in pascal"
+        },
+        "kg": {
+          "display": "kg",
+          "quantity": "Mass",
+          "quantityDisplay": "m",
+          "description": "Mass in kilogram"
         },
         "%": {
           "display": "%",
