@@ -11,10 +11,10 @@
       "units": "m/s"
     },
 
-    "polarSpeedPercent": {
-      "description": "The percentage of current speed through water to the polar speed.",
+    "polarSpeedRatio": {
+      "description": "The ratio of current speed through water to the polar speed.",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "%"
+      "units": "ratio"
     },
 
     "velocityMadeGood": {

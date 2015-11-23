@@ -61,15 +61,15 @@
     },
 
     "humidity": {
-      "description": "Current relative humidity as percentage",
+      "description": "Current relative humidity",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "%"
+      "units": "ratio"
     },
     
     "salinity": {
-      "description": "Water salinity, measured in parts per thousand",
+      "description": "Water salinity",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "ppt"
+      "units": "ratio"
     },
     
     "current": {
