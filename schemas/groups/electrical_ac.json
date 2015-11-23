@@ -584,19 +584,13 @@
             "totalExport": {
               "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours exported by the utility",
-              "units": "Wh",
-              "minimum": 0,
-              "maximum": 4211081215,
-              "example": 12000
+              "units": "J"
             },
 
             "totalImport": {
               "#ref": "../definitions.json#/definitions/numberValue",
               "description": "Total watt hours imported by the utility",
-              "units": "Wh",
-              "minimum": 0,
-              "maximum": 4211081215,
-              "example": 12000
+              "units": "J"
             }
           }
         },
@@ -1088,20 +1082,14 @@
 
             "totalExport": {
               "#ref": "../definitions.json#/definitions/numberValue",
-              "description": "Total watt hours exported by the generator",
-              "units": "Wh",
-              "minimum": 0,
-              "maximum": 4211081215,
-              "example": 12000
+              "description": "Total energy exported by the generator",
+              "units": "J"
             },
 
             "totalImport": {
               "#ref": "../definitions.json#/definitions/numberValue",
-              "description": "Total watt hours imported by the generator",
-              "units": "Wh",
-              "minimum": 0,
-              "maximum": 4211081215,
-              "example": 12000
+              "description": "Total energy imported by the generator",
+              "units": "J"
             }
           }
         },

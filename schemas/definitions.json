@@ -56,7 +56,7 @@
 
     "units": {
       "type": "string",
-      "description": "Allowed units of physical quantities. Units should all be (derived) SI units.",
+      "description": "Allowed units of physical quantities. Units should be (derived) SI units where possible.",
       "properties": {
         "s": {
           "display": "s",
@@ -79,14 +79,14 @@
         "m3/s": {
           "display": "m3/s",
           "quantity": "Flow",
-          "quantityDisplay": "F",
+          "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
         "deg": {
-          "display": "\u33ad",
+          "display": "\u00b0",
           "quantity": "Angle",
           "quantityDisplay": "\u2220",
-          "description": "Angular arc in radians"
+          "description": "Latitude or longitude in decimal degrees"
         },
         "rad": {
           "display": "\u33ad",
@@ -98,7 +98,7 @@
           "display": "\u33ad/s",
           "quantity": "Rotation",
           "quantityDisplay": "\u03c9",
-          "description": "Angular frequency in radians per second"
+          "description": "Angular rate in radians per second"
         },
         "A": {
           "display": "A",
@@ -106,11 +106,11 @@
           "quantityDisplay": "i",
           "description": "Electrical current in ampere"
         },
-        "Ah": {
-          "display": "Ah",
+        "C": {
+          "display": "C",
           "quantity": "Charge",
           "quantityDisplay": "Q",
-          "description": "Electrical charge in ampere-hour"
+          "description": "Electrical charge in Coulomb"
         },
         "V": {
           "display": "V",
@@ -124,11 +124,11 @@
           "quantityDisplay": "P",
           "description": "Electrical power in watt"
         },
-        "Wh": {
-          "display": "Wh",
+        "J": {
+          "display": "J",
           "quantity": "Energy",
-          "quantityDisplay": "Q",
-          "description": "Electrical energy in watt-hour"
+          "quantityDisplay": "E",
+          "description": "Electrical energy in joule"
         },
         "ohm": {
           "display": "\u2126",
@@ -176,7 +176,37 @@
           "display": "",
           "quantity": "Ratio",
           "quantityDisplay": "\u03c6",
-          "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%"
+          "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt"
+        },
+        "m/s2": {
+          "display": "m/s\u00b2",
+          "quantity": "Acceleration",
+          "quantityDisplay": "a",
+          "description": "Acceleration in meters per second squared"
+        },
+        "rad/s2": {
+          "display": "rad/s\u00b2",
+          "quantity": "Angular acceleration",
+          "quantityDisplay": "a",
+          "description": "Angular acceleration in radians per second squared"
+        },
+        "N": {
+          "display": "N",
+          "quantity": "Force",
+          "quantityDisplay": "F",
+          "description": "Force in newton"
+        },
+        "T": {
+          "display": "T",
+          "quantity": "Magnetic field",
+          "quantityDisplay": "B",
+          "description": "Magnetic field strength in tesla"
+        },
+        "Pa/s": {
+          "display": "Pa/s",
+          "quantity": "Pressure rate",
+          "quantityDisplay": "R",
+          "description": "Pressure change rate in pascal per meter"
         }
       }
     },
