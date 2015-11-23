@@ -18,9 +18,9 @@
     },
     
     "airTemp": {
-      "description": "Current air temperature in degrees Celsius",
+      "description": "Current air temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "C"
+      "units": "K"
     },
     
     "depth": {
@@ -144,9 +144,9 @@
     },
 
     "waterTemp": {
-      "description": "Current water temperature in degrees Celcius",
+      "description": "Current water temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "C"
+      "units": "K"
     },
     
     "wind": {

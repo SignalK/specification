@@ -136,11 +136,11 @@
           "quantityDisplay": "A",
           "description": "(Surface) area in square meters"
         },
-        "C": {
-          "display": "\u2103",
+        "K": {
+          "display": "K",
           "quantity": "Temperature",
           "quantityDisplay": "t",
-          "description": "Temperature in degrees Celcius"
+          "description": "Temperature in kelvin"
         },
         "Pa": {
           "display": "Pa",
