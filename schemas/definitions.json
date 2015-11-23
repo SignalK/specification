@@ -58,6 +58,12 @@
       "type": "string",
       "description": "Allowed units of physical quantities. Units should all be (derived) SI units.",
       "properties": {
+        "s": {
+          "display": "s",
+          "quantity": "Time",
+          "quantityDisplay": "T",
+          "description": "Elapsed time (interval)"
+        },
         "l": {
           "display": "l",
           "quantity": "Volume",
@@ -226,14 +232,14 @@
 
         "minimumWind": {
           "type": "number",
-          "description": "The minimum wind speed this sail can be used with, measured in m/s",
+          "description": "The minimum wind speed this sail can be used with",
           "units": "m/s",
           "default": 0
         },
 
         "maximumWind": {
           "type": "number",
-          "description": "The maximum wind speed this sail can be used with, measured in m/s",
+          "description": "The maximum wind speed this sail can be used with",
           "units": "m/s",
           "default": 666
         },
@@ -430,8 +436,8 @@
         "timeout": {
           "type": "number",
           "title": "Timeout",
-          "description": "The timeout in millisecs, after which this data is invalid",
-          "example": 2000
+          "description": "The timeout in (fractional) seconds after which this data is invalid.",
+          "example": 2
         },
         "warnMethod": {
           "type": "string",

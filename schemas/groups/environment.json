@@ -87,7 +87,7 @@
         
         "drift": {
           "type": "number",
-          "description": "The speed component of the water current vector in m/s",
+          "description": "The speed component of the water current vector",
           "example": 3.12,
           "units": "m/s"
         },
@@ -191,25 +191,25 @@
         },
         
         "speedAlarm": {
-          "description": "The speed in m/s above which a wind alarm will be raised",
+          "description": "The speed above which a wind alarm will be raised",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
         
         "speedTrue": {
-          "description": "Wind speed over water in m/s (as calculated from speedApparent and vessel's speed through water)",
+          "description": "Wind speed over water (as calculated from speedApparent and vessel's speed through water)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
         
         "speedOverGround": {
-          "description": "Wind speed over ground in m/s (as calculated from speedApparent and vessel's speed over ground)",
+          "description": "Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
         
         "speedApparent": {
-          "description": "Apparent wind speed in m/s",
+          "description": "Apparent wind speed",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         }

@@ -6,7 +6,7 @@
   "title": "performance",
   "properties": {
     "polarSpeed": {
-      "description": "The current polar speed in m/s based on current polar, trueWindSpeed and truewindAngle.",
+      "description": "The current polar speed based on current polar, trueWindSpeed and truewindAngle.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
@@ -18,13 +18,13 @@
     },
 
     "velocityMadeGood": {
-      "description": "The current velocity made good in m/s derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.",
+      "description": "The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
 
     "velocityMadeGoodToWaypoint": {
-      "description": "The current velocity made good in m/s to the next waypoint derived from the speedOverGround, courseOverGround.",
+      "description": "The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
@@ -36,13 +36,13 @@
     },
 
     "beatAngleVelocityMadeGood": {
-      "description": "The velocity made good in m/s for the beat angle.",
+      "description": "The velocity made good for the beat angle.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
 
     "beatAngleTargetSpeed": {
-      "description": "The target speed in m/s for the beat angle.",
+      "description": "The target speed for the beat angle.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
@@ -54,13 +54,13 @@
     },
 
     "gybeAngleVelocityMadeGood": {
-      "description": "The velocity made good in m/s for the gybe angle",
+      "description": "The velocity made good for the gybe angle",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
 
     "gybeAngleTargetSpeed": {
-      "description": "The target speed in m/s for the gybe angle.",
+      "description": "The target speed for the gybe angle.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },

@@ -299,13 +299,13 @@
 
     "speedOverGround": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed over ground, in m/s",
+      "description": "Vessel speed over ground",
       "units": "m/s"
     },
 
     "speedThroughWater": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed through the water in m/s",
+      "description": "Vessel speed through the water",
       "units": "m/s"
     },
 
