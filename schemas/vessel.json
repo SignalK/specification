@@ -40,7 +40,7 @@
         "description": "Environmental data",
         "$ref": "groups/environment.json#"
     },
-    
+
     "navigation": {
       "description": "Navigation data",
       "$ref": "groups/navigation.json#"
@@ -55,7 +55,7 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "description": "This regex pattern is used for validation UUID identifier for the tank",
-          "$ref": "propulsion.json#"
+          "$ref": "groups/propulsion.json#"
         }
       }
     },
@@ -80,7 +80,7 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "description": "This regex pattern is used for validation of the path of the alarm",
-          "$ref": "alarms.json#"
+          "$ref": "groups/alarms.json#"
         }
       }
     },
@@ -99,7 +99,7 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "description": "This regex pattern is used for validation UUID identifier for the tank",
-          "$ref": "tanks.json#"
+          "$ref": "groups/tanks.json#"
         }
       }
     },
@@ -118,7 +118,7 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "description": "This regex pattern is used for validation UUID identifier for the sensor",
-          "$ref": "sensors.json#"
+          "$ref": "groups/sensors.json#"
         }
       }
     },
