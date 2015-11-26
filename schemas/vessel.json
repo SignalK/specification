@@ -48,7 +48,6 @@
 
     "propulsion": {
       "type": "object",
-      "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
       "title": "propulsion",
       "description": "Engine data",
       "required": false,
@@ -73,7 +72,6 @@
 
     "alarms": {
       "type": "object",
-      "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
       "title": "alarms",
       "description": "Alarms currently raised",
       "required": false,
@@ -92,7 +90,6 @@
 
     "tanks": {
       "type": "object",
-      "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
       "title": "tanks",
       "description": "Tanks on this vessel",
       "required": false,
@@ -111,7 +108,6 @@
 
     "sensors": {
       "type": "object",
-      "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
       "title": "sensors",
       "description": "Sensors, their state, and data.",
       "required": false,
