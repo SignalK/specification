@@ -41,8 +41,9 @@
           "type": "string",
           "enum": [
             "stopped",
-            "started",
-            "unusable"
+            "forward",
+            "neutral"
+            "reverse"
           ]
         },
 
@@ -81,6 +82,18 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "kPa"
     },
+    
+    "turboPressure": {
+      "description": "Turbo pressure in kPa",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "kPa"
+    },
+    
+    "fuelPressure": {
+      "description": "Fuel pressure in kPa",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "kPa"
+    },
 
     "waterTemp": {
       "description": "Water temperature in degrees C",
@@ -98,6 +111,42 @@
       "description": "Fuel usage in liters/hour",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "l/h"
+    },
+    
+    "alternatorVoltage": {
+      "description": "Alternator output voltage in V",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "V"
+    }, 
+    
+    "engineHours": {
+      "description": "Engine hours in sec",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "sec"
+    },
+    
+    "engineLoad": {
+      "description": "Engine load in Percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+    
+     "engineTorque": {
+      "description": "Engine torque in Percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+    
+     "transmissionOilPressure": {
+      "description": "Transmission oil pressure in kPa",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "kPa"
+    },
+    
+    "transmissionOilTemo": {
+      "description": "Transmission oil temperature in degrees C",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "C"
     }
   }
 }
