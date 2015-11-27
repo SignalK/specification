@@ -128,13 +128,13 @@
     "engineLoad": {
       "description": "Engine load in Percent",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
     
      "engineTorque": {
       "description": "Engine torque in Percent",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
     
      "transmissionOilPressure": {
