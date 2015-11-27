@@ -42,7 +42,7 @@
           "enum": [
             "stopped",
             "forward",
-            "neutral"
+            "neutral",
             "reverse"
           ]
         },
