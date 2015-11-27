@@ -178,6 +178,12 @@
           "quantityDisplay": "\u03c6",
           "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt"
         },
+         "Percent": {
+          "display": "%",
+          "quantity": "Percent",
+          "quantityDisplay": "%",
+          "description": "Relative value compared to reference or normal value."
+        },
         "m/s2": {
           "display": "m/s\u00b2",
           "quantity": "Acceleration",
