@@ -169,9 +169,38 @@
           "$ref": "../definitions.json#/definitions/timestamp"
         },
 
-        "quality": {
-          "$ref": "../definitions.json#/definitions/numberValue",
+        "methodQuality": {
+          "type": "object",
           "description": "Quality of the satellite fix"
+          "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "no GPS",
+            "GNSS Fix",
+            "DGNSS fix",
+            "Precise GNSS",
+            "RTK fixed integer",
+            "RTK float",
+            "Estimated (DR) mode",
+            "Manual input",
+            "Simulator mode",
+            "Error"
+          ]
+        },
+        
+        "integrity": {
+          "type": "object",
+          "description": "Integrity of the satellite fix"
+          "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "no Integrity checking",
+            "Safe",
+            "Caution",
+            "Unsafe"
+          ]
         },
 
         "satellites": {
@@ -187,7 +216,12 @@
 
         "horizontalDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Horizontal position error"
+          "description": "Horizontal Dilution of Precision"
+        },
+
+        "positionlDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Positional Dilution of Precision"
         },
 
         "geoidalSeparation": {
@@ -255,6 +289,8 @@
         }
       }
     },
+
+
 
     "attitude": {
       "type": "object",
