@@ -6,16 +6,33 @@
         "dc": {
           "batteries": {
             "house1": {
+              "name": "House battery 1 (forward)",
+              "location": "Under forward bunk",
+              "manufacturerName": "MasterVolt",
+              "manufacturerModel": "AGM 12/130",
+              "chemistry": "FLA",
+              "mode": {
+                "value": "discharging"
+              },
+              "temperature": {
+                "value": 290
+              },
               "voltage": {
-                "value": 12.5
+                "value": 12.5,
+                "nominal": 12
               },
               "current": {
-                "value": 2.5
-              }              
+                "value": 0.1
+              }
             },
             "house2": {
+              "name": "House battery 1 (read)",
+              "location": "Engine room",
+              "manufacturerName": "MasterVolt",
+              "manufacturerModel": "AGM 12/130",
               "voltage": {
-                "value": 12.8
+                "value": 12.8,
+                "nominal": 12
               },
               "current": {
                 "value": 0.1
@@ -23,7 +40,8 @@
             },
             "start": {
               "voltage": {
-                "value": 12.8
+                "value": 12.8,
+                "nominal": 12
               },
               "current": {
                 "value": 0.05
