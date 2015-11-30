@@ -131,22 +131,10 @@
       "units": "ratio"
     },
     
-     "engineTorque": {
+    "engineTorque": {
       "description": "Engine torque in Percent",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "ratio"
-    },
-    
-     "transmissionOilPressure": {
-      "description": "Transmission oil pressure in kPa",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "kPa"
-    },
-    
-    "transmissionOilTemp": {
-      "description": "Transmission oil temperature in degrees C",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "C"
     }
   }
 }
