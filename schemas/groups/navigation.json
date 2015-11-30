@@ -221,7 +221,7 @@
           "description": "Horizontal Dilution of Precision"
         },
 
-        "positionlDilution": {
+        "positionDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Positional Dilution of Precision"
         },
