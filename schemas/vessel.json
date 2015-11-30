@@ -66,6 +66,10 @@
         "ac": {
           "description": "AC electrical data",
           "$ref": "groups/electrical_ac.json#"
+        },
+        "dc": {
+          "description": "DC electrical data",
+          "$ref": "groups/electrical_dc.json#"
         }
       }
     },
