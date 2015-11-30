@@ -234,7 +234,7 @@
               },
 
               "chemistry": {
-                "$ref": "../definitions.json#/definitions/stringValue",
+                "type": "string",
                 "description": "Type of battery FLA, LiFePO4, etc."
               },
 
