@@ -202,16 +202,15 @@
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
-            "$ref": "#/definitions/identity",
+            "$ref": "#/definitions/identity"
+          }, {
             "$ref": "#/definitions/dcSource"
           }, {
             "properties": {
               "mode": {
                 "type": "object",
-                "description": "Operational mode of battery",
                 "properties": {
                   "value": {
-                    "type": "string",
                     "enum": [
                       "charging bulk",
                       "charging acceptance",
