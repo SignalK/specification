@@ -9,7 +9,6 @@
       "type": "object",
       "title": "Electrical ID",
       "description": " Common ID items shared by electrical items",
-      "required": ["name"],
       "properties": {
         "name": {
           "type": "string",
