@@ -135,7 +135,7 @@
           "type": "object",
           "title": "temperature",
           "properties": {
-            "measured": {
+            "value": {
               "description": "Temperature of device, in degrees Celsius",
               "#ref": "../definitions.json#/definitions/numberValue",
               "units": "C"
