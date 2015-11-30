@@ -1,0 +1,37 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "electrical": {
+        "dc": {
+          "batteries": {
+            "house1": {
+              "voltage": {
+                "value": 12.5
+              },
+              "current": {
+                "value": 2.5
+              }              
+            },
+            "house2": {
+              "voltage": {
+                "value": 12.8
+              },
+              "current": {
+                "value": 0.1
+              }              
+            },
+            "start": {
+              "voltage": {
+                "value": 12.8
+              },
+              "current": {
+                "value": 0.05
+              }              
+            }
+          }
+        }
+      }
+    }
+  }
+}
