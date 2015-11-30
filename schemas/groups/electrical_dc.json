@@ -4,329 +4,324 @@
   "description": "Schema describing the electrical child-object of a Vessel.",
   "title": "DC Electrical Properties",
   "type": "object",
-  "properties": {
-    "definitions": {
-      "title": "definitions",
+  "definitions": {
+    "identity": {
       "type": "object",
-      "description": "DC related definitions",
-
+      "title": "Electrical ID",
+      "description": " Common ID items shared by electrical items",
+      "required": ["name"],
       "properties": {
-        "identity": {
+        "name": {
+          "type": "string",
+          "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverterCharger, Combiner1, etc.)"
+        },
+
+        "location": {
+          "type": "string",
+          "description": "Installed location of device on vessel"
+        },
+
+        "manufacturerName": {
+          "type": "string",
+          "description": "Manufacturer's name"
+        },
+
+        "manufacturerModel": {
+          "type": "string",
+          "description": "Model or part number"
+        },
+
+        "dateInstalled": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Date device was installed"
+        },
+
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
+        }
+      }
+    },
+
+    "dcSource": {
+      "type": "object",
+      "title": "DC Source",
+      "description": "DC power source common values",
+      "properties": {
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS source is associated with (if applicable, may = NULL)"
+        },
+
+        "voltage": {
           "type": "object",
-          "title": "Electrical ID",
-          "description": " Common ID items shared by electrical items",
-          "required": ["name"],
           "properties": {
-            "name": {
-              "type": "string",
-              "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverterCharger, Combiner1, etc.)"
+            "value": {
+              "description": "Measured voltage of DC Source terminals",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V"
             },
 
-            "location": {
-              "type": "string",
-              "description": "Installed location of device on vessel"
+            "nominal": {
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V",
+              "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
             },
 
-            "manufacturerName": {
-              "type": "string",
-              "description": "Manufacturer's name"
+            "warnUpper": {
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V",
+              "description": "Upper operational voltage limit"
             },
 
-            "manufacturerModel": {
-              "type": "string",
-              "description": "Model or part number"
+            "warnLower": {
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V",
+              "description": "Lower operational voltage limit"
             },
 
-            "dateInstalled": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "Date device was installed"
+            "faultUpper": {
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V",
+              "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
             },
 
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-            
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
+            "faultLower": {
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V",
+              "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
             }
           }
         },
 
-        "dcSource": {
+        "current": {
           "type": "object",
-          "title": "DC Source",
-          "description": "DC power source common values",
           "properties": {
-            "associatedBus": {
-              "type": "string",
-              "description": "Name of BUS source is associated with (if applicable, may = NULL)"
+            "value": {
+              "description": "Measured amperage being '+' provided (or '-' consumed) by DC source",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
             },
 
-            "voltage": {
-              "type": "object",
-              "properties": {
-                "measured": {
-                  "description": "Measured voltage of DC Source terminals",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V"
-                },
-
-                "nominal": {
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V",
-                  "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
-                },
-
-                "warnUpper": {
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V",
-                  "description": "Upper operational voltage limit"
-                },
-
-                "warnLower": {
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V",
-                  "description": "Lower operational voltage limit"
-                },
-
-                "faultUpper": {
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V",
-                  "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
-                },
-
-                "faultLower": {
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V",
-                  "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
-                }
-              }
+            "warnUpper": {
+              "description": "Upper operational current limit",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
             },
 
-            "current": {
-              "type": "object",
-              "properties": {
-                "measured": {
-                  "description": "Measured amperage being '+' provided (or '-' consumed) by DC source",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "A"
-                },
-
-                "warnUpper": {
-                  "description": "Upper operational current limit",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "A"
-                },
-
-                "warnLower": {
-                  "description": "Lower operational current limit",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "A"
-                },
-
-                "faultUpper": {
-                  "description": "Upper fault limit of battery current - BMS may disconnect battery",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "A"
-                },
-
-                "faultLower": {
-                  "description": "Lower fault limit of battery current - BMS may disconnect battery",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "A"
-                }
-              }
+            "warnLower": {
+              "description": "Lower operational current limit",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
             },
 
-            "temperature": {
-              "type": "object",
-              "title": "temperature",
-              "properties": {
-                "measured": {
-                  "description": "Temperature of device, in degrees Celsius",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
-                },
+            "faultUpper": {
+              "description": "Upper fault limit of battery current - BMS may disconnect battery",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
+            },
 
-                "warnUpper": {
-                  "description": "Upper operational temperature limit",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
-                },
-
-                "warnLower": {
-                  "description": "Lower operational temperature limit",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
-                },
-
-                "faultUpper": {
-                  "description": "Upper fault limit of temperature - device may disable",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
-                },
-
-                "faultLower": {
-                  "description": "Lower fault limit of temperature  - device may disable",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
-                }
-              }
+            "faultLower": {
+              "description": "Lower fault limit of battery current - BMS may disconnect battery",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
             }
           }
         },
 
-        "acSource": {
+        "temperature": {
           "type": "object",
-          "title": "AC Source",
-          "description": "AC power source common values",
+          "title": "temperature",
           "properties": {
-            "associatedBus": {
-              "type": "string",
-              "description": "Name of BUS source is assocated with (if applicable, may = NULL)"
+            "measured": {
+              "description": "Temperature of device, in degrees Celsius",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "C"
             },
 
-            "voltage": {
-              "type": "object",
-              "properties": {
-                "measured": {
-                  "description": "Measured voltage at AC Source terminals",
-                  "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "V"
-                }
-              }
+            "warnUpper": {
+              "description": "Upper operational temperature limit",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "C"
+            },
+
+            "warnLower": {
+              "description": "Lower operational temperature limit",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "C"
+            },
+
+            "faultUpper": {
+              "description": "Upper fault limit of temperature - device may disable",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "C"
+            },
+
+            "faultLower": {
+              "description": "Lower fault limit of temperature  - device may disable",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "C"
             }
           }
         }
       }
     },
 
-    "battery": {
+    "acSource": {
       "type": "object",
-      "title": "Battery",
-      "description": "Batteries, one or many, within the vessel",
-      "required": ["ID"],
+      "title": "AC Source",
+      "description": "AC power source common values",
       "properties": {
-        "identity": {
-          "$ref": "#/definitions/identity"
-        },
-        
-        "dc": {
-          "$ref": "#/definitions/dcSource"
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS source is assocated with (if applicable, may = NULL)"
         },
 
-        "mode": {
+        "voltage": {
           "type": "object",
-          "description": "Operational mode of battery",
           "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "charging bulk",
-                "charging acceptance",
-                "charging overcharge",
-                "charging float",
-                "charging equalize",
-                "discharging",
-                "unknown",
-                "other"
-              ]
-            },
-
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-            
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
+            "measured": {
+              "description": "Measured voltage at AC Source terminals",
+              "#ref": "../definitions.json#/definitions/numberValue",
+              "units": "V"
             }
           }
-        },
+        }
+      }
+    }
+  },
+  "properties": {
 
-        "chemistry": {
-          "$ref": "../definitions.json#/definitions/stringValue",
-          "description": "Type of battery FLA, LiFePO4, etc."
-        },
-
-        "temperature": {
+    "batteries": {
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
           "type": "object",
-          "title": "temperature",
-          "description": "Additional / unique temperatures associated with a battery",
-          "properties": {
-            "limitDischargeLower": {
-              "type": "number",
-              "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
-              "units": "C"
-            },
+          "title": "Battery",
+          "description": "Batteries, one or many, within the vessel",
 
-            "limitDischargeUpper": {
-              "type": "number",
-              "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
-              "units": "C"
-            },
+          "allOf": [{
+            "$ref": "#/definitions/identity",
+            "$ref": "#/definitions/dcSource"
+          }, {
+            "properties": {
+              "mode": {
+                "type": "object",
+                "description": "Operational mode of battery",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "enum": [
+                      "charging bulk",
+                      "charging acceptance",
+                      "charging overcharge",
+                      "charging float",
+                      "charging equalize",
+                      "discharging",
+                      "unknown",
+                      "other"
+                    ]
+                  },
 
-            "limitRechargeLower": {
-              "type": "number",
-              "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
-              "units": "C"
-            },
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
 
-            "limitRechargeUpper": {
-              "type": "number",
-              "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
-              "units": "C"
-            },
+                  "source": {
+                    "$ref": "../definitions.json#/definitions/source"
+                  }
+                }
+              },
 
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-            
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
+              "chemistry": {
+                "$ref": "../definitions.json#/definitions/stringValue",
+                "description": "Type of battery FLA, LiFePO4, etc."
+              },
+
+              "temperature": {
+                "type": "object",
+                "title": "temperature",
+                "description": "Additional / unique temperatures associated with a battery",
+                "properties": {
+                  "limitDischargeLower": {
+                    "type": "number",
+                    "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
+                    "units": "C"
+                  },
+
+                  "limitDischargeUpper": {
+                    "type": "number",
+                    "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
+                    "units": "C"
+                  },
+
+                  "limitRechargeLower": {
+                    "type": "number",
+                    "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
+                    "units": "C"
+                  },
+
+                  "limitRechargeUpper": {
+                    "type": "number",
+                    "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
+                    "units": "C"
+                  },
+
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
+
+                  "source": {
+                    "$ref": "../definitions.json#/definitions/source"
+                  }
+                }
+              },
+
+              "capacity": {
+                "type": "object",
+                "title": "capacity",
+                "properties": {
+                  "nominal": {
+                    "type": "number",
+                    "description": "The watt-hour capacity of battery as specified by the manufacturer",
+                    "units": "Wh"
+                  },
+
+                  "actual": {
+                    "type": "number",
+                    "description": "The measured watt-hour capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
+                    "units": "Wh"
+                  },
+
+                  "remaining": {
+                    "type": "number",
+                    "description": "Watt-hours remaining in battery",
+                    "units": "Wh"
+                  },
+
+                  "dischargeLimit": {
+                    "type": "number",
+                    "description": "Minimum number of watt-hours to be left in the battery while discharging",
+                    "units": "Wh"
+                  }
+                }
+              },
+
+              "lifetimeDischarge": {
+                "type": "number",
+                "description": "Cumulative Wh discharged from battery over operational lifetime of battery",
+                "units": "Wh"
+              },
+
+              "lifetimeRecharge": {
+                "type": "number",
+                "description": "Cumulative Wh recharged into battery over operational lifetime of battery",
+                "units": "Wh"
+              }
             }
-          }
-        },
-
-        "capacity": {
-          "type": "object",
-          "title": "capacity",
-          "properties": {
-            "nominal": {
-              "type": "number",
-              "description": "The watt-hour capacity of battery as specified by the manufacturer",
-              "units": "Wh"
-            },
-
-            "actual": {
-              "type": "number",
-              "description": "The measured watt-hour capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
-              "units": "Wh"
-            },
-
-            "remaining": {
-              "type": "number",
-              "description": "Watt-hours remaining in battery",
-              "units": "Wh"
-            },
-
-            "dischargeLimit": {
-              "type": "number",
-              "description": "Minimum number of watt-hours to be left in the battery while discharging",
-              "units": "Wh"
-            }
-          }
-        },
-
-        "lifetimeDischarge": {
-          "type": "number",
-          "description": "Cumulative Wh discharged from battery over operational lifetime of battery",
-          "units": "Wh"
-        },
-
-        "lifetimeRecharge": {
-          "type": "number",
-          "description": "Cumulative Wh recharged into battery over operational lifetime of battery",
-          "units": "Wh"
+          }]
         }
       }
     },
@@ -340,7 +335,7 @@
         "identity": {
           "$ref": "#/definitions/identity"
         },
-        
+
         "dc": {
           "$ref": "#/definitions/dcSource"
         },
@@ -348,7 +343,7 @@
         "ac": {
           "$ref": "#/definitions/acSource"
         },
-        
+
         "mode": {
           "type": "object",
           "description": "Operational mode of battery",
@@ -369,7 +364,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
