@@ -265,14 +265,6 @@
                     "type": "number",
                     "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
                     "units": "C"
-                  },
-
-                  "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                  },
-
-                  "source": {
-                    "$ref": "../definitions.json#/definitions/source"
                   }
                 }
               },
