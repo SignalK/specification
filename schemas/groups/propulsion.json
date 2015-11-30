@@ -2,7 +2,7 @@
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
-  "title": "propulsion",
+  "title": "engine",
   "description": "An engine, named by a unique name within this vessel",
   "properties": {
     "engineType": {
@@ -143,7 +143,7 @@
       "units": "kPa"
     },
     
-    "transmissionOilTemo": {
+    "transmissionOilTemp": {
       "description": "Transmission oil temperature in degrees C",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "C"
