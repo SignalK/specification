@@ -5,32 +5,14 @@
   "title": "engine",
   "description": "An engine, named by a unique name within this vessel",
   "properties": {
-    "engineType": {
-      "type": "object",
-      "description": "The type of engine",
-      "properties": { 
-        "value": {
-          "type": "string",
-          "enum": [
-            "diesel inboard",
-            "diesel outboard",
-            "petrol inboard",
-            "petrol outboard",
-            "electric inboard",
-            "electric outboard"
-          ]
-        },
+    "source": {
+    "description": "Source of this data",
+    "$ref": "../definitions.json#/definitions/source"
+    },
 
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        }
-      }
+    "timestamp": {
+    "description": "timestamp of the last update to this data",
+    "$ref": "../definitions.json#/definitions/timestamp"
     },
 
     "state": {
@@ -45,20 +27,8 @@
             "neutral",
             "reverse"
           ]
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        }
-      }
     },
-
+    
     "rpm": {
       "description": "Engine rpm",
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -135,6 +105,18 @@
       "description": "Engine torque in Percent",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "ratio"
+    },
+-    
+-     "transmissionOilPressure": {
+-      "description": "Transmission oil pressure in kPa",
+-      "$ref": "../definitions.json#/definitions/numberValue",
+-      "units": "kPa"
+-    },
+-    
+-    "transmissionOilTemp": {
+-      "description": "Transmission oil temperature in degrees C",
+-      "$ref": "../definitions.json#/definitions/numberValue",
+-      "units": "C"
     }
   }
 }
