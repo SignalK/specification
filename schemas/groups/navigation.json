@@ -173,34 +173,36 @@
           "type": "object",
           "description": "Quality of the satellite fix",
           "properties": {
-        "value": {
-          "type": "string",
-          "enum": [
-            "no GPS",
-            "GNSS Fix",
-            "DGNSS fix",
-            "Precise GNSS",
-            "RTK fixed integer",
-            "RTK float",
-            "Estimated (DR) mode",
-            "Manual input",
-            "Simulator mode",
-            "Error"
-          ]
+            "value": {
+              "type": "string",
+              "enum": [
+                "no GPS",
+                "GNSS Fix",
+                "DGNSS fix",
+                "Precise GNSS",
+                "RTK fixed integer",
+                "RTK float",
+                "Estimated (DR) mode",
+                "Manual input",
+                "Simulator mode",
+                "Error"
+            ]
+          }
         },
         
         "integrity": {
           "type": "object",
           "description": "Integrity of the satellite fix",
           "properties": {
-        "value": {
-          "type": "string",
-          "enum": [
-            "no Integrity checking",
-            "Safe",
-            "Caution",
-            "Unsafe"
-          ]
+            "value": {
+            "type": "string",
+            "enum": [
+              "no Integrity checking",
+              "Safe",
+              "Caution",
+              "Unsafe"
+            ]
+          }
         },
 
         "satellites": {
