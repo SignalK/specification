@@ -186,7 +186,8 @@
                 "Manual input",
                 "Simulator mode",
                 "Error"
-            ]
+              ]
+            }
           }
         },
         
@@ -201,7 +202,8 @@
               "Safe",
               "Caution",
               "Unsafe"
-            ]
+              ]
+            }  
           }
         },
 
