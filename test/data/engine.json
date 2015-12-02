@@ -3,7 +3,14 @@
   "propulsion": {
     "instance0": {
       "label": "Main Engine - The Olde Faithful",
+      "drive": {
+        "type": "outboard",
+        "trimState": {
+          "value": 99
+        }
+      },
       "fuel": {
+        "type": "diesel",
         "used": {
           "value": 12.5
         },
@@ -23,12 +30,18 @@
           "value": 1100
         }
       },
-      "rpm": {
+      "state": {
+        "value": "started"
+      },
+      "revolutions": {
         "value": 1280
       },
       "maxRpm": 3000,
       "oilPressure": {
         "value": 110
+      },
+      "boostPressure": {
+        "value": 200
       },
       "oilTemperature": {
         "value": 345
