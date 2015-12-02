@@ -45,7 +45,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -143,33 +143,33 @@
               "title": "temperature",
               "properties": {
                 "measured": {
-                  "description": "Temperature of device, in degrees Celsius",
+                  "description": "Temperature of device",
                   "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
+                  "units": "K"
                 },
 
                 "warnUpper": {
                   "description": "Upper operational temperature limit",
                   "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
+                  "units": "K"
                 },
 
                 "warnLower": {
                   "description": "Lower operational temperature limit",
                   "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
+                  "units": "K"
                 },
 
                 "faultUpper": {
                   "description": "Upper fault limit of temperature - device may disable",
                   "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
+                  "units": "K"
                 },
 
                 "faultLower": {
                   "description": "Lower fault limit of temperature  - device may disable",
                   "#ref": "../definitions.json#/definitions/numberValue",
-                  "units": "C"
+                  "units": "K"
                 }
               }
             }
@@ -210,7 +210,7 @@
         "identity": {
           "$ref": "#/definitions/identity"
         },
-        
+
         "dc": {
           "$ref": "#/definitions/dcSource"
         },
@@ -236,7 +236,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -255,32 +255,32 @@
           "properties": {
             "limitDischargeLower": {
               "type": "number",
-              "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
-              "units": "C"
+              "description": "Operational minimum temperature limit for battery discharge",
+              "units": "K"
             },
 
             "limitDischargeUpper": {
               "type": "number",
-              "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
-              "units": "C"
+              "description": "Operational maximum temperature limit for battery discharge",
+              "units": "K"
             },
 
             "limitRechargeLower": {
               "type": "number",
-              "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
-              "units": "C"
+              "description": "Operational minimum temperature limit for battery recharging",
+              "units": "K"
             },
 
             "limitRechargeUpper": {
               "type": "number",
-              "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
-              "units": "C"
+              "description": "Operational maximum temperature limit for battery recharging",
+              "units": "K"
             },
 
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -293,40 +293,40 @@
           "properties": {
             "nominal": {
               "type": "number",
-              "description": "The watt-hour capacity of battery as specified by the manufacturer",
-              "units": "Wh"
+              "description": "The capacity of battery as specified by the manufacturer",
+              "units": "C"
             },
 
             "actual": {
               "type": "number",
-              "description": "The measured watt-hour capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
-              "units": "Wh"
+              "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
+              "units": "C"
             },
 
             "remaining": {
               "type": "number",
-              "description": "Watt-hours remaining in battery",
-              "units": "Wh"
+              "description": "Capacity remaining in battery",
+              "units": "C"
             },
 
             "dischargeLimit": {
               "type": "number",
-              "description": "Minimum number of watt-hours to be left in the battery while discharging",
-              "units": "Wh"
+              "description": "Minimum capacity to be left in battery while discharging",
+              "units": "C"
             }
           }
         },
 
         "lifetimeDischarge": {
           "type": "number",
-          "description": "Cumulative Wh discharged from battery over operational lifetime of battery",
-          "units": "Wh"
+          "description": "Cumulative capacity discharged from battery over operational lifetime of battery",
+          "units": "C"
         },
 
         "lifetimeRecharge": {
           "type": "number",
-          "description": "Cumulative Wh recharged into battery over operational lifetime of battery",
-          "units": "Wh"
+          "description": "Cumulative capacity recharged into battery over operational lifetime of battery",
+          "units": "C"
         }
       }
     },
@@ -340,7 +340,7 @@
         "identity": {
           "$ref": "#/definitions/identity"
         },
-        
+
         "dc": {
           "$ref": "#/definitions/dcSource"
         },
@@ -348,7 +348,7 @@
         "ac": {
           "$ref": "#/definitions/acSource"
         },
-        
+
         "mode": {
           "type": "object",
           "description": "Operational mode of battery",
@@ -369,7 +369,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
