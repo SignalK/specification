@@ -1,0 +1,64 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "propulsion": {
+    "instance0": {
+      "label": "Main Engine - The Olde Faithful",
+      "fuel": {
+        "used": {
+          "value": 12.5
+        },
+        "rate": {
+          "value": 0.6
+        },
+        "averageRate": {
+          "value": 1.0
+        },
+        "economyRate": {
+          "value": 0.9
+        },
+        "instantaneousEconomy": {
+          "value": 0
+        },
+        "pressure": {
+          "value": 1100
+        }
+      },
+      "rpm": {
+        "value": 1280
+      },
+      "maxRpm": 3000,
+      "oilPressure": {
+        "value": 110
+      },
+      "oilTemperature": {
+        "value": 345
+      },
+      "engineTemperature": {
+        "value": 355
+      },
+      "exhaustTemperature": {
+        "value": 420
+      },
+      "coolantPressure": {
+        "value": 1100
+      },
+      "engineHours": {
+        "value": 3102
+      },
+      "alternatorVoltage": {
+        "value": 14.1
+      },
+      "transmission": {
+        "gear": {
+          "value": "Forward"
+        },
+        "oilPressure": {
+          "value": 100
+        },
+        "oilTemperature": {
+          "value": 310
+        }
+      }
+    }
+  }
+}
