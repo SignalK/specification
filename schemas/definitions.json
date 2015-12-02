@@ -36,6 +36,14 @@
         "pgn": {
           "type": "number",
           "description": "NMEA2000 pgn of the source message"
+        },
+        "sentence": {
+          "type": "string",
+          "description": "Sentence type of the source NMEA0183 sentence"
+        },
+        "talker": {
+          "type": "string",
+          "description": "Talker id of the source NMEA0183 sentence"
         }
       }
     },
@@ -53,31 +61,165 @@
 
     "units": {
       "type": "string",
-      "description": "",
-      "enum": [
-        "l",
-        "°",
-        "°/s",
-        "A",
-        "Ah",
-        "V",
-        "W",
-        "Wh",
-        "Ω",
-        "m2",
-        "m",
-        "°C",
-        "Pa",
-        "kPa",
-        "l/h",
-        "%",
-        "m/s"
-      ]
+      "description": "Allowed units of physical quantities. Units should be (derived) SI units where possible.",
+      "properties": {
+        "s": {
+          "display": "s",
+          "quantity": "Time",
+          "quantityDisplay": "T",
+          "description": "Elapsed time (interval) in seconds"
+        },
+        "Hz": {
+          "display": "Hz",
+          "quantity": "Frequency",
+          "quantityDisplay": "F",
+          "description": "Frequency in Herz"
+        },
+        "m3": {
+          "display": "m\u00b3",
+          "quantity": "Volume",
+          "quantityDisplay": "V",
+          "description": "Volume in cubic meters"
+        },
+        "m3/s": {
+          "display": "m3/s",
+          "quantity": "Flow",
+          "quantityDisplay": "Q",
+          "description": "Liquid or gas flow in cubic meters per second"
+        },
+        "deg": {
+          "display": "\u00b0",
+          "quantity": "Angle",
+          "quantityDisplay": "\u2220",
+          "description": "Latitude or longitude in decimal degrees"
+        },
+        "rad": {
+          "display": "\u33ad",
+          "quantity": "Angle",
+          "quantityDisplay": "\u2220",
+          "description": "Angular arc in radians"
+        },
+        "rad/s": {
+          "display": "\u33ad/s",
+          "quantity": "Rotation",
+          "quantityDisplay": "\u03c9",
+          "description": "Angular rate in radians per second"
+        },
+        "A": {
+          "display": "A",
+          "quantity": "Current",
+          "quantityDisplay": "i",
+          "description": "Electrical current in ampere"
+        },
+        "C": {
+          "display": "C",
+          "quantity": "Charge",
+          "quantityDisplay": "Q",
+          "description": "Electrical charge in Coulomb"
+        },
+        "V": {
+          "display": "V",
+          "quantity": "Voltage",
+          "quantityDisplay": "V",
+          "description": "Electrical potential in volt"
+        },
+        "W": {
+          "display": "W",
+          "quantity": "Power",
+          "quantityDisplay": "P",
+          "description": "Electrical power in watt"
+        },
+        "J": {
+          "display": "J",
+          "quantity": "Energy",
+          "quantityDisplay": "E",
+          "description": "Electrical energy in joule"
+        },
+        "ohm": {
+          "display": "\u2126",
+          "quantity": "Resistance",
+          "quantityDisplay": "R",
+          "description": "Electrical resistance in ohm"
+        },
+        "m": {
+          "display": "m",
+          "quantity": "Distance",
+          "quantityDisplay": "d",
+          "description": "Distance in meters"
+        },
+        "m/s": {
+          "display": "m/s",
+          "quantity": "Velocity",
+          "quantityDisplay": "v",
+          "description": "Velocity in meters per second"
+        },
+        "m2": {
+          "display": "\u33a1",
+          "quantity": "Area",
+          "quantityDisplay": "A",
+          "description": "(Surface) area in square meters"
+        },
+        "K": {
+          "display": "K",
+          "quantity": "Temperature",
+          "quantityDisplay": "t",
+          "description": "Temperature in kelvin"
+        },
+        "Pa": {
+          "display": "Pa",
+          "quantity": "Pressure",
+          "quantityDisplay": "P",
+          "description": "Pressure in pascal"
+        },
+        "kg": {
+          "display": "kg",
+          "quantity": "Mass",
+          "quantityDisplay": "m",
+          "description": "Mass in kilogram"
+        },
+        "ratio": {
+          "display": "",
+          "quantity": "Ratio",
+          "quantityDisplay": "\u03c6",
+          "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt"
+        },
+        "m/s2": {
+          "display": "m/s\u00b2",
+          "quantity": "Acceleration",
+          "quantityDisplay": "a",
+          "description": "Acceleration in meters per second squared"
+        },
+        "rad/s2": {
+          "display": "rad/s\u00b2",
+          "quantity": "Angular acceleration",
+          "quantityDisplay": "a",
+          "description": "Angular acceleration in radians per second squared"
+        },
+        "N": {
+          "display": "N",
+          "quantity": "Force",
+          "quantityDisplay": "F",
+          "description": "Force in newton"
+        },
+        "T": {
+          "display": "T",
+          "quantity": "Magnetic field",
+          "quantityDisplay": "B",
+          "description": "Magnetic field strength in tesla"
+        },
+        "Pa/s": {
+          "display": "Pa/s",
+          "quantity": "Pressure rate",
+          "quantityDisplay": "R",
+          "description": "Pressure change rate in pascal per meter"
+        }
+      }
     },
 
     "mmsi": {
       "type": "string",
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^[2-7][0-9]{8,8}$",
       "required": false,
       "maxLength": 9,
       "minLength": 9
@@ -85,10 +227,15 @@
 
     "uuid": {
       "type": "string",
-      "description": "UUID assigned by the implementation of the Signal K server to vessels that don't have a MMSI. Has to be 8 characters (chosen so one could use the first block in a RFC4122 UUID), to distinguish from MMSI.",
-      "maxLength": 8,
-      "minLength": 8,
-      "example": "550E8AB0"
+      "description": "A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:<issueing authority>:<id type>:<id>. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:<uuid>, where Signal K is the issuing authority and UUID (v4) the ID type.",
+      "pattern": "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+    },
+
+    "url": {
+      "type": "string",
+      "description": "A valid URL.",
+      "pattern": "^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
     },
 
     "sail": {
@@ -138,14 +285,14 @@
 
         "minimumWind": {
           "type": "number",
-          "description": "The minimum wind speed this sail can be used with, measured in m/s",
+          "description": "The minimum wind speed this sail can be used with",
           "units": "m/s",
           "default": 0
         },
 
         "maximumWind": {
           "type": "number",
-          "description": "The maximum wind speed this sail can be used with, measured in m/s",
+          "description": "The maximum wind speed this sail can be used with",
           "units": "m/s",
           "default": 666
         },
@@ -358,9 +505,9 @@
           "example": "RPM"
         },
   
-        "guageType": {
+        "gaugeType": {
           "type": "string",
-          "title": "guageType schema.",
+          "title": "gaugeType schema.",
           "description": "The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
@@ -368,10 +515,15 @@
         "units": {
           "type": "string",
           "title": "units schema.",
-          "description": "The SI unit of this value.",
+          "description": "The (derived) SI unit of this value.",
           "example": "m/s"
         },
-
+        "timeout": {
+          "type": "number",
+          "title": "Timeout",
+          "description": "The timeout in (fractional) seconds after which this data is invalid.",
+          "example": 2
+        },
         "warnMethod": {
           "type": "string",
           "title": "WarnMethod schema.",

@@ -6,13 +6,15 @@
   "title": "steering",
   "properties": {
     "rudderAngle": {
-      "description": "Current rudder angle, 0 is amidships, +ve is rudder to Starboard",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "Current rudder angle, +ve is rudder to Starboard",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
     },
 
     "rudderAngleTarget": {
-      "description": "The offset the rudder should move to, in degrees, 0 is amidships, +ve is rudder to Starboard",
-      "$ref": "../definitions.json#/definitions/numberValue"
+      "description": "The angle the rudder should move to, +ve is rudder to Starboard",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
     },
 
     "autopilot": {
@@ -72,15 +74,15 @@
         },
 
         "targetHeadingNorth": {
-          "description": "Target heading for autopilot in degrees true",
-          "$ref": "../definitions.json#/definitions/numberValue", 
-          "units": "°"
+          "description": "Target heading for autopilot, relative to true North",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
         },
 
         "targetHeadingMagnetic": {
-          "description": "Target heading for autopilot in magnetic degrees",
+          "description": "Target heading for autopilot, relative to magnetic North",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "rad"
         },
 
         "headingSource": {
@@ -109,42 +111,44 @@
         },
 
         "deadZone": {
-          "description": "Dead zone to ignore for rudder corrections (in degrees)",
+          "description": "Dead zone to ignore for rudder corrections",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "rad"
         },
 
         "backlash": {
-          "description": "Slack in the rudder drive mechanism in degrees",
+          "description": "Slack in the rudder drive mechanism",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°"
+          "units": "rad"
         },
 
         "gain": {
-          "description": "Autohelm gain, higher number equals more rudder movement for a given turn",
+          "description": "Auto-pilot gain, higher number equals more rudder movement for a given turn",
           "$ref": "../definitions.json#/definitions/numberValue"
         },
 
-        "maxDriveAmps": {
-          "description": "Maximum amperage to use to drive servo",
+        "maxDriveCurrent": {
+          "description": "Maximum current to use to drive servo",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "A"
         },
 
         "maxDriveRate": {
-          "description": "Maximum degrees/sec to turn the rudder",
+          "description": "Maximum rudder rotation speed",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "°/s"
+          "units": "rad/s"
         },
 
         "portLock": {
           "description": "Position of servo on port lock",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
         },
 
         "starboardLock": {
           "description": "Position of servo on starboard lock",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
         }
       }
     }
