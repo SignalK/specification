@@ -136,33 +136,33 @@
           "title": "temperature",
           "properties": {
             "value": {
-              "description": "Temperature of device, in degrees Celsius",
+              "description": "Temperature of device",
               "#ref": "../definitions.json#/definitions/numberValue",
-              "units": "C"
+              "units": "K"
             },
 
             "warnUpper": {
               "description": "Upper operational temperature limit",
               "#ref": "../definitions.json#/definitions/numberValue",
-              "units": "C"
+              "units": "K"
             },
 
             "warnLower": {
               "description": "Lower operational temperature limit",
               "#ref": "../definitions.json#/definitions/numberValue",
-              "units": "C"
+              "units": "K"
             },
 
             "faultUpper": {
               "description": "Upper fault limit of temperature - device may disable",
               "#ref": "../definitions.json#/definitions/numberValue",
-              "units": "C"
+              "units": "K"
             },
 
             "faultLower": {
               "description": "Lower fault limit of temperature  - device may disable",
               "#ref": "../definitions.json#/definitions/numberValue",
-              "units": "C"
+              "units": "K"
             }
           }
         }
@@ -246,25 +246,25 @@
                   "limitDischargeLower": {
                     "type": "number",
                     "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
-                    "units": "C"
+                    "units": "K"
                   },
 
                   "limitDischargeUpper": {
                     "type": "number",
                     "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
-                    "units": "C"
+                    "units": "K"
                   },
 
                   "limitRechargeLower": {
                     "type": "number",
                     "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
-                    "units": "C"
+                    "units": "K"
                   },
 
                   "limitRechargeUpper": {
                     "type": "number",
                     "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
-                    "units": "C"
+                    "units": "K"
                   }
                 }
               },

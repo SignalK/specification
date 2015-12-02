@@ -1,10 +1,3 @@
-function getTv4() {
-  var tv4 = require('tv4');
-  var vesselSchema = require('./schemas/vessel.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/vessel.json', vesselSchema);
-  var definitions = require('./schemas/definitions.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
-
   var subSchemas = {
     'alarms': require('./schemas/groups/alarms.json'),
     'communication': require('./schemas/groups/communication.json'),
@@ -20,6 +13,15 @@ function getTv4() {
     'steering': require('./schemas/groups/steering.json'),
     'tanks': require('./schemas/groups/tanks.json')
   };
+
+
+function getTv4() {
+  var tv4 = require('tv4');
+  var vesselSchema = require('./schemas/vessel.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/vessel.json', vesselSchema);
+  var definitions = require('./schemas/definitions.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
+
   for (var schema in subSchemas) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
@@ -137,3 +139,6 @@ module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
 module.exports.getTv4 = getTv4;
+module.exports.subSchemas = subSchemas;
+module.exports.units = require('./schemas/definitions').definitions.units;
+module.exports.metadata = require('./keyswithmetadata');
