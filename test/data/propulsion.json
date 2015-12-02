@@ -23,9 +23,6 @@
         "economyRate": {
           "value": 0.9
         },
-        "instantaneousEconomy": {
-          "value": 0
-        },
         "pressure": {
           "value": 1100
         }
@@ -36,7 +33,7 @@
       "revolutions": {
         "value": 1280
       },
-      "maxRpm": 3000,
+      "maxRevolutions": 3000,
       "oilPressure": {
         "value": 110
       },
@@ -55,8 +52,8 @@
       "coolantPressure": {
         "value": 1100
       },
-      "engineHours": {
-        "value": 3102
+      "engineTime": {
+        "value": 3102234
       },
       "alternatorVoltage": {
         "value": 14.1
