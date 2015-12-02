@@ -57,114 +57,108 @@
 
         "voltage": {
           "type": "object",
-          "properties": {
-            "value": {
-              "description": "Measured voltage of DC Source terminals",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V"
-            },
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "nominal": {
+                "type": "number",
+                "units": "V",
+                "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
+              },
 
-            "nominal": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V",
-              "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
-            },
+              "warnUpper": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V",
+                "description": "Upper operational voltage limit"
+              },
 
-            "warnUpper": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V",
-              "description": "Upper operational voltage limit"
-            },
+              "warnLower": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V",
+                "description": "Lower operational voltage limit"
+              },
 
-            "warnLower": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V",
-              "description": "Lower operational voltage limit"
-            },
+              "faultUpper": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V",
+                "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+              },
 
-            "faultUpper": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V",
-              "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
-            },
-
-            "faultLower": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V",
-              "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+              "faultLower": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V",
+                "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+              }
             }
-          }
+          }]
         },
 
         "current": {
           "type": "object",
-          "properties": {
-            "value": {
-              "description": "Measured amperage being '+' provided (or '-' consumed) by DC source",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "warnUpper": {
+                "description": "Upper operational current limit",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+              },
 
-            "warnUpper": {
-              "description": "Upper operational current limit",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
+              "warnLower": {
+                "description": "Lower operational current limit",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+              },
 
-            "warnLower": {
-              "description": "Lower operational current limit",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
+              "faultUpper": {
+                "description": "Upper fault limit of battery current - BMS may disconnect battery",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+              },
 
-            "faultUpper": {
-              "description": "Upper fault limit of battery current - BMS may disconnect battery",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
-
-            "faultLower": {
-              "description": "Lower fault limit of battery current - BMS may disconnect battery",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
+              "faultLower": {
+                "description": "Lower fault limit of battery current - BMS may disconnect battery",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+              }
             }
-          }
+          }]
         },
 
         "temperature": {
           "type": "object",
           "title": "temperature",
-          "properties": {
-            "value": {
-              "description": "Temperature of device",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "warnUpper": {
+                "description": "Upper operational temperature limit",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+              },
 
-            "warnUpper": {
-              "description": "Upper operational temperature limit",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
+              "warnLower": {
+                "description": "Lower operational temperature limit",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+              },
 
-            "warnLower": {
-              "description": "Lower operational temperature limit",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
+              "faultUpper": {
+                "description": "Upper fault limit of temperature - device may disable",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+              },
 
-            "faultUpper": {
-              "description": "Upper fault limit of temperature - device may disable",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-
-            "faultLower": {
-              "description": "Lower fault limit of temperature  - device may disable",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
+              "faultLower": {
+                "description": "Lower fault limit of temperature  - device may disable",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+              }
             }
-          }
+          }]
         }
       }
     },
