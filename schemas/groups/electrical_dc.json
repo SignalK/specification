@@ -45,7 +45,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -210,7 +210,7 @@
         "identity": {
           "$ref": "#/definitions/identity"
         },
-        
+
         "dc": {
           "$ref": "#/definitions/dcSource"
         },
@@ -236,7 +236,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -280,7 +280,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }
@@ -340,7 +340,7 @@
         "identity": {
           "$ref": "#/definitions/identity"
         },
-        
+
         "dc": {
           "$ref": "#/definitions/dcSource"
         },
@@ -348,7 +348,7 @@
         "ac": {
           "$ref": "#/definitions/acSource"
         },
-        
+
         "mode": {
           "type": "object",
           "description": "Operational mode of battery",
@@ -369,7 +369,7 @@
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "source": {
               "$ref": "../definitions.json#/definitions/source"
             }

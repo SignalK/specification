@@ -4,6 +4,7 @@
     'design': require('./schemas/groups/design.json'),
     'navigation': require('./schemas/groups/navigation.json'),
     'electrical_ac': require('./schemas/groups/electrical_ac.json'),
+    'electrical_dc': require('./schemas/groups/electrical_dc.json'),
     'environment': require('./schemas/groups/environment.json'),
     'performance': require('./schemas/groups/performance.json'),
     'propulsion': require('./schemas/groups/propulsion.json'),
