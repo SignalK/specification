@@ -1,4 +1,5 @@
 {
+    "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
     "environment": {
         "depth": {
             "belowKeel": {
@@ -14,8 +15,8 @@
                     "displayName": "Depth Below Keel",
                     "longName": "Depth Below Keel in Meters",
                     "shortName": "DBK",
-                    "guageType": "sparkLine",
-                    "unit": "m",
+                    "gaugeType": "sparkLine",
+                    "units": "Meters (m)",
                     "warnMethod": "visual",
                     "alarmMethod": "sound",
                     "zones": [

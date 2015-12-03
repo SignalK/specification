@@ -1,30 +1,33 @@
 {
-    "type": "object",
-    "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
-    "title": "alarms",
-    "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
-    "required": false,
-    "properties": {
-        "alarmMethod": {
-            "description": "Method to use to raise alarms",
-            "$ref": "../definitions.json#/definitions/alarmMethod"
-        },
-        "alarmState": {
-            "description": "Current alarm state",
-            "$ref": "../definitions.json#/definitions/alarmValue"
-        },
-        "message": {
-            "description": "Message to display or speak",
-            "type": "string"
-        },
-	"timestamp": { 
+  "type": "object",
+  "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
+  "title": "alarms",
+  "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
+  "required": false,
+  "properties": {
+    "alarmMethod": {
+      "description": "Method to use to raise alarms",
+      "$ref": "../definitions.json#/definitions/alarmMethod"
+    },
+    
+    "alarmState": {
+      "description": "Current alarm state",
+      "$ref": "../definitions.json#/definitions/alarmValue"
+    },
+
+    "message": {
+      "description": "Message to display or speak",
+      "type": "string"
+    },
+
+  	"timestamp": { 
 	    "description":"timestamp of the last update to this data",
 	    "$ref": "../definitions.json#/definitions/timestamp"
-	},
+  	},
 
-	"source": { 
+  	"source": { 
 	    "description":"Source of this data",
 	    "$ref": "../definitions.json#/definitions/source"
-	}
-    }
+  	}
+  }
 }

@@ -15,9 +15,8 @@ use. A format for the modern boat, compatible with NMEA, friendly to WiFi,
 cellphones, tablets, and the Internet. A format available to everyone, where
 anyone can contribute.
 
-To get started, see the summary page and have a look through Navgauge Issue #4
-to get a feel for where we started. Then join the mailinglist by sending an
-email to signalk+subscribe@googlegroups.com or follow the discussion via the
+Find out more at [signalk.org](http://signalk.org). Then join the mailinglist by sending an email
+to signalk+subscribe@googlegroups.com or follow the discussion via the
 Signal K Google Groups forum.
 
 
@@ -32,11 +31,13 @@ reached) merge it into `master`.
 
 The `gh-pages` branch contains the currently published version of the Schema.
 Once changes have been approved and merged into `master` and we are ready to
-publish an update, checkout the `gh-pages` branch and rebase it on top of
-`master`: 
+publish an update, checkout the `gh-pages` branch and then checkout the schema
+directory from `master` on top of it:
 ```shell
 $ git checkout gh-pages
-$ git rebase master
+$ git checkout master schema/
+$ git commit -m 'Copy schema from master'
+$ git push
 ```
 It will be published at http://signalk.github.io/specification automatically. 
 
@@ -60,7 +61,7 @@ Validation against SignalK schema can be done
 As you can see in the example below the current implementation assumes that the input is a subtree under vessels.mmsi path.
 
 ```
-echo '{"navigation":{"courseOverGroundTru":{"value":70.1,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"},"speedOverGround":{"value":0.01,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"}}}' | bin/signalk-validate
+echo '{"navigation":{"courseOverGroundTru":{"value":70.1,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"},"speedOverGround":{"value":0.01,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"}}}' | bin/validate.js
 Unknown property (not in schema):/vessels/230099999/navigation/courseOverGroundTru
 ```
 

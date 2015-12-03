@@ -1,52 +1,56 @@
 {
-    "type": "object",
-    "$schema": "http://json-schema.org/draft-03/schema",
-    "id": "https://signalk.github.io/specification/schemas/delta.json#",
-    "title": "SignalK Delta message schema",
-    "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",
-    "properties": {
-        "context": {
-            "type": "string",
-            "description": "The context path of the updates, eg. the path from the root of the SignalK data model where the paths in the updates section start.",
-            "required": true
-        },
-        "updates": {
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/delta.json#",
+  "title": "SignalK Delta message schema",
+  "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",
+  "properties": {
+    "context": {
+      "type": "string",
+      "description": "The context path of the updates, eg. the top level path plus object identifier."
+    },
+  
+    "updates": {
+      "type": "array",
+      "description": "The updates",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "./definitions.json#/definitions/source"
+          },
+          
+          "timestamp": {
+            "$ref": "./definitions.json#/definitions/timestamp"
+          },
+  
+          "values": {
             "type": "array",
-            "description": "The updates",
             "items": {
-                "type": "object",
-                "properties": {
-                    "source": {
-                        "$ref": "./definitions.json#/definitions/source"
-                    },
-                    "timestamp": {
-                        "$ref": "./definitions.json#/definitions/timestamp"
-                    },
-                    "values": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "path": {
-                                    "type": "string",
-                                    "required": true
-                                },
-                                "value": {
-                                    "type": [
-                                      "string",
-                                      "number",
-                                      "object",
-                                      "boolean",
-                                      "null"
-                                    ],
-                                    "required": true,
-                                    "additionalProperties": true
-                                }
-                            }
-                        }
-                    }
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "required": true
+                },
+
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "object",
+                    "boolean",
+                    "null"
+                  ],
+                  
+                  "required": true,
+                  "additionalProperties": true
                 }
+              }
             }
+          }
         }
+      }
     }
+  }
 }
