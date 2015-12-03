@@ -30,17 +30,17 @@
             "$ref": "groups/navigation.json#"
         },
         "propulsion": {
-	  "type":"object",
-	  "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
-	  "title":"propulsion",
-          "description": "Engine data",
-	  "required":false,
-	  "patternProperties": {
-		  "(^[A-Za-z0-9]+$)": {
-			"description": "This regex pattern is used for validation UUID identifier for the tank",
-			"$ref": "groups/propulsion.json#"
-			}
-		}
+            "type": "object",
+            "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+            "title": "propulsion",
+            "description": "Engine data",
+            "required": false,
+            "patternProperties": {
+                "(^[A-Za-z0-9]+$)": {
+                    "description": "This regex pattern is used for validation UUID identifier for the tank",
+                    "$ref": "groups/propulsion.json#"
+                }
+            }
         },
         "electrical": {
             "type": "object",
@@ -53,53 +53,53 @@
             }
         },
         "alarms": {
-	    "type":"object",
-	    "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
-	    "title":"alarms",
-	    "description":"Alarms currently raised",
-	    "required":false,
-	    "patternProperties": {
-		    "(^[A-Za-z0-9]+$)": {
-			  "description": "This regex pattern is used for validation of the path of the alarm",
-			    "$ref": "groups/alarms.json#" 
-			    }
-		    }
+            "type": "object",
+            "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
+            "title": "alarms",
+            "description": "Alarms currently raised",
+            "required": false,
+            "patternProperties": {
+                "(^[A-Za-z0-9]+$)": {
+                    "description": "This regex pattern is used for validation of the path of the alarm",
+                    "$ref": "groups/alarms.json#"
+                }
+            }
         },
         "steering": {
             "description": "Vessel steering data",
             "$ref": "groups/steering.json#"
         },
         "tanks": {
-	  "type":"object",
-	  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
-	  "title":"tanks",
-	  "description":"Tanks on this vessel",
-	  "required":false,
-	  "patternProperties": {
-		  "(^[A-Za-z0-9]+$)": {
-			"description": "This regex pattern is used for validation UUID identifier for the tank",
-			  "$ref": "groups/tanks.json#" 
-			  }
-		  }
-	},
-	"design": {
+            "type": "object",
+            "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
+            "title": "tanks",
+            "description": "Tanks on this vessel",
+            "required": false,
+            "patternProperties": {
+                "(^[A-Za-z0-9]+$)": {
+                    "description": "This regex pattern is used for validation UUID identifier for the tank",
+                    "$ref": "groups/tanks.json#"
+                }
+            }
+        },
+        "design": {
             "description": "Design data of this vessel",
             "$ref": "groups/design.json#"
         },
-	"sensors":{
-	  "type":"object",
-	  "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
-	  "title":"sensors",
-	  "description":"Sensors, their state, and data.",
-	  "required":false,
-	  "patternProperties": {
-		"(^[A-Za-z0-9]+$)": {
-		      "description": "This regex pattern is used for validation UUID identifier for the sensor",
-			"$ref": "groups/sensors.json#" 
-			} 
-		}
-	},
-	"performance": {
+        "sensors": {
+            "type": "object",
+            "id": "https://signalk.github.io/specification/schemas/groups/sensors.json#",
+            "title": "sensors",
+            "description": "Sensors, their state, and data.",
+            "required": false,
+            "patternProperties": {
+                "(^[A-Za-z0-9]+$)": {
+                    "description": "This regex pattern is used for validation UUID identifier for the sensor",
+                    "$ref": "groups/sensors.json#"
+                }
+            }
+        },
+        "performance": {
             "description": "Performance data",
             "$ref": "groups/performance.json#"
         }
