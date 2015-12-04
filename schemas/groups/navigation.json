@@ -332,6 +332,52 @@
       }
     },
 
+    "systemDateTime": {
+      "type": "object",
+      "title": "System Date and Time",
+      "description": "System Date and Time (UTC) for synchronisation",
+      "properties": {
+        "date": {
+          "type": "number",
+          "description": "Date in days since 1st Jan 1970",
+          "units": "days"
+        },
+
+        "time": {
+          "type": "number",
+          "description": "Time in seconds since midnight",
+          "units": "s"
+        },
+
+        "systemTimingSource": {
+          "type": "object",
+          "description": "Source of System Date and Time",
+          "properties": {
+            "value": {
+            "type": "string",
+            "enum": [
+              "GPS",
+              "GLONASS",
+              "Radio Signal",
+              "Internet",
+              "Local clock"
+              ]
+            }
+          }  
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn",
