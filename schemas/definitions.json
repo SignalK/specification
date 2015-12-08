@@ -536,7 +536,72 @@
             }
           ]
         }
+      },
+      "position": {
+	  "type": "object",
+	  "title": "position",
+	  "description": "The position in 3 dimensions",
+	  "properties": {
+	    "source": {
+	      "description": "Source of this data",
+	      "$ref": "#/definitions/source"
+	    },
+
+	    "timestamp": {
+	      "description": "timestamp of the last update to this data",
+	      "$ref": "#/definitions/timestamp"
+	    },
+	    "longitude": {
+	      "type": "number",
+	      "description": "Longitude",
+	      "units": "deg",
+	      "example": 4.98765245
+	    },
+	    "latitude": {
+	      "type": "number",
+	      "description": "Latitude",
+	      "units": "deg",
+	      "example": 52.0987654
+	    },
+	    "altitude": {
+	      "type": "number",
+	      "description": "Altitude",
+	      "units": "m"
+	    }
+	  }
+	},
+      "waypoint": {
+	"type": "object",	  
+	"description": "Data for waypoints",
+	"properties": {
+	  "name": {
+	    "type": "string",
+	    "description": "Waypoint's common name"
+	  },
+	  "position": {
+	   "$ref": "#/definitions/position"
+	  },
+	  "description": {
+	    "type": "string",
+	    "description": "A description of the waypoint"
+	  },
+  
+	  "type": {
+	    "type": "string",
+	    "description": "The type of waypoint",
+	    "enum": [
+	      "location",
+	      "fish",
+	      "hazard",
+	      "anchorage",
+	      "mark"
+	    ]
+	  }
+	}
       }
     }
   }
 }
+
+
+
