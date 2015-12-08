@@ -28,3 +28,4 @@ node_modules
 # FS stuff
 .DS_Store
 thumbs.db
+/nbproject/private/
