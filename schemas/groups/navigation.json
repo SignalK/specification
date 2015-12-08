@@ -63,7 +63,7 @@
 
         "route": {
           "type": "string",
-          "description": "A pointer to the current route, found in the routes list"
+          "description": "UUID of the current route, found in the routes list"
         },
 
         "startTime": {
@@ -83,7 +83,7 @@
 
             "last": {
               "type": "string",
-              "description": "The last waypoint, a pointer to the list of waypoints"
+              "description": "UUID of the last waypoint, found in the waypoints list"
             },
 
             "nextEta": {
@@ -94,7 +94,7 @@
 
             "next": {
               "type": "string",
-              "description": "A pointer to the next waypoint, found in the waypoints list"
+              "description": "UUID to the next waypoint, found in the waypoints list"
             },
 
             "xte": {
@@ -132,24 +132,9 @@
           "$ref": "../definitions.json#/definitions/timestamp"
         },
 
-        "longitude": {
-          "type": "number",
-          "description": "Longitude of the destination",
-          "units": "deg",
-          "example": 4.98765245
-        },
-
-        "latitude": {
-          "type": "number",
-          "description": "Latitude of the destination",
-          "units": "deg",
-          "example": 52.0987654
-        },
-
-        "altitude": {
-          "type": "number",
-          "description": "Altitude of the destination",
-          "units": "m"
+        "waypoint": {
+          "description": "UUID of destination waypoint",
+          "type": "string"
         }
       }
     },
@@ -259,40 +244,8 @@
     },
 
     "position": {
-      "type": "object",
-      "title": "position",
       "description": "The position of the vessel in 3 dimensions",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
-        "longitude": {
-          "type": "number",
-          "description": "Longitude of boat",
-          "units": "deg",
-          "example": 4.98765245
-        },
-
-        "latitude": {
-          "type": "number",
-          "description": "Latitude of boat",
-          "units": "deg",
-          "example": 52.0987654
-        },
-
-        "altitude": {
-          "type": "number",
-          "units": "m",
-          "description": "Altitude of boat"
-        }
-      }
+      "$ref": "../definitions.json#/definitions/position"
     },
 
 
@@ -409,7 +362,7 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
@@ -423,40 +376,8 @@
         },
         
         "position": {
-          "type": "object",
-          "title": "position",
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "properties": {
-            "source": {
-              "description": "Source of this data",
-              "$ref": "../definitions.json#/definitions/source"
-            },
-
-            "timestamp": {
-              "description": "timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-            
-            "longitude": {
-              "type": "number",
-              "description": "Longitude of the anchor",
-              "units": "deg",
-              "example": 4.98765245
-            },
-            
-            "latitude": {
-              "type": "number",
-              "description": "Latitude of the anchor",
-              "units": "deg",
-              "example": 52.0987654
-            },
-            
-            "altitude": {
-              "type": "number",
-              "description": "Altitude of the anchor",
-              "units": "m"
-            }
-          }
+          "$ref": "../definitions.json#/definitions/position"
         }
       }
     }
