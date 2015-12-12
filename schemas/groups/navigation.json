@@ -194,7 +194,7 @@
         "timeAndDate": {
           "description": "GNSS Time and Date in ISO8601 format",
           "$ref": "../definitions.json#/definitions/timestamp",
-          "example": 2015-12-05T13:11:59Z
+          "example": "2015-12-05T13:11:59Z"
         },
 
         "gnssTimeSource": {
