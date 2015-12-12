@@ -208,6 +208,7 @@
               "GLONASS",
               "Galileo",
               "Beidou",
+              "IRNSS",
               "Radio Signal",
               "Internet",
               "Local clock"
