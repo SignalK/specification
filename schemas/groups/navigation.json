@@ -191,16 +191,10 @@
           }
         },
        
-        "date": {
-          "type": "number",
-          "description": "Date in days since 1st Jan 1970",
-          "units": "days"
-        },
-
-        "time": {
-          "type": "number",
-          "description": "Time in seconds since midnight",
-          "units": "s"
+        "timeAndDate": {
+          "description": "GNSS Time and Date in ISO8601 format",
+          "$ref": "../definitions.json#/definitions/timestamp"
+          "example": "2015-12-05T13:11:59Z"
         },
 
         "gnssTimeSource": {
