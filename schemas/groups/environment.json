@@ -246,7 +246,7 @@
         
         "source": {
           "$ref": "../definitions.json#/definitions/source"
-        },
+        }
       }
     }
   }
