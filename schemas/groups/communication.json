@@ -5,9 +5,9 @@
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
-    "callsignDsc": {
+    "callsignVhf": {
       "type": "string",
-      "description": "Callsign for DSC communication",
+      "description": "Callsign for VHF communication",
       "example": "ZL1234"
     },
 
@@ -15,12 +15,6 @@
       "type": "string",
       "description": "Callsign for HF communication",
       "example": "ZL3RTH"
-    },
-
-    "callsignVhf": {
-      "type": "string",
-      "description": "Callsign for VHF communication",
-      "example": "ZM2038"
     },
 
     "phoneNumber": {
