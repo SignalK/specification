@@ -538,38 +538,38 @@
         }
       },
       "position": {
-	  "type": "object",
-	  "title": "position",
-	  "description": "The position in 3 dimensions",
-	  "properties": {
-	    "source": {
-	      "description": "Source of this data",
-	      "$ref": "#/definitions/source"
-	    },
+	"type": "object",
+	"title": "position",
+	"description": "The position in 3 dimensions",
+	"properties": {
+	  "source": {
+	    "description": "Source of this data",
+	    "$ref": "#/definitions/source"
+	  },
 
-	    "timestamp": {
-	      "description": "timestamp of the last update to this data",
-	      "$ref": "#/definitions/timestamp"
-	    },
-	    "longitude": {
-	      "type": "number",
-	      "description": "Longitude",
-	      "units": "deg",
-	      "example": 4.98765245
-	    },
-	    "latitude": {
-	      "type": "number",
-	      "description": "Latitude",
-	      "units": "deg",
-	      "example": 52.0987654
-	    },
-	    "altitude": {
-	      "type": "number",
-	      "description": "Altitude",
-	      "units": "m"
-	    }
+	  "timestamp": {
+	    "description": "timestamp of the last update to this data",
+	    "$ref": "#/definitions/timestamp"
+	  },
+	  "longitude": {
+	    "type": "number",
+	    "description": "Longitude",
+	    "units": "deg",
+	    "example": 4.98765245
+	  },
+	  "latitude": {
+	    "type": "number",
+	    "description": "Latitude",
+	    "units": "deg",
+	    "example": 52.0987654
+	  },
+	  "altitude": {
+	    "type": "number",
+	    "description": "Altitude",
+	    "units": "m"
 	  }
-	},
+	}
+      },
       "waypoint": {
 	"type": "object",	  
 	"description": "Data for waypoints",
