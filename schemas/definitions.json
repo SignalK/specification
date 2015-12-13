@@ -399,32 +399,6 @@
       }
     },
 
-    "floatValue": {
-      "type": "object",
-      "description": "Data should be of type float/double.",
-      "properties": {
-        "value": {
-          "type": "number"
-        },
-  
-        "timestamp": {
-          "$ref": "#/definitions/timestamp"
-        },
-  
-        "source": {
-          "$ref": "#/definitions/source"
-        },
-
-        "_attr": {
-          "$ref": "#/definitions/_attr"
-        },
-    
-        "meta": {
-          "$ref": "#/definitions/meta"
-        }
-      }
-    },
-
     "nullValue": {
       "type": "object",
       "description": "Data should be of type NULL.",
