@@ -532,8 +532,8 @@
     "units": "C"
   },
   "environment.airPressureChangeRateAlarm": {
-    "description": "Change per hour which will cause an alarm",
-    "units": "Pa"
+    "description": "Rate of change in air pressure which will cause an alarm",
+    "units": "Pa/s"
   },
   "environment.airPressure": {
     "description": "Current air pressure",

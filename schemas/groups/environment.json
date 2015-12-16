@@ -6,9 +6,9 @@
   "title": "environment",
   "properties": {
     "airPressureChangeRateAlarm": {
-      "description": "Change per hour which will cause an alarm",
+      "description": "Rate of change in air pressure which will cause an alarm",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa"
+      "units": "Pa/s"
     },
 
     "airPressure": {
