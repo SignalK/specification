@@ -61,7 +61,7 @@
     "revolutions": {
       "description": "Engine revolutions",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Hz"
+      "units": "rad/s"
     },
 
     "temperature": {
