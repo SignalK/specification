@@ -423,9 +423,117 @@
     "description": "Total apparent power delivered by the generator. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
     "units": "W"
   },
+  "electrical_dc.definitions.dcSource.voltage.measured": {
+    "description": "Measured voltage of DC Source terminals",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.voltage.nominal": {
+    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.voltage.warnUpper": {
+    "description": "Upper operational voltage limit",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.voltage.warnLower": {
+    "description": "Lower operational voltage limit",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.voltage.faultUpper": {
+    "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.voltage.faultLower": {
+    "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical_dc.definitions.dcSource.current.measured": {
+    "description": "Measured amperage being '+' provided (or '-' consumed) by DC source",
+    "units": "A"
+  },
+  "electrical_dc.definitions.dcSource.current.warnUpper": {
+    "description": "Upper operational current limit",
+    "units": "A"
+  },
+  "electrical_dc.definitions.dcSource.current.warnLower": {
+    "description": "Lower operational current limit",
+    "units": "A"
+  },
+  "electrical_dc.definitions.dcSource.current.faultUpper": {
+    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical_dc.definitions.dcSource.current.faultLower": {
+    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical_dc.definitions.dcSource.temperature.measured": {
+    "description": "Temperature of device",
+    "units": "K"
+  },
+  "electrical_dc.definitions.dcSource.temperature.warnUpper": {
+    "description": "Upper operational temperature limit",
+    "units": "K"
+  },
+  "electrical_dc.definitions.dcSource.temperature.warnLower": {
+    "description": "Lower operational temperature limit",
+    "units": "K"
+  },
+  "electrical_dc.definitions.dcSource.temperature.faultUpper": {
+    "description": "Upper fault limit of temperature - device may disable",
+    "units": "K"
+  },
+  "electrical_dc.definitions.dcSource.temperature.faultLower": {
+    "description": "Lower fault limit of temperature  - device may disable",
+    "units": "K"
+  },
+  "electrical_dc.definitions.acSource.voltage.measured": {
+    "description": "Measured voltage at AC Source terminals",
+    "units": "V"
+  },
+  "electrical_dc.battery.temperature.limitDischargeLower": {
+    "description": "Operational minimum temperature limit for battery discharge",
+    "units": "K"
+  },
+  "electrical_dc.battery.temperature.limitDischargeUpper": {
+    "description": "Operational maximum temperature limit for battery discharge",
+    "units": "K"
+  },
+  "electrical_dc.battery.temperature.limitRechargeLower": {
+    "description": "Operational minimum temperature limit for battery recharging",
+    "units": "K"
+  },
+  "electrical_dc.battery.temperature.limitRechargeUpper": {
+    "description": "Operational maximum temperature limit for battery recharging",
+    "units": "K"
+  },
+  "electrical_dc.battery.capacity.nominal": {
+    "description": "The capacity of battery as specified by the manufacturer",
+    "units": "C"
+  },
+  "electrical_dc.battery.capacity.actual": {
+    "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
+    "units": "C"
+  },
+  "electrical_dc.battery.capacity.remaining": {
+    "description": "Capacity remaining in battery",
+    "units": "C"
+  },
+  "electrical_dc.battery.capacity.dischargeLimit": {
+    "description": "Minimum capacity to be left in battery while discharging",
+    "units": "C"
+  },
+  "electrical_dc.battery.lifetimeDischarge": {
+    "description": "Cumulative capacity discharged from battery over operational lifetime of battery",
+    "units": "C"
+  },
+  "electrical_dc.battery.lifetimeRecharge": {
+    "description": "Cumulative capacity recharged into battery over operational lifetime of battery",
+    "units": "C"
+  },
   "environment.airPressureChangeRateAlarm": {
-    "description": "Change per hour which will cause an alarm",
-    "units": "Pa"
+    "description": "Rate of change in air pressure which will cause an alarm",
+    "units": "Pa/s"
   },
   "environment.airPressure": {
     "description": "Current air pressure",
@@ -490,6 +598,10 @@
   "environment.waterTemp": {
     "description": "Current water temperature",
     "units": "K"
+  },
+  "environment.heave": {
+    "description": "Vertical movement of the vessel due to waves",
+    "units": "m"
   },
   "environment.wind.angleApparent": {
     "description": "Apparent wind angle, negative to port",
