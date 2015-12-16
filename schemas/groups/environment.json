@@ -228,9 +228,9 @@
       "properties": {
         "millis": {
           "type": "number",
-          "title": "Time in millis schema.",
+          "title": "Epoch time",
           "example": 1449648657735,
-          "description": "Millisecs since the UNIX epoch (1970-01-01 00:00:00)"
+          "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
         },
         "timezone": {
           "type": "number",
