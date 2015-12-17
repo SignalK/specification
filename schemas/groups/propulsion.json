@@ -71,13 +71,19 @@
       "units": "V"
     },
 
-    "engineTime": {
+    "runTime": {
       "description": "Total running time for engine",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "s"
     },
 
-    "engineTemperature": {
+    "oilTemperature": {
+      "description": "Engine temperature",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "K"
+    },
+
+    "coolantTemperature": {
       "description": "Engine temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
@@ -128,7 +134,7 @@
         "trimState": {
           "description": "Trim/tilt state",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "K"
+          "units": "ratio"
         }
       }
     },
