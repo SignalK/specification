@@ -43,7 +43,7 @@
       "oilTemperature": {
         "value": 345
       },
-      "engineTemperature": {
+      "coolantTemperature": {
         "value": 355
       },
       "exhaustTemperature": {
@@ -52,7 +52,7 @@
       "coolantPressure": {
         "value": 1100
       },
-      "engineTime": {
+      "runTime": {
         "value": 3102234
       },
       "alternatorVoltage": {
