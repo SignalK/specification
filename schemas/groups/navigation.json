@@ -190,20 +190,20 @@
             }
           }
         },
-        
+
         "integrity": {
           "type": "object",
           "description": "Integrity of the satellite fix",
           "properties": {
             "value": {
-            "type": "string",
-            "enum": [
-              "no Integrity checking",
-              "Safe",
-              "Caution",
-              "Unsafe"
+              "type": "string",
+              "enum": [
+                "no Integrity checking",
+                "Safe",
+                "Caution",
+                "Unsafe"
               ]
-            }  
+            }
           }
         },
 
@@ -376,7 +376,7 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "value": {
           "type": "string",
           "enum": [
@@ -409,19 +409,19 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
           "units": "m"
         },
-        
+
         "currentRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Current distance to anchor",
           "units": "m"
         },
-        
+
         "position": {
           "type": "object",
           "title": "position",
@@ -436,27 +436,64 @@
               "description": "timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "longitude": {
               "type": "number",
               "description": "Longitude of the anchor",
               "units": "deg",
               "example": 4.98765245
             },
-            
+
             "latitude": {
               "type": "number",
               "description": "Latitude of the anchor",
               "units": "deg",
               "example": 52.0987654
             },
-            
+
             "altitude": {
               "type": "number",
               "description": "Altitude of the anchor",
               "units": "m"
             }
           }
+        }
+      }
+    },
+
+    "datetime": {
+      "type": "object",
+      "pproperties": {
+        "value": {
+          "type": "string",
+          "description": "GNSS Time and Date in ISO8601 format",
+          "exmple": "2015-12-05T13:11:59Z"
+        },
+        "gnssTimeSource": {
+          "type": "object",
+          "description": "Source of GNSS Date and Time",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "GPS",
+                "GLONASS",
+                "Galileo",
+                "Beidou",
+                "IRNSS",
+                "Radio Signal",
+                "Internet",
+                "Local clock"
+              ]
+            }
+          }
+        },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
         }
       }
     }
