@@ -463,30 +463,24 @@
 
     "datetime": {
       "type": "object",
-      "pproperties": {
+      "properties": {
         "value": {
           "type": "string",
           "description": "GNSS Time and Date in ISO8601 format",
           "exmple": "2015-12-05T13:11:59Z"
         },
         "gnssTimeSource": {
-          "type": "object",
           "description": "Source of GNSS Date and Time",
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "GPS",
-                "GLONASS",
-                "Galileo",
-                "Beidou",
-                "IRNSS",
-                "Radio Signal",
-                "Internet",
-                "Local clock"
-              ]
-            }
-          }
+          "enum": [
+            "GPS",
+            "GLONASS",
+            "Galileo",
+            "Beidou",
+            "IRNSS",
+            "Radio Signal",
+            "Internet",
+            "Local clock"
+          ]
         },
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
