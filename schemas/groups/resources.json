@@ -10,7 +10,7 @@
       "title":"chart",
       "description":"A holder for charts, each named with their chart code",
       "patternProperties":{
-        "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+        "(^[A-Za-z0-9_-]{8,}$)":{
           "type":"object",
           "description":"A chart",
           "properties":{
@@ -71,7 +71,7 @@
       "title":"route",
       "description":"A holder for routes, each named with a UUID",
       "patternProperties":{
-        "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+        "(^[A-Za-z0-9_-]{8,}$)":{
           "type":"object",
           "description":"A route, named with a UUID",
           "properties":{
@@ -92,7 +92,7 @@
               "type":"array",
               "description":"The set of waypoints that define the route",
               "patternProperties":{
-                "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+                "(^[A-Za-z0-9_-]{8,}$)":{
                   "type":"object",
                   "description":"A waypoint UUID",
                   "properties":{
@@ -121,7 +121,7 @@
       "title":"notes",
       "description":"A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
       "patternProperties":{
-        "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+        "(^[A-Za-z0-9_-]{8,}$)":{
           "type":"object",
           "description":"A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
           "properties":{
@@ -166,7 +166,7 @@
       "title":"region",
       "description":"A holder for regions, each named with a UUID",
       "patternProperties":{
-        "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+        "(^[A-Za-z0-9_-]{8,}$)":{
           "type":"object",
           "description":"A region of interest, named with a UUID",
           "properties":{
@@ -182,7 +182,7 @@
               "type":"object",
               "description":"The set of points (positions) that define the edges of the region",
               "patternProperties":{
-                "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+                "(^[A-Za-z0-9_-]{8,}$)":{
                   "type":"string",
                   "description":"A point UUID",
                   "properties":{
@@ -215,7 +215,7 @@
       "title":"waypoints",
       "description":"A holder for waypoints, each named with a UUID",
       "patternProperties":{
-        "(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$)":{
+        "(^[A-Za-z0-9_-]{8,}$)":{
           "description":"A waypoint, named with a UUID",
           "$ref":"../definitions.json#/definitions/waypoint"
         }
