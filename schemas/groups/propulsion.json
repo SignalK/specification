@@ -129,13 +129,18 @@
       "type": "object",
       "properties": {
         "type": {
-          "enum": ["saildrive", "shaft", "outboard"]
+          "enum": ["saildrive", "shaft", "outboard", "jet", "pod" ,"other"]
         },
         "trimState": {
           "description": "Trim/tilt state",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
-        }
+        },
+	"thrustAngle": {
+	  "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
+	  "$ref": "../definitions.json#/definitions/numberValue",
+	  "units": "rad"
+	},
       }
     },
 
@@ -144,10 +149,10 @@
       "properties": {
         "type": {
           "description": "Fuel type",
-          "enum": ["diesel", "petrol"]
+          "enum": ["diesel", "petrol","electric", "coal/wood", "other"]
         },
         "used": {
-          "description": "Used fuel",
+          "description": "Used fuel since last reset. Resetting is at user discretion",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m3"
         },

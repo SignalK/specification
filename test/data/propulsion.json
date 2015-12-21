@@ -7,6 +7,9 @@
         "type": "outboard",
         "trimState": {
           "value": 99
+        },
+        "thrustAngle": {
+          "value": 0
         }
       },
       "fuel": {
