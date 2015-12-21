@@ -34,13 +34,13 @@
     "flag": {
       "type": "string",
       "description": "The country of ship registration, or flag state of the vessel",
-      "example": "NZ",
+      "example": "NZ"
     },
 
     "port": {
       "type": "string",
       "description": "The home port of the vessel",
-      "example": "Nelson",
+      "example": "Nelson"
     },
 
     "imo": {
