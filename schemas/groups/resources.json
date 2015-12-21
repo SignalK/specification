@@ -85,7 +85,7 @@
             },
             "distance":{
               "description":"Total distance from start to end",
-              "$ref":"../definitions.json#/definitions/numberValue",
+              "type": "number",
               "units":"m"
             },
             "waypoints":{
