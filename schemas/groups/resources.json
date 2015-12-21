@@ -102,15 +102,15 @@
                     }
                   }
                 }
-              },
-              "timestamp":{
-                "description":"timestamp of the last update to this data",
-                "$ref":"../definitions.json#/definitions/timestamp"
-              },
-              "source":{
-                "description":"Source of this data",
-                "$ref":"../definitions.json#/definitions/source"
               }
+            },
+            "timestamp":{
+              "description":"timestamp of the last update to this data",
+              "$ref":"../definitions.json#/definitions/timestamp"
+            },
+            "source":{
+              "description":"Source of this data",
+              "$ref":"../definitions.json#/definitions/source"
             }
           }
         }
@@ -196,15 +196,15 @@
                     }
                   }
                 }
-              },
-              "timestamp":{
-                "description":"timestamp of the last update to this data",
-                "$ref":"../definitions.json#/definitions/timestamp"
-              },
-              "source":{
-                "description":"Source of this data",
-                "$ref":"../definitions.json#/definitions/source"
               }
+            },
+            "timestamp":{
+              "description":"timestamp of the last update to this data",
+              "$ref":"../definitions.json#/definitions/timestamp"
+            },
+            "source":{
+              "description":"Source of this data",
+              "$ref":"../definitions.json#/definitions/source"
             }
           }
         }
