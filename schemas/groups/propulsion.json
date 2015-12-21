@@ -140,7 +140,7 @@
 	  "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
 	  "$ref": "../definitions.json#/definitions/numberValue",
 	  "units": "rad"
-	},
+	}
       }
     },
 
