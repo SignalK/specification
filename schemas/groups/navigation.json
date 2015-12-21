@@ -5,6 +5,49 @@
   "description": "Schema describing the navigation child-object of a Vessel.",
   "title": "navigation",
   "properties": {
+    "lights": {
+      "type": "object",
+      "title": "Navigation lights",
+      "description": "Current state of the vessels navigation lights",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fault",
+            "anchor",
+            "sailing",
+            "motoring",
+            "towing < 200m",
+            "towing > 200m",
+            "pushing",
+            "fishing",
+            "fishing-hampered",
+            "trawling",
+            "trawling-shooting",
+            "trawling-hauling",
+            "pilotage",
+            "not-under-way",
+            "aground",
+            "restricted manouverability",
+            "restricted manouverability towing < 200m",
+            "restricted manouverability towing > 200m",
+            "restricted manouverability underwater operations",
+            "constrained by draft",
+            "mine clearance"
+          ]
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+    },
     "courseOverGroundMagnetic": {
       "description": "Course over ground (magnetic)",
       "$ref": "../definitions.json#/definitions/numberValue",
