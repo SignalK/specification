@@ -9,7 +9,7 @@
           "source": {
 	      "label": "Realtime clock",
 	      "type": "system"
-	    }
+	    },
           "timezone": -1300
         }
       }
