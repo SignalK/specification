@@ -31,6 +31,33 @@
       "description": "The common name of the vessel"
     },
 
+    "flag": {
+      "type": "string",
+      "description": "The country of ship registration, or flag state of the vessel",
+      "example": "NZ"
+    },
+
+    "port": {
+      "type": "string",
+      "description": "The home port of the vessel",
+      "example": "Nelson"
+    },
+
+    "imo": {
+      "type": "string",
+      "description": "The IMO number of the vessel.",
+      "pattern": "^IMO [0-9]{7,7}$",
+      "example": "IMO 9074729",
+      "maxLength": 11,
+      "minLength": 11
+    },
+    
+    "nationalRegistration": {
+      "type": "string",
+      "description": "The national registration number of the vessel.",
+      "example": "eg for a New Zealand Part B recreational vessel: 'NZ654'"
+    },
+
     "communication": {
       "description": "Communication data",
       "$ref": "groups/communication.json#"
