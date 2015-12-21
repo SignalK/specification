@@ -16,13 +16,13 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "Pa"
     },
-    
+
     "airTemp": {
       "description": "Current air temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
     },
-    
+
     "depth": {
       "title": "depth",
       "type": "object",
@@ -39,19 +39,19 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
-        
+
         "belowSurface": {
           "description": "Depth from surface",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
-        
+
         "transducerToKeel": {
           "description": "Depth from the transducer to the bottom of the keel",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
-        
+
         "surfaceToTransducer": {
           "description": "Depth transducer is below the water",
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -65,13 +65,13 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "ratio"
     },
-    
+
     "salinity": {
       "description": "Water salinity",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "ratio"
     },
-    
+
     "current": {
       "type": "object",
       "title": "current",
@@ -80,11 +80,11 @@
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "source": {
           "$ref": "../definitions.json#/definitions/source"
         },
-        
+
         "drift": {
           "type": "number",
           "description": "The speed component of the water current vector",
@@ -124,18 +124,18 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
-        
+
         "heightLow": {
           "description": "The next low tide height",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
-        
+
         "timeLow": {
           "description": "Time of the next low tide in UTC",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "timeHigh": {
           "description": "Time of next high tide in UTC",
           "$ref": "../definitions.json#/definitions/timestamp"
@@ -148,13 +148,13 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
     },
-   
+
     "heave": {
       "description": "Vertical movement of the vessel due to waves",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m"
     },
-    
+
     "wind": {
       "type": "object",
       "title": "wind",
@@ -171,53 +171,81 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
-        
+
         "angleTrueWater": {
           "description": "True wind angle based on speed through water, negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
-        
+
         "directionChangeAlarm": {
           "description": "The angle the wind needs to shift to raise an alarm",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
-        
+
         "directionTrue": {
           "description": "The wind direction relative to true north",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
-        
+
         "directionMagnetic": {
           "description": "The wind direction relative to magnetic north",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
-        
+
         "speedAlarm": {
           "description": "The speed above which a wind alarm will be raised",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
-        
+
         "speedTrue": {
           "description": "Wind speed over water (as calculated from speedApparent and vessel's speed through water)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
-        
+
         "speedOverGround": {
           "description": "Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
-        
+
         "speedApparent": {
           "description": "Apparent wind speed",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
+        }
+      }
+    },
+
+    "time": {
+      "type": "object",
+      "description": "A time reference onboard.",
+      "properties": {
+        "millis": {
+          "type": "number",
+          "title": "Epoch time",
+          "example": 1449648657735,
+          "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
+        },
+        "timezone": {
+          "type": "number",
+          "title": "Timezone offset",
+          "example": -400,
+          "maximum": 1300,
+          "minimum": -1300,
+          "description": "Timezone offset in hours and minutes (-)hhmm"
+        },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
         }
       }
     }
