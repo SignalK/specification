@@ -183,7 +183,7 @@
               "description":"The set of points (positions) that define the edges of the region",
               "patternProperties":{
                 "(^[A-Za-z0-9_-]{2,}$)":{
-                  "type":"string",
+                  "type":"object",
                   "description":"A point UUID",
                   "properties":{
                     "position":{
