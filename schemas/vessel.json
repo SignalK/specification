@@ -33,7 +33,7 @@
 
     "flag": {
       "type": "string",
-      "description": "The country of ship registration, or flag state of the vessel",
+      "description": "The country of ship registration, or flag state of the vessel represented using the ISO 3166-2 country code.",
       "example": "NZ"
     },
 
@@ -56,6 +56,12 @@
       "type": "string",
       "description": "The national registration number of the vessel.",
       "example": "eg for a New Zealand Part B recreational vessel: 'NZ654'"
+    },
+
+    "localRegistration": {
+      "type": "string",
+      "description": "The local registration number of the vessel.",
+      "example": "eg for a vessel registered with the US State of Washington: 'WN 1234 XY'"
     },
 
     "communication": {
