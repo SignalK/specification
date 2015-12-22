@@ -129,18 +129,18 @@
       "type": "object",
       "properties": {
         "type": {
-          "enum": ["saildrive", "shaft", "outboard", "jet", "pod" ,"other"]
+          "enum": ["saildrive", "shaft", "outboard", "jet", "pod", "other"]
         },
         "trimState": {
           "description": "Trim/tilt state",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
-	"thrustAngle": {
-	  "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
-	  "$ref": "../definitions.json#/definitions/numberValue",
-	  "units": "rad"
-	}
+        "thrustAngle": {
+          "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        }
       }
     },
 
