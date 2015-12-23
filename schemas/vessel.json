@@ -65,7 +65,7 @@
               "properties":{
                 "country": {
                   "type": "string",
-                  "description": "The ISO 2 letter country code.",
+                  "description": "The ISO 3166-2 country code.",
                   "example": "NZ",
                   "maxLength": 2,
                   "minLength": 2
