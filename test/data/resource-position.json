@@ -56,54 +56,24 @@
 
   "resources": {
     "regions":{
-        "Huge-fish-farm":{
-          "name":"Huge fish farm",
-          "description":"A great big fish farm in the middle of our bay",
-          "points":{
-            "nw":{
-              "position":{
-                "timestamp": "2015-03-06T16:57:53.643+13:00",
-                "source": {
-                  "label": "position",
-                  "type": "NMEA0183",
-                  "talker": "GP",
-                  "sentence": "RMC"
-                },
-                "longitude": 173.1693,
-                "latitude": -41.156426,
-                "altitude": 0
-              },
-              "order":1
-              },
-            "ne":{
-              "position":{
-                "timestamp": "2015-03-06T16:57:53.643+13:00",
-                "source": {
-                  "label": "position",
-                  "type": "NMEA0183",
-                  "talker": "GP",
-                  "sentence": "RMC"
-                },
-                "longitude": 173.5693,
-                "latitude": -41.156426,
-                "altitude": 0
-              },
-              "order":2
+        "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d":{
+          "geohash": "rbejg:HugeFishFarm",
+          "feature":{
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [ -173.15, -41.155 ],
+                  [ -173.15, -41.157 ],
+                  [ -173.17, -41.157 ],
+                  [ -173.17, -41.155 ],
+                  [ -173.15, -41.155 ]
+                ]
+              ]
             },
-            "south":{
-              "position":{
-                "timestamp": "2015-03-06T16:57:53.643+13:00",
-                "source": {
-                  "label": "position",
-                  "type": "NMEA0183",
-                  "talker": "GP",
-                  "sentence": "RMC"
-                },
-                "longitude": 173.1693,
-                "latitude": -41.356426,
-                "altitude": 0
-              },
-              "order":3
+            "properties": {
+              "name": "Huge fish farm"
             }
           },
           "timestamp": "2015-03-06T16:57:53.643+13:00",
@@ -114,8 +84,7 @@
         }
       },
     "waypoints": {
-      "waypoint-1": {
-         "name": "My first waypoint",
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021d":{
          "position": {
            "timestamp": "2015-03-06T16:57:53.643+13:00",
             "source": {
@@ -124,32 +93,71 @@
               "talker": "GP",
               "sentence": "RMC"
             },
-            "longitude": 173.1693,
-            "latitude": -41.156426,
+            "longitude": 173.17,
+            "latitude": -41.157,
             "altitude": 0
           },
-          "description": "",
-          "type": "fish"
-        }
+          "feature":{
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [173.17, -41.157]
+            },
+            "properties": {
+              "displayName": "My cool waypoint",
+              "lastVisit": 23456789
+            }
+          }
+        },
+        "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021c":{
+           "position": {
+             "timestamp": "2015-03-06T16:57:53.643+13:00",
+              "source": {
+                "label": "position",
+                "type": "NMEA0183",
+                "talker": "GP",
+                "sentence": "RMC"
+              },
+              "longitude": 173.13,
+              "latitude": -41.15,
+              "altitude": 0
+            },
+            "feature":{
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [173.13, -41.15]
+              },
+              "properties": {
+                "displayName": "My cool waypoint",
+                "lastVisit": 23456789
+              }
+            }
+          }
      },
-  
+
     "routes":{
-      "Nelson-AbelTasman":{
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8893-54e8ccc8021d":{
         "name":"Nelson to Abel Tasman Park",
         "description": "From Nelson Cut to just off Fishermans Island",
         "distance":23.4,
-        "waypoints":[
-          {
-            "waypoint-1":{
-              "order": 0
+        "start":"urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021d",
+        "end":"urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021c",
+        "feature":{
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [173.17, -41.157],
+                    [173.15, -41.156],
+                    [173.13, -41.15]
+                ]
+            },
+            "properties": {
+                "popupContent": "Follow this route at your own peril...",
+                "underConstruction": true
             }
-          },
-          {
-            "waypoint-2":{
-              "order": 1
-            }
-          }
-        ],
+        },
         "timestamp": "2015-03-06T16:57:53.643+13:00",
         "source": {
           "label": "route",
@@ -159,5 +167,3 @@
     }
   }
 }
-
-      

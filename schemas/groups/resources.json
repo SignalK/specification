@@ -1,47 +1,47 @@
 {
-  "type":"object",
-  "$schema":"http://json-schema.org/draft-03/schema",
-  "id":"https://signalk.github.io/specification/schemas/groups/resources.json#",
-  "title":"resources",
-  "description":"Resources to aid in navigation and operation of the vessel",
-  "properties":{
-    "charts":{
-      "type":"object",
-      "title":"chart",
-      "description":"A holder for charts, each named with their chart code",
-      "patternProperties":{
-        "(^[A-Za-z0-9_-]{8,}$)":{
-          "type":"object",
-          "description":"A chart",
-          "properties":{
-            "name":{
-              "type":"string",
-              "description":"Chart common name"
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "https://signalk.github.io/specification/schemas/groups/resources.json#",
+  "title": "resources",
+  "description": "Resources to aid in navigation and operation of the vessel",
+  "properties": {
+    "charts": {
+      "type": "object",
+      "title": "chart",
+      "description": "A holder for charts, each named with their chart code",
+      "patternProperties": {
+        "(^[A-Za-z0-9_-]{8,}$)": {
+          "type": "object",
+          "description": "A chart",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Chart common name"
             },
-            "identifier":{
-              "type":"string",
-              "description":"Chart number"
+            "identifier": {
+              "type": "string",
+              "description": "Chart number"
             },
-            "description":{
-              "type":"string",
-              "description":"A description of the chart"
+            "description": {
+              "type": "string",
+              "description": "A description of the chart"
             },
-            "tilemapUrl":{
-              "type":"string",
-              "description":"A url to the tilemap of the chart for use in TMS chartplotting apps"
+            "tilemapUrl": {
+              "type": "string",
+              "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
             },
-            "region":{
-              "type":"string",
-              "description":"Region covered by chart. A pointer to a region UUID"
+            "region": {
+              "type": "string",
+              "description": "Region covered by chart. A pointer to a region UUID"
             },
-            "chartUrl":{
-              "type":"string",
-              "description":"A url to the chart file's storage location"
+            "chartUrl": {
+              "type": "string",
+              "description": "A url to the chart file's storage location"
             },
-            "chartFormat":{
-              "type":"string",
-              "description":"The format of the chart",
-              "enum":[
+            "chartFormat": {
+              "type": "string",
+              "description": "The format of the chart",
+              "enum": [
                 "gif",
                 "geotiff",
                 "kap",
@@ -54,173 +54,252 @@
                 "gpx"
               ]
             },
-            "timestamp":{
-              "description":"timestamp of the last update to this data",
-              "$ref":"../definitions.json#/definitions/timestamp"
+            "timestamp": {
+              "description": "timestamp of the last update to this data",
+              "$ref": "../definitions.json#/definitions/timestamp"
             },
-            "source":{
-              "description":"Source of this data",
-              "$ref":"../definitions.json#/definitions/source"
+            "source": {
+              "description": "Source of this data",
+              "$ref": "../definitions.json#/definitions/source"
             }
           }
         }
       }
     },
-    "routes":{
-      "type":"object",
-      "title":"route",
-      "description":"A holder for routes, each named with a UUID",
-      "patternProperties":{
-        "(^[A-Za-z0-9_-]{8,}$)":{
-          "type":"object",
-          "description":"A route, named with a UUID",
-          "properties":{
-            "name":{
-              "type":"string",
-              "description":"Route's common name"
+    "routes": {
+      "type": "object",
+      "title": "route",
+      "description": "A holder for routes, each named with a UUID",
+      "patternProperties": {
+        "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+          "type": "object",
+          "description": "A route, named with a UUID",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Route's common name"
             },
-            "description":{
-              "type":"string",
-              "description":"A description of the route"
+            "description": {
+              "type": "string",
+              "description": "A description of the route"
             },
-            "distance":{
-              "description":"Total distance from start to end",
+            "distance": {
+              "description": "Total distance from start to end",
               "type": "number",
-              "units":"m"
+              "units": "m"
             },
-            "waypoints":{
-              "type":"array",
-              "description":"The set of waypoints that define the route",
-              "patternProperties":{
-                "(^[A-Za-z0-9_-]{8,}$)":{
-                  "type":"object",
-                  "description":"A waypoint UUID",
-                  "properties":{
-                    "order":{
-                      "type":"integer",
-                      "description":"Order sequence of the route waypoints"
-                    }
-                  }
-                }
-              }
+            "start": {
+              "type": "string",
+              "description": "The waypoint UUID at the start of the route"
             },
-            "timestamp":{
-              "description":"timestamp of the last update to this data",
-              "$ref":"../definitions.json#/definitions/timestamp"
+            "end": {
+              "type": "string",
+              "description": "The waypoint UUID at the end of the route"
             },
-            "source":{
-              "description":"Source of this data",
-              "$ref":"../definitions.json#/definitions/source"
-            }
-          }
-        }
-      }
-    },
-    "notes":{
-      "type":"object",
-      "title":"notes",
-      "description":"A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
-      "patternProperties":{
-        "(^[A-Za-z0-9_-]{8,}$)":{
-          "type":"object",
-          "description":"A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
-          "properties":{
-            "title":{
-              "type":"string",
-              "description":"Note's common name"
-            },
-            "description":{
-              "type":"string",
-              "description":"A textual description of the note"
-            },
-            "region":{
-              "type":"string",
-              "description":"Region related to note. A pointer to a region UUID"
-            },
-            "position":{
-              "description":"Position related to note. Alternative to region",
-              "$ref":"../definitions.json#/definitions/position"
-            },
-            "mimeType":{
-              "type":"string",
-              "description":"MIME type of the note"
-            },
-            "url":{
-              "type":"string",
-              "description":"Location of the note"
-            },
-            "timestamp":{
-              "description":"timestamp of the last update to this data",
-              "$ref":"../definitions.json#/definitions/timestamp"
-            },
-            "source":{
-              "description":"Source of this data",
-              "$ref":"../definitions.json#/definitions/source"
-            }
-          }
-        }
-      }
-    },
-    "regions":{
-      "type":"object",
-      "title":"region",
-      "description":"A holder for regions, each named with a UUID",
-      "patternProperties":{
-        "(^[A-Za-z0-9_-]{8,}$)":{
-          "type":"object",
-          "description":"A region of interest, named with a UUID",
-          "properties":{
-            "name":{
-              "type":"string",
-              "description":"Region's common name"
-            },
-            "description":{
-              "type":"string",
-              "description":"A description of the region"
-            },
-            "points":{
-              "type":"object",
-              "description":"The set of points (positions) that define the edges of the region",
-              "patternProperties":{
-                "(^[A-Za-z0-9_-]{2,}$)":{
-                  "type":"object",
-                  "description":"A point UUID",
-                  "properties":{
-                    "position":{
-                      "description":"Position on boundary of region",
-                      "$ref":"../definitions.json#/definitions/position"
+            "feature": {
+              "title": "Feature",
+              "description": "A Geo JSON feature object",
+              "required": [
+                "geometry",
+                "properties"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Feature"
+                  ]
+                },
+                "geometry": {
+                  "title": "LineString",
+                  "properties": {
+                    "type": {
+                      "enum": [
+                        "LineString"
+                      ]
                     },
-                    "order":{
-                      "type":"integer",
-                      "description":"Order sequence of the boundary waypoints"
+                    "coordinates": {
+                      "$ref": "#/definitions/lineString"
                     }
                   }
+                },
+                "properties": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "description": "Additional data of any type",
+                  "additionalProperties": true
+                },
+                "id": {
+                  "FIXME": "may be there, type not known (string? number?)"
                 }
+
               }
             },
-            "timestamp":{
-              "description":"timestamp of the last update to this data",
-              "$ref":"../definitions.json#/definitions/timestamp"
+            "timestamp": {
+              "description": "timestamp of the last update to this data",
+              "$ref": "../definitions.json#/definitions/timestamp"
             },
-            "source":{
-              "description":"Source of this data",
-              "$ref":"../definitions.json#/definitions/source"
+            "source": {
+              "description": "Source of this data",
+              "$ref": "../definitions.json#/definitions/source"
             }
           }
         }
       }
     },
-    "waypoints":{
-      "type":"object",
-      "title":"waypoints",
-      "description":"A holder for waypoints, each named with a UUID",
-      "patternProperties":{
-        "(^[A-Za-z0-9_-]{8,}$)":{
-          "description":"A waypoint, named with a UUID",
-          "$ref":"../definitions.json#/definitions/waypoint"
+    "notes": {
+      "type": "object",
+      "title": "notes",
+      "description": "A holder for notes about regions, each named with a UUID, rbejg:HugeFishFarm. Notes might include navigation or cruising info, images, or anything",
+      "patternProperties": {
+        "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+          "type": "object",
+          "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Note's common name"
+            },
+            "description": {
+              "type": "string",
+              "description": "A textual description of the note"
+            },
+            "anyOf": [
+              {
+                "region": {
+                  "type": "string",
+                  "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
+                }
+              },
+              {
+                "position": {
+                  "description": "Position related to note. Alternative to region or geohash",
+                  "$ref": "../definitions.json#/definitions/position"
+                }
+              },
+              {
+                "geohash": {
+                  "description": "Position related to note. Alternative to region or position",
+                  "$ref": "../definitions.json#/definitions/geohash"
+                }
+              }
+            ],
+            "mimeType": {
+              "type": "string",
+              "description": "MIME type of the note"
+            },
+            "url": {
+              "type": "string",
+              "description": "Location of the note"
+            },
+            "timestamp": {
+              "description": "timestamp of the last update to this data",
+              "$ref": "../definitions.json#/definitions/timestamp"
+            },
+            "source": {
+              "description": "Source of this data",
+              "$ref": "../definitions.json#/definitions/source"
+            }
+          }
+        }
+      }
+    },
+    "regions": {
+      "type": "object",
+      "title": "region",
+      "description": "A holder for regions, each named with UUID",
+      "patternProperties": {
+        "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+          "type": "object",
+          "description": "A region of interest, each named with a UUID",
+          "properties": {
+            "geohash": {
+              "description": "geohash of the approximate boundary of this region",
+              "$ref:": "../definitions.json#/definitions/geohash"
+            },
+            "feature": {
+              "title": "Feature",
+              "description": "A Geo JSON feature object",
+              "required": [
+                "geometry",
+                "properties"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Feature"
+                  ]
+                },
+                "geometry": {
+                  "oneOf": [
+                    {
+                      "title": "Polygon",
+                      "properties": {
+                        "type": {
+                          "enum": [
+                            "Polygon"
+                          ]
+                        },
+                        "coordinates": {
+                          "$ref": "#/definitions/polygon"
+                        }
+                      }
+                    },
+                    {
+                      "title": "MultiPolygon",
+                      "properties": {
+                        "type": {
+                          "enum": [
+                            "MultiPolygon"
+                          ]
+                        },
+                        "coordinates": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/definitions/polygon"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "properties": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "description": "Additional data of any type",
+                  "additionalProperties": true
+                },
+                "id": {
+                  "FIXME": "may be there, type not known (string? number?)"
+                }
+
+              }
+            },
+            "timestamp": {
+              "description": "timestamp of the last update to this data",
+              "$ref": "../definitions.json#/definitions/timestamp"
+            },
+            "source": {
+              "description": "Source of this data",
+              "$ref": "../definitions.json#/definitions/source"
+            }
+          }
+        }
+      }
+    },
+    "waypoints": {
+      "type": "object",
+      "title": "waypoints",
+      "description": "A holder for waypoints, each named with a UUID",
+      "patternProperties": {
+        "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+          "description": "A waypoint, named with a UUID",
+          "$ref": "../definitions.json#/definitions/waypoint"
         }
       }
     }
   }
 }
-

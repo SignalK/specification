@@ -4,7 +4,6 @@
   "id": "https://signalk.github.io/specification/schemas/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
-
   "definitions": {
     "timestamp": {
       "type": "string",
@@ -13,7 +12,6 @@
       "units": "ISO-8601 (UTC)",
       "example": "2014-04-10T08:33:53Z"
     },
-
     "source": {
       "type": "object",
       "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
@@ -47,13 +45,11 @@
         }
       }
     },
-    
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
       "example": "1.0"
     },
-
     "units": {
       "type": "string",
       "description": "Allowed units of physical quantities. Units should be (derived) SI units where possible.",
@@ -71,7 +67,7 @@
           "description": "Frequency in Herz"
         },
         "m3": {
-          "display": "m\u00b3",
+          "display": "m³",
           "quantity": "Volume",
           "quantityDisplay": "V",
           "description": "Volume in cubic meters"
@@ -83,21 +79,21 @@
           "description": "Liquid or gas flow in cubic meters per second"
         },
         "deg": {
-          "display": "\u00b0",
+          "display": "°",
           "quantity": "Angle",
-          "quantityDisplay": "\u2220",
+          "quantityDisplay": "∠",
           "description": "Latitude or longitude in decimal degrees"
         },
         "rad": {
-          "display": "\u33ad",
+          "display": "㎭",
           "quantity": "Angle",
-          "quantityDisplay": "\u2220",
+          "quantityDisplay": "∠",
           "description": "Angular arc in radians"
         },
         "rad/s": {
-          "display": "\u33ad/s",
+          "display": "㎭/s",
           "quantity": "Rotation",
-          "quantityDisplay": "\u03c9",
+          "quantityDisplay": "ω",
           "description": "Angular rate in radians per second"
         },
         "A": {
@@ -131,7 +127,7 @@
           "description": "Electrical energy in joule"
         },
         "ohm": {
-          "display": "\u2126",
+          "display": "Ω",
           "quantity": "Resistance",
           "quantityDisplay": "R",
           "description": "Electrical resistance in ohm"
@@ -149,7 +145,7 @@
           "description": "Velocity in meters per second"
         },
         "m2": {
-          "display": "\u33a1",
+          "display": "㎡",
           "quantity": "Area",
           "quantityDisplay": "A",
           "description": "(Surface) area in square meters"
@@ -175,17 +171,17 @@
         "ratio": {
           "display": "",
           "quantity": "Ratio",
-          "quantityDisplay": "\u03c6",
+          "quantityDisplay": "φ",
           "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt"
         },
         "m/s2": {
-          "display": "m/s\u00b2",
+          "display": "m/s²",
           "quantity": "Acceleration",
           "quantityDisplay": "a",
           "description": "Acceleration in meters per second squared"
         },
         "rad/s2": {
-          "display": "rad/s\u00b2",
+          "display": "rad/s²",
           "quantity": "Angular acceleration",
           "quantityDisplay": "a",
           "description": "Angular acceleration in radians per second squared"
@@ -210,7 +206,6 @@
         }
       }
     },
-
     "mmsi": {
       "type": "string",
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
@@ -219,20 +214,17 @@
       "maxLength": 9,
       "minLength": 9
     },
-
     "uuid": {
       "type": "string",
       "description": "A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:<issueing authority>:<id type>:<id>. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:<uuid>, where Signal K is the issuing authority and UUID (v4) the ID type.",
       "pattern": "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
       "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
     },
-
     "url": {
       "type": "string",
       "description": "A valid URL.",
       "pattern": "^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
     },
-
     "sail": {
       "type": "object",
       "description": "'sail' data type.",
@@ -243,73 +235,61 @@
           "description": "An unique identifier by which the crew identifies a sail",
           "example": "J1"
         },
-        
         "type": {
           "type": "string",
           "required": true,
           "description": "The type of sail",
           "example": "Genaker"
         },
-        
         "material": {
           "type": "string",
           "required": false,
           "description": "The material the sail is made from (optional)",
           "example": "canvas"
         },
-
         "brand": {
           "type": "string",
           "required": false,
           "description": "The brand of the sail (optional)",
           "example": "North Sails"
         },
-
         "active": {
           "type": "boolean",
           "required": true,
           "description": "Indicates wether this sail is currently in use or not"
         },
-
         "area": {
           "type": "number",
           "required": true,
           "description": "The total area of this sail in square meters",
           "units": "m2"
         },
-
         "minimumWind": {
           "type": "number",
           "description": "The minimum wind speed this sail can be used with",
           "units": "m/s",
           "default": 0
         },
-
         "maximumWind": {
           "type": "number",
           "description": "The maximum wind speed this sail can be used with",
           "units": "m/s",
           "default": 666
         },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-
         "source": {
           "$ref": "#/definitions/source"
         },
-
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
-
     "stringValue": {
       "type": "object",
       "description": "Data should be of type string.",
@@ -317,25 +297,20 @@
         "value": {
           "type": "string"
         },
-        
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-    
         "source": {
           "$ref": "#/definitions/source"
         },
-    
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-    
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
-
     "numberValue": {
       "type": "object",
       "description": "Data should be of type number.",
@@ -343,25 +318,20 @@
         "value": {
           "type": "number"
         },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-  
         "source": {
           "$ref": "#/definitions/source"
         },
-
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-  
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
-
     "nullValue": {
       "type": "object",
       "description": "Data should be of type NULL.",
@@ -369,25 +339,20 @@
         "value": {
           "type": "null"
         },
-  
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-  
         "source": {
           "$ref": "#/definitions/source"
         },
-
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
-  
     "_attr": {
       "type": "object",
       "title": "_attr schema.",
@@ -399,14 +364,12 @@
           "description": "Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`",
           "default": 644
         },
-
         "_owner": {
           "type": "string",
           "title": "_owner schema.",
           "description": "The owner of this resource.",
           "default": "self"
         },
-
         "_group": {
           "type": "string",
           "title": "_group schema.",
@@ -415,7 +378,6 @@
         }
       }
     },
-  
     "meta": {
       "type": "object",
       "title": "Meta schema.",
@@ -427,28 +389,24 @@
           "description": "A display name for this value.",
           "example": "Tachometer, Engine 1"
         },
-  
         "longName": {
           "type": "string",
           "title": "LongName schema.",
           "description": "A long name for this value.",
           "example": "Tachometer, Engine 1"
         },
-  
         "shortName": {
           "type": "string",
           "title": "ShortName schema.",
           "description": "A short name for this value.",
           "example": "RPM"
         },
-  
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
           "description": "The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
-  
         "units": {
           "type": "string",
           "title": "units schema.",
@@ -471,7 +429,6 @@
             "sound"
           ]
         },
-  
         "alarmMethod": {
           "type": "string",
           "title": "AlarmMethod schema.",
@@ -482,7 +439,6 @@
             "sound"
           ]
         },
-  
         "zones": {
           "type": "array",
           "title": "Zones schema.",
@@ -501,7 +457,6 @@
                   "name": "bottom",
                   "example": 3500
                 },
-  
                 {
                   "id": "top",
                   "type": "number",
@@ -510,7 +465,6 @@
                   "name": "1",
                   "example": 4000
                 },
-                
                 {
                   "id": "alarmState",
                   "type": "string",
@@ -524,7 +478,6 @@
                     "alarm"
                   ]
                 },
-                
                 {
                   "id": "message",
                   "type": "string",
@@ -536,73 +489,104 @@
             }
           ]
         }
-      },
-      "position": {
-	"type": "object",
-	"title": "position",
-	"description": "The position in 3 dimensions",
-	"properties": {
-	  "source": {
-	    "description": "Source of this data",
-	    "$ref": "#/definitions/source"
-	  },
-
-	  "timestamp": {
-	    "description": "timestamp of the last update to this data",
-	    "$ref": "#/definitions/timestamp"
-	  },
-	  "longitude": {
-	    "type": "number",
-	    "description": "Longitude",
-	    "units": "deg",
-	    "example": 4.98765245
-	  },
-	  "latitude": {
-	    "type": "number",
-	    "description": "Latitude",
-	    "units": "deg",
-	    "example": 52.0987654
-	  },
-	  "altitude": {
-	    "type": "number",
-	    "description": "Altitude",
-	    "units": "m"
-	  }
-	}
-      },
-      "waypoint": {
-	"type": "object",	  
-	"description": "Data for waypoints",
-	"properties": {
-	  "name": {
-	    "type": "string",
-	    "description": "Waypoint's common name"
-	  },
-	  "position": {
-	   "$ref": "#/definitions/position"
-	  },
-	  "description": {
-	    "type": "string",
-	    "description": "A description of the waypoint"
-	  },
-  
-	  "type": {
-	    "type": "string",
-	    "description": "The type of waypoint",
-	    "enum": [
-	      "location",
-	      "fish",
-	      "hazard",
-	      "anchorage",
-	      "mark",
-              "other"
-	    ]
-	  }
-	}
+      }
+    },
+    "geohash": {
+      "type": "string",
+      "description": "A geohash (see http://geohash.org)",
+      "pattern": "^[0-9A-Za-z:]{1,}$",
+      "example": "eg rbe:TasmanBay"
+    },
+    "position": {
+      "type": "object",
+      "title": "position",
+      "description": "The position in 3 dimensions",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "#/definitions/timestamp"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude",
+          "units": "deg",
+          "example": 4.98765245
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude",
+          "units": "deg",
+          "example": 52.0987654
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude",
+          "units": "m"
+        }
+      }
+    },
+    "waypoint": {
+      "type": "object",
+      "description": "A waypoint, an object with a signal k position object, and GeoJSON Feature object (see geojson.org, and https://github.com/fge/sample-json-schemas/tree/master/geojson)",
+      "properties": {
+        "position": {
+          "$ref": "#/definitions/position"
+        },
+        "feature": {
+          "title": "Feature",
+          "description": "A Geo JSON feature object",
+          "required": [
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "Feature"
+              ]
+            },
+            "geometry": {
+              "title": "Point",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Point"
+                  ]
+                },
+                "coordinates": {
+                  "description": "A single position, in x,y order (Lon, Lat)",
+                  "type": "array",
+                  "minItems": 2,
+                  "items": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "additionalItems": false
+                }
+              }
+            },
+            "properties": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "description": "Additional data of any type",
+              "additionalProperties": true
+            },
+            "id": {
+              "FIXME": "may be there, type not known (string? number?)"
+            }
+          }
+        }
       }
     }
   }
 }
-
-
-
