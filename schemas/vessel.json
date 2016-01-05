@@ -43,20 +43,94 @@
       "example": "Nelson"
     },
 
-    "imo": {
-      "type": "string",
-      "description": "The IMO number of the vessel.",
-      "pattern": "^IMO [0-9]{7,7}$",
-      "example": "IMO 9074729",
-      "maxLength": 11,
-      "minLength": 11
+    "registrations": {
+      "type": "object",
+      "description": "The various registrations of the vessel.",
+      "example": "eg for a New Zealand Part B recreational vessel: 'NZ654'",
+      "properties":{
+        "imo": {
+          "type": "string",
+          "description": "The IMO number of the vessel.",
+          "pattern": "^IMO [0-9]{7,7}$",
+          "example": "IMO 9074729",
+          "maxLength": 11,
+          "minLength": 11
+        },
+        "national": {
+          "type": "object",
+          "description": "The national registration number of the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+            "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties":{
+                "country": {
+                  "type": "string",
+                  "description": "The ISO 3166-2 country code.",
+                  "example": "NZ",
+                  "maxLength": 2,
+                  "minLength": 2
+                },
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "NZ654"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "New Zealand Part B recreational vessel"
+                }
+              }
+            }
+          }
+        },
+        "local": {
+          "type": "object",
+          "description": "A local or state registration number of the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+            "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties":{
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "NZCG-2345"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "Nelson Coast Guard Membership"
+                }
+              }
+            }
+          }
+        },
+        "other": {
+          "type": "object",
+          "description": "Other registration or permits for the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+            "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties":{
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "DOC-2345"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "Tasmanian National Parks Access Permit 2015"
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    
-    "nationalRegistration": {
-      "type": "string",
-      "description": "The national registration number of the vessel.",
-      "example": "eg for a New Zealand Part B recreational vessel: 'NZ654'"
-    },
+
+
+
 
     "communication": {
       "description": "Communication data",
