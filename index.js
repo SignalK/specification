@@ -122,6 +122,15 @@ function chaiAsPromised(chai, utils) {
       , 'expected #{this} to not be valid SignalK unsubscribe message'
       );
   });
+  Assertion.addProperty('validDiscovery', function () {
+    var result = validateWithSchema(this._obj, 'discovery');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK discovery document'
+      );
+  });
 }
 
 
