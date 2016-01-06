@@ -25,8 +25,22 @@
             "signalk-ws": {
               "description": "The URL of a WebSocket streaming endpoint e.g. http://localhost/signalk/v1/stream",
               "$ref": "definitions.json#/definitions/url"
-            }
-          }
+            },
+            "signalk-tcp": {
+              "description": "The host and port of a tcp socket streaming endpoint e.g. localhost:55555",
+              "type": "object",
+              "required": ["host","port"],
+              "properties": {
+                "host": {
+                  "description": "The host, fqdns or IP address.",
+                  "type": "string"
+                },
+                "port": {
+                  "description": "The tcp port",
+                  "type": "integer"
+                }
+              }
+            }          }
         }
       }
     }
