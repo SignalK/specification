@@ -229,8 +229,7 @@
 
     "url": {
       "type": "string",
-      "description": "A valid URL.",
-      "pattern": "^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+      "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:."
     },
 
     "sail": {
