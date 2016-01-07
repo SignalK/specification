@@ -27,20 +27,10 @@
               "$ref": "definitions.json#/definitions/url"
             },
             "signalk-tcp": {
-              "description": "The host and port of a tcp socket streaming endpoint e.g. localhost:55555",
-              "type": "object",
-              "required": ["host","port"],
-              "properties": {
-                "host": {
-                  "description": "The host, fqdns or IP address.",
-                  "type": "string"
-                },
-                "port": {
-                  "description": "The tcp port",
-                  "type": "integer"
-                }
-              }
-            }          }
+              "description": "The URL of a tcp socket streaming endpoint e.g. tcp://localhost:55555",
+              "$ref": "definitions.json#/definitions/url"
+            }
+          }
         }
       }
     }

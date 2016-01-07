@@ -4,10 +4,7 @@
       "version": "1.1.2",
       "signalk-http": "http://192.168.1.2/signalk/v1/api/",
       "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream",
-      "signalk-tcp": {
-        "host": "localhost",
-        "port": 55555
-      }
+      "signalk-tcp": "tcp://localhost:55555"
     },
     "v3": {
       "version": "3.0",
