@@ -227,10 +227,6 @@
     "performance": {
       "description": "Performance data",
       "$ref": "groups/performance.json#"
-    },
-    "sources": {
-      "description": "Metadata about the data sources",
-      "$ref": "groups/sources.json#"
     }
   }
 }
