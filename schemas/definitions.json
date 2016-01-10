@@ -340,14 +340,10 @@
       }
     },
 
-    "numberValue": {
+    "commonValueFields": {
       "type": "object",
-      "description": "Data should be of type number.",
+      "required": ["timestamp", "$source"],
       "properties": {
-        "value": {
-          "type": "number"
-        },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
@@ -367,17 +363,32 @@
           "type": "object",
           "patternProperties": {
             ".*": {
-               "$ref": "#/definitions/valuesNumberValue"
+              "$ref": "#/definitions/valuesNumberValue"
             }
           }
         },
-         "pgn": {
-           "type": "number"
-         },
-         "sentence": {
-           "type": "string"
-         }
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
+        }
       }
+    },
+
+
+    "numberValue": {
+      "type": "object",
+      "description": "Data should be of type number.",
+      "allOf": [
+        {"$ref": "#/definitions/commonValueFields"},
+        {
+        "properties": {
+          "value": {
+            "type": "number"
+          }
+        }
+      }]
     },
 
     "valuesNumberValue": {
