@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
   var subSchemas = {
     'alarms': require('./schemas/groups/alarms.json'),
     'communication': require('./schemas/groups/communication.json'),
@@ -137,6 +139,36 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
+//FIXME does not account for multiple sources for a single path in a single delta
+module.exports.deltaToFullVessel = function(delta) {
+  console.log(JSON.stringify(delta, null, 2));
+  var result = {};
+  if (delta.updates) {
+    delta.updates.forEach(function(update) {
+      if (update.values) {
+        update.values.forEach(function(pathValue) {
+          if (typeof pathValue.value === 'object') {
+            _.set(result, pathValue.path, pathValue.value);
+          } else {
+            _.set(result, pathValue.path + '.value', pathValue.value);
+          }
+          _.set(result, pathValue.path + '.timestamp', update.timestamp);
+          if (update.source) {
+            if (update.source.pgn) {
+              _.set(result, pathValue.path + '.pgn', update.source.pgn);
+            }
+            if (!_.isUndefined(update.source.label) && update.source.src) {
+              _.set(result, pathValue.path + "['$source']", update.source.label + '.' + update.source.src);
+            }
+          }
+          _.set(result, pathValue.path + '.timestamp', update.timestamp);
+        })
+      }
+    })
+  }
+  console.log(JSON.stringify(result, null, 2))
+  return result;
+}
 
 
 
