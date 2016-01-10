@@ -330,7 +330,7 @@
 
         "mode": {
           "type": "object",
-          "description": "Operational mode of battery",
+          "description": "Operational mode of inverter",
           "properties": {
             "value": {
               "type": "string",
