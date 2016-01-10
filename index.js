@@ -56,7 +56,7 @@ function validateDelta(delta, ignoreContext) {
   return valid;
 }
 
-function validateWithSchema(msg, schemaName) { 
+function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
   var schema = require('./schemas/' + schemaName);
   var valid = tv4.validateResult(msg,schema, true, true);
@@ -102,7 +102,7 @@ function chaiAsPromised(chai, utils) {
   });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
     this.assert(
       result.valid
@@ -141,7 +141,6 @@ function chaiAsPromised(chai, utils) {
 
 //FIXME does not account for multiple sources for a single path in a single delta
 module.exports.deltaToFullVessel = function(delta) {
-  console.log(JSON.stringify(delta, null, 2));
   var result = {};
   if (delta.updates) {
     delta.updates.forEach(function(update) {
@@ -166,7 +165,6 @@ module.exports.deltaToFullVessel = function(delta) {
       }
     })
   }
-  console.log(JSON.stringify(result, null, 2))
   return result;
 }
 
