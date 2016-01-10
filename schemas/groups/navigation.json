@@ -306,38 +306,33 @@
       "type": "object",
       "title": "position",
       "description": "The position of the vessel in 3 dimensions",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "description": "Longitude of boat",
+            "units": "deg",
+            "example": 4.98765245
+          },
 
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude of boat",
+            "units": "deg",
+            "example": 52.0987654
+          },
 
-        "longitude": {
-          "type": "number",
-          "description": "Longitude of boat",
-          "units": "deg",
-          "example": 4.98765245
-        },
-
-        "latitude": {
-          "type": "number",
-          "description": "Latitude of boat",
-          "units": "deg",
-          "example": 52.0987654
-        },
-
-        "altitude": {
-          "type": "number",
-          "units": "m",
-          "description": "Altitude of boat"
+          "altitude": {
+            "type": "number",
+            "units": "m",
+            "description": "Altitude of boat"
+          }
         }
-      }
+      }]
     },
+
 
 
 
@@ -345,35 +340,27 @@
       "type": "object",
       "title": "Attitude",
       "description": "Vessel attitude: roll, pitch and yaw",
-      "properties": {
-        "roll": {
-          "type": "number",
-          "description": "Vessel roll, +ve is list to starboard",
-          "units": "rad"
-        },
-
-        "pitch": {
-          "type": "number",
-          "description": "Pitch, +ve is bow up",
-          "units": "rad"
-        },
-
-        "yaw": {
-          "type": "number",
-          "description": "Yaw, +ve is heading change to starboard",
-          "units": "rad"
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "roll": {
+            "type": "number",
+            "description": "Vessel roll, +ve is list to starboard",
+            "units": "rad"
+          },
+          "pitch": {
+            "type": "number",
+            "description": "Pitch, +ve is bow up",
+            "units": "rad"
+          },
+          "yaw": {
+            "type": "number",
+            "description": "Yaw, +ve is heading change to starboard",
+            "units": "rad"
+          }
         }
-      }
+      }]
     },
 
     "rateOfTurn": {
@@ -482,38 +469,31 @@
           "type": "object",
           "title": "position",
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "properties": {
-            "source": {
-              "description": "Source of this data",
-              "$ref": "../definitions.json#/definitions/source"
-            },
-
-            "timestamp": {
-              "description": "timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-
-            "longitude": {
-              "type": "number",
-              "description": "Longitude of the anchor",
-              "units": "deg",
-              "example": 4.98765245
-            },
-
-            "latitude": {
-              "type": "number",
-              "description": "Latitude of the anchor",
-              "units": "deg",
-              "example": 52.0987654
-            },
-
-            "altitude": {
-              "type": "number",
-              "description": "Altitude of the anchor",
-              "units": "m"
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "properties": {
+              "longitude": {
+                "type": "number",
+                "description": "Longitude of the anchor",
+                "units": "deg",
+                "example": 4.98765245
+              },
+              "latitude": {
+                "type": "number",
+                "description": "Latitude of the anchor",
+                "units": "deg",
+                "example": 52.0987654
+              },
+              "altitude": {
+                "type": "number",
+                "description": "Altitude of the anchor",
+                "units": "m"
+              }
             }
-          }
+          }]
         }
+
       }
     },
 
