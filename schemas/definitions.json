@@ -47,7 +47,7 @@
         }
       }
     },
-    
+
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
@@ -242,14 +242,14 @@
           "description": "An unique identifier by which the crew identifies a sail",
           "example": "J1"
         },
-        
+
         "type": {
           "type": "string",
           "required": true,
           "description": "The type of sail",
           "example": "Genaker"
         },
-        
+
         "material": {
           "type": "string",
           "required": false,
@@ -316,19 +316,19 @@
         "value": {
           "type": "string"
         },
-        
+
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-    
+
         "source": {
           "$ref": "#/definitions/source"
         },
-    
+
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-    
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -346,7 +346,7 @@
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-  
+
         "source": {
           "$ref": "#/definitions/source"
         },
@@ -354,7 +354,7 @@
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-  
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -368,11 +368,11 @@
         "value": {
           "type": "null"
         },
-  
+
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-  
+
         "source": {
           "$ref": "#/definitions/source"
         },
@@ -386,7 +386,7 @@
         }
       }
     },
-  
+
     "_attr": {
       "type": "object",
       "title": "_attr schema.",
@@ -414,7 +414,7 @@
         }
       }
     },
-  
+
     "meta": {
       "type": "object",
       "title": "Meta schema.",
@@ -426,28 +426,28 @@
           "description": "A display name for this value.",
           "example": "Tachometer, Engine 1"
         },
-  
+
         "longName": {
           "type": "string",
           "title": "LongName schema.",
           "description": "A long name for this value.",
           "example": "Tachometer, Engine 1"
         },
-  
+
         "shortName": {
           "type": "string",
           "title": "ShortName schema.",
           "description": "A short name for this value.",
           "example": "RPM"
         },
-  
+
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
           "description": "The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
-  
+
         "units": {
           "type": "string",
           "title": "units schema.",
@@ -460,28 +460,48 @@
           "description": "The timeout in (fractional) seconds after which this data is invalid.",
           "example": 2
         },
-        "warnMethod": {
+        "alertMethod": {
           "type": "string",
-          "title": "WarnMethod schema.",
-          "description": "The method to use to raise the warning.",
+          "title": "Alert Method",
+          "description": "The method to use to raise the alert. An alert is an event that should be known",
           "default": "visual",
           "enum": [
             "visual",
             "sound"
           ]
         },
-  
+        "warnMethod": {
+          "type": "string",
+          "title": "Warn Method",
+          "description": "The method to use to raise the warning. A warning is an unexpected event that may require attention",
+          "default": "visual",
+          "enum": [
+            "visual",
+            "sound"
+          ]
+        },
+
         "alarmMethod": {
           "type": "string",
-          "title": "AlarmMethod schema.",
-          "description": "The method to use to raise the alarm",
+          "title": "Alarm Method",
+          "description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
           "default": "sound",
           "enum": [
             "visual",
             "sound"
           ]
         },
-  
+        "emergencyMethod": {
+          "type": "string",
+          "title": "Emergency Method",
+          "description": "The method to use to raise the alarm for an emergency. An emergency is an immediate danger to life or vessel",
+          "default": "sound",
+          "enum": [
+            "visual",
+            "sound"
+          ]
+        },
+
         "zones": {
           "type": "array",
           "title": "Zones schema.",
@@ -500,7 +520,7 @@
                   "name": "bottom",
                   "example": 3500
                 },
-  
+
                 {
                   "id": "top",
                   "type": "number",
@@ -509,7 +529,7 @@
                   "name": "1",
                   "example": 4000
                 },
-                
+
                 {
                   "id": "alarmState",
                   "type": "string",
@@ -519,11 +539,13 @@
                   "default": "normal",
                   "enum": [
                     "normal",
+                    "alert",
                     "warn",
-                    "alarm"
+                    "alarm",
+                    "emergency"
                   ]
                 },
-                
+
                 {
                   "id": "message",
                   "type": "string",
