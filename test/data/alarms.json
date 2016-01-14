@@ -12,7 +12,7 @@
               "type": "self"
             },
             "state": "emergency",
-            "method" : "sound"
+            "method" : ["visual","sound"]
           }
         }
       }

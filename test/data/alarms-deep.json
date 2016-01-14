@@ -13,7 +13,7 @@
                 "type": "self"
               },
               "state": "alert",
-              "method" : "visual"
+              "method" : ["visual"]
             }
           }
         }

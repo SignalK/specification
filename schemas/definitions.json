@@ -480,33 +480,41 @@
         },
 
         "alertMethod": {
-          "type": "string",
+          "type": "array",
           "title": "Alert Method",
           "description": "The method to use to raise the alert. An alert is an event that should be known",
-          "default": "visual",
-          "$ref": "#/definitions/alarmMethodEnum"
+          "default": ["visual"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
         "warnMethod": {
-          "type": "string",
+          "type": "array",
           "title": "Warn Method",
           "description": "The method to use to raise the warning. A warning is an unexpected event that may require attention",
-          "default": "visual",
-          "$ref": "#/definitions/alarmMethodEnum"
+          "default": ["visual"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
 
         "alarmMethod": {
-          "type": "string",
+          "type": "array",
           "title": "Alarm Method",
           "description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
-          "default": "sound",
-          "$ref": "#/definitions/alarmMethodEnum"
+          "default": ["visual","sound"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
         "emergencyMethod": {
-          "type": "string",
+          "type": "array",
           "title": "Emergency Method",
           "description": "The method to use to raise an emergency. An emergency is an immediate danger to life or vessel",
-          "default": "sound",
-          "$ref": "#/definitions/alarmMethodEnum"
+          "default": ["visual","sound"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
 
         "zones": {

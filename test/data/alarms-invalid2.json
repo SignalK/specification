@@ -12,7 +12,7 @@
               "type": "self"
             },
             "state": "warn",
-            "method" : "squeak"
+            "method" : ["squeak"]
           }
         }
       }

@@ -1,5 +1,5 @@
 {
-  "type": ["object","string"],
+  "type": ["object","string","array"],
   "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
   "title": "alarms",
   "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
@@ -8,7 +8,10 @@
       "patternProperties": {
           "(^method$)": {
             "description": "Method to use to raise alarms",
-            "$ref": "../definitions.json#/definitions/alarmMethodEnum"
+            "type": "array",
+            "items": {
+               "$ref": "../definitions.json#/definitions/alarmMethodEnum"
+             }
           },
 
           "(^state$)": {

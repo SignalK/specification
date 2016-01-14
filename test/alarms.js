@@ -11,10 +11,10 @@ describe('Alarms in the full tree', function() {
     require('./data/alarms-deep.json').should.be.validSignalK;
   });
   //must use enum
-  it("should be use alarmState enum", function() {
+  it("should use alarmState enum", function() {
     require('./data/alarms-invalid1.json').should.not.be.validSignalK;
   });
-  it("should be use alarmMethod enum", function() {
+  it("should use alarmMethod array with enum", function() {
     require('./data/alarms-invalid2.json').should.not.be.validSignalK;
   });
 });
