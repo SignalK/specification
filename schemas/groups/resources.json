@@ -30,10 +30,20 @@
               "type": "string",
               "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
             },
-            "region": {
-              "type": "string",
-              "description": "Region covered by chart. A pointer to a region UUID"
-            },
+            "anyOf": [
+              {
+                "region": {
+                  "type": "string",
+                  "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
+                }
+              },
+              {
+                "geohash": {
+                  "description": "Position related to chart. Alternative to region",
+                  "$ref": "../definitions.json#/definitions/geohash"
+                }
+              }
+            ],
             "chartUrl": {
               "type": "string",
               "description": "A url to the chart file's storage location"
@@ -151,7 +161,7 @@
     "notes": {
       "type": "object",
       "title": "notes",
-      "description": "A holder for notes about regions, each named with a UUID, rbejg:HugeFishFarm. Notes might include navigation or cruising info, images, or anything",
+      "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
       "patternProperties": {
         "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
           "type": "object",

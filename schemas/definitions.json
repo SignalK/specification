@@ -67,7 +67,7 @@
           "description": "Frequency in Herz"
         },
         "m3": {
-          "display": "m³",
+          "display": "m\u00b3",
           "quantity": "Volume",
           "quantityDisplay": "V",
           "description": "Volume in cubic meters"
@@ -79,21 +79,21 @@
           "description": "Liquid or gas flow in cubic meters per second"
         },
         "deg": {
-          "display": "°",
+          "display": "\u00b0",
           "quantity": "Angle",
-          "quantityDisplay": "∠",
+          "quantityDisplay": "\u2220",
           "description": "Latitude or longitude in decimal degrees"
         },
         "rad": {
-          "display": "㎭",
+          "display": "\u33ad",
           "quantity": "Angle",
-          "quantityDisplay": "∠",
+          "quantityDisplay": "\u2220",
           "description": "Angular arc in radians"
         },
         "rad/s": {
-          "display": "㎭/s",
+          "display": "\u33ad/s",
           "quantity": "Rotation",
-          "quantityDisplay": "ω",
+          "quantityDisplay": "\u03c9",
           "description": "Angular rate in radians per second"
         },
         "A": {
@@ -127,7 +127,7 @@
           "description": "Electrical energy in joule"
         },
         "ohm": {
-          "display": "Ω",
+          "display": "\u2126",
           "quantity": "Resistance",
           "quantityDisplay": "R",
           "description": "Electrical resistance in ohm"
@@ -145,7 +145,7 @@
           "description": "Velocity in meters per second"
         },
         "m2": {
-          "display": "㎡",
+          "display": "\u33a1",
           "quantity": "Area",
           "quantityDisplay": "A",
           "description": "(Surface) area in square meters"
@@ -171,17 +171,17 @@
         "ratio": {
           "display": "",
           "quantity": "Ratio",
-          "quantityDisplay": "φ",
+          "quantityDisplay": "\u03c6",
           "description": "Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt"
         },
         "m/s2": {
-          "display": "m/s²",
+          "display": "m/s\u00b2",
           "quantity": "Acceleration",
           "quantityDisplay": "a",
           "description": "Acceleration in meters per second squared"
         },
         "rad/s2": {
-          "display": "rad/s²",
+          "display": "rad/s\u00b2",
           "quantity": "Angular acceleration",
           "quantityDisplay": "a",
           "description": "Angular acceleration in radians per second squared"
