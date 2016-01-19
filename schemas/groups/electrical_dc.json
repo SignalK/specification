@@ -10,37 +10,41 @@
       "title": "Electrical ID",
       "description": " Common ID items shared by electrical items",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverterCharger, Combiner1, etc.)"
-        },
+        "meta": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverterCharger, Combiner1, etc.)"
+            },
 
-        "location": {
-          "type": "string",
-          "description": "Installed location of device on vessel"
-        },
+            "location": {
+              "type": "string",
+              "description": "Installed location of device on vessel"
+            },
 
-        "manufacturerName": {
-          "type": "string",
-          "description": "Manufacturer's name"
-        },
+            "manufacturerName": {
+              "type": "string",
+              "description": "Manufacturer's name"
+            },
 
-        "manufacturerModel": {
-          "type": "string",
-          "description": "Model or part number"
-        },
+            "manufacturerModel": {
+              "type": "string",
+              "description": "Model or part number"
+            },
 
-        "dateInstalled": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "Date device was installed"
-        },
+            "dateInstalled": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "Date device was installed"
+            },
 
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
+            "timestamp": {
+              "$ref": "../definitions.json#/definitions/timestamp"
+            },
 
-        "source": {
-          "$ref": "../definitions.json#/definitions/source"
+            "source": {
+              "$ref": "../definitions.json#/definitions/source"
+            }
+          }
         }
       }
     },
@@ -61,34 +65,39 @@
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
             "properties": {
-              "nominal": {
-                "type": "number",
-                "units": "V",
-                "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
-              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "nominal": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
+                  },
 
-              "warnUpper": {
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V",
-                "description": "Upper operational voltage limit"
-              },
+                  "warnUpper": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Upper operational voltage limit"
+                  },
 
-              "warnLower": {
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V",
-                "description": "Lower operational voltage limit"
-              },
+                  "warnLower": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Lower operational voltage limit"
+                  },
 
-              "faultUpper": {
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V",
-                "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
-              },
+                  "faultUpper": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+                  },
 
-              "faultLower": {
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V",
-                "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                  "faultLower": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                  }
+                }
               }
             }
           }]
@@ -100,28 +109,33 @@
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
             "properties": {
-              "warnUpper": {
-                "description": "Upper operational current limit",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "A"
-              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "warnUpper": {
+                    "description": "Upper operational current limit",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                  },
 
-              "warnLower": {
-                "description": "Lower operational current limit",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "A"
-              },
+                  "warnLower": {
+                    "description": "Lower operational current limit",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                  },
 
-              "faultUpper": {
-                "description": "Upper fault limit of battery current - BMS may disconnect battery",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "A"
-              },
+                  "faultUpper": {
+                    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                  },
 
-              "faultLower": {
-                "description": "Lower fault limit of battery current - BMS may disconnect battery",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "A"
+                  "faultLower": {
+                    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                  }
+                }
               }
             }
           }]
@@ -201,6 +215,16 @@
             "$ref": "#/definitions/dcSource"
           }, {
             "properties": {
+              "meta": {
+                "type:": "object",
+                "properties": {
+                  "chemistry": {
+                    "type": "string",
+                    "description": "Type of battery FLA, LiFePO4, etc."
+                  }
+                }
+              },
+
               "mode": {
                 "type": "object",
                 "properties": {
@@ -225,11 +249,6 @@
                     "$ref": "../definitions.json#/definitions/source"
                   }
                 }
-              },
-
-              "chemistry": {
-                "type": "string",
-                "description": "Type of battery FLA, LiFePO4, etc."
               },
 
               "temperature": {

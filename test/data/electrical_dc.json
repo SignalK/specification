@@ -6,11 +6,13 @@
         "dc": {
           "batteries": {
             "house1": {
-              "name": "House battery 1 (forward)",
-              "location": "Under forward bunk",
-              "manufacturerName": "MasterVolt",
-              "manufacturerModel": "AGM 12/130",
-              "chemistry": "FLA",
+              "meta": {
+                "name": "House battery 1 (forward)",
+                "location": "Under forward bunk",
+                "manufacturerName": "MasterVolt",
+                "manufacturerModel": "AGM 12/130",
+                "chemistry": "FLA"
+              },
               "mode": {
                 "value": "discharging"
               },
@@ -19,33 +21,45 @@
               },
               "voltage": {
                 "value": 12.5,
-                "nominal": 12
+                "meta": {
+                  "nominal": 12,
+                  "warnLower": 12,
+                  "faultLower": 11.6,
+                  "warnUpper": 14.4,
+                  "faultUpper": 15.2
+                }
               },
               "current": {
                 "value": 0.1
               }
             },
             "house2": {
-              "name": "House battery 1 (read)",
-              "location": "Engine room",
-              "manufacturerName": "MasterVolt",
-              "manufacturerModel": "AGM 12/130",
+              "meta": {
+                "name": "House battery 1 (read)",
+                "location": "Engine room",
+                "manufacturerName": "MasterVolt",
+                "manufacturerModel": "AGM 12/130"
+              },
               "voltage": {
                 "value": 12.8,
-                "nominal": 12
+                "meta": {
+                  "nominal": 12
+                }
               },
               "current": {
                 "value": 0.1
-              }              
+              }
             },
             "start": {
               "voltage": {
                 "value": 12.8,
-                "nominal": 12
+                "meta": {
+                  "nominal": 12
+                }
               },
               "current": {
                 "value": 0.05
-              }              
+              }
             }
           }
         }
