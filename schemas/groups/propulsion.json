@@ -77,14 +77,8 @@
       "units": "s"
     },
 
-    "oilTemperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
     "coolantTemperature": {
-      "description": "Engine temperature",
+      "description": "Coolant temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
     },
