@@ -206,7 +206,7 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
-          "title": "Battery",
+          "title": "Battery keyed by instance id",
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
