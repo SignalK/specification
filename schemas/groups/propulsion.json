@@ -64,7 +64,7 @@
       "units": "Hz"
     },
 		
-    "alternatorPotential": {
+    "alternatorVoltage": {
       "description": "Alternator output voltage",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "V"
