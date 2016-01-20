@@ -41,6 +41,11 @@
       "units": "Hz"
     },
 
+    "direction": {
+      "description": "Direction of engine shaft rotation (before transmission).",
+      "enum": [ "idle", "forward", "reverse" ]
+    },
+
     "maxRevolutions": {
       "description": "Engine maximum revolutions",
       "type": "number",
