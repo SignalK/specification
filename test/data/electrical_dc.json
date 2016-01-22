@@ -1,0 +1,69 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "electrical": {
+        "dc": {
+          "batteries": {
+            "house1": {
+              "meta": {
+                "name": "House battery 1 (forward)",
+                "location": "Under forward bunk",
+                "manufacturerName": "MasterVolt",
+                "manufacturerModel": "AGM 12/130",
+                "chemistry": "FLA"
+              },
+              "mode": {
+                "value": "discharging"
+              },
+              "temperature": {
+                "value": 290
+              },
+              "voltage": {
+                "value": 12.5,
+                "meta": {
+                  "nominal": 12,
+                  "warnLower": 12,
+                  "faultLower": 11.6,
+                  "warnUpper": 14.4,
+                  "faultUpper": 15.2
+                }
+              },
+              "current": {
+                "value": 0.1
+              }
+            },
+            "house2": {
+              "meta": {
+                "name": "House battery 1 (read)",
+                "location": "Engine room",
+                "manufacturerName": "MasterVolt",
+                "manufacturerModel": "AGM 12/130"
+              },
+              "voltage": {
+                "value": 12.8,
+                "meta": {
+                  "nominal": 12
+                }
+              },
+              "current": {
+                "value": 0.1
+              }
+            },
+            "start": {
+              "voltage": {
+                "value": 12.8,
+                "meta": {
+                  "nominal": 12
+                }
+              },
+              "current": {
+                "value": 0.05
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
