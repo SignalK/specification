@@ -133,7 +133,21 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
+function fillIdentity(full) {
+  for (identity in full.vessels) {
+    fillIdentityField(full.vessels[identity], identity);
+  }
+}
 
+function fillIdentityField(vesselData, identity) {
+  if (identity.indexOf('urn:mrn:imo') === 0) {
+    vesselData.mmsi = identity
+  } else if (identity.indexOf('urn:mrn:signalk') === 0) {
+    vesselData.uuid = identity
+  } else {
+    vesselData.url = identity;
+  }
+}
 
 
 module.exports.validateFull = validateFull;
@@ -144,6 +158,7 @@ module.exports.validateVessel = function(vesselData) {
       }
     });
 }
+module.exports.fillIdentity = fillIdentity;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
@@ -151,3 +166,4 @@ module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
+module.exports.deltaToFull = require('./src/delta.js').deltaToNested;
