@@ -53,7 +53,7 @@ function validateDelta(delta, ignoreContext) {
   return valid;
 }
 
-function validateWithSchema(msg, schemaName) { 
+function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
   var schema = require('./schemas/' + schemaName);
   var valid = tv4.validateResult(msg,schema, true, true);
@@ -65,7 +65,7 @@ function chaiAsPromised(chai, utils) {
 
   var Assertion = chai.Assertion
 
-  function checkValidFullSignalK () { 
+  function checkValidFullSignalK () {
     var result = validateFull(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[result.errors.length-1].message + ':' + result.errors[result.errors.length-1].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
@@ -96,7 +96,7 @@ function chaiAsPromised(chai, utils) {
   });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
     this.assert(
       result.valid
