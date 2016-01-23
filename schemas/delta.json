@@ -4,6 +4,7 @@
   "id": "https://signalk.github.io/specification/schemas/delta.json#",
   "title": "SignalK Delta message schema",
   "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",
+  "required": ["updates"],
   "properties": {
     "context": {
       "type": "string",
@@ -15,6 +16,7 @@
       "description": "The updates",
       "items": {
         "type": "object",
+        "required": [ "values"],
         "properties": {
           "source": {
             "$ref": "./definitions.json#/definitions/source"
@@ -28,6 +30,7 @@
             "type": "array",
             "items": {
               "type": "object",
+              "required": ["path", "value"],
               "properties": {
                 "path": {
                   "type": "string",
