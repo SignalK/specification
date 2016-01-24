@@ -501,33 +501,30 @@
 
     "datetime": {
       "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "description": "GNSS Time and Date in ISO8601 format",
-          "exmple": "2015-12-05T13:11:59Z"
-        },
-        "gnssTimeSource": {
-          "description": "Source of GNSS Date and Time",
-          "enum": [
-            "GPS",
-            "GLONASS",
-            "Galileo",
-            "Beidou",
-            "IRNSS",
-            "Radio Signal",
-            "Internet",
-            "Local clock"
-          ]
-        },
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
-        "source": {
-          "$ref": "../definitions.json#/definitions/source"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "GNSS Time and Date in ISO8601 format",
+            "exmple": "2015-12-05T13:11:59Z"
+          },
+          "gnssTimeSource": {
+            "description": "Source of GNSS Date and Time",
+            "enum": [
+              "GPS",
+              "GLONASS",
+              "Galileo",
+              "Beidou",
+              "IRNSS",
+              "Radio Signal",
+              "Internet",
+              "Local clock"
+            ]
+          }
         }
-      }
+      }]
     }
   }
 }
