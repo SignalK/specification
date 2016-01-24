@@ -139,9 +139,10 @@ function fillIdentity(full) {
   }
 }
 
+var mmsiPrefixLenght = 'urn:mrn:imo:mmsi:'.length;
 function fillIdentityField(vesselData, identity) {
   if (identity.indexOf('urn:mrn:imo') === 0) {
-    vesselData.mmsi = identity
+    vesselData.mmsi = identity.substring(mmsiPrefixLenght, identity.length)
   } else if (identity.indexOf('urn:mrn:signalk') === 0) {
     vesselData.uuid = identity
   } else {
