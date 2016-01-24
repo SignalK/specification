@@ -6,17 +6,17 @@
   "title": "sensor",
   "properties": {
     "name": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The common name of the sensor"
     },
     
     "sensorType": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
     },
 
     "sensorData": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The data of the sensor data. FIXME - need to ref the definitions of sensor types"
     },
 

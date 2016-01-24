@@ -6,22 +6,43 @@
   "title": "tank",
   "properties": {
     "name": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
     },
 
     "type": {
-      "type": "string",
+      "type": "object",
       "description": "The type of tank",
-      "enum": [
-        "petrol",
-        "fresh water",
-        "greywater",
-        "holding",
-        "lpg",
-        "diesel",
-        "rum"
-      ]
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "petrol",
+            "fresh water",
+            "greywater",
+            "holding",
+            "lpg",
+            "diesel",
+            "rum"
+          ]
+        },
+        
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+    
+        "source": {
+          "$ref": "#/definitions/source"
+        },
+    
+        "_attr": {
+          "$ref": "#/definitions/_attr"
+        },
+    
+        "meta": {
+          "$ref": "#/definitions/meta"
+        }
+      }
     },
 
     "capacity": {
