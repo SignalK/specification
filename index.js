@@ -139,6 +139,7 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
+
 //FIXME does not account for multiple sources for a single path in a single delta
 module.exports.deltaToFullVessel = function(delta) {
   var result = {};
@@ -168,6 +169,22 @@ module.exports.deltaToFullVessel = function(delta) {
   return result;
 }
 
+function fillIdentity(full) {
+  for (identity in full.vessels) {
+    fillIdentityField(full.vessels[identity], identity);
+  }
+}
+
+var mmsiPrefixLenght = 'urn:mrn:imo:mmsi:'.length;
+function fillIdentityField(vesselData, identity) {
+  if (identity.indexOf('urn:mrn:imo') === 0) {
+    vesselData.mmsi = identity.substring(mmsiPrefixLenght, identity.length)
+  } else if (identity.indexOf('urn:mrn:signalk') === 0) {
+    vesselData.uuid = identity
+  } else {
+    vesselData.url = identity;
+  }
+}
 
 
 module.exports.validateFull = validateFull;
@@ -178,6 +195,7 @@ module.exports.validateVessel = function(vesselData) {
       }
     });
 }
+module.exports.fillIdentity = fillIdentity;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
@@ -185,3 +203,4 @@ module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
+module.exports.deltaToFull = require('./src/delta.js').deltaToNested;

@@ -1,0 +1,77 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "propulsion": {
+    "instance0": {
+      "label": "Main Engine - The Olde Faithful",
+      "drive": {
+        "type": "outboard",
+        "trimState": {
+          "value": 99
+        },
+        "thrustAngle": {
+          "value": 0
+        }
+      },
+      "fuel": {
+        "type": "diesel",
+        "used": {
+          "value": 12.5
+        },
+        "rate": {
+          "value": 0.6
+        },
+        "averageRate": {
+          "value": 1.0
+        },
+        "economyRate": {
+          "value": 0.9
+        },
+        "pressure": {
+          "value": 1100
+        }
+      },
+      "state": {
+        "value": "started"
+      },
+      "revolutions": {
+        "value": 1280
+      },
+      "maxRevolutions": 3000,
+      "oilPressure": {
+        "value": 110
+      },
+      "boostPressure": {
+        "value": 200
+      },
+      "oilTemperature": {
+        "value": 345
+      },
+      "coolantTemperature": {
+        "value": 355
+      },
+      "exhaustTemperature": {
+        "value": 420
+      },
+      "coolantPressure": {
+        "value": 1100
+      },
+      "runTime": {
+        "value": 3102234
+      },
+      "alternatorVoltage": {
+        "value": 14.1
+      },
+      "transmission": {
+        "gear": {
+          "value": "Forward"
+        },
+        "oilPressure": {
+          "value": 100
+        },
+        "oilTemperature": {
+          "value": 310
+        }
+      }
+    }
+  }
+}
