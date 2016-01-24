@@ -108,11 +108,12 @@ function addValue(context, source, timestamp, pathValue) {
     setMessage(valueLeaf.values[sourceId], source);
   } else if (valueLeaf.value && valueLeaf['$source'] != getId(source)) {
     // first multiple value
-    valueLeaf.values = {};
 
     var sourceId = valueLeaf['$source'];
-    valueLeaf.values[sourceId] = {};
-    copyLeafValueToLeaf(valueLeaf.value, valueLeaf.values[sourceId]);
+    var tmp = {};
+    copyLeafValueToLeaf(valueLeaf, tmp);
+    valueLeaf.values = {};
+    valueLeaf.values[sourceId] = tmp;
     valueLeaf.values[sourceId].timestamp = valueLeaf.timestamp;
 
     sourceId = getId(source);

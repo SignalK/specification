@@ -35,7 +35,36 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(delta);
-    console.log(JSON.stringify(fullSignalK.retrieve(), null, 2));
     fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('longitude');
   })
+
+  it('Two deltas from different sources results in values structure', function() {
+    var delta = {
+      "updates": [{
+        "source": {
+          "label": "n2kFromFile",
+          "type": "NMEA2000",
+          "pgn": 129038,
+          "src": "43"
+        },
+        "timestamp": "2014-08-15-19:03:21.532",
+        "values": [{
+          "path": "navigation.speedOverGround",
+          "value": 7.09
+        }]
+      }],
+      "context": "vessels.foo"
+    };
+    var fullSignalK = new FullSignalK();
+    fullSignalK.addDelta(delta);
+    delta.updates[0].source.src = 48;
+    delta.updates[0].values[0].value = 8;
+    fullSignalK.addDelta(delta);
+    fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.should.have.property('value', 8);
+    fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.values['n2kFromFile.43'].should.have.property('value', 7.09);
+    fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.values['n2kFromFile.48'].should.have.property('value', 8);
+  })
+
+
+
 })
