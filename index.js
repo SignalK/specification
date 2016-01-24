@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var FullSignalK = require('./src/fullsignalk');
 
   var subSchemas = {
     'alarms': require('./schemas/groups/alarms.json'),
@@ -169,6 +170,14 @@ module.exports.deltaToFullVessel = function(delta) {
   return result;
 }
 
+module.exports.deltaToFull = function(delta) {
+  var fullSignalK = new FullSignalK();
+  fullSignalK.addDelta(delta);
+  var result = fullSignalK.retrieve();
+  fillIdentity(result);
+  return result;
+}
+
 function fillIdentity(full) {
   for (identity in full.vessels) {
     fillIdentityField(full.vessels[identity], identity);
@@ -203,4 +212,4 @@ module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
-module.exports.deltaToFull = require('./src/delta.js').deltaToNested;
+module.exports.FullSignalK = FullSignalK;
