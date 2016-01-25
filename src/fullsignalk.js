@@ -159,6 +159,6 @@ function getId(source) {
       (source.src ? '.' + source.src : '');
   }
   return source.label +
-    (source.talker ? '.' + source.talker : '.II'); //needs real talker from nmea0183-parser
+    (source.talker ? '.' + source.talker : '.XX');
 }
 module.exports = FullSignalK;

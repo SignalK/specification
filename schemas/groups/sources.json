@@ -10,7 +10,7 @@
         ".*": {
           "anyOf": [
             {"required": ["src", "pgns"]},
-            {"required": ["sentences"]}
+            {"required": ["talker", "sentences"]}
           ],
           "properties": {
             "src": {
@@ -23,6 +23,9 @@
                   "$ref": "#/definitions/timestamp"
                 }
               }
+            },
+            "talker": {
+              "type": "string"
             },
             "sentences": {
               "type": "object",
