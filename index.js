@@ -194,7 +194,7 @@ function fillIdentityField(vesselData, identity) {
     vesselData.url = identity;
   }
 }
-
+module.exports.fillIdentityField = fillIdentityField;
 
 module.exports.validateFull = validateFull;
 module.exports.validateVessel = function(vesselData) {

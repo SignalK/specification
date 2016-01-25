@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var signalkSchema = require('../')
 
 //TODO
 // timestamp prune?
@@ -37,6 +38,7 @@ function findContext(root, contextPath) {
     context = {};
     _.set(root, contextPath, context);
   }
+  signalkSchema.fillIdentityField(context, contextPath.split('.')[1]);
   return context;
 }
 

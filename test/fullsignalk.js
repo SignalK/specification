@@ -65,6 +65,36 @@ describe('FullSignalK', function() {
     fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.values['n2kFromFile.48'].should.have.property('value', 8);
   })
 
+  it('AIS delta produces valid Signal K', function() {
+    var aisDelta = {
+      "updates": [{
+        "source": {
+          "label": "",
+          "type": "NMEA2000",
+          "pgn": 129038,
+          "src": "43"
+        },
+        "timestamp": "2014-08-15-19:00:15.402",
+        "values": [{
+          "path": "navigation.speedOverGround",
+          "value": 14.81
+        }, {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 3.4889
+        }, {
+          "path": "navigation.position",
+          "value": {
+            "longitude": 24.8142433,
+            "latitude": 59.865655
+          }
+        }]
+      }],
+      "context": "vessels.urn:mrn:imo:mmsi:276780000"
+    };
+    var fullSignalK = new FullSignalK();
+    fullSignalK.addDelta(aisDelta);
+    console.log(JSON.stringify(fullSignalK.retrieve(), null, 2));
+    fullSignalK.retrieve().should.be.validSignalK;
 
-
+  })
 })
