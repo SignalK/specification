@@ -36,6 +36,7 @@ describe('FullSignalK', function() {
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(delta);
     fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('longitude');
+    fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('$source');
   })
 
   it('Two deltas from different sources results in values structure', function() {
@@ -61,6 +62,7 @@ describe('FullSignalK', function() {
     delta.updates[0].values[0].value = 8;
     fullSignalK.addDelta(delta);
     fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.should.have.property('value', 8);
+    fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.should.have.property('$source');
     fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.values['n2kFromFile.43'].should.have.property('value', 7.09);
     fullSignalK.retrieve().vessels.foo.navigation.speedOverGround.values['n2kFromFile.48'].should.have.property('value', 8);
   })
