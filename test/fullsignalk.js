@@ -95,7 +95,6 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(aisDelta);
-    console.log(JSON.stringify(fullSignalK.retrieve(), null, 2));
     fullSignalK.retrieve().should.be.validSignalK;
 
   })
