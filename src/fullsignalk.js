@@ -43,7 +43,11 @@ function findContext(root, contextPath) {
 }
 
 FullSignalK.prototype.addUpdate = function(context, update) {
-  this.updateSource(context, update.source, update.timestamp);
+  if (update.source) {
+    this.updateSource(context, update.source, update.timestamp);
+  } else {
+    console.error("No source in delta update:" + JSON.stringify(update));
+  }
   update.values.forEach(addValue.bind(this, context, update.source, update.timestamp));
 }
 
@@ -143,6 +147,9 @@ function assignValueToLeaf(value, leaf) {
 }
 
 function setMessage(leaf, source) {
+  if (!source) {
+    return;
+  }
   if (source.pgn) {
     leaf.pgn = source.pgn;
     delete leaf.sentence;
@@ -154,6 +161,9 @@ function setMessage(leaf, source) {
 }
 
 function getId(source) {
+  if (!source) {
+    return 'no_source';
+  }
   if (source.src || source.pgn) {
     return source.label +
       (source.src ? '.' + source.src : '');
