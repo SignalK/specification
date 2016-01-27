@@ -314,32 +314,6 @@
       }
     },
 
-    "stringValue": {
-      "type": "object",
-      "description": "Data should be of type string.",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
-
-        "timestamp": {
-          "$ref": "#/definitions/timestamp"
-        },
-
-        "source": {
-          "$ref": "#/definitions/source"
-        },
-
-        "_attr": {
-          "$ref": "#/definitions/_attr"
-        },
-
-        "meta": {
-          "$ref": "#/definitions/meta"
-        }
-      }
-    },
-
     "commonValueFields": {
       "type": "object",
       "required": ["timestamp", "$source"],
@@ -358,14 +332,6 @@
 
         "meta": {
           "$ref": "#/definitions/meta"
-        },
-        "values": {
-          "type": "object",
-          "patternProperties": {
-            ".*": {
-              "$ref": "#/definitions/valuesNumberValue"
-            }
-          }
         },
         "pgn": {
           "type": "number"
@@ -386,6 +352,14 @@
         "properties": {
           "value": {
             "type": "number"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesNumberValue"
+              }
+            }
           }
         }
       }]
@@ -396,6 +370,46 @@
       "properties": {
         "value": {
          "type": "number"
+        },
+        "timestamp": {
+         "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+         "type": "number"
+        },
+        "sentence": {
+         "type": "string"
+        }
+      }
+    },
+
+    "stringValue": {
+      "type": "object",
+      "description": "Data should be of type number.",
+      "allOf": [
+        {"$ref": "#/definitions/commonValueFields"},
+        {
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesStringValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesStringValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+         "type": "string"
         },
         "timestamp": {
          "$ref": "#/definitions/timestamp"
