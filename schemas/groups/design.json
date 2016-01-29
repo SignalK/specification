@@ -7,14 +7,14 @@
   "properties": {
     "displacement": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The displacement of the vessel, measured in kilogram",
+      "description": "The displacement of the vessel",
       "units": "kg"
     },
     
     "draft": {
       "type": "object",
       "title": "draft",
-      "description": "The draft of the vessel, in meters",
+      "description": "The draft of the vessel",
       "properties": {
         "source": {
           "description": "Source of this data",
@@ -27,19 +27,19 @@
         },
         
         "minimum": { 
-          "description": "The minimum draft of the vessel in meters",
+          "description": "The minimum draft of the vessel",
           "type": "number",
           "units": "m"
         },
         
         "maximum": { 
-          "description": "The maximum draft of the vessel in meters",
+          "description": "The maximum draft of the vessel",
           "type": "number",
           "units": "m"
         },
         
         "canoe": { 
-          "description": "The draft of the vessel without it's keel/centerboard",
+          "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
           "type": "number",
           "units": "m"
         }
@@ -63,19 +63,19 @@
         
         "overall": {
           "type": "number",
-          "description": "Length overall in meters",
+          "description": "Length overall",
           "units": "m"
         },
         
         "hull": {
           "type": "number",
-          "description": "Length of hull in meters",
+          "description": "Length of hull",
           "units": "m"
         },
         
         "waterline": {
           "type": "number",
-          "description": "Length at waterline in meters",
+          "description": "Length at waterline",
           "units": "m"
         }
       }
@@ -91,7 +91,6 @@
           "description": "The type of keel.",
           "enum": [
             "long",
-            "micky_mouse",
             "fin",
             "flare",
             "bulb",
@@ -104,14 +103,15 @@
         },
 
         "angle": {
-          "type": "number",
-          "description": "A number indicating at which angle the keel currently is (in case of a canting keel).",
-          "units": "deg"
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.",
+          "units": "rad"
         },
 
         "lift": {
-          "type": "number",
-          "description": "In the case of a lifting keel, centreboard or daggerboard, the percent of the keel which is submerged. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
+          "units": "ratio",
           "example": 0.8
         },
 
@@ -129,13 +129,13 @@
 
     "beam": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Beam length in meters",
+      "description": "Beam length",
       "units": "m"
     },
 
     "airHeight": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Total height of the vessel in meters",
+      "description": "Total height of the vessel",
       "units": "m"
     },
 
@@ -146,7 +146,8 @@
       "properties": {
         "configuration": {
           "type": "string",
-          "description": "The configuration of the rigging. Example: 'sloop' or 'gaff cutter'"
+          "description": "The configuration of the rigging",
+          "example": "sloop"
         },
         "masts": {
           "type": "number",

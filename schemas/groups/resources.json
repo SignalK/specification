@@ -90,7 +90,7 @@
             },
   
             "distance": {
-              "description": "Total distance from start to end, measured in meters",
+              "description": "Total distance from start to end",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m"
             },
@@ -237,19 +237,19 @@
 
                 "longitude": {
                   "type": "number",
-                  "description": "Longitude, in decimal notation (4.98765245)",
+                  "description": "Longitude",
                   "units": "deg"
                 },
 
                 "latitude": {
                   "type": "number",
-                  "description": "Latitude, in decimal notation (52.0987654)",
+                  "description": "Latitude",
                   "units": "deg"
                 },
 
                 "altitude": {
                   "type": "number",
-                  "description": "Altitude in meters",
+                  "description": "Altitude",
                   "units": "m"
                 }
               }

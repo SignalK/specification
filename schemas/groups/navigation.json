@@ -5,16 +5,60 @@
   "description": "Schema describing the navigation child-object of a Vessel.",
   "title": "navigation",
   "properties": {
+    "lights": {
+      "type": "object",
+      "title": "Navigation lights",
+      "description": "Current state of the vessels navigation lights",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fault",
+            "anchored",
+            "sailing",
+            "motoring",
+            "towing < 200m",
+            "towing > 200m",
+            "pushing",
+            "fishing",
+            "fishing-hampered",
+            "trawling",
+            "trawling-shooting",
+            "trawling-hauling",
+            "pilotage",
+            "not-under-way",
+            "aground",
+            "restricted manouverability",
+            "restricted manouverability towing < 200m",
+            "restricted manouverability towing > 200m",
+            "restricted manouverability underwater operations",
+            "constrained by draft",
+            "mine clearance"
+          ]
+        },
+
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
     "courseOverGroundMagnetic": {
-      "description": "Course over ground (magnetic), measured in arc degrees.",
+      "description": "Course over ground (magnetic)",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "deg"
+      "units": "rad"
     },
 
     "courseOverGroundTrue": {
-      "description": "Course over ground (true), measured in arc degrees.",
+      "description": "Course over ground (true)",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "deg"
+      "units": "rad"
     },
 
     "activeRoute": {
@@ -34,26 +78,26 @@
 
         "bearingActual": {
           "type": "number",
-          "description": "The current bearing of the next waypoint in degrees true",
-          "units": "deg"
+          "description": "The current bearing of the next waypoint relative to true North",
+          "units": "rad"
         },
 
         "distanceActual": {
           "type": "number",
-          "description": "The current distance to the next waypoint in meters",
+          "description": "The current distance to the next waypoint",
           "units": "m"
         },
 
         "bearingDirect": {
           "type": "number",
-          "description": "The bearing in degrees true from last waypoint to the next waypoint",
-          "units": "deg"
+          "description": "The bearing relative to true North from last waypoint to the next waypoint",
+          "units": "rad"
         },
 
         "courseRequired": {
           "type": "number",
-          "description": "The course required to make the next waypoint in degrees true",
-          "units": "deg"
+          "description": "The course relative to true North towards the next waypoint",
+          "units": "rad"
         },
 
         "eta": {
@@ -68,7 +112,7 @@
 
         "startTime": {
           "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The time this route was activated in UTC"
+          "description": "The time this route was activated"
         },
 
         "waypoint": {
@@ -78,7 +122,7 @@
           "properties": {
             "lastTime": {
               "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached in UTC"
+              "description": "The time the last waypoint was reached"
             },
 
             "last": {
@@ -99,7 +143,7 @@
 
             "xte": {
               "type": "number",
-              "description": "Cross track error in meters",
+              "description": "Cross track error",
               "units": "m"
             }
           }
@@ -110,7 +154,7 @@
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
-      "units": "deg"
+      "units": "rad"
     },
 
     "destination": {
@@ -134,21 +178,21 @@
 
         "longitude": {
           "type": "number",
-          "description": "Longitude of the destination in decimal degrees",
+          "description": "Longitude of the destination",
           "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
-          "description": "Latitude of the destination in decimal degrees",
+          "description": "Latitude of the destination",
           "units": "deg",
           "example": 52.0987654
         },
 
         "altitude": {
           "type": "number",
-          "description": "Altitude of the destination in meters",
+          "description": "Altitude of the destination",
           "units": "m"
         }
       }
@@ -169,9 +213,42 @@
           "$ref": "../definitions.json#/definitions/timestamp"
         },
 
-        "quality": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Quality of the satellite fix"
+        "methodQuality": {
+          "type": "object",
+          "description": "Quality of the satellite fix",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "no GPS",
+                "GNSS Fix",
+                "DGNSS fix",
+                "Precise GNSS",
+                "RTK fixed integer",
+                "RTK float",
+                "Estimated (DR) mode",
+                "Manual input",
+                "Simulator mode",
+                "Error"
+              ]
+            }
+          }
+        },
+
+        "integrity": {
+          "type": "object",
+          "description": "Integrity of the satellite fix",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "no Integrity checking",
+                "Safe",
+                "Caution",
+                "Unsafe"
+              ]
+            }
+          }
         },
 
         "satellites": {
@@ -181,13 +258,18 @@
 
         "antennaAltitude": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Altitude of antenna in meters",
+          "description": "Altitude of antenna",
           "units": "m"
         },
 
         "horizontalDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Horizontal position error"
+          "description": "Horizontal Dilution of Precision"
+        },
+
+        "positionDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Positional Dilution of Precision"
         },
 
         "geoidalSeparation": {
@@ -197,7 +279,7 @@
 
         "differentialAge": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Age of DGPS data in seconds",
+          "description": "Age of DGPS data",
           "units": "s"
         },
 
@@ -210,14 +292,14 @@
 
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading of the vessels in degrees",
-      "units": "deg"
+      "description": "Current magnetic heading of the vessels",
+      "units": "rad"
     },
 
     "headingTrue": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The current true heading of the vessel in degrees",
-      "units": "deg"
+      "description": "The current true heading of the vessel",
+      "units": "rad"
     },
 
     "position": {
@@ -237,24 +319,27 @@
 
         "longitude": {
           "type": "number",
-          "description": "Longitude of boat in decimal degrees",
+          "description": "Longitude of boat",
           "units": "deg",
           "example": 4.98765245
         },
 
         "latitude": {
           "type": "number",
-          "description": "Latitude of boat in decimal degrees",
+          "description": "Latitude of boat",
           "units": "deg",
           "example": 52.0987654
         },
 
         "altitude": {
           "type": "number",
-          "description": "Altitude of boat in meters"
+          "units": "m",
+          "description": "Altitude of boat"
         }
       }
     },
+
+
 
     "attitude": {
       "type": "object",
@@ -263,20 +348,20 @@
       "properties": {
         "roll": {
           "type": "number",
-          "description": "Vessel roll in degrees looking to the bow, level = 0, clockwise is +ve",
-          "units": "deg"
+          "description": "Vessel roll, +ve is list to starboard",
+          "units": "rad"
         },
 
         "pitch": {
           "type": "number",
-          "description": "Pitch in degrees, 0 is horizontal, +ve is bow up",
-          "units": "deg"
+          "description": "Pitch, +ve is bow up",
+          "units": "rad"
         },
 
         "yaw": {
           "type": "number",
-          "description": "Yaw in degrees",
-          "units": "deg"
+          "description": "Yaw, +ve is heading change to starboard",
+          "units": "rad"
         },
 
         "source": {
@@ -293,31 +378,31 @@
 
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn in degrees per second",
-      "units": "deg/s"
+      "description": "Rate of turn",
+      "units": "rad/s"
     },
 
     "speedOverGround": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed over ground, in m/s",
+      "description": "Vessel speed over ground",
       "units": "m/s"
     },
 
     "speedThroughWater": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed through the water in m/s",
+      "description": "Vessel speed through the water",
       "units": "m/s"
     },
 
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Log value in meters",
+      "description": "Log value",
       "units": "m"
     },
 
     "logTrip": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Trip log value in meters",
+      "description": "Trip log value",
       "units": "m"
     },
 
@@ -335,19 +420,31 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "value": {
           "type": "string",
           "enum": [
-            "under way using engine",
-            "at anchor",
             "not under command",
-            "restricted maneuverability",
-            "constrained by her draught",
-            "moored",
+            "anchored",
+            "sailing",
+            "motoring",
+            "towing < 200m",
+            "towing > 200m",
+            "pushing",
+            "fishing",
+            "fishing-hampered",
+            "trawling",
+            "trawling-shooting",
+            "trawling-hauling",
+            "pilotage",
+            "not-under-way",
             "aground",
-            "engaged in fishing",
-            "under way sailing",
+            "restricted manouverability",
+            "restricted manouverability towing < 200m",
+            "restricted manouverability towing > 200m",
+            "restricted manouverability underwater operations",
+            "constrained by draft",
+            "mine clearance",
             "not defined (example)"
           ]
         }
@@ -368,19 +465,19 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Radius of anchor alarm boundary in meters. The distance from anchor to the center of the boat",
+          "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
           "units": "m"
         },
-        
+
         "currentRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Current distance to anchor in meters",
+          "description": "Current distance to anchor",
           "units": "m"
         },
-        
+
         "position": {
           "type": "object",
           "title": "position",
@@ -395,27 +492,58 @@
               "description": "timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
-            
+
             "longitude": {
               "type": "number",
-              "description": "Longitude of the anchor in decimal degrees",
+              "description": "Longitude of the anchor",
               "units": "deg",
               "example": 4.98765245
             },
-            
+
             "latitude": {
               "type": "number",
-              "description": "Latitude of the anchor in decimal degrees",
+              "description": "Latitude of the anchor",
               "units": "deg",
               "example": 52.0987654
             },
-            
+
             "altitude": {
               "type": "number",
-              "description": "Altitude of the anchor in meters",
+              "description": "Altitude of the anchor",
               "units": "m"
             }
           }
+        }
+      }
+    },
+
+    "datetime": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "GNSS Time and Date in ISO8601 format",
+          "exmple": "2015-12-05T13:11:59Z"
+        },
+        "gnssTimeSource": {
+          "description": "Source of GNSS Date and Time",
+          "enum": [
+            "GPS",
+            "GLONASS",
+            "Galileo",
+            "Beidou",
+            "IRNSS",
+            "Radio Signal",
+            "Internet",
+            "Local clock"
+          ]
+        },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
         }
       }
     }

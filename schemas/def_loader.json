@@ -10,8 +10,8 @@
       "$ref": "definitions.json#/definitions/stringValue" 
     },
     
-    "floatValue": { 
-      "$ref": "definitions.json#/definitions/floatValue" 
+    "numberValue": {
+      "$ref": "definitions.json#/definitions/numberValue"
     },
     
     "nullValue": { 

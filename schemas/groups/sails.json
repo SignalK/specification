@@ -21,21 +21,20 @@
       "description": "An object containing information about the vessels' sails.",
       "properties": {
         "total": {
-          "description": "The total area of all sails on the vessel, measured in square meters.",
+          "description": "The total area of all sails on the vessel",
           "type": "number",
           "units": "m2"
         },
 
         "active": {
-          "description": "The total area of the sails currently in use on the vessel, measured in square meters.",
+          "description": "The total area of the sails currently in use on the vessel",
           "type": "number",
           "units": "m2"
         },
 
-        "timestamp": { 
+        "timestamp": {
           "description":"timestamp of the last update to this data",
-          "$ref": "#/definitions/timestamp",
-          "units": "ISO-8601 (UTC)"
+          "$ref": "#/definitions/timestamp"
         },
         
         "source": { 
