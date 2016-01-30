@@ -154,7 +154,7 @@
       "required": false,
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
-          "description": "This regex pattern is used for validation UUID identifier for the propulsion unit",
+          "description": "This regex pattern is used for validation of the identifier for the propulsion unit",
           "$ref": "groups/propulsion.json#"
         }
       }
