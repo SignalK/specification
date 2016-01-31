@@ -503,40 +503,41 @@
           "description": "The zones defining the range of values for this signalk value.",
           "items": [
             {
-              "type": "array",
+              "type": "object",
               "title": "zone",
               "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
-              "items": [
-                {
-                  "id": "bottom",
+              "required": ["state"],
+              "properties": {
+                "lower":{
+                  "id": "lower",
                   "type": "number",
-                  "title": "Bottom",
+                  "title": "Lower",
                   "description": "The lowest number in this zone",
-                  "name": "bottom",
+                  "name": "lower",
                   "example": 3500
                 },
 
-                {
-                  "id": "top",
+                "upper":{
+                  "id": "upper",
                   "type": "number",
-                  "title": "top",
+                  "title": "Upper",
                   "description": "The highest value in this zone",
-                  "name": "1",
+                  "name": "upper",
                   "example": 4000
                 },
 
-                {
+                "state":{
                   "$ref":"#/definitions/alarmState"
                 },
 
-                {
+                "message":{
                   "id": "message",
                   "type": "string",
                   "title": "message",
                   "description": "The message to display for the alarm.",
                   "default": "Warning"
                 }
-              ]
+              }
             }
           ]
         }
