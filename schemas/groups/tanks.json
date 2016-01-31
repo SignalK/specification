@@ -6,7 +6,7 @@
   "title": "tank",
   "properties": {
     "name": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
     },
 

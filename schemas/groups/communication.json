@@ -6,53 +6,53 @@
   "title": "communication",
   "properties": {
     "callsignVhf": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Callsign for VHF communication",
       "example": "ZL1234"
     },
 
     "callsignHf": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Callsign for HF communication",
       "example": "ZL3RTH"
     },
 
     "phoneNumber": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Phone number of skipper",
       "example": "+64xxxxxx"
     },
 
     "emailHf": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Email address to be used for HF email (Winmail, Airmail, Sailmail)",
       "example": "motu@xxx.co.nz"
     },
 
     "email": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Regular email for the skipper",
       "example": "robert@xxx.co.nz"
     },
 
     "satPhoneNumber": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Satellite phone number for vessel.",
       "example": "+64xxxxxx"
     },
 
     "skipperName": {
-      "$ref": "definitions.json#/definitions/stringValue",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Full name of the skipper of the vessel.",
       "example": "Fabian Tollenaar"
     },
-    
+
     "crewNames": {
       "type": "array",
       "description": "Array with the names of the crew",
       "additionalProperties": [
         {
-          "$ref": "definitions.json#/definitions/stringValue",
+          "$ref": "../definitions.json#/definitions/stringValue",
           "description": "Name of a crew member of the vessel.",
           "example": "Catherine"
         }
