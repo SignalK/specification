@@ -1,13 +1,13 @@
 {
   "type": ["object","string","array"],
-  "id": "https://signalk.github.io/specification/schemas/groups/alarms.json#",
-  "title": "alarms",
+  "id": "https://signalk.github.io/specification/schemas/groups/notifications.json#",
+  "title": "notifications",
   "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
   "required": false,
 
       "patternProperties": {
           "(^method$)": {
-            "description": "Method to use to raise alarms",
+            "description": "Method to use to raise notifications",
             "type": "array",
             "items": {
                "$ref": "../definitions.json#/definitions/alarmMethodEnum"
@@ -35,7 +35,7 @@
         	},
           "(^[A-Za-z0-9-]+$)": {
             "description": "This regex pattern is used for validation of the path of the alarm",
-            "$ref": "alarms.json#"
+            "$ref": "notifications.json#"
           }
         }
 
