@@ -6,53 +6,53 @@
   "title": "communication",
   "properties": {
     "callsignVhf": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Callsign for VHF communication",
       "example": "ZL1234"
     },
 
     "callsignHf": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Callsign for HF communication",
       "example": "ZL3RTH"
     },
 
     "phoneNumber": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Phone number of skipper",
       "example": "+64xxxxxx"
     },
 
     "emailHf": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Email address to be used for HF email (Winmail, Airmail, Sailmail)",
       "example": "motu@xxx.co.nz"
     },
 
     "email": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Regular email for the skipper",
       "example": "robert@xxx.co.nz"
     },
 
     "satPhoneNumber": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Satellite phone number for vessel.",
       "example": "+64xxxxxx"
     },
 
     "skipperName": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Full name of the skipper of the vessel.",
       "example": "Fabian Tollenaar"
     },
-    
+
     "crewNames": {
       "type": "array",
       "description": "Array with the names of the crew",
       "additionalProperties": [
         {
-          "type": "string",
+          "$ref": "../definitions.json#/definitions/stringValue",
           "description": "Name of a crew member of the vessel.",
           "example": "Catherine"
         }

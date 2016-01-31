@@ -2,7 +2,9 @@
   "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
   "propulsion": {
     "instance0": {
-      "label": "Main Engine - The Olde Faithful",
+      "label": {
+        "value": "Main Engine - The Olde Faithful"
+      },
       "drive": {
         "type": "outboard",
         "trimState": {

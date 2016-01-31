@@ -6,7 +6,7 @@
   "description": "An engine, named by a unique name within this vessel",
   "properties": {
     "label": {
-      "type": "string",
+      "$ref": "../definitions.json#/definitions/stringValue",
       "description": "Human readable label for the propulsion unit"
     },
 

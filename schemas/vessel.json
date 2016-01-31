@@ -27,18 +27,18 @@
     },
 
     "name": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The common name of the vessel"
     },
 
     "flag": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The country of ship registration, or flag state of the vessel",
       "example": "NZ"
     },
 
     "port": {
-      "type": "string",
+      "$ref": "definitions.json#/definitions/stringValue",
       "description": "The home port of the vessel",
       "example": "Nelson"
     },
@@ -129,17 +129,14 @@
       }
     },
 
-
-
-
     "communication": {
       "description": "Communication data",
       "$ref": "groups/communication.json#"
     },
 
     "environment": {
-        "description": "Environmental data",
-        "$ref": "groups/environment.json#"
+      "description": "Environmental data",
+      "$ref": "groups/environment.json#"
     },
 
     "navigation": {
