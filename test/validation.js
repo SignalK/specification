@@ -27,6 +27,53 @@ describe('Delta validation', function() {
     msg.should.not.be.validSignalKDelta;
   });
 
+  it('Delta without context, source, and timestamp is valid', function() {
+    var msg = {
+      updates: [{
+        values: [{
+          path: "a.b.c",
+          value: 1234
+        }]
+      }]
+    };
+    msg.should.be.validSignalKDelta;
+  });
+
+  it('Minimal delta: updates array', function() {
+    var msg = {
+    };
+    msg.should.not.be.validSignalKDelta;
+    msg.updates = [];
+    msg.should.be.validSignalKDelta;
+  });
+
+  it('Both path and value required in values', function() {
+    var msg1 = {
+      updates: [{
+        "values": [{
+          "value": 1234
+        }]
+      }]
+    };
+    msg1.should.not.be.validSignalKDelta;
+    var msg2 = {
+      updates: [{
+        "values": [{
+          "path": "a.b.c"
+        }]
+      }]
+    };
+    msg2.should.not.be.validSignalKDelta;
+    var msg3 = {
+      updates: [{
+        "values": [{
+        }]
+      }]
+    };
+    msg3.should.not.be.validSignalKDelta;
+  });
+
+
   it('Object, null, number and boolean values are valid in delta', function() {
     var msg = {
       "updates": [{

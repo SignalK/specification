@@ -2,8 +2,8 @@ var chai = require('chai');
 chai.Should();
 chai.use(require('../index.js').chaiModule);
 
-describe('Datetime in the full tree', function() {
+describe('Environment.mode in the full tree', function() {
   it("should be valid", function() {
-    require('./data/datetime.json').should.be.validSignalK;
+    require('./data/env_mode.json').should.be.validSignalK;
   });
 });

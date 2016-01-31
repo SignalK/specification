@@ -17,8 +17,8 @@
                     "shortName": "DBK",
                     "gaugeType": "sparkLine",
                     "units": "Meters (m)",
-                    "warnMethod": "visual",
-                    "alarmMethod": "sound",
+                    "warnMethod": ["visual"],
+                    "alarmMethod": ["sound"],
                     "zones": [
                         [0.0,1.5,"alarm", "Running aground!"],
                         [1.5,3.0,"warn" , "Shallow water!"],

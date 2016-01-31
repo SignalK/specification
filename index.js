@@ -53,7 +53,7 @@ function validateDelta(delta, ignoreContext) {
   return valid;
 }
 
-function validateWithSchema(msg, schemaName) { 
+function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
   var schema = require('./schemas/' + schemaName);
   var valid = tv4.validateResult(msg,schema, true, true);
@@ -65,7 +65,7 @@ function chaiAsPromised(chai, utils) {
 
   var Assertion = chai.Assertion
 
-  function checkValidFullSignalK () { 
+  function checkValidFullSignalK () {
     var result = validateFull(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[result.errors.length-1].message + ':' + result.errors[result.errors.length-1].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
@@ -96,7 +96,7 @@ function chaiAsPromised(chai, utils) {
   });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath + 
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
       ' (' + (result.errors.length-1) + ' other errors not reported here)';
     this.assert(
       result.valid
@@ -122,9 +122,33 @@ function chaiAsPromised(chai, utils) {
       , 'expected #{this} to not be valid SignalK unsubscribe message'
       );
   });
+  Assertion.addProperty('validDiscovery', function () {
+    var result = validateWithSchema(this._obj, 'discovery');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK discovery document'
+      );
+  });
 }
 
+function fillIdentity(full) {
+  for (identity in full.vessels) {
+    fillIdentityField(full.vessels[identity], identity);
+  }
+}
 
+var mmsiPrefixLenght = 'urn:mrn:imo:mmsi:'.length;
+function fillIdentityField(vesselData, identity) {
+  if (identity.indexOf('urn:mrn:imo') === 0) {
+    vesselData.mmsi = identity.substring(mmsiPrefixLenght, identity.length)
+  } else if (identity.indexOf('urn:mrn:signalk') === 0) {
+    vesselData.uuid = identity
+  } else {
+    vesselData.url = identity;
+  }
+}
 
 
 module.exports.validateFull = validateFull;
@@ -135,6 +159,7 @@ module.exports.validateVessel = function(vesselData) {
       }
     });
 }
+module.exports.fillIdentity = fillIdentity;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
@@ -142,3 +167,4 @@ module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
+module.exports.deltaToFull = require('./src/delta.js').deltaToNested;

@@ -5,32 +5,9 @@
   "title": "propulsion",
   "description": "An engine, named by a unique name within this vessel",
   "properties": {
-    "engineType": {
-      "type": "object",
-      "description": "The type of engine",
-      "properties": { 
-        "value": {
-          "type": "string",
-          "enum": [
-            "diesel inboard",
-            "diesel outboard",
-            "petrol inboard",
-            "petrol outboard",
-            "electric inboard",
-            "electric outboard"
-          ]
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        }
-      }
+    "label": {
+      "type": "string",
+      "description": "Human readable label for the propulsion unit"
     },
 
     "state": {
@@ -64,6 +41,12 @@
       "units": "Hz"
     },
 
+    "maxRevolutions": {
+      "description": "Engine maximum revolutions",
+      "type": "number",
+      "units": "Hz"
+    },
+
     "temperature": {
       "description": "Engine temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -80,6 +63,120 @@
       "description": "Oil pressure",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "Pa"
+    },
+
+    "alternatorVoltage": {
+      "description": "Alternator voltage",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "V"
+    },
+
+    "runTime": {
+      "description": "Total running time for engine",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "s"
+    },
+
+    "oilTemperature": {
+      "description": "Engine temperature",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "K"
+    },
+
+    "coolantTemperature": {
+      "description": "Engine temperature",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "K"
+    },
+
+    "coolantPressure": {
+      "description": "Coolant pressure",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Pa"
+    },
+
+    "boostPressure": {
+      "description": "Engine boost (turbo, supercharger) pressure",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Pa"
+    },
+
+    "transmission": {
+      "type": "object",
+      "properties": {
+        "gear": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "enum": ["Forward", "Neutral", "Reverse", "Fault"]
+            }
+          }
+        },
+        "oilTemperature": {
+          "description": "Oil temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "oilPressure": {
+          "description": "Oil pressure",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Pa"
+        }
+      }
+    },
+
+    "drive": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["saildrive", "shaft", "outboard", "jet", "pod", "other"]
+        },
+        "trimState": {
+          "description": "Trim/tilt state",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "thrustAngle": {
+          "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        }
+      }
+    },
+
+    "fuel": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Fuel type",
+          "enum": ["diesel", "petrol","electric", "coal/wood", "other"]
+        },
+        "used": {
+          "description": "Used fuel since last reset. Resetting is at user discretion",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m3"
+        },
+        "pressure": {
+          "description": "Fuel pressure",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Pa"
+        },
+        "rate": {
+          "description": "Fuel rate",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "TBD"
+        },
+        "economyRate": {
+          "description": "Fuel rate",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "TBD"
+        },
+        "averageRate": {
+          "description": "Fuel rate",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "TBD"
+        }
+      }
     },
 
     "waterTemperature": {

@@ -248,6 +248,26 @@
           "$ref": "../definitions.json#/definitions/source"
         }
       }
-    }
+    },
+    "mode": {
+        "type": "object",
+        "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
+        "properties": {
+        	"value": {
+            "enum": [
+          	  "day",
+          	  "night",
+          	  "restricted visibility"
+          	]},
+
+          "timestamp": {
+            "$ref": "../definitions.json#/definitions/timestamp"
+          },
+
+          "source": {
+            "$ref": "../definitions.json#/definitions/source"
+          }
+        }
+      }
   }
 }

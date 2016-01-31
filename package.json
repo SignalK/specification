@@ -19,7 +19,7 @@
     "nmea200"
   ],
   "author": "SignalK group",
-  "license": "https://creativecommons.org/licenses/by-sa/2.0/legalcode",
+  "license": "CC-BY-SA-2.0",
   "bugs": {
     "url": "https://github.com/SignalK/specification/issues"
   },
@@ -30,10 +30,10 @@
   "dependencies": {
     "chai": "^1.9.2",
     "JSONStream": "^0.7.4",
+    "lodash": "^3.10.1",
     "tv4": "^1.2.7"
   },
   "devDependencies": {
-    "lodash": "^3.10.1",
     "mocha": "^2.1.0"
   }
 }

@@ -28,3 +28,6 @@ node_modules
 # FS stuff
 .DS_Store
 thumbs.db
+
+# IDE Stuff
+*.iml

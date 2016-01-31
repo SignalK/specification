@@ -45,6 +45,7 @@
         }
       }
     },
+
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
@@ -222,8 +223,7 @@
     },
     "url": {
       "type": "string",
-      "description": "A valid URL.",
-      "pattern": "^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+      "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:."
     },
     "sail": {
       "type": "object",
@@ -235,12 +235,14 @@
           "description": "An unique identifier by which the crew identifies a sail",
           "example": "J1"
         },
+
         "type": {
           "type": "string",
           "required": true,
           "description": "The type of sail",
           "example": "Genaker"
         },
+
         "material": {
           "type": "string",
           "required": false,
@@ -297,15 +299,19 @@
         "value": {
           "type": "string"
         },
+
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
+
         "source": {
           "$ref": "#/definitions/source"
         },
+
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -321,12 +327,15 @@
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
+
         "source": {
           "$ref": "#/definitions/source"
         },
+        
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -339,20 +348,25 @@
         "value": {
           "type": "null"
         },
+
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
+
         "source": {
           "$ref": "#/definitions/source"
         },
+        
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
+        
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
+
     "_attr": {
       "type": "object",
       "title": "_attr schema.",
@@ -378,6 +392,27 @@
         }
       }
     },
+
+    "alarmState":{
+      "type": "string",
+      "title": "alarmState",
+      "description": "The alarm state when the value is in this zone.",
+      "default": "normal",
+      "enum": [
+        "normal",
+        "alert",
+        "warn",
+        "alarm",
+        "emergency"
+      ]
+    },
+    "alarmMethodEnum":{
+      "enum": [
+        "visual",
+        "sound"
+      ]
+    },
+
     "meta": {
       "type": "object",
       "title": "Meta schema.",
@@ -389,24 +424,28 @@
           "description": "A display name for this value.",
           "example": "Tachometer, Engine 1"
         },
+
         "longName": {
           "type": "string",
           "title": "LongName schema.",
           "description": "A long name for this value.",
           "example": "Tachometer, Engine 1"
         },
+
         "shortName": {
           "type": "string",
           "title": "ShortName schema.",
           "description": "A short name for this value.",
           "example": "RPM"
         },
+
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
           "description": "The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
+
         "units": {
           "type": "string",
           "title": "units schema.",
@@ -419,26 +458,45 @@
           "description": "The timeout in (fractional) seconds after which this data is invalid.",
           "example": 2
         },
+
+        "alertMethod": {
+          "type": "array",
+          "title": "Alert Method",
+          "description": "The method to use to raise the alert. An alert is an event that should be known",
+          "default": ["visual"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
+        },
         "warnMethod": {
-          "type": "string",
-          "title": "WarnMethod schema.",
-          "description": "The method to use to raise the warning.",
-          "default": "visual",
-          "enum": [
-            "visual",
-            "sound"
-          ]
+          "type": "array",
+          "title": "Warn Method",
+          "description": "The method to use to raise the warning. A warning is an unexpected event that may require attention",
+          "default": ["visual"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
+
         "alarmMethod": {
-          "type": "string",
-          "title": "AlarmMethod schema.",
-          "description": "The method to use to raise the alarm",
-          "default": "sound",
-          "enum": [
-            "visual",
-            "sound"
-          ]
+          "type": "array",
+          "title": "Alarm Method",
+          "description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
+          "default": ["visual","sound"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
         },
+        "emergencyMethod": {
+          "type": "array",
+          "title": "Emergency Method",
+          "description": "The method to use to raise an emergency. An emergency is an immediate danger to life or vessel",
+          "default": ["visual","sound"],
+          "items": {
+            "$ref": "#/definitions/alarmMethodEnum"
+          }
+        },
+
         "zones": {
           "type": "array",
           "title": "Zones schema.",
@@ -457,6 +515,7 @@
                   "name": "bottom",
                   "example": 3500
                 },
+
                 {
                   "id": "top",
                   "type": "number",
@@ -465,19 +524,11 @@
                   "name": "1",
                   "example": 4000
                 },
+
                 {
-                  "id": "alarmState",
-                  "type": "string",
-                  "title": "alarmState",
-                  "description": "The alarm state when the value is in this zone.",
-                  "name": "alarmState",
-                  "default": "normal",
-                  "enum": [
-                    "normal",
-                    "warn",
-                    "alarm"
-                  ]
+                  "$ref":"#/definitions/alarmState"
                 },
+
                 {
                   "id": "message",
                   "type": "string",
