@@ -22,7 +22,7 @@
                     "zones": [
                         {"lower":0.0,"upper":1.5,"state":"alarm", "message":"Running aground!"},
                         {"lower":1.5,"upper":3.0,"state":"warn", "message":"Shallow water!"},
-                        {"lower":3.0,"upper":9999.9,"state":"normal", "message":""}
+                        {"lower":3.0, "state":"normal"}
                     ]
                 }
             }

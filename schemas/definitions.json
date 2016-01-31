@@ -526,6 +526,7 @@
               "type": "object",
               "title": "zone",
               "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
+              "required": ["state"],
               "properties": {
                 "lower":{
                   "id": "lower",
