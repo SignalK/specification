@@ -175,57 +175,57 @@
       }
     },
 
-    "alarms": {
+    "notifications": {
       "type": "object",
-      "title": "alarms",
-      "description": "Alarms currently raised",
+      "title": "notifications",
+      "description": "Notifications currently raised",
       "required": false,
       "properties":{
         "mob": {
           "description": "Man overboard",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "fire": {
           "description": "Fire onboard",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "sinking": {
           "description": "Vessel is sinking",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "flooding": {
           "description": "Vessel is flooding",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "collision": {
           "description": "In collision with another vessel or object",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "grounding": {
           "description": "Vessel grounding",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "listing": {
           "description": "Vessel is listing",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "adrift": {
           "description": "Vessel is adrift",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "piracy": {
           "description": "Under attack or danger from pirates",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         },
         "abandon": {
           "description": "Abandon ship",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         }
       },
       "patternProperties": {
         "(^[A-Za-z0-9-]+$)": {
           "description": "This regex pattern is used for validation of the path of the alarm",
-          "$ref": "groups/alarms.json#"
+          "$ref": "groups/notifications.json#"
         }
       }
     },

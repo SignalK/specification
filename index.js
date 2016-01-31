@@ -1,5 +1,5 @@
   var subSchemas = {
-    'alarms': require('./schemas/groups/alarms.json'),
+    'notifications': require('./schemas/groups/notifications.json'),
     'communication': require('./schemas/groups/communication.json'),
     'design': require('./schemas/groups/design.json'),
     'navigation': require('./schemas/groups/navigation.json'),
