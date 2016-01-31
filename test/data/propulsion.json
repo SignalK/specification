@@ -43,6 +43,12 @@
       "boostPressure": {
         "value": 200
       },
+      "engineLoad": {
+        "value": 200
+      },
+      "engineTorque": {
+        "value": 200
+      },
       "oilTemperature": {
         "value": 345
       },

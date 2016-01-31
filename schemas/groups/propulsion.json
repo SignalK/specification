@@ -101,6 +101,18 @@
       "units": "Pa"
     },
 
+    "engineLoad": {
+      "description": "Engine load in percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+
+    "engineTorque": {
+      "description": "Engine torque in percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+
     "transmission": {
       "type": "object",
       "properties": {
