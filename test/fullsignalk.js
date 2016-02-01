@@ -98,4 +98,31 @@ describe('FullSignalK', function() {
     fullSignalK.retrieve().should.be.validSignalK;
 
   })
+
+  it('Delta with empty path sets content under root', function() {
+    var msg = {
+      "updates": [{
+        "source": {
+          "label": "n2kFromFile",
+          "type": "NMEA2000",
+          "pgn": 129794,
+          "src": "43"
+        },
+        "timestamp": "2014-08-15-19:02:31.507",
+        "values": [{
+          "path": "",
+          "value": {
+            "name": "WRANGO"
+          }
+        }]
+      }],
+      "context": "vessels.urn:mrn:imo:mmsi:276810000"
+    }
+    var fullSignalK = new FullSignalK();
+    fullSignalK.addDelta(msg);
+    var vessel = fullSignalK.retrieve().vessels['urn:mrn:imo:mmsi:276810000'];
+    vessel.should.have.property('name', "WRANGO");
+    vessel.should.not.have.property('$source');
+    vessel.should.not.have.property('timestamp');
+  })
 })

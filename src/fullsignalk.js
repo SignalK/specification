@@ -97,12 +97,17 @@ function handleOtherSource(sourceLeaf, source, timestamp) {
 }
 
 function addValue(context, source, timestamp, pathValue) {
-  var valueLeaf = pathValue.path.split('.').reduce(function(previous, pathPart) {
-    if (!previous[pathPart]) {
-      previous[pathPart] = {};
-    }
-    return previous[pathPart];
-  }, context);
+  var valueLeaf;
+  if (pathValue.path.length === 0) {
+    valueLeaf = context;
+  } else {
+    valueLeaf = pathValue.path.split('.').reduce(function(previous, pathPart) {
+      if (!previous[pathPart]) {
+        previous[pathPart] = {};
+      }
+      return previous[pathPart];
+    }, context);
+  }
 
   if (valueLeaf.values) { //multiple values already
     var sourceId = getId(source);
@@ -129,8 +134,10 @@ function addValue(context, source, timestamp, pathValue) {
     setMessage(valueLeaf.values[sourceId], source);
   }
   assignValueToLeaf(pathValue.value, valueLeaf);
-  valueLeaf['$source'] = getId(source);
-  valueLeaf.timestamp = timestamp;
+  if (pathValue.path.length != 0) {
+    valueLeaf['$source'] = getId(source);
+    valueLeaf.timestamp = timestamp;
+  }
   setMessage(valueLeaf, source);
 }
 
