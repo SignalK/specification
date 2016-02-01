@@ -49,6 +49,13 @@
         }
       }
     },
+
+   "speedOverGround": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Vessel speed over ground",
+      "units": "m/s"
+    },
+
     "courseOverGroundMagnetic": {
       "description": "Course over ground (magnetic)",
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -61,40 +68,88 @@
       "units": "rad"
     },
 
-    "activeRoute": {
+    "nextWaypoint": {
       "type": "object",
-      "title": "Active Route",
-      "description": "The currently active route",
+      "title": "Next Waypoint Data",
+      "description": "Data on the Waypoint you are sailing towards",
       "properties": {
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "Time of last update to active route"
+          "description": "Time of last update to next waypoint data"
         },
 
         "source": {
           "$ref": "../definitions.json#/definitions/source",
-          "description": "Source of last update to active route"
+          "description": "Source of last update to next waypoint data"
         },
 
-        "bearingActual": {
+        "bearingNextWaypointTrue": {
           "type": "number",
-          "description": "The current bearing of the next waypoint relative to true North",
+          "description": "The current bearing to the next waypoint relative to true North",
           "units": "rad"
         },
 
-        "distanceActual": {
+         "bearingNextWaypointMag": {
+          "type": "number",
+          "description": "The current bearing to the next waypoint relative to magnetic North",
+          "units": "rad"
+        },
+
+       "bearingNextWaypointTrueGC": {
+          "type": "number",
+          "description": "The current bearing to the next waypoint relative to true North (Great Circle)",
+          "units": "rad"
+        },
+
+         "bearingNextWaypointMagGC": {
+          "type": "number",
+          "description": "The current bearing to the next waypoint relative to magnetic North (Great Circle)",
+          "units": "rad"
+        },
+
+        "distanceNextWaypoint": {
           "type": "number",
           "description": "The current distance to the next waypoint",
           "units": "m"
         },
 
-        "bearingDirect": {
+       "distanceNextWaypointGC": {
           "type": "number",
-          "description": "The bearing relative to true North from last waypoint to the next waypoint",
+          "description": "The current distance to the next waypoint (Great Circle)",
+          "units": "m"
+        },
+
+        "bearingOriginToDestinationTrue": {
+          "type": "number",
+          "description": "The bearing relative to true North from origin waypoint to the target waypoint",
           "units": "rad"
         },
 
-        "courseRequired": {
+       "bearingOriginToDestinationMag": {
+          "type": "number",
+          "description": "The bearing relative to magnetic North from origin waypoint to the target waypoint",
+          "units": "rad"
+        },
+
+       "bearingOriginToDestinationTrueGC": {
+          "type": "number",
+          "description": "The bearing relative to true North from origin waypoint to the target waypoint (Great Circle)",
+          "units": "rad"
+        },
+
+       "bearingOriginToDestinationMagGC": {
+          "type": "number",
+          "description": "The bearing relative to magnetic North from origin waypoint to the target waypoint (Great Circle)",
+          "units": "rad"
+        },
+
+        "vmgNextWaypoint": {
+          "type": "number",
+          "description": "The velocity made good towards the next waypoint",
+          "units": "m/s"
+        },
+
+       "courseRequired": {
           "type": "number",
           "description": "The course relative to true North towards the next waypoint",
           "units": "rad"
@@ -105,9 +160,10 @@
           "description": "The estimated time of arrival at the end of the current route"
         },
 
-        "route": {
-          "type": "string",
-          "description": "UUID of the current route, found in the routes list"
+        "ttg": {
+          "type": "number",
+          "description": "Time to Go in seconds before we reach the next waypoint"
+           "units": "s"
         },
 
         "startTime": {
@@ -115,38 +171,25 @@
           "description": "The time this route was activated"
         },
 
-        "waypoint": {
-          "type": "object",
-          "title": "waypoint",
-          "description": "The last and next waypoints data",
-          "properties": {
-            "lastTime": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached"
-            },
+        "nextWaypointPosition": {
+         "description": "The position of the next waypoint in 3 dimensions",
+         "$ref": "../definitions.json#/definitions/position"
+       },
 
-            "last": {
-              "type": "string",
-              "description": "UUID of the last waypoint, found in the waypoints list"
-            },
+       "nextWaypointNumber": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of Next Waypoint"
+        },
 
-            "nextEta": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "Estimated time of arrival at the next waypoint",
-              "example": "2014-03-24T00:15:41Z"
-            },
+       "lastWaypointNumber": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of Last Waypoint"
+        },
 
-            "next": {
-              "type": "string",
-              "description": "UUID to the next waypoint, found in the waypoints list"
-            },
-
-            "xte": {
-              "type": "number",
-              "description": "Cross track error",
-              "units": "m"
-            }
-          }
+         "xte": {
+          "type": "number",
+          "description": "Cross track error",
+          "units": "m"
         }
       }
     },
@@ -176,8 +219,8 @@
           "$ref": "../definitions.json#/definitions/timestamp"
         },
 
-        "waypoint": {
-          "description": "UUID of destination waypoint",
+        "destination": {
+          "description": "Name of destination port",
           "type": "string"
         }
       }
@@ -333,12 +376,6 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn",
       "units": "rad/s"
-    },
-
-    "speedOverGround": {
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed over ground",
-      "units": "m/s"
     },
 
     "speedThroughWater": {
