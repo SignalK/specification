@@ -70,6 +70,20 @@
           "description": "The position of the next waypoint in 3 dimensions",
           "$ref": "../definitions.json#/definitions/position"
         },
+        "geometry": {
+          "title": "LineString",
+          "description": "The GeoJSON LineString that defines the course between the last and next waypoints.",
+          "properties": {
+            "type": {
+              "enum": [
+                "LineString"
+              ]
+            },
+            "coordinates": {
+              "$ref": "#/definitions/lineString"
+            }
+          }
+        },
         "nextMark": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Number of next mark"
