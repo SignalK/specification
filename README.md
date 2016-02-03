@@ -35,7 +35,7 @@ publish an update, checkout the `gh-pages` branch and then checkout the schema
 directory from `master` on top of it:
 ```shell
 git checkout gh-pages
-git checkout master schema/
+git checkout master schemas/
 git commit -m 'Copy schema from master'
 git push
 ```
