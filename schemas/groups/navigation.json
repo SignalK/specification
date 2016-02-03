@@ -37,12 +37,10 @@
             "mine clearance"
           ]
         },
-
         "source": {
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
@@ -54,109 +52,171 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "rad"
     },
-
     "courseOverGroundTrue": {
       "description": "Course over ground (true)",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "rad"
     },
-
-    "activeRoute": {
+    "course": {
       "type": "object",
-      "title": "Active Route",
-      "description": "The currently active route",
+      "title": "Course to next mark",
+      "description": "The current leg of the planned course or route",
       "properties": {
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "Time of last update to active route"
+        "lastWaypoint": {
+          "description": "The position of the last waypoint in 3 dimensions",
+          "$ref": "../definitions.json#/definitions/position"
         },
-
-        "source": {
-          "$ref": "../definitions.json#/definitions/source",
-          "description": "Source of last update to active route"
+        "nextWaypoint": {
+          "description": "The position of the next waypoint in 3 dimensions",
+          "$ref": "../definitions.json#/definitions/position"
         },
-
-        "bearingActual": {
-          "type": "number",
-          "description": "The current bearing of the next waypoint relative to true North",
-          "units": "rad"
+        "nextMark": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of next mark"
         },
-
-        "distanceActual": {
-          "type": "number",
-          "description": "The current distance to the next waypoint",
-          "units": "m"
+        "lastMark": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of last mark"
         },
-
-        "bearingDirect": {
-          "type": "number",
-          "description": "The bearing relative to true North from last waypoint to the next waypoint",
-          "units": "rad"
+        "vmg": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The velocity made good towards the next waypoint",
+          "units": "m/s"
         },
-
-        "courseRequired": {
-          "type": "number",
+        "courseRequiredTrue": {
+          "$ref": "../definitions.json#/definitions/numberValue",
           "description": "The course relative to true North towards the next waypoint",
           "units": "rad"
         },
-
+        "courseRequiredMagnetic": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The course relative to magnetic North towards the next waypoint",
+          "units": "rad"
+        },
+        "timeToGo": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Time to Go in seconds before we reach the next waypoint",
+          "units": "s"
+        },
+        "xte": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Cross track error",
+          "units": "m"
+        },
         "eta": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The estimated time of arrival at the end of the current route"
-        },
-
-        "route": {
-          "type": "string",
-          "description": "UUID of the current route, found in the routes list"
-        },
-
-        "startTime": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The time this route was activated"
-        },
-
-        "waypoint": {
           "type": "object",
-          "title": "waypoint",
-          "description": "The last and next waypoints data",
+          "description": "The estimated time of arrival at the end of the current leg of the route",
           "properties": {
-            "lastTime": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached"
+            "value": {
+              "$ref": "#/definitions/timestamp"
             },
 
-            "last": {
-              "type": "string",
-              "description": "UUID of the last waypoint, found in the waypoints list"
+            "timestamp": {
+              "$ref": "#/definitions/timestamp"
             },
 
-            "nextEta": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "Estimated time of arrival at the next waypoint",
-              "example": "2014-03-24T00:15:41Z"
+            "source": {
+              "$ref": "#/definitions/source"
             },
 
-            "next": {
-              "type": "string",
-              "description": "UUID to the next waypoint, found in the waypoints list"
+            "_attr": {
+              "$ref": "#/definitions/_attr"
             },
 
-            "xte": {
-              "type": "number",
-              "description": "Cross track error",
+            "meta": {
+              "$ref": "#/definitions/meta"
+            }
+          }
+        },
+        "startTime": {
+          "type": "object",
+          "description": "The time this leg of the route was activated",
+          "properties": {
+            "value": {
+              "$ref": "#/definitions/timestamp"
+            },
+
+            "timestamp": {
+              "$ref": "#/definitions/timestamp"
+            },
+
+            "source": {
+              "$ref": "#/definitions/source"
+            },
+
+            "_attr": {
+              "$ref": "#/definitions/_attr"
+            },
+
+            "meta": {
+              "$ref": "#/definitions/meta"
+            }
+          }
+        },
+        "bearingToNextMarkTrue": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The current bearing to the next mark relative to true North",
+          "units": "rad"
+        },
+        "bearingToNextMarkMagnetic": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The current bearing to the next mark relative to magnetic North",
+          "units": "rad"
+        },
+        "distanceToNextMark": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The current distance to the next mark",
+          "units": "m"
+        },
+        "bearingDirectTrue": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The bearing relative to true North from last mark to the next mark",
+          "units": "rad"
+        },
+        "bearingDirectMagnetic": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "The bearing relative to magnetic North from last mark to the next mark",
+          "units": "rad"
+        },
+        "greatCircle": {
+          "type": "object",
+          "title": "Great Circle data",
+          "description": "Data based on great circle calculations",
+          "properties": {
+            "distanceToNextMark": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current distance to the next mark (Great Circle)",
               "units": "m"
+            },
+            "bearingToNextMarkTrue": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current bearing to the next mark relative to true North (Great Circle)",
+              "units": "rad"
+            },
+            "bearingToNextMarkMagnetic": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current bearing to the next mark relative to magnetic North (Great Circle)",
+              "units": "rad"
+            },
+            "bearingDirectTrue": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The bearing relative to true North from last mark to the next mark (Great Circle)",
+              "units": "rad"
+            },
+            "bearingDirectMagnetic": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The bearing relative to magnetic North from last mark to the next mark (Great Circle)",
+              "units": "rad"
             }
           }
         }
       }
     },
-
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
       "units": "rad"
     },
-
     "destination": {
       "title": "destination",
       "description": "The intended destination of this trip",
@@ -165,24 +225,20 @@
         "eta": {
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "source": {
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "waypoint": {
           "description": "UUID of destination waypoint",
           "type": "string"
         }
       }
     },
-
     "gnss": {
       "type": "object",
       "title": "gnss",
@@ -192,12 +248,10 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "methodQuality": {
           "type": "object",
           "description": "Quality of the satellite fix",
@@ -219,7 +273,6 @@
             }
           }
         },
-
         "integrity": {
           "type": "object",
           "description": "Integrity of the satellite fix",
@@ -235,65 +288,52 @@
             }
           }
         },
-
         "satellites": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Number of satellites"
         },
-
         "antennaAltitude": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Altitude of antenna",
           "units": "m"
         },
-
         "horizontalDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Horizontal Dilution of Precision"
         },
-
         "positionDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Positional Dilution of Precision"
         },
-
         "geoidalSeparation": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Difference between WGS84 earth ellipsoid and mean sea level"
         },
-
         "differentialAge": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Age of DGPS data",
           "units": "s"
         },
-
         "differentialReference": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "ID of DGPS base station"
         }
       }
     },
-
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Current magnetic heading of the vessels",
       "units": "rad"
     },
-
     "headingTrue": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The current true heading of the vessel",
       "units": "rad"
     },
-
     "position": {
       "description": "The position of the vessel in 3 dimensions",
       "$ref": "../definitions.json#/definitions/position"
     },
-
-
-
     "attitude": {
       "type": "object",
       "title": "Attitude",
@@ -304,61 +344,51 @@
           "description": "Vessel roll, +ve is list to starboard",
           "units": "rad"
         },
-
         "pitch": {
           "type": "number",
           "description": "Pitch, +ve is bow up",
           "units": "rad"
         },
-
         "yaw": {
           "type": "number",
           "description": "Yaw, +ve is heading change to starboard",
           "units": "rad"
         },
-
         "source": {
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
     },
-
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn",
       "units": "rad/s"
     },
-
     "speedOverGround": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Vessel speed over ground",
       "units": "m/s"
     },
-
     "speedThroughWater": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Vessel speed through the water",
       "units": "m/s"
     },
-
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Log value",
       "units": "m"
     },
-
     "logTrip": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Trip log value",
       "units": "m"
     },
-
     "state": {
       "type": "object",
       "title": "state",
@@ -368,12 +398,10 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "value": {
           "type": "string",
           "enum": [
@@ -403,7 +431,6 @@
         }
       }
     },
-
     "anchor": {
       "type": "object",
       "title": "anchor",
@@ -413,32 +440,26 @@
           "description": "Source of this data",
           "$ref": "../definitions.json#/definitions/source"
         },
-
         "timestamp": {
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
           "units": "m"
         },
-
         "currentRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Current distance to anchor",
           "units": "m"
         },
-
         "position": {
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
           "$ref": "../definitions.json#/definitions/position"
-
         }
       }
     },
-
     "datetime": {
       "type": "object",
       "properties": {
@@ -463,7 +484,6 @@
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-
         "source": {
           "$ref": "../definitions.json#/definitions/source"
         }

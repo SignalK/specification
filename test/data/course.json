@@ -1,0 +1,182 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "navigation": {
+        "course": {
+            "lastWaypoint": {
+              "timestamp": "2015-03-06T16:57:53.643+13:00",
+              "source": {
+                "label": "position",
+                "type": "NMEA0183",
+                "talker": "GP",
+                "sentence": "RMC"
+              },
+              "longitude": 173.1693,
+              "latitude": -41.156426,
+              "altitude": 0
+            },
+            "nextWaypoint": {
+              "timestamp": "2015-03-06T16:57:53.643+13:00",
+              "source": {
+                "label": "position",
+                "type": "NMEA0183",
+                "talker": "GP",
+                "sentence": "RMC"
+              },
+              "longitude": 173.1693,
+              "latitude": -41.156426,
+              "altitude": 0
+            },
+            "nextMark": {
+              "value": 4,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "lastMark": {
+              "value": 3,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "vmg": {
+              "value": 10.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "courseRequiredTrue": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "courseRequiredMagnetic": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "timeToGo": {
+              "value": 3114,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "xte": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "eta": {
+              "timestamp": "2014-04-10T08:33:53Z"
+            },
+            "startTime": {
+              "timestamp": "2014-04-10T08:33:53Z"
+            },
+            "bearingToNextMarkTrue": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "bearingToNextMarkMagnetic": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "distanceToNextMark": {
+              "value": 1114,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "bearingDirectTrue": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "bearingDirectMagnetic": {
+              "value": 3.14,
+              "timestamp": "2014-04-10T08:33:53Z",
+              "source": {
+                "label": "mode",
+                "type": "self"
+              }
+            },
+            "greatCircle": {
+
+                "distanceToNextMark": {
+                  "value": 1124,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "source": {
+                    "label": "mode",
+                    "type": "self"
+                  }
+                },
+                "bearingToNextMarkTrue": {
+                  "value": 3.14,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "source": {
+                    "label": "mode",
+                    "type": "self"
+                  }
+                },
+                "bearingToNextMarkMagnetic": {
+                  "value": 3.14,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "source": {
+                    "label": "mode",
+                    "type": "self"
+                  }
+                },
+                "bearingDirectTrue": {
+                  "value": 3.14,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "source": {
+                    "label": "mode",
+                    "type": "self"
+                  }
+                },
+                "bearingDirectMagnetic": {
+                  "value": 3.14,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "source": {
+                    "label": "mode",
+                    "type": "self"
+                  }
+                }
+              
+            }
+
+        }
+      }
+    }
+  }
+}
