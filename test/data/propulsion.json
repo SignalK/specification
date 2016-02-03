@@ -6,70 +6,107 @@
       "drive": {
         "type": "outboard",
         "trimState": {
-          "value": 99
+          "value": 99,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "thrustAngle": {
-          "value": 0
+          "value": 0,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         }
       },
       "fuel": {
         "type": "diesel",
         "used": {
-          "value": 12.5
+          "value": 12.5,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "rate": {
-          "value": 0.6
+          "value": 0.6,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "averageRate": {
-          "value": 1.0
+          "value": 1.0,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "economyRate": {
-          "value": 0.9
+          "value": 0.9,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "pressure": {
-          "value": 1100
+          "value": 1100,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
+
         }
       },
       "state": {
         "value": "started"
       },
       "revolutions": {
-        "value": 1280
+        "value": 1280,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "maxRevolutions": 3000,
       "oilPressure": {
-        "value": 110
+        "value": 110,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "boostPressure": {
-        "value": 200
+        "value": 200,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "oilTemperature": {
-        "value": 345
+        "value": 345,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "coolantTemperature": {
-        "value": 355
+        "value": 355,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "exhaustTemperature": {
-        "value": 420
+        "value": 420,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "coolantPressure": {
-        "value": 1100
+        "value": 1100,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "runTime": {
-        "value": 3102234
+        "value": 3102234,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "alternatorVoltage": {
-        "value": 14.1
+        "value": 14.1,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "transmission": {
         "gear": {
           "value": "Forward"
         },
         "oilPressure": {
-          "value": 100
+          "value": 100,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         },
         "oilTemperature": {
-          "value": 310
+          "value": 310,
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         }
       }
     }

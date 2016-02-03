@@ -76,37 +76,32 @@
       "type": "object",
       "title": "current",
       "description": "Direction and strength of current affecting the vessel",
-      "properties": {
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
-        "source": {
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "drift": {
-          "type": "number",
-          "description": "The speed component of the water current vector",
-          "example": 3.12,
-          "units": "m/s"
-        },
-
-        "setTrue": {
-          "type": "number",
-          "description": "The direction component of the water current vector referenced to true (geographic) north",
-          "example": 123.45,
-          "units": "rad"
-        },
-
-        "setMagnetic": {
-          "type": "number",
-          "description": "The direction component of the water current vector referenced to magnetic north",
-          "example": 131.22,
-          "units": "rad"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "drift": {
+            "type": "number",
+            "description": "The speed component of the water current vector",
+            "example": 3.12,
+            "units": "m/s"
+          },
+          "setTrue": {
+            "type": "number",
+            "description": "The direction component of the water current vector referenced to true (geographic) north",
+            "example": 123.45,
+            "units": "rad"
+          },
+          "setMagnetic": {
+            "type": "number",
+            "description": "The direction component of the water current vector referenced to magnetic north",
+            "example": 131.22,
+            "units": "rad"
+          }
         }
-      }
+      }]
     },
+
 
     "tide": {
       "type": "object",

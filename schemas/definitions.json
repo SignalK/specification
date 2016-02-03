@@ -46,6 +46,11 @@
       }
     },
 
+    "sourceRef": {
+      "type": "string",
+      "description": "Reference to the source under vessel's sources"
+    },
+
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
@@ -292,20 +297,17 @@
         }
       }
     },
-    "stringValue": {
-      "type": "object",
-      "description": "Data should be of type string.",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
 
+    "commonValueFields": {
+      "type": "object",
+      "required": ["timestamp", "$source"],
+      "properties": {
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
 
-        "source": {
-          "$ref": "#/definitions/source"
+        "$source": {
+          "$ref": "#/definitions/sourceRef"
         },
 
         "_attr": {
@@ -314,12 +316,40 @@
 
         "meta": {
           "$ref": "#/definitions/meta"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
         }
       }
     },
+
     "numberValue": {
       "type": "object",
       "description": "Data should be of type number.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesNumberValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesNumberValue": {
+      "type": "object",
       "properties": {
         "value": {
           "type": "number"
@@ -327,17 +357,51 @@
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-
-        "source": {
-          "$ref": "#/definitions/source"
+        "pgn": {
+          "type": "number"
         },
-        
-        "_attr": {
-          "$ref": "#/definitions/_attr"
-        },
+        "sentence": {
+          "type": "string"
+        }
+      }
+    },
 
-        "meta": {
-          "$ref": "#/definitions/meta"
+    "stringValue": {
+      "type": "object",
+      "description": "Data should be of type number.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesStringValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesStringValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
         }
       }
     },
@@ -356,11 +420,11 @@
         "source": {
           "$ref": "#/definitions/source"
         },
-        
+
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-        
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -393,7 +457,7 @@
       }
     },
 
-    "alarmState":{
+    "alarmState": {
       "type": "string",
       "title": "alarmState",
       "description": "The alarm state when the value is in this zone.",
@@ -406,7 +470,7 @@
         "emergency"
       ]
     },
-    "alarmMethodEnum":{
+    "alarmMethodEnum": {
       "enum": [
         "visual",
         "sound"
@@ -482,7 +546,7 @@
           "type": "array",
           "title": "Alarm Method",
           "description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
-          "default": ["visual","sound"],
+          "default": ["visual", "sound"],
           "items": {
             "$ref": "#/definitions/alarmMethodEnum"
           }
@@ -491,7 +555,7 @@
           "type": "array",
           "title": "Emergency Method",
           "description": "The method to use to raise an emergency. An emergency is an immediate danger to life or vessel",
-          "default": ["visual","sound"],
+          "default": ["visual", "sound"],
           "items": {
             "$ref": "#/definitions/alarmMethodEnum"
           }
@@ -501,45 +565,43 @@
           "type": "array",
           "title": "Zones schema.",
           "description": "The zones defining the range of values for this signalk value.",
-          "items": [
-            {
-              "type": "object",
-              "title": "zone",
-              "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
-              "required": ["state"],
-              "properties": {
-                "lower":{
-                  "id": "lower",
-                  "type": "number",
-                  "title": "Lower",
-                  "description": "The lowest number in this zone",
-                  "name": "lower",
-                  "example": 3500
-                },
+          "items": [{
+            "type": "object",
+            "title": "zone",
+            "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
+            "required": ["state"],
+            "properties": {
+              "lower": {
+                "id": "lower",
+                "type": "number",
+                "title": "Lower",
+                "description": "The lowest number in this zone",
+                "name": "lower",
+                "example": 3500
+              },
 
-                "upper":{
-                  "id": "upper",
-                  "type": "number",
-                  "title": "Upper",
-                  "description": "The highest value in this zone",
-                  "name": "upper",
-                  "example": 4000
-                },
+              "upper": {
+                "id": "upper",
+                "type": "number",
+                "title": "Upper",
+                "description": "The highest value in this zone",
+                "name": "upper",
+                "example": 4000
+              },
 
-                "state":{
-                  "$ref":"#/definitions/alarmState"
-                },
+              "state": {
+                "$ref": "#/definitions/alarmState"
+              },
 
-                "message":{
-                  "id": "message",
-                  "type": "string",
-                  "title": "message",
-                  "description": "The message to display for the alarm.",
-                  "default": "Warning"
-                }
+              "message": {
+                "id": "message",
+                "type": "string",
+                "title": "message",
+                "description": "The message to display for the alarm.",
+                "default": "Warning"
               }
             }
-          ]
+          }]
         }
       }
     },
@@ -553,33 +615,29 @@
       "type": "object",
       "title": "position",
       "description": "The position in 3 dimensions",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "#/definitions/timestamp"
-        },
-        "longitude": {
-          "type": "number",
-          "description": "Longitude",
-          "units": "deg",
-          "example": 4.98765245
-        },
-        "latitude": {
-          "type": "number",
-          "description": "Latitude",
-          "units": "deg",
-          "example": 52.0987654
-        },
-        "altitude": {
-          "type": "number",
-          "description": "Altitude",
-          "units": "m"
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "description": "Longitude",
+            "units": "deg",
+            "example": 4.98765245
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude",
+            "units": "deg",
+            "example": 52.0987654
+          },
+          "altitude": {
+            "type": "number",
+            "description": "Altitude",
+            "units": "m"
+          }
         }
-      }
+      }]
     },
     "waypoint": {
       "type": "object",
@@ -613,14 +671,11 @@
                   "description": "A single position, in x,y order (Lon, Lat)",
                   "type": "array",
                   "minItems": 2,
-                  "items": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "number"
-                    }
-                  ],
+                  "items": [{
+                    "type": "number"
+                  }, {
+                    "type": "number"
+                  }],
                   "additionalItems": false
                 }
               }

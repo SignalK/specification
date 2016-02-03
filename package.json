@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
+    "lodash": "^3.10.1",
     "chai": "^1.9.2",
     "JSONStream": "^0.7.4",
     "lodash": "^3.10.1",

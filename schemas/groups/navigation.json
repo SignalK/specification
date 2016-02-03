@@ -289,44 +289,38 @@
 
     "position": {
       "description": "The position of the vessel in 3 dimensions",
-      "$ref": "../definitions.json#/definitions/position"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "$ref": "../definitions.json#/definitions/position"
+      }]
     },
-
-
 
     "attitude": {
       "type": "object",
       "title": "Attitude",
       "description": "Vessel attitude: roll, pitch and yaw",
-      "properties": {
-        "roll": {
-          "type": "number",
-          "description": "Vessel roll, +ve is list to starboard",
-          "units": "rad"
-        },
-
-        "pitch": {
-          "type": "number",
-          "description": "Pitch, +ve is bow up",
-          "units": "rad"
-        },
-
-        "yaw": {
-          "type": "number",
-          "description": "Yaw, +ve is heading change to starboard",
-          "units": "rad"
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "roll": {
+            "type": "number",
+            "description": "Vessel roll, +ve is list to starboard",
+            "units": "rad"
+          },
+          "pitch": {
+            "type": "number",
+            "description": "Pitch, +ve is bow up",
+            "units": "rad"
+          },
+          "yaw": {
+            "type": "number",
+            "description": "Yaw, +ve is heading change to starboard",
+            "units": "rad"
+          }
         }
-      }
+      }]
     },
 
     "rateOfTurn": {
@@ -433,41 +427,41 @@
 
         "position": {
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "$ref": "../definitions.json#/definitions/position"
-
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "$ref": "../definitions.json#/definitions/position"
+          }]
         }
       }
     },
 
     "datetime": {
       "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "description": "GNSS Time and Date in ISO8601 format",
-          "exmple": "2015-12-05T13:11:59Z"
-        },
-        "gnssTimeSource": {
-          "description": "Source of GNSS Date and Time",
-          "enum": [
-            "GPS",
-            "GLONASS",
-            "Galileo",
-            "Beidou",
-            "IRNSS",
-            "Radio Signal",
-            "Internet",
-            "Local clock"
-          ]
-        },
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
-        "source": {
-          "$ref": "../definitions.json#/definitions/source"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "GNSS Time and Date in ISO8601 format",
+            "exmple": "2015-12-05T13:11:59Z"
+          },
+          "gnssTimeSource": {
+            "description": "Source of GNSS Date and Time",
+            "enum": [
+              "GPS",
+              "GLONASS",
+              "Galileo",
+              "Beidou",
+              "IRNSS",
+              "Radio Signal",
+              "Internet",
+              "Local clock"
+            ]
+          }
         }
-      }
+      }]
     }
   }
 }
