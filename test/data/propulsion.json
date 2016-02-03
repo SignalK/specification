@@ -65,10 +65,16 @@
         "$source": "foo.bar"
       },
       "engineLoad": {
-        "value": 200
+        "value": 200,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
+
       },
       "engineTorque": {
-        "value": 200
+        "value": 200,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
+
       },
       "oilTemperature": {
         "value": 345,
