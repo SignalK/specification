@@ -331,7 +331,7 @@
         "source": {
           "$ref": "#/definitions/source"
         },
-        
+
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
@@ -356,11 +356,11 @@
         "source": {
           "$ref": "#/definitions/source"
         },
-        
+
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-        
+
         "meta": {
           "$ref": "#/definitions/meta"
         }
@@ -639,6 +639,25 @@
           }
         }
       }
+    },
+    "geoposition": {
+        "description": "A single position",
+        "type": "array",
+        "minItems": 2,
+        "items": [ { "type": "number" }, { "type": "number" } ],
+        "additionalItems": false
+    },
+    "positionArray": {
+        "description": "An array of positions",
+        "type": "array",
+        "items": { "$ref": "#/definitions/geoposition" }
+    },
+    "lineString": {
+        "description": "An array of two or more positions",
+        "allOf": [
+            { "$ref": "#/definitions/positionArray" },
+            { "minItems": 2 }
+        ]
     }
   }
 }

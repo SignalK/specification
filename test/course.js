@@ -13,3 +13,9 @@ describe('Partial course in the full tree', function() {
     require('./data/course-partial.json').should.be.validSignalK;
   });
 });
+
+describe('Bad linestring in the full tree', function() {
+  it("should be invalid", function() {
+    require('./data/course-bad-linestring.json').should.not.be.validSignalK;
+  });
+});

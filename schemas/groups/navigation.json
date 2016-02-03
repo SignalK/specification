@@ -72,7 +72,7 @@
         },
         "geometry": {
           "title": "LineString",
-          "description": "The GeoJSON LineString that defines the course between the last and next waypoints.",
+          "description": "The GeoJSON LineString that defines the course between the last and next waypoints. When null, use a straight line",
           "properties": {
             "type": {
               "enum": [
@@ -80,17 +80,32 @@
               ]
             },
             "coordinates": {
-              "$ref": "#/definitions/lineString"
+              "$ref": "../definitions.json#/definitions/lineString"
+            },
+            "timestamp": {
+              "$ref": "../definitions.json#/definitions/timestamp"
+            },
+
+            "source": {
+              "$ref": "../definitions.json#/definitions/source"
+            },
+
+            "_attr": {
+              "$ref": "../definitions.json#/definitions/_attr"
+            },
+
+            "meta": {
+              "$ref": "../definitions.json#/definitions/meta"
             }
           }
         },
         "nextMark": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Number of next mark"
+          "description": "Array position (zero-based) of next mark in the geometry LineString"
         },
         "lastMark": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Number of last mark"
+          "description": "Array position (zero-based) of last mark in the geometry LineString"
         },
         "vmg": {
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -122,23 +137,23 @@
           "description": "The estimated time of arrival at the end of the current leg of the route",
           "properties": {
             "value": {
-              "$ref": "#/definitions/timestamp"
+              "$ref": "../definitions.json#/definitions/timestamp"
             },
 
             "timestamp": {
-              "$ref": "#/definitions/timestamp"
+              "$ref": "../definitions.json#/definitions/timestamp"
             },
 
             "source": {
-              "$ref": "#/definitions/source"
+              "$ref": "../definitions.json#/definitions/source"
             },
 
             "_attr": {
-              "$ref": "#/definitions/_attr"
+              "$ref": "../definitions.json#/definitions/_attr"
             },
 
             "meta": {
-              "$ref": "#/definitions/meta"
+              "$ref": "../definitions.json#/definitions/meta"
             }
           }
         },
