@@ -19,3 +19,9 @@ describe('Bad linestring in the full tree', function() {
     require('./data/course-bad-linestring.json').should.not.be.validSignalK;
   });
 });
+
+describe('Course in delta format', function() {
+  it("should be valid", function() {
+    require('./data/course-delta.json').should.be.validSignalKDelta;
+  });
+});

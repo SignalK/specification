@@ -1,0 +1,138 @@
+{
+  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "updates": [
+
+    {
+      "timestamp": "2014-04-10T08:33:53Z",
+      "values": [
+        {
+          "path": "navigation.course.xte",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.distanceToNextMark",
+          "value": 1114
+        },
+        {
+          "path": "navigation.course.courseRequiredTrue",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.lastMark",
+          "value": 3
+        },
+        {
+          "path": "navigation.course.bearingToNextMarkTrue",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.bearingToNextMarkMagnetic",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.eta.timestamp",
+          "value": "2014-04-10T08:33:53Z"
+        },
+        {
+          "path": "navigation.course.courseRequiredMagnetic",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.vmg",
+          "value": 10.14
+        },
+        {
+          "path": "navigation.course.timeToGo",
+          "value": 3114
+        }
+      ],
+      "source": {
+        "label": "mode",
+        "type": "self"
+      }
+    },
+    {
+      "timestamp": "2015-03-06T16:57:53.643+13:00",
+      "values": [
+        {
+          "path": "navigation.course.nextWaypoint",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          }
+        }
+      ],
+      "source": {
+        "label": "position",
+        "sentence": "RMC",
+        "talker": "GP",
+        "type": "NMEA0183"
+      }
+    },
+    {
+      "timestamp": "2014-04-10T08:33:53Z",
+      "values": [
+        {
+          "path": "navigation.course.bearingDirectMagnetic",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.greatCircle.distanceToNextMark",
+          "value": 1124
+        },
+        {
+          "path": "navigation.course.greatCircle.bearingToNextMarkTrue",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.greatCircle.bearingToNextMarkMagnetic",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.greatCircle.bearingDirectMagnetic",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.greatCircle.bearingDirectTrue",
+          "value": 3.14
+        },
+        {
+          "path": "navigation.course.nextMark",
+          "value": 4
+        },
+        {
+          "path": "navigation.course.startTime.timestamp",
+          "value": "2014-04-10T08:33:53Z"
+        },
+        {
+          "path": "navigation.course.bearingDirectTrue",
+          "value": 3.14
+        }
+      ],
+      "source": {
+        "label": "mode",
+        "type": "self"
+      }
+    },
+    {
+      "timestamp": "2015-03-06T16:57:53.643+13:00",
+      "values": [
+        {
+          "path": "navigation.course.lastWaypoint",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          }
+        }
+      ],
+      "source": {
+        "label": "position",
+        "sentence": "RMC",
+        "talker": "GP",
+        "type": "NMEA0183"
+      }
+    }
+  ]
+}
