@@ -34,10 +34,10 @@ Once changes have been approved and merged into `master` and we are ready to
 publish an update, checkout the `gh-pages` branch and then checkout the schema
 directory from `master` on top of it:
 ```shell
-$ git checkout gh-pages
-$ git checkout master schema/
-$ git commit -m 'Copy schema from master'
-$ git push
+git checkout gh-pages
+git checkout master schema/
+git commit -m 'Copy schema from master'
+git push
 ```
 It will be published at http://signalk.github.io/specification automatically. 
 
