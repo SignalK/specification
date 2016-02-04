@@ -230,3 +230,4 @@ module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
 module.exports.FullSignalK = FullSignalK;
+module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
