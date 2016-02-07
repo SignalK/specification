@@ -46,7 +46,7 @@ FullSignalK.prototype.retrieve = function() {
 FullSignalK.prototype.addDelta = function(delta) {
   this.emit('delta', delta);
   var context = findContext(this.root, delta.context);
-  delta.updates.forEach(this.addUpdate.bind(this, context));
+  this.addUpdates(context, delta.updates);
 };
 
 function findContext(root, contextPath) {
@@ -59,13 +59,20 @@ function findContext(root, contextPath) {
   return context;
 }
 
+FullSignalK.prototype.addUpdates = function(context, updates) {
+  var len = updates.length;
+  for (var i = 0; i < len; ++i) {
+    this.addUpdate(context, updates[i]);
+  }
+}
+
 FullSignalK.prototype.addUpdate = function(context, update) {
   if (update.source) {
     this.updateSource(context, update.source, update.timestamp);
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-  update.values.forEach(addValue.bind(this, context, update.source, update.timestamp));
+  addValues(context, update.source, update.timestamp, update.values);
 }
 
 FullSignalK.prototype.updateSource = function(context, source, timestamp) {
@@ -111,6 +118,13 @@ function handleNmea0183Source(labelSource, source, timestamp) {
 
 function handleOtherSource(sourceLeaf, source, timestamp) {
   sourceLeaf.timestamp = timestamp;
+}
+
+function addValues(context, source, timestamp, pathValues) {
+  var len = pathValues.length;
+  for (var i = 0; i < len; ++i) {
+    addValue(context, source, timestamp, pathValues[i]);
+  }
 }
 
 function addValue(context, source, timestamp, pathValue) {
