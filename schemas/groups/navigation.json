@@ -9,7 +9,9 @@
       "type": "object",
       "title": "Navigation lights",
       "description": "Current state of the vessels navigation lights",
-      "properties": {
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      },{
         "value": {
           "type": "string",
           "enum": [
@@ -36,16 +38,8 @@
             "constrained by draft",
             "mine clearance"
           ]
-        },
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
         }
-      }
+      }]
     },
     "courseOverGroundMagnetic": {
       "description": "Course over ground (magnetic)",
@@ -73,7 +67,10 @@
         "geometry": {
           "title": "LineString",
           "description": "The GeoJSON LineString that defines the course between the last and next waypoints. When null, use a straight line",
-          "properties": {
+          "allOf": [{
+                "$ref": "../definitions.json#/definitions/commonValueFields"
+            }],
+            "properties":{
             "type": {
               "enum": [
                 "LineString"
@@ -81,21 +78,6 @@
             },
             "coordinates": {
               "$ref": "../definitions.json#/definitions/lineString"
-            },
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
-            },
-
-            "_attr": {
-              "$ref": "../definitions.json#/definitions/_attr"
-            },
-
-            "meta": {
-              "$ref": "../definitions.json#/definitions/meta"
             }
           }
         },
@@ -135,52 +117,28 @@
         "eta": {
           "type": "object",
           "description": "The estimated time of arrival at the end of the current leg of the route",
-          "properties": {
+          "allOf": [{
+                "$ref": "../definitions.json#/definitions/commonValueFields"
+            }],
+          "properties":{
             "value": {
               "$ref": "../definitions.json#/definitions/timestamp"
-            },
-
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
-            },
-
-            "_attr": {
-              "$ref": "../definitions.json#/definitions/_attr"
-            },
-
-            "meta": {
-              "$ref": "../definitions.json#/definitions/meta"
             }
-          }
+           }
+          
         },
         "startTime": {
           "type": "object",
           "description": "The time this leg of the route was activated",
-          "properties": {
+          "allOf": [{
+                "$ref": "../definitions.json#/definitions/commonValueFields"
+            }],
+          "properties":{
             "value": {
-              "$ref": "#/definitions/timestamp"
-            },
-
-            "timestamp": {
-              "$ref": "#/definitions/timestamp"
-            },
-
-            "source": {
-              "$ref": "#/definitions/source"
-            },
-
-            "_attr": {
-              "$ref": "#/definitions/_attr"
-            },
-
-            "meta": {
-              "$ref": "#/definitions/meta"
+              "$ref": "../definitions.json#/definitions/timestamp"
             }
-          }
+           }
+          
         },
         "bearingToNextMarkTrue": {
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -250,23 +208,17 @@
       "title": "destination",
       "description": "The intended destination of this trip",
       "type": "object",
-      "properties": {
-        "eta": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
+      "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+        },{
         "waypoint": {
           "description": "UUID of destination waypoint",
           "type": "string"
+        },
+        "eta": {
+          "$ref": "../definitions.json#/definitions/timestamp"
         }
-      }
+      }]
     },
     "gnss": {
       "type": "object",
@@ -361,37 +313,38 @@
     },
     "position": {
       "description": "The position of the vessel in 3 dimensions",
-      "$ref": "../definitions.json#/definitions/position"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "$ref": "../definitions.json#/definitions/position"
+      }]
     },
+
     "attitude": {
       "type": "object",
       "title": "Attitude",
       "description": "Vessel attitude: roll, pitch and yaw",
-      "properties": {
-        "roll": {
-          "type": "number",
-          "description": "Vessel roll, +ve is list to starboard",
-          "units": "rad"
-        },
-        "pitch": {
-          "type": "number",
-          "description": "Pitch, +ve is bow up",
-          "units": "rad"
-        },
-        "yaw": {
-          "type": "number",
-          "description": "Yaw, +ve is heading change to starboard",
-          "units": "rad"
-        },
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "roll": {
+            "type": "number",
+            "description": "Vessel roll, +ve is list to starboard",
+            "units": "rad"
+          },
+          "pitch": {
+            "type": "number",
+            "description": "Pitch, +ve is bow up",
+            "units": "rad"
+          },
+          "yaw": {
+            "type": "number",
+            "description": "Yaw, +ve is heading change to starboard",
+            "units": "rad"
+          }
         }
-      }
+      }]
     },
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -422,15 +375,10 @@
       "type": "object",
       "title": "state",
       "description": "Current navigational state of the vessel",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
+      "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+        },{
+       
         "value": {
           "type": "string",
           "enum": [
@@ -458,21 +406,13 @@
             "not defined (example)"
           ]
         }
-      }
+      }]
     },
     "anchor": {
       "type": "object",
       "title": "anchor",
       "description": "The anchor data, for anchor watch etc",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
+      "properties":{
         "maxRadius": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
@@ -485,38 +425,36 @@
         },
         "position": {
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "$ref": "../definitions.json#/definitions/position"
+            "$ref": "../definitions.json#/definitions/position"
         }
       }
     },
     "datetime": {
       "type": "object",
-      "properties": {
-        "value": {
-          "type": "string",
-          "description": "GNSS Time and Date in ISO8601 format",
-          "exmple": "2015-12-05T13:11:59Z"
-        },
-        "gnssTimeSource": {
-          "description": "Source of GNSS Date and Time",
-          "enum": [
-            "GPS",
-            "GLONASS",
-            "Galileo",
-            "Beidou",
-            "IRNSS",
-            "Radio Signal",
-            "Internet",
-            "Local clock"
-          ]
-        },
-        "timestamp": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-          "$ref": "../definitions.json#/definitions/source"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "GNSS Time and Date in ISO8601 format",
+            "exmple": "2015-12-05T13:11:59Z"
+          },
+          "gnssTimeSource": {
+            "description": "Source of GNSS Date and Time",
+            "enum": [
+              "GPS",
+              "GLONASS",
+              "Galileo",
+              "Beidou",
+              "IRNSS",
+              "Radio Signal",
+              "Internet",
+              "Local clock"
+            ]
+          }
         }
-      }
+      }]
     }
   }
 }

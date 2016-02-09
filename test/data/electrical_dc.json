@@ -17,10 +17,14 @@
                 "value": "discharging"
               },
               "temperature": {
-                "value": 290
+                "value": 290,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
               },
               "voltage": {
                 "value": 12.5,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
                 "meta": {
                   "nominal": 12,
                   "warnLower": 12,
@@ -30,7 +34,9 @@
                 }
               },
               "current": {
-                "value": 0.1
+                "value": 0.1,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
               }
             },
             "house2": {
@@ -42,22 +48,30 @@
               },
               "voltage": {
                 "value": 12.8,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
                 "meta": {
                   "nominal": 12
                 }
               },
               "current": {
-                "value": 0.1
+                "value": 0.1,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
               }
             },
             "start": {
               "voltage": {
                 "value": 12.8,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
                 "meta": {
                   "nominal": 12
                 }
               },
               "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
                 "value": 0.05
               }
             }

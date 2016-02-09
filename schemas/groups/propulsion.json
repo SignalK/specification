@@ -101,6 +101,18 @@
       "units": "Pa"
     },
 
+    "engineLoad": {
+      "description": "Engine load in percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+
+    "engineTorque": {
+      "description": "Engine torque in percent",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "Percent"
+    },
+
     "transmission": {
       "type": "object",
       "properties": {
@@ -149,7 +161,7 @@
       "properties": {
         "type": {
           "description": "Fuel type",
-          "enum": ["diesel", "petrol","electric", "coal/wood", "other"]
+          "enum": ["diesel", "petrol", "electric", "coal/wood", "other"]
         },
         "used": {
           "description": "Used fuel since last reset. Resetting is at user discretion",
