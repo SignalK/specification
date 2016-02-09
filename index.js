@@ -1,5 +1,25 @@
+/*
+ * Copyright 2016, Teppo Kurki
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+var _ = require('lodash');
+var FullSignalK = require('./src/fullsignalk');
+
   var subSchemas = {
-    'alarms': require('./schemas/groups/alarms.json'),
+    'notifications': require('./schemas/groups/notifications.json'),
     'communication': require('./schemas/groups/communication.json'),
     'design': require('./schemas/groups/design.json'),
     'navigation': require('./schemas/groups/navigation.json'),
@@ -10,6 +30,7 @@
     'propulsion': require('./schemas/groups/propulsion.json'),
     'resources': require('./schemas/groups/resources.json'),
     'sensors': require('./schemas/groups/sensors.json'),
+    'sources': require('./schemas/groups/sources.json'),
     'steering': require('./schemas/groups/steering.json'),
     'tanks': require('./schemas/groups/tanks.json')
   };
@@ -67,8 +88,11 @@ function chaiAsPromised(chai, utils) {
 
   function checkValidFullSignalK () {
     var result = validateFull(this._obj);
-    var message = result.errors.length === 0 ? '' : result.errors[result.errors.length-1].message + ':' + result.errors[result.errors.length-1].dataPath +
-      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+
+    var message = result.errors.reduce(function(msgBuilder, error) {
+      msgBuilder += error.dataPath + ":" + error.message + "\n";
+      return msgBuilder;
+    }, {});
     this.assert(
       result.valid
       , message
@@ -133,6 +157,44 @@ function chaiAsPromised(chai, utils) {
   });
 }
 
+
+//FIXME does not account for multiple sources for a single path in a single delta
+module.exports.deltaToFullVessel = function(delta) {
+  var result = {};
+  if (delta.updates) {
+    delta.updates.forEach(function(update) {
+      if (update.values) {
+        update.values.forEach(function(pathValue) {
+          if (typeof pathValue.value === 'object') {
+            _.set(result, pathValue.path, pathValue.value);
+          } else {
+            _.set(result, pathValue.path + '.value', pathValue.value);
+          }
+          _.set(result, pathValue.path + '.timestamp', update.timestamp);
+          if (update.source) {
+            if (update.source.pgn) {
+              _.set(result, pathValue.path + '.pgn', update.source.pgn);
+            }
+            if (!_.isUndefined(update.source.label) && update.source.src) {
+              _.set(result, pathValue.path + "['$source']", update.source.label + '.' + update.source.src);
+            }
+          }
+          _.set(result, pathValue.path + '.timestamp', update.timestamp);
+        })
+      }
+    })
+  }
+  return result;
+}
+
+module.exports.deltaToFull = function(delta) {
+  var fullSignalK = new FullSignalK();
+  fullSignalK.addDelta(delta);
+  var result = fullSignalK.retrieve();
+  fillIdentity(result);
+  return result;
+}
+
 function fillIdentity(full) {
   for (identity in full.vessels) {
     fillIdentityField(full.vessels[identity], identity);
@@ -149,7 +211,7 @@ function fillIdentityField(vesselData, identity) {
     vesselData.url = identity;
   }
 }
-
+module.exports.fillIdentityField = fillIdentityField;
 
 module.exports.validateFull = validateFull;
 module.exports.validateVessel = function(vesselData) {
@@ -167,4 +229,5 @@ module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
-module.exports.deltaToFull = require('./src/delta.js').deltaToNested;
+module.exports.FullSignalK = FullSignalK;
+module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";

@@ -4,7 +4,6 @@
   "id": "https://signalk.github.io/specification/schemas/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
-
   "definitions": {
     "timestamp": {
       "type": "string",
@@ -13,7 +12,6 @@
       "units": "ISO-8601 (UTC)",
       "example": "2014-04-10T08:33:53Z"
     },
-
     "source": {
       "type": "object",
       "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
@@ -48,12 +46,16 @@
       }
     },
 
+    "sourceRef": {
+      "type": "string",
+      "description": "Reference to the source under vessel's sources"
+    },
+
     "version": {
       "type": "string",
       "description": "Version of the Signal K root object.",
       "example": "1.0"
     },
-
     "units": {
       "type": "string",
       "description": "Allowed units of physical quantities. Units should be (derived) SI units where possible.",
@@ -210,7 +212,6 @@
         }
       }
     },
-
     "mmsi": {
       "type": "string",
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
@@ -219,19 +220,16 @@
       "maxLength": 9,
       "minLength": 9
     },
-
     "uuid": {
       "type": "string",
       "description": "A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:<issueing authority>:<id type>:<id>. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:<uuid>, where Signal K is the issuing authority and UUID (v4) the ID type.",
       "pattern": "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
       "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
     },
-
     "url": {
       "type": "string",
       "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:."
     },
-
     "sail": {
       "type": "object",
       "description": "'sail' data type.",
@@ -256,73 +254,60 @@
           "description": "The material the sail is made from (optional)",
           "example": "canvas"
         },
-
         "brand": {
           "type": "string",
           "required": false,
           "description": "The brand of the sail (optional)",
           "example": "North Sails"
         },
-
         "active": {
           "type": "boolean",
           "required": true,
           "description": "Indicates wether this sail is currently in use or not"
         },
-
         "area": {
           "type": "number",
           "required": true,
           "description": "The total area of this sail in square meters",
           "units": "m2"
         },
-
         "minimumWind": {
           "type": "number",
           "description": "The minimum wind speed this sail can be used with",
           "units": "m/s",
           "default": 0
         },
-
         "maximumWind": {
           "type": "number",
           "description": "The maximum wind speed this sail can be used with",
           "units": "m/s",
           "default": 666
         },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-
         "source": {
           "$ref": "#/definitions/source"
         },
-
         "_attr": {
           "$ref": "#/definitions/_attr"
         },
-
         "meta": {
           "$ref": "#/definitions/meta"
         }
       }
     },
 
-    "stringValue": {
+    "commonValueFields": {
       "type": "object",
-      "description": "Data should be of type string.",
+      "required": ["timestamp", "$source"],
       "properties": {
-        "value": {
-          "type": "string"
-        },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
 
-        "source": {
-          "$ref": "#/definitions/source"
+        "$source": {
+          "$ref": "#/definitions/sourceRef"
         },
 
         "_attr": {
@@ -331,6 +316,12 @@
 
         "meta": {
           "$ref": "#/definitions/meta"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
         }
       }
     },
@@ -338,29 +329,82 @@
     "numberValue": {
       "type": "object",
       "description": "Data should be of type number.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesNumberValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesNumberValue": {
+      "type": "object",
       "properties": {
         "value": {
           "type": "number"
         },
-
         "timestamp": {
           "$ref": "#/definitions/timestamp"
         },
-
-        "source": {
-          "$ref": "#/definitions/source"
+        "pgn": {
+          "type": "number"
         },
-
-        "_attr": {
-          "$ref": "#/definitions/_attr"
-        },
-
-        "meta": {
-          "$ref": "#/definitions/meta"
+        "sentence": {
+          "type": "string"
         }
       }
     },
 
+    "stringValue": {
+      "type": "object",
+      "description": "Data should be of type number.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesStringValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesStringValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
+        }
+      }
+    },
     "nullValue": {
       "type": "object",
       "description": "Data should be of type NULL.",
@@ -398,14 +442,12 @@
           "description": "Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`",
           "default": 644
         },
-
         "_owner": {
           "type": "string",
           "title": "_owner schema.",
           "description": "The owner of this resource.",
           "default": "self"
         },
-
         "_group": {
           "type": "string",
           "title": "_group schema.",
@@ -414,7 +456,8 @@
         }
       }
     },
-    "alarmState":{
+
+    "alarmState": {
       "type": "string",
       "title": "alarmState",
       "description": "The alarm state when the value is in this zone.",
@@ -427,12 +470,13 @@
         "emergency"
       ]
     },
-    "alarmMethodEnum":{
+    "alarmMethodEnum": {
       "enum": [
         "visual",
         "sound"
       ]
     },
+
     "meta": {
       "type": "object",
       "title": "Meta schema.",
@@ -502,7 +546,7 @@
           "type": "array",
           "title": "Alarm Method",
           "description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
-          "default": ["visual","sound"],
+          "default": ["visual", "sound"],
           "items": {
             "$ref": "#/definitions/alarmMethodEnum"
           }
@@ -511,7 +555,7 @@
           "type": "array",
           "title": "Emergency Method",
           "description": "The method to use to raise an emergency. An emergency is an immediate danger to life or vessel",
-          "default": ["visual","sound"],
+          "default": ["visual", "sound"],
           "items": {
             "$ref": "#/definitions/alarmMethodEnum"
           }
@@ -521,44 +565,133 @@
           "type": "array",
           "title": "Zones schema.",
           "description": "The zones defining the range of values for this signalk value.",
-          "items": [
-            {
-              "type": "array",
-              "title": "zone",
-              "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
-              "items": [
-                {
-                  "id": "bottom",
-                  "type": "number",
-                  "title": "Bottom",
-                  "description": "The lowest number in this zone",
-                  "name": "bottom",
-                  "example": 3500
-                },
+          "items": [{
+            "type": "object",
+            "title": "zone",
+            "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
+            "required": ["state"],
+            "properties": {
+              "lower": {
+                "id": "lower",
+                "type": "number",
+                "title": "Lower",
+                "description": "The lowest number in this zone",
+                "name": "lower",
+                "example": 3500
+              },
 
-                {
-                  "id": "top",
-                  "type": "number",
-                  "title": "top",
-                  "description": "The highest value in this zone",
-                  "name": "1",
-                  "example": 4000
-                },
+              "upper": {
+                "id": "upper",
+                "type": "number",
+                "title": "Upper",
+                "description": "The highest value in this zone",
+                "name": "upper",
+                "example": 4000
+              },
 
-                {
-                  "$ref":"#/definitions/alarmState"
-                },
+              "state": {
+                "$ref": "#/definitions/alarmState"
+              },
 
-                {
-                  "id": "message",
-                  "type": "string",
-                  "title": "message",
-                  "description": "The message to display for the alarm.",
-                  "default": "Warning"
-                }
-              ]
+              "message": {
+                "id": "message",
+                "type": "string",
+                "title": "message",
+                "description": "The message to display for the alarm.",
+                "default": "Warning"
+              }
             }
-          ]
+          }]
+        }
+      }
+    },
+    "geohash": {
+      "type": "string",
+      "description": "A geohash (see http://geohash.org)",
+      "pattern": "^[0-9A-Za-z:]{1,}$",
+      "example": "eg rbe:TasmanBay"
+    },
+    "position": {
+      "type": "object",
+      "title": "position",
+      "description": "The position in 3 dimensions",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "description": "Longitude",
+            "units": "deg",
+            "example": 4.98765245
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude",
+            "units": "deg",
+            "example": 52.0987654
+          },
+          "altitude": {
+            "type": "number",
+            "description": "Altitude",
+            "units": "m"
+          }
+        }
+      }]
+    },
+    "waypoint": {
+      "type": "object",
+      "description": "A waypoint, an object with a signal k position object, and GeoJSON Feature object (see geojson.org, and https://github.com/fge/sample-json-schemas/tree/master/geojson)",
+      "properties": {
+        "position": {
+          "$ref": "#/definitions/position"
+        },
+        "feature": {
+          "title": "Feature",
+          "description": "A Geo JSON feature object",
+          "required": [
+            "geometry",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "Feature"
+              ]
+            },
+            "geometry": {
+              "title": "Point",
+              "properties": {
+                "type": {
+                  "enum": [
+                    "Point"
+                  ]
+                },
+                "coordinates": {
+                  "description": "A single position, in x,y order (Lon, Lat)",
+                  "type": "array",
+                  "minItems": 2,
+                  "items": [{
+                    "type": "number"
+                  }, {
+                    "type": "number"
+                  }],
+                  "additionalItems": false
+                }
+              }
+            },
+            "properties": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "description": "Additional data of any type",
+              "additionalProperties": true
+            },
+            "id": {
+              "FIXME": "may be there, type not known (string? number?)"
+            }
+          }
         }
       }
     }

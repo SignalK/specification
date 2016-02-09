@@ -2,9 +2,9 @@
   "vessels": {
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
-      "alarms": {
-        "navigation":{
-          "c0d79334-4e25-4245-8892-54e8ccc80223": {
+      "notifications": {
+        "mob":{
+     
             "message": "MOB",
             "timestamp": "2014-04-10T08:33:53Z",
             "source": {
@@ -15,7 +15,7 @@
             "method" : ["sound"]
           }
         }
-      }
+      
     }
   }
 }

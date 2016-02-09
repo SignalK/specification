@@ -2,7 +2,7 @@ var chai = require('chai');
 chai.Should();
 chai.use(require('../index.js').chaiModule);
 
-describe('Alarms in the full tree', function() {
+describe('Notifications in the full tree', function() {
   it("should be valid", function() {
     require('./data/alarms.json').should.be.validSignalK;
   });

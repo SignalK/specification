@@ -5,7 +5,9 @@
       "navigation": {
         "datetime": {
           "value": "2015-12-05T13:11:59Z",
-          "gnssTimeSource": "GPS"
+          "gnssTimeSource": "GPS",
+          "timestamp": "2014-08-15-19:00:15.402",
+          "$source": "foo.bar"
         }
       }
     }
