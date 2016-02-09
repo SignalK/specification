@@ -35,7 +35,7 @@
       }
     },
 
-    "revolutions": {
+    "rpm": {
       "description": "Engine revolutions",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "Hz"
