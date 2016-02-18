@@ -614,7 +614,7 @@
     "position": {
       "type": "object",
       "title": "position",
-      "description": "The position in 3 dimensions",
+      "description": "The position in 3D (Altitude in Meters if available)",
       "allOf": [{
         "$ref": "#/definitions/commonValueFields"
       }, {
