@@ -46,6 +46,12 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
+    
+    "beatOrGybeAngleTargetSpeed": {
+      "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
 
     "gybeAngle": {
       "description": "The true wind gybe angle for the best velocity made good downwind based on current polar and trueWindSpeed.",
