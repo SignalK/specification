@@ -6,43 +6,43 @@
       "timestamp": "2014-04-10T08:33:53Z",
       "values": [
         {
-          "path": "navigation.course.xte",
+          "path": "navigation.course.nextMark.xte",
           "value": 3.14
         },
         {
-          "path": "navigation.course.distanceToNextMark",
+          "path": "navigation.course.nextMark.distance",
           "value": 1114
         },
         {
-          "path": "navigation.course.courseRequiredTrue",
+          "path": "navigation.course.nextMark.courseRequiredTrue",
           "value": 3.14
         },
         {
-          "path": "navigation.course.lastMark",
+          "path": "navigation.course.lastMark.index",
           "value": 3
         },
         {
-          "path": "navigation.course.bearingToNextMarkTrue",
+          "path": "navigation.course.nextMark.bearingTrue",
           "value": 3.14
         },
         {
-          "path": "navigation.course.bearingToNextMarkMagnetic",
+          "path": "navigation.course.nextMark.bearingMagnetic",
           "value": 3.14
         },
         {
-          "path": "navigation.course.eta.timestamp",
+          "path": "navigation.course.nextMark.eta.timestamp",
           "value": "2014-04-10T08:33:53Z"
         },
         {
-          "path": "navigation.course.courseRequiredMagnetic",
+          "path": "navigation.course.nextMark.courseRequiredMagnetic",
           "value": 3.14
         },
         {
-          "path": "navigation.course.vmg",
+          "path": "navigation.course.nextMark.vmg",
           "value": 10.14
         },
         {
-          "path": "navigation.course.timeToGo",
+          "path": "navigation.course.nextMark.timeToGo",
           "value": 3114
         }
       ],
@@ -55,7 +55,7 @@
       "timestamp": "2015-03-06T16:57:53.643+13:00",
       "values": [
         {
-          "path": "navigation.course.nextWaypoint",
+          "path": "navigation.course.nextWaypoint.position",
           "value": {
             "longitude": 173.1693,
             "latitude": -41.156426,
@@ -74,39 +74,39 @@
       "timestamp": "2014-04-10T08:33:53Z",
       "values": [
         {
-          "path": "navigation.course.bearingDirectMagnetic",
+          "path": "navigation.course.nextMark.bearingDirectMagnetic",
           "value": 3.14
         },
         {
-          "path": "navigation.course.greatCircle.distanceToNextMark",
+          "path": "navigation.course.nextMark.greatCircle.distance",
           "value": 1124
         },
         {
-          "path": "navigation.course.greatCircle.bearingToNextMarkTrue",
+          "path": "navigation.course.nextMark.greatCircle.bearingTrue",
           "value": 3.14
         },
         {
-          "path": "navigation.course.greatCircle.bearingToNextMarkMagnetic",
+          "path": "navigation.course.nextMark.greatCircle.bearingMagnetic",
           "value": 3.14
         },
         {
-          "path": "navigation.course.greatCircle.bearingDirectMagnetic",
+          "path": "navigation.course.nextMark.greatCircle.bearingDirectMagnetic",
           "value": 3.14
         },
         {
-          "path": "navigation.course.greatCircle.bearingDirectTrue",
+          "path": "navigation.course.nextMark.greatCircle.bearingDirectTrue",
           "value": 3.14
         },
         {
-          "path": "navigation.course.nextMark",
+          "path": "navigation.course.nextMark.index",
           "value": 4
         },
         {
-          "path": "navigation.course.startTime.timestamp",
+          "path": "navigation.course.lastMark.arrivalTime.timestamp",
           "value": "2014-04-10T08:33:53Z"
         },
         {
-          "path": "navigation.course.bearingDirectTrue",
+          "path": "navigation.course.nextMark.bearingDirectTrue",
           "value": 3.14
         }
       ],
@@ -119,7 +119,7 @@
       "timestamp": "2015-03-06T16:57:53.643+13:00",
       "values": [
         {
-          "path": "navigation.course.lastWaypoint",
+          "path": "navigation.course.lastWaypoint.position",
           "value": {
             "longitude": 173.1693,
             "latitude": -41.156426,

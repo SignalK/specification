@@ -57,12 +57,58 @@
       "description": "The current leg of the planned course or route",
       "properties": {
         "lastWaypoint": {
-          "description": "The position of the last waypoint in 3 dimensions",
-          "$ref": "../definitions.json#/definitions/position"
+          "type": "object",
+          "title": "Last Waypoint",
+          "description": "the last waypoint passed on the planned course or route",
+          "properties": {
+            "position":{
+              "description": "The position of the last waypoint in 3 dimensions",
+              "$ref": "../definitions.json#/definitions/position"
+            },
+            "arrivalTime": {
+              "type": "object",
+              "description": "The arrival time at the last waypoint",
+              "allOf": [{
+                    "$ref": "../definitions.json#/definitions/commonValueFields"
+                }],
+              "properties":{
+                "value": {
+                  "$ref": "../definitions.json#/definitions/timestamp"
+                }
+              }  
+            }
+          }
+         
         },
         "nextWaypoint": {
-          "description": "The position of the next waypoint in 3 dimensions",
-          "$ref": "../definitions.json#/definitions/position"
+          "type": "object",
+          "title": "Next Waypoint",
+          "description": "the next waypoint on the planned course or route",
+          "properties": {
+            "position":{
+              "description": "The position of the next waypoint in 3 dimensions",
+              "$ref": "../definitions.json#/definitions/position"
+            },
+            
+            "timeToGo": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "Time to Go in seconds before we reach the next waypoint",
+              "units": "s"
+            },
+            
+            "eta": {
+              "type": "object",
+              "description": "The estimated time of arrival at the next waypoint of the route",
+              "allOf": [{
+                    "$ref": "../definitions.json#/definitions/commonValueFields"
+                }],
+              "properties":{
+                "value": {
+                  "$ref": "../definitions.json#/definitions/timestamp"
+                }
+              }
+            }
+          }
         },
         "geometry": {
           "title": "LineString",
@@ -82,121 +128,147 @@
           }
         },
         "nextMark": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Array position (zero-based) of next mark in the geometry LineString"
-        },
-        "lastMark": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Array position (zero-based) of last mark in the geometry LineString"
-        },
-        "vmg": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The velocity made good towards the next waypoint",
-          "units": "m/s"
-        },
-        "courseRequiredTrue": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The course relative to true North towards the next waypoint",
-          "units": "rad"
-        },
-        "courseRequiredMagnetic": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The course relative to magnetic North towards the next waypoint",
-          "units": "rad"
-        },
-        "timeToGo": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Time to Go in seconds before we reach the next waypoint",
-          "units": "s"
-        },
-        "xte": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "Cross track error",
-          "units": "m"
-        },
-        "eta": {
           "type": "object",
-          "description": "The estimated time of arrival at the end of the current leg of the route",
-          "allOf": [{
-                "$ref": "../definitions.json#/definitions/commonValueFields"
-            }],
-          "properties":{
-            "value": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            }
-           }
-          
-        },
-        "startTime": {
-          "type": "object",
-          "description": "The time this leg of the route was activated",
-          "allOf": [{
-                "$ref": "../definitions.json#/definitions/commonValueFields"
-            }],
-          "properties":{
-            "value": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            }
-           }
-          
-        },
-        "bearingToNextMarkTrue": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The current bearing to the next mark relative to true North",
-          "units": "rad"
-        },
-        "bearingToNextMarkMagnetic": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The current bearing to the next mark relative to magnetic North",
-          "units": "rad"
-        },
-        "distanceToNextMark": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The current distance to the next mark",
-          "units": "m"
-        },
-        "bearingDirectTrue": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The bearing relative to true North from last mark to the next mark",
-          "units": "rad"
-        },
-        "bearingDirectMagnetic": {
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "The bearing relative to magnetic North from last mark to the next mark",
-          "units": "rad"
-        },
-        "greatCircle": {
-          "type": "object",
-          "title": "Great Circle data",
-          "description": "Data based on great circle calculations",
+          "title": "Next Mark",
+          "description": "the next mark on this leg between last and next waypoints",
           "properties": {
-            "distanceToNextMark": {
+            "index":{
               "$ref": "../definitions.json#/definitions/numberValue",
-              "description": "The current distance to the next mark (Great Circle)",
+              "description": "Array position (zero-based) of next mark in the geometry LineString"
+            },
+            "bearingTrue": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current bearing to the next mark relative to true North",
+              "units": "rad"
+            },
+            "bearingMagnetic": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current bearing to the next mark relative to magnetic North",
+              "units": "rad"
+            },
+            "distance": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The current distance to the next mark",
               "units": "m"
-            },
-            "bearingToNextMarkTrue": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "description": "The current bearing to the next mark relative to true North (Great Circle)",
-              "units": "rad"
-            },
-            "bearingToNextMarkMagnetic": {
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "description": "The current bearing to the next mark relative to magnetic North (Great Circle)",
-              "units": "rad"
             },
             "bearingDirectTrue": {
               "$ref": "../definitions.json#/definitions/numberValue",
-              "description": "The bearing relative to true North from last mark to the next mark (Great Circle)",
+              "description": "The bearing relative to true North from last mark to the next mark",
               "units": "rad"
             },
             "bearingDirectMagnetic": {
               "$ref": "../definitions.json#/definitions/numberValue",
-              "description": "The bearing relative to magnetic North from last mark to the next mark (Great Circle)",
+              "description": "The bearing relative to magnetic North from last mark to the next mark",
               "units": "rad"
+            },
+            "courseRequiredTrue": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The bearing required  relative to true North from last mark to the next mark",
+              "units": "rad"
+            },
+            "courseRequiredMagnetic": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The bearing required relative to magnetic North from last mark to the next mark",
+              "units": "rad"
+            },
+            "vmg": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The velocity made good towards the next mark",
+              "units": "m/s"
+            },
+            "timeToGo": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "Time to Go in seconds before we reach the next mark",
+              "units": "s"
+            },
+            "xte": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "Cross track error to the next mark",
+              "units": "m"
+            },
+            "eta": {
+              "type": "object",
+              "description": "The estimated time of arrival at the next mark",
+              "allOf": [{
+                    "$ref": "../definitions.json#/definitions/commonValueFields"
+                }],
+              "properties":{
+                "value": {
+                  "$ref": "../definitions.json#/definitions/timestamp"
+                }
+              }
+              
+            },
+             "greatCircle": {
+                "type": "object",
+                "title": "Great Circle data",
+                "description": "Data based on great circle calculations to the next mark",
+                "properties": {
+                  "distance": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The current distance to the next mark (Great Circle)",
+                    "units": "m"
+                  },
+                  "bearingTrue": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The current bearing to the next mark relative to true North (Great Circle)",
+                    "units": "rad"
+                  },
+                  "bearingMagnetic": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The current bearing to the next mark relative to magnetic North (Great Circle)",
+                    "units": "rad"
+                  },
+                  "bearingDirectTrue": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The bearing relative to true North from last mark to the next mark (Great Circle)",
+                    "units": "rad"
+                  },
+                  "bearingDirectMagnetic": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The bearing relative to magnetic North from last mark to the next mark (Great Circle)",
+                    "units": "rad"
+                  },
+                  "courseRequiredTrue": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The bearing required  relative to true North from last mark to the next mark (Great Circle)",
+                    "units": "rad"
+                  },
+                  "courseRequiredMagnetic": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "The bearing required relative to magnetic North from last mark to the next mark (Great Circle)",
+                    "units": "rad"
+                  }
+                }
+              }
+          }
+          
+        },
+        "lastMark": {
+          "type": "object",
+          "title": "Next Mark",
+          "description": "the next mark on this leg between last and next waypoints",
+          "properties": {
+            "index":{
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "Array position (zero-based) of last mark in the geometry LineString"
+            },
+            "arrivalTime": {
+              "type": "object",
+              "description": "The arrival time at the last mark",
+              "allOf": [{
+                    "$ref": "../definitions.json#/definitions/commonValueFields"
+                }],
+              "properties":{
+                "value": {
+                  "$ref": "../definitions.json#/definitions/timestamp"
+                }
+              }
+          
             }
           }
         }
+       
       }
     },
     "magneticVariation": {
