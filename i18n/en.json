@@ -577,9 +577,9 @@
     "shortName": "State",
     "longName": "State of Engine"
   },
-  "propulsion.rpm": {
+  "propulsion.revolutions": {
     "shortName": "RPM",
-    "longName": "Revolutions Per Minute"
+    "longName": "Engine Revolutions"
   },
   "propulsion.rpmAlarm": {
     "shortName": "RPM Alarm",
