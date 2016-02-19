@@ -5,12 +5,6 @@
   "description": "Schema describing the environmental child-object of a Vessel.",
   "title": "environment",
   "properties": {
-    "airPressureChangeRateAlarm": {
-      "description": "Rate of change in air pressure which will cause an alarm",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa/s"
-    },
-
     "airPressure": {
       "description": "Current air pressure",
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -189,12 +183,6 @@
           "description": "The wind direction relative to magnetic north",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
-        },
-
-        "speedAlarm": {
-          "description": "The speed above which a wind alarm will be raised",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m/s"
         },
 
         "speedTrue": {
