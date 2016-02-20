@@ -13,26 +13,20 @@
     "state": {
       "type": "object",
       "description": "The current state of the engine",
-      "properties": {
-        "value": {
-          "type": "string",
-          "enum": [
-            "stopped",
-            "started",
-            "unusable"
-          ]
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "enum": [
+              "stopped",
+              "started",
+              "unusable"
+            ]
+          }
         }
-      }
+      }]
     },
 
     "revolutions": {
