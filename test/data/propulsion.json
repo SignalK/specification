@@ -46,7 +46,9 @@
         }
       },
       "state": {
-        "value": "started"
+        "value": "started",
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
       },
       "revolutions": {
         "value": 1280,
