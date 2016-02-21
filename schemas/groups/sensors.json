@@ -19,6 +19,11 @@
       "type": "string",
       "description": "The data of the sensor data. FIXME - need to ref the definitions of sensor types"
     },
+		
+		"unitOfMeasure": {
+			"type": "string",
+			"description": "The unit of measurement for the sensor data"
+		},
 
     "fromBow": {
       "$ref": "../definitions.json#/definitions/numberValue",
