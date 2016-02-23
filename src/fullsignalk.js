@@ -17,9 +17,7 @@
 
 var _ = require('lodash');
 var signalkSchema = require('../')
-
-//TODO
-// timestamp prune?
+var debug = require('debug')('signalk:fullsignalk');
 
 
 function FullSignalK(id, type) {
@@ -35,6 +33,7 @@ function FullSignalK(id, type) {
   }
   this.sources = {};
   this.root.sources = this.sources;
+  this.lastModifieds = {};
 }
 
 require("util").inherits(FullSignalK, require("events").EventEmitter);
@@ -47,7 +46,30 @@ FullSignalK.prototype.addDelta = function(delta) {
   this.emit('delta', delta);
   var context = findContext(this.root, delta.context);
   this.addUpdates(context, delta.updates);
+  this.updateLastModified(delta.context);
 };
+
+FullSignalK.prototype.updateLastModified = function(contextKey) {
+  this.lastModifieds[contextKey] = new Date().getTime();
+}
+
+FullSignalK.prototype.pruneContexts = function(seconds) {
+  var threshold = new Date().getTime() - seconds * 1000;
+  for (contextKey in this.lastModifieds) {
+    if (this.lastModifieds[contextKey] < threshold) {
+      this.deleteContext(contextKey);
+      delete this.lastModifieds[contextKey];
+    }
+  }
+}
+
+FullSignalK.prototype.deleteContext = function(contextKey) {
+  debug("Deleting context " + contextKey);
+  var pathParts = contextKey.split('.');
+  if (pathParts.length === 2 ) {
+    delete this.root[pathParts[0]][pathParts[1]];
+  }
+}
 
 function findContext(root, contextPath) {
   var context = _.get(root, contextPath);
