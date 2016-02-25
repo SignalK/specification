@@ -70,6 +70,11 @@
             "message": "Engine near maximum rpm!"
           }, {
             "lower": 58.33333333333,
+            "upper": 66.66666666666667,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }, {
+            "lower": 66.66666666666667,
             "state": "alarm",
             "message": "Engine exceeds maximum rpm!"
           }]
