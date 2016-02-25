@@ -208,7 +208,7 @@
           "display": "Pa/s",
           "quantity": "Pressure rate",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per meter"
+          "description": "Pressure change rate in pascal per second"
         }
       }
     },
