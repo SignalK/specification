@@ -35,12 +35,6 @@
       "units": "Hz"
     },
 
-    "maxRevolutions": {
-      "description": "Engine maximum revolutions",
-      "type": "number",
-      "units": "Hz"
-    },
-
     "temperature": {
       "description": "Engine temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
