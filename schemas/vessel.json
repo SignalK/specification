@@ -163,14 +163,11 @@
     "electrical": {
       "type": "object",
       "description": "Electrical data",
-      "properties": {
-        "ac": {
-          "description": "AC electrical data",
-          "$ref": "groups/electrical_ac.json#"
-        },
-        "dc": {
-          "description": "DC electrical data",
-          "$ref": "groups/electrical_dc.json#"
+       "required": false,
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation of the identifier for the electrical unit",
+          "$ref": "groups/electrical.json#"
         }
       }
     },
