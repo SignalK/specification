@@ -20,12 +20,12 @@ var signalkSchema = require('../')
 var debug = require('debug')('signalk:fullsignalk');
 
 
-function FullSignalK(id, type) {
+function FullSignalK(id, type, defaults) {
   this.root = {
     vessels: {}
   };
   if (id) {
-    this.root.vessels[id] = {};
+    this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
     this.self = this.root.vessels[id];
     if (type) {
       this.root.vessels[id][type] = id;
@@ -66,7 +66,7 @@ FullSignalK.prototype.pruneContexts = function(seconds) {
 FullSignalK.prototype.deleteContext = function(contextKey) {
   debug("Deleting context " + contextKey);
   var pathParts = contextKey.split('.');
-  if (pathParts.length === 2 ) {
+  if (pathParts.length === 2) {
     delete this.root[pathParts[0]][pathParts[1]];
   }
 }
