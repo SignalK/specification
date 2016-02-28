@@ -165,16 +165,11 @@
     "electrical": {
       "type": "object",
       "description": "Electrical data",
-      "properties": {
-        "ac": {
-          "description": "AC electrical data",
-          "$ref": "groups/electrical_ac.json#"
-        },
-        "dc": {
-          "description": "DC electrical data",
-          "$ref": "groups/electrical_dc.json#"
-        }
-      }
+      "anyOf": [{
+        "$ref": "groups/electrical_ac.json#"
+      }, {
+        "$ref": "groups/electrical_dc.json#"
+      }]
     },
 
     "notifications": {
