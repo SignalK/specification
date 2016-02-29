@@ -202,7 +202,7 @@
   },
   "properties": {
 
-    "batteries": {
+    "battery": {
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
