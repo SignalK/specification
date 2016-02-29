@@ -3,7 +3,7 @@
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "electrical": {
-        "batteries": {
+        "battery": {
           "house1": {
             "meta": {
               "name": "House battery 1 (forward)",
