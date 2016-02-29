@@ -416,6 +416,20 @@
           }]
         }
       }
+    },
+    "ac": {
+      "description": "AC buses",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "AC bus",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          }, {
+            "$ref": "#/definitions/acQuantities"
+          }]
+        }
+      }
     }
   }
 }
