@@ -165,11 +165,7 @@
     "electrical": {
       "type": "object",
       "description": "Electrical data",
-      "anyOf": [{
-        "$ref": "groups/electrical_ac.json#"
-      }, {
-        "$ref": "groups/electrical_dc.json#"
-      }]
+      "$ref": "groups/electrical.json#"
     },
 
     "notifications": {
