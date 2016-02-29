@@ -177,31 +177,72 @@
       }
     },
 
-    "acSource": {
+    "acQuantities": {
       "type": "object",
-      "title": "AC Source",
-      "description": "AC power source common values",
+      "title": "AC Quantities",
+      "description": "AC equipment common quantities",
       "properties": {
         "associatedBus": {
           "type": "string",
           "description": "Name of BUS source is assocated with (if applicable, may = NULL)"
         },
-
-        "voltage": {
-          "type": "object",
-          "properties": {
-            "measured": {
-              "description": "Measured voltage at AC Source terminals",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V"
-            }
-          }
+        "lineNeutralVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phase and neutral.",
+          "units": "V"
+        },
+        "lineLineVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phases",
+          "units": "V"
+        },
+        "current": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS current",
+          "units": "A"
+        },
+        "frequency": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "AC frequency.",
+          "units": "Hz"
+        },
+        "reactivePower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Reactive power",
+          "units": "W"
+        },
+        "powerFactor": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Power factor",
+          "unit": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX fraction"
+        },
+        "powerFactorLagging": {
+          "description": "Lead/lag status.",
+          "example": "leading",
+          "type": "string",
+          "enum": [
+            "leading",
+            "lagging",
+            "error",
+            "not available"
+          ]
+        },
+        "realPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Real power.",
+          "units": "W"
+        },
+        "apparentPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Apparent power.",
+          "units": "W"
         }
       }
     }
   },
-  "properties": {
 
+
+  "properties": {
     "battery": {
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
@@ -330,48 +371,49 @@
     },
 
     "inverter": {
-      "type": "object",
-      "title": "Inverter",
-      "description": "DC to AC inverter, one or many, within the vessel",
-      "required": ["ID"],
-      "properties": {
-        "identity": {
-          "$ref": "#/definitions/identity"
-        },
-
-        "dc": {
-          "$ref": "#/definitions/dcSource"
-        },
-
-        "ac": {
-          "$ref": "#/definitions/acSource"
-        },
-
-        "mode": {
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
           "type": "object",
-          "description": "Operational mode of inverter",
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "idle",
-                "inverting",
-                "disabled",
-                "standby",
-                "faulted",
-                "unknown",
-                "other"
-              ]
-            },
+          "title": "Inverter",
+          "description": "DC to AC inverter, one or many, within the vessel",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          }, {
+            "properties": {
+              "dc": {
+                "$ref": "#/definitions/dcSource"
+              },
+              "ac": {
+                "$ref": "#/definitions/acQuantities"
+              },
+              "mode": {
+                "type": "object",
+                "description": "Mode of inverter",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "enum": [
+                      "idle",
+                      "inverting",
+                      "disabled",
+                      "standby",
+                      "faulted",
+                      "unknown",
+                      "other"
+                    ]
+                  },
 
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
 
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
+                  "$source": {
+                    "$ref": "../definitions.json#/definitions/$source"
+                  }
+                }
+              }
             }
-          }
+          }]
         }
       }
     }
