@@ -426,7 +426,15 @@
           "allOf": [{
             "$ref": "#/definitions/identity"
           }, {
-            "$ref": "#/definitions/acQuantities"
+            "anyOf": [{
+              "$ref": "#/definitions/acQuantities"
+            }, {
+              "patternProperties": {
+                "[A-C]": {
+                  "$ref": "#/definitions/acQuantities"
+                }
+              }
+            }]
           }]
         }
       }
