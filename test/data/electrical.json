@@ -113,7 +113,10 @@
           }
         },
         "ac": {
-          "mainBus": {
+          "utility1": {
+            "meta": {
+              "name": "Single phase shore power"
+            },
             "frequency": {
               "timestamp": "2014-08-15-19:00:15.402",
               "$source": "foo.bar",
@@ -127,12 +130,83 @@
             "lineLineVoltage": {
               "timestamp": "2014-08-15-19:00:15.402",
               "$source": "foo.bar",
-              "value": 400
+              "value": 230
             },
             "lineNeutralVoltage": {
               "timestamp": "2014-08-15-19:00:15.402",
               "$source": "foo.bar",
               "value": 230
+            }
+          },
+          "utility3": {
+            "meta": {
+              "name": "Three phase shore power"
+            },
+            "A": {
+              "frequency": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 50
+              },
+              "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 0.12
+              },
+              "lineLineVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 400
+              },
+              "lineNeutralVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 230
+              }
+            },
+            "B": {
+              "frequency": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 50
+              },
+              "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 0.12
+              },
+              "lineLineVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 400
+              },
+              "lineNeutralVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 230
+              }
+            },
+            "C": {
+              "frequency": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 50
+              },
+              "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 0.12
+              },
+              "lineLineVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 400
+              },
+              "lineNeutralVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 230
+              }
             }
           }
         }
