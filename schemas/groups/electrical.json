@@ -49,14 +49,14 @@
       }
     },
 
-    "dcSource": {
+    "dcQuantities": {
       "type": "object",
-      "title": "DC Source",
-      "description": "DC power source common values",
+      "title": "DC Quantities",
+      "description": "DC common quantities",
       "properties": {
         "associatedBus": {
           "type": "string",
-          "description": "Name of BUS source is associated with (if applicable, may = NULL)"
+          "description": "Name of BUS source is associated with"
         },
 
         "voltage": {
@@ -253,7 +253,7 @@
           "allOf": [{
             "$ref": "#/definitions/identity"
           }, {
-            "$ref": "#/definitions/dcSource"
+            "$ref": "#/definitions/dcQuantities"
           }, {
             "properties": {
               "meta": {
@@ -381,7 +381,7 @@
           }, {
             "properties": {
               "dc": {
-                "$ref": "#/definitions/dcSource"
+                "$ref": "#/definitions/dcQuantities"
               },
               "ac": {
                 "$ref": "#/definitions/acQuantities"
