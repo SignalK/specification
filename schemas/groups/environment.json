@@ -11,10 +11,22 @@
       "units": "Pa"
     },
 
-    "airTemp": {
-      "description": "Current air temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
+    "temperature": {
+      "title": "depth",
+      "type": "object",
+      "description": "Depth related data",
+      "properties": {
+        "outside": {
+          "description": "Current outside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "inside": {
+          "description": "Current inside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        }
+      }
     },
 
     "depth": {
