@@ -40,7 +40,7 @@
           },
           "house2": {
             "meta": {
-              "name": "House battery 1 (read)",
+              "name": "House battery 2 (rear)",
               "location": "Engine room",
               "manufacturerName": "MasterVolt",
               "manufacturerModel": "AGM 12/130"
