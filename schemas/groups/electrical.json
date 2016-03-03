@@ -426,15 +426,16 @@
           "allOf": [{
             "$ref": "#/definitions/identity"
           }, {
-            "anyOf": [{
-              "$ref": "#/definitions/acQuantities"
-            }, {
-              "patternProperties": {
-                "[A-C]": {
-                  "$ref": "#/definitions/acQuantities"
+            "properties": {
+              "phase": {
+                "type": "object",
+                "patternProperties": {
+                  "(single)|([A-C])": {
+                    "$ref": "#/definitions/acQuantities"
+                  }
                 }
               }
-            }]
+            }
           }]
         }
       }
