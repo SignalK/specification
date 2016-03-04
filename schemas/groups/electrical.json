@@ -21,28 +21,22 @@
               "type": "string",
               "description": "Installed location of device on vessel"
             },
-
-            "manufacturerName": {
-              "type": "string",
-              "description": "Manufacturer's name"
-            },
-
-            "manufacturerModel": {
-              "type": "string",
-              "description": "Model or part number"
-            },
-
             "dateInstalled": {
               "$ref": "../definitions.json#/definitions/timestamp",
               "description": "Date device was installed"
             },
 
-            "timestamp": {
-              "$ref": "../definitions.json#/definitions/timestamp"
-            },
-
-            "source": {
-              "$ref": "../definitions.json#/definitions/source"
+            "manufacturer": {
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Manufacturer's name"
+                },
+                "model": {
+                  "type": "string",
+                  "description": "Model or part number"
+                }
+              }
             }
           }
         }
@@ -266,32 +260,6 @@
                 }
               },
 
-              "mode": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "enum": [
-                      "charging bulk",
-                      "charging acceptance",
-                      "charging overcharge",
-                      "charging float",
-                      "charging equalize",
-                      "discharging",
-                      "unknown",
-                      "other"
-                    ]
-                  },
-
-                  "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                  },
-
-                  "source": {
-                    "$ref": "../definitions.json#/definitions/source"
-                  }
-                }
-              },
-
               "temperature": {
                 "type": "object",
                 "title": "temperature",
@@ -409,6 +377,45 @@
 
                   "$source": {
                     "$ref": "../definitions.json#/definitions/$source"
+                  }
+                }
+              }
+            }
+          }]
+        }
+      }
+    },
+    "charger": {
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Charger",
+          "description": "Battery charger",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          }, {
+            "$ref": "#/definitions/dcQuantities"
+          }, {
+            "properties": {
+              "mode": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "enum": [
+                      "charging bulk",
+                      "charging acceptance",
+                      "charging overcharge",
+                      "charging float",
+                      "charging equalize",
+                      "unknown",
+                      "other"
+                    ]
+                  },
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
+                  "source": {
+                    "$ref": "../definitions.json#/definitions/source"
                   }
                 }
               }
