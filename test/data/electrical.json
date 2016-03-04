@@ -8,12 +8,11 @@
             "meta": {
               "name": "House battery 1 (forward)",
               "location": "Under forward bunk",
-              "manufacturerName": "MasterVolt",
-              "manufacturerModel": "AGM 12/130",
+              "manufacturer": {
+                "name": "MasterVolt",
+                "model": "AGM 12/130"
+              },
               "chemistry": "FLA"
-            },
-            "mode": {
-              "value": "discharging"
             },
             "temperature": {
               "value": 290,
@@ -42,8 +41,10 @@
             "meta": {
               "name": "House battery 2 (rear)",
               "location": "Engine room",
-              "manufacturerName": "MasterVolt",
-              "manufacturerModel": "AGM 12/130"
+              "manufacturer": {
+                "name": "MasterVolt",
+                "model": "AGM 12/130"
+              }
             },
             "voltage": {
               "value": 12.8,
@@ -75,11 +76,30 @@
             }
           }
         },
+        "charger": {
+          "main": {
+            "meta": {
+              "manufacturer": {
+                "name": "C-Tek"
+              }
+            },
+            "mode": {
+              "value": "charging float"
+            },
+            "current": {
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "value": 2.67
+            }
+          }
+        },
         "inverter": {
           "main": {
             "meta": {
               "location": "Under forward bunk",
-              "manufacturerName": "Xantrex"
+              "manufacturer": {
+                "name": "Xantrex"
+              }
             },
             "dc": {
               "current": {
