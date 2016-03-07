@@ -14,9 +14,29 @@
           "$ref": "../definitions.json#/definitions/sail" 
         }
       }
+	  "value": {
+		"type": "string",
+		"enum": [
+			"available",
+			"set",
+			"reduced",
+			"damaged",
+			"not allowed"
+			]
+		},
+	  "area":{
+		"type": "object",
+		"description": "An object containing information about this sail.",
+		"properties": {
+			"sailArea": {
+				"description": "The area of this sail",
+				"type": "number",
+				"units": "m2"  
+			}
+	  }
     },
 
-    "area": {
+    "totalArea": {
       "type": "object",
       "description": "An object containing information about the vessels' sails.",
       "properties": {
