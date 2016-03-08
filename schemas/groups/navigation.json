@@ -166,6 +166,12 @@
 					"type": "string"
 				}
 			},
+			"distanceStartline": {
+				"type": "number",
+				"description": "The current distance to the start line",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "m"
+			},
 			"timeToStart": {
 				"description": "Time left before start",
 				"$ref": "../definitions.json#/definitions/numberValue",
@@ -194,6 +200,7 @@
 			"distanceLayline": {
 				"type": "number",
 				"description": "The current distance to the layline",
+				"$ref": "../definitions.json#/definitions/numberValue",
 				"units": "m"
 			}
 			
