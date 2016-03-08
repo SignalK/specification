@@ -124,5 +124,6 @@ describe('FullSignalK', function() {
     vessel.should.have.property('name', "WRANGO");
     vessel.should.not.have.property('$source');
     vessel.should.not.have.property('timestamp');
+    vessel.should.not.have.property('pgn');
   })
 })
