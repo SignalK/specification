@@ -198,7 +198,7 @@
 			}
 			
 		}
-	}
+	},
 	
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
