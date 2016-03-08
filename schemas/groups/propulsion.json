@@ -90,15 +90,15 @@
     },
 
     "engineLoad": {
-      "description": "Engine load in percent",
+      "description": "Engine load ratio, 1 is 100%",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
 
     "engineTorque": {
-      "description": "Engine torque in percent",
+      "description": "Engine torque ratio, 1 is 100%",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
 
     "transmission": {
@@ -112,6 +112,11 @@
             }
           }
         },
+		"gearRatio": {
+			"description": "Gear ratio, Engine / propeller shaft",
+			"$ref": "../definitions.json#/definitions/numberValue",
+			"units": "ratio"
+		},
         "oilTemperature": {
           "description": "Oil temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -140,7 +145,17 @@
           "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
-        }
+        },
+		    "propellerPitch": {
+		    	"description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+		    	"$ref": "../definitions.json#/definitions/numberValue",
+	    		"units": "m"
+	    	},
+	    	"propellerSlip": {
+	    		"description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+	    		"$ref": "../definitions.json#/definitions/numberValue",
+    			"units": "ratio"
+    		}
       }
     },
 
@@ -164,17 +179,17 @@
         "rate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         },
         "economyRate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         },
         "averageRate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         }
       }
     },
