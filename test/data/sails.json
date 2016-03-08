@@ -1,0 +1,17 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "sails": {
+    "area": {
+      "total": {
+        "value": 118,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"
+      },
+      "active": {
+        "value": 92,
+        "timestamp": "2014-08-15-19:00:15.402",
+        "$source": "foo.bar"        
+      }
+    }
+  }
+}

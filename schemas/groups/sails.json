@@ -4,14 +4,18 @@
   "id": "https://signalk.github.io/specification/schemas/groups/sails.json#",
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
+
+  "definitions": {
+
+  },
   "properties": {
-    "available": {
+    "inventory": {
       "type": "object",
       "description": "An object containing a description of each sail available to the vessel crew",
       "patternProperties": {
         "(^[a-zA-Z0-9]$)": {
           "description": "Each sail is identified by a unique name, containing only alphanumeric characters.",
-          "$ref": "../definitions.json#/definitions/sail" 
+          "$ref": "../definitions.json#/definitions/sail"
         }
       }
     },
@@ -22,24 +26,14 @@
       "properties": {
         "total": {
           "description": "The total area of all sails on the vessel",
-          "type": "number",
+          "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m2"
         },
 
         "active": {
           "description": "The total area of the sails currently in use on the vessel",
-          "type": "number",
+          "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m2"
-        },
-
-        "timestamp": {
-          "description":"timestamp of the last update to this data",
-          "$ref": "#/definitions/timestamp"
-        },
-        
-        "source": { 
-          "description":"Source of this data",
-          "$ref": "#/definitions/source"
         }
       }
     }
