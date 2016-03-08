@@ -5,17 +5,77 @@
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
 
-  "definitions": {
-
-  },
   "properties": {
     "inventory": {
       "type": "object",
       "description": "An object containing a description of each sail available to the vessel crew",
       "patternProperties": {
-        "(^[a-zA-Z0-9]$)": {
-          "description": "Each sail is identified by a unique name, containing only alphanumeric characters.",
-          "$ref": "../definitions.json#/definitions/sail"
+        "(^[a-zA-Z0-9]+$)": {
+          "type": "object",
+          "description": "'sail' data type.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "An unique identifier by which the crew identifies a sail",
+              "example": "J1"
+            },
+
+            "type": {
+              "type": "string",
+              "required": true,
+              "description": "The type of sail",
+              "example": "Genaker"
+            },
+
+            "material": {
+              "type": "string",
+              "required": false,
+              "description": "The material the sail is made from (optional)",
+              "example": "canvas"
+            },
+            "brand": {
+              "type": "string",
+              "required": false,
+              "description": "The brand of the sail (optional)",
+              "example": "North Sails"
+            },
+            "active": {
+              "type": "boolean",
+              "required": true,
+              "description": "Indicates wether this sail is currently in use or not"
+            },
+            "area": {
+              "type": "number",
+              "required": true,
+              "description": "The total area of this sail in square meters",
+              "units": "m2"
+            },
+            "minimumWind": {
+              "type": "number",
+              "description": "The minimum wind speed this sail can be used with",
+              "units": "m/s",
+              "default": 0
+            },
+            "maximumWind": {
+              "type": "number",
+              "description": "The maximum wind speed this sail can be used with",
+              "units": "m/s",
+              "default": 666
+            },
+            "timestamp": {
+              "$ref": "#/definitions/timestamp"
+            },
+            "source": {
+              "$ref": "#/definitions/source"
+            },
+            "_attr": {
+              "$ref": "#/definitions/_attr"
+            },
+            "meta": {
+              "$ref": "#/definitions/meta"
+            }
+          }
         }
       }
     },
