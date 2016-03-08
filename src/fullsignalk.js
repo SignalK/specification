@@ -190,8 +190,8 @@ function addValue(context, source, timestamp, pathValue) {
   if (pathValue.path.length != 0) {
     valueLeaf['$source'] = getId(source);
     valueLeaf.timestamp = timestamp;
+    setMessage(valueLeaf, source);
   }
-  setMessage(valueLeaf, source);
 }
 
 function copyLeafValueToLeaf(fromLeaf, toLeaf) {
