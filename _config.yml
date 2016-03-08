@@ -1,4 +1,4 @@
 name: Signal K
-markdown: redcarpet
-pygments: true
+markdown: kramdown
+highlighter: rouge
 
