@@ -208,7 +208,7 @@
         "powerFactor": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Power factor",
-          "unit": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX fraction"
+          "unit": "ratio"
         },
         "powerFactorLagging": {
           "description": "Lead/lag status.",
