@@ -91,7 +91,9 @@
             "meta": {
               "manufacturer": {
                 "name": "C-Tek"
-              }
+              },
+              "chargingAlgorithm": "two stage",
+              "chargerMode": "standalone"
             },
             "mode": {
               "value": "charging float"
