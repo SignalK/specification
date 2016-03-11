@@ -321,6 +321,12 @@
                 }
               },
 
+              "stateOfCharge": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "description": "State of charge, 1 = 100%",
+                "units": "ratio"
+              },
+
               "lifetimeDischarge": {
                 "type": "number",
                 "description": "Cumulative Wh discharged from battery over operational lifetime of battery",
