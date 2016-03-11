@@ -163,7 +163,6 @@
     },
 
     "electrical": {
-      "type": "object",
       "description": "Electrical data",
       "$ref": "groups/electrical.json#"
     },
