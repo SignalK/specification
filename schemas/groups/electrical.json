@@ -107,26 +107,26 @@
                 "type": "object",
                 "properties": {
                   "warnUpper": {
+                    "type": "number",
                     "description": "Upper operational current limit",
-                    "$ref": "../definitions.json#/definitions/numberValue",
                     "units": "A"
                   },
 
                   "warnLower": {
+                    "type": "number",
                     "description": "Lower operational current limit",
-                    "$ref": "../definitions.json#/definitions/numberValue",
                     "units": "A"
                   },
 
                   "faultUpper": {
+                    "type": "number",
                     "description": "Upper fault limit of battery current - BMS may disconnect battery",
-                    "$ref": "../definitions.json#/definitions/numberValue",
                     "units": "A"
                   },
 
                   "faultLower": {
+                    "type": "number",
                     "description": "Lower fault limit of battery current - BMS may disconnect battery",
-                    "$ref": "../definitions.json#/definitions/numberValue",
                     "units": "A"
                   }
                 }
@@ -143,26 +143,26 @@
           }, {
             "properties": {
               "warnUpper": {
+                "type": "number",
                 "description": "Upper operational temperature limit",
-                "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "K"
               },
 
               "warnLower": {
+                "type": "number",
                 "description": "Lower operational temperature limit",
-                "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "K"
               },
 
               "faultUpper": {
+                "type": "number",
                 "description": "Upper fault limit of temperature - device may disable",
-                "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "K"
               },
 
               "faultLower": {
-                "description": "Lower fault limit of temperature  - device may disable",
-                "$ref": "../definitions.json#/definitions/numberValue",
+                "type": "number",
+                "description": "Lower fault limit of temperature - device may disable",
                 "units": "K"
               }
             }
