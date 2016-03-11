@@ -29,6 +29,11 @@
                 "faultLower": 11.6,
                 "warnUpper": 14.4,
                 "faultUpper": 15.2
+              },
+              "ripple": {
+                "value": 0.12,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
               }
             },
             "current": {

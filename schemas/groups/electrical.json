@@ -59,6 +59,11 @@
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
             "properties": {
+              "ripple": {
+                "description": "Ripple voltage",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+              },
               "meta": {
                 "type": "object",
                 "properties": {
