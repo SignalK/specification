@@ -77,7 +77,11 @@ function findContext(root, contextPath) {
     context = {};
     _.set(root, contextPath, context);
   }
-  signalkSchema.fillIdentityField(context, contextPath.split('.')[1]);
+  var identity = contextPath.split('.')[1];
+  if (!identity) {
+    return undefined;
+  }
+  signalkSchema.fillIdentityField(context, identity);
   return context;
 }
 
