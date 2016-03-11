@@ -35,6 +35,11 @@
               "value": 0.1,
               "timestamp": "2014-08-15-19:00:15.402",
               "$source": "foo.bar"
+            },
+            "stateOfCharge": {
+              "value": 81,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar"
             }
           },
           "house2": {
