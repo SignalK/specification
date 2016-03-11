@@ -256,7 +256,7 @@
           }, {
             "properties": {
               "meta": {
-                "type:": "object",
+                "type": "object",
                 "properties": {
                   "chemistry": {
                     "type": "string",
