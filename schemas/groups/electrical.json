@@ -14,7 +14,7 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverterCharger, Combiner1, etc.)"
+              "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)"
             },
 
             "location": {
