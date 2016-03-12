@@ -41,7 +41,7 @@
           }, {
             "patternProperties": {
               ".*": {
-                "type": "object"
+                "properties":{}
               }
             }
           }]
