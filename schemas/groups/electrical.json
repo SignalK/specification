@@ -238,7 +238,7 @@
 
 
   "properties": {
-    "battery": {
+    "batteries": {
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -360,7 +360,7 @@
       }
     },
 
-    "inverter": {
+    "inverters": {
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -406,7 +406,7 @@
         }
       }
     },
-    "charger": {
+    "chargers": {
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
