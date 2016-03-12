@@ -29,6 +29,7 @@ var FullSignalK = require('./src/fullsignalk');
     'performance': require('./schemas/groups/performance.json'),
     'propulsion': require('./schemas/groups/propulsion.json'),
     'resources': require('./schemas/groups/resources.json'),
+    'sails': require('./schemas/groups/sails.json'),
     'sensors': require('./schemas/groups/sensors.json'),
     'sources': require('./schemas/groups/sources.json'),
     'steering': require('./schemas/groups/steering.json'),
