@@ -320,15 +320,28 @@
                     "type": "number",
                     "description": "Minimum number of watt-hours to be left in the battery while discharging",
                     "units": "Wh"
+                  },
+
+                  "stateOfCharge": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "State of charge, 1 = 100%",
+                    "units": "ratio"
+                  },
+
+                  "dischargeSinceFull": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Cumulative discharge since battery was last full",
+                    "units": "C"
+                  },
+
+                  "timeRemaining": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "Time to discharge to discharge limit at current rate",
+                    "units": "s"
                   }
                 }
               },
 
-              "stateOfCharge": {
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "description": "State of charge, 1 = 100%",
-                "units": "ratio"
-              },
 
               "lifetimeDischarge": {
                 "type": "number",
