@@ -16,12 +16,19 @@
       "description": "The updates",
       "items": {
         "type": "object",
-        "required": [ "values"],
+        "required": ["values"],
         "properties": {
           "source": {
-            "$ref": "./definitions.json#/definitions/source"
+            "allOf": [{
+              "$ref": "./definitions.json#/definitions/source"
+            }, {
+              "properties": {
+                "instance": {
+                  "type": "string"
+                }
+              }
+            }]
           },
-
           "timestamp": {
             "$ref": "./definitions.json#/definitions/timestamp"
           },
