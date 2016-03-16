@@ -1,0 +1,267 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "electrical": {
+        "batteries": {
+          "house1": {
+            "meta": {
+              "name": "House battery 1 (forward)",
+              "location": "Under forward bunk",
+              "manufacturer": {
+                "name": "MasterVolt",
+                "model": "AGM 12/130"
+              },
+              "chemistry": "FLA"
+            },
+            "temperature": {
+              "value": 290,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar"
+            },
+            "voltage": {
+              "value": 12.5,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "meta": {
+                "nominal": 12,
+                "warnLower": 12,
+                "faultLower": 11.6,
+                "warnUpper": 14.4,
+                "faultUpper": 15.2
+              },
+              "ripple": {
+                "value": 0.12,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
+              }
+            },
+            "current": {
+              "value": 0.1,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar"
+            },
+            "capacity": {
+              "nominal": 2400,
+              "stateOfCharge": {
+                "value": 81,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
+              },
+              "timeRemaining": {
+                "value": 21600,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
+              },
+              "dischargeSinceFull": {
+                "value": 172800,
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar"
+              }
+            }
+          },
+          "house2": {
+            "meta": {
+              "name": "House battery 2 (rear)",
+              "location": "Engine room",
+              "manufacturer": {
+                "name": "MasterVolt",
+                "model": "AGM 12/130"
+              }
+            },
+            "voltage": {
+              "value": 12.8,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "meta": {
+                "nominal": 12
+              }
+            },
+            "current": {
+              "value": 0.1,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar"
+            }
+          },
+          "start": {
+            "voltage": {
+              "value": 12.8,
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "meta": {
+                "nominal": 12
+              }
+            },
+            "current": {
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "value": 0.05
+            }
+          }
+        },
+        "chargers": {
+          "main": {
+            "meta": {
+              "manufacturer": {
+                "name": "C-Tek"
+              },
+              "chargingAlgorithm": "two stage",
+              "chargerMode": "standalone"
+            },
+            "mode": {
+              "value": "charging float"
+            },
+            "current": {
+              "timestamp": "2014-08-15-19:00:15.402",
+              "$source": "foo.bar",
+              "value": 2.67
+            }
+          }
+        },
+        "inverters": {
+          "main": {
+            "meta": {
+              "location": "Under forward bunk",
+              "manufacturer": {
+                "name": "Xantrex"
+              }
+            },
+            "dc": {
+              "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 2.67
+              }
+            },
+            "ac": {
+              "frequency": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 50
+              },
+              "current": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 0.12
+              },
+              "lineLineVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 400
+              },
+              "lineNeutralVoltage": {
+                "timestamp": "2014-08-15-19:00:15.402",
+                "$source": "foo.bar",
+                "value": 230
+              }
+            }
+          }
+        },
+        "ac": {
+          "utility1": {
+            "meta": {
+              "name": "Single phase shore power"
+            },
+            "phase": {
+              "single": {
+                "frequency": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 230
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              }
+            }
+          },
+          "utility3": {
+            "meta": {
+              "name": "Three phase shore power"
+            },
+            "phase": {
+              "A": {
+                "frequency": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              },
+              "B": {
+                "frequency": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              },
+              "C": {
+                "frequency": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15-19:00:15.402",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
