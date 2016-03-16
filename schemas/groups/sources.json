@@ -8,34 +8,43 @@
       "type": "object",
       "patternProperties": {
         ".*": {
-          "anyOf": [
-            {"required": ["src", "pgns"]},
-            {"required": ["talker", "sentences"]}
-          ],
-          "properties": {
-            "src": {
-              "type": "string"
-            },
-            "pgns": {
-              "type": "object",
-              "patternProperties": {
-                "[0-9]*": {
-                  "$ref": "#/definitions/timestamp"
+          "anyOf": [{
+            "required": ["src", "pgns"]
+          }, {
+            "required": ["talker", "sentences"]
+          }],
+          "anyOf": [{
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "pgns": {
+                "type": "object",
+                "patternProperties": {
+                  "[0-9]*": {
+                    "$ref": "#/definitions/timestamp"
+                  }
                 }
-              }
-            },
-            "talker": {
-              "type": "string"
-            },
-            "sentences": {
-              "type": "object",
-              "patternProperties": {
-                "^[A-Z][A-Z][A-Z]$": {
-                  "$ref": "#/definitions/timestamp"
+              },
+              "talker": {
+                "type": "string"
+              },
+              "sentences": {
+                "type": "object",
+                "patternProperties": {
+                  "^[A-Z][A-Z][A-Z]$": {
+                    "$ref": "#/definitions/timestamp"
+                  }
                 }
               }
             }
-          }
+          }, {
+            "patternProperties": {
+              ".*": {
+                "properties":{}
+              }
+            }
+          }]
         }
       },
       "properties": {

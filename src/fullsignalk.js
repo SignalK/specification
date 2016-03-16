@@ -128,6 +128,9 @@ function handleNmea2000Source(labelSource, source, timestamp) {
       pgns: {}
     };
   }
+  if (source.instance && !labelSource[source.src][source.instance]) {
+    labelSource[source.src][source.instance] = {}
+  }
   labelSource[source.src].pgns[source.pgn] = timestamp
 }
 
@@ -230,7 +233,8 @@ function getId(source) {
   }
   if (source.src || source.pgn) {
     return source.label +
-      (source.src ? '.' + source.src : '');
+      (source.src ? '.' + source.src : '') +
+      (source.instance ? '.' + source.instance : '');
   }
   return source.label +
     (source.talker ? '.' + source.talker : '.XX');
