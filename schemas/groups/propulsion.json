@@ -13,37 +13,25 @@
     "state": {
       "type": "object",
       "description": "The current state of the engine",
-      "properties": {
-        "value": {
-          "type": "string",
-          "enum": [
-            "stopped",
-            "started",
-            "unusable"
-          ]
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "enum": [
+              "stopped",
+              "started",
+              "unusable"
+            ]
+          }
         }
-      }
+      }]
     },
 
     "revolutions": {
       "description": "Engine revolutions",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Hz"
-    },
-
-    "maxRevolutions": {
-      "description": "Engine maximum revolutions",
-      "type": "number",
       "units": "Hz"
     },
 
@@ -102,15 +90,15 @@
     },
 
     "engineLoad": {
-      "description": "Engine load in percent",
+      "description": "Engine load ratio, 1 is 100%",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
 
     "engineTorque": {
-      "description": "Engine torque in percent",
+      "description": "Engine torque ratio, 1 is 100%",
       "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Percent"
+      "units": "ratio"
     },
 
     "transmission": {
@@ -123,6 +111,11 @@
               "enum": ["Forward", "Neutral", "Reverse", "Fault"]
             }
           }
+        },
+        "gearRatio": {
+          "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
         },
         "oilTemperature": {
           "description": "Oil temperature",
@@ -152,6 +145,18 @@
           "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
+        },
+        "propeller": {
+          "pitch ": {
+            "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "m"
+          },
+          "slip": {
+            "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "ratio"
+          }
         }
       }
     },
@@ -176,17 +181,17 @@
         "rate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         },
         "economyRate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         },
         "averageRate": {
           "description": "Fuel rate",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "TBD"
+          "units": "m3/s"
         }
       }
     },
