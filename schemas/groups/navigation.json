@@ -115,38 +115,33 @@
           "description": "The time this route was activated"
         },
 
-        "waypoint": {
-          "type": "object",
-          "title": "waypoint",
-          "description": "The last and next waypoints data",
-          "properties": {
-            "lastTime": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached"
-            },
+        "nextWaypoint": {
+          "type": "string",
+          "description": "UUID of the next waypoint, found in the waypoints list"
+        },
 
-            "last": {
-              "type": "string",
-              "description": "UUID of the last waypoint, found in the waypoints list"
-            },
+        "lastWaypoint": {
+          "type": "string",
+          "description": "UUID of the last waypoint, found in the waypoints list"
+        },
+        "lastWaypointTime": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Time of arrival at last waypoint"
+        },
+        "nextEta": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Estimated time of arrival at the next waypoint",
+          "example": "2014-03-24T00:15:41Z"
+        },
+        "nextWaypoint": {
+          "type": "string",
+          "description": "UUID to the next waypoint, found in the waypoints list"
+        },
 
-            "nextEta": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "Estimated time of arrival at the next waypoint",
-              "example": "2014-03-24T00:15:41Z"
-            },
-
-            "next": {
-              "type": "string",
-              "description": "UUID to the next waypoint, found in the waypoints list"
-            },
-
-            "xte": {
-              "type": "number",
-              "description": "Cross track error",
-              "units": "m"
-            }
-          }
+        "xte": {
+          "type": "number",
+          "description": "Cross track error",
+          "units": "m"
         }
       }
     },
