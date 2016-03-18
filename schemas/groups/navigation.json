@@ -272,6 +272,16 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Positional Dilution of Precision"
         },
+        
+        "verticalDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Vertical Dilution of Precision"
+        },
+
+        "timeDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Time Dilution of Precision"
+        },
 
         "geoidalSeparation": {
           "$ref": "../definitions.json#/definitions/numberValue",
