@@ -76,9 +76,15 @@
           "description": "Source of last update to active route"
         },
 
-        "bearingActual": {
+        "bearingActualTrue": {
           "type": "number",
           "description": "The current bearing of the next waypoint relative to true North",
+          "units": "rad"
+        },
+        
+         "bearingActualMagnetic": {
+          "type": "number",
+          "description": "The current bearing of the next waypoint relative to magnetic North",
           "units": "rad"
         },
 
@@ -88,19 +94,19 @@
           "units": "m"
         },
 
-        "bearingDirect": {
+        "bearingDirectTrue": {
           "type": "number",
           "description": "The bearing relative to true North from last waypoint to the next waypoint",
           "units": "rad"
         },
-
-        "courseRequired": {
+        
+         "bearingDirectMagnetic": {
           "type": "number",
-          "description": "The course relative to true North towards the next waypoint",
+          "description": "The bearing relative to magnetic North from last waypoint to the next waypoint",
           "units": "rad"
         },
 
-        "eta": {
+       "eta": {
           "$ref": "../definitions.json#/definitions/timestamp",
           "description": "The estimated time of arrival at the end of the current route"
         },
@@ -138,6 +144,21 @@
           "description": "UUID to the next waypoint, found in the waypoints list"
         },
 
+        "nextWaypointPosition": {
+          "description": "The position of the next waypoint in 3 dimensions",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "$ref": "../definitions.json#/definitions/position"
+          }]
+        },
+        
+        "waypointVmg": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Velocity Made Good (VMG) to next waypoint",
+          "units": "m/s"
+        },
+        
         "xte": {
           "type": "number",
           "description": "Cross track error",
