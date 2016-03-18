@@ -35,7 +35,7 @@
       "units": "Hz"
     },
 
-    "temperature": {
+    "engineTemperature": {
       "description": "Engine temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
@@ -63,18 +63,6 @@
       "description": "Total running time for engine",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "s"
-    },
-
-    "oilTemperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "coolantTemperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
     },
 
     "coolantPressure": {
@@ -194,24 +182,6 @@
           "units": "m3/s"
         }
       }
-    },
-
-    "waterTemperature": {
-      "description": "Water temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "exhaustTemperature": {
-      "description": "Exhaust temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "fuelRate": {
-      "description": "Fuel consumption rate",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "m3/s"
     }
   }
 }
