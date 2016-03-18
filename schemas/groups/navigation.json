@@ -156,6 +156,12 @@
       "description": "The magnetic variation (declination) at the current position",
       "units": "rad"
     },
+    
+    "magneticVariationAgeOfService": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Days since the 1st Jan 1970 that the variation calculation was made",
+      "units": "days"
+    },
 
     "destination": {
       "title": "destination",
