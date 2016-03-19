@@ -248,7 +248,6 @@
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
-          }, {
             "$ref": "#/definitions/dcQuantities"
           }, {
             "properties": {
