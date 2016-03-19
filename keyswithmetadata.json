@@ -751,107 +751,107 @@
     "description": "True heading on opposite tack.",
     "units": "rad"
   },
-  "propulsion.revolutions": {
+  "propulsion.*.revolutions": {
     "description": "Engine revolutions",
     "units": "Hz"
   },
-  "propulsion.temperature": {
+  "propulsion.*.temperature": {
     "description": "Engine temperature",
     "units": "K"
   },
-  "propulsion.oilTemperature": {
+  "propulsion.*.oilTemperature": {
     "description": "Engine temperature",
     "units": "K"
   },
-  "propulsion.oilPressure": {
+  "propulsion.*.oilPressure": {
     "description": "Oil pressure",
     "units": "Pa"
   },
-  "propulsion.alternatorVoltage": {
+  "propulsion.*.alternatorVoltage": {
     "description": "Alternator voltage",
     "units": "V"
   },
-  "propulsion.runTime": {
+  "propulsion.*.runTime": {
     "description": "Total running time for engine",
     "units": "s"
   },
-  "propulsion.coolantTemperature": {
+  "propulsion.*.coolantTemperature": {
     "description": "Engine temperature",
     "units": "K"
   },
-  "propulsion.coolantPressure": {
+  "propulsion.*.coolantPressure": {
     "description": "Coolant pressure",
     "units": "Pa"
   },
-  "propulsion.boostPressure": {
+  "propulsion.*.boostPressure": {
     "description": "Engine boost (turbo, supercharger) pressure",
     "units": "Pa"
   },
-  "propulsion.engineLoad": {
+  "propulsion.*.engineLoad": {
     "description": "Engine load ratio, 1 is 100%",
     "units": "ratio"
   },
-  "propulsion.engineTorque": {
+  "propulsion.*.engineTorque": {
     "description": "Engine torque ratio, 1 is 100%",
     "units": "ratio"
   },
-  "propulsion.transmission.gearRatio": {
+  "propulsion.*.transmission.gearRatio": {
     "description": "Gear ratio, Engine rotations per propeller shaft rotation",
     "units": "ratio"
   },
-  "propulsion.transmission.oilTemperature": {
+  "propulsion.*.transmission.oilTemperature": {
     "description": "Oil temperature",
     "units": "K"
   },
-  "propulsion.transmission.oilPressure": {
+  "propulsion.*.transmission.oilPressure": {
     "description": "Oil pressure",
     "units": "Pa"
   },
-  "propulsion.drive.trimState": {
+  "propulsion.*.drive.trimState": {
     "description": "Trim/tilt state",
     "units": "ratio"
   },
-  "propulsion.drive.thrustAngle": {
+  "propulsion.*.drive.thrustAngle": {
     "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
     "units": "rad"
   },
-  "propulsion.drive.propeller.pitch ": {
+  "propulsion.*.drive.propeller.pitch ": {
     "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
     "units": "m"
   },
-  "propulsion.drive.propeller.slip": {
+  "propulsion.*.drive.propeller.slip": {
     "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
     "units": "ratio"
   },
-  "propulsion.fuel.used": {
+  "propulsion.*.fuel.used": {
     "description": "Used fuel since last reset. Resetting is at user discretion",
     "units": "m3"
   },
-  "propulsion.fuel.pressure": {
+  "propulsion.*.fuel.pressure": {
     "description": "Fuel pressure",
     "units": "Pa"
   },
-  "propulsion.fuel.rate": {
+  "propulsion.*.fuel.rate": {
     "description": "Fuel rate",
     "units": "m3/s"
   },
-  "propulsion.fuel.economyRate": {
+  "propulsion.*.fuel.economyRate": {
     "description": "Fuel rate",
     "units": "m3/s"
   },
-  "propulsion.fuel.averageRate": {
+  "propulsion.*.fuel.averageRate": {
     "description": "Fuel rate",
     "units": "m3/s"
   },
-  "propulsion.waterTemperature": {
+  "propulsion.*.waterTemperature": {
     "description": "Water temperature",
     "units": "K"
   },
-  "propulsion.exhaustTemperature": {
+  "propulsion.*.exhaustTemperature": {
     "description": "Exhaust temperature",
     "units": "K"
   },
-  "propulsion.fuelRate": {
+  "propulsion.*.fuelRate": {
     "description": "Fuel consumption rate",
     "units": "m3/s"
   },
