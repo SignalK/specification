@@ -51,6 +51,7 @@
 
         "voltage": {
           "type": "object",
+          "units": "V",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
@@ -100,6 +101,7 @@
 
         "current": {
           "type": "object",
+          "units": "A",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
