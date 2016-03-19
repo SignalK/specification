@@ -12,9 +12,9 @@ subSchemas.definitions = require('../schemas/definitions.json');
 var data = {};
 
 _.forOwn(subSchemas, function(schema, schemaName) {
-  //  if (schemaName === 'tanks') {
+//   if (schemaName === 'electrical') {
   extractUnits(data, schemaName, schema, schema);
-  //  }
+//    }
 })
 
 console.log(JSON.stringify(data, null, 2));
@@ -30,9 +30,12 @@ function extractUnits(result, pathPrefix, element, schema) {
         description: value.description,
         units: value.units
       };
+      extractUnits(result, pathPrefix + '.' + key, value, schema);
     } else if (typeof value === 'object') {
       if (key === 'definitions') {
         return
+      } else if (key === 'allOf') {
+        extractUnits(result, pathPrefix, allOf(value, schema), schema);
       } else if (key === '$ref') {
         extractUnits(result, pathPrefix, value, schema);
       } else if (key === 'patternProperties') {
@@ -46,6 +49,20 @@ function extractUnits(result, pathPrefix, element, schema) {
       }
     }
   })
+}
+
+function allOf(allOfArray, schema) {
+  var elements = allOfArray.map(function(element){
+    if (element['$ref']) {
+      return getDefinition(element['$ref'], schema)
+    }
+    return element
+  });
+  var merged = elements.reduce(function(acc, element){
+    _.merge(acc, element);
+    return acc;
+  }, {});
+  return merged;
 }
 
 function getDefinition(reference, schema) {

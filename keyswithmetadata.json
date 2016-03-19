@@ -147,27 +147,27 @@
     "description": "The current true heading of the vessel",
     "units": "rad"
   },
-  "navigation.position.allOf.1.allOf.1.longitude": {
+  "navigation.position.longitude": {
     "description": "Longitude",
     "units": "deg"
   },
-  "navigation.position.allOf.1.allOf.1.latitude": {
+  "navigation.position.latitude": {
     "description": "Latitude",
     "units": "deg"
   },
-  "navigation.position.allOf.1.allOf.1.altitude": {
+  "navigation.position.altitude": {
     "description": "Altitude",
     "units": "m"
   },
-  "navigation.attitude.allOf.1.roll": {
+  "navigation.attitude.roll": {
     "description": "Vessel roll, +ve is list to starboard",
     "units": "rad"
   },
-  "navigation.attitude.allOf.1.pitch": {
+  "navigation.attitude.pitch": {
     "description": "Pitch, +ve is bow up",
     "units": "rad"
   },
-  "navigation.attitude.allOf.1.yaw": {
+  "navigation.attitude.yaw": {
     "description": "Yaw, +ve is heading change to starboard",
     "units": "rad"
   },
@@ -207,127 +207,133 @@
     "description": "Current distance to anchor",
     "units": "m"
   },
-  "navigation.anchor.position.allOf.1.allOf.1.longitude": {
+  "navigation.anchor.position.longitude": {
     "description": "Longitude",
     "units": "deg"
   },
-  "navigation.anchor.position.allOf.1.allOf.1.latitude": {
+  "navigation.anchor.position.latitude": {
     "description": "Latitude",
     "units": "deg"
   },
-  "navigation.anchor.position.allOf.1.allOf.1.altitude": {
+  "navigation.anchor.position.altitude": {
     "description": "Altitude",
     "units": "m"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.ripple": {
+  "electrical.batteries.*.voltage": {
+    "units": "V"
+  },
+  "electrical.batteries.*.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.meta.nominal": {
+  "electrical.batteries.*.voltage.meta.nominal": {
     "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.meta.warnUpper": {
+  "electrical.batteries.*.voltage.meta.warnUpper": {
     "description": "Upper operational voltage limit",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.meta.warnLower": {
+  "electrical.batteries.*.voltage.meta.warnLower": {
     "description": "Lower operational voltage limit",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.meta.faultUpper": {
+  "electrical.batteries.*.voltage.meta.faultUpper": {
     "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.voltage.allOf.1.meta.faultLower": {
+  "electrical.batteries.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.batteries.*.allOf.1.current.allOf.1.meta.warnUpper": {
+  "electrical.batteries.*.current": {
+    "units": "A"
+  },
+  "electrical.batteries.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
     "units": "A"
   },
-  "electrical.batteries.*.allOf.1.current.allOf.1.meta.warnLower": {
+  "electrical.batteries.*.current.meta.warnLower": {
     "description": "Lower operational current limit",
     "units": "A"
   },
-  "electrical.batteries.*.allOf.1.current.allOf.1.meta.faultUpper": {
+  "electrical.batteries.*.current.meta.faultUpper": {
     "description": "Upper fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.batteries.*.allOf.1.current.allOf.1.meta.faultLower": {
+  "electrical.batteries.*.current.meta.faultLower": {
     "description": "Lower fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.batteries.*.allOf.1.temperature.allOf.1.warnUpper": {
+  "electrical.batteries.*.temperature.warnUpper": {
     "description": "Upper operational temperature limit",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.1.temperature.allOf.1.warnLower": {
+  "electrical.batteries.*.temperature.warnLower": {
     "description": "Lower operational temperature limit",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.1.temperature.allOf.1.faultUpper": {
+  "electrical.batteries.*.temperature.faultUpper": {
     "description": "Upper fault limit of temperature - device may disable",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.1.temperature.allOf.1.faultLower": {
+  "electrical.batteries.*.temperature.faultLower": {
     "description": "Lower fault limit of temperature - device may disable",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.2.meta.allOf.0.dateInstalled.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "electrical.batteries.*.allOf.2.temperature.limitDischargeLower": {
+  "electrical.batteries.*.temperature.limitDischargeLower": {
     "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.2.temperature.limitDischargeUpper": {
+  "electrical.batteries.*.temperature.limitDischargeUpper": {
     "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.2.temperature.limitRechargeLower": {
+  "electrical.batteries.*.temperature.limitRechargeLower": {
     "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.2.temperature.limitRechargeUpper": {
+  "electrical.batteries.*.temperature.limitRechargeUpper": {
     "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
     "units": "K"
   },
-  "electrical.batteries.*.allOf.2.capacity.nominal": {
+  "electrical.batteries.*.meta.dateInstalled.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "electrical.batteries.*.capacity.nominal": {
     "description": "The capacity of battery as specified by the manufacturer",
     "units": "J"
   },
-  "electrical.batteries.*.allOf.2.capacity.actual": {
+  "electrical.batteries.*.capacity.actual": {
     "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
     "units": "J"
   },
-  "electrical.batteries.*.allOf.2.capacity.remaining": {
+  "electrical.batteries.*.capacity.remaining": {
     "description": "Capacity remaining in battery",
     "units": "J"
   },
-  "electrical.batteries.*.allOf.2.capacity.dischargeLimit": {
+  "electrical.batteries.*.capacity.dischargeLimit": {
     "description": "Minimum capacity to be left in the battery while discharging",
     "units": "J"
   },
-  "electrical.batteries.*.allOf.2.capacity.stateOfCharge": {
+  "electrical.batteries.*.capacity.stateOfCharge": {
     "description": "State of charge, 1 = 100%",
     "units": "ratio"
   },
-  "electrical.batteries.*.allOf.2.capacity.dischargeSinceFull": {
+  "electrical.batteries.*.capacity.dischargeSinceFull": {
     "description": "Cumulative discharge since battery was last full",
     "units": "C"
   },
-  "electrical.batteries.*.allOf.2.capacity.timeRemaining": {
+  "electrical.batteries.*.capacity.timeRemaining": {
     "description": "Time to discharge to discharge limit at current rate",
     "units": "s"
   },
-  "electrical.batteries.*.allOf.2.lifetimeDischarge": {
+  "electrical.batteries.*.lifetimeDischarge": {
     "description": "Cumulative charge discharged from battery over operational lifetime of battery",
     "units": "C"
   },
-  "electrical.batteries.*.allOf.2.lifetimeRecharge": {
+  "electrical.batteries.*.lifetimeRecharge": {
     "description": "Cumulative charge recharged into battery over operational lifetime of battery",
     "units": "C"
   },
@@ -335,59 +341,65 @@
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.ripple": {
+  "electrical.inverters.*.dc.voltage": {
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.meta.nominal": {
+  "electrical.inverters.*.dc.voltage.meta.nominal": {
     "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
     "units": "V"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.meta.warnUpper": {
+  "electrical.inverters.*.dc.voltage.meta.warnUpper": {
     "description": "Upper operational voltage limit",
     "units": "V"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.meta.warnLower": {
+  "electrical.inverters.*.dc.voltage.meta.warnLower": {
     "description": "Lower operational voltage limit",
     "units": "V"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.meta.faultUpper": {
+  "electrical.inverters.*.dc.voltage.meta.faultUpper": {
     "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.inverters.*.dc.voltage.allOf.1.meta.faultLower": {
+  "electrical.inverters.*.dc.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.inverters.*.dc.current.allOf.1.meta.warnUpper": {
+  "electrical.inverters.*.dc.current": {
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.current.meta.warnUpper": {
     "description": "Upper operational current limit",
     "units": "A"
   },
-  "electrical.inverters.*.dc.current.allOf.1.meta.warnLower": {
+  "electrical.inverters.*.dc.current.meta.warnLower": {
     "description": "Lower operational current limit",
     "units": "A"
   },
-  "electrical.inverters.*.dc.current.allOf.1.meta.faultUpper": {
+  "electrical.inverters.*.dc.current.meta.faultUpper": {
     "description": "Upper fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.inverters.*.dc.current.allOf.1.meta.faultLower": {
+  "electrical.inverters.*.dc.current.meta.faultLower": {
     "description": "Lower fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.inverters.*.dc.temperature.allOf.1.warnUpper": {
+  "electrical.inverters.*.dc.temperature.warnUpper": {
     "description": "Upper operational temperature limit",
     "units": "K"
   },
-  "electrical.inverters.*.dc.temperature.allOf.1.warnLower": {
+  "electrical.inverters.*.dc.temperature.warnLower": {
     "description": "Lower operational temperature limit",
     "units": "K"
   },
-  "electrical.inverters.*.dc.temperature.allOf.1.faultUpper": {
+  "electrical.inverters.*.dc.temperature.faultUpper": {
     "description": "Upper fault limit of temperature - device may disable",
     "units": "K"
   },
-  "electrical.inverters.*.dc.temperature.allOf.1.faultLower": {
+  "electrical.inverters.*.dc.temperature.faultLower": {
     "description": "Lower fault limit of temperature - device may disable",
     "units": "K"
   },
@@ -423,67 +435,73 @@
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.ripple": {
+  "electrical.chargers.*.voltage": {
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.meta.nominal": {
+  "electrical.chargers.*.voltage.meta.nominal": {
     "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.meta.warnUpper": {
+  "electrical.chargers.*.voltage.meta.warnUpper": {
     "description": "Upper operational voltage limit",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.meta.warnLower": {
+  "electrical.chargers.*.voltage.meta.warnLower": {
     "description": "Lower operational voltage limit",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.meta.faultUpper": {
+  "electrical.chargers.*.voltage.meta.faultUpper": {
     "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.voltage.allOf.1.meta.faultLower": {
+  "electrical.chargers.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical.chargers.*.allOf.0.current.allOf.1.meta.warnUpper": {
+  "electrical.chargers.*.current": {
+    "units": "A"
+  },
+  "electrical.chargers.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
     "units": "A"
   },
-  "electrical.chargers.*.allOf.0.current.allOf.1.meta.warnLower": {
+  "electrical.chargers.*.current.meta.warnLower": {
     "description": "Lower operational current limit",
     "units": "A"
   },
-  "electrical.chargers.*.allOf.0.current.allOf.1.meta.faultUpper": {
+  "electrical.chargers.*.current.meta.faultUpper": {
     "description": "Upper fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.chargers.*.allOf.0.current.allOf.1.meta.faultLower": {
+  "electrical.chargers.*.current.meta.faultLower": {
     "description": "Lower fault limit of battery current - BMS may disconnect battery",
     "units": "A"
   },
-  "electrical.chargers.*.allOf.0.temperature.allOf.1.warnUpper": {
+  "electrical.chargers.*.temperature.warnUpper": {
     "description": "Upper operational temperature limit",
     "units": "K"
   },
-  "electrical.chargers.*.allOf.0.temperature.allOf.1.warnLower": {
+  "electrical.chargers.*.temperature.warnLower": {
     "description": "Lower operational temperature limit",
     "units": "K"
   },
-  "electrical.chargers.*.allOf.0.temperature.allOf.1.faultUpper": {
+  "electrical.chargers.*.temperature.faultUpper": {
     "description": "Upper fault limit of temperature - device may disable",
     "units": "K"
   },
-  "electrical.chargers.*.allOf.0.temperature.allOf.1.faultLower": {
+  "electrical.chargers.*.temperature.faultLower": {
     "description": "Lower fault limit of temperature - device may disable",
     "units": "K"
   },
-  "electrical.chargers.*.allOf.1.meta.allOf.0.dateInstalled.$ref": {
+  "electrical.chargers.*.meta.dateInstalled.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "electrical.chargers.*.allOf.1.mode.timestamp.$ref": {
+  "electrical.chargers.*.mode.timestamp.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
@@ -611,15 +629,15 @@
     "description": "Depth transducer is below the water",
     "units": "m"
   },
-  "environment.current.allOf.1.drift": {
+  "environment.current.drift": {
     "description": "The speed component of the water current vector",
     "units": "m/s"
   },
-  "environment.current.allOf.1.setTrue": {
+  "environment.current.setTrue": {
     "description": "The direction component of the water current vector referenced to true (geographic) north",
     "units": "rad"
   },
-  "environment.current.allOf.1.setMagnetic": {
+  "environment.current.setMagnetic": {
     "description": "The direction component of the water current vector referenced to magnetic north",
     "units": "rad"
   },
@@ -867,15 +885,15 @@
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "resources.notes.*.anyOf.1.position.allOf.1.longitude": {
+  "resources.notes.*.anyOf.1.position.longitude": {
     "description": "Longitude",
     "units": "deg"
   },
-  "resources.notes.*.anyOf.1.position.allOf.1.latitude": {
+  "resources.notes.*.anyOf.1.position.latitude": {
     "description": "Latitude",
     "units": "deg"
   },
-  "resources.notes.*.anyOf.1.position.allOf.1.altitude": {
+  "resources.notes.*.anyOf.1.position.altitude": {
     "description": "Altitude",
     "units": "m"
   },
