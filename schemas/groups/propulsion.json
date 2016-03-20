@@ -196,22 +196,10 @@
       }
     },
 
-    "waterTemperature": {
-      "description": "Water temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
     "exhaustTemperature": {
       "description": "Exhaust temperature",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "K"
-    },
-
-    "fuelRate": {
-      "description": "Fuel consumption rate",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "m3/s"
     }
   }
 }
