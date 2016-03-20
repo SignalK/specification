@@ -329,6 +329,12 @@
                     "units": "ratio"
                   },
 
+                  "stateOfHealth": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "State of Health, 1 = 100%",
+                    "units": "ratio"
+                  },                  
+
                   "dischargeSinceFull": {
                     "$ref": "../definitions.json#/definitions/numberValue",
                     "description": "Cumulative discharge since battery was last full",
