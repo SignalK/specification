@@ -157,6 +157,12 @@
       "units": "rad"
     },
 
+    "magneticVariationAgeOfService": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Seconds since the 1st Jan 1970 that the variation calculation was made",
+      "units": "s"
+    },
+
     "destination": {
       "title": "destination",
       "description": "The intended destination of this trip",
