@@ -53,6 +53,39 @@
         },
         "type": {
           "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "productFunction": {
+          "type": "number"
+        },
+        "productClass": {
+          "type": "number"
+        },
+        "productCode": {
+          "type": "number"
+        },
+        "productName": {
+          "type": "string"
+        },
+        "softwareVersion": {
+          "type": "string"
+        },
+        "hardwareVersion": {
+          "type": "string"
+        },
+        "serialNo": {
+          "type": "string"
+        },
+        "installationNote1": {
+          "type": "string"
+        },
+        "installationNote2": {
+          "type": "string"
+        },
+        "manufacturerInfo": {
+          "type": "string"
         }
       }
     }
