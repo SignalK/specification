@@ -179,6 +179,9 @@
     "description": "Altitude",
     "units": "m"
   },
+  "electrical.batteries.*.voltage": {
+    "units": "V"
+  },
   "electrical.batteries.*.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
@@ -202,6 +205,9 @@
   "electrical.batteries.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
+  },
+  "electrical.batteries.*.current": {
+    "units": "A"
   },
   "electrical.batteries.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -295,6 +301,9 @@
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
+  "electrical.inverters.*.dc.voltage": {
+    "units": "V"
+  },
   "electrical.inverters.*.dc.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
@@ -318,6 +327,9 @@
   "electrical.inverters.*.dc.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
+  },
+  "electrical.inverters.*.dc.current": {
+    "units": "A"
   },
   "electrical.inverters.*.dc.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -379,6 +391,9 @@
     "description": "Apparent power.",
     "units": "W"
   },
+  "electrical.chargers.*.voltage": {
+    "units": "V"
+  },
   "electrical.chargers.*.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
@@ -402,6 +417,9 @@
   "electrical.chargers.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
+  },
+  "electrical.chargers.*.current": {
+    "units": "A"
   },
   "electrical.chargers.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -704,7 +722,7 @@
     "units": "K"
   },
   "propulsion.*.oilTemperature": {
-    "description": "Engine temperature",
+    "description": "Oil temperature",
     "units": "K"
   },
   "propulsion.*.oilPressure": {
@@ -720,7 +738,7 @@
     "units": "s"
   },
   "propulsion.*.coolantTemperature": {
-    "description": "Engine temperature",
+    "description": "Coolant temperature",
     "units": "K"
   },
   "propulsion.*.coolantPressure": {
