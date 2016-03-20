@@ -12,24 +12,27 @@ subSchemas.definitions = require('../schemas/definitions.json');
 var data = {};
 
 _.forOwn(subSchemas, function(schema, schemaName) {
+//   if (schemaName === 'electrical') {
   extractUnits(data, schemaName, schema, schema);
+//    }
 })
 
 console.log(JSON.stringify(data, null, 2));
 
 function extractUnits(result, pathPrefix, element, schema) {
   _.forOwn(element, function(value, key) {
+//    console.log(pathPrefix + " " + key + " = " + value)
     if (key === '$ref') {
       value = getDefinition(value, schema);
     }
-    if (value && value.units && key != 'definitions' && key != '$ref') {
+    if (value && value.units && key != 'definitions') {
       result[pathPrefix + '.' + key] = {
         description: value.description,
         units: value.units
       };
       extractUnits(result, pathPrefix + '.' + key, value, schema);
     } else if (typeof value === 'object') {
-      if (key === 'definitions') {
+      if (key === 'definitions' || key === 'timestamp') {
         return
       } else if (key === 'allOf') {
         extractUnits(result, pathPrefix, allOf(value, schema), schema);

@@ -4,192 +4,210 @@
   "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
   "title": "propulsion",
   "description": "An engine, named by a unique name within this vessel",
-  "properties": {
-    "label": {
-      "type": "string",
-      "description": "Human readable label for the propulsion unit"
-    },
+  "patternProperties": {
+    "(^[A-Za-z0-9]+$)": {
+      "description": "This regex pattern is used for validation of the identifier for the propulsion unit",
 
-    "state": {
-      "type": "object",
-      "description": "The current state of the engine",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }, {
-        "properties": {
-          "value": {
-            "type": "string",
-            "enum": [
-              "stopped",
-              "started",
-              "unusable"
-            ]
-          }
-        }
-      }]
-    },
-
-    "revolutions": {
-      "description": "Engine revolutions",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Hz"
-    },
-
-    "temperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "oilTemperature": {
-      "description": "Oil temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "oilPressure": {
-      "description": "Oil pressure",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa"
-    },
-
-    "alternatorVoltage": {
-      "description": "Alternator voltage",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "V"
-    },
-
-    "runTime": {
-      "description": "Total running time for engine",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "s"
-    },
-
-    "oilTemperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "coolantTemperature": {
-      "description": "Engine temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
-    },
-
-    "coolantPressure": {
-      "description": "Coolant pressure",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa"
-    },
-
-    "boostPressure": {
-      "description": "Engine boost (turbo, supercharger) pressure",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa"
-    },
-
-    "engineLoad": {
-      "description": "Engine load ratio, 1 is 100%",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "ratio"
-    },
-
-    "engineTorque": {
-      "description": "Engine torque ratio, 1 is 100%",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "ratio"
-    },
-
-    "transmission": {
-      "type": "object",
       "properties": {
-        "gear": {
+        "label": {
+          "type": "string",
+          "description": "Human readable label for the propulsion unit"
+        },
+
+        "state": {
           "type": "object",
-          "properties": {
-            "value": {
-              "enum": ["Forward", "Neutral", "Reverse", "Fault"]
+          "description": "The current state of the engine",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "properties": {
+              "value": {
+                "type": "string",
+                "enum": [
+                  "stopped",
+                  "started",
+                  "unusable"
+                ]
+              }
             }
-          }
+          }]
         },
-        "gearRatio": {
-          "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+
+        "revolutions": {
+          "description": "Engine revolutions",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "ratio"
+          "units": "Hz"
         },
+
+        "temperature": {
+          "description": "Engine temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+
         "oilTemperature": {
           "description": "Oil temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
+
         "oilPressure": {
           "description": "Oil pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
-        }
-      }
-    },
+        },
 
-    "drive": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "enum": ["saildrive", "shaft", "outboard", "jet", "pod", "other"]
-        },
-        "trimState": {
-          "description": "Trim/tilt state",
+        "alternatorVoltage": {
+          "description": "Alternator voltage",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "ratio"
+          "units": "V"
         },
-        "thrustAngle": {
-          "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
-        },
-        "propeller": {
-          "pitch ": {
-            "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "units": "m"
-          },
-          "slip": {
-            "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
-            "$ref": "../definitions.json#/definitions/numberValue",
-            "units": "ratio"
-          }
-        }
-      }
-    },
 
-    "fuel": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "Fuel type",
-          "enum": ["diesel", "petrol", "electric", "coal/wood", "other"]
-        },
-        "used": {
-          "description": "Used fuel since last reset. Resetting is at user discretion",
+        "runTime": {
+          "description": "Total running time for engine",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m3"
+          "units": "s"
         },
-        "pressure": {
-          "description": "Fuel pressure",
+
+        "coolantTemperature": {
+          "description": "Coolant temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+
+        "coolantPressure": {
+          "description": "Coolant pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
-        "rate": {
-          "description": "Fuel rate",
+
+        "boostPressure": {
+          "description": "Engine boost (turbo, supercharger) pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m3/s"
+          "units": "Pa"
         },
-        "economyRate": {
-          "description": "Fuel rate",
+
+        "engineLoad": {
+          "description": "Engine load ratio, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m3/s"
+          "units": "ratio"
         },
-        "averageRate": {
-          "description": "Fuel rate",
+
+        "engineTorque": {
+          "description": "Engine torque ratio, 1 is 100%",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+
+        "transmission": {
+          "type": "object",
+          "properties": {
+            "gear": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": ["Forward", "Neutral", "Reverse", "Fault"]
+                }
+              }
+            },
+            "gearRatio": {
+              "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ratio"
+            },
+            "oilTemperature": {
+              "description": "Oil temperature",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "K"
+            },
+            "oilPressure": {
+              "description": "Oil pressure",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "Pa"
+            }
+          }
+        },
+
+        "drive": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": ["saildrive", "shaft", "outboard", "jet", "pod", "other"]
+            },
+            "trimState": {
+              "description": "Trim/tilt state",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ratio"
+            },
+            "thrustAngle": {
+              "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
+            "propeller": {
+              "pitch ": {
+                "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "m"
+              },
+              "slip": {
+                "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "ratio"
+              }
+            }
+          }
+        },
+
+        "fuel": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "Fuel type",
+              "enum": ["diesel", "petrol", "electric", "coal/wood", "other"]
+            },
+            "used": {
+              "description": "Used fuel since last reset. Resetting is at user discretion",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m3"
+            },
+            "pressure": {
+              "description": "Fuel pressure",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "Pa"
+            },
+            "rate": {
+              "description": "Fuel rate",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m3/s"
+            },
+            "economyRate": {
+              "description": "Fuel rate",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m3/s"
+            },
+            "averageRate": {
+              "description": "Fuel rate",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m3/s"
+            }
+          }
+        },
+
+        "waterTemperature": {
+          "description": "Water temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+
+        "exhaustTemperature": {
+          "description": "Exhaust temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+
+        "fuelRate": {
+          "description": "Fuel consumption rate",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m3/s"
         }
