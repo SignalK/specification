@@ -32,7 +32,7 @@ function extractUnits(result, pathPrefix, element, schema) {
       };
       extractUnits(result, pathPrefix + '.' + key, value, schema);
     } else if (typeof value === 'object') {
-      if (key === 'definitions') {
+      if (key === 'definitions' || key === 'timestamp') {
         return
       } else if (key === 'allOf') {
         extractUnits(result, pathPrefix, allOf(value, schema), schema);

@@ -7,10 +7,6 @@
     "description": "The displacement of the vessel",
     "units": "kg"
   },
-  "design.draft.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "design.draft.minimum": {
     "description": "The minimum draft of the vessel",
     "units": "m"
@@ -22,10 +18,6 @@
   "design.draft.canoe": {
     "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
     "units": "m"
-  },
-  "design.length.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
   },
   "design.length.overall": {
     "description": "Length overall",
@@ -47,10 +39,6 @@
     "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
     "units": "ratio"
   },
-  "design.keel.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "design.beam": {
     "description": "Beam length",
     "units": "m"
@@ -59,14 +47,6 @@
     "description": "Total height of the vessel",
     "units": "m"
   },
-  "design.rigging.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "navigation.lights.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "navigation.courseOverGroundMagnetic": {
     "description": "Course over ground (magnetic)",
     "units": "rad"
@@ -74,10 +54,6 @@
   "navigation.courseOverGroundTrue": {
     "description": "Course over ground (true)",
     "units": "rad"
-  },
-  "navigation.activeRoute.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
   },
   "navigation.activeRoute.bearingActual": {
     "description": "The current bearing of the next waypoint relative to true North",
@@ -120,14 +96,6 @@
     "units": "rad"
   },
   "navigation.destination.eta.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "navigation.destination.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "navigation.gnss.timestamp.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
@@ -191,14 +159,6 @@
     "description": "Trip log value",
     "units": "m"
   },
-  "navigation.state.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "navigation.anchor.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "navigation.anchor.maxRadius": {
     "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
     "units": "m"
@@ -218,9 +178,6 @@
   "navigation.anchor.position.altitude": {
     "description": "Altitude",
     "units": "m"
-  },
-  "electrical.batteries.*.voltage": {
-    "units": "V"
   },
   "electrical.batteries.*.voltage.ripple": {
     "description": "Ripple voltage",
@@ -245,9 +202,6 @@
   "electrical.batteries.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
-  },
-  "electrical.batteries.*.current": {
-    "units": "A"
   },
   "electrical.batteries.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -341,9 +295,6 @@
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "electrical.inverters.*.dc.voltage": {
-    "units": "V"
-  },
   "electrical.inverters.*.dc.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
@@ -367,9 +318,6 @@
   "electrical.inverters.*.dc.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
-  },
-  "electrical.inverters.*.dc.current": {
-    "units": "A"
   },
   "electrical.inverters.*.dc.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -431,13 +379,6 @@
     "description": "Apparent power.",
     "units": "W"
   },
-  "electrical.inverters.*.mode.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "electrical.chargers.*.voltage": {
-    "units": "V"
-  },
   "electrical.chargers.*.voltage.ripple": {
     "description": "Ripple voltage",
     "units": "V"
@@ -461,9 +402,6 @@
   "electrical.chargers.*.voltage.meta.faultLower": {
     "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
-  },
-  "electrical.chargers.*.current": {
-    "units": "A"
   },
   "electrical.chargers.*.current.meta.warnUpper": {
     "description": "Upper operational current limit",
@@ -498,10 +436,6 @@
     "units": "K"
   },
   "electrical.chargers.*.meta.dateInstalled.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "electrical.chargers.*.mode.timestamp.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
@@ -701,14 +635,6 @@
     "description": "Apparent wind speed",
     "units": "m/s"
   },
-  "environment.time.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "environment.mode.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "performance.polarSpeed": {
     "description": "The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.",
     "units": "m/s"
@@ -873,17 +799,9 @@
     "description": "Fuel consumption rate",
     "units": "m3/s"
   },
-  "resources.charts.*.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "resources.routes.*.distance": {
     "description": "Total distance from start to end",
     "units": "m"
-  },
-  "resources.routes.*.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
   },
   "resources.notes.*.anyOf.1.position.longitude": {
     "description": "Longitude",
@@ -896,14 +814,6 @@
   "resources.notes.*.anyOf.1.position.altitude": {
     "description": "Altitude",
     "units": "m"
-  },
-  "resources.notes.*.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "resources.regions.*.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
   },
   "sails.inventory.*.area": {
     "description": "The total area of this sail in square meters",
@@ -933,14 +843,6 @@
     "description": "The angle the rudder should move to, +ve is rudder to Starboard",
     "units": "rad"
   },
-  "steering.autopilot.state.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
-  "steering.autopilot.mode.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
-  },
   "steering.autopilot.targetHeadingNorth": {
     "description": "Target heading for autopilot, relative to true North",
     "units": "rad"
@@ -948,10 +850,6 @@
   "steering.autopilot.targetHeadingMagnetic": {
     "description": "Target heading for autopilot, relative to magnetic North",
     "units": "rad"
-  },
-  "steering.autopilot.headingSource.timestamp.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
   },
   "steering.autopilot.deadZone": {
     "description": "Dead zone to ignore for rudder corrections",
