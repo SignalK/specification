@@ -211,6 +211,24 @@ function fillIdentityField(vesselData, identity) {
     vesselData.url = identity;
   }
 }
+
+function getSourceId(source) {
+  if (!source) {
+    return 'no_source';
+  }
+  if (source.src || source.pgn) {
+    return source.label +
+      (source.src ? '.' + source.src : '') +
+      (source.instance ? '.' + source.instance : '');
+  }
+  return source.label +
+    (source.talker ? '.' + source.talker : '.XX');
+}
+
+function keyForSourceIdPath(sourceId, path) {
+  return sourceId + "." + path;
+}
+
 module.exports.fillIdentityField = fillIdentityField;
 
 module.exports.validateFull = validateFull;
@@ -231,3 +249,5 @@ module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
 module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
+module.exports.getSourceId = getSourceId;
+module.exports.keyForSourceIdPath = keyForSourceIdPath;

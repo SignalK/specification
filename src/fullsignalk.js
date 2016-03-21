@@ -16,11 +16,15 @@
  */
 
 var _ = require('lodash');
-var signalkSchema = require('../')
+var signalkSchema = require('../');
+var getId;
 var debug = require('debug')('signalk:fullsignalk');
 
 
 function FullSignalK(id, type) {
+  //hack, apparently not available initially, so need to set lazily
+  getId = signalkSchema.getSourceId;
+
   this.root = {
     vessels: {}
   };
@@ -66,7 +70,7 @@ FullSignalK.prototype.pruneContexts = function(seconds) {
 FullSignalK.prototype.deleteContext = function(contextKey) {
   debug("Deleting context " + contextKey);
   var pathParts = contextKey.split('.');
-  if (pathParts.length === 2 ) {
+  if (pathParts.length === 2) {
     delete this.root[pathParts[0]][pathParts[1]];
   }
 }
@@ -227,16 +231,5 @@ function setMessage(leaf, source) {
   }
 }
 
-function getId(source) {
-  if (!source) {
-    return 'no_source';
-  }
-  if (source.src || source.pgn) {
-    return source.label +
-      (source.src ? '.' + source.src : '') +
-      (source.instance ? '.' + source.instance : '');
-  }
-  return source.label +
-    (source.talker ? '.' + source.talker : '.XX');
-}
+
 module.exports = FullSignalK;
