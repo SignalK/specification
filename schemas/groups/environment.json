@@ -84,7 +84,7 @@
       }
     },
 
-    "refridgeration": {
+    "refrigerator": {
       "$ref": "#/definitions/objectWithTemperature"
     },
     "freezer": {
