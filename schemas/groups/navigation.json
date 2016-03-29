@@ -151,6 +151,62 @@
       }
     },
 
+	"racing" :{
+		"type": "object",
+		"properties": {
+			"startLineStb" :{
+				"waypoint": {
+					"description": "UUID of waypoint for starboard start mark",
+					"type": "string"
+				}
+			},
+			"startLinePort" :{
+				"waypoint": {
+					"description": "UUID of waypoint for port start mark",
+					"type": "string"
+				}
+			},
+			"distanceStartline": {
+				"type": "number",
+				"description": "The current distance to the start line",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "m"
+			},
+			"timeToStart": {
+				"description": "Time left before start",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "s"
+			},
+			"timePortDown": {
+				"description": "Time to arrive at the start line on port, turning downwind",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "s"
+			},
+			"timePortUp": {
+				"description": "Time to arrive at the start line on port, turning upwind",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "s"
+			},
+			"timeStbdDown": {
+				"description": "Time to arrive at the start line on starboard, turning downwind",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "s"
+			},
+			"timeStbdUp": {
+				"description": "Time to arrive at the start line on starboard, turning upwind",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "s"
+			},
+			"distanceLayline": {
+				"type": "number",
+				"description": "The current distance to the layline",
+				"$ref": "../definitions.json#/definitions/numberValue",
+				"units": "m"
+			}
+			
+		}
+	},
+	
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
