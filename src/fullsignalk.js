@@ -66,7 +66,7 @@ FullSignalK.prototype.pruneContexts = function(seconds) {
 FullSignalK.prototype.deleteContext = function(contextKey) {
   debug("Deleting context " + contextKey);
   var pathParts = contextKey.split('.');
-  if (pathParts.length === 2 ) {
+  if (pathParts.length === 2) {
     delete this.root[pathParts[0]][pathParts[1]];
   }
 }
@@ -124,14 +124,16 @@ FullSignalK.prototype.updateSource = function(context, source, timestamp) {
 function handleNmea2000Source(labelSource, source, timestamp) {
   if (!labelSource[source.src]) {
     labelSource[source.src] = {
-      src: source.src,
-      pgns: {}
+      n2k: {
+        src: source.src,
+        pgns: {}
+      }
     };
   }
   if (source.instance && !labelSource[source.src][source.instance]) {
     labelSource[source.src][source.instance] = {}
   }
-  labelSource[source.src].pgns[source.pgn] = timestamp
+  labelSource[source.src].n2k.pgns[source.pgn] = timestamp
 }
 
 function handleNmea0183Source(labelSource, source, timestamp) {

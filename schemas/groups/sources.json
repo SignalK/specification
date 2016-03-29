@@ -9,23 +9,12 @@
       "patternProperties": {
         ".*": {
           "anyOf": [{
-            "required": ["src", "pgns"]
+            "required": ["n2k"]
           }, {
             "required": ["talker", "sentences"]
           }],
           "anyOf": [{
             "properties": {
-              "src": {
-                "type": "string"
-              },
-              "pgns": {
-                "type": "object",
-                "patternProperties": {
-                  "[0-9]*": {
-                    "$ref": "#/definitions/timestamp"
-                  }
-                }
-              },
               "talker": {
                 "type": "string"
               },
@@ -40,6 +29,17 @@
               "n2k": {
                 "type": "object",
                 "properties": {
+                  "src": {
+                    "type": "string"
+                  },
+                  "pgns": {
+                    "type": "object",
+                    "patternProperties": {
+                      "[0-9]*": {
+                        "$ref": "#/definitions/timestamp"
+                      }
+                    }
+                  },
                   "uniqueId": {
                     "type": "string",
                     "description": "Unique id of the source device"
@@ -86,7 +86,7 @@
           }, {
             "patternProperties": {
               ".*": {
-                "properties":{}
+                "properties": {}
               }
             }
           }]

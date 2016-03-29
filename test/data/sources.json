@@ -3,11 +3,11 @@
   "sources": {
     "N2K-1": {
       "36": {
-        "src": "36",
-        "pgns": {
-          "130312": ""
-        },
         "n2k": {
+          "src": "36",
+          "pgns": {
+            "130312": ""
+          },
           "uniqueId": "1722191",
           "deviceClass": 70,
           "deviceFunction": 140
