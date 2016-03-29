@@ -87,7 +87,7 @@
             }
           }
         },
-        "refridgeration": {
+        "refrigerator": {
           "temperature": {
             "value": 0,
             "$source": ".36.0",
