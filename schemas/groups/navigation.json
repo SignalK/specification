@@ -358,6 +358,41 @@
       }]
     },
 
+    "datum": {
+      "type": "object",
+      "title": "Datum",
+      "description": "Details of the Datum used by the GNSS device",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Datum being used by the GNSS device i.e. W84"
+          },
+          "local": {
+            "type": "string",
+            "description": "Datum that the Offsets are referenced to i.e. EUR"
+          },
+          "deltaLatitude": {
+            "type": "number",
+            "description": "Latitude offset to add to reference datum to get local",
+            "units": "deg"
+          },
+          "deltaLongitude": {
+            "type": "number",
+            "description": "Longitude offset to add to reference datum to get local",
+            "units": "deg"
+          },
+          "deltaAltitude": {
+            "type": "number",
+            "description": "Altitude offset to add to reference datum to get local",
+            "units": "m"
+          }
+        }
+      }]
+    },
+
     "attitude": {
       "type": "object",
       "title": "Attitude",
