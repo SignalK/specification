@@ -50,7 +50,7 @@
     "crewNames": {
       "type": "array",
       "description": "Array with the names of the crew",
-      "additionalProperties": [
+      "items": [
         {
           "type": "string",
           "description": "Name of a crew member of the vessel.",
