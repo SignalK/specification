@@ -51,6 +51,7 @@
 
         "voltage": {
           "type": "object",
+          "units": "V",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
@@ -100,6 +101,7 @@
 
         "current": {
           "type": "object",
+          "units": "A",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
@@ -246,7 +248,6 @@
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
-          }, {
             "$ref": "#/definitions/dcQuantities"
           }, {
             "properties": {
@@ -327,6 +328,12 @@
                     "description": "State of charge, 1 = 100%",
                     "units": "ratio"
                   },
+
+                  "stateOfHealth": {
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "description": "State of Health, 1 = 100%",
+                    "units": "ratio"
+                  },                  
 
                   "dischargeSinceFull": {
                     "$ref": "../definitions.json#/definitions/numberValue",
