@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "id": "https://signalk.github.io/specification/schemas/discovery.json#",
   "title": "SignalK Discovery",
   "description": "Schema for SignalK discovery resources used to locate server endpoints.",

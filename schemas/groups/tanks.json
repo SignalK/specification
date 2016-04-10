@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
   "description": "A tank, named by a unique identifier",
   "definitions": {

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema",
   "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
   "description": "Schema describing the navigation child-object of a Vessel.",
   "title": "navigation",
@@ -151,62 +151,62 @@
       }
     },
 
-	"racing" :{
-		"type": "object",
-		"properties": {
-			"startLineStb" :{
-				"waypoint": {
-					"description": "UUID of waypoint for starboard start mark",
-					"type": "string"
-				}
-			},
-			"startLinePort" :{
-				"waypoint": {
-					"description": "UUID of waypoint for port start mark",
-					"type": "string"
-				}
-			},
-			"distanceStartline": {
-				"type": "number",
-				"description": "The current distance to the start line",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "m"
-			},
-			"timeToStart": {
-				"description": "Time left before start",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "s"
-			},
-			"timePortDown": {
-				"description": "Time to arrive at the start line on port, turning downwind",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "s"
-			},
-			"timePortUp": {
-				"description": "Time to arrive at the start line on port, turning upwind",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "s"
-			},
-			"timeStbdDown": {
-				"description": "Time to arrive at the start line on starboard, turning downwind",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "s"
-			},
-			"timeStbdUp": {
-				"description": "Time to arrive at the start line on starboard, turning upwind",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "s"
-			},
-			"distanceLayline": {
-				"type": "number",
-				"description": "The current distance to the layline",
-				"$ref": "../definitions.json#/definitions/numberValue",
-				"units": "m"
-			}
-			
-		}
-	},
-	
+    "racing" :{
+      "type": "object",
+      "properties": {
+        "startLineStb" :{
+          "waypoint": {
+            "description": "UUID of waypoint for starboard start mark",
+            "type": "string"
+          }
+        },
+        "startLinePort" :{
+          "waypoint": {
+            "description": "UUID of waypoint for port start mark",
+            "type": "string"
+          }
+        },
+        "distanceStartline": {
+          "type": "number",
+          "description": "The current distance to the start line",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "timeToStart": {
+          "description": "Time left before start",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timePortDown": {
+          "description": "Time to arrive at the start line on port, turning downwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timePortUp": {
+          "description": "Time to arrive at the start line on port, turning upwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timeStbdDown": {
+          "description": "Time to arrive at the start line on starboard, turning downwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timeStbdUp": {
+          "description": "Time to arrive at the start line on starboard, turning upwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "distanceLayline": {
+          "type": "number",
+          "description": "The current distance to the layline",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        }
+
+      }
+    },
+
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
@@ -354,7 +354,7 @@
       "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }, {
-        "$ref": "../definitions.json#/definitions/position"
+      "$ref": "../definitions.json#/definitions/position"
       }]
     },
 
@@ -365,23 +365,23 @@
       "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }, {
-        "properties": {
-          "roll": {
-            "type": "number",
-            "description": "Vessel roll, +ve is list to starboard",
-            "units": "rad"
-          },
-          "pitch": {
-            "type": "number",
-            "description": "Pitch, +ve is bow up",
-            "units": "rad"
-          },
-          "yaw": {
-            "type": "number",
-            "description": "Yaw, +ve is heading change to starboard",
-            "units": "rad"
-          }
+      "properties": {
+        "roll": {
+          "type": "number",
+          "description": "Vessel roll, +ve is list to starboard",
+          "units": "rad"
+        },
+        "pitch": {
+          "type": "number",
+          "description": "Pitch, +ve is bow up",
+          "units": "rad"
+        },
+        "yaw": {
+          "type": "number",
+          "description": "Yaw, +ve is heading change to starboard",
+          "units": "rad"
         }
+      }
       }]
     },
 
@@ -492,7 +492,7 @@
           "allOf": [{
             "$ref": "../definitions.json#/definitions/commonValueFields"
           }, {
-            "$ref": "../definitions.json#/definitions/position"
+          "$ref": "../definitions.json#/definitions/position"
           }]
         }
       }
@@ -503,26 +503,26 @@
       "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }, {
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "GNSS Time and Date in ISO8601 format",
-            "exmple": "2015-12-05T13:11:59Z"
-          },
-          "gnssTimeSource": {
-            "description": "Source of GNSS Date and Time",
-            "enum": [
-              "GPS",
-              "GLONASS",
-              "Galileo",
-              "Beidou",
-              "IRNSS",
-              "Radio Signal",
-              "Internet",
-              "Local clock"
-            ]
-          }
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "GNSS Time and Date in ISO8601 format",
+          "exmple": "2015-12-05T13:11:59Z"
+        },
+        "gnssTimeSource": {
+          "description": "Source of GNSS Date and Time",
+          "enum": [
+            "GPS",
+            "GLONASS",
+            "Galileo",
+            "Beidou",
+            "IRNSS",
+            "Radio Signal",
+            "Internet",
+            "Local clock"
+          ]
         }
+      }
       }]
     }
   }
