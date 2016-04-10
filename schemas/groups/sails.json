@@ -30,13 +30,11 @@
 
             "material": {
               "type": "string",
-              "required": false,
               "description": "The material the sail is made from (optional)",
               "example": "canvas"
             },
             "brand": {
               "type": "string",
-              "required": false,
               "description": "The brand of the sail (optional)",
               "example": "North Sails"
             },

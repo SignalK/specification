@@ -4,7 +4,6 @@
   "id": "https://signalk.github.io/specification/schemas/groups/notifications.json#",
   "title": "notifications",
   "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
-  "required": false,
 
   "patternProperties": {
     "(^method$)": {
@@ -34,6 +33,7 @@
       "description":"Source of this data",
       "$ref": "../definitions.json#/definitions/source"
     },
+
     "(^[A-Za-z0-9-]+$)": {
       "description": "This regex pattern is used for validation of the path of the alarm",
       "$ref": "notifications.json#"
