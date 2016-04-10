@@ -13,17 +13,16 @@
         "(^[a-zA-Z0-9]+$)": {
           "type": "object",
           "description": "'sail' data type.",
+          "required": ["name", "type", "active", "area"],
           "properties": {
             "name": {
               "type": "string",
-              "required": true,
               "description": "An unique identifier by which the crew identifies a sail",
               "example": "J1"
             },
 
             "type": {
               "type": "string",
-              "required": true,
               "description": "The type of sail",
               "example": "Genaker"
             },
@@ -40,12 +39,10 @@
             },
             "active": {
               "type": "boolean",
-              "required": true,
               "description": "Indicates wether this sail is currently in use or not"
             },
             "area": {
               "type": "number",
-              "required": true,
               "description": "The total area of this sail in square meters",
               "units": "m2"
             },
