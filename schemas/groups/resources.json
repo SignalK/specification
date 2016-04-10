@@ -30,20 +30,14 @@
               "type": "string",
               "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
             },
-            "anyOf": [
-              {
-                "region": {
-                  "type": "string",
-                  "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
-                }
-              },
-              {
-                "geohash": {
-                  "description": "Position related to chart. Alternative to region",
-                  "$ref": "../definitions.json#/definitions/geohash"
-                }
-              }
-            ],
+            "region": {
+              "type": "string",
+              "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
+            },
+            "geohash": {
+              "description": "Position related to chart. Alternative to region",
+              "$ref": "../definitions.json#/definitions/geohash"
+            },
             "chartUrl": {
               "type": "string",
               "description": "A url to the chart file's storage location"
@@ -175,26 +169,18 @@
               "type": "string",
               "description": "A textual description of the note"
             },
-            "anyOf": [
-              {
-                "region": {
-                  "type": "string",
-                  "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
-                }
-              },
-              {
-                "position": {
-                  "description": "Position related to note. Alternative to region or geohash",
-                  "$ref": "../definitions.json#/definitions/position"
-                }
-              },
-              {
-                "geohash": {
-                  "description": "Position related to note. Alternative to region or position",
-                  "$ref": "../definitions.json#/definitions/geohash"
-                }
-              }
-            ],
+            "region": {
+              "type": "string",
+              "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
+            },
+            "position": {
+              "description": "Position related to note. Alternative to region or geohash",
+              "$ref": "../definitions.json#/definitions/position"
+            },
+            "geohash": {
+              "description": "Position related to note. Alternative to region or position",
+              "$ref": "../definitions.json#/definitions/geohash"
+            },
             "mimeType": {
               "type": "string",
               "description": "MIME type of the note"
