@@ -186,6 +186,11 @@
               "description": "Cross track error to the next mark",
               "units": "m"
             },
+            "arrivalRadius": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "The distance before next mark to raise arrival warnings",
+              "units": "m"
+            },
             "eta": {
               "type": "object",
               "description": "The estimated time of arrival at the next mark",
@@ -198,49 +203,7 @@
                 }
               }
               
-            },
-             "greatCircle": {
-                "type": "object",
-                "title": "Great Circle data",
-                "description": "Data based on great circle calculations to the next mark",
-                "properties": {
-                  "distance": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The current distance to the next mark (Great Circle)",
-                    "units": "m"
-                  },
-                  "bearingTrue": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The current bearing to the next mark relative to true North (Great Circle)",
-                    "units": "rad"
-                  },
-                  "bearingMagnetic": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The current bearing to the next mark relative to magnetic North (Great Circle)",
-                    "units": "rad"
-                  },
-                  "bearingDirectTrue": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The bearing relative to true North from last mark to the next mark (Great Circle)",
-                    "units": "rad"
-                  },
-                  "bearingDirectMagnetic": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The bearing relative to magnetic North from last mark to the next mark (Great Circle)",
-                    "units": "rad"
-                  },
-                  "courseRequiredTrue": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The bearing required  relative to true North from last mark to the next mark (Great Circle)",
-                    "units": "rad"
-                  },
-                  "courseRequiredMagnetic": {
-                    "$ref": "../definitions.json#/definitions/numberValue",
-                    "description": "The bearing required relative to magnetic North from last mark to the next mark (Great Circle)",
-                    "units": "rad"
-                  }
-                }
-              }
+            }
           }
           
         },
