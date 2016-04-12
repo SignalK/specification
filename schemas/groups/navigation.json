@@ -76,9 +76,15 @@
           "description": "Source of last update to active route"
         },
 
-        "bearingActual": {
+        "bearingActualTrue": {
           "type": "number",
           "description": "The current bearing of the next waypoint relative to true North",
+          "units": "rad"
+        },
+        
+         "bearingActualMagnetic": {
+          "type": "number",
+          "description": "The current bearing of the next waypoint relative to magnetic North",
           "units": "rad"
         },
 
@@ -88,19 +94,19 @@
           "units": "m"
         },
 
-        "bearingDirect": {
+        "bearingDirectTrue": {
           "type": "number",
           "description": "The bearing relative to true North from last waypoint to the next waypoint",
           "units": "rad"
         },
-
-        "courseRequired": {
+        
+         "bearingDirectMagnetic": {
           "type": "number",
-          "description": "The course relative to true North towards the next waypoint",
+          "description": "The bearing relative to magnetic North from last waypoint to the next waypoint",
           "units": "rad"
         },
 
-        "eta": {
+       "eta": {
           "$ref": "../definitions.json#/definitions/timestamp",
           "description": "The estimated time of arrival at the end of the current route"
         },
@@ -115,38 +121,48 @@
           "description": "The time this route was activated"
         },
 
-        "waypoint": {
-          "type": "object",
-          "title": "waypoint",
-          "description": "The last and next waypoints data",
-          "properties": {
-            "lastTime": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "The time the last waypoint was reached"
-            },
+        "nextWaypoint": {
+          "type": "string",
+          "description": "UUID of the next waypoint, found in the waypoints list"
+        },
 
-            "last": {
-              "type": "string",
-              "description": "UUID of the last waypoint, found in the waypoints list"
-            },
+        "lastWaypoint": {
+          "type": "string",
+          "description": "UUID of the last waypoint, found in the waypoints list"
+        },
+        "lastWaypointTime": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Time of arrival at last waypoint"
+        },
+        "nextEta": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Estimated time of arrival at the next waypoint",
+          "example": "2014-03-24T00:15:41Z"
+        },
+        "nextWaypoint": {
+          "type": "string",
+          "description": "UUID to the next waypoint, found in the waypoints list"
+        },
 
-            "nextEta": {
-              "$ref": "../definitions.json#/definitions/timestamp",
-              "description": "Estimated time of arrival at the next waypoint",
-              "example": "2014-03-24T00:15:41Z"
-            },
-
-            "next": {
-              "type": "string",
-              "description": "UUID to the next waypoint, found in the waypoints list"
-            },
-
-            "xte": {
-              "type": "number",
-              "description": "Cross track error",
-              "units": "m"
-            }
-          }
+        "nextWaypointPosition": {
+          "description": "The position of the next waypoint in 3 dimensions",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "$ref": "../definitions.json#/definitions/position"
+          }]
+        },
+        
+        "waypointVmg": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Velocity Made Good (VMG) to next waypoint",
+          "units": "m/s"
+        },
+        
+        "xte": {
+          "type": "number",
+          "description": "Cross track error",
+          "units": "m"
         }
       }
     },
@@ -317,6 +333,16 @@
         "positionDilution": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Positional Dilution of Precision"
+        },
+        
+        "verticalDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Vertical Dilution of Precision"
+        },
+
+        "timeDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Time Dilution of Precision"
         },
 
         "geoidalSeparation": {
