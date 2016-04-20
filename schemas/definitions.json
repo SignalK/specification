@@ -276,9 +276,43 @@
                 "$ref": "#/definitions/valuesNumberValue"
               }
             }
+          },
+          "historic": {
+              "$ref": "#/definitions/valuesTimeValue"
+          },
+          "last24h": {
+              "$ref": "#/definitions/valuesTimeValue"
           }
         }
       }]
+    },
+
+    "valuesTimeValue": {
+      "type": "object",
+      "patternProperties": {
+        "description": "ISO-8601 (UTC) string representing date and time.",
+        ".*": {
+          "properties": {
+            "value": {
+              "type": "number"
+            }
+          }
+        },
+        "max": {
+          "properties": {
+            "value": {
+              "type": "number"
+            }
+          }
+        },
+        "min": {
+          "properties": {
+            "value": {
+              "type": "number"
+            }
+          }
+        }
+      }
     },
 
     "valuesNumberValue": {
