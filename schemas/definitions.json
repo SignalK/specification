@@ -233,7 +233,7 @@
 
     "commonValueFields": {
       "type": "object",
-      "required": ["timestamp", "$source"],
+      "required": ["timestamp"],
       "properties": {
         "timestamp": {
           "$ref": "#/definitions/timestamp"
