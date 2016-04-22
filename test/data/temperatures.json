@@ -11,66 +11,46 @@
             "pgn": 130312
           }
         },
-        "air": {
-          "outside": {
-            "temperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            },
-            "dewPointTemperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            },
-            "apparentWindChillTemperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            },
-            "theoreticalWindChillTemperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            },
-            "heatIndexTemperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            }
+        "outside": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
           },
-          "inside": {
-            "temperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "",
-              "pgn": 130312
-            },
-            "engineRoom": {
-              "temperature": {
-                "value": 0,
-                "$source": ".36.0",
-                "timestamp": "",
-                "pgn": 130312
-              }
-            },
-            "mainCabin": {
-              "temperature": {
-                "value": 0,
-                "$source": ".36.0",
-                "timestamp": "",
-                "pgn": 130312
-              }
-            }
+          "dewPointTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
+          },
+          "apparentWindChillTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
+          },
+          "theoreticalWindChillTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
+          },
+          "heatIndexTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
           }
         },
-        "well": {
-          "live": {
+        "inside": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "",
+            "pgn": 130312
+          },
+          "engineRoom": {
             "temperature": {
               "value": 0,
               "$source": ".36.0",
@@ -78,7 +58,47 @@
               "pgn": 130312
             }
           },
-          "bait": {
+          "mainCabin": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "",
+              "pgn": 130312
+            }
+          },
+          "liveWell": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "",
+              "pgn": 130312
+            }
+          },
+          "baitWell": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "",
+              "pgn": 130312
+            }
+          },
+          "refrigerator": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "",
+              "pgn": 130312
+            }
+          },
+          "heating": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "",
+              "pgn": 130312
+            }
+          },
+          "freezer": {
             "temperature": {
               "value": 0,
               "$source": ".36.0",
@@ -87,31 +107,7 @@
             }
           }
         },
-        "refrigerator": {
-          "temperature": {
-            "value": 0,
-            "$source": ".36.0",
-            "timestamp": "",
-            "pgn": 130312
-          }
-        },
-        "heating": {
-          "temperature": {
-            "value": 0,
-            "$source": ".36.0",
-            "timestamp": "",
-            "pgn": 130312
-          }
-        },
-        "freezer": {
-          "temperature": {
-            "value": 0,
-            "$source": ".36.0",
-            "timestamp": "",
-            "pgn": 130312
-          }
-        }
-      },
+        
       "propulsion": {
         "exhaust": {
           "temperature": {
