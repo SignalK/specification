@@ -17,100 +17,123 @@
     }
   },
   "properties": {
-    "air": {
+    "outside": {
       "type": "object",
       "properties": {
-        "outside": {
-          "type": "object",
-          "properties": {
-            "temperature": {
-              "description": "Current outside air temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "dewPointTemperature": {
-              "description": "Current outside dew point temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "apparentWindChillTemperature": {
-              "description": "Current outside apparent wind chill temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "theoreticalWindChillTemperature": {
-              "description": "Current outside theoretical wind chill temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "heatIndexTemperature": {
-              "description": "Current outside heat index temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "pressure": {
-              "description": "Current outside air ambient pressure",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "Pa"
-            },
-            "humidity": {
-              "description": "Current outside air relative humidity",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "ratio"
-            }
+          "temperature": {
+            "description": "Current outside air temperature",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "K"
+          },
+          "dewPointTemperature": {
+            "description": "Current outside dew point temperature",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "K"
+          },
+          "apparentWindChillTemperature": {
+            "description": "Current outside apparent wind chill temperature",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "K"
+          },
+          "theoreticalWindChillTemperature": {
+            "description": "Current outside theoretical wind chill temperature",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "K"
+          },
+          "heatIndexTemperature": {
+            "description": "Current outside heat index temperature",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "K"
+          },
+          "pressure": {
+            "description": "Current outside air ambient pressure",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "Pa"
+          },
+          "humidity": {
+            "description": "Current outside air relative humidity",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "ratio"
           }
-        },
-        "inside": {
-          "type": "object",
-          "properties": {
-            "temperature": {
-              "description": "Current inside air temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "humidity": {
-              "description": "Current inside air relative humidity",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "ratio"
-            },
-            "engineRoom": {
-              "$ref": "#/definitions/objectWithTemperature"
-            },
-            "mainCabin": {
-              "$ref": "#/definitions/objectWithTemperature"
-            }
-          }
-        }
+        }  
       }
     },
-
-    "refrigerator": {
-      "$ref": "#/definitions/objectWithTemperature"
-    },
-    "freezer": {
-      "$ref": "#/definitions/objectWithTemperature"
-    },
-    "heating": {
-      "$ref": "#/definitions/objectWithTemperature"
-    },
-
-    "well": {
-      "type": "object",
-      "properties": {
-        "live": {
-          "$ref": "#/definitions/objectWithTemperature"
-        },
-        "bait": {
-          "$ref": "#/definitions/objectWithTemperature"
-        }
-      }
-    },
-
-    "water": {
+    "inside": {
       "type": "object",
       "properties": {
         "temperature": {
           "description": "Current inside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+          },
+          "humidity": {
+            "description": "Current inside air relative humidity",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "ratio"
+          }
+      } 
+    },  
+    "engineRoom": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Engine Room temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "mainCabin": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Main Cabin temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "refrigerator": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Refrigerator temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "freezer": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Freezer temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "heating": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Heating temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "liveWell": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Live Fish Well temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "baitWell": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Bait Well temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+    },
+    "seaWater": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current Sea Water temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
