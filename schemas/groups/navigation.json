@@ -143,8 +143,16 @@
                   "type": "number"
                 },
                 "position": {
-                  "description": "The position of nextPoint in three dimensions",
-                  "$ref": "../definitions.json#/definitions/position"
+                  "type": "object",
+                  "description": "The position of nextPoint in two dimensions",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
                 }
               }
             }
@@ -174,8 +182,16 @@
                   "type": "number"
                 },
                 "position": {
-                  "description": "The position of nextPoint in three dimensions",
-                  "$ref": "../definitions.json#/definitions/position"
+                  "type": "object",
+                  "description": "The position of lastPoint in two dimensions",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
                 }
               }
             }
