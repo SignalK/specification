@@ -111,7 +111,7 @@
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
-            }, 
+            },
             {
               "properties": {
                 "type": {
@@ -165,7 +165,7 @@
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
-            }, 
+            },
             {
               "properties": {
                 "type": {
@@ -252,10 +252,10 @@
   				"$ref": "../definitions.json#/definitions/numberValue",
   				"units": "m"
   			}
-  			
+
   		}
   	},
-	
+
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The magnetic variation (declination) at the current position",
