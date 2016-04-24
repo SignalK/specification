@@ -86,19 +86,23 @@
         },
 
         "activeRoute": {
-          "description": "A reference (URL) to the presently active route, in resources.",
-          "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672", 
-          "$ref": "../definitions.json#/definitions/stringValue"
-        },
+          "type": "object",
+          "properties": {
+            "href": {
+              "description": "A reference (URL) to the presently active route, in resources.",
+              "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
+              "type": "string"
+            },
+            "estimatedTimeOfArrival": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "The estimated time of arrival at the end of the current route"
+            },
 
-        "activeRouteEstimatedTimeOfArrival": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The estimated time of arrival at the end of the current route"
-        },
-
-        "activeRouteStartTime": {
-          "$ref": "../definitions.json#/definitions/timestamp",
-          "description": "The time this route was activated"
+            "startTime": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "The time this route was activated"
+            }
+          }
         },
 
         "nextPoint": {
