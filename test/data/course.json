@@ -3,7 +3,7 @@
     "urn:mrn:imo:mmsi:230099999": {
       "notifications": {
         "arrivalCircleEntered": {
-          "method": "visual",
+          "method": ["visual"],
           "state": "alert",
           "message": "You entered the arrival circle of Waypoint 002. Adjusting course towards Waypoint 003.",
           "timestamp": "(...)",
