@@ -43,6 +43,7 @@
             "distance": 2407.6000020320143,
             "bearingTrue": 0.9162978572970231,
             "velocityMadeGood": 0.2572222873852017,
+            "timeToGo": 9628,
             "position": {
               "latitude": 49.287333333333336,
               "longitude": -123.1595

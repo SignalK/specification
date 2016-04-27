@@ -142,6 +142,11 @@
                   "units": "m/s",
                   "type": "number"
                 },
+                "timeToGo": {
+                  "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+                  "units": "s",
+                  "type": "number"
+                },
                 "position": {
                   "type": "object",
                   "description": "The position of nextPoint in two dimensions",
