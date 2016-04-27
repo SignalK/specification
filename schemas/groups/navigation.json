@@ -138,7 +138,7 @@
                   "type": "number"
                 },
                 "velocityMadeGood": {
-                  "description": "The velocity component of the vessel in an upwind (or downwind) direction",
+                  "description": "The velocity component of the vessel towards the nextPoint",
                   "units": "m/s",
                   "type": "number"
                 },
