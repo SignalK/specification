@@ -55,45 +55,85 @@
     "description": "Course over ground (true)",
     "units": "rad"
   },
-  "navigation.activeRoute.bearingActual": {
-    "description": "The current bearing of the next waypoint relative to true North",
-    "units": "rad"
-  },
-  "navigation.activeRoute.distanceActual": {
-    "description": "The current distance to the next waypoint",
+  "navigation.course.crossTrackError": {
+    "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
     "units": "m"
   },
-  "navigation.activeRoute.bearingDirect": {
-    "description": "The bearing relative to true North from last waypoint to the next waypoint",
+  "navigation.course.bearingTrackTrue": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
     "units": "rad"
   },
-  "navigation.activeRoute.courseRequired": {
-    "description": "The course relative to true North towards the next waypoint",
+  "navigation.course.bearingTrackMagnetic": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
     "units": "rad"
   },
-  "navigation.activeRoute.eta.$ref": {
+  "navigation.course.activeRoute.estimatedTimeOfArrival.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "navigation.activeRoute.startTime.$ref": {
+  "navigation.course.activeRoute.startTime.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "navigation.activeRoute.waypoint.lastTime.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+  "navigation.course.nextPoint.distance": {
+    "description": "The distance in meters between the vessel's present position and the nextPoint",
+    "units": "m"
   },
-  "navigation.activeRoute.waypoint.nextEta.$ref": {
-    "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+  "navigation.course.nextPoint.bearingTrue": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+    "units": "rad"
   },
-  "navigation.activeRoute.waypoint.xte": {
-    "description": "Cross track error",
+  "navigation.course.nextPoint.bearingMagnetic": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+    "units": "rad"
+  },
+  "navigation.course.nextPoint.velocityMadeGood": {
+    "description": "The velocity component of the vessel towards the nextPoint",
+    "units": "m/s"
+  },
+  "navigation.course.nextPoint.timeToGo": {
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+    "units": "s"
+  },
+  "navigation.course.previousPoint.distance": {
+    "description": "The distance in meters between previousPoint and the vessel's present position",
+    "units": "m"
+  },
+  "navigation.racing.distanceStartline": {
+    "description": "The current distance to the start line",
+    "units": "m"
+  },
+  "navigation.racing.timeToStart": {
+    "description": "Time left before start",
+    "units": "s"
+  },
+  "navigation.racing.timePortDown": {
+    "description": "Time to arrive at the start line on port, turning downwind",
+    "units": "s"
+  },
+  "navigation.racing.timePortUp": {
+    "description": "Time to arrive at the start line on port, turning upwind",
+    "units": "s"
+  },
+  "navigation.racing.timeStbdDown": {
+    "description": "Time to arrive at the start line on starboard, turning downwind",
+    "units": "s"
+  },
+  "navigation.racing.timeStbdUp": {
+    "description": "Time to arrive at the start line on starboard, turning upwind",
+    "units": "s"
+  },
+  "navigation.racing.distanceLayline": {
+    "description": "The current distance to the layline",
     "units": "m"
   },
   "navigation.magneticVariation": {
     "description": "The magnetic variation (declination) at the current position",
     "units": "rad"
+  },
+  "navigation.magneticVariationAgeOfService": {
+    "description": "Seconds since the 1st Jan 1970 that the variation calculation was made",
+    "units": "s"
   },
   "navigation.destination.eta.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
@@ -279,6 +319,10 @@
   },
   "electrical.batteries.*.capacity.stateOfCharge": {
     "description": "State of charge, 1 = 100%",
+    "units": "ratio"
+  },
+  "electrical.batteries.*.capacity.stateOfHealth": {
+    "description": "State of Health, 1 = 100%",
     "units": "ratio"
   },
   "electrical.batteries.*.capacity.dischargeSinceFull": {
@@ -489,77 +533,77 @@
     "description": "Apparent power.",
     "units": "W"
   },
-  "environment.air.outside.temperature": {
+  "environment.outside.temperature": {
     "description": "Current outside air temperature",
     "units": "K"
   },
-  "environment.air.outside.dewPointTemperature": {
+  "environment.outside.dewPointTemperature": {
     "description": "Current outside dew point temperature",
     "units": "K"
   },
-  "environment.air.outside.apparentWindChillTemperature": {
+  "environment.outside.apparentWindChillTemperature": {
     "description": "Current outside apparent wind chill temperature",
     "units": "K"
   },
-  "environment.air.outside.theoreticalWindChillTemperature": {
+  "environment.outside.theoreticalWindChillTemperature": {
     "description": "Current outside theoretical wind chill temperature",
     "units": "K"
   },
-  "environment.air.outside.heatIndexTemperature": {
+  "environment.outside.heatIndexTemperature": {
     "description": "Current outside heat index temperature",
     "units": "K"
   },
-  "environment.air.outside.pressure": {
+  "environment.outside.pressure": {
     "description": "Current outside air ambient pressure",
     "units": "Pa"
   },
-  "environment.air.outside.humidity": {
+  "environment.outside.humidity": {
     "description": "Current outside air relative humidity",
     "units": "ratio"
   },
-  "environment.air.inside.temperature": {
+  "environment.inside.temperature": {
     "description": "Current inside air temperature",
     "units": "K"
   },
-  "environment.air.inside.humidity": {
+  "environment.inside.humidity": {
     "description": "Current inside air relative humidity",
     "units": "ratio"
   },
-  "environment.air.inside.engineRoom.temperature": {
+  "environment.inside.engineRoom.temperature": {
     "description": "Temperature",
     "units": "K"
   },
-  "environment.air.inside.mainCabin.temperature": {
+  "environment.inside.mainCabin.temperature": {
     "description": "Temperature",
     "units": "K"
   },
-  "environment.refridgeration.temperature": {
+  "environment.inside.refrigerator.temperature": {
     "description": "Temperature",
     "units": "K"
   },
-  "environment.freezer.temperature": {
+  "environment.inside.freezer.temperature": {
     "description": "Temperature",
     "units": "K"
   },
-  "environment.heating.temperature": {
-    "description": "Temperature",
-    "units": "K"
-  },
-  "environment.well.live.temperature": {
-    "description": "Temperature",
-    "units": "K"
-  },
-  "environment.well.bait.temperature": {
+  "environment.inside.heating.temperature": {
     "description": "Temperature",
     "units": "K"
   },
   "environment.water.temperature": {
-    "description": "Current inside air temperature",
+    "description": "Current water temperature",
     "units": "K"
   },
   "environment.water.salinity": {
     "description": "Water salinity",
     "units": "ratio"
+  },
+  "environment.water.liveWell.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.water.baitWell.temperature": {
+    "description": "Temperature",
+    "units": "K"
   },
   "environment.depth.belowKeel": {
     "description": "Depth below keel",
