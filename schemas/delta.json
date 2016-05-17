@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/delta.json#",
   "title": "SignalK Delta message schema",
   "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",

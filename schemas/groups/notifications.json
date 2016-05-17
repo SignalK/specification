@@ -1,6 +1,6 @@
 {
-  "type": ["object","string","array"],
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": ["object", "string", "array"],
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/notifications.json#",
   "title": "notifications",
   "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",

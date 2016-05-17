@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/electrical.json#",
   "description": "Schema describing the electrical child-object of a Vessel.",
   "title": "Electrical Properties",
