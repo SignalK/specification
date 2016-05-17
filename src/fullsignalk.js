@@ -26,7 +26,8 @@ function FullSignalK(id, type) {
   getId = signalkSchema.getSourceId;
 
   this.root = {
-    vessels: {}
+    vessels: {},
+    version: "0.1.0" // Should we read this from the package.json file?
   };
   if (id) {
     this.root.vessels[id] = {};

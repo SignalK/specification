@@ -27,5 +27,6 @@
       "label": "N2K-1",
       "type": "NMEA2000"
     }
-  }
+  },
+  "version": "1.0"
 }

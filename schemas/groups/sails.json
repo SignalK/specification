@@ -4,7 +4,6 @@
   "id": "https://signalk.github.io/specification/schemas/groups/sails.json#",
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
-  "required": ["name", "type", "active", "area"],
 
   "properties": {
     "inventory": {
