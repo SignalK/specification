@@ -25,15 +25,14 @@
     },
 
     "(^timestamp$)": {
-      "description":"timestamp of the last update to this data",
+      "description": "timestamp of the last update to this data",
       "$ref": "../definitions.json#/definitions/timestamp"
     },
 
-    "(^source$)": {
-      "description":"Source of this data",
-      "$ref": "../definitions.json#/definitions/source"
+    "(^\\$source$)": {
+      "description": "Source of this data",
+      "$ref": "../definitions.json#/definitions/sourceRef"
     },
-
     "(^[A-Za-z0-9-]+$)": {
       "description": "This regex pattern is used for validation of the path of the alarm",
       "$ref": "notifications.json#"
