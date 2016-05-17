@@ -205,7 +205,6 @@
       }
     },
 
-<<<<<<< HEAD
     "racing" :{
       "type": "object",
       "properties": {
