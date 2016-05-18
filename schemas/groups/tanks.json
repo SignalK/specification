@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
   "description": "A tank, named by a unique identifier",
   "definitions": {
@@ -34,8 +34,14 @@
               "units": "m3"
             },
 
+            "currentLevel": {
+              "description": "Level of fluid in tank 0-100%",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ratio"
+            },
+            
             "currentVolume": {
-              "description": "Amount of fluid in tank",
+              "description": "Volume of fluid in tank",
               "units": "m3",
               "$ref": "../definitions.json#/definitions/numberValue"
             }

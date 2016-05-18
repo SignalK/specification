@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/design.json#",
   "description": "An object describing the vessels primary dimensions and statistics.",
   "title": "design",
@@ -10,7 +10,7 @@
       "description": "The displacement of the vessel",
       "units": "kg"
     },
-    
+
     "draft": {
       "type": "object",
       "title": "draft",
@@ -25,20 +25,20 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
-        "minimum": { 
+
+        "minimum": {
           "description": "The minimum draft of the vessel",
           "type": "number",
           "units": "m"
         },
-        
-        "maximum": { 
+
+        "maximum": {
           "description": "The maximum draft of the vessel",
           "type": "number",
           "units": "m"
         },
-        
-        "canoe": { 
+
+        "canoe": {
           "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
           "type": "number",
           "units": "m"
@@ -60,19 +60,19 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
-        
+
         "overall": {
           "type": "number",
           "description": "Length overall",
           "units": "m"
         },
-        
+
         "hull": {
           "type": "number",
           "description": "Length of hull",
           "units": "m"
         },
-        
+
         "waterline": {
           "type": "number",
           "description": "Length at waterline",

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/sails.json#",
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
@@ -13,41 +13,36 @@
         "(^[a-zA-Z0-9]+$)": {
           "type": "object",
           "description": "'sail' data type.",
+          "required": ["name", "type", "active", "area"],
           "properties": {
             "name": {
               "type": "string",
-              "required": true,
               "description": "An unique identifier by which the crew identifies a sail",
               "example": "J1"
             },
 
             "type": {
               "type": "string",
-              "required": true,
               "description": "The type of sail",
               "example": "Genaker"
             },
 
             "material": {
               "type": "string",
-              "required": false,
               "description": "The material the sail is made from (optional)",
               "example": "canvas"
             },
             "brand": {
               "type": "string",
-              "required": false,
               "description": "The brand of the sail (optional)",
               "example": "North Sails"
             },
             "active": {
               "type": "boolean",
-              "required": true,
               "description": "Indicates wether this sail is currently in use or not"
             },
             "area": {
               "type": "number",
-              "required": true,
               "description": "The total area of this sail in square meters",
               "units": "m2"
             },
