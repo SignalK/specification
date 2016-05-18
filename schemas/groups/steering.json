@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/steering.json#",
   "description": "Schema describing the steering child-object of a vessel.",
   "title": "steering",
@@ -25,7 +25,7 @@
         "state": {
           "type": "object",
           "description": "Autopilot state",
-          
+
           "properties": {
             "value": {
               "type": "string",
@@ -102,7 +102,7 @@
               "description": "Source of this data",
               "$ref": "../definitions.json#/definitions/source"
             },
-            
+
             "timestamp": {
               "description": "timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"

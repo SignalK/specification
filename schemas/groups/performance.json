@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/performance.json#",
   "description": "Schema describing the performance child-object of a Vessel.",
   "title": "performance",
@@ -64,13 +64,13 @@
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "m/s"
     },
-    
+
     "targetAngle": {
       "description": "The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.",
       "$ref": "../definitions.json#/definitions/numberValue",
       "units": "rad"
-    },    
-    
+    },
+
     "targetSpeed": {
       "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
       "$ref": "../definitions.json#/definitions/numberValue",

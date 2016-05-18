@@ -1,19 +1,18 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/signalk.json#",
   "title": "SignalK",
   "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
+  "required": ["vessels", "version"],
   "properties": {
     "self": {
       "type": "string",
-      "description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array.",
-      "required": true
+      "description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array."
     },
 
     "vessels": {
       "type": "object",
-      "required": true,
       "description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
       "patternProperties": {
         "(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$": {

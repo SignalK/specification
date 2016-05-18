@@ -5,19 +5,18 @@
       "notifications": {
         "navigation":{
           "position":{
-           
-              "message": "Position is more than 5 minutes old",
-              "timestamp": "2014-04-10T08:33:53Z",
-              "source": {
-                "label": "mode",
-                "type": "self"
-              },
-              "state": "alert",
-              "method" : ["visual"]
-            }
-    
+            "message": "Position is more than 5 minutes old",
+            "timestamp": "2014-04-10T08:33:53Z",
+            "source": {
+              "label": "mode",
+              "type": "self"
+            },
+            "state": "alert",
+            "method" : ["visual"]
+          }
         }
       }
     }
-  }
+  },
+  "version": "1.0"
 }

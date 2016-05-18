@@ -1,13 +1,12 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
   "definitions": {
     "timestamp": {
       "type": "string",
-      "required": false,
       "description": "ISO-8601 (UTC) string representing date and time.",
       "units": "ISO-8601 (UTC)",
       "example": "2014-04-10T08:33:53Z"
@@ -216,7 +215,6 @@
       "type": "string",
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
       "pattern": "^[2-7][0-9]{8,8}$",
-      "required": false,
       "maxLength": 9,
       "minLength": 9
     },
