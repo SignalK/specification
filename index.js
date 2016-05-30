@@ -105,7 +105,8 @@ function chaiAsPromised(chai, utils) {
     this._obj = {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
-      }
+      },
+      'version': '1.0'
     }
     checkValidFullSignalK.call(this);
   });
