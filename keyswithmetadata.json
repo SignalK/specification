@@ -55,47 +55,91 @@
     "description": "Course over ground (true)",
     "units": "rad"
   },
-  "navigation.course.crossTrackError": {
+  "navigation.courseRhumbline.crossTrackError": {
     "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
     "units": "m"
   },
-  "navigation.course.bearingTrackTrue": {
+  "navigation.courseRhumbline.bearingTrackTrue": {
     "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
     "units": "rad"
   },
-  "navigation.course.bearingTrackMagnetic": {
+  "navigation.courseRhumbline.bearingTrackMagnetic": {
     "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
     "units": "rad"
   },
-  "navigation.course.activeRoute.estimatedTimeOfArrival.$ref": {
+  "navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "navigation.course.activeRoute.startTime.$ref": {
+  "navigation.courseRhumbline.activeRoute.startTime.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
     "units": "ISO-8601 (UTC)"
   },
-  "navigation.course.nextPoint.distance": {
+  "navigation.courseRhumbline.nextPoint.distance": {
     "description": "The distance in meters between the vessel's present position and the nextPoint",
     "units": "m"
   },
-  "navigation.course.nextPoint.bearingTrue": {
+  "navigation.courseRhumbline.nextPoint.bearingTrue": {
     "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
     "units": "rad"
   },
-  "navigation.course.nextPoint.bearingMagnetic": {
+  "navigation.courseRhumbline.nextPoint.bearingMagnetic": {
     "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
     "units": "rad"
   },
-  "navigation.course.nextPoint.velocityMadeGood": {
+  "navigation.courseRhumbline.nextPoint.velocityMadeGood": {
     "description": "The velocity component of the vessel towards the nextPoint",
     "units": "m/s"
   },
-  "navigation.course.nextPoint.timeToGo": {
+  "navigation.courseRhumbline.nextPoint.timeToGo": {
     "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
     "units": "s"
   },
-  "navigation.course.previousPoint.distance": {
+  "navigation.courseRhumbline.previousPoint.distance": {
+    "description": "The distance in meters between previousPoint and the vessel's present position",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.crossTrackError": {
+    "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.bearingTrackTrue": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.bearingTrackMagnetic": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseGreatCircle.activeRoute.startTime.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseGreatCircle.nextPoint.distance": {
+    "description": "The distance in meters between the vessel's present position and the nextPoint",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.nextPoint.bearingTrue": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.nextPoint.bearingMagnetic": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.nextPoint.velocityMadeGood": {
+    "description": "The velocity component of the vessel towards the nextPoint",
+    "units": "m/s"
+  },
+  "navigation.courseGreatCircle.nextPoint.timeToGo": {
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+    "units": "s"
+  },
+  "navigation.courseGreatCircle.previousPoint.distance": {
     "description": "The distance in meters between previousPoint and the vessel's present position",
     "units": "m"
   },
