@@ -909,15 +909,15 @@
     "description": "Total distance from start to end",
     "units": "m"
   },
-  "resources.notes.*.anyOf.1.position.longitude": {
+  "resources.notes.*.position.longitude": {
     "description": "Longitude",
     "units": "deg"
   },
-  "resources.notes.*.anyOf.1.position.latitude": {
+  "resources.notes.*.position.latitude": {
     "description": "Latitude",
     "units": "deg"
   },
-  "resources.notes.*.anyOf.1.position.altitude": {
+  "resources.notes.*.position.altitude": {
     "description": "Altitude",
     "units": "m"
   },
@@ -985,56 +985,84 @@
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.freshWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.freshWater.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.wasteWater.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.wasteWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.wasteWater.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.blackWater.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.blackWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.blackWater.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.fuelWater.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.fuelWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.fuelWater.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.fuel.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.fuel.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.fuel.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.lubrication.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.lubrication.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.lubrication.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   },
   "tanks.liveWell.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
+  "tanks.liveWell.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
   "tanks.liveWell.*.currentVolume": {
-    "description": "Amount of fluid in tank",
+    "description": "Volume of fluid in tank",
     "units": "m3"
   }
 }
