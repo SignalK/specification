@@ -21,7 +21,18 @@ console.log(JSON.stringify(data, null, 2));
 
 function extractUnits(result, pathPrefix, element, schema) {
   _.forOwn(element, function(value, key) {
-//    console.log(pathPrefix + " " + key + " = " + value)
+    // console.log(pathPrefix + " " + key + " = " + value)
+    if (value.enum) {
+      result[pathPrefix + '.' + key] = {
+        enum: value.enum
+      };
+    }
+    if (value.properties && value.properties.value && value.properties.value.enum) {
+      result[pathPrefix + '.' + key] = {
+        enum: value.properties.value.enum
+      };
+      return;
+    }
     if (key === '$ref') {
       value = getDefinition(value, schema);
     }
