@@ -66,12 +66,6 @@ function allOf(allOfArray, schema) {
 }
 
 function getDefinition(reference, schema) {
-  //#/definitions/
-  //12345678901234
-  //  console.log(reference.slice(0,14))
-  //  console.log(reference.slice(14))
-  //../definitions.json#/definitions/
-  //123456789012345678901234567890123
   if (reference.startsWith('#/definitions/')) {
     try {
       return schema.definitions[reference.slice(14)];
