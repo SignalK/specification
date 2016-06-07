@@ -34,7 +34,7 @@
         },
 
         "revolutions": {
-          "description": "Engine revolutions",
+          "description": "Engine revolutions (x60 for RPM)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Hz"
         },
@@ -64,7 +64,7 @@
         },
 
         "runTime": {
-          "description": "Total running time for engine",
+          "description": "Total running time for engine (Engine Hours in seconds)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "s"
         },
@@ -182,42 +182,25 @@
               "units": "m3/s"
             },
             "economyRate": {
-              "description": "Fuel rate",
+              "description": "Economy Fuel rate",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             },
             "averageRate": {
-              "description": "Fuel rate",
+              "description": "Average Fuel rate",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             }
           }
         },
 
-        "waterTemperature": {
-          "description": "Water temperature",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "K"
-        },
-
         "exhaustTemperature": {
           "description": "Exhaust temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
-        },
-
-        "fuelRate": {
-          "description": "Fuel consumption rate",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m3/s"
         }
-      }
-    },
 
-    "exhaustTemperature": {
-      "description": "Exhaust temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
+      }
     }
   }
 }
