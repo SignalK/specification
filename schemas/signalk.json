@@ -8,7 +8,8 @@
   "properties": {
     "self": {
       "type": "string",
-      "description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array."
+      "description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array.",
+      "example":"urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
 
     "vessels": {

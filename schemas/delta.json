@@ -8,7 +8,8 @@
   "properties": {
     "context": {
       "type": "string",
-      "description": "The context path of the updates, eg. the top level path plus object identifier."
+      "description": "The context path of the updates, eg. the top level path plus object identifier.",
+      "example":"vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
 
     "updates": {
@@ -40,7 +41,9 @@
               "required": ["path", "value"],
               "properties": {
                 "path": {
-                  "type": "string"
+                  "type": "string",
+                  "description":"The local path to the data value",
+                  "example":"navigation.courseOverGroundMagnetic"
                 },
 
                 "value": {

@@ -30,7 +30,8 @@
 
     "name": {
       "type": "string",
-      "description": "The common name of the vessel"
+      "description": "The common name of the vessel",
+      "example":"Motu"
     },
 
     "flag": {
@@ -164,7 +165,7 @@
     "notifications": {
       "type": "object",
       "title": "notifications",
-      "description": "Notifications currently raised",
+      "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure",
       "properties": {
         "mob": {
           "description": "Man overboard",
@@ -209,8 +210,9 @@
       },
       "patternProperties": {
         "(^[A-Za-z0-9-]+$)": {
-          "description": "This regex pattern is used for validation of the path of the alarm",
+          "description": "This regex pattern is used for validation of the path elements of the notification",
           "$ref": "groups/notifications.json#"
+          "example":"engine"
         }
       }
     },
