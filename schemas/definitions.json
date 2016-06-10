@@ -52,8 +52,8 @@
 
     "version": {
       "type": "string",
-      "description": "Version of the Signal K root object.",
-      "example": "1.0"
+      "description": "Version of the Signal K schema/APIs used by the root object.",
+      "example": "1.0.0"
     },
     "units": {
       "type": "string",

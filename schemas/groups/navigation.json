@@ -410,7 +410,7 @@
     },
 
     "position": {
-      "description": "The position of the vessel in 3 dimensions",
+      "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)",
       "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }, {
@@ -447,7 +447,7 @@
 
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn",
+      "description": "Rate of turn (+ve is change to starboard)",
       "units": "rad/s"
     },
 
