@@ -4,48 +4,55 @@
   "id": "https://signalk.github.io/specification/schemas/delta.json#",
   "title": "SignalK Delta message schema",
   "description": "Schema for defining updates to parts of a SignalK data model, for example for communicating updates of data",
-  "required": ["updates"],
+  "required": [
+    "updates"
+  ],
   "properties": {
     "context": {
       "type": "string",
       "description": "The context path of the updates, eg. the top level path plus object identifier.",
-      "example":"vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
-
     "updates": {
       "type": "array",
       "description": "The updates",
       "items": {
         "type": "object",
-        "required": ["values"],
+        "required": [
+          "values"
+        ],
         "properties": {
           "source": {
-            "allOf": [{
-              "$ref": "./definitions.json#/definitions/source"
-            }, {
-              "properties": {
-                "instance": {
-                  "type": "string"
+            "allOf": [
+              {
+                "$ref": "./definitions.json#/definitions/source"
+              },
+              {
+                "properties": {
+                  "instance": {
+                    "type": "string"
+                  }
                 }
               }
-            }]
+            ]
           },
           "timestamp": {
             "$ref": "./definitions.json#/definitions/timestamp"
           },
-
           "values": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["path", "value"],
+              "required": [
+                "path",
+                "value"
+              ],
               "properties": {
                 "path": {
                   "type": "string",
-                  "description":"The local path to the data value",
-                  "example":"navigation.courseOverGroundMagnetic"
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
                 },
-
                 "value": {
                   "type": [
                     "string",
@@ -54,7 +61,6 @@
                     "boolean",
                     "null"
                   ],
-
                   "additionalProperties": true
                 }
               }
