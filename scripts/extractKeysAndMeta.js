@@ -24,11 +24,13 @@ function extractUnits(result, pathPrefix, element, schema) {
     // console.log(pathPrefix + " " + key + " = " + value)
     if (value.enum) {
       result[pathPrefix + '.' + key] = {
+        description: value.description,
         enum: value.enum
       };
     }
     if (value.properties && value.properties.value && value.properties.value.enum) {
       result[pathPrefix + '.' + key] = {
+        description: value.description,
         enum: value.properties.value.enum
       };
       return;
