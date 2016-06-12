@@ -27,7 +27,7 @@
         "type": {
           "type": "string",
           "description":"A human name to identify the type. NMEA0183, NMEA2000, signalk",
-          "default": "NMEA2000"
+          "default": "NMEA2000",
           "example": "NMEA2000"
         },
         "src": {
