@@ -372,7 +372,7 @@
     },
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading of the vessels",
+      "description": "Current magnetic heading of the vessel",
       "units": "rad"
     },
     "headingTrue": {
@@ -497,7 +497,7 @@
           "$ref": "../definitions.json#/definitions/source"
         },
         "timestamp": {
-          "description": "timestamp of the last update to this data",
+          "description": "Timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
         "maxRadius": {

@@ -13,9 +13,11 @@
             {
               "properties": {
                 "talker": {
+                  "description": "NMEA 0183 talker id, the GP in $GPRMC..",
                   "type": "string"
                 },
                 "sentences": {
+                  "description": "NMEA 0183 sentences",
                   "type": "object",
                   "patternProperties": {
                     "^[A-Z][A-Z][A-Z]$": {
@@ -27,10 +29,12 @@
                   "type": "object",
                   "properties": {
                     "src": {
+                      "description": "NMEA 2000 bus",
                       "type": "string"
                     },
                     "pgns": {
                       "type": "object",
+                      "description": "NMEA 2000 pgn numbere",
                       "patternProperties": {
                         "[0-9]*": {
                           "$ref": "#/definitions/timestamp"

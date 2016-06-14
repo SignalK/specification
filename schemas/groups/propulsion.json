@@ -79,12 +79,12 @@
           "units": "Pa"
         },
         "engineLoad": {
-          "description": "Engine load ratio, 1 is 100%",
+          "description": "Engine load ratio, 0<=ratio<=1, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
         "engineTorque": {
-          "description": "Engine torque ratio, 1 is 100%",
+          "description": "Engine torque ratio, 0<=ratio<=1, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
@@ -105,7 +105,7 @@
               }
             },
             "gearRatio": {
-              "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+              "description": "Gear ratio, engine rotations per propeller shaft rotation",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "ratio"
             },
@@ -135,7 +135,7 @@
               ]
             },
             "trimState": {
-              "description": "Trim/tilt state",
+              "description": "Trim/tilt state, 0<=ratio<=1, 1 is 100% up",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "ratio"
             },
@@ -146,12 +146,12 @@
             },
             "propeller": {
               "pitch ": {
-                "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+                "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "m"
               },
               "slip": {
-                "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+                "description": "Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(actual distance travelled/propeller pitch). 0<=ratio<=1, 0 is 0% slip, 1 is 100% slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "ratio"
               }
@@ -182,17 +182,17 @@
               "units": "Pa"
             },
             "rate": {
-              "description": "Fuel rate",
+              "description": "Fuel rate  of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             },
             "economyRate": {
-              "description": "Economy Fuel rate",
+              "description": "Economy fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             },
             "averageRate": {
-              "description": "Average Fuel rate",
+              "description": "Average fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             }

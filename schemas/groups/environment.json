@@ -71,19 +71,24 @@
           "units": "ratio"
         },
         "engineRoom": {
+          "description": "Current engine room air temperature",
           "$ref": "#/definitions/objectWithTemperature"
         },
         "mainCabin": {
+          "description": "Current main cabin air temperature",
           "$ref": "#/definitions/objectWithTemperature"
         },
 
         "refrigerator": {
+          "description": "Current refrigerator temperature",
           "$ref": "#/definitions/objectWithTemperature"
         },
         "freezer": {
+          "description": "Current freezer temperature",
           "$ref": "#/definitions/objectWithTemperature"
         },
         "heating": {
+          "description": "Current heating temperature",
           "$ref": "#/definitions/objectWithTemperature"
         }
       }
@@ -103,9 +108,11 @@
           "units": "ratio"
         },
         "liveWell": {
+          "description": "Current livewell temperature",
           "$ref": "#/definitions/objectWithTemperature"
         },
         "baitWell": {
+          "description": "Current baitwell air temperature",
           "$ref": "#/definitions/objectWithTemperature"
         }        
       }
@@ -141,7 +148,7 @@
         },
 
         "surfaceToTransducer": {
-          "description": "Depth transducer is below the water",
+          "description": "Depth transducer is below the water surface",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         }
@@ -185,19 +192,19 @@
       "description": "Tide data",
       "properties": {
         "heightHigh": {
-          "description": "Next high tide",
+          "description": "Next high tide height  relative to mean sea level(MSL)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightNow": {
-          "description": "The current tide height",
+          "description": "The current tide height  relative to mean sea level(MSL)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightLow": {
-          "description": "The next low tide height",
+          "description": "The next low tide height relative to mean sea level(MSL)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },

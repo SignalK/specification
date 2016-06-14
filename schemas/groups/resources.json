@@ -16,11 +16,13 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Chart common name"
+              "description": "Chart common name",
+              "example":"NZ615 Marlborough Sounds"
             },
             "identifier": {
               "type": "string",
-              "description": "Chart number"
+              "description": "Chart number",
+              "example":"NZ615"
             },
             "description": {
               "type": "string",
@@ -28,7 +30,8 @@
             },
             "tilemapUrl": {
               "type": "string",
-              "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
+              "description": "A url to the tilemap of the chart for use in TMS chartplotting apps",
+              "example":"http://{server}:8080/mapcache/NZ615"
             },
             "region": {
               "type": "string",
@@ -40,7 +43,8 @@
             },
             "chartUrl": {
               "type": "string",
-              "description": "A url to the chart file's storage location"
+              "description": "A url to the chart file's storage location",
+              "example":"file:///home/pi/freeboard/mapcache/NZ615"
             },
             "chartFormat": {
               "type": "string",
@@ -81,7 +85,8 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Route's common name"
+              "description": "Route's common name",
+              "example":"Nelson Harbour to Adele Is"
             },
             "description": {
               "type": "string",
@@ -102,7 +107,7 @@
             },
             "feature": {
               "title": "Feature",
-              "description": "A Geo JSON feature object",
+              "description": "A Geo JSON feature object which describes the route between the waypoints",
               "required": [
                 "geometry",
                 "properties"
@@ -141,7 +146,7 @@
               }
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
@@ -190,7 +195,7 @@
               "description": "Location of the note"
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
@@ -216,7 +221,7 @@
             },
             "feature": {
               "title": "Feature",
-              "description": "A Geo JSON feature object",
+              "description": "A Geo JSON feature object which describes the regions boundary",
               "required": [
                 "geometry",
                 "properties"
@@ -275,7 +280,7 @@
               }
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
