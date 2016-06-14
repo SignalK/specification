@@ -32,6 +32,7 @@
     "units": "m"
   },
   "design.keel.type": {
+    "description": "The type of keel.",
     "enum": [
       "long",
       "fin",
@@ -61,6 +62,7 @@
     "units": "m"
   },
   "navigation.lights": {
+    "description": "Current state of the vessels navigation lights",
     "enum": [
       "off",
       "fault",
@@ -223,6 +225,7 @@
     "units": "ISO-8601 (UTC)"
   },
   "navigation.gnss.methodQuality": {
+    "description": "Quality of the satellite fix",
     "enum": [
       "no GPS",
       "GNSS Fix",
@@ -237,6 +240,7 @@
     ]
   },
   "navigation.gnss.integrity": {
+    "description": "Integrity of the satellite fix",
     "enum": [
       "no Integrity checking",
       "Safe",
@@ -305,6 +309,7 @@
     "units": "m"
   },
   "navigation.state": {
+    "description": "Current navigational state of the vessel",
     "enum": [
       "not under command",
       "anchored",
@@ -351,6 +356,7 @@
     "units": "m"
   },
   "navigation.datetime.gnssTimeSource": {
+    "description": "Source of GNSS Date and Time",
     "enum": [
       "GPS",
       "GLONASS",
@@ -571,6 +577,7 @@
     "units": "W"
   },
   "electrical.inverters.*.ac.powerFactorLagging": {
+    "description": "Lead/lag status.",
     "enum": [
       "leading",
       "lagging",
@@ -587,6 +594,7 @@
     "units": "W"
   },
   "electrical.inverters.*.mode": {
+    "description": "Mode of inverter",
     "enum": [
       "idle",
       "inverting",
@@ -717,6 +725,7 @@
     "units": "W"
   },
   "electrical.ac.*.phase.*.powerFactorLagging": {
+    "description": "Lead/lag status.",
     "enum": [
       "leading",
       "lagging",
@@ -897,6 +906,7 @@
     "units": "m/s"
   },
   "environment.mode": {
+    "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
     "enum": [
       "day",
       "night",
@@ -1061,6 +1071,7 @@
     "units": "ratio"
   },
   "propulsion.*.fuel.type": {
+    "description": "Fuel type",
     "enum": [
       "diesel",
       "petrol",
@@ -1102,6 +1113,7 @@
     "units": "m3/s"
   },
   "resources.charts.*.chartFormat": {
+    "description": "The format of the chart",
     "enum": [
       "gif",
       "geotiff",
@@ -1195,6 +1207,7 @@
     "units": "rad"
   },
   "steering.autopilot.state": {
+    "description": "Autopilot state",
     "enum": [
       "on",
       "off",
@@ -1202,6 +1215,7 @@
     ]
   },
   "steering.autopilot.mode": {
+    "description": "Operational mode",
     "enum": [
       "powersave",
       "normal",
@@ -1217,6 +1231,7 @@
     "units": "rad"
   },
   "steering.autopilot.headingSource": {
+    "description": "Current source of heading information",
     "enum": [
       "compass",
       "wind",
@@ -1248,6 +1263,7 @@
     "units": "rad"
   },
   "tanks.freshWater.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1271,6 +1287,7 @@
     "units": "m3"
   },
   "tanks.wasteWater.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1294,6 +1311,7 @@
     "units": "m3"
   },
   "tanks.blackWater.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1317,6 +1335,7 @@
     "units": "m3"
   },
   "tanks.fuelWater.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1340,6 +1359,7 @@
     "units": "m3"
   },
   "tanks.fuel.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1363,6 +1383,7 @@
     "units": "m3"
   },
   "tanks.lubrication.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
@@ -1386,6 +1407,7 @@
     "units": "m3"
   },
   "tanks.liveWell.*.type": {
+    "description": "The type of tank",
     "enum": [
       "petrol",
       "fresh water",
