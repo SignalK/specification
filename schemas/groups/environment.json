@@ -192,19 +192,19 @@
       "description": "Tide data",
       "properties": {
         "heightHigh": {
-          "description": "Next high tide height  relative to mean sea level(MSL)",
+          "description": "Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightNow": {
-          "description": "The current tide height  relative to mean sea level(MSL)",
+          "description": "The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightLow": {
-          "description": "The next low tide height relative to mean sea level(MSL)",
+          "description": "The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
