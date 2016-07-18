@@ -42,6 +42,10 @@
               "type": "string",
               "description": "A url to the chart file's storage location"
             },
+            "scale": {
+              "type": "integer",
+              "description": "The scale of the chart, the larger number from 1:200000"
+            },
             "chartFormat": {
               "type": "string",
               "description": "The format of the chart",
@@ -55,7 +59,12 @@
                 "wkt",
                 "topojson",
                 "geojson",
-                "gpx"
+                "gpx",
+                "tms",
+                "S-57",
+                "S-63",
+                "svg",
+                "other"
               ]
             },
             "timestamp": {
