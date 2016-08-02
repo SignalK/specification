@@ -164,6 +164,10 @@ function addValues(context, source, timestamp, pathValues) {
 }
 
 function addValue(context, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
   var valueLeaf;
   if (pathValue.path.length === 0) {
     valueLeaf = context;
