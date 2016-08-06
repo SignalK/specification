@@ -4,13 +4,16 @@
   "id": "https://signalk.github.io/specification/schemas/signalk.json#",
   "title": "SignalK",
   "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
-  "required": ["vessels", "version"],
+  "required": [
+    "vessels",
+    "version"
+  ],
   "properties": {
     "self": {
       "type": "string",
-      "description": "This holds the key (MMSI or other unique ID) of this vessel, the actual data is in the vessels array."
+      "description": "This holds the key (UUID, MMSI or URL) of this vessel, the actual data is in the vessels array.",
+      "example": "urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
-
     "vessels": {
       "type": "object",
       "description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
@@ -21,18 +24,16 @@
         }
       }
     },
-
     "sources": {
-      "description": "Metadata about the data sources",
+      "description": "Metadata about the data sources; physical interface, address, protocol, etc.",
       "$ref": "groups/sources.json#"
     },
-
     "resources": {
-      "description": "resources to aid in navigation and operation of the vessel",
+      "description": "Resources to aid in navigation and operation of the vessel including waypoints, routes, notes, etc.",
       "$ref": "groups/resources.json#"
     },
-
     "version": {
+      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.0.0.",
       "$ref": "definitions.json#/definitions/version"
     }
   }
