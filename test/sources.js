@@ -57,9 +57,32 @@ var deltaWithMiscSources = {
   }]
 }
 
-
 describe('Sources in delta', function() {
   it("are valid", function() {
     deltaWithMiscSources.should.be.validSignalKDelta;
+  });
+});
+
+var deltaWithBadSources = {
+  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "updates": [{
+    "source": {
+      "sentence": "HDT",
+      "label": "0183-1",
+      "talker": "II"
+    },
+    "$source": "i2c-0.0x48.amps",
+    "timestamp": "2016-08-03T07:55:57.000Z",
+    "values": [{
+      "path": "navigation.headingTrue",
+      "value": 0.2231
+    }]
+  },]
+}
+
+
+describe('Bad sources in delta', function() {
+  it("are not valid", function() {
+    !deltaWithBadSources.should.be.validSignalKDelta;
   });
 });

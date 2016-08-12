@@ -15,8 +15,7 @@
       "type": "object",
       "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
       "required": [
-        "label",
-        "type"
+        "label"
       ],
       "properties": {
         "label": {
@@ -41,7 +40,10 @@
         "talker": {
           "type": "string",
           "description": "Talker id of the source NMEA0183 sentence"
-        }
+        },
+        "instance": {
+									"type": "string"
+								}
       }
     },
 
