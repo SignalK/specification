@@ -67,7 +67,7 @@
             },
 
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             }
           }
@@ -104,7 +104,7 @@
             },
 
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             }
           }

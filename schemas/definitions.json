@@ -13,29 +13,36 @@
     },
     "source": {
       "type": "object",
-      "description": "Source of data. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
+      "description": "Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
       "required": [
         "label"
       ],
       "properties": {
         "label": {
-          "type": "string"
+          "type": "string",
+          "description":"A label to identify the source bus, eg serial-COM1, eth-local,etc . Can be anything but should follow a predicatable format",
+          "example": "N2K-1"
         },
         "type": {
           "type": "string",
-          "default": "NMEA2000"
+          "description":"A human name to identify the type. NMEA0183, NMEA2000, signalk",
+          "default": "NMEA2000",
+          "example": "NMEA2000"
         },
         "src": {
           "type": "string",
-          "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data"
+          "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data",
+          "example":"36"
         },
         "pgn": {
           "type": "number",
-          "description": "NMEA2000 pgn of the source message"
+          "description": "NMEA2000 pgn of the source message",
+          "example":"130312"
         },
         "sentence": {
           "type": "string",
-          "description": "Sentence type of the source NMEA0183 sentence"
+          "description": "Sentence type of the source NMEA0183 sentence, $GP[RMC],092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
+          "example":"RMC"
         },
         "talker": {
           "type": "string",
@@ -44,18 +51,22 @@
         "instance": {
 									"type": "string"
 								}
+          "description": "Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
+          "example":"GP"
+        }
       }
     },
 
     "sourceRef": {
       "type": "string",
-      "description": "Reference to the source under vessel's sources"
+      "description": "Reference to the source under vessel's sources. A dot spearated path to the data. eg [type].[bus].[device]",
+      "example":"NMEA0183.COM1.GP"
     },
 
     "version": {
       "type": "string",
-      "description": "Version of the Signal K root object.",
-      "example": "1.0"
+      "description": "Version of the Signal K schema/APIs used by the root object.",
+      "example": "1.0.0"
     },
     "units": {
       "type": "string",
@@ -71,7 +82,7 @@
           "display": "Hz",
           "quantity": "Frequency",
           "quantityDisplay": "F",
-          "description": "Frequency in Herz"
+          "description": "Frequency in Hertz"
         },
         "m3": {
           "display": "m\u00b3",
@@ -218,7 +229,8 @@
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
       "pattern": "^[2-7][0-9]{8,8}$",
       "maxLength": 9,
-      "minLength": 9
+      "minLength": 9,
+      "example": "503123456"
     },
     "uuid": {
       "type": "string",
@@ -228,7 +240,8 @@
     },
     "url": {
       "type": "string",
-      "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:."
+      "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:.",
+      "example":"http://localhost:8080/signalk/v1/api/vessels/self/environment"
     },
 
     "commonValueFields": {

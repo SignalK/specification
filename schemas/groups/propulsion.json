@@ -7,98 +7,87 @@
   "patternProperties": {
     "(^[A-Za-z0-9]+$)": {
       "description": "This regex pattern is used for validation of the identifier for the propulsion unit",
-
       "properties": {
         "label": {
           "type": "string",
           "description": "Human readable label for the propulsion unit"
         },
-
         "state": {
           "type": "object",
           "description": "The current state of the engine",
-          "allOf": [{
-            "$ref": "../definitions.json#/definitions/commonValueFields"
-          }, {
-            "properties": {
-              "value": {
-                "type": "string",
-                "enum": [
-                  "stopped",
-                  "started",
-                  "unusable"
-                ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "stopped",
+                    "started",
+                    "unusable"
+                  ]
+                }
               }
             }
-          }]
+          ]
         },
-
         "revolutions": {
-          "description": "Engine revolutions",
+          "description": "Engine revolutions (x60 for RPM)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Hz"
         },
-
         "temperature": {
           "description": "Engine temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
-
         "oilTemperature": {
           "description": "Oil temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
-
         "oilPressure": {
           "description": "Oil pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
-
         "alternatorVoltage": {
           "description": "Alternator voltage",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "V"
         },
-
         "runTime": {
-          "description": "Total running time for engine",
+          "description": "Total running time for engine (Engine Hours in seconds)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "s"
         },
-
         "coolantTemperature": {
           "description": "Coolant temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
-
         "coolantPressure": {
           "description": "Coolant pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
-
         "boostPressure": {
           "description": "Engine boost (turbo, supercharger) pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
-
         "engineLoad": {
-          "description": "Engine load ratio, 1 is 100%",
+          "description": "Engine load ratio, 0<=ratio<=1, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
-
         "engineTorque": {
-          "description": "Engine torque ratio, 1 is 100%",
+          "description": "Engine torque ratio, 0<=ratio<=1, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
-
         "transmission": {
           "type": "object",
           "properties": {
@@ -106,12 +95,17 @@
               "type": "object",
               "properties": {
                 "value": {
-                  "enum": ["Forward", "Neutral", "Reverse", "Fault"]
+                  "enum": [
+                    "Forward",
+                    "Neutral",
+                    "Reverse",
+                    "Fault"
+                  ]
                 }
               }
             },
             "gearRatio": {
-              "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+              "description": "Gear ratio, engine rotations per propeller shaft rotation",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "ratio"
             },
@@ -127,15 +121,21 @@
             }
           }
         },
-
         "drive": {
           "type": "object",
           "properties": {
             "type": {
-              "enum": ["saildrive", "shaft", "outboard", "jet", "pod", "other"]
+              "enum": [
+                "saildrive",
+                "shaft",
+                "outboard",
+                "jet",
+                "pod",
+                "other"
+              ]
             },
             "trimState": {
-              "description": "Trim/tilt state",
+              "description": "Trim/tilt state, 0<=ratio<=1, 1 is 100% up",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "ratio"
             },
@@ -146,25 +146,30 @@
             },
             "propeller": {
               "pitch ": {
-                "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+                "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "m"
               },
               "slip": {
-                "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+                "description": "Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(actual distance travelled/propeller pitch). 0<=ratio<=1, 0 is 0% slip, 1 is 100% slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "ratio"
               }
             }
           }
         },
-
         "fuel": {
           "type": "object",
           "properties": {
             "type": {
               "description": "Fuel type",
-              "enum": ["diesel", "petrol", "electric", "coal/wood", "other"]
+              "enum": [
+                "diesel",
+                "petrol",
+                "electric",
+                "coal/wood",
+                "other"
+              ]
             },
             "used": {
               "description": "Used fuel since last reset. Resetting is at user discretion",
@@ -177,47 +182,28 @@
               "units": "Pa"
             },
             "rate": {
-              "description": "Fuel rate",
+              "description": "Fuel rate  of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             },
             "economyRate": {
-              "description": "Fuel rate",
+              "description": "Economy fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             },
             "averageRate": {
-              "description": "Fuel rate",
+              "description": "Average fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
             }
           }
         },
-
-        "waterTemperature": {
-          "description": "Water temperature",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "K"
-        },
-
         "exhaustTemperature": {
           "description": "Exhaust temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
-        },
-
-        "fuelRate": {
-          "description": "Fuel consumption rate",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m3/s"
         }
       }
-    },
-
-    "exhaustTemperature": {
-      "description": "Exhaust temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
     }
   }
 }
