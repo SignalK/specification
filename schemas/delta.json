@@ -16,16 +16,17 @@
       "description": "The updates",
       "items": {
         "type": "object",
-        "required": ["values"],
-        "dependencies": {
-					"not":{"$source":"source"},
-					"not":{"$source":"source"}
-					},
+       	"required": ["values"],
+				
+       	"not":{"allOf": [ 
+					{"required": ["source"]},
+					{"required": ["$source"]}
+				]}
+				,
+            
         "properties": {
-        	
-						"$source": {"$ref": "./definitions.json#/definitions/sourceRef"},
-						"source": {"$ref": "./definitions.json#/definitions/source"}
-					,
+        	"$source": {"$ref": "./definitions.json#/definitions/sourceRef"},
+        	"source": {"$ref": "./definitions.json#/definitions/source"},
           "timestamp": {
             "$ref": "./definitions.json#/definitions/timestamp"
           },

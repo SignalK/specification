@@ -54,6 +54,12 @@ var deltaWithMiscSources = {
       "path": "electrical.batteries.house.current",
       "value": -0.837
     }]
+  },{
+    "timestamp": "2016-08-03T07:55:57.000Z",
+    "values": [{
+      "path": "navigation.headingTrue",
+      "value": 0.2231
+    }]
   }]
 }
 
@@ -65,7 +71,8 @@ describe('Sources in delta', function() {
 
 var deltaWithBadSources = {
   "context": "vessels.urn:mrn:imo:mmsi:000000000",
-  "updates": [{
+  "updates": [
+  	{
     "source": {
       "sentence": "HDT",
       "label": "0183-1",
@@ -77,12 +84,33 @@ var deltaWithBadSources = {
       "path": "navigation.headingTrue",
       "value": 0.2231
     }]
-  },]
+   },
+   {
+    "source": "test",
+    "timestamp": "2016-08-03T07:55:57.000Z",
+    "values": [{
+      "path": "navigation.headingTrue",
+      "value": 0.2231
+    }]
+   },
+   {
+    "$source": {
+      "sentence": "HDT",
+      "label": "0183-1",
+      "talker": "II"
+    },
+    "timestamp": "2016-08-03T07:55:57.000Z",
+    "values": [{
+      "path": "navigation.headingTrue",
+      "value": 0.2231
+    }]
+   }
+  ]
 }
 
 
 describe('Bad sources in delta', function() {
   it("are not valid", function() {
-    !deltaWithBadSources.should.be.validSignalKDelta;
+    deltaWithBadSources.should.not.be.validSignalKDelta;
   });
 });
