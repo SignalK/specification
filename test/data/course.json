@@ -8,7 +8,7 @@
           "state": "alert",
           "message": "You entered the arrival circle of Waypoint 002. Adjusting course towards Waypoint 003.",
           "timestamp": "(...)",
-          "$source": "(...)"
+          "$source": "a.suitable.path"
         }
       },
 
@@ -17,19 +17,19 @@
           "crossTrackError": {
             "value": -8.67,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "bearingTrackTrue": {
             "value": 0.9162978572970231,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "bearingTrackMagnetic": {
             "value": 1.1986521,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "activeRoute": {
@@ -50,7 +50,7 @@
               "longitude": -123.1595
             },
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "previousPoint": {
@@ -61,7 +61,7 @@
               "longitude": -123.1595
             },
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           }
         },
 
@@ -69,19 +69,19 @@
           "crossTrackError": {
             "value": -8.67,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "bearingTrackTrue": {
             "value": 0.9162978572970231,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "bearingTrackMagnetic": {
             "value": 1.1986521,
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "activeRoute": {
@@ -102,7 +102,7 @@
               "longitude": -123.1595
             },
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           },
 
           "previousPoint": {
@@ -113,7 +113,7 @@
               "longitude": -123.1595
             },
             "timestamp": "(...)",
-            "$source": "(...)"
+            "$source": "a.suitable.path"
           }
         }
       }

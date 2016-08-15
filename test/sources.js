@@ -97,6 +97,16 @@ var deltasWithBadSources = [{
 }, {
   "context": "vessels.urn:mrn:imo:mmsi:000000000",
   "updates": [{
+    "$source": "path with space",
+    "timestamp": "2016-08-03T07:55:57.000Z",
+    "values": [{
+      "path": "navigation.headingTrue",
+      "value": 0.2231
+    }]
+  }]
+},{
+  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "updates": [{
     "$source": {
       "sentence": "HDT",
       "label": "0183-1",
