@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.github.io/specification/schemas/messages/getPut.json#",
+  "title": "SignalK update message schema",
+  "description": "Schema for communicating updates to parts of a SignalK data model",
+  "required": [
+  	"context",
+  	"updates"  ],
+  "properties": {
+    "context": {
+      "type": "string",
+      "description": "The context path of the updates, eg. the top level path plus object identifier.",
+    "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"    },
+    "get": {
+      "type": "array",
+      "description": "A websockets equivalent to a REST GET request.This is for one-off requests, use the subscribe message for regular changes.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+          "description": "The relative path to GET,  supports jsonPath syntax for complex matches"          }
+        },
+        "required": [
+        "path"        ]
+      }
+    },
+    "list": {
+      "type": "array",
+      "description": "Optional. Gets a list of known keys for this path",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+          "description": "The relative path to list keys for,  supports jsonPath syntax for complex matches"          }
+        },
+        "required": [
+        "path"        ]
+      }
+    },
+    "put": {
+      "type": "array",
+      "description": "A websockets equivalent to a REST PUT request. This is for one-off changes, use the updates message for regular changes.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+          "description": "The relative path to set."          },
+					"value": {
+						"type": [
+							"string",
+							"number",
+							"object",
+							"boolean",
+						"null"						],
+					"description": "The value to set at the path"        },
+					"required": [
+						"path",
+          "value"        ]
+        }
+      }
+    }
+  }
+}

@@ -63,7 +63,7 @@ function validateFull(tree) {
 
 function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
-  var deltaSchema = require('./schemas/delta.json');
+  var deltaSchema = require('./schemas/messages/updates.json');
   var definitions = require('./schemas/definitions.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 
