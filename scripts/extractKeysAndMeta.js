@@ -12,9 +12,7 @@ subSchemas.definitions = require('../schemas/definitions.json');
 var data = {};
 
 _.forOwn(subSchemas, function(schema, schemaName) {
-//   if (schemaName === 'electrical') {
   extractUnits(data, schemaName, schema, schema);
-//    }
 })
 
 console.log(JSON.stringify(data, null, 2));
