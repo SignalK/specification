@@ -1,0 +1,44 @@
+[{
+  "context": "vessels.self",
+  "put": [
+		{
+		"values": [
+			{
+					"path": "position.longitude"
+			}
+		],
+		"source": {
+			"label":"0183.serial0.GP.RMC",
+			"type":"0183"
+			}
+		}]
+},
+{
+  "context": "vessels.self",
+  "put": [
+		{
+		"values": [
+			{}
+		],
+		"source": {
+			"label":"0183.serial0.GP.RMC",
+			"type":"0183"
+			}
+		}]
+},
+{
+  "context": "vessels.self",
+  "putx": [
+		{
+		"values": [
+			{
+					"path": "position.longitude",
+					"value": 173.1693
+			}
+		],
+		"source": {
+			"label":"0183.serial0.GP.RMC",
+			"type":"0183"
+			}
+		}]
+}]

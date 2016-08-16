@@ -1,0 +1,47 @@
+[{
+  "context": "vessels.self",
+  "get": [{
+    "path": "navigation.speedThroughWater"
+		}, {
+			"path": "navigation.logTrip"
+		}],
+	"put": [
+		{
+		"values": [
+			{
+					"path": "position.timestamp",
+					"value": "2015-03-07T12:37:10.523+13:00"
+			},
+			{
+					"path": "position.longitude",
+					"value": 173.1693
+			},
+			{
+					"path": "position.latitude",
+					"value": -41.156426
+			},
+			{
+					"path": "position.source",
+					"value": "sources.gps_0183_RMC"
+			},
+			{
+					"path": "position.altitude",
+					"value": 0
+			},
+			{
+					"path": "courseOverGroundTrue",
+					"value": 245.69
+			}
+		],
+		"source": {
+			"label":"0183.serial0.GP.RMC",
+			"type":"0183"
+			}
+		}],
+	"list": [{
+		"path": "navigation.speedThroughWater"
+		}, {
+			"path": "navigation.logTrip"
+		}]
+        
+}]

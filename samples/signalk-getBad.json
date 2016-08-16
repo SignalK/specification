@@ -1,0 +1,17 @@
+[{
+  "context": "vessels.self",
+  "getx": [{
+    "path": "navigation.speedThroughWater"
+		}, {
+			"path": "navigation.logTrip"
+		}]
+},
+{
+  "context": "vessels.self",
+  "get": [{},
+  		{"path": "navigation.logTrip"	}]
+},
+{
+  "context": "vessels.self",
+  "get": [{}]
+}]

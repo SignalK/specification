@@ -1,0 +1,17 @@
+[{
+  "context": "vessels.self",
+  "listx": [{
+    "path": "navigation.speedThroughWater"
+		}, {
+			"path": "navigation.logTrip"
+		}]
+},
+{
+  "context": "vessels.self",
+  "list": [{},
+  		{"path": "navigation.logTrip"	}]
+},
+{
+  "context": "vessels.self",
+  "list": [{}]
+}]
