@@ -12,7 +12,9 @@
         ".*": {
           "description": "The name of a group of endpoints at the same version level",
           "type": "object",
-          "required": ["version"],
+          "required": [
+            "version"
+          ],
           "properties": {
             "version": {
               "description": "The version this group supports",

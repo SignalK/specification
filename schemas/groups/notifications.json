@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/notifications.json#",
   "title": "notifications",
-  "description": "Alarms, their state, and actions. The alarm limits are set in any Signal K key.meta.zones array.",
+  "description": "Notifications, their state, and actions. The notification limits are set in any Signal K key.meta.zones array.",
 
   "patternProperties": {
     "(^method$)": {
@@ -15,7 +15,7 @@
     },
 
     "(^state$)": {
-      "description": "Current alarm state",
+      "description": "Current notification state",
       "$ref": "../definitions.json#/definitions/alarmState"
     },
 
@@ -25,7 +25,7 @@
     },
 
     "(^timestamp$)": {
-      "description": "timestamp of the last update to this data",
+      "description": "Timestamp of the last update to this data",
       "$ref": "../definitions.json#/definitions/timestamp"
     },
 
@@ -34,7 +34,7 @@
       "$ref": "../definitions.json#/definitions/sourceRef"
     },
     "(^[A-Za-z0-9-]+$)": {
-      "description": "This regex pattern is used for validation of the path of the alarm",
+      "description": "This regex pattern is used for validation of the path of the notification",
       "$ref": "notifications.json#"
     }
   }

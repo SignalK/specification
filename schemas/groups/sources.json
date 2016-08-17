@@ -9,129 +9,155 @@
       "type": "object",
       "patternProperties": {
         ".*": {
-          "anyOf": [{
-            "required": ["n2k"]
-          }, {
-            "required": ["talker", "sentences"]
-          }],
-          "anyOf": [{
-            "properties": {
-              "talker": {
-                "type": "string"
-              },
-              "sentences": {
-                "type": "object",
-                "patternProperties": {
-                  "^[A-Z][A-Z][A-Z]$": {
-                    "$ref": "#/definitions/timestamp"
-                  }
-                }
-              },
-              "n2k": {
-                "type": "object",
-                "properties": {
-                  "src": {
-                    "type": "string"
-                  },
-                  "pgns": {
-                    "type": "object",
-                    "patternProperties": {
-                      "[0-9]*": {
-                        "$ref": "#/definitions/timestamp"
-                      }
+          "anyOf": [
+            {
+              "properties": {
+                "talker": {
+                  "description": "NMEA 0183 talker id, the GP in $GPRMC..",
+                  "type": "string"
+                },
+                "sentences": {
+                  "description": "NMEA 0183 sentences",
+                  "type": "object",
+                  "patternProperties": {
+                    "^[A-Z][A-Z][A-Z]$": {
+                      "$ref": "#/definitions/timestamp"
                     }
-                  },
-                  "uniqueId": {
-                    "type": "string",
-                    "description": "Unique id of the source device"
-                  },
-                  "deviceFunction": {
-                    "type": "number",
-                    "description": "NMEA 2000 Device Function code"
-                  },
-                  "deviceClass": {
-                    "type": "number",
-                    "description": "NMEA 2000 Device Class code"
                   }
-                }
-              },
-              "manufacturer": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number",
-                    "description": "Manufacturer numeric NMEA 2000 id"
-                  },
-                  "name": {
-                    "type": "string",
-                    "description": "Manufacturer name"
-                  },
-                  "productId": {
-                    "type": "string"
-                  },
-                  "modelId": {
-                    "type": "string"
-                  },
-                  "softwareVersion": {
-                    "type": "string"
-                  },
-                  "hardwareVersion": {
-                    "type": "string"
-                  },
-                  "serialNumber": {
-                    "type": "string"
+                },
+                "n2k": {
+                  "type": "object",
+                  "properties": {
+                    "src": {
+                      "description": "NMEA 2000 bus",
+                      "type": "string"
+                    },
+                    "pgns": {
+                      "type": "object",
+                      "description": "NMEA 2000 pgn numbere",
+                      "patternProperties": {
+                        "[0-9]*": {
+                          "$ref": "#/definitions/timestamp"
+                        }
+                      }
+                    },
+                    "uniqueId": {
+                      "type": "string",
+                      "description": "Unique id of the source device"
+                    },
+                    "deviceFunction": {
+                      "type": "number",
+                      "description": "NMEA 2000 Device Function code"
+                    },
+                    "deviceClass": {
+                      "type": "number",
+                      "description": "NMEA 2000 Device Class code"
+                    }
+                  }
+                },
+                "manufacturer": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "description": "Manufacturer numeric NMEA 2000 id"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Manufacturer name"
+                    },
+                    "productId": {
+                      "type": "string",
+                      "description": "Maunfacturer product Id"
+                    },
+                    "modelId": {
+                      "type": "string",
+                      "description": "Manufacturer model"
+                    },
+                    "softwareVersion": {
+                      "type": "string",
+                      "description": "Manufacturer software version"
+                    },
+                    "hardwareVersion": {
+                      "type": "string",
+                      "description": "Manufacturer hardware version"
+                    },
+                    "serialNumber": {
+                      "type": "string",
+                      "description": "Manufacturer serial number"
+                    }
                   }
                 }
               }
-            }
-          }, {
-            "patternProperties": {
-              ".*": {
-                "properties": {}
+            },
+            {
+              "patternProperties": {
+                ".*": {
+                  "properties": {}
+                }
               }
             }
-          }]
+          ]
         }
       },
       "properties": {
         "label": {
-          "type": "string"
+          "description": "Sources unique name e.g. [type-bus].[id], N2000-01.034",
+          "type": "string",
+          "example":"N2000-01.034"
         },
         "type": {
-          "type": "string"
+          "description": "Type of interface i.e. signalk, NMEA0183 or NMEA2000",
+          "type": "string",
+          "example":"NMEA0183"
         },
         "manufacturer": {
-          "type": "string"
+          "description": "Manufacturer of the source device",
+          "type": "string",
+          "example":"Digital Yacht"
         },
         "productFunction": {
+          "description": "NMEA2000 Product Function Code",
           "type": "number"
         },
         "productClass": {
+          "description": "NMEA2000 Product Class Code",
           "type": "number"
         },
         "productCode": {
+          "description": "NMEA2000 Product Code",
           "type": "number"
         },
         "productName": {
+          "description": "Product Name or Model Number",
           "type": "string"
         },
         "softwareVersion": {
+          "description": "Version of the device's Software/Firmware",
           "type": "string"
         },
         "hardwareVersion": {
+          "description": "Version of the device's Hardware",
           "type": "string"
         },
         "serialNo": {
+          "description": "Device's Serial Number",
           "type": "string"
         },
         "installationNote1": {
-          "type": "string"
+          "description": "Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'",
+          "type": "string",
+          "example":"Wired on Navigation Switch/Circuit"
         },
         "installationNote2": {
-          "type": "string"
+          "description": "Product Installation Note 2 i.e. 'Located under forward bunk'",
+          "type": "string",
+          "example":"Located under forward bunk"
         },
         "manufacturerInfo": {
-          "type": "string"
+          "description": "Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'",
+          "type": "string",
+          "example":"http://digitalyachtamerica.com Tel:+44 1179 554474"
         }
       }
     }
