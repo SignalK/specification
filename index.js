@@ -253,3 +253,4 @@ module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
 module.exports.getSourceId = getSourceId;
 module.exports.keyForSourceIdPath = keyForSourceIdPath;
+module.exports.getMetadata = require('./src/metadata');
