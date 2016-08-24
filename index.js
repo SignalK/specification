@@ -63,7 +63,7 @@ function validateFull(tree) {
 
 function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
-  var deltaSchema = require('./schemas/delta.json');
+  var deltaSchema = require('./schemas/messages/delta.json');
   var definitions = require('./schemas/definitions.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 
@@ -146,6 +146,15 @@ function chaiAsPromised(chai, utils) {
       result.valid
       , message
       , 'expected #{this} to not be valid SignalK unsubscribe message'
+      );
+  });
+  Assertion.addProperty('validGetPutListMessage', function () {
+    var result = validateWithSchema(this._obj, 'messages/getPutList');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK getPutList message'
       );
   });
   Assertion.addProperty('validDiscovery', function () {
