@@ -6,6 +6,10 @@ describe('Notifications in the full tree', function() {
   it("should be valid", function() {
     require('./data/alarms.json').should.be.validSignalK;
   });
+  // must have state and method
+   it("should not be valid", function() {
+    require('./data/alarms-bad.json').should.not.be.validSignalK;
+  });
   //and work deeply embedded
   it("should be valid for deep keys", function() {
     require('./data/alarms-deep.json').should.be.validSignalK;
