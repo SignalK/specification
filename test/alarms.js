@@ -18,7 +18,7 @@ describe('Notifications in the full tree', function() {
   it("should use alarmState enum", function() {
     require('./data/alarms-invalid1.json').should.not.be.validSignalK;
   });
-  it("should use alarmMethod array with enum", function() {
+  it("should use alarmMethod array", function() {
     require('./data/alarms-invalid2.json').should.not.be.validSignalK;
   });
 });

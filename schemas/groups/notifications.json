@@ -11,9 +11,12 @@
     "(^method$)": {
       "description": "Method to use to raise notifications",
       "type": "array",
-      "items": {
-        "$ref": "../definitions.json#/definitions/alarmMethodEnum"
-      }
+			"title": "Alarm Method",
+			"description": "The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure",
+			"default": ["visual", "sound"],
+			"items": {
+				"$ref": "../definitions.json#/definitions/alarmMethodEnum"
+			}
     },
 
     "(^state$)": {
