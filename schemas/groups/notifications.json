@@ -5,7 +5,7 @@
   "title": "notifications",
   "description": "Notifications, their state, and actions. The notification limits are set in any Signal K key.meta.zones array.",
   "dependencies": {
-  	"message": ["method","state"]
+  	"message": ["state"]
   	},
   "patternProperties": {
     "(^method$)": {
