@@ -41,6 +41,9 @@ function extractUnits(result, pathPrefix, element, schema) {
         description: value.description,
         units: value.units
       };
+      if (value.example) {
+        result[pathPrefix + '.' + key].example = value.example
+      }
       extractUnits(result, pathPrefix + '.' + key, value, schema);
     } else if (typeof value === 'object') {
       if (key === 'definitions' || key === 'timestamp') {
