@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var _ = require('lodash');
+var fs = require('fs')
 
 
 var subSchemas = require('..').subSchemas;
@@ -15,7 +16,38 @@ _.forOwn(subSchemas, function(schema, schemaName) {
   extractUnits(data, schemaName, schema, schema);
 })
 
-console.log(JSON.stringify(data, null, 2));
+fs.writeFileSync("keyswithmetadata.json", JSON.stringify(data, null, 2));
+
+
+var prelude = '# Signal K Data Model Reference\n\n'
+prelude += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files.\n'
+prelude += 'Any changes to the reference material below should be made to the original schema files.\n\n\n'
+
+fs.writeFileSync("doc.md", prelude);
+fs.appendFileSync("doc.md", _.pairs(data).sort((a, b) => a[0] >= b[0]).reduce(keyToMarkDown, ''))
+
+function keyToMarkDown(acc, keyWithData) {
+  var md = ''
+  var key = keyWithData[0]
+  var metadata = keyWithData[1]
+
+  md += `## ${key}\n`
+  if (metadata.description) {
+    md += `${metadata.description}\n\n`
+  }
+  if (metadata.units) {
+    md += `**Units:**${metadata.units}\n\n`
+  }
+  if (metadata.example) {
+    md += `### Example:\n`
+    md += `\`\`\`\n`
+    md += `${metadata.example}\n`
+    md += `\`\`\`\n`
+  }
+  md += '\n'
+
+  return acc + md
+}
 
 function extractUnits(result, pathPrefix, element, schema) {
   _.forOwn(element, function(value, key) {
