@@ -4,6 +4,8 @@ Signal K Specification
 This repository contains the (working) specification for Signal K, defined in
 JSON Schema files.
 
+In addition it provides some JavaScript utilities to work with Signal K data.
+
 
 Signal K
 --------
@@ -39,7 +41,7 @@ git checkout master schemas/
 git commit -m 'Copy schema from master'
 git push
 ```
-It will be published at http://signalk.github.io/specification automatically. 
+It will be published at http://signalk.github.io/specification automatically.
 
 
 Docson
@@ -47,7 +49,7 @@ Docson
 
 You can browse the Schema using the supplied docson viewer. Just open
 index.html from a local webserver (otherwise the XHR requests won't work) in
-your preferred browser to get started. 
+your preferred browser to get started.
 
 
 Validation
@@ -77,3 +79,9 @@ var result = validate(msg);
 chai.use(require('signalk-schema).chaiModule);
 tree.should.be.validSignalK;
 ```
+
+
+JavaScript API
+--------------
+
+See [examples](examples/)
