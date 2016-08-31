@@ -84,8 +84,12 @@ function getDefinition(reference, schema) {
     try {
       return schema.definitions[reference.slice(14)];
     } catch (e) {
-      console.error("No such definition:" + reference);
-      return {};
+      try {
+        return subSchemas.definitions.definitions[reference.slice(14)];
+      } catch (e) {
+        console.error("Nooo such definition:" + reference);
+        return {};
+      }
     }
   } else if (reference.startsWith('../definitions.json#/definitions/')) {
     try {
