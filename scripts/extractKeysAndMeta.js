@@ -66,13 +66,13 @@ function extractUnits(result, pathPrefix, element, schema) {
 }
 
 function allOf(allOfArray, schema) {
-  var elements = allOfArray.map(function(element){
+  var elements = allOfArray.map(function(element) {
     if (element['$ref']) {
       return getDefinition(element['$ref'], schema)
     }
     return element
   });
-  var merged = elements.reduce(function(acc, element){
+  var merged = elements.reduce(function(acc, element) {
     _.merge(acc, element);
     return acc;
   }, {});
