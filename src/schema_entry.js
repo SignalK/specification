@@ -1,0 +1,3 @@
+signalkSchema = {
+  getMetadata: require('./metadata')
+}
