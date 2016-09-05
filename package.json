@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "scripts/extractKeysAndMeta.js"
+    "build": "webpack -p",
+    "doc": "scripts/extractKeysAndMeta.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +27,6 @@
   },
   "bin": {
     "signalk-validate-full": "bin/validate.js"
-  },
-  "scripts": {
-    "build": "webpack -p"
   },
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
