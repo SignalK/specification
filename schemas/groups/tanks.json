@@ -30,7 +30,7 @@
 
             "capacity": {
               "description": "Total capacity",
-              "type": "number",
+              "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3"
             },
 
@@ -39,7 +39,7 @@
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "ratio"
             },
-            
+
             "currentVolume": {
               "description": "Volume of fluid in tank",
               "units": "m3",

@@ -3,7 +3,11 @@
   "tanks": {
     "freshWater": {
       "main": {
-        "capacity": 0.12,
+        "capacity": {
+          "value": 31.7,
+          "$source": "foo.bar",
+          "timestamp": "2014-08-15-19:00:15.402"
+        },
         "currentVolume": {
           "value": 0.0887,
           "$source": "foo.bar",
