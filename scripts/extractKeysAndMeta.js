@@ -38,6 +38,9 @@ function keyToMarkDown(acc, keyWithData) {
   if (metadata.units) {
     md += `**Units:**${metadata.units}\n\n`
   }
+  if (metadata.enum) {
+    md += `${formatEnum(metadata.enum)}`
+  }
   if (metadata.example) {
     md += `### Example:\n`
     md += `\`\`\`\n`
@@ -47,6 +50,10 @@ function keyToMarkDown(acc, keyWithData) {
   md += '\n'
 
   return acc + md
+}
+
+function formatEnum(enumValues) {
+  return `###Enum values:\n${enumValues.reduce((acc,value) => acc += `* ${value}\n`, '')}\n`
 }
 
 function extractUnits(result, pathPrefix, element, schema) {

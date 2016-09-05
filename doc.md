@@ -63,6 +63,17 @@ Length at waterline
 ## design.keel.type
 The type of keel.
 
+###Enum values:
+* long
+* fin
+* flare
+* bulb
+* wing
+* centerboard
+* kanting
+* lifting
+* daggerboard
+
 
 ## design.keel.angle
 A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.
@@ -110,6 +121,30 @@ Total height of the vessel
 
 ## navigation.lights
 Current state of the vessels navigation lights
+
+###Enum values:
+* off
+* fault
+* anchored
+* sailing
+* motoring
+* towing < 200m
+* towing > 200m
+* pushing
+* fishing
+* fishing-hampered
+* trawling
+* trawling-shooting
+* trawling-hauling
+* pilotage
+* not-under-way
+* aground
+* restricted manouverability
+* restricted manouverability towing < 200m
+* restricted manouverability towing > 200m
+* restricted manouverability underwater operations
+* constrained by draft
+* mine clearance
 
 
 ## navigation.courseOverGroundMagnetic
@@ -339,9 +374,27 @@ ISO-8601 (UTC) string representing date and time.
 ## navigation.gnss.methodQuality
 Quality of the satellite fix
 
+###Enum values:
+* no GPS
+* GNSS Fix
+* DGNSS fix
+* Precise GNSS
+* RTK fixed integer
+* RTK float
+* Estimated (DR) mode
+* Manual input
+* Simulator mode
+* Error
+
 
 ## navigation.gnss.integrity
 Integrity of the satellite fix
+
+###Enum values:
+* no Integrity checking
+* Safe
+* Caution
+* Unsafe
 
 
 ## navigation.gnss.antennaAltitude
@@ -445,6 +498,30 @@ Trip log value
 ## navigation.state
 Current navigational state of the vessel
 
+###Enum values:
+* not under command
+* anchored
+* sailing
+* motoring
+* towing < 200m
+* towing > 200m
+* pushing
+* fishing
+* fishing-hampered
+* trawling
+* trawling-shooting
+* trawling-hauling
+* pilotage
+* not-under-way
+* aground
+* restricted manouverability
+* restricted manouverability towing < 200m
+* restricted manouverability towing > 200m
+* restricted manouverability underwater operations
+* constrained by draft
+* mine clearance
+* not defined (example)
+
 
 ## navigation.anchor.maxRadius
 Radius of anchor alarm boundary. The distance from anchor to the center of the boat
@@ -486,6 +563,16 @@ Altitude
 
 ## navigation.datetime.gnssTimeSource
 Source of GNSS Date and Time
+
+###Enum values:
+* GPS
+* GLONASS
+* Galileo
+* Beidou
+* IRNSS
+* Radio Signal
+* Internet
+* Local clock
 
 
 ## electrical.batteries.*.voltage
@@ -809,6 +896,12 @@ Reactive power
 ## electrical.inverters.*.ac.powerFactorLagging
 Lead/lag status.
 
+###Enum values:
+* leading
+* lagging
+* error
+* not available
+
 
 ## electrical.inverters.*.ac.realPower
 Real power.
@@ -824,6 +917,15 @@ Apparent power.
 
 ## electrical.inverters.*.mode
 Mode of inverter
+
+###Enum values:
+* idle
+* inverting
+* disabled
+* standby
+* faulted
+* unknown
+* other
 
 
 ## electrical.chargers.*.voltage
@@ -929,10 +1031,33 @@ ISO-8601 (UTC) string representing date and time.
 ```
 
 ## electrical.chargers.*.meta.chargingAlgorithm
+###Enum values:
+* trickle
+* two stage
+* three stage
+* constant current
+* constant voltage
+* custom profile
+
 
 ## electrical.chargers.*.meta.chargerMode
+###Enum values:
+* standalone
+* master
+* slave
+* standby
+
 
 ## electrical.chargers.*.mode
+###Enum values:
+* charging bulk
+* charging acceptance
+* charging overcharge
+* charging float
+* charging equalize
+* unknown
+* other
+
 
 ## electrical.ac.*.meta.dateInstalled.$ref
 ISO-8601 (UTC) string representing date and time.
@@ -976,6 +1101,12 @@ Reactive power
 
 ## electrical.ac.*.phase.*.powerFactorLagging
 Lead/lag status.
+
+###Enum values:
+* leading
+* lagging
+* error
+* not available
 
 
 ## electrical.ac.*.phase.*.realPower
@@ -1259,6 +1390,11 @@ Apparent wind speed
 ## environment.mode
 Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.
 
+###Enum values:
+* day
+* night
+* restricted visibility
+
 
 ## propulsion.*.exhaustTemperature.meta.properties
 **Units:**[object Object]
@@ -1421,6 +1557,9 @@ The current velocity made good to the next waypoint derived from the speedOverGr
 
 
 ## resources.waypoints.*.feature.type
+###Enum values:
+* Feature
+
 
 ## propulsion.*.revolutions
 Engine revolutions (x60 for RPM)
@@ -1565,6 +1704,14 @@ Used fuel since last reset. Resetting is at user discretion
 
 
 ## propulsion.*.drive.type
+###Enum values:
+* saildrive
+* shaft
+* outboard
+* jet
+* pod
+* other
+
 
 ## propulsion.*.drive.trimState
 Trim/tilt state, 0<=ratio<=1, 1 is 100% up
@@ -1609,9 +1756,21 @@ Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(
 ## propulsion.*.fuel.type
 Fuel type
 
+###Enum values:
+* diesel
+* petrol
+* electric
+* coal/wood
+* other
+
 
 ## steering.autopilot.mode
 Operational mode
+
+###Enum values:
+* powersave
+* normal
+* accurate
 
 
 ## propulsion.*.transmission.oilPressure.meta.properties
@@ -1639,6 +1798,12 @@ Gear ratio, engine rotations per propeller shaft rotation
 
 
 ## propulsion.*.transmission.gear
+###Enum values:
+* Forward
+* Neutral
+* Reverse
+* Fault
+
 
 ## propulsion.*.runTime.meta.properties
 **Units:**[object Object]
@@ -1661,6 +1826,11 @@ Engine temperature
 
 
 ## propulsion.*.state.value
+###Enum values:
+* stopped
+* started
+* unusable
+
 
 ## propulsion.*.state.meta.properties
 **Units:**[object Object]
@@ -1707,12 +1877,38 @@ Latitude
 ## resources.charts.*.chartFormat
 The format of the chart
 
+###Enum values:
+* gif
+* geotiff
+* kap
+* png
+* jpg
+* kml
+* wkt
+* topojson
+* geojson
+* gpx
+* tms
+* S-57
+* S-63
+* svg
+* other
+
 
 ## resources.regions.*.feature.type
+###Enum values:
+* Feature
+
 
 ## resources.regions.*.feature.geometry.oneOf.0.type
+###Enum values:
+* Polygon
+
 
 ## resources.regions.*.feature.geometry.oneOf.1.type
+###Enum values:
+* MultiPolygon
+
 
 ## propulsion.*.transmission.oilTemperature
 Oil temperature
@@ -1751,10 +1947,19 @@ Latitude
 ```
 
 ## resources.waypoints.*.feature.geometry.type
+###Enum values:
+* Point
+
 
 ## resources.routes.*.feature.type
+###Enum values:
+* Feature
+
 
 ## resources.routes.*.feature.geometry.type
+###Enum values:
+* LineString
+
 
 ## steering.autopilot.portLock.meta.properties
 **Units:**[object Object]
@@ -1843,9 +2048,23 @@ The minimum wind speed this sail can be used with
 ## tanks.wasteWater.*.type
 The type of tank
 
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
+
 
 ## steering.autopilot.state
 Autopilot state
+
+###Enum values:
+* on
+* off
+* alarm
 
 
 ## steering.autopilot.starboardLock.meta.properties
@@ -1866,6 +2085,11 @@ Position of servo on port lock
 
 ## steering.autopilot.headingSource
 Current source of heading information
+
+###Enum values:
+* compass
+* wind
+* gps
 
 
 ## steering.autopilot.deadZone
@@ -1977,6 +2201,15 @@ Total capacity
 ## tanks.blackWater.*.type
 The type of tank
 
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
+
 
 ## tanks.fuel.*.currentLevel
 Level of fluid in tank 0-100%
@@ -1999,9 +2232,27 @@ Level of fluid in tank 0-100%
 ## tanks.freshWater.*.type
 The type of tank
 
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
+
 
 ## tanks.fuelWater.*.type
 The type of tank
+
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
 
 
 ## tanks.fuelWater.*.capacity
@@ -2025,6 +2276,15 @@ Volume of fluid in tank
 ## tanks.fuel.*.type
 The type of tank
 
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
+
 
 ## tanks.fuel.*.capacity
 Total capacity
@@ -2047,6 +2307,15 @@ Volume of fluid in tank
 ## tanks.liveWell.*.type
 The type of tank
 
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
+
 
 ## tanks.lubrication.*.capacity
 Total capacity
@@ -2068,6 +2337,15 @@ Volume of fluid in tank
 
 ## tanks.lubrication.*.type
 The type of tank
+
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
 
 
 ## tanks.wasteWater.*.capacity
