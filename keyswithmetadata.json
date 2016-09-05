@@ -1,11 +1,20 @@
 {
   "notifications.*.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "design.displacement": {
     "description": "The displacement of the vessel",
     "units": "kg"
+  },
+  "design.displacement.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "design.draft.minimum": {
     "description": "The minimum draft of the vessel",
@@ -49,17 +58,50 @@
     "description": "A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.",
     "units": "rad"
   },
+  "design.keel.angle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "design.keel.lift": {
     "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
-    "units": "ratio"
+    "units": "ratio",
+    "example": 0.8
+  },
+  "design.keel.lift.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "design.beam": {
     "description": "Beam length",
     "units": "m"
   },
+  "design.beam.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "design.airHeight": {
     "description": "Total height of the vessel",
     "units": "m"
+  },
+  "design.airHeight.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "navigation.lights": {
     "description": "Current state of the vessels navigation lights",
@@ -110,11 +152,13 @@
   },
   "navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "navigation.courseRhumbline.activeRoute.startTime.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "navigation.courseRhumbline.nextPoint.distance": {
     "description": "The distance in meters between the vessel's present position and the nextPoint",
@@ -154,11 +198,13 @@
   },
   "navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "navigation.courseGreatCircle.activeRoute.startTime.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "navigation.courseGreatCircle.nextPoint.distance": {
     "description": "The distance in meters between the vessel's present position and the nextPoint",
@@ -222,7 +268,8 @@
   },
   "navigation.destination.eta.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "navigation.gnss.methodQuality": {
     "description": "Quality of the satellite fix",
@@ -257,7 +304,7 @@
     "units": "s"
   },
   "navigation.headingMagnetic": {
-    "description": "Current magnetic heading of the vessels",
+    "description": "Current magnetic heading of the vessel",
     "units": "rad"
   },
   "navigation.headingTrue": {
@@ -266,11 +313,13 @@
   },
   "navigation.position.longitude": {
     "description": "Longitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 4.98765245
   },
   "navigation.position.latitude": {
     "description": "Latitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 52.0987654
   },
   "navigation.position.altitude": {
     "description": "Altitude",
@@ -289,7 +338,7 @@
     "units": "rad"
   },
   "navigation.rateOfTurn": {
-    "description": "Rate of turn",
+    "description": "Rate of turn (+ve is change to starboard)",
     "units": "rad/s"
   },
   "navigation.speedOverGround": {
@@ -345,11 +394,13 @@
   },
   "navigation.anchor.position.longitude": {
     "description": "Longitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 4.98765245
   },
   "navigation.anchor.position.latitude": {
     "description": "Latitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 52.0987654
   },
   "navigation.anchor.position.altitude": {
     "description": "Altitude",
@@ -448,7 +499,8 @@
   },
   "electrical.batteries.*.meta.dateInstalled.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "electrical.batteries.*.capacity.nominal": {
     "description": "The capacity of battery as specified by the manufacturer",
@@ -492,7 +544,8 @@
   },
   "electrical.inverters.*.meta.dateInstalled.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "electrical.inverters.*.dc.voltage": {
     "units": "V"
@@ -669,7 +722,8 @@
   },
   "electrical.chargers.*.meta.dateInstalled.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "electrical.chargers.*.meta.chargingAlgorithm": {
     "enum": [
@@ -702,7 +756,8 @@
   },
   "electrical.ac.*.meta.dateInstalled.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "electrical.ac.*.phase.*.lineNeutralVoltage": {
     "description": "RMS voltage measured between phase and neutral.",
@@ -830,40 +885,45 @@
     "units": "m"
   },
   "environment.depth.surfaceToTransducer": {
-    "description": "Depth transducer is below the water",
+    "description": "Depth transducer is below the water surface",
     "units": "m"
   },
   "environment.current.drift": {
     "description": "The speed component of the water current vector",
-    "units": "m/s"
+    "units": "m/s",
+    "example": 3.12
   },
   "environment.current.setTrue": {
     "description": "The direction component of the water current vector referenced to true (geographic) north",
-    "units": "rad"
+    "units": "rad",
+    "example": 123.45
   },
   "environment.current.setMagnetic": {
     "description": "The direction component of the water current vector referenced to magnetic north",
-    "units": "rad"
+    "units": "rad",
+    "example": 131.22
   },
   "environment.tide.heightHigh": {
-    "description": "Next high tide",
+    "description": "Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
     "units": "m"
   },
   "environment.tide.heightNow": {
-    "description": "The current tide height",
+    "description": "The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
     "units": "m"
   },
   "environment.tide.heightLow": {
-    "description": "The next low tide height",
+    "description": "The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)",
     "units": "m"
   },
   "environment.tide.timeLow.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "environment.tide.timeHigh.$ref": {
     "description": "ISO-8601 (UTC) string representing date and time.",
-    "units": "ISO-8601 (UTC)"
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
   },
   "environment.heave": {
     "description": "Vertical movement of the vessel due to waves",
@@ -917,61 +977,189 @@
     "description": "The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.",
     "units": "m/s"
   },
+  "performance.polarSpeed.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.polarSpeedRatio": {
     "description": "The ratio of current speed through water to the polar speed.",
     "units": "ratio"
+  },
+  "performance.polarSpeedRatio.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.velocityMadeGood": {
     "description": "The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.",
     "units": "m/s"
   },
+  "performance.velocityMadeGood.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.velocityMadeGoodToWaypoint": {
     "description": "The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.",
     "units": "m/s"
+  },
+  "performance.velocityMadeGoodToWaypoint.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.beatAngle": {
     "description": "The true wind beat angle for the best velocity made good based on current current polar diagram and trueWindSpeed.",
     "units": "rad"
   },
+  "performance.beatAngle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.beatAngleVelocityMadeGood": {
     "description": "The velocity made good for the beat angle.",
     "units": "m/s"
+  },
+  "performance.beatAngleVelocityMadeGood.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.beatAngleTargetSpeed": {
     "description": "The target speed for the beat angle.",
     "units": "m/s"
   },
+  "performance.beatAngleTargetSpeed.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.gybeAngle": {
     "description": "The true wind gybe angle for the best velocity made good downwind based on current polar diagram and trueWindSpeed.",
     "units": "rad"
+  },
+  "performance.gybeAngle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.gybeAngleVelocityMadeGood": {
     "description": "The velocity made good for the gybe angle",
     "units": "m/s"
   },
+  "performance.gybeAngleVelocityMadeGood.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.gybeAngleTargetSpeed": {
     "description": "The target speed for the gybe angle.",
     "units": "m/s"
+  },
+  "performance.gybeAngleTargetSpeed.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.targetAngle": {
     "description": "The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.",
     "units": "rad"
   },
+  "performance.targetAngle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.targetSpeed": {
     "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
     "units": "m/s"
+  },
+  "performance.targetSpeed.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "performance.leeway": {
     "description": "Current leeway",
     "units": "rad"
   },
+  "performance.leeway.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.tackMagnetic": {
     "description": "Magnetic heading on opposite tack.",
     "units": "rad"
   },
+  "performance.tackMagnetic.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "performance.tackTrue": {
     "description": "True heading on opposite tack.",
     "units": "rad"
+  },
+  "performance.tackTrue.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "propulsion.*.state.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.state.value": {
     "enum": [
@@ -981,48 +1169,136 @@
     ]
   },
   "propulsion.*.revolutions": {
-    "description": "Engine revolutions",
+    "description": "Engine revolutions (x60 for RPM)",
     "units": "Hz"
+  },
+  "propulsion.*.revolutions.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.temperature": {
     "description": "Engine temperature",
     "units": "K"
   },
+  "propulsion.*.temperature.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.oilTemperature": {
     "description": "Oil temperature",
     "units": "K"
+  },
+  "propulsion.*.oilTemperature.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.oilPressure": {
     "description": "Oil pressure",
     "units": "Pa"
   },
+  "propulsion.*.oilPressure.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.alternatorVoltage": {
     "description": "Alternator voltage",
     "units": "V"
   },
+  "propulsion.*.alternatorVoltage.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.runTime": {
-    "description": "Total running time for engine",
+    "description": "Total running time for engine (Engine Hours in seconds)",
     "units": "s"
+  },
+  "propulsion.*.runTime.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.coolantTemperature": {
     "description": "Coolant temperature",
     "units": "K"
   },
+  "propulsion.*.coolantTemperature.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.coolantPressure": {
     "description": "Coolant pressure",
     "units": "Pa"
+  },
+  "propulsion.*.coolantPressure.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.boostPressure": {
     "description": "Engine boost (turbo, supercharger) pressure",
     "units": "Pa"
   },
+  "propulsion.*.boostPressure.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.engineLoad": {
-    "description": "Engine load ratio, 1 is 100%",
+    "description": "Engine load ratio, 0<=ratio<=1, 1 is 100%",
     "units": "ratio"
   },
+  "propulsion.*.engineLoad.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.engineTorque": {
-    "description": "Engine torque ratio, 1 is 100%",
+    "description": "Engine torque ratio, 0<=ratio<=1, 1 is 100%",
     "units": "ratio"
+  },
+  "propulsion.*.engineTorque.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.transmission.gear": {
     "enum": [
@@ -1033,16 +1309,40 @@
     ]
   },
   "propulsion.*.transmission.gearRatio": {
-    "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+    "description": "Gear ratio, engine rotations per propeller shaft rotation",
     "units": "ratio"
+  },
+  "propulsion.*.transmission.gearRatio.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.transmission.oilTemperature": {
     "description": "Oil temperature",
     "units": "K"
   },
+  "propulsion.*.transmission.oilTemperature.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.transmission.oilPressure": {
     "description": "Oil pressure",
     "units": "Pa"
+  },
+  "propulsion.*.transmission.oilPressure.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.drive.type": {
     "enum": [
@@ -1055,20 +1355,52 @@
     ]
   },
   "propulsion.*.drive.trimState": {
-    "description": "Trim/tilt state",
+    "description": "Trim/tilt state, 0<=ratio<=1, 1 is 100% up",
     "units": "ratio"
+  },
+  "propulsion.*.drive.trimState.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.drive.thrustAngle": {
     "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
     "units": "rad"
   },
+  "propulsion.*.drive.thrustAngle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.drive.propeller.pitch ": {
-    "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+    "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
     "units": "m"
   },
+  "propulsion.*.drive.propeller.pitch .meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.drive.propeller.slip": {
-    "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+    "description": "Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(actual distance travelled/propeller pitch). 0<=ratio<=1, 0 is 0% slip, 1 is 100% slip",
     "units": "ratio"
+  },
+  "propulsion.*.drive.propeller.slip.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.fuel.type": {
     "description": "Fuel type",
@@ -1084,33 +1416,73 @@
     "description": "Used fuel since last reset. Resetting is at user discretion",
     "units": "m3"
   },
+  "propulsion.*.fuel.used.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.fuel.pressure": {
     "description": "Fuel pressure",
     "units": "Pa"
   },
+  "propulsion.*.fuel.pressure.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "propulsion.*.fuel.rate": {
-    "description": "Fuel rate",
+    "description": "Fuel rate  of consumption",
     "units": "m3/s"
+  },
+  "propulsion.*.fuel.rate.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.fuel.economyRate": {
-    "description": "Fuel rate",
+    "description": "Economy fuel rate of consumption",
     "units": "m3/s"
+  },
+  "propulsion.*.fuel.economyRate.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.fuel.averageRate": {
-    "description": "Fuel rate",
+    "description": "Average fuel rate of consumption",
     "units": "m3/s"
   },
-  "propulsion.*.waterTemperature": {
-    "description": "Water temperature",
-    "units": "K"
+  "propulsion.*.fuel.averageRate.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "propulsion.*.exhaustTemperature": {
     "description": "Exhaust temperature",
     "units": "K"
   },
-  "propulsion.*.fuelRate": {
-    "description": "Fuel consumption rate",
-    "units": "m3/s"
+  "propulsion.*.exhaustTemperature.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "resources.charts.*.chartFormat": {
     "description": "The format of the chart",
@@ -1124,7 +1496,12 @@
       "wkt",
       "topojson",
       "geojson",
-      "gpx"
+      "gpx",
+      "tms",
+      "S-57",
+      "S-63",
+      "svg",
+      "other"
     ]
   },
   "resources.routes.*.distance": {
@@ -1141,13 +1518,23 @@
       "LineString"
     ]
   },
+  "resources.notes.*.position.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "resources.notes.*.position.longitude": {
     "description": "Longitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 4.98765245
   },
   "resources.notes.*.position.latitude": {
     "description": "Latitude",
-    "units": "deg"
+    "units": "deg",
+    "example": 52.0987654
   },
   "resources.notes.*.position.altitude": {
     "description": "Altitude",
@@ -1167,6 +1554,28 @@
     "enum": [
       "MultiPolygon"
     ]
+  },
+  "resources.waypoints.*.position.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "resources.waypoints.*.position.longitude": {
+    "description": "Longitude",
+    "units": "deg",
+    "example": 4.98765245
+  },
+  "resources.waypoints.*.position.latitude": {
+    "description": "Latitude",
+    "units": "deg",
+    "example": 52.0987654
+  },
+  "resources.waypoints.*.position.altitude": {
+    "description": "Altitude",
+    "units": "m"
   },
   "resources.waypoints.*.feature.type": {
     "enum": [
@@ -1190,21 +1599,87 @@
     "description": "The maximum wind speed this sail can be used with",
     "units": "m/s"
   },
+  "sails.inventory.*.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "sails.area.total": {
     "description": "The total area of all sails on the vessel",
     "units": "m2"
+  },
+  "sails.area.total.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "sails.area.active": {
     "description": "The total area of the sails currently in use on the vessel",
     "units": "m2"
   },
+  "sails.area.active.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "sensors.fromBow.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "sensors.fromCenter.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "sources.*.*.anyOf.0.sentences.*.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
+  },
+  "sources.*.*.anyOf.0.n2k.pgns.*.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)",
+    "example": "2014-04-10T08:33:53Z"
+  },
   "steering.rudderAngle": {
     "description": "Current rudder angle, +ve is rudder to Starboard",
     "units": "rad"
   },
+  "steering.rudderAngle.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "steering.rudderAngleTarget": {
     "description": "The angle the rudder should move to, +ve is rudder to Starboard",
     "units": "rad"
+  },
+  "steering.rudderAngleTarget.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "steering.autopilot.state": {
     "description": "Autopilot state",
@@ -1226,9 +1701,25 @@
     "description": "Target heading for autopilot, relative to true North",
     "units": "rad"
   },
+  "steering.autopilot.targetHeadingNorth.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "steering.autopilot.targetHeadingMagnetic": {
     "description": "Target heading for autopilot, relative to magnetic North",
     "units": "rad"
+  },
+  "steering.autopilot.targetHeadingMagnetic.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "steering.autopilot.headingSource": {
     "description": "Current source of heading information",
@@ -1242,25 +1733,81 @@
     "description": "Dead zone to ignore for rudder corrections",
     "units": "rad"
   },
+  "steering.autopilot.deadZone.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "steering.autopilot.backlash": {
     "description": "Slack in the rudder drive mechanism",
     "units": "rad"
+  },
+  "steering.autopilot.backlash.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
+  "steering.autopilot.gain.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "steering.autopilot.maxDriveCurrent": {
     "description": "Maximum current to use to drive servo",
     "units": "A"
   },
+  "steering.autopilot.maxDriveCurrent.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "steering.autopilot.maxDriveRate": {
     "description": "Maximum rudder rotation speed",
     "units": "rad/s"
+  },
+  "steering.autopilot.maxDriveRate.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "steering.autopilot.portLock": {
     "description": "Position of servo on port lock",
     "units": "rad"
   },
+  "steering.autopilot.portLock.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
+  },
   "steering.autopilot.starboardLock": {
     "description": "Position of servo on starboard lock",
     "units": "rad"
+  },
+  "steering.autopilot.starboardLock.meta.properties": {
+    "units": {
+      "type": "string",
+      "title": "units schema.",
+      "description": "The (derived) SI unit of this value.",
+      "example": "m/s"
+    }
   },
   "tanks.freshWater.*.type": {
     "description": "The type of tank",
