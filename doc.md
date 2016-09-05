@@ -4,28 +4,38 @@ This document is meant as the human-oriented reference to accompany the actual J
 Any changes to the reference material below should be made to the original schema files.
 
 
-## environment.depth.transducerToKeel
-Depth from the transducer to the bottom of the keel
+## design.airHeight
+Total height of the vessel
 
 **Units:**m
 
 
-## notifications.*.$ref
-ISO-8601 (UTC) string representing date and time.
+## design.airHeight.meta.properties
+**Units:**[object Object]
 
-**Units:**ISO-8601 (UTC)
 
-### Example:
-```
-2014-04-10T08:33:53Z
-```
+## design.beam
+Beam length
+
+**Units:**m
+
+
+## design.beam.meta.properties
+**Units:**[object Object]
+
+
+## design.displacement
+The displacement of the vessel
+
+**Units:**kg
+
 
 ## design.displacement.meta.properties
 **Units:**[object Object]
 
 
-## design.draft.minimum
-The minimum draft of the vessel
+## design.draft.canoe
+The draft of the vessel without protrusions such as keel, centerboard, rudder
 
 **Units:**m
 
@@ -36,43 +46,10 @@ The maximum draft of the vessel
 **Units:**m
 
 
-## design.draft.canoe
-The draft of the vessel without protrusions such as keel, centerboard, rudder
+## design.draft.minimum
+The minimum draft of the vessel
 
 **Units:**m
-
-
-## design.length.overall
-Length overall
-
-**Units:**m
-
-
-## design.length.hull
-Length of hull
-
-**Units:**m
-
-
-## design.length.waterline
-Length at waterline
-
-**Units:**m
-
-
-## design.keel.type
-The type of keel.
-
-###Enum values:
-* long
-* fin
-* flare
-* bulb
-* wing
-* centerboard
-* kanting
-* lifting
-* daggerboard
 
 
 ## design.keel.angle
@@ -99,24 +76,1148 @@ In the case of a lifting keel, centreboard or daggerboard, the part of the keel 
 **Units:**[object Object]
 
 
-## design.beam
-Beam length
+## design.keel.type
+The type of keel.
+
+###Enum values:
+* long
+* fin
+* flare
+* bulb
+* wing
+* centerboard
+* kanting
+* lifting
+* daggerboard
+
+
+## design.length.hull
+Length of hull
 
 **Units:**m
 
 
-## design.beam.meta.properties
-**Units:**[object Object]
-
-
-## design.airHeight
-Total height of the vessel
+## design.length.overall
+Length overall
 
 **Units:**m
 
 
-## design.airHeight.meta.properties
-**Units:**[object Object]
+## design.length.waterline
+Length at waterline
+
+**Units:**m
+
+
+## electrical.ac.*.meta.dateInstalled.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## electrical.ac.*.phase.*.apparentPower
+Apparent power.
+
+**Units:**W
+
+
+## electrical.ac.*.phase.*.current
+RMS current
+
+**Units:**A
+
+
+## electrical.ac.*.phase.*.frequency
+AC frequency.
+
+**Units:**Hz
+
+
+## electrical.ac.*.phase.*.lineLineVoltage
+RMS voltage measured between phases
+
+**Units:**V
+
+
+## electrical.ac.*.phase.*.lineNeutralVoltage
+RMS voltage measured between phase and neutral.
+
+**Units:**V
+
+
+## electrical.ac.*.phase.*.powerFactorLagging
+Lead/lag status.
+
+###Enum values:
+* leading
+* lagging
+* error
+* not available
+
+
+## electrical.ac.*.phase.*.reactivePower
+Reactive power
+
+**Units:**W
+
+
+## electrical.ac.*.phase.*.realPower
+Real power.
+
+**Units:**W
+
+
+## electrical.batteries.*.capacity.actual
+The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.
+
+**Units:**J
+
+
+## electrical.batteries.*.capacity.dischargeLimit
+Minimum capacity to be left in the battery while discharging
+
+**Units:**J
+
+
+## electrical.batteries.*.capacity.dischargeSinceFull
+Cumulative discharge since battery was last full
+
+**Units:**C
+
+
+## electrical.batteries.*.capacity.nominal
+The capacity of battery as specified by the manufacturer
+
+**Units:**J
+
+
+## electrical.batteries.*.capacity.remaining
+Capacity remaining in battery
+
+**Units:**J
+
+
+## electrical.batteries.*.capacity.stateOfCharge
+State of charge, 1 = 100%
+
+**Units:**ratio
+
+
+## electrical.batteries.*.capacity.stateOfHealth
+State of Health, 1 = 100%
+
+**Units:**ratio
+
+
+## electrical.batteries.*.capacity.timeRemaining
+Time to discharge to discharge limit at current rate
+
+**Units:**s
+
+
+## electrical.batteries.*.current
+**Units:**A
+
+
+## electrical.batteries.*.current.meta.faultLower
+Lower fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.batteries.*.current.meta.faultUpper
+Upper fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.batteries.*.current.meta.warnLower
+Lower operational current limit
+
+**Units:**A
+
+
+## electrical.batteries.*.current.meta.warnUpper
+Upper operational current limit
+
+**Units:**A
+
+
+## electrical.batteries.*.lifetimeDischarge
+Cumulative charge discharged from battery over operational lifetime of battery
+
+**Units:**C
+
+
+## electrical.batteries.*.lifetimeRecharge
+Cumulative charge recharged into battery over operational lifetime of battery
+
+**Units:**C
+
+
+## electrical.batteries.*.meta.dateInstalled.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## electrical.batteries.*.temperature.faultLower
+Lower fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.faultUpper
+Upper fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.limitDischargeLower
+Operational minimum temperature limit for battery discharge, in degrees Celsius
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.limitDischargeUpper
+Operational maximum temperature limit for battery discharge, in degrees Celsius
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.limitRechargeLower
+Operational minimum temperature limit for battery recharging, in degrees Celsius
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.limitRechargeUpper
+Operational maximum temperature limit for battery recharging, in degrees Celsius
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.warnLower
+Lower operational temperature limit
+
+**Units:**K
+
+
+## electrical.batteries.*.temperature.warnUpper
+Upper operational temperature limit
+
+**Units:**K
+
+
+## electrical.batteries.*.voltage
+**Units:**V
+
+
+## electrical.batteries.*.voltage.meta.faultLower
+Lower fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.batteries.*.voltage.meta.faultUpper
+Upper fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.batteries.*.voltage.meta.nominal
+Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
+
+**Units:**V
+
+
+## electrical.batteries.*.voltage.meta.warnLower
+Lower operational voltage limit
+
+**Units:**V
+
+
+## electrical.batteries.*.voltage.meta.warnUpper
+Upper operational voltage limit
+
+**Units:**V
+
+
+## electrical.batteries.*.voltage.ripple
+Ripple voltage
+
+**Units:**V
+
+
+## electrical.chargers.*.current
+**Units:**A
+
+
+## electrical.chargers.*.current.meta.faultLower
+Lower fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.chargers.*.current.meta.faultUpper
+Upper fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.chargers.*.current.meta.warnLower
+Lower operational current limit
+
+**Units:**A
+
+
+## electrical.chargers.*.current.meta.warnUpper
+Upper operational current limit
+
+**Units:**A
+
+
+## electrical.chargers.*.meta.chargerMode
+###Enum values:
+* standalone
+* master
+* slave
+* standby
+
+
+## electrical.chargers.*.meta.chargingAlgorithm
+###Enum values:
+* trickle
+* two stage
+* three stage
+* constant current
+* constant voltage
+* custom profile
+
+
+## electrical.chargers.*.meta.dateInstalled.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## electrical.chargers.*.mode
+###Enum values:
+* charging bulk
+* charging acceptance
+* charging overcharge
+* charging float
+* charging equalize
+* unknown
+* other
+
+
+## electrical.chargers.*.temperature.faultLower
+Lower fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.chargers.*.temperature.faultUpper
+Upper fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.chargers.*.temperature.warnLower
+Lower operational temperature limit
+
+**Units:**K
+
+
+## electrical.chargers.*.temperature.warnUpper
+Upper operational temperature limit
+
+**Units:**K
+
+
+## electrical.chargers.*.voltage
+**Units:**V
+
+
+## electrical.chargers.*.voltage.meta.faultLower
+Lower fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.chargers.*.voltage.meta.faultUpper
+Upper fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.chargers.*.voltage.meta.nominal
+Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
+
+**Units:**V
+
+
+## electrical.chargers.*.voltage.meta.warnLower
+Lower operational voltage limit
+
+**Units:**V
+
+
+## electrical.chargers.*.voltage.meta.warnUpper
+Upper operational voltage limit
+
+**Units:**V
+
+
+## electrical.chargers.*.voltage.ripple
+Ripple voltage
+
+**Units:**V
+
+
+## electrical.inverters.*.ac.apparentPower
+Apparent power.
+
+**Units:**W
+
+
+## electrical.inverters.*.ac.current
+RMS current
+
+**Units:**A
+
+
+## electrical.inverters.*.ac.frequency
+AC frequency.
+
+**Units:**Hz
+
+
+## electrical.inverters.*.ac.lineLineVoltage
+RMS voltage measured between phases
+
+**Units:**V
+
+
+## electrical.inverters.*.ac.lineNeutralVoltage
+RMS voltage measured between phase and neutral.
+
+**Units:**V
+
+
+## electrical.inverters.*.ac.powerFactorLagging
+Lead/lag status.
+
+###Enum values:
+* leading
+* lagging
+* error
+* not available
+
+
+## electrical.inverters.*.ac.reactivePower
+Reactive power
+
+**Units:**W
+
+
+## electrical.inverters.*.ac.realPower
+Real power.
+
+**Units:**W
+
+
+## electrical.inverters.*.dc.current
+**Units:**A
+
+
+## electrical.inverters.*.dc.current.meta.faultLower
+Lower fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.inverters.*.dc.current.meta.faultUpper
+Upper fault limit of battery current - BMS may disconnect battery
+
+**Units:**A
+
+
+## electrical.inverters.*.dc.current.meta.warnLower
+Lower operational current limit
+
+**Units:**A
+
+
+## electrical.inverters.*.dc.current.meta.warnUpper
+Upper operational current limit
+
+**Units:**A
+
+
+## electrical.inverters.*.dc.temperature.faultLower
+Lower fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.inverters.*.dc.temperature.faultUpper
+Upper fault limit of temperature - device may disable
+
+**Units:**K
+
+
+## electrical.inverters.*.dc.temperature.warnLower
+Lower operational temperature limit
+
+**Units:**K
+
+
+## electrical.inverters.*.dc.temperature.warnUpper
+Upper operational temperature limit
+
+**Units:**K
+
+
+## electrical.inverters.*.dc.voltage
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.meta.faultLower
+Lower fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.meta.faultUpper
+Upper fault limit of battery voltage - BMS may disconnect battery
+
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.meta.nominal
+Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
+
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.meta.warnLower
+Lower operational voltage limit
+
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.meta.warnUpper
+Upper operational voltage limit
+
+**Units:**V
+
+
+## electrical.inverters.*.dc.voltage.ripple
+Ripple voltage
+
+**Units:**V
+
+
+## electrical.inverters.*.meta.dateInstalled.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## electrical.inverters.*.mode
+Mode of inverter
+
+###Enum values:
+* idle
+* inverting
+* disabled
+* standby
+* faulted
+* unknown
+* other
+
+
+## environment.current.drift
+The speed component of the water current vector
+
+**Units:**m/s
+
+### Example:
+```
+3.12
+```
+
+## environment.current.setMagnetic
+The direction component of the water current vector referenced to magnetic north
+
+**Units:**rad
+
+### Example:
+```
+131.22
+```
+
+## environment.current.setTrue
+The direction component of the water current vector referenced to true (geographic) north
+
+**Units:**rad
+
+### Example:
+```
+123.45
+```
+
+## environment.depth.belowKeel
+Depth below keel
+
+**Units:**m
+
+
+## environment.depth.belowSurface
+Depth from surface
+
+**Units:**m
+
+
+## environment.depth.belowTransducer
+Depth below Transducer
+
+**Units:**m
+
+
+## environment.depth.surfaceToTransducer
+Depth transducer is below the water surface
+
+**Units:**m
+
+
+## environment.depth.transducerToKeel
+Depth from the transducer to the bottom of the keel
+
+**Units:**m
+
+
+## environment.heave
+Vertical movement of the vessel due to waves
+
+**Units:**m
+
+
+## environment.inside.engineRoom.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.inside.freezer.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.inside.heating.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.inside.humidity
+Current inside air relative humidity
+
+**Units:**ratio
+
+
+## environment.inside.mainCabin.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.inside.refrigerator.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.inside.temperature
+Current inside air temperature
+
+**Units:**K
+
+
+## environment.mode
+Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.
+
+###Enum values:
+* day
+* night
+* restricted visibility
+
+
+## environment.outside.apparentWindChillTemperature
+Current outside apparent wind chill temperature
+
+**Units:**K
+
+
+## environment.outside.dewPointTemperature
+Current outside dew point temperature
+
+**Units:**K
+
+
+## environment.outside.heatIndexTemperature
+Current outside heat index temperature
+
+**Units:**K
+
+
+## environment.outside.humidity
+Current outside air relative humidity
+
+**Units:**ratio
+
+
+## environment.outside.pressure
+Current outside air ambient pressure
+
+**Units:**Pa
+
+
+## environment.outside.temperature
+Current outside air temperature
+
+**Units:**K
+
+
+## environment.outside.theoreticalWindChillTemperature
+Current outside theoretical wind chill temperature
+
+**Units:**K
+
+
+## environment.tide.heightHigh
+Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)
+
+**Units:**m
+
+
+## environment.tide.heightLow
+The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)
+
+**Units:**m
+
+
+## environment.tide.heightNow
+The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)
+
+**Units:**m
+
+
+## environment.tide.timeHigh.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## environment.tide.timeLow.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## environment.water.baitWell.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.water.liveWell.temperature
+Temperature
+
+**Units:**K
+
+
+## environment.water.salinity
+Water salinity
+
+**Units:**ratio
+
+
+## environment.water.temperature
+Current water temperature
+
+**Units:**K
+
+
+## environment.wind.angleApparent
+Apparent wind angle, negative to port
+
+**Units:**rad
+
+
+## environment.wind.angleTrueGround
+True wind angle based on speed over ground, negative to port
+
+**Units:**rad
+
+
+## environment.wind.angleTrueWater
+True wind angle based on speed through water, negative to port
+
+**Units:**rad
+
+
+## environment.wind.directionChangeAlarm
+The angle the wind needs to shift to raise an alarm
+
+**Units:**rad
+
+
+## environment.wind.directionMagnetic
+The wind direction relative to magnetic north
+
+**Units:**rad
+
+
+## environment.wind.directionTrue
+The wind direction relative to true north
+
+**Units:**rad
+
+
+## environment.wind.speedApparent
+Apparent wind speed
+
+**Units:**m/s
+
+
+## environment.wind.speedOverGround
+Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)
+
+**Units:**m/s
+
+
+## environment.wind.speedTrue
+Wind speed over water (as calculated from speedApparent and vessel's speed through water)
+
+**Units:**m/s
+
+
+## navigation.anchor.currentRadius
+Current distance to anchor
+
+**Units:**m
+
+
+## navigation.anchor.maxRadius
+Radius of anchor alarm boundary. The distance from anchor to the center of the boat
+
+**Units:**m
+
+
+## navigation.anchor.position.altitude
+Altitude
+
+**Units:**m
+
+
+## navigation.anchor.position.latitude
+Latitude
+
+**Units:**deg
+
+### Example:
+```
+52.0987654
+```
+
+## navigation.anchor.position.longitude
+Longitude
+
+**Units:**deg
+
+### Example:
+```
+4.98765245
+```
+
+## navigation.attitude.pitch
+Pitch, +ve is bow up
+
+**Units:**rad
+
+
+## navigation.attitude.roll
+Vessel roll, +ve is list to starboard
+
+**Units:**rad
+
+
+## navigation.attitude.yaw
+Yaw, +ve is heading change to starboard
+
+**Units:**rad
+
+
+## navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## navigation.courseGreatCircle.activeRoute.startTime.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## navigation.courseGreatCircle.bearingTrackMagnetic
+The bearing of a line between previousPoint and nextPoint, relative to magnetic north.
+
+**Units:**rad
+
+
+## navigation.courseGreatCircle.bearingTrackTrue
+The bearing of a line between previousPoint and nextPoint, relative to true north.
+
+**Units:**rad
+
+
+## navigation.courseGreatCircle.crossTrackError
+The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).
+
+**Units:**m
+
+
+## navigation.courseGreatCircle.nextPoint.bearingMagnetic
+The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north
+
+**Units:**rad
+
+
+## navigation.courseGreatCircle.nextPoint.bearingTrue
+The bearing of a line between the vessel's current position and nextPoint, relative to true north
+
+**Units:**rad
+
+
+## navigation.courseGreatCircle.nextPoint.distance
+The distance in meters between the vessel's present position and the nextPoint
+
+**Units:**m
+
+
+## navigation.courseGreatCircle.nextPoint.timeToGo
+Time in seconds to reach nextPoint's perpendicular) with current speed & direction
+
+**Units:**s
+
+
+## navigation.courseGreatCircle.nextPoint.velocityMadeGood
+The velocity component of the vessel towards the nextPoint
+
+**Units:**m/s
+
+
+## navigation.courseGreatCircle.previousPoint.distance
+The distance in meters between previousPoint and the vessel's present position
+
+**Units:**m
+
+
+## navigation.courseOverGroundMagnetic
+Course over ground (magnetic)
+
+**Units:**rad
+
+
+## navigation.courseOverGroundTrue
+Course over ground (true)
+
+**Units:**rad
+
+
+## navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## navigation.courseRhumbline.activeRoute.startTime.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## navigation.courseRhumbline.bearingTrackMagnetic
+The bearing of a line between previousPoint and nextPoint, relative to magnetic north.
+
+**Units:**rad
+
+
+## navigation.courseRhumbline.bearingTrackTrue
+The bearing of a line between previousPoint and nextPoint, relative to true north.
+
+**Units:**rad
+
+
+## navigation.courseRhumbline.crossTrackError
+The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).
+
+**Units:**m
+
+
+## navigation.courseRhumbline.nextPoint.bearingMagnetic
+The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north
+
+**Units:**rad
+
+
+## navigation.courseRhumbline.nextPoint.bearingTrue
+The bearing of a line between the vessel's current position and nextPoint, relative to true north
+
+**Units:**rad
+
+
+## navigation.courseRhumbline.nextPoint.distance
+The distance in meters between the vessel's present position and the nextPoint
+
+**Units:**m
+
+
+## navigation.courseRhumbline.nextPoint.timeToGo
+Time in seconds to reach nextPoint's perpendicular) with current speed & direction
+
+**Units:**s
+
+
+## navigation.courseRhumbline.nextPoint.velocityMadeGood
+The velocity component of the vessel towards the nextPoint
+
+**Units:**m/s
+
+
+## navigation.courseRhumbline.previousPoint.distance
+The distance in meters between previousPoint and the vessel's present position
+
+**Units:**m
+
+
+## navigation.datetime.gnssTimeSource
+Source of GNSS Date and Time
+
+###Enum values:
+* GPS
+* GLONASS
+* Galileo
+* Beidou
+* IRNSS
+* Radio Signal
+* Internet
+* Local clock
+
+
+## navigation.destination.eta.$ref
+ISO-8601 (UTC) string representing date and time.
+
+**Units:**ISO-8601 (UTC)
+
+### Example:
+```
+2014-04-10T08:33:53Z
+```
+
+## navigation.gnss.antennaAltitude
+Altitude of antenna
+
+**Units:**m
+
+
+## navigation.gnss.differentialAge
+Age of DGPS data
+
+**Units:**s
+
+
+## navigation.gnss.integrity
+Integrity of the satellite fix
+
+###Enum values:
+* no Integrity checking
+* Safe
+* Caution
+* Unsafe
+
+
+## navigation.gnss.methodQuality
+Quality of the satellite fix
+
+###Enum values:
+* no GPS
+* GNSS Fix
+* DGNSS fix
+* Precise GNSS
+* RTK fixed integer
+* RTK float
+* Estimated (DR) mode
+* Manual input
+* Simulator mode
+* Error
+
+
+## navigation.headingMagnetic
+Current magnetic heading of the vessel
+
+**Units:**rad
+
+
+## navigation.headingTrue
+The current true heading of the vessel
+
+**Units:**rad
 
 
 ## navigation.lights
@@ -147,162 +1248,58 @@ Current state of the vessels navigation lights
 * mine clearance
 
 
-## navigation.courseOverGroundMagnetic
-Course over ground (magnetic)
-
-**Units:**rad
-
-
-## navigation.courseOverGroundTrue
-Course over ground (true)
-
-**Units:**rad
-
-
-## navigation.courseRhumbline.crossTrackError
-The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).
+## navigation.log
+Log value
 
 **Units:**m
 
 
-## navigation.courseRhumbline.bearingTrackTrue
-The bearing of a line between previousPoint and nextPoint, relative to true north.
-
-**Units:**rad
-
-
-## navigation.courseRhumbline.bearingTrackMagnetic
-The bearing of a line between previousPoint and nextPoint, relative to magnetic north.
-
-**Units:**rad
-
-
-## navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## navigation.courseRhumbline.activeRoute.startTime.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## navigation.courseRhumbline.nextPoint.distance
-The distance in meters between the vessel's present position and the nextPoint
+## navigation.logTrip
+Trip log value
 
 **Units:**m
 
 
-## navigation.courseRhumbline.nextPoint.bearingTrue
-The bearing of a line between the vessel's current position and nextPoint, relative to true north
+## navigation.magneticVariation
+The magnetic variation (declination) at the current position
 
 **Units:**rad
 
 
-## navigation.courseRhumbline.nextPoint.bearingMagnetic
-The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north
-
-**Units:**rad
-
-
-## navigation.courseRhumbline.nextPoint.velocityMadeGood
-The velocity component of the vessel towards the nextPoint
-
-**Units:**m/s
-
-
-## navigation.courseRhumbline.nextPoint.timeToGo
-Time in seconds to reach nextPoint's perpendicular) with current speed & direction
+## navigation.magneticVariationAgeOfService
+Seconds since the 1st Jan 1970 that the variation calculation was made
 
 **Units:**s
 
 
-## navigation.courseRhumbline.previousPoint.distance
-The distance in meters between previousPoint and the vessel's present position
+## navigation.position.altitude
+Altitude
 
 **Units:**m
 
 
-## navigation.courseGreatCircle.crossTrackError
-The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).
+## navigation.position.latitude
+Latitude
 
-**Units:**m
-
-
-## navigation.courseGreatCircle.bearingTrackTrue
-The bearing of a line between previousPoint and nextPoint, relative to true north.
-
-**Units:**rad
-
-
-## navigation.courseGreatCircle.bearingTrackMagnetic
-The bearing of a line between previousPoint and nextPoint, relative to magnetic north.
-
-**Units:**rad
-
-
-## navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
+**Units:**deg
 
 ### Example:
 ```
-2014-04-10T08:33:53Z
+52.0987654
 ```
 
-## navigation.courseGreatCircle.activeRoute.startTime.$ref
-ISO-8601 (UTC) string representing date and time.
+## navigation.position.longitude
+Longitude
 
-**Units:**ISO-8601 (UTC)
+**Units:**deg
 
 ### Example:
 ```
-2014-04-10T08:33:53Z
+4.98765245
 ```
 
-## navigation.courseGreatCircle.nextPoint.distance
-The distance in meters between the vessel's present position and the nextPoint
-
-**Units:**m
-
-
-## navigation.courseGreatCircle.nextPoint.bearingTrue
-The bearing of a line between the vessel's current position and nextPoint, relative to true north
-
-**Units:**rad
-
-
-## navigation.courseGreatCircle.nextPoint.bearingMagnetic
-The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north
-
-**Units:**rad
-
-
-## navigation.courseGreatCircle.nextPoint.velocityMadeGood
-The velocity component of the vessel towards the nextPoint
-
-**Units:**m/s
-
-
-## navigation.courseGreatCircle.nextPoint.timeToGo
-Time in seconds to reach nextPoint's perpendicular) with current speed & direction
-
-**Units:**s
-
-
-## navigation.courseGreatCircle.previousPoint.distance
-The distance in meters between previousPoint and the vessel's present position
+## navigation.racing.distanceLayline
+The current distance to the layline
 
 **Units:**m
 
@@ -311,12 +1308,6 @@ The distance in meters between previousPoint and the vessel's present position
 The current distance to the start line
 
 **Units:**m
-
-
-## navigation.racing.timeToStart
-Time left before start
-
-**Units:**s
 
 
 ## navigation.racing.timePortDown
@@ -343,126 +1334,10 @@ Time to arrive at the start line on starboard, turning upwind
 **Units:**s
 
 
-## navigation.racing.distanceLayline
-The current distance to the layline
-
-**Units:**m
-
-
-## navigation.magneticVariation
-The magnetic variation (declination) at the current position
-
-**Units:**rad
-
-
-## navigation.magneticVariationAgeOfService
-Seconds since the 1st Jan 1970 that the variation calculation was made
+## navigation.racing.timeToStart
+Time left before start
 
 **Units:**s
-
-
-## navigation.destination.eta.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## navigation.gnss.methodQuality
-Quality of the satellite fix
-
-###Enum values:
-* no GPS
-* GNSS Fix
-* DGNSS fix
-* Precise GNSS
-* RTK fixed integer
-* RTK float
-* Estimated (DR) mode
-* Manual input
-* Simulator mode
-* Error
-
-
-## navigation.gnss.integrity
-Integrity of the satellite fix
-
-###Enum values:
-* no Integrity checking
-* Safe
-* Caution
-* Unsafe
-
-
-## navigation.gnss.antennaAltitude
-Altitude of antenna
-
-**Units:**m
-
-
-## navigation.gnss.differentialAge
-Age of DGPS data
-
-**Units:**s
-
-
-## navigation.headingMagnetic
-Current magnetic heading of the vessel
-
-**Units:**rad
-
-
-## navigation.headingTrue
-The current true heading of the vessel
-
-**Units:**rad
-
-
-## navigation.position.longitude
-Longitude
-
-**Units:**deg
-
-### Example:
-```
-4.98765245
-```
-
-## navigation.position.latitude
-Latitude
-
-**Units:**deg
-
-### Example:
-```
-52.0987654
-```
-
-## navigation.position.altitude
-Altitude
-
-**Units:**m
-
-
-## navigation.attitude.roll
-Vessel roll, +ve is list to starboard
-
-**Units:**rad
-
-
-## navigation.attitude.pitch
-Pitch, +ve is bow up
-
-**Units:**rad
-
-
-## navigation.attitude.yaw
-Yaw, +ve is heading change to starboard
-
-**Units:**rad
 
 
 ## navigation.rateOfTurn
@@ -481,18 +1356,6 @@ Vessel speed over ground
 Vessel speed through the water
 
 **Units:**m/s
-
-
-## navigation.log
-Log value
-
-**Units:**m
-
-
-## navigation.logTrip
-Trip log value
-
-**Units:**m
 
 
 ## navigation.state
@@ -523,175 +1386,7 @@ Current navigational state of the vessel
 * not defined (example)
 
 
-## navigation.anchor.maxRadius
-Radius of anchor alarm boundary. The distance from anchor to the center of the boat
-
-**Units:**m
-
-
-## navigation.anchor.currentRadius
-Current distance to anchor
-
-**Units:**m
-
-
-## navigation.anchor.position.longitude
-Longitude
-
-**Units:**deg
-
-### Example:
-```
-4.98765245
-```
-
-## navigation.anchor.position.latitude
-Latitude
-
-**Units:**deg
-
-### Example:
-```
-52.0987654
-```
-
-## navigation.anchor.position.altitude
-Altitude
-
-**Units:**m
-
-
-## navigation.datetime.gnssTimeSource
-Source of GNSS Date and Time
-
-###Enum values:
-* GPS
-* GLONASS
-* Galileo
-* Beidou
-* IRNSS
-* Radio Signal
-* Internet
-* Local clock
-
-
-## electrical.batteries.*.voltage
-**Units:**V
-
-
-## electrical.batteries.*.voltage.ripple
-Ripple voltage
-
-**Units:**V
-
-
-## electrical.batteries.*.voltage.meta.nominal
-Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
-
-**Units:**V
-
-
-## electrical.batteries.*.voltage.meta.warnUpper
-Upper operational voltage limit
-
-**Units:**V
-
-
-## electrical.batteries.*.voltage.meta.warnLower
-Lower operational voltage limit
-
-**Units:**V
-
-
-## electrical.batteries.*.voltage.meta.faultUpper
-Upper fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.batteries.*.voltage.meta.faultLower
-Lower fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.batteries.*.current
-**Units:**A
-
-
-## electrical.batteries.*.current.meta.warnUpper
-Upper operational current limit
-
-**Units:**A
-
-
-## electrical.batteries.*.current.meta.warnLower
-Lower operational current limit
-
-**Units:**A
-
-
-## electrical.batteries.*.current.meta.faultUpper
-Upper fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.batteries.*.current.meta.faultLower
-Lower fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.batteries.*.temperature.warnUpper
-Upper operational temperature limit
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.warnLower
-Lower operational temperature limit
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.faultUpper
-Upper fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.faultLower
-Lower fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.limitDischargeLower
-Operational minimum temperature limit for battery discharge, in degrees Celsius
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.limitDischargeUpper
-Operational maximum temperature limit for battery discharge, in degrees Celsius
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.limitRechargeLower
-Operational minimum temperature limit for battery recharging, in degrees Celsius
-
-**Units:**K
-
-
-## electrical.batteries.*.temperature.limitRechargeUpper
-Operational maximum temperature limit for battery recharging, in degrees Celsius
-
-**Units:**K
-
-
-## electrical.batteries.*.meta.dateInstalled.$ref
+## notifications.*.$ref
 ISO-8601 (UTC) string representing date and time.
 
 **Units:**ISO-8601 (UTC)
@@ -700,741 +1395,6 @@ ISO-8601 (UTC) string representing date and time.
 ```
 2014-04-10T08:33:53Z
 ```
-
-## electrical.batteries.*.capacity.nominal
-The capacity of battery as specified by the manufacturer
-
-**Units:**J
-
-
-## electrical.batteries.*.capacity.actual
-The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.
-
-**Units:**J
-
-
-## electrical.batteries.*.capacity.remaining
-Capacity remaining in battery
-
-**Units:**J
-
-
-## electrical.batteries.*.capacity.dischargeLimit
-Minimum capacity to be left in the battery while discharging
-
-**Units:**J
-
-
-## electrical.batteries.*.capacity.stateOfCharge
-State of charge, 1 = 100%
-
-**Units:**ratio
-
-
-## electrical.batteries.*.capacity.stateOfHealth
-State of Health, 1 = 100%
-
-**Units:**ratio
-
-
-## electrical.batteries.*.capacity.dischargeSinceFull
-Cumulative discharge since battery was last full
-
-**Units:**C
-
-
-## electrical.batteries.*.capacity.timeRemaining
-Time to discharge to discharge limit at current rate
-
-**Units:**s
-
-
-## electrical.batteries.*.lifetimeDischarge
-Cumulative charge discharged from battery over operational lifetime of battery
-
-**Units:**C
-
-
-## electrical.batteries.*.lifetimeRecharge
-Cumulative charge recharged into battery over operational lifetime of battery
-
-**Units:**C
-
-
-## electrical.inverters.*.meta.dateInstalled.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## electrical.inverters.*.dc.voltage
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.ripple
-Ripple voltage
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.meta.nominal
-Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.meta.warnUpper
-Upper operational voltage limit
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.meta.warnLower
-Lower operational voltage limit
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.meta.faultUpper
-Upper fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.voltage.meta.faultLower
-Lower fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.inverters.*.dc.current
-**Units:**A
-
-
-## electrical.inverters.*.dc.current.meta.warnUpper
-Upper operational current limit
-
-**Units:**A
-
-
-## electrical.inverters.*.dc.current.meta.warnLower
-Lower operational current limit
-
-**Units:**A
-
-
-## electrical.inverters.*.dc.current.meta.faultUpper
-Upper fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.inverters.*.dc.current.meta.faultLower
-Lower fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.inverters.*.dc.temperature.warnUpper
-Upper operational temperature limit
-
-**Units:**K
-
-
-## electrical.inverters.*.dc.temperature.warnLower
-Lower operational temperature limit
-
-**Units:**K
-
-
-## electrical.inverters.*.dc.temperature.faultUpper
-Upper fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.inverters.*.dc.temperature.faultLower
-Lower fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.inverters.*.ac.lineNeutralVoltage
-RMS voltage measured between phase and neutral.
-
-**Units:**V
-
-
-## electrical.inverters.*.ac.lineLineVoltage
-RMS voltage measured between phases
-
-**Units:**V
-
-
-## electrical.inverters.*.ac.current
-RMS current
-
-**Units:**A
-
-
-## electrical.inverters.*.ac.frequency
-AC frequency.
-
-**Units:**Hz
-
-
-## electrical.inverters.*.ac.reactivePower
-Reactive power
-
-**Units:**W
-
-
-## electrical.inverters.*.ac.powerFactorLagging
-Lead/lag status.
-
-###Enum values:
-* leading
-* lagging
-* error
-* not available
-
-
-## electrical.inverters.*.ac.realPower
-Real power.
-
-**Units:**W
-
-
-## electrical.inverters.*.ac.apparentPower
-Apparent power.
-
-**Units:**W
-
-
-## electrical.inverters.*.mode
-Mode of inverter
-
-###Enum values:
-* idle
-* inverting
-* disabled
-* standby
-* faulted
-* unknown
-* other
-
-
-## electrical.chargers.*.voltage
-**Units:**V
-
-
-## electrical.chargers.*.voltage.ripple
-Ripple voltage
-
-**Units:**V
-
-
-## electrical.chargers.*.voltage.meta.nominal
-Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)
-
-**Units:**V
-
-
-## electrical.chargers.*.voltage.meta.warnUpper
-Upper operational voltage limit
-
-**Units:**V
-
-
-## electrical.chargers.*.voltage.meta.warnLower
-Lower operational voltage limit
-
-**Units:**V
-
-
-## electrical.chargers.*.voltage.meta.faultUpper
-Upper fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.chargers.*.voltage.meta.faultLower
-Lower fault limit of battery voltage - BMS may disconnect battery
-
-**Units:**V
-
-
-## electrical.chargers.*.current
-**Units:**A
-
-
-## electrical.chargers.*.current.meta.warnUpper
-Upper operational current limit
-
-**Units:**A
-
-
-## electrical.chargers.*.current.meta.warnLower
-Lower operational current limit
-
-**Units:**A
-
-
-## electrical.chargers.*.current.meta.faultUpper
-Upper fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.chargers.*.current.meta.faultLower
-Lower fault limit of battery current - BMS may disconnect battery
-
-**Units:**A
-
-
-## electrical.chargers.*.temperature.warnUpper
-Upper operational temperature limit
-
-**Units:**K
-
-
-## electrical.chargers.*.temperature.warnLower
-Lower operational temperature limit
-
-**Units:**K
-
-
-## electrical.chargers.*.temperature.faultUpper
-Upper fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.chargers.*.temperature.faultLower
-Lower fault limit of temperature - device may disable
-
-**Units:**K
-
-
-## electrical.chargers.*.meta.dateInstalled.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## electrical.chargers.*.meta.chargingAlgorithm
-###Enum values:
-* trickle
-* two stage
-* three stage
-* constant current
-* constant voltage
-* custom profile
-
-
-## electrical.chargers.*.meta.chargerMode
-###Enum values:
-* standalone
-* master
-* slave
-* standby
-
-
-## electrical.chargers.*.mode
-###Enum values:
-* charging bulk
-* charging acceptance
-* charging overcharge
-* charging float
-* charging equalize
-* unknown
-* other
-
-
-## electrical.ac.*.meta.dateInstalled.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## electrical.ac.*.phase.*.lineNeutralVoltage
-RMS voltage measured between phase and neutral.
-
-**Units:**V
-
-
-## electrical.ac.*.phase.*.lineLineVoltage
-RMS voltage measured between phases
-
-**Units:**V
-
-
-## electrical.ac.*.phase.*.current
-RMS current
-
-**Units:**A
-
-
-## electrical.ac.*.phase.*.frequency
-AC frequency.
-
-**Units:**Hz
-
-
-## electrical.ac.*.phase.*.reactivePower
-Reactive power
-
-**Units:**W
-
-
-## electrical.ac.*.phase.*.powerFactorLagging
-Lead/lag status.
-
-###Enum values:
-* leading
-* lagging
-* error
-* not available
-
-
-## electrical.ac.*.phase.*.realPower
-Real power.
-
-**Units:**W
-
-
-## electrical.ac.*.phase.*.apparentPower
-Apparent power.
-
-**Units:**W
-
-
-## environment.outside.temperature
-Current outside air temperature
-
-**Units:**K
-
-
-## environment.outside.dewPointTemperature
-Current outside dew point temperature
-
-**Units:**K
-
-
-## environment.outside.apparentWindChillTemperature
-Current outside apparent wind chill temperature
-
-**Units:**K
-
-
-## environment.outside.theoreticalWindChillTemperature
-Current outside theoretical wind chill temperature
-
-**Units:**K
-
-
-## environment.outside.heatIndexTemperature
-Current outside heat index temperature
-
-**Units:**K
-
-
-## environment.outside.pressure
-Current outside air ambient pressure
-
-**Units:**Pa
-
-
-## environment.outside.humidity
-Current outside air relative humidity
-
-**Units:**ratio
-
-
-## environment.inside.temperature
-Current inside air temperature
-
-**Units:**K
-
-
-## environment.inside.humidity
-Current inside air relative humidity
-
-**Units:**ratio
-
-
-## environment.inside.engineRoom.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.inside.mainCabin.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.inside.refrigerator.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.inside.freezer.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.inside.heating.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.water.temperature
-Current water temperature
-
-**Units:**K
-
-
-## environment.water.salinity
-Water salinity
-
-**Units:**ratio
-
-
-## environment.water.liveWell.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.water.baitWell.temperature
-Temperature
-
-**Units:**K
-
-
-## environment.depth.belowKeel
-Depth below keel
-
-**Units:**m
-
-
-## environment.depth.belowTransducer
-Depth below Transducer
-
-**Units:**m
-
-
-## environment.depth.belowSurface
-Depth from surface
-
-**Units:**m
-
-
-## design.displacement
-The displacement of the vessel
-
-**Units:**kg
-
-
-## environment.depth.surfaceToTransducer
-Depth transducer is below the water surface
-
-**Units:**m
-
-
-## environment.current.drift
-The speed component of the water current vector
-
-**Units:**m/s
-
-### Example:
-```
-3.12
-```
-
-## environment.current.setTrue
-The direction component of the water current vector referenced to true (geographic) north
-
-**Units:**rad
-
-### Example:
-```
-123.45
-```
-
-## environment.current.setMagnetic
-The direction component of the water current vector referenced to magnetic north
-
-**Units:**rad
-
-### Example:
-```
-131.22
-```
-
-## environment.tide.heightHigh
-Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)
-
-**Units:**m
-
-
-## environment.tide.heightNow
-The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)
-
-**Units:**m
-
-
-## environment.tide.heightLow
-The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)
-
-**Units:**m
-
-
-## environment.tide.timeLow.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## environment.tide.timeHigh.$ref
-ISO-8601 (UTC) string representing date and time.
-
-**Units:**ISO-8601 (UTC)
-
-### Example:
-```
-2014-04-10T08:33:53Z
-```
-
-## environment.heave
-Vertical movement of the vessel due to waves
-
-**Units:**m
-
-
-## environment.wind.angleApparent
-Apparent wind angle, negative to port
-
-**Units:**rad
-
-
-## environment.wind.angleTrueGround
-True wind angle based on speed over ground, negative to port
-
-**Units:**rad
-
-
-## environment.wind.angleTrueWater
-True wind angle based on speed through water, negative to port
-
-**Units:**rad
-
-
-## environment.wind.directionChangeAlarm
-The angle the wind needs to shift to raise an alarm
-
-**Units:**rad
-
-
-## environment.wind.directionTrue
-The wind direction relative to true north
-
-**Units:**rad
-
-
-## environment.wind.directionMagnetic
-The wind direction relative to magnetic north
-
-**Units:**rad
-
-
-## environment.wind.speedTrue
-Wind speed over water (as calculated from speedApparent and vessel's speed through water)
-
-**Units:**m/s
-
-
-## environment.wind.speedOverGround
-Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)
-
-**Units:**m/s
-
-
-## environment.wind.speedApparent
-Apparent wind speed
-
-**Units:**m/s
-
-
-## environment.mode
-Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.
-
-###Enum values:
-* day
-* night
-* restricted visibility
-
-
-## propulsion.*.exhaustTemperature.meta.properties
-**Units:**[object Object]
-
-
-## performance.polarSpeed
-The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.
-
-**Units:**m/s
-
-
-## performance.leeway.meta.properties
-**Units:**[object Object]
-
-
-## performance.leeway
-Current leeway
-
-**Units:**rad
-
-
-## performance.gybeAngleTargetSpeed.meta.properties
-**Units:**[object Object]
-
-
-## performance.gybeAngleTargetSpeed
-The target speed for the gybe angle.
-
-**Units:**m/s
-
-
-## performance.gybeAngleVelocityMadeGood.meta.properties
-**Units:**[object Object]
-
-
-## performance.gybeAngleVelocityMadeGood
-The velocity made good for the gybe angle
-
-**Units:**m/s
-
 
 ## performance.beatAngle
 The true wind beat angle for the best velocity made good based on current current polar diagram and trueWindSpeed.
@@ -1443,16 +1403,6 @@ The true wind beat angle for the best velocity made good based on current curren
 
 
 ## performance.beatAngle.meta.properties
-**Units:**[object Object]
-
-
-## performance.beatAngleVelocityMadeGood
-The velocity made good for the beat angle.
-
-**Units:**m/s
-
-
-## performance.beatAngleVelocityMadeGood.meta.properties
 **Units:**[object Object]
 
 
@@ -1466,6 +1416,16 @@ The target speed for the beat angle.
 **Units:**[object Object]
 
 
+## performance.beatAngleVelocityMadeGood
+The velocity made good for the beat angle.
+
+**Units:**m/s
+
+
+## performance.beatAngleVelocityMadeGood.meta.properties
+**Units:**[object Object]
+
+
 ## performance.gybeAngle
 The true wind gybe angle for the best velocity made good downwind based on current polar diagram and trueWindSpeed.
 
@@ -1476,47 +1436,43 @@ The true wind gybe angle for the best velocity made good downwind based on curre
 **Units:**[object Object]
 
 
-## resources.notes.*.position.altitude
-Altitude
-
-**Units:**m
-
-
-## performance.velocityMadeGoodToWaypoint.meta.properties
-**Units:**[object Object]
-
-
-## performance.velocityMadeGood.meta.properties
-**Units:**[object Object]
-
-
-## performance.velocityMadeGood
-The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.
+## performance.gybeAngleTargetSpeed
+The target speed for the gybe angle.
 
 **Units:**m/s
 
 
-## performance.targetAngle
-The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.
+## performance.gybeAngleTargetSpeed.meta.properties
+**Units:**[object Object]
+
+
+## performance.gybeAngleVelocityMadeGood
+The velocity made good for the gybe angle
+
+**Units:**m/s
+
+
+## performance.gybeAngleVelocityMadeGood.meta.properties
+**Units:**[object Object]
+
+
+## performance.leeway
+Current leeway
 
 **Units:**rad
 
 
-## performance.targetAngle.meta.properties
+## performance.leeway.meta.properties
 **Units:**[object Object]
 
 
-## performance.targetSpeed
-The target speed for the beat angle or gybe angle, which ever is applicable.
+## performance.polarSpeed
+The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.
 
 **Units:**m/s
 
 
-## performance.targetSpeed.meta.properties
-**Units:**[object Object]
-
-
-## performance.polarSpeedRatio.meta.properties
+## performance.polarSpeed.meta.properties
 **Units:**[object Object]
 
 
@@ -1524,6 +1480,10 @@ The target speed for the beat angle or gybe angle, which ever is applicable.
 The ratio of current speed through water to the polar speed.
 
 **Units:**ratio
+
+
+## performance.polarSpeedRatio.meta.properties
+**Units:**[object Object]
 
 
 ## performance.tackMagnetic
@@ -1546,54 +1506,43 @@ True heading on opposite tack.
 **Units:**[object Object]
 
 
+## performance.targetAngle
+The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.
+
+**Units:**rad
+
+
+## performance.targetAngle.meta.properties
+**Units:**[object Object]
+
+
+## performance.targetSpeed
+The target speed for the beat angle or gybe angle, which ever is applicable.
+
+**Units:**m/s
+
+
+## performance.targetSpeed.meta.properties
+**Units:**[object Object]
+
+
+## performance.velocityMadeGood
+The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.
+
+**Units:**m/s
+
+
+## performance.velocityMadeGood.meta.properties
+**Units:**[object Object]
+
+
 ## performance.velocityMadeGoodToWaypoint
 The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.
 
 **Units:**m/s
 
 
-## performance.polarSpeed.meta.properties
-**Units:**[object Object]
-
-
-## resources.waypoints.*.feature.type
-###Enum values:
-* Feature
-
-
-## propulsion.*.revolutions
-Engine revolutions (x60 for RPM)
-
-**Units:**Hz
-
-
-## propulsion.*.exhaustTemperature
-Exhaust temperature
-
-**Units:**K
-
-
-## propulsion.*.fuel.averageRate.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.oilTemperature
-Oil temperature
-
-**Units:**K
-
-
-## propulsion.*.oilTemperature.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.oilPressure
-Oil pressure
-
-**Units:**Pa
-
-
-## propulsion.*.oilPressure.meta.properties
+## performance.velocityMadeGoodToWaypoint.meta.properties
 **Units:**[object Object]
 
 
@@ -1607,23 +1556,13 @@ Alternator voltage
 **Units:**[object Object]
 
 
-## propulsion.*.fuel.averageRate
-Average fuel rate of consumption
+## propulsion.*.boostPressure
+Engine boost (turbo, supercharger) pressure
 
-**Units:**m3/s
-
-
-## propulsion.*.fuel.economyRate.meta.properties
-**Units:**[object Object]
+**Units:**Pa
 
 
-## propulsion.*.coolantTemperature
-Coolant temperature
-
-**Units:**K
-
-
-## propulsion.*.coolantTemperature.meta.properties
+## propulsion.*.boostPressure.meta.properties
 **Units:**[object Object]
 
 
@@ -1637,99 +1576,13 @@ Coolant pressure
 **Units:**[object Object]
 
 
-## propulsion.*.boostPressure
-Engine boost (turbo, supercharger) pressure
+## propulsion.*.coolantTemperature
+Coolant temperature
 
-**Units:**Pa
-
-
-## propulsion.*.boostPressure.meta.properties
-**Units:**[object Object]
+**Units:**K
 
 
-## propulsion.*.engineLoad
-Engine load ratio, 0<=ratio<=1, 1 is 100%
-
-**Units:**ratio
-
-
-## propulsion.*.engineLoad.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.engineTorque
-Engine torque ratio, 0<=ratio<=1, 1 is 100%
-
-**Units:**ratio
-
-
-## propulsion.*.engineTorque.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.fuel.economyRate
-Economy fuel rate of consumption
-
-**Units:**m3/s
-
-
-## propulsion.*.fuel.rate.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.fuel.rate
-Fuel rate  of consumption
-
-**Units:**m3/s
-
-
-## propulsion.*.fuel.pressure.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.fuel.pressure
-Fuel pressure
-
-**Units:**Pa
-
-
-## propulsion.*.fuel.used.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.fuel.used
-Used fuel since last reset. Resetting is at user discretion
-
-**Units:**m3
-
-
-## propulsion.*.drive.type
-###Enum values:
-* saildrive
-* shaft
-* outboard
-* jet
-* pod
-* other
-
-
-## propulsion.*.drive.trimState
-Trim/tilt state, 0<=ratio<=1, 1 is 100% up
-
-**Units:**ratio
-
-
-## propulsion.*.drive.trimState.meta.properties
-**Units:**[object Object]
-
-
-## propulsion.*.drive.thrustAngle
-Current thrust angle for steerable drives, +ve is thrust to Starboard
-
-**Units:**rad
-
-
-## propulsion.*.drive.thrustAngle.meta.properties
+## propulsion.*.coolantTemperature.meta.properties
 **Units:**[object Object]
 
 
@@ -1753,6 +1606,106 @@ Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(
 **Units:**[object Object]
 
 
+## propulsion.*.drive.thrustAngle
+Current thrust angle for steerable drives, +ve is thrust to Starboard
+
+**Units:**rad
+
+
+## propulsion.*.drive.thrustAngle.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.drive.trimState
+Trim/tilt state, 0<=ratio<=1, 1 is 100% up
+
+**Units:**ratio
+
+
+## propulsion.*.drive.trimState.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.drive.type
+###Enum values:
+* saildrive
+* shaft
+* outboard
+* jet
+* pod
+* other
+
+
+## propulsion.*.engineLoad
+Engine load ratio, 0<=ratio<=1, 1 is 100%
+
+**Units:**ratio
+
+
+## propulsion.*.engineLoad.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.engineTorque
+Engine torque ratio, 0<=ratio<=1, 1 is 100%
+
+**Units:**ratio
+
+
+## propulsion.*.engineTorque.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.exhaustTemperature
+Exhaust temperature
+
+**Units:**K
+
+
+## propulsion.*.exhaustTemperature.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.fuel.averageRate
+Average fuel rate of consumption
+
+**Units:**m3/s
+
+
+## propulsion.*.fuel.averageRate.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.fuel.economyRate
+Economy fuel rate of consumption
+
+**Units:**m3/s
+
+
+## propulsion.*.fuel.economyRate.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.fuel.pressure
+Fuel pressure
+
+**Units:**Pa
+
+
+## propulsion.*.fuel.pressure.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.fuel.rate
+Fuel rate  of consumption
+
+**Units:**m3/s
+
+
+## propulsion.*.fuel.rate.meta.properties
+**Units:**[object Object]
+
+
 ## propulsion.*.fuel.type
 Fuel type
 
@@ -1764,37 +1717,75 @@ Fuel type
 * other
 
 
-## steering.autopilot.mode
-Operational mode
+## propulsion.*.fuel.used
+Used fuel since last reset. Resetting is at user discretion
 
-###Enum values:
-* powersave
-* normal
-* accurate
+**Units:**m3
 
 
-## propulsion.*.transmission.oilPressure.meta.properties
+## propulsion.*.fuel.used.meta.properties
 **Units:**[object Object]
 
 
-## propulsion.*.transmission.oilPressure
+## propulsion.*.oilPressure
 Oil pressure
 
 **Units:**Pa
+
+
+## propulsion.*.oilPressure.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.oilTemperature
+Oil temperature
+
+**Units:**K
+
+
+## propulsion.*.oilTemperature.meta.properties
+**Units:**[object Object]
+
+
+## propulsion.*.revolutions
+Engine revolutions (x60 for RPM)
+
+**Units:**Hz
 
 
 ## propulsion.*.revolutions.meta.properties
 **Units:**[object Object]
 
 
-## propulsion.*.transmission.gearRatio.meta.properties
+## propulsion.*.runTime
+Total running time for engine (Engine Hours in seconds)
+
+**Units:**s
+
+
+## propulsion.*.runTime.meta.properties
 **Units:**[object Object]
 
 
-## propulsion.*.transmission.gearRatio
-Gear ratio, engine rotations per propeller shaft rotation
+## propulsion.*.state.meta.properties
+**Units:**[object Object]
 
-**Units:**ratio
+
+## propulsion.*.state.value
+###Enum values:
+* stopped
+* started
+* unusable
+
+
+## propulsion.*.temperature
+Engine temperature
+
+**Units:**K
+
+
+## propulsion.*.temperature.meta.properties
+**Units:**[object Object]
 
 
 ## propulsion.*.transmission.gear
@@ -1805,74 +1796,35 @@ Gear ratio, engine rotations per propeller shaft rotation
 * Fault
 
 
-## propulsion.*.runTime.meta.properties
+## propulsion.*.transmission.gearRatio
+Gear ratio, engine rotations per propeller shaft rotation
+
+**Units:**ratio
+
+
+## propulsion.*.transmission.gearRatio.meta.properties
 **Units:**[object Object]
 
 
-## propulsion.*.runTime
-Total running time for engine (Engine Hours in seconds)
+## propulsion.*.transmission.oilPressure
+Oil pressure
 
-**Units:**s
+**Units:**Pa
 
 
-## propulsion.*.temperature.meta.properties
+## propulsion.*.transmission.oilPressure.meta.properties
 **Units:**[object Object]
 
 
-## propulsion.*.temperature
-Engine temperature
+## propulsion.*.transmission.oilTemperature
+Oil temperature
 
 **Units:**K
-
-
-## propulsion.*.state.value
-###Enum values:
-* stopped
-* started
-* unusable
-
-
-## propulsion.*.state.meta.properties
-**Units:**[object Object]
-
-
-## steering.autopilot.deadZone.meta.properties
-**Units:**[object Object]
-
-
-## resources.routes.*.distance
-Total distance from start to end
-
-**Units:**m
 
 
 ## propulsion.*.transmission.oilTemperature.meta.properties
 **Units:**[object Object]
 
-
-## resources.notes.*.position.meta.properties
-**Units:**[object Object]
-
-
-## resources.notes.*.position.longitude
-Longitude
-
-**Units:**deg
-
-### Example:
-```
-4.98765245
-```
-
-## resources.notes.*.position.latitude
-Latitude
-
-**Units:**deg
-
-### Example:
-```
-52.0987654
-```
 
 ## resources.charts.*.chartFormat
 The format of the chart
@@ -1895,9 +1847,34 @@ The format of the chart
 * other
 
 
-## resources.regions.*.feature.type
-###Enum values:
-* Feature
+## resources.notes.*.position.altitude
+Altitude
+
+**Units:**m
+
+
+## resources.notes.*.position.latitude
+Latitude
+
+**Units:**deg
+
+### Example:
+```
+52.0987654
+```
+
+## resources.notes.*.position.longitude
+Longitude
+
+**Units:**deg
+
+### Example:
+```
+4.98765245
+```
+
+## resources.notes.*.position.meta.properties
+**Units:**[object Object]
 
 
 ## resources.regions.*.feature.geometry.oneOf.0.type
@@ -1910,25 +1887,36 @@ The format of the chart
 * MultiPolygon
 
 
-## propulsion.*.transmission.oilTemperature
-Oil temperature
-
-**Units:**K
-
-
-## steering.autopilot.maxDriveCurrent.meta.properties
-**Units:**[object Object]
+## resources.regions.*.feature.type
+###Enum values:
+* Feature
 
 
-## resources.waypoints.*.position.longitude
-Longitude
+## resources.routes.*.distance
+Total distance from start to end
 
-**Units:**deg
+**Units:**m
 
-### Example:
-```
-4.98765245
-```
+
+## resources.routes.*.feature.geometry.type
+###Enum values:
+* LineString
+
+
+## resources.routes.*.feature.type
+###Enum values:
+* Feature
+
+
+## resources.waypoints.*.feature.geometry.type
+###Enum values:
+* Point
+
+
+## resources.waypoints.*.feature.type
+###Enum values:
+* Feature
+
 
 ## resources.waypoints.*.position.altitude
 Altitude
@@ -1946,38 +1934,17 @@ Latitude
 52.0987654
 ```
 
-## resources.waypoints.*.feature.geometry.type
-###Enum values:
-* Point
+## resources.waypoints.*.position.longitude
+Longitude
 
+**Units:**deg
 
-## resources.routes.*.feature.type
-###Enum values:
-* Feature
+### Example:
+```
+4.98765245
+```
 
-
-## resources.routes.*.feature.geometry.type
-###Enum values:
-* LineString
-
-
-## steering.autopilot.portLock.meta.properties
-**Units:**[object Object]
-
-
-## sails.inventory.*.maximumWind
-The maximum wind speed this sail can be used with
-
-**Units:**m/s
-
-
-## sails.area.total
-The total area of all sails on the vessel
-
-**Units:**m2
-
-
-## sails.area.total.meta.properties
+## resources.waypoints.*.position.meta.properties
 **Units:**[object Object]
 
 
@@ -1991,7 +1958,13 @@ The total area of the sails currently in use on the vessel
 **Units:**[object Object]
 
 
-## resources.waypoints.*.position.meta.properties
+## sails.area.total
+The total area of all sails on the vessel
+
+**Units:**m2
+
+
+## sails.area.total.meta.properties
 **Units:**[object Object]
 
 
@@ -2001,21 +1974,29 @@ The total area of this sail in square meters
 **Units:**m2
 
 
-## tanks.freshWater.*.capacity
-Total capacity
+## sails.inventory.*.maximumWind
+The maximum wind speed this sail can be used with
 
-**Units:**m3
+**Units:**m/s
 
 
-## sources.*.*.anyOf.0.sentences.*.$ref
-ISO-8601 (UTC) string representing date and time.
+## sails.inventory.*.meta.properties
+**Units:**[object Object]
 
-**Units:**ISO-8601 (UTC)
 
-### Example:
-```
-2014-04-10T08:33:53Z
-```
+## sails.inventory.*.minimumWind
+The minimum wind speed this sail can be used with
+
+**Units:**m/s
+
+
+## sensors.fromBow.meta.properties
+**Units:**[object Object]
+
+
+## sensors.fromCenter.meta.properties
+**Units:**[object Object]
+
 
 ## sources.*.*.anyOf.0.n2k.pgns.*.$ref
 ISO-8601 (UTC) string representing date and time.
@@ -2027,80 +2008,15 @@ ISO-8601 (UTC) string representing date and time.
 2014-04-10T08:33:53Z
 ```
 
-## sails.inventory.*.meta.properties
-**Units:**[object Object]
+## sources.*.*.anyOf.0.sentences.*.$ref
+ISO-8601 (UTC) string representing date and time.
 
+**Units:**ISO-8601 (UTC)
 
-## sensors.fromBow.meta.properties
-**Units:**[object Object]
-
-
-## sensors.fromCenter.meta.properties
-**Units:**[object Object]
-
-
-## sails.inventory.*.minimumWind
-The minimum wind speed this sail can be used with
-
-**Units:**m/s
-
-
-## tanks.wasteWater.*.type
-The type of tank
-
-###Enum values:
-* petrol
-* fresh water
-* greywater
-* holding
-* lpg
-* diesel
-* rum
-
-
-## steering.autopilot.state
-Autopilot state
-
-###Enum values:
-* on
-* off
-* alarm
-
-
-## steering.autopilot.starboardLock.meta.properties
-**Units:**[object Object]
-
-
-## steering.autopilot.starboardLock
-Position of servo on starboard lock
-
-**Units:**rad
-
-
-## steering.autopilot.portLock
-Position of servo on port lock
-
-**Units:**rad
-
-
-## steering.autopilot.headingSource
-Current source of heading information
-
-###Enum values:
-* compass
-* wind
-* gps
-
-
-## steering.autopilot.deadZone
-Dead zone to ignore for rudder corrections
-
-**Units:**rad
-
-
-## steering.autopilot.maxDriveRate.meta.properties
-**Units:**[object Object]
-
+### Example:
+```
+2014-04-10T08:33:53Z
+```
 
 ## steering.autopilot.backlash
 Slack in the rudder drive mechanism
@@ -2112,8 +2028,27 @@ Slack in the rudder drive mechanism
 **Units:**[object Object]
 
 
+## steering.autopilot.deadZone
+Dead zone to ignore for rudder corrections
+
+**Units:**rad
+
+
+## steering.autopilot.deadZone.meta.properties
+**Units:**[object Object]
+
+
 ## steering.autopilot.gain.meta.properties
 **Units:**[object Object]
+
+
+## steering.autopilot.headingSource
+Current source of heading information
+
+###Enum values:
+* compass
+* wind
+* gps
 
 
 ## steering.autopilot.maxDriveCurrent
@@ -2122,30 +2057,56 @@ Maximum current to use to drive servo
 **Units:**A
 
 
+## steering.autopilot.maxDriveCurrent.meta.properties
+**Units:**[object Object]
+
+
 ## steering.autopilot.maxDriveRate
 Maximum rudder rotation speed
 
 **Units:**rad/s
 
 
-## tanks.blackWater.*.currentVolume
-Volume of fluid in tank
-
-**Units:**m3
+## steering.autopilot.maxDriveRate.meta.properties
+**Units:**[object Object]
 
 
-## steering.rudderAngleTarget
-The angle the rudder should move to, +ve is rudder to Starboard
+## steering.autopilot.mode
+Operational mode
+
+###Enum values:
+* powersave
+* normal
+* accurate
+
+
+## steering.autopilot.portLock
+Position of servo on port lock
 
 **Units:**rad
 
 
-## steering.autopilot.targetHeadingMagnetic.meta.properties
+## steering.autopilot.portLock.meta.properties
 **Units:**[object Object]
 
 
-## steering.rudderAngle.meta.properties
+## steering.autopilot.starboardLock
+Position of servo on starboard lock
+
+**Units:**rad
+
+
+## steering.autopilot.starboardLock.meta.properties
 **Units:**[object Object]
+
+
+## steering.autopilot.state
+Autopilot state
+
+###Enum values:
+* on
+* off
+* alarm
 
 
 ## steering.autopilot.targetHeadingMagnetic
@@ -2154,7 +2115,7 @@ Target heading for autopilot, relative to magnetic North
 **Units:**rad
 
 
-## steering.autopilot.targetHeadingNorth.meta.properties
+## steering.autopilot.targetHeadingMagnetic.meta.properties
 **Units:**[object Object]
 
 
@@ -2164,26 +2125,34 @@ Target heading for autopilot, relative to true North
 **Units:**rad
 
 
+## steering.autopilot.targetHeadingNorth.meta.properties
+**Units:**[object Object]
+
+
 ## steering.rudderAngle
 Current rudder angle, +ve is rudder to Starboard
 
 **Units:**rad
 
 
-## tanks.fuelWater.*.currentVolume
-Volume of fluid in tank
-
-**Units:**m3
+## steering.rudderAngle.meta.properties
+**Units:**[object Object]
 
 
-## tanks.freshWater.*.currentLevel
-Level of fluid in tank 0-100%
+## steering.rudderAngleTarget
+The angle the rudder should move to, +ve is rudder to Starboard
 
-**Units:**ratio
+**Units:**rad
 
 
 ## steering.rudderAngleTarget.meta.properties
 **Units:**[object Object]
+
+
+## tanks.blackWater.*.capacity
+Total capacity
+
+**Units:**m3
 
 
 ## tanks.blackWater.*.currentLevel
@@ -2192,8 +2161,8 @@ Level of fluid in tank 0-100%
 **Units:**ratio
 
 
-## tanks.blackWater.*.capacity
-Total capacity
+## tanks.blackWater.*.currentVolume
+Volume of fluid in tank
 
 **Units:**m3
 
@@ -2211,22 +2180,22 @@ The type of tank
 * rum
 
 
-## tanks.fuel.*.currentLevel
-Level of fluid in tank 0-100%
-
-**Units:**ratio
-
-
-## tanks.liveWell.*.currentVolume
-Volume of fluid in tank
+## tanks.freshWater.*.capacity
+Total capacity
 
 **Units:**m3
 
 
-## tanks.liveWell.*.currentLevel
+## tanks.freshWater.*.currentLevel
 Level of fluid in tank 0-100%
 
 **Units:**ratio
+
+
+## tanks.freshWater.*.currentVolume
+Volume of fluid in tank
+
+**Units:**m3
 
 
 ## tanks.freshWater.*.type
@@ -2242,7 +2211,25 @@ The type of tank
 * rum
 
 
-## tanks.fuelWater.*.type
+## tanks.fuel.*.capacity
+Total capacity
+
+**Units:**m3
+
+
+## tanks.fuel.*.currentLevel
+Level of fluid in tank 0-100%
+
+**Units:**ratio
+
+
+## tanks.fuel.*.currentVolume
+Volume of fluid in tank
+
+**Units:**m3
+
+
+## tanks.fuel.*.type
 The type of tank
 
 ###Enum values:
@@ -2267,13 +2254,13 @@ Level of fluid in tank 0-100%
 **Units:**ratio
 
 
-## tanks.freshWater.*.currentVolume
+## tanks.fuelWater.*.currentVolume
 Volume of fluid in tank
 
 **Units:**m3
 
 
-## tanks.fuel.*.type
+## tanks.fuelWater.*.type
 The type of tank
 
 ###Enum values:
@@ -2286,19 +2273,19 @@ The type of tank
 * rum
 
 
-## tanks.fuel.*.capacity
-Total capacity
-
-**Units:**m3
-
-
 ## tanks.liveWell.*.capacity
 Total capacity
 
 **Units:**m3
 
 
-## tanks.fuel.*.currentVolume
+## tanks.liveWell.*.currentLevel
+Level of fluid in tank 0-100%
+
+**Units:**ratio
+
+
+## tanks.liveWell.*.currentVolume
 Volume of fluid in tank
 
 **Units:**m3
@@ -2364,5 +2351,18 @@ Level of fluid in tank 0-100%
 Volume of fluid in tank
 
 **Units:**m3
+
+
+## tanks.wasteWater.*.type
+The type of tank
+
+###Enum values:
+* petrol
+* fresh water
+* greywater
+* holding
+* lpg
+* diesel
+* rum
 
 

@@ -24,7 +24,9 @@ prelude += 'This document is meant as the human-oriented reference to accompany 
 prelude += 'Any changes to the reference material below should be made to the original schema files.\n\n\n'
 
 fs.writeFileSync("doc.md", prelude);
-fs.appendFileSync("doc.md", _.pairs(data).sort((a, b) => a[0] >= b[0]).reduce(keyToMarkDown, ''))
+fs.appendFileSync("doc.md", _.pairs(data)
+  .sort((a, b) => a[0] > b[0] ? 1 : (a[0] < b[0] ? -1 : 0))
+  .reduce(keyToMarkDown, ''))
 
 function keyToMarkDown(acc, keyWithData) {
   var md = ''
