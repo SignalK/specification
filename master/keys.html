@@ -1,0 +1,847 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Keys Reference · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="data_model_multiple_values.html" />
+    
+    
+    <link rel="prev" href="data_model.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Getting Started in Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Getting Started in Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="data_model.md">
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="keys.html">
+            
+                <a href="keys.html">
+            
+                    
+                    Keys Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="permissions.html">
+            
+                <a href="permissions.html">
+            
+                    
+                    Permissions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="apis_and_conventions.html">
+            
+                <a href="apis_and_conventions.html">
+            
+                    
+                    Ports and Urls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Connection establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="design_notes.html">
+            
+                <a href="design_notes.html">
+            
+                    
+                    Background, Design Rationale
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Keys Reference</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="signal-k-data-model-reference">Signal K Data Model Reference</h1><p>This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files.
+Any changes to the reference material below should be made to the original schema files.</p><h2 id="designairheight">design.airHeight</h2><p>Total height of the vessel</p><p><strong>Units:</strong>m</p><h2 id="designairheightmetaproperties">design.airHeight.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="designbeam">design.beam</h2><p>Beam length</p><p><strong>Units:</strong>m</p><h2 id="designbeammetaproperties">design.beam.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="designdisplacement">design.displacement</h2><p>The displacement of the vessel</p><p><strong>Units:</strong>kg</p><h2 id="designdisplacementmetaproperties">design.displacement.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="designdraftcanoe">design.draft.canoe</h2><p>The draft of the vessel without protrusions such as keel, centerboard, rudder</p><p><strong>Units:</strong>m</p><h2 id="designdraftmaximum">design.draft.maximum</h2><p>The maximum draft of the vessel</p><p><strong>Units:</strong>m</p><h2 id="designdraftminimum">design.draft.minimum</h2><p>The minimum draft of the vessel</p><p><strong>Units:</strong>m</p><h2 id="designkeelangle">design.keel.angle</h2><p>A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.</p><p><strong>Units:</strong>rad</p><h2 id="designkeelanglemetaproperties">design.keel.angle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="designkeellift">design.keel.lift</h2><p>In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is &apos;all the way up&apos; and 1 is &apos;all the way down&apos;. 0.8 would be 80% down.</p><p><strong>Units:</strong>ratio</p><h3 id="example">Example:</h3><pre><code>0.8</code></pre>
+<h2 id="designkeelliftmetaproperties">design.keel.lift.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="designkeeltype">design.keel.type</h2><p>The type of keel.</p><h3 id="enum-values">Enum values:</h3><ul><li>long
+</li>
+<li>fin
+</li>
+<li>flare
+</li>
+<li>bulb
+</li>
+<li>wing
+</li>
+<li>centerboard
+</li>
+<li>kanting
+</li>
+<li>lifting
+</li>
+<li>daggerboard
+</li></ul>
+<h2 id="designlengthhull">design.length.hull</h2><p>Length of hull</p><p><strong>Units:</strong>m</p><h2 id="designlengthoverall">design.length.overall</h2><p>Length overall</p><p><strong>Units:</strong>m</p><h2 id="designlengthwaterline">design.length.waterline</h2><p>Length at waterline</p><p><strong>Units:</strong>m</p><h2 id="electricalacmetadateinstalledref">electrical.ac.*.meta.dateInstalled.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="electricalacphaseapparentpower">electrical.ac.<em>.phase.</em>.apparentPower</h2><p>Apparent power.</p><p><strong>Units:</strong>W</p><h2 id="electricalacphasecurrent">electrical.ac.<em>.phase.</em>.current</h2><p>RMS current</p><p><strong>Units:</strong>A</p><h2 id="electricalacphasefrequency">electrical.ac.<em>.phase.</em>.frequency</h2><p>AC frequency.</p><p><strong>Units:</strong>Hz</p><h2 id="electricalacphaselinelinevoltage">electrical.ac.<em>.phase.</em>.lineLineVoltage</h2><p>RMS voltage measured between phases</p><p><strong>Units:</strong>V</p><h2 id="electricalacphaselineneutralvoltage">electrical.ac.<em>.phase.</em>.lineNeutralVoltage</h2><p>RMS voltage measured between phase and neutral.</p><p><strong>Units:</strong>V</p><h2 id="electricalacphasepowerfactorlagging">electrical.ac.<em>.phase.</em>.powerFactorLagging</h2><p>Lead/lag status.</p><h3 id="enum-values">Enum values:</h3><ul><li>leading
+</li>
+<li>lagging
+</li>
+<li>error
+</li>
+<li>not available
+</li></ul>
+<h2 id="electricalacphasereactivepower">electrical.ac.<em>.phase.</em>.reactivePower</h2><p>Reactive power</p><p><strong>Units:</strong>W</p><h2 id="electricalacphaserealpower">electrical.ac.<em>.phase.</em>.realPower</h2><p>Real power.</p><p><strong>Units:</strong>W</p><h2 id="electricalbatteriescapacityactual">electrical.batteries.*.capacity.actual</h2><p>The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.</p><p><strong>Units:</strong>J</p><h2 id="electricalbatteriescapacitydischargelimit">electrical.batteries.*.capacity.dischargeLimit</h2><p>Minimum capacity to be left in the battery while discharging</p><p><strong>Units:</strong>J</p><h2 id="electricalbatteriescapacitydischargesincefull">electrical.batteries.*.capacity.dischargeSinceFull</h2><p>Cumulative discharge since battery was last full</p><p><strong>Units:</strong>C</p><h2 id="electricalbatteriescapacitynominal">electrical.batteries.*.capacity.nominal</h2><p>The capacity of battery as specified by the manufacturer</p><p><strong>Units:</strong>J</p><h2 id="electricalbatteriescapacityremaining">electrical.batteries.*.capacity.remaining</h2><p>Capacity remaining in battery</p><p><strong>Units:</strong>J</p><h2 id="electricalbatteriescapacitystateofcharge">electrical.batteries.*.capacity.stateOfCharge</h2><p>State of charge, 1 = 100%</p><p><strong>Units:</strong>ratio</p><h2 id="electricalbatteriescapacitystateofhealth">electrical.batteries.*.capacity.stateOfHealth</h2><p>State of Health, 1 = 100%</p><p><strong>Units:</strong>ratio</p><h2 id="electricalbatteriescapacitytimeremaining">electrical.batteries.*.capacity.timeRemaining</h2><p>Time to discharge to discharge limit at current rate</p><p><strong>Units:</strong>s</p><h2 id="electricalbatteriescurrent">electrical.batteries.*.current</h2><p><strong>Units:</strong>A</p><h2 id="electricalbatteriescurrentmetafaultlower">electrical.batteries.*.current.meta.faultLower</h2><p>Lower fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalbatteriescurrentmetafaultupper">electrical.batteries.*.current.meta.faultUpper</h2><p>Upper fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalbatteriescurrentmetawarnlower">electrical.batteries.*.current.meta.warnLower</h2><p>Lower operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalbatteriescurrentmetawarnupper">electrical.batteries.*.current.meta.warnUpper</h2><p>Upper operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalbatterieslifetimedischarge">electrical.batteries.*.lifetimeDischarge</h2><p>Cumulative charge discharged from battery over operational lifetime of battery</p><p><strong>Units:</strong>C</p><h2 id="electricalbatterieslifetimerecharge">electrical.batteries.*.lifetimeRecharge</h2><p>Cumulative charge recharged into battery over operational lifetime of battery</p><p><strong>Units:</strong>C</p><h2 id="electricalbatteriesmetadateinstalledref">electrical.batteries.*.meta.dateInstalled.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="electricalbatteriestemperaturefaultlower">electrical.batteries.*.temperature.faultLower</h2><p>Lower fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturefaultupper">electrical.batteries.*.temperature.faultUpper</h2><p>Upper fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturelimitdischargelower">electrical.batteries.*.temperature.limitDischargeLower</h2><p>Operational minimum temperature limit for battery discharge, in degrees Celsius</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturelimitdischargeupper">electrical.batteries.*.temperature.limitDischargeUpper</h2><p>Operational maximum temperature limit for battery discharge, in degrees Celsius</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturelimitrechargelower">electrical.batteries.*.temperature.limitRechargeLower</h2><p>Operational minimum temperature limit for battery recharging, in degrees Celsius</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturelimitrechargeupper">electrical.batteries.*.temperature.limitRechargeUpper</h2><p>Operational maximum temperature limit for battery recharging, in degrees Celsius</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturewarnlower">electrical.batteries.*.temperature.warnLower</h2><p>Lower operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriestemperaturewarnupper">electrical.batteries.*.temperature.warnUpper</h2><p>Upper operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalbatteriesvoltage">electrical.batteries.*.voltage</h2><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltagemetafaultlower">electrical.batteries.*.voltage.meta.faultLower</h2><p>Lower fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltagemetafaultupper">electrical.batteries.*.voltage.meta.faultUpper</h2><p>Upper fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltagemetanominal">electrical.batteries.*.voltage.meta.nominal</h2><p>Designed &apos;voltage&apos; of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)</p><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltagemetawarnlower">electrical.batteries.*.voltage.meta.warnLower</h2><p>Lower operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltagemetawarnupper">electrical.batteries.*.voltage.meta.warnUpper</h2><p>Upper operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalbatteriesvoltageripple">electrical.batteries.*.voltage.ripple</h2><p>Ripple voltage</p><p><strong>Units:</strong>V</p><h2 id="electricalchargerscurrent">electrical.chargers.*.current</h2><p><strong>Units:</strong>A</p><h2 id="electricalchargerscurrentmetafaultlower">electrical.chargers.*.current.meta.faultLower</h2><p>Lower fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalchargerscurrentmetafaultupper">electrical.chargers.*.current.meta.faultUpper</h2><p>Upper fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalchargerscurrentmetawarnlower">electrical.chargers.*.current.meta.warnLower</h2><p>Lower operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalchargerscurrentmetawarnupper">electrical.chargers.*.current.meta.warnUpper</h2><p>Upper operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalchargersmetachargermode">electrical.chargers.*.meta.chargerMode</h2><h3 id="enum-values">Enum values:</h3><ul><li>standalone
+</li>
+<li>master
+</li>
+<li>slave
+</li>
+<li>standby
+</li></ul>
+<h2 id="electricalchargersmetachargingalgorithm">electrical.chargers.*.meta.chargingAlgorithm</h2><h3 id="enum-values">Enum values:</h3><ul><li>trickle
+</li>
+<li>two stage
+</li>
+<li>three stage
+</li>
+<li>constant current
+</li>
+<li>constant voltage
+</li>
+<li>custom profile
+</li></ul>
+<h2 id="electricalchargersmetadateinstalledref">electrical.chargers.*.meta.dateInstalled.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="electricalchargersmode">electrical.chargers.*.mode</h2><h3 id="enum-values">Enum values:</h3><ul><li>charging bulk
+</li>
+<li>charging acceptance
+</li>
+<li>charging overcharge
+</li>
+<li>charging float
+</li>
+<li>charging equalize
+</li>
+<li>unknown
+</li>
+<li>other
+</li></ul>
+<h2 id="electricalchargerstemperaturefaultlower">electrical.chargers.*.temperature.faultLower</h2><p>Lower fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalchargerstemperaturefaultupper">electrical.chargers.*.temperature.faultUpper</h2><p>Upper fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalchargerstemperaturewarnlower">electrical.chargers.*.temperature.warnLower</h2><p>Lower operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalchargerstemperaturewarnupper">electrical.chargers.*.temperature.warnUpper</h2><p>Upper operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalchargersvoltage">electrical.chargers.*.voltage</h2><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltagemetafaultlower">electrical.chargers.*.voltage.meta.faultLower</h2><p>Lower fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltagemetafaultupper">electrical.chargers.*.voltage.meta.faultUpper</h2><p>Upper fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltagemetanominal">electrical.chargers.*.voltage.meta.nominal</h2><p>Designed &apos;voltage&apos; of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)</p><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltagemetawarnlower">electrical.chargers.*.voltage.meta.warnLower</h2><p>Lower operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltagemetawarnupper">electrical.chargers.*.voltage.meta.warnUpper</h2><p>Upper operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalchargersvoltageripple">electrical.chargers.*.voltage.ripple</h2><p>Ripple voltage</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersacapparentpower">electrical.inverters.*.ac.apparentPower</h2><p>Apparent power.</p><p><strong>Units:</strong>W</p><h2 id="electricalinvertersaccurrent">electrical.inverters.*.ac.current</h2><p>RMS current</p><p><strong>Units:</strong>A</p><h2 id="electricalinvertersacfrequency">electrical.inverters.*.ac.frequency</h2><p>AC frequency.</p><p><strong>Units:</strong>Hz</p><h2 id="electricalinvertersaclinelinevoltage">electrical.inverters.*.ac.lineLineVoltage</h2><p>RMS voltage measured between phases</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersaclineneutralvoltage">electrical.inverters.*.ac.lineNeutralVoltage</h2><p>RMS voltage measured between phase and neutral.</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersacpowerfactorlagging">electrical.inverters.*.ac.powerFactorLagging</h2><p>Lead/lag status.</p><h3 id="enum-values">Enum values:</h3><ul><li>leading
+</li>
+<li>lagging
+</li>
+<li>error
+</li>
+<li>not available
+</li></ul>
+<h2 id="electricalinvertersacreactivepower">electrical.inverters.*.ac.reactivePower</h2><p>Reactive power</p><p><strong>Units:</strong>W</p><h2 id="electricalinvertersacrealpower">electrical.inverters.*.ac.realPower</h2><p>Real power.</p><p><strong>Units:</strong>W</p><h2 id="electricalinvertersdccurrent">electrical.inverters.*.dc.current</h2><p><strong>Units:</strong>A</p><h2 id="electricalinvertersdccurrentmetafaultlower">electrical.inverters.*.dc.current.meta.faultLower</h2><p>Lower fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalinvertersdccurrentmetafaultupper">electrical.inverters.*.dc.current.meta.faultUpper</h2><p>Upper fault limit of battery current - BMS may disconnect battery</p><p><strong>Units:</strong>A</p><h2 id="electricalinvertersdccurrentmetawarnlower">electrical.inverters.*.dc.current.meta.warnLower</h2><p>Lower operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalinvertersdccurrentmetawarnupper">electrical.inverters.*.dc.current.meta.warnUpper</h2><p>Upper operational current limit</p><p><strong>Units:</strong>A</p><h2 id="electricalinvertersdctemperaturefaultlower">electrical.inverters.*.dc.temperature.faultLower</h2><p>Lower fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalinvertersdctemperaturefaultupper">electrical.inverters.*.dc.temperature.faultUpper</h2><p>Upper fault limit of temperature - device may disable</p><p><strong>Units:</strong>K</p><h2 id="electricalinvertersdctemperaturewarnlower">electrical.inverters.*.dc.temperature.warnLower</h2><p>Lower operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalinvertersdctemperaturewarnupper">electrical.inverters.*.dc.temperature.warnUpper</h2><p>Upper operational temperature limit</p><p><strong>Units:</strong>K</p><h2 id="electricalinvertersdcvoltage">electrical.inverters.*.dc.voltage</h2><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltagemetafaultlower">electrical.inverters.*.dc.voltage.meta.faultLower</h2><p>Lower fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltagemetafaultupper">electrical.inverters.*.dc.voltage.meta.faultUpper</h2><p>Upper fault limit of battery voltage - BMS may disconnect battery</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltagemetanominal">electrical.inverters.*.dc.voltage.meta.nominal</h2><p>Designed &apos;voltage&apos; of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltagemetawarnlower">electrical.inverters.*.dc.voltage.meta.warnLower</h2><p>Lower operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltagemetawarnupper">electrical.inverters.*.dc.voltage.meta.warnUpper</h2><p>Upper operational voltage limit</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersdcvoltageripple">electrical.inverters.*.dc.voltage.ripple</h2><p>Ripple voltage</p><p><strong>Units:</strong>V</p><h2 id="electricalinvertersmetadateinstalledref">electrical.inverters.*.meta.dateInstalled.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="electricalinvertersmode">electrical.inverters.*.mode</h2><p>Mode of inverter</p><h3 id="enum-values">Enum values:</h3><ul><li>idle
+</li>
+<li>inverting
+</li>
+<li>disabled
+</li>
+<li>standby
+</li>
+<li>faulted
+</li>
+<li>unknown
+</li>
+<li>other
+</li></ul>
+<h2 id="environmentcurrentdrift">environment.current.drift</h2><p>The speed component of the water current vector</p><p><strong>Units:</strong>m/s</p><h3 id="example">Example:</h3><pre><code>3.12</code></pre>
+<h2 id="environmentcurrentsetmagnetic">environment.current.setMagnetic</h2><p>The direction component of the water current vector referenced to magnetic north</p><p><strong>Units:</strong>rad</p><h3 id="example">Example:</h3><pre><code>131.22</code></pre>
+<h2 id="environmentcurrentsettrue">environment.current.setTrue</h2><p>The direction component of the water current vector referenced to true (geographic) north</p><p><strong>Units:</strong>rad</p><h3 id="example">Example:</h3><pre><code>123.45</code></pre>
+<h2 id="environmentdepthbelowkeel">environment.depth.belowKeel</h2><p>Depth below keel</p><p><strong>Units:</strong>m</p><h2 id="environmentdepthbelowsurface">environment.depth.belowSurface</h2><p>Depth from surface</p><p><strong>Units:</strong>m</p><h2 id="environmentdepthbelowtransducer">environment.depth.belowTransducer</h2><p>Depth below Transducer</p><p><strong>Units:</strong>m</p><h2 id="environmentdepthsurfacetotransducer">environment.depth.surfaceToTransducer</h2><p>Depth transducer is below the water surface</p><p><strong>Units:</strong>m</p><h2 id="environmentdepthtransducertokeel">environment.depth.transducerToKeel</h2><p>Depth from the transducer to the bottom of the keel</p><p><strong>Units:</strong>m</p><h2 id="environmentheave">environment.heave</h2><p>Vertical movement of the vessel due to waves</p><p><strong>Units:</strong>m</p><h2 id="environmentinsideengineroomtemperature">environment.inside.engineRoom.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentinsidefreezertemperature">environment.inside.freezer.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentinsideheatingtemperature">environment.inside.heating.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentinsidehumidity">environment.inside.humidity</h2><p>Current inside air relative humidity</p><p><strong>Units:</strong>ratio</p><h2 id="environmentinsidemaincabintemperature">environment.inside.mainCabin.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentinsiderefrigeratortemperature">environment.inside.refrigerator.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentinsidetemperature">environment.inside.temperature</h2><p>Current inside air temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentmode">environment.mode</h2><p>Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.</p><h3 id="enum-values">Enum values:</h3><ul><li>day
+</li>
+<li>night
+</li>
+<li>restricted visibility
+</li></ul>
+<h2 id="environmentoutsideapparentwindchilltemperature">environment.outside.apparentWindChillTemperature</h2><p>Current outside apparent wind chill temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentoutsidedewpointtemperature">environment.outside.dewPointTemperature</h2><p>Current outside dew point temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentoutsideheatindextemperature">environment.outside.heatIndexTemperature</h2><p>Current outside heat index temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentoutsidehumidity">environment.outside.humidity</h2><p>Current outside air relative humidity</p><p><strong>Units:</strong>ratio</p><h2 id="environmentoutsidepressure">environment.outside.pressure</h2><p>Current outside air ambient pressure</p><p><strong>Units:</strong>Pa</p><h2 id="environmentoutsidetemperature">environment.outside.temperature</h2><p>Current outside air temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentoutsidetheoreticalwindchilltemperature">environment.outside.theoreticalWindChillTemperature</h2><p>Current outside theoretical wind chill temperature</p><p><strong>Units:</strong>K</p><h2 id="environmenttideheighthigh">environment.tide.heightHigh</h2><p>Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p><p><strong>Units:</strong>m</p><h2 id="environmenttideheightlow">environment.tide.heightLow</h2><p>The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)</p><p><strong>Units:</strong>m</p><h2 id="environmenttideheightnow">environment.tide.heightNow</h2><p>The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p><p><strong>Units:</strong>m</p><h2 id="environmenttidetimehighref">environment.tide.timeHigh.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="environmenttidetimelowref">environment.tide.timeLow.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="environmentwaterbaitwelltemperature">environment.water.baitWell.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentwaterlivewelltemperature">environment.water.liveWell.temperature</h2><p>Temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentwatersalinity">environment.water.salinity</h2><p>Water salinity</p><p><strong>Units:</strong>ratio</p><h2 id="environmentwatertemperature">environment.water.temperature</h2><p>Current water temperature</p><p><strong>Units:</strong>K</p><h2 id="environmentwindangleapparent">environment.wind.angleApparent</h2><p>Apparent wind angle, negative to port</p><p><strong>Units:</strong>rad</p><h2 id="environmentwindangletrueground">environment.wind.angleTrueGround</h2><p>True wind angle based on speed over ground, negative to port</p><p><strong>Units:</strong>rad</p><h2 id="environmentwindangletruewater">environment.wind.angleTrueWater</h2><p>True wind angle based on speed through water, negative to port</p><p><strong>Units:</strong>rad</p><h2 id="environmentwinddirectionchangealarm">environment.wind.directionChangeAlarm</h2><p>The angle the wind needs to shift to raise an alarm</p><p><strong>Units:</strong>rad</p><h2 id="environmentwinddirectionmagnetic">environment.wind.directionMagnetic</h2><p>The wind direction relative to magnetic north</p><p><strong>Units:</strong>rad</p><h2 id="environmentwinddirectiontrue">environment.wind.directionTrue</h2><p>The wind direction relative to true north</p><p><strong>Units:</strong>rad</p><h2 id="environmentwindspeedapparent">environment.wind.speedApparent</h2><p>Apparent wind speed</p><p><strong>Units:</strong>m/s</p><h2 id="environmentwindspeedoverground">environment.wind.speedOverGround</h2><p>Wind speed over ground (as calculated from speedApparent and vessel&apos;s speed over ground)</p><p><strong>Units:</strong>m/s</p><h2 id="environmentwindspeedtrue">environment.wind.speedTrue</h2><p>Wind speed over water (as calculated from speedApparent and vessel&apos;s speed through water)</p><p><strong>Units:</strong>m/s</p><h2 id="navigationanchorcurrentradius">navigation.anchor.currentRadius</h2><p>Current distance to anchor</p><p><strong>Units:</strong>m</p><h2 id="navigationanchormaxradius">navigation.anchor.maxRadius</h2><p>Radius of anchor alarm boundary. The distance from anchor to the center of the boat</p><p><strong>Units:</strong>m</p><h2 id="navigationanchorpositionaltitude">navigation.anchor.position.altitude</h2><p>Altitude</p><p><strong>Units:</strong>m</p><h2 id="navigationanchorpositionlatitude">navigation.anchor.position.latitude</h2><p>Latitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>52.0987654</code></pre>
+<h2 id="navigationanchorpositionlongitude">navigation.anchor.position.longitude</h2><p>Longitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>4.98765245</code></pre>
+<h2 id="navigationattitudepitch">navigation.attitude.pitch</h2><p>Pitch, +ve is bow up</p><p><strong>Units:</strong>rad</p><h2 id="navigationattituderoll">navigation.attitude.roll</h2><p>Vessel roll, +ve is list to starboard</p><p><strong>Units:</strong>rad</p><h2 id="navigationattitudeyaw">navigation.attitude.yaw</h2><p>Yaw, +ve is heading change to starboard</p><p><strong>Units:</strong>rad</p><h2 id="navigationcoursegreatcircleactiverouteestimatedtimeofarrivalref">navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="navigationcoursegreatcircleactiveroutestarttimeref">navigation.courseGreatCircle.activeRoute.startTime.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="navigationcoursegreatcirclebearingtrackmagnetic">navigation.courseGreatCircle.bearingTrackMagnetic</h2><p>The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p><p><strong>Units:</strong>rad</p><h2 id="navigationcoursegreatcirclebearingtracktrue">navigation.courseGreatCircle.bearingTrackTrue</h2><p>The bearing of a line between previousPoint and nextPoint, relative to true north.</p><p><strong>Units:</strong>rad</p><h2 id="navigationcoursegreatcirclecrosstrackerror">navigation.courseGreatCircle.crossTrackError</h2><p>The distance from the vessel&apos;s present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p><p><strong>Units:</strong>m</p><h2 id="navigationcoursegreatcirclenextpointbearingmagnetic">navigation.courseGreatCircle.nextPoint.bearingMagnetic</h2><p>The bearing of a line between the vessel&apos;s current position and nextPoint, relative to magnetic north</p><p><strong>Units:</strong>rad</p><h2 id="navigationcoursegreatcirclenextpointbearingtrue">navigation.courseGreatCircle.nextPoint.bearingTrue</h2><p>The bearing of a line between the vessel&apos;s current position and nextPoint, relative to true north</p><p><strong>Units:</strong>rad</p><h2 id="navigationcoursegreatcirclenextpointdistance">navigation.courseGreatCircle.nextPoint.distance</h2><p>The distance in meters between the vessel&apos;s present position and the nextPoint</p><p><strong>Units:</strong>m</p><h2 id="navigationcoursegreatcirclenextpointtimetogo">navigation.courseGreatCircle.nextPoint.timeToGo</h2><p>Time in seconds to reach nextPoint&apos;s perpendicular) with current speed &amp; direction</p><p><strong>Units:</strong>s</p><h2 id="navigationcoursegreatcirclenextpointvelocitymadegood">navigation.courseGreatCircle.nextPoint.velocityMadeGood</h2><p>The velocity component of the vessel towards the nextPoint</p><p><strong>Units:</strong>m/s</p><h2 id="navigationcoursegreatcirclepreviouspointdistance">navigation.courseGreatCircle.previousPoint.distance</h2><p>The distance in meters between previousPoint and the vessel&apos;s present position</p><p><strong>Units:</strong>m</p><h2 id="navigationcourseovergroundmagnetic">navigation.courseOverGroundMagnetic</h2><p>Course over ground (magnetic)</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourseovergroundtrue">navigation.courseOverGroundTrue</h2><p>Course over ground (true)</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourserhumblineactiverouteestimatedtimeofarrivalref">navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="navigationcourserhumblineactiveroutestarttimeref">navigation.courseRhumbline.activeRoute.startTime.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="navigationcourserhumblinebearingtrackmagnetic">navigation.courseRhumbline.bearingTrackMagnetic</h2><p>The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourserhumblinebearingtracktrue">navigation.courseRhumbline.bearingTrackTrue</h2><p>The bearing of a line between previousPoint and nextPoint, relative to true north.</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourserhumblinecrosstrackerror">navigation.courseRhumbline.crossTrackError</h2><p>The distance from the vessel&apos;s present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p><p><strong>Units:</strong>m</p><h2 id="navigationcourserhumblinenextpointbearingmagnetic">navigation.courseRhumbline.nextPoint.bearingMagnetic</h2><p>The bearing of a line between the vessel&apos;s current position and nextPoint, relative to magnetic north</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourserhumblinenextpointbearingtrue">navigation.courseRhumbline.nextPoint.bearingTrue</h2><p>The bearing of a line between the vessel&apos;s current position and nextPoint, relative to true north</p><p><strong>Units:</strong>rad</p><h2 id="navigationcourserhumblinenextpointdistance">navigation.courseRhumbline.nextPoint.distance</h2><p>The distance in meters between the vessel&apos;s present position and the nextPoint</p><p><strong>Units:</strong>m</p><h2 id="navigationcourserhumblinenextpointtimetogo">navigation.courseRhumbline.nextPoint.timeToGo</h2><p>Time in seconds to reach nextPoint&apos;s perpendicular) with current speed &amp; direction</p><p><strong>Units:</strong>s</p><h2 id="navigationcourserhumblinenextpointvelocitymadegood">navigation.courseRhumbline.nextPoint.velocityMadeGood</h2><p>The velocity component of the vessel towards the nextPoint</p><p><strong>Units:</strong>m/s</p><h2 id="navigationcourserhumblinepreviouspointdistance">navigation.courseRhumbline.previousPoint.distance</h2><p>The distance in meters between previousPoint and the vessel&apos;s present position</p><p><strong>Units:</strong>m</p><h2 id="navigationdatetimegnsstimesource">navigation.datetime.gnssTimeSource</h2><p>Source of GNSS Date and Time</p><h3 id="enum-values">Enum values:</h3><ul><li>GPS
+</li>
+<li>GLONASS
+</li>
+<li>Galileo
+</li>
+<li>Beidou
+</li>
+<li>IRNSS
+</li>
+<li>Radio Signal
+</li>
+<li>Internet
+</li>
+<li>Local clock
+</li></ul>
+<h2 id="navigationdestinationetaref">navigation.destination.eta.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="navigationgnssantennaaltitude">navigation.gnss.antennaAltitude</h2><p>Altitude of antenna</p><p><strong>Units:</strong>m</p><h2 id="navigationgnssdifferentialage">navigation.gnss.differentialAge</h2><p>Age of DGPS data</p><p><strong>Units:</strong>s</p><h2 id="navigationgnssintegrity">navigation.gnss.integrity</h2><p>Integrity of the satellite fix</p><h3 id="enum-values">Enum values:</h3><ul><li>no Integrity checking
+</li>
+<li>Safe
+</li>
+<li>Caution
+</li>
+<li>Unsafe
+</li></ul>
+<h2 id="navigationgnssmethodquality">navigation.gnss.methodQuality</h2><p>Quality of the satellite fix</p><h3 id="enum-values">Enum values:</h3><ul><li>no GPS
+</li>
+<li>GNSS Fix
+</li>
+<li>DGNSS fix
+</li>
+<li>Precise GNSS
+</li>
+<li>RTK fixed integer
+</li>
+<li>RTK float
+</li>
+<li>Estimated (DR) mode
+</li>
+<li>Manual input
+</li>
+<li>Simulator mode
+</li>
+<li>Error
+</li></ul>
+<h2 id="navigationheadingmagnetic">navigation.headingMagnetic</h2><p>Current magnetic heading of the vessel</p><p><strong>Units:</strong>rad</p><h2 id="navigationheadingtrue">navigation.headingTrue</h2><p>The current true heading of the vessel</p><p><strong>Units:</strong>rad</p><h2 id="navigationlights">navigation.lights</h2><p>Current state of the vessels navigation lights</p><h3 id="enum-values">Enum values:</h3><ul><li>off
+</li>
+<li>fault
+</li>
+<li>anchored
+</li>
+<li>sailing
+</li>
+<li>motoring
+</li>
+<li>towing &lt; 200m
+</li>
+<li>towing &gt; 200m
+</li>
+<li>pushing
+</li>
+<li>fishing
+</li>
+<li>fishing-hampered
+</li>
+<li>trawling
+</li>
+<li>trawling-shooting
+</li>
+<li>trawling-hauling
+</li>
+<li>pilotage
+</li>
+<li>not-under-way
+</li>
+<li>aground
+</li>
+<li>restricted manouverability
+</li>
+<li>restricted manouverability towing &lt; 200m
+</li>
+<li>restricted manouverability towing &gt; 200m
+</li>
+<li>restricted manouverability underwater operations
+</li>
+<li>constrained by draft
+</li>
+<li>mine clearance
+</li></ul>
+<h2 id="navigationlog">navigation.log</h2><p>Log value</p><p><strong>Units:</strong>m</p><h2 id="navigationlogtrip">navigation.logTrip</h2><p>Trip log value</p><p><strong>Units:</strong>m</p><h2 id="navigationmagneticvariation">navigation.magneticVariation</h2><p>The magnetic variation (declination) at the current position</p><p><strong>Units:</strong>rad</p><h2 id="navigationmagneticvariationageofservice">navigation.magneticVariationAgeOfService</h2><p>Seconds since the 1st Jan 1970 that the variation calculation was made</p><p><strong>Units:</strong>s</p><h2 id="navigationpositionaltitude">navigation.position.altitude</h2><p>Altitude</p><p><strong>Units:</strong>m</p><h2 id="navigationpositionlatitude">navigation.position.latitude</h2><p>Latitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>52.0987654</code></pre>
+<h2 id="navigationpositionlongitude">navigation.position.longitude</h2><p>Longitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>4.98765245</code></pre>
+<h2 id="navigationracingdistancelayline">navigation.racing.distanceLayline</h2><p>The current distance to the layline</p><p><strong>Units:</strong>m</p><h2 id="navigationracingdistancestartline">navigation.racing.distanceStartline</h2><p>The current distance to the start line</p><p><strong>Units:</strong>m</p><h2 id="navigationracingtimeportdown">navigation.racing.timePortDown</h2><p>Time to arrive at the start line on port, turning downwind</p><p><strong>Units:</strong>s</p><h2 id="navigationracingtimeportup">navigation.racing.timePortUp</h2><p>Time to arrive at the start line on port, turning upwind</p><p><strong>Units:</strong>s</p><h2 id="navigationracingtimestbddown">navigation.racing.timeStbdDown</h2><p>Time to arrive at the start line on starboard, turning downwind</p><p><strong>Units:</strong>s</p><h2 id="navigationracingtimestbdup">navigation.racing.timeStbdUp</h2><p>Time to arrive at the start line on starboard, turning upwind</p><p><strong>Units:</strong>s</p><h2 id="navigationracingtimetostart">navigation.racing.timeToStart</h2><p>Time left before start</p><p><strong>Units:</strong>s</p><h2 id="navigationrateofturn">navigation.rateOfTurn</h2><p>Rate of turn (+ve is change to starboard)</p><p><strong>Units:</strong>rad/s</p><h2 id="navigationspeedoverground">navigation.speedOverGround</h2><p>Vessel speed over ground</p><p><strong>Units:</strong>m/s</p><h2 id="navigationspeedthroughwater">navigation.speedThroughWater</h2><p>Vessel speed through the water</p><p><strong>Units:</strong>m/s</p><h2 id="navigationstate">navigation.state</h2><p>Current navigational state of the vessel</p><h3 id="enum-values">Enum values:</h3><ul><li>not under command
+</li>
+<li>anchored
+</li>
+<li>sailing
+</li>
+<li>motoring
+</li>
+<li>towing &lt; 200m
+</li>
+<li>towing &gt; 200m
+</li>
+<li>pushing
+</li>
+<li>fishing
+</li>
+<li>fishing-hampered
+</li>
+<li>trawling
+</li>
+<li>trawling-shooting
+</li>
+<li>trawling-hauling
+</li>
+<li>pilotage
+</li>
+<li>not-under-way
+</li>
+<li>aground
+</li>
+<li>restricted manouverability
+</li>
+<li>restricted manouverability towing &lt; 200m
+</li>
+<li>restricted manouverability towing &gt; 200m
+</li>
+<li>restricted manouverability underwater operations
+</li>
+<li>constrained by draft
+</li>
+<li>mine clearance
+</li>
+<li>not defined (example)
+</li></ul>
+<h2 id="notificationsref">notifications.*.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="performancebeatangle">performance.beatAngle</h2><p>The true wind beat angle for the best velocity made good based on current current polar diagram and trueWindSpeed.</p><p><strong>Units:</strong>rad</p><h2 id="performancebeatanglemetaproperties">performance.beatAngle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancebeatangletargetspeed">performance.beatAngleTargetSpeed</h2><p>The target speed for the beat angle.</p><p><strong>Units:</strong>m/s</p><h2 id="performancebeatangletargetspeedmetaproperties">performance.beatAngleTargetSpeed.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancebeatanglevelocitymadegood">performance.beatAngleVelocityMadeGood</h2><p>The velocity made good for the beat angle.</p><p><strong>Units:</strong>m/s</p><h2 id="performancebeatanglevelocitymadegoodmetaproperties">performance.beatAngleVelocityMadeGood.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancegybeangle">performance.gybeAngle</h2><p>The true wind gybe angle for the best velocity made good downwind based on current polar diagram and trueWindSpeed.</p><p><strong>Units:</strong>rad</p><h2 id="performancegybeanglemetaproperties">performance.gybeAngle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancegybeangletargetspeed">performance.gybeAngleTargetSpeed</h2><p>The target speed for the gybe angle.</p><p><strong>Units:</strong>m/s</p><h2 id="performancegybeangletargetspeedmetaproperties">performance.gybeAngleTargetSpeed.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancegybeanglevelocitymadegood">performance.gybeAngleVelocityMadeGood</h2><p>The velocity made good for the gybe angle</p><p><strong>Units:</strong>m/s</p><h2 id="performancegybeanglevelocitymadegoodmetaproperties">performance.gybeAngleVelocityMadeGood.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performanceleeway">performance.leeway</h2><p>Current leeway</p><p><strong>Units:</strong>rad</p><h2 id="performanceleewaymetaproperties">performance.leeway.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancepolarspeed">performance.polarSpeed</h2><p>The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.</p><p><strong>Units:</strong>m/s</p><h2 id="performancepolarspeedmetaproperties">performance.polarSpeed.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancepolarspeedratio">performance.polarSpeedRatio</h2><p>The ratio of current speed through water to the polar speed.</p><p><strong>Units:</strong>ratio</p><h2 id="performancepolarspeedratiometaproperties">performance.polarSpeedRatio.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancetackmagnetic">performance.tackMagnetic</h2><p>Magnetic heading on opposite tack.</p><p><strong>Units:</strong>rad</p><h2 id="performancetackmagneticmetaproperties">performance.tackMagnetic.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancetacktrue">performance.tackTrue</h2><p>True heading on opposite tack.</p><p><strong>Units:</strong>rad</p><h2 id="performancetacktruemetaproperties">performance.tackTrue.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancetargetangle">performance.targetAngle</h2><p>The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.</p><p><strong>Units:</strong>rad</p><h2 id="performancetargetanglemetaproperties">performance.targetAngle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancetargetspeed">performance.targetSpeed</h2><p>The target speed for the beat angle or gybe angle, which ever is applicable.</p><p><strong>Units:</strong>m/s</p><h2 id="performancetargetspeedmetaproperties">performance.targetSpeed.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancevelocitymadegood">performance.velocityMadeGood</h2><p>The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.</p><p><strong>Units:</strong>m/s</p><h2 id="performancevelocitymadegoodmetaproperties">performance.velocityMadeGood.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="performancevelocitymadegoodtowaypoint">performance.velocityMadeGoodToWaypoint</h2><p>The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.</p><p><strong>Units:</strong>m/s</p><h2 id="performancevelocitymadegoodtowaypointmetaproperties">performance.velocityMadeGoodToWaypoint.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionalternatorvoltage">propulsion.*.alternatorVoltage</h2><p>Alternator voltage</p><p><strong>Units:</strong>V</p><h2 id="propulsionalternatorvoltagemetaproperties">propulsion.*.alternatorVoltage.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionboostpressure">propulsion.*.boostPressure</h2><p>Engine boost (turbo, supercharger) pressure</p><p><strong>Units:</strong>Pa</p><h2 id="propulsionboostpressuremetaproperties">propulsion.*.boostPressure.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsioncoolantpressure">propulsion.*.coolantPressure</h2><p>Coolant pressure</p><p><strong>Units:</strong>Pa</p><h2 id="propulsioncoolantpressuremetaproperties">propulsion.*.coolantPressure.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsioncoolanttemperature">propulsion.*.coolantTemperature</h2><p>Coolant temperature</p><p><strong>Units:</strong>K</p><h2 id="propulsioncoolanttemperaturemetaproperties">propulsion.*.coolantTemperature.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiondrivepropellerpitch">propulsion.*.drive.propeller.pitch</h2><p>Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip</p><p><strong>Units:</strong>m</p><h2 id="propulsiondrivepropellerpitch-metaproperties">propulsion.*.drive.propeller.pitch .meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiondrivepropellerslip">propulsion.*.drive.propeller.slip</h2><p>Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(actual distance travelled/propeller pitch). 0&lt;=ratio&lt;=1, 0 is 0% slip, 1 is 100% slip</p><p><strong>Units:</strong>ratio</p><h2 id="propulsiondrivepropellerslipmetaproperties">propulsion.*.drive.propeller.slip.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiondrivethrustangle">propulsion.*.drive.thrustAngle</h2><p>Current thrust angle for steerable drives, +ve is thrust to Starboard</p><p><strong>Units:</strong>rad</p><h2 id="propulsiondrivethrustanglemetaproperties">propulsion.*.drive.thrustAngle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiondrivetrimstate">propulsion.*.drive.trimState</h2><p>Trim/tilt state, 0&lt;=ratio&lt;=1, 1 is 100% up</p><p><strong>Units:</strong>ratio</p><h2 id="propulsiondrivetrimstatemetaproperties">propulsion.*.drive.trimState.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiondrivetype">propulsion.*.drive.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>saildrive
+</li>
+<li>shaft
+</li>
+<li>outboard
+</li>
+<li>jet
+</li>
+<li>pod
+</li>
+<li>other
+</li></ul>
+<h2 id="propulsionengineload">propulsion.*.engineLoad</h2><p>Engine load ratio, 0&lt;=ratio&lt;=1, 1 is 100%</p><p><strong>Units:</strong>ratio</p><h2 id="propulsionengineloadmetaproperties">propulsion.*.engineLoad.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionenginetorque">propulsion.*.engineTorque</h2><p>Engine torque ratio, 0&lt;=ratio&lt;=1, 1 is 100%</p><p><strong>Units:</strong>ratio</p><h2 id="propulsionenginetorquemetaproperties">propulsion.*.engineTorque.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionexhausttemperature">propulsion.*.exhaustTemperature</h2><p>Exhaust temperature</p><p><strong>Units:</strong>K</p><h2 id="propulsionexhausttemperaturemetaproperties">propulsion.*.exhaustTemperature.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionfuelaveragerate">propulsion.*.fuel.averageRate</h2><p>Average fuel rate of consumption</p><p><strong>Units:</strong>m3/s</p><h2 id="propulsionfuelaverageratemetaproperties">propulsion.*.fuel.averageRate.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionfueleconomyrate">propulsion.*.fuel.economyRate</h2><p>Economy fuel rate of consumption</p><p><strong>Units:</strong>m3/s</p><h2 id="propulsionfueleconomyratemetaproperties">propulsion.*.fuel.economyRate.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionfuelpressure">propulsion.*.fuel.pressure</h2><p>Fuel pressure</p><p><strong>Units:</strong>Pa</p><h2 id="propulsionfuelpressuremetaproperties">propulsion.*.fuel.pressure.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionfuelrate">propulsion.*.fuel.rate</h2><p>Fuel rate  of consumption</p><p><strong>Units:</strong>m3/s</p><h2 id="propulsionfuelratemetaproperties">propulsion.*.fuel.rate.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionfueltype">propulsion.*.fuel.type</h2><p>Fuel type</p><h3 id="enum-values">Enum values:</h3><ul><li>diesel
+</li>
+<li>petrol
+</li>
+<li>electric
+</li>
+<li>coal/wood
+</li>
+<li>other
+</li></ul>
+<h2 id="propulsionfuelused">propulsion.*.fuel.used</h2><p>Used fuel since last reset. Resetting is at user discretion</p><p><strong>Units:</strong>m3</p><h2 id="propulsionfuelusedmetaproperties">propulsion.*.fuel.used.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionoilpressure">propulsion.*.oilPressure</h2><p>Oil pressure</p><p><strong>Units:</strong>Pa</p><h2 id="propulsionoilpressuremetaproperties">propulsion.*.oilPressure.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionoiltemperature">propulsion.*.oilTemperature</h2><p>Oil temperature</p><p><strong>Units:</strong>K</p><h2 id="propulsionoiltemperaturemetaproperties">propulsion.*.oilTemperature.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionrevolutions">propulsion.*.revolutions</h2><p>Engine revolutions (x60 for RPM)</p><p><strong>Units:</strong>Hz</p><h2 id="propulsionrevolutionsmetaproperties">propulsion.*.revolutions.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionruntime">propulsion.*.runTime</h2><p>Total running time for engine (Engine Hours in seconds)</p><p><strong>Units:</strong>s</p><h2 id="propulsionruntimemetaproperties">propulsion.*.runTime.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionstatemetaproperties">propulsion.*.state.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsionstatevalue">propulsion.*.state.value</h2><h3 id="enum-values">Enum values:</h3><ul><li>stopped
+</li>
+<li>started
+</li>
+<li>unusable
+</li></ul>
+<h2 id="propulsiontemperature">propulsion.*.temperature</h2><p>Engine temperature</p><p><strong>Units:</strong>K</p><h2 id="propulsiontemperaturemetaproperties">propulsion.*.temperature.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiontransmissiongear">propulsion.*.transmission.gear</h2><h3 id="enum-values">Enum values:</h3><ul><li>Forward
+</li>
+<li>Neutral
+</li>
+<li>Reverse
+</li>
+<li>Fault
+</li></ul>
+<h2 id="propulsiontransmissiongearratio">propulsion.*.transmission.gearRatio</h2><p>Gear ratio, engine rotations per propeller shaft rotation</p><p><strong>Units:</strong>ratio</p><h2 id="propulsiontransmissiongearratiometaproperties">propulsion.*.transmission.gearRatio.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiontransmissionoilpressure">propulsion.*.transmission.oilPressure</h2><p>Oil pressure</p><p><strong>Units:</strong>Pa</p><h2 id="propulsiontransmissionoilpressuremetaproperties">propulsion.*.transmission.oilPressure.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="propulsiontransmissionoiltemperature">propulsion.*.transmission.oilTemperature</h2><p>Oil temperature</p><p><strong>Units:</strong>K</p><h2 id="propulsiontransmissionoiltemperaturemetaproperties">propulsion.*.transmission.oilTemperature.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="resourceschartschartformat">resources.charts.*.chartFormat</h2><p>The format of the chart</p><h3 id="enum-values">Enum values:</h3><ul><li>gif
+</li>
+<li>geotiff
+</li>
+<li>kap
+</li>
+<li>png
+</li>
+<li>jpg
+</li>
+<li>kml
+</li>
+<li>wkt
+</li>
+<li>topojson
+</li>
+<li>geojson
+</li>
+<li>gpx
+</li>
+<li>tms
+</li>
+<li>S-57
+</li>
+<li>S-63
+</li>
+<li>svg
+</li>
+<li>other
+</li></ul>
+<h2 id="resourcesnotespositionaltitude">resources.notes.*.position.altitude</h2><p>Altitude</p><p><strong>Units:</strong>m</p><h2 id="resourcesnotespositionlatitude">resources.notes.*.position.latitude</h2><p>Latitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>52.0987654</code></pre>
+<h2 id="resourcesnotespositionlongitude">resources.notes.*.position.longitude</h2><p>Longitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>4.98765245</code></pre>
+<h2 id="resourcesnotespositionmetaproperties">resources.notes.*.position.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="resourcesregionsfeaturegeometryoneof0type">resources.regions.*.feature.geometry.oneOf.0.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>Polygon
+</li></ul>
+<h2 id="resourcesregionsfeaturegeometryoneof1type">resources.regions.*.feature.geometry.oneOf.1.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>MultiPolygon
+</li></ul>
+<h2 id="resourcesregionsfeaturetype">resources.regions.*.feature.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>Feature
+</li></ul>
+<h2 id="resourcesroutesdistance">resources.routes.*.distance</h2><p>Total distance from start to end</p><p><strong>Units:</strong>m</p><h2 id="resourcesroutesfeaturegeometrytype">resources.routes.*.feature.geometry.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>LineString
+</li></ul>
+<h2 id="resourcesroutesfeaturetype">resources.routes.*.feature.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>Feature
+</li></ul>
+<h2 id="resourceswaypointsfeaturegeometrytype">resources.waypoints.*.feature.geometry.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>Point
+</li></ul>
+<h2 id="resourceswaypointsfeaturetype">resources.waypoints.*.feature.type</h2><h3 id="enum-values">Enum values:</h3><ul><li>Feature
+</li></ul>
+<h2 id="resourceswaypointspositionaltitude">resources.waypoints.*.position.altitude</h2><p>Altitude</p><p><strong>Units:</strong>m</p><h2 id="resourceswaypointspositionlatitude">resources.waypoints.*.position.latitude</h2><p>Latitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>52.0987654</code></pre>
+<h2 id="resourceswaypointspositionlongitude">resources.waypoints.*.position.longitude</h2><p>Longitude</p><p><strong>Units:</strong>deg</p><h3 id="example">Example:</h3><pre><code>4.98765245</code></pre>
+<h2 id="resourceswaypointspositionmetaproperties">resources.waypoints.*.position.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sailsareaactive">sails.area.active</h2><p>The total area of the sails currently in use on the vessel</p><p><strong>Units:</strong>m2</p><h2 id="sailsareaactivemetaproperties">sails.area.active.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sailsareatotal">sails.area.total</h2><p>The total area of all sails on the vessel</p><p><strong>Units:</strong>m2</p><h2 id="sailsareatotalmetaproperties">sails.area.total.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sailsinventoryarea">sails.inventory.*.area</h2><p>The total area of this sail in square meters</p><p><strong>Units:</strong>m2</p><h2 id="sailsinventorymaximumwind">sails.inventory.*.maximumWind</h2><p>The maximum wind speed this sail can be used with</p><p><strong>Units:</strong>m/s</p><h2 id="sailsinventorymetaproperties">sails.inventory.*.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sailsinventoryminimumwind">sails.inventory.*.minimumWind</h2><p>The minimum wind speed this sail can be used with</p><p><strong>Units:</strong>m/s</p><h2 id="sensorsfrombowmetaproperties">sensors.fromBow.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sensorsfromcentermetaproperties">sensors.fromCenter.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="sourcesanyof0n2kpgnsref">sources.<em>.</em>.anyOf.0.n2k.pgns.*.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="sourcesanyof0sentencesref">sources.<em>.</em>.anyOf.0.sentences.*.$ref</h2><p>ISO-8601 (UTC) string representing date and time.</p><p><strong>Units:</strong>ISO-8601 (UTC)</p><h3 id="example">Example:</h3><pre><code>2014-04-10T08:33:53Z</code></pre>
+<h2 id="steeringautopilotbacklash">steering.autopilot.backlash</h2><p>Slack in the rudder drive mechanism</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilotbacklashmetaproperties">steering.autopilot.backlash.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotdeadzone">steering.autopilot.deadZone</h2><p>Dead zone to ignore for rudder corrections</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilotdeadzonemetaproperties">steering.autopilot.deadZone.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotgainmetaproperties">steering.autopilot.gain.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotheadingsource">steering.autopilot.headingSource</h2><p>Current source of heading information</p><h3 id="enum-values">Enum values:</h3><ul><li>compass
+</li>
+<li>wind
+</li>
+<li>gps
+</li></ul>
+<h2 id="steeringautopilotmaxdrivecurrent">steering.autopilot.maxDriveCurrent</h2><p>Maximum current to use to drive servo</p><p><strong>Units:</strong>A</p><h2 id="steeringautopilotmaxdrivecurrentmetaproperties">steering.autopilot.maxDriveCurrent.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotmaxdriverate">steering.autopilot.maxDriveRate</h2><p>Maximum rudder rotation speed</p><p><strong>Units:</strong>rad/s</p><h2 id="steeringautopilotmaxdriveratemetaproperties">steering.autopilot.maxDriveRate.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotmode">steering.autopilot.mode</h2><p>Operational mode</p><h3 id="enum-values">Enum values:</h3><ul><li>powersave
+</li>
+<li>normal
+</li>
+<li>accurate
+</li></ul>
+<h2 id="steeringautopilotportlock">steering.autopilot.portLock</h2><p>Position of servo on port lock</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilotportlockmetaproperties">steering.autopilot.portLock.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotstarboardlock">steering.autopilot.starboardLock</h2><p>Position of servo on starboard lock</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilotstarboardlockmetaproperties">steering.autopilot.starboardLock.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilotstate">steering.autopilot.state</h2><p>Autopilot state</p><h3 id="enum-values">Enum values:</h3><ul><li>on
+</li>
+<li>off
+</li>
+<li>alarm
+</li></ul>
+<h2 id="steeringautopilottargetheadingmagnetic">steering.autopilot.targetHeadingMagnetic</h2><p>Target heading for autopilot, relative to magnetic North</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilottargetheadingmagneticmetaproperties">steering.autopilot.targetHeadingMagnetic.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringautopilottargetheadingnorth">steering.autopilot.targetHeadingNorth</h2><p>Target heading for autopilot, relative to true North</p><p><strong>Units:</strong>rad</p><h2 id="steeringautopilottargetheadingnorthmetaproperties">steering.autopilot.targetHeadingNorth.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringrudderangle">steering.rudderAngle</h2><p>Current rudder angle, +ve is rudder to Starboard</p><p><strong>Units:</strong>rad</p><h2 id="steeringrudderanglemetaproperties">steering.rudderAngle.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="steeringrudderangletarget">steering.rudderAngleTarget</h2><p>The angle the rudder should move to, +ve is rudder to Starboard</p><p><strong>Units:</strong>rad</p><h2 id="steeringrudderangletargetmetaproperties">steering.rudderAngleTarget.meta.properties</h2><p><strong>Units:</strong>[object Object]</p><h2 id="tanksblackwatercapacity">tanks.blackWater.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tanksblackwatercurrentlevel">tanks.blackWater.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tanksblackwatercurrentvolume">tanks.blackWater.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tanksblackwatertype">tanks.blackWater.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tanksfreshwatercapacity">tanks.freshWater.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tanksfreshwatercurrentlevel">tanks.freshWater.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tanksfreshwatercurrentvolume">tanks.freshWater.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tanksfreshwatertype">tanks.freshWater.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tanksfuelcapacity">tanks.fuel.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tanksfuelcurrentlevel">tanks.fuel.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tanksfuelcurrentvolume">tanks.fuel.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tanksfueltype">tanks.fuel.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tanksfuelwatercapacity">tanks.fuelWater.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tanksfuelwatercurrentlevel">tanks.fuelWater.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tanksfuelwatercurrentvolume">tanks.fuelWater.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tanksfuelwatertype">tanks.fuelWater.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tankslivewellcapacity">tanks.liveWell.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tankslivewellcurrentlevel">tanks.liveWell.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tankslivewellcurrentvolume">tanks.liveWell.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tankslivewelltype">tanks.liveWell.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tankslubricationcapacity">tanks.lubrication.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tankslubricationcurrentlevel">tanks.lubrication.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tankslubricationcurrentvolume">tanks.lubrication.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tankslubricationtype">tanks.lubrication.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+<h2 id="tankswastewatercapacity">tanks.wasteWater.*.capacity</h2><p>Total capacity</p><p><strong>Units:</strong>m3</p><h2 id="tankswastewatercurrentlevel">tanks.wasteWater.*.currentLevel</h2><p>Level of fluid in tank 0-100%</p><p><strong>Units:</strong>ratio</p><h2 id="tankswastewatercurrentvolume">tanks.wasteWater.*.currentVolume</h2><p>Volume of fluid in tank</p><p><strong>Units:</strong>m3</p><h2 id="tankswastewatertype">tanks.wasteWater.*.type</h2><p>The type of tank</p><h3 id="enum-values">Enum values:</h3><ul><li>petrol
+</li>
+<li>fresh water
+</li>
+<li>greywater
+</li>
+<li>holding
+</li>
+<li>lpg
+</li>
+<li>diesel
+</li>
+<li>rum
+</li></ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="data_model.md" class="navigation navigation-prev " aria-label="Previous page: Data Model">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="data_model_multiple_values.html" class="navigation navigation-next " aria-label="Next page: Multiple Values">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Keys Reference","level":"1.4.1","depth":2,"next":{"title":"Multiple Values","level":"1.4.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.4","depth":1,"path":"data_model.md","ref":"data_model.md","articles":[{"title":"Keys Reference","level":"1.4.1","depth":2,"path":"keys.md","ref":"keys.md","articles":[]},{"title":"Multiple Values","level":"1.4.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.4.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.4.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"keys.md","mtime":"2016-09-12T19:40:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-12T19:40:30.762Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
