@@ -1,7 +1,8 @@
+# Multiple Values for a Key
 
 There are two use cases for multiple data:
 * Multiple versions of a common device - eg two engines
-* Multiple devices providing duplicate data - multiple values for the same signalk key from different sensors, eg COG from both compass and gps 
+* Multiple devices providing duplicate data - multiple values for the same signalk key from different sensors, eg COG from both compass and gps
 
 ###Multiple versions of a common device
 Consider the data point `temperature`. There are many versions of temperature: air, water, engineRoom, fridge, freezer, main cabin, etc. Some are well-known, and in common usage, some will be very vessel specific.
@@ -52,7 +53,7 @@ And in `vessels.self.sources`
                 "bus": "/dev/ttyUSB2"
             }
         }
-    
+
 }
 ```
 
@@ -96,7 +97,7 @@ It is quite possible for a key value to come from more than one device. eg posit
 
 All the incoming values may well be valid in their own context, and it is feasible that all of them may be wanted, for instance, displaying depth under each hull on a catamaran.
 
-Hence discarding or averaging is not a solution, and since signalk is unable to derive the best way to handle multiple values it must always fall to a default action, with human over-ride when needed. 
+Hence discarding or averaging is not a solution, and since signalk is unable to derive the best way to handle multiple values it must always fall to a default action, with human over-ride when needed.
 
 
 ***
@@ -169,7 +170,7 @@ If another value with different source arrives, we add the source with a unique 
     }
   }
 }
-``` 
+```
 
 ### Rules
 
@@ -189,6 +190,6 @@ The identifier for each device should be unique within the server, and possibly 
 
     n2k: producerid-sourceid-pgn (producer id from server configuration, others from n2k data) - NOTE: will change, currently under discussion.
     nmea0183: producerid-talkerid-sentence (like n2k)
-    signalk: any valid string matching regex [a-zA-Z0-9-]. eg alphabet, hyphens, and 0 to 9 
+    signalk: any valid string matching regex [a-zA-Z0-9-]. eg alphabet, hyphens, and 0 to 9
 
 (The nmea0183 talker id is not in the schema as I write this, it will be added shortly)

@@ -1,3 +1,5 @@
+#Metadata
+
 ### The Use Cases
 
 Let's assume we have engine1.rpm as a key/value in Signal K. We want to display it on our dashboard, and monitor alarms for temp, oil, rpm etc.

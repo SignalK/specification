@@ -1,13 +1,4 @@
----
-title: APIs and Conventions
-layout: developers
-developers: active
-id: ap
----
-
-## {{page.title}}
-
-This page outlines the APIs and the conventions we use for ports, URLs, and miscellaneous details.
+#Ports, Urls and Versioning
 
 ### Short Names
 

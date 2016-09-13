@@ -1,6 +1,6 @@
-## Security Model
+# Permissions Model
 
-The security model for Signal K is based on the UNIX file permissions model. This was first developed in the late 1970's and is still perfectly suited to the internet today, so its got to be a pretty sound model!. 
+The permissions model for Signal K is based on the UNIX file permissions model. This was first developed in the late 1970's and is still perfectly suited to the internet today, so its got to be a pretty sound model!.
 
 So we adapted it for Signal K. See http://www.tutorialspoint.com/unix/unix-file-permission.htm
 
@@ -9,7 +9,7 @@ Each key in Signal K has an optional `_attr` value.
 "vessels": {
     "self":{
              //the usual signal k keys, navigation, environment, etc
-            
+
        "_attr":{                 // filesystem specific data, eg security, possibly more later
                 "_mode": 640,         // unix style permissions, often written in `owner:group:other` form, `-rw-r-----`
                 "_owner" : "self",    // owner, surprisingly. The user who created the item, sometimes a virtual user like 'self'
@@ -18,7 +18,7 @@ Each key in Signal K has an optional `_attr` value.
            }
         }
 ```
-By default the `vessels.self` key has the above `_attr`. This effectively means that only the current vessels 'owner' can read and write from this key or any of its sub-keys. It also allows users in group `self` to read the data. This provides a way to give additional programs or users read-only access. In the above case an external user connecting from outside the vessel and requesting vessel data would receive `{}`, eg nothing. 
+By default the `vessels.self` key has the above `_attr`. This effectively means that only the current vessels 'owner' can read and write from this key or any of its sub-keys. It also allows users in group `self` to read the data. This provides a way to give additional programs or users read-only access. In the above case an external user connecting from outside the vessel and requesting vessel data would receive `{}`, eg nothing.
 
 __Note:keys beginning with `_` are always stripped from signal k messages__
 
@@ -34,4 +34,4 @@ Exposing everything (`"_mode" : 666`) would be dangerous - it would potentially 
 
 **The implementation of proper security is the responsibility of the Signal K software implementation provider.**
 
-By manipulating the `_attr` values for the signalk keys, and creating suitable users and groups a sophisticated and well proven security model for vessel data can be created.
+By manipulating the `_attr` values for the Signal K keys, and creating suitable users and groups a sophisticated and well proven security model for vessel data can be created.
