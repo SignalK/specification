@@ -11,7 +11,7 @@
     "docs:epub": "gitbook pdf gitbook-docs master/signalk_master.epub",
     "docs:build": "gitbook build gitbook-docs master",
     "docs:all": "npm run docs:build && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
-    "docs:publish": "git checkout gh-pages && npm run docs:all && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
+    "docs:publish": "npm run docs:all && git add master && git stash && git checkout gh-pages && git checkout stash -- master && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
     "type": "git",
