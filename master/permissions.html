@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Permissions · GitBook</title>
+        <title>Permissions · Signal K Documentation</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
@@ -384,7 +388,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="permissions-model">Permissions Model</h1><p>The permissions model for Signal K is based on the UNIX file permissions model. This was first developed in the late 1970&apos;s and is still perfectly suited to the internet today, so its got to be a pretty sound model!.</p><p>So we adapted it for Signal K. See <a href="http://www.tutorialspoint.com/unix/unix-file-permission.htm" target="_blank">http://www.tutorialspoint.com/unix/unix-file-permission.htm</a></p><p>Each key in Signal K has an optional <code>_attr</code> value.</p><pre><code class="lang-javascript"><span class="hljs-string">&quot;vessels&quot;</span>: {
+                                <h1 id="permissions-model"><a name="permissions-model" class="plugin-anchor" href="#permissions-model"><i class="fa fa-link" aria-hidden="true"></i></a>Permissions Model</h1><p>The permissions model for Signal K is based on the UNIX file permissions model. This was first developed in the late 1970&apos;s and is still perfectly suited to the internet today, so its got to be a pretty sound model!.</p><p>So we adapted it for Signal K. See <a href="http://www.tutorialspoint.com/unix/unix-file-permission.htm" target="_blank">http://www.tutorialspoint.com/unix/unix-file-permission.htm</a></p><p>Each key in Signal K has an optional <code>_attr</code> value.</p><pre><code class="lang-javascript"><span class="hljs-string">&quot;vessels&quot;</span>: {
     <span class="hljs-string">&quot;self&quot;</span>:{
              <span class="hljs-comment">//the usual signal k keys, navigation, environment, etc</span>
 
@@ -434,7 +438,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Permissions","level":"1.3.4","depth":2,"next":{"title":"API","level":"1.4","depth":1,"ref":"","articles":[{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]}]},"previous":{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"permissions.md","mtime":"2016-09-13T20:05:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T20:30:33.520Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Permissions","level":"1.3.4","depth":2,"next":{"title":"API","level":"1.4","depth":1,"ref":"","articles":[{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]}]},"previous":{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"permissions.md","mtime":"2016-09-13T20:35:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T20:45:26.036Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

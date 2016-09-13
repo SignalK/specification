@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Discovery & Connection Establishment · GitBook</title>
+        <title>Discovery & Connection Establishment · Signal K Documentation</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
@@ -386,7 +390,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="discovery-and-connection-establishment">Discovery and Connection Establishment</h1><h4 id="service-discovery">Service Discovery</h4><p>A Signal K server SHOULD advertise its services over mDNS/Bonjour. The server MUST use the service types</p><ul><li><code>_signalk-http._tcp</code> for http API
+                                <h1 id="discovery-and-connection-establishment"><a name="discovery-and-connection-establishment" class="plugin-anchor" href="#discovery-and-connection-establishment"><i class="fa fa-link" aria-hidden="true"></i></a>Discovery and Connection Establishment</h1><h4 id="service-discovery"><a name="service-discovery" class="plugin-anchor" href="#service-discovery"><i class="fa fa-link" aria-hidden="true"></i></a>Service Discovery</h4><p>A Signal K server SHOULD advertise its services over mDNS/Bonjour. The server MUST use the service types</p><ul><li><code>_signalk-http._tcp</code> for http API
 </li>
 <li><code>_signalk-ws._tcp</code> for WebSocket
 </li>
@@ -417,7 +421,7 @@ Service data for service &apos;signalk-ws (2)&apos; of type &apos;_signalk-ws._t
         &apos;server=signalk-server&apos;,
         &apos;path=/signalk&apos;
         ]</code></pre>
-<h4 id="connection-establishment">Connection Establishment</h4><p>Using the information above a web client or http capable device can discover and connect to a Signal K server using the following process:</p><ul><li>Listen for Signal K services using Bonjour/mDns.
+<h4 id="connection-establishment"><a name="connection-establishment" class="plugin-anchor" href="#connection-establishment"><i class="fa fa-link" aria-hidden="true"></i></a>Connection Establishment</h4><p>Using the information above a web client or http capable device can discover and connect to a Signal K server using the following process:</p><ul><li>Listen for Signal K services using Bonjour/mDns.
 </li>
 <li>Use the Bonjour record to find the REST api interface <code>signalk-http</code>
 </li>
@@ -479,7 +483,7 @@ Service data for service &apos;signalk-ws (2)&apos; of type &apos;_signalk-ws._t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"next":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},"previous":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"connection.md","mtime":"2016-09-13T20:11:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T20:30:33.520Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"next":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},"previous":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"connection.md","mtime":"2016-09-13T20:35:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-13T20:45:26.036Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
