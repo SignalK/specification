@@ -1,0 +1,324 @@
+<h2>/resources</h2>
+<p><em>undefined</em>
+Resources to aid in navigation and operation of the vessel</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/resources</code></li>
+<li>Node: <code>resources</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/resources.json#&quot;,
+  &quot;title&quot;: &quot;resources&quot;,
+  &quot;description&quot;: &quot;Resources to aid in navigation and operation of the vessel&quot;,
+  &quot;properties&quot;: {
+    &quot;charts&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;chart&quot;,
+      &quot;description&quot;: &quot;A holder for charts, each named with their chart code&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;(^[A-Za-z0-9_-]{8,}$)&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;A chart&quot;,
+          &quot;properties&quot;: {
+            &quot;name&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Chart common name&quot;,
+              &quot;example&quot;: &quot;NZ615 Marlborough Sounds&quot;
+            },
+            &quot;identifier&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Chart number&quot;,
+              &quot;example&quot;: &quot;NZ615&quot;
+            },
+            &quot;description&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;A description of the chart&quot;
+            },
+            &quot;tilemapUrl&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;A url to the tilemap of the chart for use in TMS chartplotting apps&quot;,
+              &quot;example&quot;: &quot;http://{server}:8080/mapcache/NZ615&quot;
+            },
+            &quot;region&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Region related to note. A pointer to a region UUID. Alternative to geohash&quot;
+            },
+            &quot;geohash&quot;: {
+              &quot;description&quot;: &quot;Position related to chart. Alternative to region&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/geohash&quot;
+            },
+            &quot;chartUrl&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;A url to the chart file's storage location&quot;,
+              &quot;example&quot;: &quot;file:///home/pi/freeboard/mapcache/NZ615&quot;
+            },
+            &quot;scale&quot;: {
+              &quot;type&quot;: &quot;integer&quot;,
+              &quot;description&quot;: &quot;The scale of the chart, the larger number from 1:200000&quot;
+            },
+            &quot;chartFormat&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;The format of the chart&quot;,
+              &quot;enum&quot;: [
+                &quot;gif&quot;,
+                &quot;geotiff&quot;,
+                &quot;kap&quot;,
+                &quot;png&quot;,
+                &quot;jpg&quot;,
+                &quot;kml&quot;,
+                &quot;wkt&quot;,
+                &quot;topojson&quot;,
+                &quot;geojson&quot;,
+                &quot;gpx&quot;,
+                &quot;tms&quot;,
+                &quot;S-57&quot;,
+                &quot;S-63&quot;,
+                &quot;svg&quot;,
+                &quot;other&quot;
+              ]
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;routes&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;route&quot;,
+      &quot;description&quot;: &quot;A holder for routes, each named with a UUID&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;A route, named with a UUID&quot;,
+          &quot;properties&quot;: {
+            &quot;name&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Route's common name&quot;,
+              &quot;example&quot;: &quot;Nelson Harbour to Adele Is&quot;
+            },
+            &quot;description&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;A description of the route&quot;
+            },
+            &quot;distance&quot;: {
+              &quot;description&quot;: &quot;Total distance from start to end&quot;,
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;units&quot;: &quot;m&quot;
+            },
+            &quot;start&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;The waypoint UUID at the start of the route&quot;
+            },
+            &quot;end&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;The waypoint UUID at the end of the route&quot;
+            },
+            &quot;feature&quot;: {
+              &quot;title&quot;: &quot;Feature&quot;,
+              &quot;description&quot;: &quot;A Geo JSON feature object which describes the route between the waypoints&quot;,
+              &quot;required&quot;: [
+                &quot;geometry&quot;,
+                &quot;properties&quot;
+              ],
+              &quot;properties&quot;: {
+                &quot;type&quot;: {
+                  &quot;enum&quot;: [
+                    &quot;Feature&quot;
+                  ]
+                },
+                &quot;geometry&quot;: {
+                  &quot;title&quot;: &quot;LineString&quot;,
+                  &quot;properties&quot;: {
+                    &quot;type&quot;: {
+                      &quot;enum&quot;: [
+                        &quot;LineString&quot;
+                      ]
+                    },
+                    &quot;coordinates&quot;: {
+                      &quot;$ref&quot;: &quot;#/definitions/lineString&quot;
+                    }
+                  }
+                },
+                &quot;properties&quot;: {
+                  &quot;type&quot;: [
+                    &quot;object&quot;,
+                    &quot;null&quot;
+                  ],
+                  &quot;description&quot;: &quot;Additional data of any type&quot;,
+                  &quot;additionalProperties&quot;: true
+                },
+                &quot;id&quot;: {
+                  &quot;FIXME&quot;: &quot;may be there, type not known (string? number?)&quot;
+                }
+              }
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;notes&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;notes&quot;,
+      &quot;description&quot;: &quot;A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything&quot;,
+          &quot;properties&quot;: {
+            &quot;title&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Note's common name&quot;
+            },
+            &quot;description&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;A textual description of the note&quot;
+            },
+            &quot;region&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Region related to note. A pointer to a region UUID. Alternative to position or geohash&quot;
+            },
+            &quot;position&quot;: {
+              &quot;description&quot;: &quot;Position related to note. Alternative to region or geohash&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/position&quot;
+            },
+            &quot;geohash&quot;: {
+              &quot;description&quot;: &quot;Position related to note. Alternative to region or position&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/geohash&quot;
+            },
+            &quot;mimeType&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;MIME type of the note&quot;
+            },
+            &quot;url&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Location of the note&quot;
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;regions&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;region&quot;,
+      &quot;description&quot;: &quot;A holder for regions, each named with UUID&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;A region of interest, each named with a UUID&quot;,
+          &quot;properties&quot;: {
+            &quot;geohash&quot;: {
+              &quot;description&quot;: &quot;geohash of the approximate boundary of this region&quot;,
+              &quot;$ref:&quot;: &quot;../definitions.json#/definitions/geohash&quot;
+            },
+            &quot;feature&quot;: {
+              &quot;title&quot;: &quot;Feature&quot;,
+              &quot;description&quot;: &quot;A Geo JSON feature object which describes the regions boundary&quot;,
+              &quot;required&quot;: [
+                &quot;geometry&quot;,
+                &quot;properties&quot;
+              ],
+              &quot;properties&quot;: {
+                &quot;type&quot;: {
+                  &quot;enum&quot;: [
+                    &quot;Feature&quot;
+                  ]
+                },
+                &quot;geometry&quot;: {
+                  &quot;oneOf&quot;: [
+                    {
+                      &quot;title&quot;: &quot;Polygon&quot;,
+                      &quot;properties&quot;: {
+                        &quot;type&quot;: {
+                          &quot;enum&quot;: [
+                            &quot;Polygon&quot;
+                          ]
+                        },
+                        &quot;coordinates&quot;: {
+                          &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+                        }
+                      }
+                    },
+                    {
+                      &quot;title&quot;: &quot;MultiPolygon&quot;,
+                      &quot;properties&quot;: {
+                        &quot;type&quot;: {
+                          &quot;enum&quot;: [
+                            &quot;MultiPolygon&quot;
+                          ]
+                        },
+                        &quot;coordinates&quot;: {
+                          &quot;type&quot;: &quot;array&quot;,
+                          &quot;items&quot;: {
+                            &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                &quot;properties&quot;: {
+                  &quot;type&quot;: [
+                    &quot;object&quot;,
+                    &quot;null&quot;
+                  ],
+                  &quot;description&quot;: &quot;Additional data of any type&quot;,
+                  &quot;additionalProperties&quot;: true
+                },
+                &quot;id&quot;: {
+                  &quot;FIXME&quot;: &quot;may be there, type not known (string? number?)&quot;
+                }
+              }
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;waypoints&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;waypoints&quot;,
+      &quot;description&quot;: &quot;A holder for waypoints, each named with a UUID&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;: {
+          &quot;description&quot;: &quot;A waypoint, named with a UUID&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/waypoint&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

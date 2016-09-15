@@ -1,0 +1,51 @@
+<h2>/vessels/&lt;RegExp&gt;/notifications/abandon</h2>
+<p><em>undefined</em>
+Notifications, their state, and actions. The notification limits are set in any Signal K key.meta.zones array.</p>
+<ul>
+<li>Type: <code>[&quot;object&quot;,&quot;string&quot;,&quot;array&quot;]</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/notifications/abandon</code></li>
+<li>Node: <code>abandon</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: [
+    &quot;object&quot;,
+    &quot;string&quot;,
+    &quot;array&quot;
+  ],
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/notifications.json#&quot;,
+  &quot;title&quot;: &quot;notifications&quot;,
+  &quot;description&quot;: &quot;Notifications, their state, and actions. The notification limits are set in any Signal K key.meta.zones array.&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;(^method$)&quot;: {
+      &quot;description&quot;: &quot;Method to use to raise notifications&quot;,
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;../definitions.json#/definitions/alarmMethodEnum&quot;
+      }
+    },
+    &quot;(^state$)&quot;: {
+      &quot;description&quot;: &quot;Current notification state&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/alarmState&quot;
+    },
+    &quot;(^message$)&quot;: {
+      &quot;description&quot;: &quot;Message to display or speak&quot;,
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;(^timestamp$)&quot;: {
+      &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;(^\\$source$)&quot;: {
+      &quot;description&quot;: &quot;Source of this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/sourceRef&quot;
+    },
+    &quot;(^[A-Za-z0-9-]+$)&quot;: {
+      &quot;description&quot;: &quot;This regex pattern is used for validation of the path of the notification&quot;,
+      &quot;$ref&quot;: &quot;notifications.json#&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

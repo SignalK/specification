@@ -1,0 +1,56 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity</h2>
+<p><em>undefined</em></p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical/batteries/(^[A-Za-z0-9]+$)/capacity</code></li>
+<li>Node: <code>capacity</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;capacity&quot;,
+  &quot;properties&quot;: {
+    &quot;nominal&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;The capacity of battery as specified by the manufacturer&quot;,
+      &quot;units&quot;: &quot;J&quot;
+    },
+    &quot;actual&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.&quot;,
+      &quot;units&quot;: &quot;J&quot;
+    },
+    &quot;remaining&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Capacity remaining in battery&quot;,
+      &quot;units&quot;: &quot;J&quot;
+    },
+    &quot;dischargeLimit&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Minimum capacity to be left in the battery while discharging&quot;,
+      &quot;units&quot;: &quot;J&quot;
+    },
+    &quot;stateOfCharge&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;State of charge, 1 = 100%&quot;,
+      &quot;units&quot;: &quot;ratio&quot;
+    },
+    &quot;stateOfHealth&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;State of Health, 1 = 100%&quot;,
+      &quot;units&quot;: &quot;ratio&quot;
+    },
+    &quot;dischargeSinceFull&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Cumulative discharge since battery was last full&quot;,
+      &quot;units&quot;: &quot;C&quot;
+    },
+    &quot;timeRemaining&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Time to discharge to discharge limit at current rate&quot;,
+      &quot;units&quot;: &quot;s&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

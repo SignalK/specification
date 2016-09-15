@@ -1,0 +1,81 @@
+<h2>/vessels/&lt;RegExp&gt;/sails/inventory</h2>
+<p>An object containing a description of each sail available to the vessel crew</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/sails/inventory</code></li>
+<li>Node: <code>inventory</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;An object containing a description of each sail available to the vessel crew&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;(^[a-zA-Z0-9]+$)&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;description&quot;: &quot;'sail' data type.&quot;,
+      &quot;required&quot;: [
+        &quot;name&quot;,
+        &quot;type&quot;,
+        &quot;active&quot;,
+        &quot;area&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;An unique identifier by which the crew identifies a sail&quot;,
+          &quot;example&quot;: &quot;J1&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The type of sail&quot;,
+          &quot;example&quot;: &quot;Genaker&quot;
+        },
+        &quot;material&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The material the sail is made from (optional)&quot;,
+          &quot;example&quot;: &quot;canvas&quot;
+        },
+        &quot;brand&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The brand of the sail (optional)&quot;,
+          &quot;example&quot;: &quot;North Sails&quot;
+        },
+        &quot;active&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;description&quot;: &quot;Indicates wether this sail is currently in use or not&quot;
+        },
+        &quot;area&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;description&quot;: &quot;The total area of this sail in square meters&quot;,
+          &quot;units&quot;: &quot;m2&quot;
+        },
+        &quot;minimumWind&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;description&quot;: &quot;The minimum wind speed this sail can be used with&quot;,
+          &quot;units&quot;: &quot;m/s&quot;,
+          &quot;default&quot;: 0
+        },
+        &quot;maximumWind&quot;: {
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;description&quot;: &quot;The maximum wind speed this sail can be used with&quot;,
+          &quot;units&quot;: &quot;m/s&quot;,
+          &quot;default&quot;: 666
+        },
+        &quot;timestamp&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+        },
+        &quot;source&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/source&quot;
+        },
+        &quot;_attr&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/_attr&quot;
+        },
+        &quot;meta&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/meta&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

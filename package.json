@@ -9,7 +9,7 @@
     "docs:pdf": "gitbook pdf gitbook-docs master/signalk_master.pdf",
     "docs:mobi": "gitbook mobi gitbook-docs master/signalk_master.mobi",
     "docs:epub": "gitbook pdf gitbook-docs master/signalk_master.epub",
-    "docs:build": "gitbook build gitbook-docs master",
+    "docs:build": "npm run build && gitbook build gitbook-docs master",
     "docs:all": "npm run docs:build && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
     "docs:publish": "npm run docs:all && git add master && git stash && git checkout gh-pages && git checkout stash -- master && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
   },

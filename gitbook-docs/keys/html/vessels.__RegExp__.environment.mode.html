@@ -1,0 +1,29 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/mode</h2>
+<p>Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/mode</code></li>
+<li>Node: <code>mode</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.&quot;,
+  &quot;properties&quot;: {
+    &quot;value&quot;: {
+      &quot;enum&quot;: [
+        &quot;day&quot;,
+        &quot;night&quot;,
+        &quot;restricted visibility&quot;
+      ]
+    },
+    &quot;timestamp&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;source&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

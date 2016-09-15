@@ -1,0 +1,19 @@
+<h2>/vessels/&lt;RegExp&gt;/navigation/destination/source/type</h2>
+<p>A human name to identify the type. NMEA0183, NMEA2000, signalk</p>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation/destination/source/type</code></li>
+<li>Node: <code>type</code></li>
+</ul>
+<h3>Example:</h3>
+<pre><code>NMEA2000
+</code></pre>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;string&quot;,
+  &quot;description&quot;: &quot;A human name to identify the type. NMEA0183, NMEA2000, signalk&quot;,
+  &quot;default&quot;: &quot;NMEA2000&quot;,
+  &quot;example&quot;: &quot;NMEA2000&quot;
+}
+</code></pre>
+<hr>

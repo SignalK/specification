@@ -1,0 +1,49 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/outside</h2>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/outside</code></li>
+<li>Node: <code>outside</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;temperature&quot;: {
+      &quot;description&quot;: &quot;Current outside air temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;dewPointTemperature&quot;: {
+      &quot;description&quot;: &quot;Current outside dew point temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;apparentWindChillTemperature&quot;: {
+      &quot;description&quot;: &quot;Current outside apparent wind chill temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;theoreticalWindChillTemperature&quot;: {
+      &quot;description&quot;: &quot;Current outside theoretical wind chill temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;heatIndexTemperature&quot;: {
+      &quot;description&quot;: &quot;Current outside heat index temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;pressure&quot;: {
+      &quot;description&quot;: &quot;Current outside air ambient pressure&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;Pa&quot;
+    },
+    &quot;humidity&quot;: {
+      &quot;description&quot;: &quot;Current outside air relative humidity&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;ratio&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

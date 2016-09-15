@@ -1,0 +1,63 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/wind</h2>
+<p><em>undefined</em>
+Wind data.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/wind</code></li>
+<li>Node: <code>wind</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;wind&quot;,
+  &quot;description&quot;: &quot;Wind data.&quot;,
+  &quot;properties&quot;: {
+    &quot;angleApparent&quot;: {
+      &quot;description&quot;: &quot;Apparent wind angle, negative to port&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;angleTrueGround&quot;: {
+      &quot;description&quot;: &quot;True wind angle based on speed over ground, negative to port&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;angleTrueWater&quot;: {
+      &quot;description&quot;: &quot;True wind angle based on speed through water, negative to port&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;directionChangeAlarm&quot;: {
+      &quot;description&quot;: &quot;The angle the wind needs to shift to raise an alarm&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;directionTrue&quot;: {
+      &quot;description&quot;: &quot;The wind direction relative to true north&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;directionMagnetic&quot;: {
+      &quot;description&quot;: &quot;The wind direction relative to magnetic north&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;speedTrue&quot;: {
+      &quot;description&quot;: &quot;Wind speed over water (as calculated from speedApparent and vessel's speed through water)&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;speedOverGround&quot;: {
+      &quot;description&quot;: &quot;Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;speedApparent&quot;: {
+      &quot;description&quot;: &quot;Apparent wind speed&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

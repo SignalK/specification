@@ -1,0 +1,34 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/mode</h2>
+<p>Mode of inverter</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical/inverters/(^[A-Za-z0-9]+$)/mode</code></li>
+<li>Node: <code>mode</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;Mode of inverter&quot;,
+  &quot;properties&quot;: {
+    &quot;value&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;enum&quot;: [
+        &quot;idle&quot;,
+        &quot;inverting&quot;,
+        &quot;disabled&quot;,
+        &quot;standby&quot;,
+        &quot;faulted&quot;,
+        &quot;unknown&quot;,
+        &quot;other&quot;
+      ]
+    },
+    &quot;timestamp&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;$source&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/$source&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

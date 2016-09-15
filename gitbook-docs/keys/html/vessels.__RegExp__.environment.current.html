@@ -1,0 +1,54 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/current</h2>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/current</code></li>
+<li>Node: <code>current</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [
+    &quot;timestamp&quot;,
+    &quot;$source&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;timestamp&quot;: {
+      &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+    },
+    &quot;$source&quot;: {
+      &quot;$ref&quot;: &quot;#/definitions/sourceRef&quot;
+    },
+    &quot;_attr&quot;: {
+      &quot;$ref&quot;: &quot;#/definitions/_attr&quot;
+    },
+    &quot;meta&quot;: {
+      &quot;$ref&quot;: &quot;#/definitions/meta&quot;
+    },
+    &quot;pgn&quot;: {
+      &quot;type&quot;: &quot;number&quot;
+    },
+    &quot;sentence&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;drift&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;The speed component of the water current vector&quot;,
+      &quot;example&quot;: 3.12,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;setTrue&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;The direction component of the water current vector referenced to true (geographic) north&quot;,
+      &quot;example&quot;: 123.45,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;setMagnetic&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;The direction component of the water current vector referenced to magnetic north&quot;,
+      &quot;example&quot;: 131.22,
+      &quot;units&quot;: &quot;rad&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

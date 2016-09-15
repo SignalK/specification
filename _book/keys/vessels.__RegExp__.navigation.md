@@ -1,0 +1,571 @@
+## /vessels/<RegExp>/navigation
+
+*undefined*
+Schema describing the navigation child-object of a Vessel.
+
+* Type: `object`
+* Path: `/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation`
+* Node: `navigation`
+
+### Source:
+```
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
+  "description": "Schema describing the navigation child-object of a Vessel.",
+  "title": "navigation",
+  "definitions": {
+    "course": {
+      "type": "object",
+      "title": "Course",
+      "description": "The currently active course (can be a route, or just a point one is navigating towards)",
+      "properties": {
+        "crossTrackError": {
+          "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
+          "units": "m",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "bearingTrackTrue": {
+          "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
+          "units": "rad",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "bearingTrackMagnetic": {
+          "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
+          "units": "rad",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "activeRoute": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "description": "A reference (URL) to the presently active route, in resources.",
+              "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
+              "type": "string"
+            },
+            "estimatedTimeOfArrival": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "The estimated time of arrival at the end of the current route"
+            },
+            "startTime": {
+              "$ref": "../definitions.json#/definitions/timestamp",
+              "description": "The time this route was activated"
+            }
+          }
+        },
+        "nextPoint": {
+          "type": "object",
+          "description": "The point on earth the vessel's presently navigating towards",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "type": {
+                  "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)",
+                  "type": "string"
+                },
+                "href": {
+                  "description": "A reference (URL) to an object (under resources) this point is related to",
+                  "type": "string"
+                },
+                "distance": {
+                  "description": "The distance in meters between the vessel's present position and the nextPoint",
+                  "units": "m",
+                  "type": "number"
+                },
+                "bearingTrue": {
+                  "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+                  "units": "rad",
+                  "type": "number"
+                },
+                "bearingMagnetic": {
+                  "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+                  "units": "rad",
+                  "type": "number"
+                },
+                "velocityMadeGood": {
+                  "description": "The velocity component of the vessel towards the nextPoint",
+                  "units": "m/s",
+                  "type": "number"
+                },
+                "timeToGo": {
+                  "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+                  "units": "s",
+                  "type": "number"
+                },
+                "position": {
+                  "type": "object",
+                  "description": "The position of nextPoint in two dimensions",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "previousPoint": {
+          "type": "object",
+          "description": "The point on earth the vessel's presently navigating from",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "type": {
+                  "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)",
+                  "type": "string"
+                },
+                "href": {
+                  "description": "A reference (URL) to an object (under resources) this point is related to",
+                  "type": "string"
+                },
+                "distance": {
+                  "description": "The distance in meters between previousPoint and the vessel's present position",
+                  "units": "m",
+                  "type": "number"
+                },
+                "position": {
+                  "type": "object",
+                  "description": "The position of lastPoint in two dimensions",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "lights": {
+      "type": "object",
+      "title": "Navigation lights",
+      "description": "Current state of the vessels navigation lights",
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fault",
+            "anchored",
+            "sailing",
+            "motoring",
+            "towing < 200m",
+            "towing > 200m",
+            "pushing",
+            "fishing",
+            "fishing-hampered",
+            "trawling",
+            "trawling-shooting",
+            "trawling-hauling",
+            "pilotage",
+            "not-under-way",
+            "aground",
+            "restricted manouverability",
+            "restricted manouverability towing < 200m",
+            "restricted manouverability towing > 200m",
+            "restricted manouverability underwater operations",
+            "constrained by draft",
+            "mine clearance"
+          ]
+        },
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+    "courseOverGroundMagnetic": {
+      "description": "Course over ground (magnetic)",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "courseOverGroundTrue": {
+      "description": "Course over ground (true)",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "courseRhumbline": {
+      "description": "Course information computed with Rhumbline",
+      "$ref": "#/definitions/course"
+    },
+    "courseGreatCircle": {
+      "description": "Course information computed with Great Circle",
+      "$ref": "#/definitions/course"
+    },
+    "racing": {
+      "type": "object",
+      "properties": {
+        "startLineStb": {
+          "waypoint": {
+            "description": "UUID of waypoint for starboard start mark",
+            "type": "string"
+          }
+        },
+        "startLinePort": {
+          "waypoint": {
+            "description": "UUID of waypoint for port start mark",
+            "type": "string"
+          }
+        },
+        "distanceStartline": {
+          "type": "number",
+          "description": "The current distance to the start line",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "timeToStart": {
+          "description": "Time left before start",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timePortDown": {
+          "description": "Time to arrive at the start line on port, turning downwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timePortUp": {
+          "description": "Time to arrive at the start line on port, turning upwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timeStbdDown": {
+          "description": "Time to arrive at the start line on starboard, turning downwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "timeStbdUp": {
+          "description": "Time to arrive at the start line on starboard, turning upwind",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "s"
+        },
+        "distanceLayline": {
+          "type": "number",
+          "description": "The current distance to the layline",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        }
+      }
+    },
+    "magneticVariation": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "The magnetic variation (declination) at the current position",
+      "units": "rad"
+    },
+    "magneticVariationAgeOfService": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Seconds since the 1st Jan 1970 that the variation calculation was made",
+      "units": "s"
+    },
+    "destination": {
+      "title": "destination",
+      "description": "The intended destination of this trip",
+      "type": "object",
+      "properties": {
+        "eta": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "waypoint": {
+          "description": "UUID of destination waypoint",
+          "type": "string"
+        }
+      }
+    },
+    "gnss": {
+      "type": "object",
+      "title": "gnss",
+      "description": "Global satellite navigation meta information",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "methodQuality": {
+          "type": "object",
+          "description": "Quality of the satellite fix",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "no GPS",
+                "GNSS Fix",
+                "DGNSS fix",
+                "Precise GNSS",
+                "RTK fixed integer",
+                "RTK float",
+                "Estimated (DR) mode",
+                "Manual input",
+                "Simulator mode",
+                "Error"
+              ]
+            }
+          }
+        },
+        "integrity": {
+          "type": "object",
+          "description": "Integrity of the satellite fix",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "no Integrity checking",
+                "Safe",
+                "Caution",
+                "Unsafe"
+              ]
+            }
+          }
+        },
+        "satellites": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Number of satellites"
+        },
+        "antennaAltitude": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Altitude of antenna",
+          "units": "m"
+        },
+        "horizontalDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Horizontal Dilution of Precision"
+        },
+        "positionDilution": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Positional Dilution of Precision"
+        },
+        "geoidalSeparation": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Difference between WGS84 earth ellipsoid and mean sea level"
+        },
+        "differentialAge": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Age of DGPS data",
+          "units": "s"
+        },
+        "differentialReference": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "ID of DGPS base station"
+        }
+      }
+    },
+    "headingMagnetic": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Current magnetic heading of the vessel",
+      "units": "rad"
+    },
+    "headingTrue": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "The current true heading of the vessel",
+      "units": "rad"
+    },
+    "position": {
+      "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "$ref": "../definitions.json#/definitions/position"
+        }
+      ]
+    },
+    "attitude": {
+      "type": "object",
+      "title": "Attitude",
+      "description": "Vessel attitude: roll, pitch and yaw",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "roll": {
+              "type": "number",
+              "description": "Vessel roll, +ve is list to starboard",
+              "units": "rad"
+            },
+            "pitch": {
+              "type": "number",
+              "description": "Pitch, +ve is bow up",
+              "units": "rad"
+            },
+            "yaw": {
+              "type": "number",
+              "description": "Yaw, +ve is heading change to starboard",
+              "units": "rad"
+            }
+          }
+        }
+      ]
+    },
+    "rateOfTurn": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Rate of turn (+ve is change to starboard)",
+      "units": "rad/s"
+    },
+    "speedOverGround": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Vessel speed over ground",
+      "units": "m/s"
+    },
+    "speedThroughWater": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Vessel speed through the water",
+      "units": "m/s"
+    },
+    "log": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Log value",
+      "units": "m"
+    },
+    "logTrip": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Trip log value",
+      "units": "m"
+    },
+    "state": {
+      "type": "object",
+      "title": "state",
+      "description": "Current navigational state of the vessel",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "not under command",
+            "anchored",
+            "sailing",
+            "motoring",
+            "towing < 200m",
+            "towing > 200m",
+            "pushing",
+            "fishing",
+            "fishing-hampered",
+            "trawling",
+            "trawling-shooting",
+            "trawling-hauling",
+            "pilotage",
+            "not-under-way",
+            "aground",
+            "restricted manouverability",
+            "restricted manouverability towing < 200m",
+            "restricted manouverability towing > 200m",
+            "restricted manouverability underwater operations",
+            "constrained by draft",
+            "mine clearance",
+            "not defined (example)"
+          ]
+        }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "title": "anchor",
+      "description": "The anchor data, for anchor watch etc",
+      "properties": {
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "Timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "maxRadius": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
+          "units": "m"
+        },
+        "currentRadius": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Current distance to anchor",
+          "units": "m"
+        },
+        "position": {
+          "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "$ref": "../definitions.json#/definitions/position"
+            }
+          ]
+        }
+      }
+    },
+    "datetime": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "GNSS Time and Date in ISO8601 format",
+              "exmple": "2015-12-05T13:11:59Z"
+            },
+            "gnssTimeSource": {
+              "description": "Source of GNSS Date and Time",
+              "enum": [
+                "GPS",
+                "GLONASS",
+                "Galileo",
+                "Beidou",
+                "IRNSS",
+                "Radio Signal",
+                "Internet",
+                "Local clock"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+---

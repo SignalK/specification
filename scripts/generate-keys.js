@@ -3,6 +3,7 @@
 'use strict'
 
 const Parser = require('signalk-documentation-generator')
+const fs = require('fs')
 const path = require('path')
 
 new Parser({

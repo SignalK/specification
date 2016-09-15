@@ -1,0 +1,87 @@
+<h2>/resources/regions/&lt;RegExp&gt;</h2>
+<p>A region of interest, each named with a UUID</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/resources/regions/^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</code></li>
+<li>Node: <code>^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;A region of interest, each named with a UUID&quot;,
+  &quot;properties&quot;: {
+    &quot;geohash&quot;: {
+      &quot;description&quot;: &quot;geohash of the approximate boundary of this region&quot;,
+      &quot;$ref:&quot;: &quot;../definitions.json#/definitions/geohash&quot;
+    },
+    &quot;feature&quot;: {
+      &quot;title&quot;: &quot;Feature&quot;,
+      &quot;description&quot;: &quot;A Geo JSON feature object which describes the regions boundary&quot;,
+      &quot;required&quot;: [
+        &quot;geometry&quot;,
+        &quot;properties&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;type&quot;: {
+          &quot;enum&quot;: [
+            &quot;Feature&quot;
+          ]
+        },
+        &quot;geometry&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;title&quot;: &quot;Polygon&quot;,
+              &quot;properties&quot;: {
+                &quot;type&quot;: {
+                  &quot;enum&quot;: [
+                    &quot;Polygon&quot;
+                  ]
+                },
+                &quot;coordinates&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+                }
+              }
+            },
+            {
+              &quot;title&quot;: &quot;MultiPolygon&quot;,
+              &quot;properties&quot;: {
+                &quot;type&quot;: {
+                  &quot;enum&quot;: [
+                    &quot;MultiPolygon&quot;
+                  ]
+                },
+                &quot;coordinates&quot;: {
+                  &quot;type&quot;: &quot;array&quot;,
+                  &quot;items&quot;: {
+                    &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+                  }
+                }
+              }
+            }
+          ]
+        },
+        &quot;properties&quot;: {
+          &quot;type&quot;: [
+            &quot;object&quot;,
+            &quot;null&quot;
+          ],
+          &quot;description&quot;: &quot;Additional data of any type&quot;,
+          &quot;additionalProperties&quot;: true
+        },
+        &quot;id&quot;: {
+          &quot;FIXME&quot;: &quot;may be there, type not known (string? number?)&quot;
+        }
+      }
+    },
+    &quot;timestamp&quot;: {
+      &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;source&quot;: {
+      &quot;description&quot;: &quot;Source of this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

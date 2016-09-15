@@ -1,0 +1,92 @@
+<h2>/vessels/&lt;RegExp&gt;/navigation/gnss</h2>
+<p><em>undefined</em>
+Global satellite navigation meta information</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation/gnss</code></li>
+<li>Node: <code>gnss</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;gnss&quot;,
+  &quot;description&quot;: &quot;Global satellite navigation meta information&quot;,
+  &quot;properties&quot;: {
+    &quot;source&quot;: {
+      &quot;description&quot;: &quot;Source of this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+    },
+    &quot;timestamp&quot;: {
+      &quot;description&quot;: &quot;timestamp of the last update to this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;methodQuality&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;description&quot;: &quot;Quality of the satellite fix&quot;,
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [
+            &quot;no GPS&quot;,
+            &quot;GNSS Fix&quot;,
+            &quot;DGNSS fix&quot;,
+            &quot;Precise GNSS&quot;,
+            &quot;RTK fixed integer&quot;,
+            &quot;RTK float&quot;,
+            &quot;Estimated (DR) mode&quot;,
+            &quot;Manual input&quot;,
+            &quot;Simulator mode&quot;,
+            &quot;Error&quot;
+          ]
+        }
+      }
+    },
+    &quot;integrity&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;description&quot;: &quot;Integrity of the satellite fix&quot;,
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [
+            &quot;no Integrity checking&quot;,
+            &quot;Safe&quot;,
+            &quot;Caution&quot;,
+            &quot;Unsafe&quot;
+          ]
+        }
+      }
+    },
+    &quot;satellites&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Number of satellites&quot;
+    },
+    &quot;antennaAltitude&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Altitude of antenna&quot;,
+      &quot;units&quot;: &quot;m&quot;
+    },
+    &quot;horizontalDilution&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Horizontal Dilution of Precision&quot;
+    },
+    &quot;positionDilution&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Positional Dilution of Precision&quot;
+    },
+    &quot;geoidalSeparation&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Difference between WGS84 earth ellipsoid and mean sea level&quot;
+    },
+    &quot;differentialAge&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;Age of DGPS data&quot;,
+      &quot;units&quot;: &quot;s&quot;
+    },
+    &quot;differentialReference&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;ID of DGPS base station&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

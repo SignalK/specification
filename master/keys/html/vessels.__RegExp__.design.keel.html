@@ -1,0 +1,52 @@
+<h2>/vessels/&lt;RegExp&gt;/design/keel</h2>
+<p><em>undefined</em>
+Information about the vessel's keel</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/design/keel</code></li>
+<li>Node: <code>keel</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;keel&quot;,
+  &quot;description&quot;: &quot;Information about the vessel's keel&quot;,
+  &quot;properties&quot;: {
+    &quot;type&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;The type of keel.&quot;,
+      &quot;enum&quot;: [
+        &quot;long&quot;,
+        &quot;fin&quot;,
+        &quot;flare&quot;,
+        &quot;bulb&quot;,
+        &quot;wing&quot;,
+        &quot;centerboard&quot;,
+        &quot;kanting&quot;,
+        &quot;lifting&quot;,
+        &quot;daggerboard&quot;
+      ]
+    },
+    &quot;angle&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;lift&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;description&quot;: &quot;In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.&quot;,
+      &quot;units&quot;: &quot;ratio&quot;,
+      &quot;example&quot;: 0.8
+    },
+    &quot;source&quot;: {
+      &quot;description&quot;: &quot;Source of this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+    },
+    &quot;timestamp&quot;: {
+      &quot;description&quot;: &quot;timestamp of the last update to this data&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

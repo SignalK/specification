@@ -1,0 +1,95 @@
+<h2>/vessels/&lt;RegExp&gt;/performance</h2>
+<p><em>undefined</em>
+Schema describing the performance child-object of a Vessel.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/performance</code></li>
+<li>Node: <code>performance</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/performance.json#&quot;,
+  &quot;description&quot;: &quot;Schema describing the performance child-object of a Vessel.&quot;,
+  &quot;title&quot;: &quot;performance&quot;,
+  &quot;properties&quot;: {
+    &quot;polarSpeed&quot;: {
+      &quot;description&quot;: &quot;The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;polarSpeedRatio&quot;: {
+      &quot;description&quot;: &quot;The ratio of current speed through water to the polar speed.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;ratio&quot;
+    },
+    &quot;velocityMadeGood&quot;: {
+      &quot;description&quot;: &quot;The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;velocityMadeGoodToWaypoint&quot;: {
+      &quot;description&quot;: &quot;The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;beatAngle&quot;: {
+      &quot;description&quot;: &quot;The true wind beat angle for the best velocity made good based on current current polar diagram and trueWindSpeed.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;beatAngleVelocityMadeGood&quot;: {
+      &quot;description&quot;: &quot;The velocity made good for the beat angle.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;beatAngleTargetSpeed&quot;: {
+      &quot;description&quot;: &quot;The target speed for the beat angle.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;gybeAngle&quot;: {
+      &quot;description&quot;: &quot;The true wind gybe angle for the best velocity made good downwind based on current polar diagram and trueWindSpeed.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;gybeAngleVelocityMadeGood&quot;: {
+      &quot;description&quot;: &quot;The velocity made good for the gybe angle&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;gybeAngleTargetSpeed&quot;: {
+      &quot;description&quot;: &quot;The target speed for the gybe angle.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;targetAngle&quot;: {
+      &quot;description&quot;: &quot;The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;targetSpeed&quot;: {
+      &quot;description&quot;: &quot;The target speed for the beat angle or gybe angle, which ever is applicable.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m/s&quot;
+    },
+    &quot;leeway&quot;: {
+      &quot;description&quot;: &quot;Current leeway&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;tackMagnetic&quot;: {
+      &quot;description&quot;: &quot;Magnetic heading on opposite tack.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;tackTrue&quot;: {
+      &quot;description&quot;: &quot;True heading on opposite tack.&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

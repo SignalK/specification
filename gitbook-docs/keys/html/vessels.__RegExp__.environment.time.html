@@ -1,0 +1,36 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/time</h2>
+<p>A time reference onboard.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/time</code></li>
+<li>Node: <code>time</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;A time reference onboard.&quot;,
+  &quot;properties&quot;: {
+    &quot;millis&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;title&quot;: &quot;Epoch time&quot;,
+      &quot;example&quot;: 1449648657735,
+      &quot;description&quot;: &quot;Milliseconds since the UNIX epoch (1970-01-01 00:00:00)&quot;
+    },
+    &quot;timezone&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;title&quot;: &quot;Timezone offset&quot;,
+      &quot;example&quot;: -400,
+      &quot;maximum&quot;: 1300,
+      &quot;minimum&quot;: -1300,
+      &quot;description&quot;: &quot;Timezone offset in hours and minutes (-)hhmm&quot;
+    },
+    &quot;timestamp&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;source&quot;: {
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

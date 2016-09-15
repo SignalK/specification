@@ -1,0 +1,23 @@
+<h2>/vessels/&lt;RegExp&gt;/navigation/headingMagnetic/meta/emergencyMethod</h2>
+<p><em>undefined</em>
+The method to use to raise an emergency. An emergency is an immediate danger to life or vessel</p>
+<ul>
+<li>Type: <code>array</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation/headingMagnetic/meta/emergencyMethod</code></li>
+<li>Node: <code>emergencyMethod</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;array&quot;,
+  &quot;title&quot;: &quot;Emergency Method&quot;,
+  &quot;description&quot;: &quot;The method to use to raise an emergency. An emergency is an immediate danger to life or vessel&quot;,
+  &quot;default&quot;: [
+    &quot;visual&quot;,
+    &quot;sound&quot;
+  ],
+  &quot;items&quot;: {
+    &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+  }
+}
+</code></pre>
+<hr>

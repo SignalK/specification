@@ -1,0 +1,70 @@
+<h2>/resources/regions/&lt;RegExp&gt;/feature</h2>
+<p><em>undefined</em>
+A Geo JSON feature object which describes the regions boundary</p>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/resources/regions/^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/feature</code></li>
+<li>Node: <code>feature</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;title&quot;: &quot;Feature&quot;,
+  &quot;description&quot;: &quot;A Geo JSON feature object which describes the regions boundary&quot;,
+  &quot;required&quot;: [
+    &quot;geometry&quot;,
+    &quot;properties&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;type&quot;: {
+      &quot;enum&quot;: [
+        &quot;Feature&quot;
+      ]
+    },
+    &quot;geometry&quot;: {
+      &quot;oneOf&quot;: [
+        {
+          &quot;title&quot;: &quot;Polygon&quot;,
+          &quot;properties&quot;: {
+            &quot;type&quot;: {
+              &quot;enum&quot;: [
+                &quot;Polygon&quot;
+              ]
+            },
+            &quot;coordinates&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+            }
+          }
+        },
+        {
+          &quot;title&quot;: &quot;MultiPolygon&quot;,
+          &quot;properties&quot;: {
+            &quot;type&quot;: {
+              &quot;enum&quot;: [
+                &quot;MultiPolygon&quot;
+              ]
+            },
+            &quot;coordinates&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+              }
+            }
+          }
+        }
+      ]
+    },
+    &quot;properties&quot;: {
+      &quot;type&quot;: [
+        &quot;object&quot;,
+        &quot;null&quot;
+      ],
+      &quot;description&quot;: &quot;Additional data of any type&quot;,
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;id&quot;: {
+      &quot;FIXME&quot;: &quot;may be there, type not known (string? number?)&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

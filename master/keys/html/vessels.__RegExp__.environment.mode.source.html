@@ -1,0 +1,51 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/mode/source</h2>
+<p>Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/mode/source</code></li>
+<li>Node: <code>source</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.&quot;,
+  &quot;required&quot;: [
+    &quot;label&quot;,
+    &quot;type&quot;
+  ],
+  &quot;properties&quot;: {
+    &quot;label&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A label to identify the source bus, eg serial-COM1, eth-local,etc . Can be anything but should follow a predicatable format&quot;,
+      &quot;example&quot;: &quot;N2K-1&quot;
+    },
+    &quot;type&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;A human name to identify the type. NMEA0183, NMEA2000, signalk&quot;,
+      &quot;default&quot;: &quot;NMEA2000&quot;,
+      &quot;example&quot;: &quot;NMEA2000&quot;
+    },
+    &quot;src&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;NMEA2000 src value or any similar value for encapsulating the original source of the data&quot;,
+      &quot;example&quot;: &quot;36&quot;
+    },
+    &quot;pgn&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;NMEA2000 pgn of the source message&quot;,
+      &quot;example&quot;: &quot;130312&quot;
+    },
+    &quot;sentence&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Sentence type of the source NMEA0183 sentence, $GP[RMC],092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43&quot;,
+      &quot;example&quot;: &quot;RMC&quot;
+    },
+    &quot;talker&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43&quot;,
+      &quot;example&quot;: &quot;GP&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

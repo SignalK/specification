@@ -1,0 +1,645 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/inside/mainCabin</h2>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/inside/mainCabin</code></li>
+<li>Node: <code>mainCabin</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;timestamp&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;ISO-8601 (UTC) string representing date and time.&quot;,
+    &quot;units&quot;: &quot;ISO-8601 (UTC)&quot;,
+    &quot;example&quot;: &quot;2014-04-10T08:33:53Z&quot;
+  },
+  &quot;source&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.&quot;,
+    &quot;required&quot;: [
+      &quot;label&quot;,
+      &quot;type&quot;
+    ],
+    &quot;properties&quot;: {
+      &quot;label&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;A label to identify the source bus, eg serial-COM1, eth-local,etc . Can be anything but should follow a predicatable format&quot;,
+        &quot;example&quot;: &quot;N2K-1&quot;
+      },
+      &quot;type&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;A human name to identify the type. NMEA0183, NMEA2000, signalk&quot;,
+        &quot;default&quot;: &quot;NMEA2000&quot;,
+        &quot;example&quot;: &quot;NMEA2000&quot;
+      },
+      &quot;src&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;NMEA2000 src value or any similar value for encapsulating the original source of the data&quot;,
+        &quot;example&quot;: &quot;36&quot;
+      },
+      &quot;pgn&quot;: {
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;description&quot;: &quot;NMEA2000 pgn of the source message&quot;,
+        &quot;example&quot;: &quot;130312&quot;
+      },
+      &quot;sentence&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;Sentence type of the source NMEA0183 sentence, $GP[RMC],092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43&quot;,
+        &quot;example&quot;: &quot;RMC&quot;
+      },
+      &quot;talker&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43&quot;,
+        &quot;example&quot;: &quot;GP&quot;
+      }
+    }
+  },
+  &quot;sourceRef&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;Reference to the source under vessel's sources. A dot spearated path to the data. eg [type].[bus].[device]&quot;,
+    &quot;example&quot;: &quot;NMEA0183.COM1.GP&quot;
+  },
+  &quot;version&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;Version of the Signal K schema/APIs used by the root object.&quot;,
+    &quot;example&quot;: &quot;1.0.0&quot;
+  },
+  &quot;units&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;Allowed units of physical quantities. Units should be (derived) SI units where possible.&quot;,
+    &quot;properties&quot;: {
+      &quot;s&quot;: {
+        &quot;display&quot;: &quot;s&quot;,
+        &quot;quantity&quot;: &quot;Time&quot;,
+        &quot;quantityDisplay&quot;: &quot;T&quot;,
+        &quot;description&quot;: &quot;Elapsed time (interval) in seconds&quot;
+      },
+      &quot;Hz&quot;: {
+        &quot;display&quot;: &quot;Hz&quot;,
+        &quot;quantity&quot;: &quot;Frequency&quot;,
+        &quot;quantityDisplay&quot;: &quot;F&quot;,
+        &quot;description&quot;: &quot;Frequency in Hertz&quot;
+      },
+      &quot;m3&quot;: {
+        &quot;display&quot;: &quot;m³&quot;,
+        &quot;quantity&quot;: &quot;Volume&quot;,
+        &quot;quantityDisplay&quot;: &quot;V&quot;,
+        &quot;description&quot;: &quot;Volume in cubic meters&quot;
+      },
+      &quot;m3/s&quot;: {
+        &quot;display&quot;: &quot;m3/s&quot;,
+        &quot;quantity&quot;: &quot;Flow&quot;,
+        &quot;quantityDisplay&quot;: &quot;Q&quot;,
+        &quot;description&quot;: &quot;Liquid or gas flow in cubic meters per second&quot;
+      },
+      &quot;deg&quot;: {
+        &quot;display&quot;: &quot;°&quot;,
+        &quot;quantity&quot;: &quot;Angle&quot;,
+        &quot;quantityDisplay&quot;: &quot;∠&quot;,
+        &quot;description&quot;: &quot;Latitude or longitude in decimal degrees&quot;
+      },
+      &quot;rad&quot;: {
+        &quot;display&quot;: &quot;㎭&quot;,
+        &quot;quantity&quot;: &quot;Angle&quot;,
+        &quot;quantityDisplay&quot;: &quot;∠&quot;,
+        &quot;description&quot;: &quot;Angular arc in radians&quot;
+      },
+      &quot;rad/s&quot;: {
+        &quot;display&quot;: &quot;㎭/s&quot;,
+        &quot;quantity&quot;: &quot;Rotation&quot;,
+        &quot;quantityDisplay&quot;: &quot;ω&quot;,
+        &quot;description&quot;: &quot;Angular rate in radians per second&quot;
+      },
+      &quot;A&quot;: {
+        &quot;display&quot;: &quot;A&quot;,
+        &quot;quantity&quot;: &quot;Current&quot;,
+        &quot;quantityDisplay&quot;: &quot;i&quot;,
+        &quot;description&quot;: &quot;Electrical current in ampere&quot;
+      },
+      &quot;C&quot;: {
+        &quot;display&quot;: &quot;C&quot;,
+        &quot;quantity&quot;: &quot;Charge&quot;,
+        &quot;quantityDisplay&quot;: &quot;Q&quot;,
+        &quot;description&quot;: &quot;Electrical charge in Coulomb&quot;
+      },
+      &quot;V&quot;: {
+        &quot;display&quot;: &quot;V&quot;,
+        &quot;quantity&quot;: &quot;Voltage&quot;,
+        &quot;quantityDisplay&quot;: &quot;V&quot;,
+        &quot;description&quot;: &quot;Electrical potential in volt&quot;
+      },
+      &quot;W&quot;: {
+        &quot;display&quot;: &quot;W&quot;,
+        &quot;quantity&quot;: &quot;Power&quot;,
+        &quot;quantityDisplay&quot;: &quot;P&quot;,
+        &quot;description&quot;: &quot;Electrical power in watt&quot;
+      },
+      &quot;J&quot;: {
+        &quot;display&quot;: &quot;J&quot;,
+        &quot;quantity&quot;: &quot;Energy&quot;,
+        &quot;quantityDisplay&quot;: &quot;E&quot;,
+        &quot;description&quot;: &quot;Electrical energy in joule&quot;
+      },
+      &quot;ohm&quot;: {
+        &quot;display&quot;: &quot;Ω&quot;,
+        &quot;quantity&quot;: &quot;Resistance&quot;,
+        &quot;quantityDisplay&quot;: &quot;R&quot;,
+        &quot;description&quot;: &quot;Electrical resistance in ohm&quot;
+      },
+      &quot;m&quot;: {
+        &quot;display&quot;: &quot;m&quot;,
+        &quot;quantity&quot;: &quot;Distance&quot;,
+        &quot;quantityDisplay&quot;: &quot;d&quot;,
+        &quot;description&quot;: &quot;Distance in meters&quot;
+      },
+      &quot;m/s&quot;: {
+        &quot;display&quot;: &quot;m/s&quot;,
+        &quot;quantity&quot;: &quot;Velocity&quot;,
+        &quot;quantityDisplay&quot;: &quot;v&quot;,
+        &quot;description&quot;: &quot;Velocity in meters per second&quot;
+      },
+      &quot;m2&quot;: {
+        &quot;display&quot;: &quot;㎡&quot;,
+        &quot;quantity&quot;: &quot;Area&quot;,
+        &quot;quantityDisplay&quot;: &quot;A&quot;,
+        &quot;description&quot;: &quot;(Surface) area in square meters&quot;
+      },
+      &quot;K&quot;: {
+        &quot;display&quot;: &quot;K&quot;,
+        &quot;quantity&quot;: &quot;Temperature&quot;,
+        &quot;quantityDisplay&quot;: &quot;t&quot;,
+        &quot;description&quot;: &quot;Temperature in kelvin&quot;
+      },
+      &quot;Pa&quot;: {
+        &quot;display&quot;: &quot;Pa&quot;,
+        &quot;quantity&quot;: &quot;Pressure&quot;,
+        &quot;quantityDisplay&quot;: &quot;P&quot;,
+        &quot;description&quot;: &quot;Pressure in pascal&quot;
+      },
+      &quot;kg&quot;: {
+        &quot;display&quot;: &quot;kg&quot;,
+        &quot;quantity&quot;: &quot;Mass&quot;,
+        &quot;quantityDisplay&quot;: &quot;m&quot;,
+        &quot;description&quot;: &quot;Mass in kilogram&quot;
+      },
+      &quot;ratio&quot;: {
+        &quot;display&quot;: &quot;&quot;,
+        &quot;quantity&quot;: &quot;Ratio&quot;,
+        &quot;quantityDisplay&quot;: &quot;φ&quot;,
+        &quot;description&quot;: &quot;Relative value compared to reference or normal value. 0 = 0%, 1 = 100%, 1e-3 = 1 ppt&quot;
+      },
+      &quot;m/s2&quot;: {
+        &quot;display&quot;: &quot;m/s²&quot;,
+        &quot;quantity&quot;: &quot;Acceleration&quot;,
+        &quot;quantityDisplay&quot;: &quot;a&quot;,
+        &quot;description&quot;: &quot;Acceleration in meters per second squared&quot;
+      },
+      &quot;rad/s2&quot;: {
+        &quot;display&quot;: &quot;rad/s²&quot;,
+        &quot;quantity&quot;: &quot;Angular acceleration&quot;,
+        &quot;quantityDisplay&quot;: &quot;a&quot;,
+        &quot;description&quot;: &quot;Angular acceleration in radians per second squared&quot;
+      },
+      &quot;N&quot;: {
+        &quot;display&quot;: &quot;N&quot;,
+        &quot;quantity&quot;: &quot;Force&quot;,
+        &quot;quantityDisplay&quot;: &quot;F&quot;,
+        &quot;description&quot;: &quot;Force in newton&quot;
+      },
+      &quot;T&quot;: {
+        &quot;display&quot;: &quot;T&quot;,
+        &quot;quantity&quot;: &quot;Magnetic field&quot;,
+        &quot;quantityDisplay&quot;: &quot;B&quot;,
+        &quot;description&quot;: &quot;Magnetic field strength in tesla&quot;
+      },
+      &quot;Pa/s&quot;: {
+        &quot;display&quot;: &quot;Pa/s&quot;,
+        &quot;quantity&quot;: &quot;Pressure rate&quot;,
+        &quot;quantityDisplay&quot;: &quot;R&quot;,
+        &quot;description&quot;: &quot;Pressure change rate in pascal per second&quot;
+      }
+    }
+  },
+  &quot;mmsi&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.&quot;,
+    &quot;pattern&quot;: &quot;^[2-7][0-9]{8,8}$&quot;,
+    &quot;maxLength&quot;: 9,
+    &quot;minLength&quot;: 9,
+    &quot;example&quot;: &quot;503123456&quot;
+  },
+  &quot;uuid&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:&lt;issueing authority&gt;:&lt;id type&gt;:&lt;id&gt;. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:&lt;uuid&gt;, where Signal K is the issuing authority and UUID (v4) the ID type.&quot;,
+    &quot;pattern&quot;: &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;,
+    &quot;example&quot;: &quot;urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9&quot;
+  },
+  &quot;url&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:.&quot;,
+    &quot;example&quot;: &quot;http://localhost:8080/signalk/v1/api/vessels/self/environment&quot;
+  },
+  &quot;commonValueFields&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;required&quot;: [
+      &quot;timestamp&quot;,
+      &quot;$source&quot;
+    ],
+    &quot;properties&quot;: {
+      &quot;timestamp&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+      },
+      &quot;$source&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/sourceRef&quot;
+      },
+      &quot;_attr&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/_attr&quot;
+      },
+      &quot;meta&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/meta&quot;
+      },
+      &quot;pgn&quot;: {
+        &quot;type&quot;: &quot;number&quot;
+      },
+      &quot;sentence&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      }
+    }
+  },
+  &quot;numberValue&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;Data should be of type number.&quot;,
+    &quot;allOf&quot;: [
+      {
+        &quot;$ref&quot;: &quot;#/definitions/commonValueFields&quot;
+      },
+      {
+        &quot;properties&quot;: {
+          &quot;value&quot;: {
+            &quot;type&quot;: &quot;number&quot;
+          },
+          &quot;values&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;patternProperties&quot;: {
+              &quot;.*&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/valuesNumberValue&quot;
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  &quot;valuesNumberValue&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;value&quot;: {
+        &quot;type&quot;: &quot;number&quot;
+      },
+      &quot;timestamp&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+      },
+      &quot;pgn&quot;: {
+        &quot;type&quot;: &quot;number&quot;
+      },
+      &quot;sentence&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      }
+    }
+  },
+  &quot;stringValue&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;Data should be of type number.&quot;,
+    &quot;allOf&quot;: [
+      {
+        &quot;$ref&quot;: &quot;#/definitions/commonValueFields&quot;
+      },
+      {
+        &quot;properties&quot;: {
+          &quot;value&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;values&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;patternProperties&quot;: {
+              &quot;.*&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/valuesStringValue&quot;
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  &quot;valuesStringValue&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;value&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;timestamp&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+      },
+      &quot;pgn&quot;: {
+        &quot;type&quot;: &quot;number&quot;
+      },
+      &quot;sentence&quot;: {
+        &quot;type&quot;: &quot;string&quot;
+      }
+    }
+  },
+  &quot;nullValue&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;Data should be of type NULL.&quot;,
+    &quot;properties&quot;: {
+      &quot;value&quot;: {
+        &quot;type&quot;: &quot;null&quot;
+      },
+      &quot;timestamp&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+      },
+      &quot;source&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/source&quot;
+      },
+      &quot;_attr&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/_attr&quot;
+      },
+      &quot;meta&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/meta&quot;
+      }
+    }
+  },
+  &quot;_attr&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;title&quot;: &quot;_attr schema.&quot;,
+    &quot;description&quot;: &quot;Filesystem specific data, e.g. security, possibly more later.&quot;,
+    &quot;properties&quot;: {
+      &quot;_mode&quot;: {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;title&quot;: &quot;_mode schema.&quot;,
+        &quot;description&quot;: &quot;Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`&quot;,
+        &quot;default&quot;: 644
+      },
+      &quot;_owner&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;_owner schema.&quot;,
+        &quot;description&quot;: &quot;The owner of this resource.&quot;,
+        &quot;default&quot;: &quot;self&quot;
+      },
+      &quot;_group&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;_group schema.&quot;,
+        &quot;description&quot;: &quot;The group owning this resource.&quot;,
+        &quot;default&quot;: &quot;self&quot;
+      }
+    }
+  },
+  &quot;alarmState&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;title&quot;: &quot;alarmState&quot;,
+    &quot;description&quot;: &quot;The alarm state when the value is in this zone.&quot;,
+    &quot;default&quot;: &quot;normal&quot;,
+    &quot;enum&quot;: [
+      &quot;normal&quot;,
+      &quot;alert&quot;,
+      &quot;warn&quot;,
+      &quot;alarm&quot;,
+      &quot;emergency&quot;
+    ]
+  },
+  &quot;alarmMethodEnum&quot;: {
+    &quot;enum&quot;: [
+      &quot;visual&quot;,
+      &quot;sound&quot;
+    ]
+  },
+  &quot;meta&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;title&quot;: &quot;Meta schema.&quot;,
+    &quot;description&quot;: &quot;Provides meta data to enable alarm and display configuration.&quot;,
+    &quot;properties&quot;: {
+      &quot;displayName&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;DisplayName schema.&quot;,
+        &quot;description&quot;: &quot;A display name for this value.&quot;,
+        &quot;example&quot;: &quot;Tachometer, Engine 1&quot;
+      },
+      &quot;longName&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;LongName schema.&quot;,
+        &quot;description&quot;: &quot;A long name for this value.&quot;,
+        &quot;example&quot;: &quot;Tachometer, Engine 1&quot;
+      },
+      &quot;shortName&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;ShortName schema.&quot;,
+        &quot;description&quot;: &quot;A short name for this value.&quot;,
+        &quot;example&quot;: &quot;RPM&quot;
+      },
+      &quot;gaugeType&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;gaugeType schema.&quot;,
+        &quot;description&quot;: &quot;The type of gauge necessary to display this value.&quot;,
+        &quot;example&quot;: &quot;sparkline&quot;
+      },
+      &quot;units&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;title&quot;: &quot;units schema.&quot;,
+        &quot;description&quot;: &quot;The (derived) SI unit of this value.&quot;,
+        &quot;example&quot;: &quot;m/s&quot;
+      },
+      &quot;timeout&quot;: {
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;title&quot;: &quot;Timeout&quot;,
+        &quot;description&quot;: &quot;The timeout in (fractional) seconds after which this data is invalid.&quot;,
+        &quot;example&quot;: 2
+      },
+      &quot;alertMethod&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;title&quot;: &quot;Alert Method&quot;,
+        &quot;description&quot;: &quot;The method to use to raise the alert. An alert is an event that should be known&quot;,
+        &quot;default&quot;: [
+          &quot;visual&quot;
+        ],
+        &quot;items&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+        }
+      },
+      &quot;warnMethod&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;title&quot;: &quot;Warn Method&quot;,
+        &quot;description&quot;: &quot;The method to use to raise the warning. A warning is an unexpected event that may require attention&quot;,
+        &quot;default&quot;: [
+          &quot;visual&quot;
+        ],
+        &quot;items&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+        }
+      },
+      &quot;alarmMethod&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;title&quot;: &quot;Alarm Method&quot;,
+        &quot;description&quot;: &quot;The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure&quot;,
+        &quot;default&quot;: [
+          &quot;visual&quot;,
+          &quot;sound&quot;
+        ],
+        &quot;items&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+        }
+      },
+      &quot;emergencyMethod&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;title&quot;: &quot;Emergency Method&quot;,
+        &quot;description&quot;: &quot;The method to use to raise an emergency. An emergency is an immediate danger to life or vessel&quot;,
+        &quot;default&quot;: [
+          &quot;visual&quot;,
+          &quot;sound&quot;
+        ],
+        &quot;items&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+        }
+      },
+      &quot;zones&quot;: {
+        &quot;type&quot;: &quot;array&quot;,
+        &quot;title&quot;: &quot;Zones schema.&quot;,
+        &quot;description&quot;: &quot;The zones defining the range of values for this signalk value.&quot;,
+        &quot;items&quot;: [
+          {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;title&quot;: &quot;zone&quot;,
+            &quot;description&quot;: &quot;A zone used to define the display and alarm state when the value is in between bottom and top.&quot;,
+            &quot;required&quot;: [
+              &quot;state&quot;
+            ],
+            &quot;properties&quot;: {
+              &quot;lower&quot;: {
+                &quot;id&quot;: &quot;lower&quot;,
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;title&quot;: &quot;Lower&quot;,
+                &quot;description&quot;: &quot;The lowest number in this zone&quot;,
+                &quot;name&quot;: &quot;lower&quot;,
+                &quot;example&quot;: 3500
+              },
+              &quot;upper&quot;: {
+                &quot;id&quot;: &quot;upper&quot;,
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;title&quot;: &quot;Upper&quot;,
+                &quot;description&quot;: &quot;The highest value in this zone&quot;,
+                &quot;name&quot;: &quot;upper&quot;,
+                &quot;example&quot;: 4000
+              },
+              &quot;state&quot;: {
+                &quot;$ref&quot;: &quot;#/definitions/alarmState&quot;
+              },
+              &quot;message&quot;: {
+                &quot;id&quot;: &quot;message&quot;,
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;message&quot;,
+                &quot;description&quot;: &quot;The message to display for the alarm.&quot;,
+                &quot;default&quot;: &quot;Warning&quot;
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  &quot;geohash&quot;: {
+    &quot;type&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;A geohash (see http://geohash.org)&quot;,
+    &quot;pattern&quot;: &quot;^[0-9A-Za-z:]{1,}$&quot;,
+    &quot;example&quot;: &quot;eg rbe:TasmanBay&quot;
+  },
+  &quot;position&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;title&quot;: &quot;position&quot;,
+    &quot;description&quot;: &quot;The position in 3 dimensions&quot;,
+    &quot;allOf&quot;: [
+      {
+        &quot;$ref&quot;: &quot;#/definitions/commonValueFields&quot;
+      },
+      {
+        &quot;properties&quot;: {
+          &quot;longitude&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;description&quot;: &quot;Longitude&quot;,
+            &quot;units&quot;: &quot;deg&quot;,
+            &quot;example&quot;: 4.98765245
+          },
+          &quot;latitude&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;description&quot;: &quot;Latitude&quot;,
+            &quot;units&quot;: &quot;deg&quot;,
+            &quot;example&quot;: 52.0987654
+          },
+          &quot;altitude&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;description&quot;: &quot;Altitude&quot;,
+            &quot;units&quot;: &quot;m&quot;
+          }
+        }
+      }
+    ]
+  },
+  &quot;waypoint&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;description&quot;: &quot;A waypoint, an object with a signal k position object, and GeoJSON Feature object (see geojson.org, and https://github.com/fge/sample-json-schemas/tree/master/geojson)&quot;,
+    &quot;properties&quot;: {
+      &quot;position&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/position&quot;
+      },
+      &quot;feature&quot;: {
+        &quot;title&quot;: &quot;Feature&quot;,
+        &quot;description&quot;: &quot;A Geo JSON feature object&quot;,
+        &quot;required&quot;: [
+          &quot;geometry&quot;,
+          &quot;properties&quot;
+        ],
+        &quot;properties&quot;: {
+          &quot;type&quot;: {
+            &quot;enum&quot;: [
+              &quot;Feature&quot;
+            ]
+          },
+          &quot;geometry&quot;: {
+            &quot;title&quot;: &quot;Point&quot;,
+            &quot;properties&quot;: {
+              &quot;type&quot;: {
+                &quot;enum&quot;: [
+                  &quot;Point&quot;
+                ]
+              },
+              &quot;coordinates&quot;: {
+                &quot;description&quot;: &quot;A single position, in x,y order (Lon, Lat)&quot;,
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;minItems&quot;: 2,
+                &quot;items&quot;: [
+                  {
+                    &quot;type&quot;: &quot;number&quot;
+                  },
+                  {
+                    &quot;type&quot;: &quot;number&quot;
+                  }
+                ],
+                &quot;additionalItems&quot;: false
+              }
+            }
+          },
+          &quot;properties&quot;: {
+            &quot;type&quot;: [
+              &quot;object&quot;,
+              &quot;null&quot;
+            ],
+            &quot;description&quot;: &quot;Additional data of any type&quot;,
+            &quot;additionalProperties&quot;: true
+          },
+          &quot;id&quot;: {
+            &quot;FIXME&quot;: &quot;may be there, type not known (string? number?)&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

@@ -1,0 +1,60 @@
+<h2>/resources/notes</h2>
+<p><em>undefined</em>
+A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/resources/notes</code></li>
+<li>Node: <code>notes</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;notes&quot;,
+  &quot;description&quot;: &quot;A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;description&quot;: &quot;A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything&quot;,
+      &quot;properties&quot;: {
+        &quot;title&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Note's common name&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;A textual description of the note&quot;
+        },
+        &quot;region&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Region related to note. A pointer to a region UUID. Alternative to position or geohash&quot;
+        },
+        &quot;position&quot;: {
+          &quot;description&quot;: &quot;Position related to note. Alternative to region or geohash&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/position&quot;
+        },
+        &quot;geohash&quot;: {
+          &quot;description&quot;: &quot;Position related to note. Alternative to region or position&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/geohash&quot;
+        },
+        &quot;mimeType&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;MIME type of the note&quot;
+        },
+        &quot;url&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Location of the note&quot;
+        },
+        &quot;timestamp&quot;: {
+          &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+        },
+        &quot;source&quot;: {
+          &quot;description&quot;: &quot;Source of this data&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

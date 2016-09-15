@@ -1,0 +1,34 @@
+<h2>/resources/waypoints/&lt;RegExp&gt;/feature/geometry</h2>
+<p><em>undefined</em></p>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/resources/waypoints/^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/feature/geometry</code></li>
+<li>Node: <code>geometry</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;title&quot;: &quot;Point&quot;,
+  &quot;properties&quot;: {
+    &quot;type&quot;: {
+      &quot;enum&quot;: [
+        &quot;Point&quot;
+      ]
+    },
+    &quot;coordinates&quot;: {
+      &quot;description&quot;: &quot;A single position, in x,y order (Lon, Lat)&quot;,
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;minItems&quot;: 2,
+      &quot;items&quot;: [
+        {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      ],
+      &quot;additionalItems&quot;: false
+    }
+  }
+}
+</code></pre>
+<hr>

@@ -1,0 +1,24 @@
+<h2>/vessels/&lt;RegExp&gt;/navigation/gnss/methodQuality/value</h2>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation/gnss/methodQuality/value</code></li>
+<li>Node: <code>value</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;string&quot;,
+  &quot;enum&quot;: [
+    &quot;no GPS&quot;,
+    &quot;GNSS Fix&quot;,
+    &quot;DGNSS fix&quot;,
+    &quot;Precise GNSS&quot;,
+    &quot;RTK fixed integer&quot;,
+    &quot;RTK float&quot;,
+    &quot;Estimated (DR) mode&quot;,
+    &quot;Manual input&quot;,
+    &quot;Simulator mode&quot;,
+    &quot;Error&quot;
+  ]
+}
+</code></pre>
+<hr>
