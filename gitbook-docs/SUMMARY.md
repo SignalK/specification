@@ -17,4 +17,4 @@
   * [Subscription Protocol](subscription_protocol.md)
 * [Background and Design Rationale](design_notes.md)
 * [How Can I Help?](how_to_help.md)
-* [Appendix: Keys Reference](keys.md)
+* [Appendix: Keys Reference](keys/index.md)
