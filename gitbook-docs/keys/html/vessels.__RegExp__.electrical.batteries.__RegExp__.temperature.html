@@ -1,0 +1,38 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/temperature</h2>
+<p><em>undefined</em>
+Additional / unique temperatures associated with a battery</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical/batteries/(^[A-Za-z0-9]+$)/temperature</code></li>
+<li>Node: <code>temperature</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;temperature&quot;,
+  &quot;description&quot;: &quot;Additional / unique temperatures associated with a battery&quot;,
+  &quot;properties&quot;: {
+    &quot;limitDischargeLower&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Operational minimum temperature limit for battery discharge, in degrees Celsius&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;limitDischargeUpper&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Operational maximum temperature limit for battery discharge, in degrees Celsius&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;limitRechargeLower&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Operational minimum temperature limit for battery recharging, in degrees Celsius&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;limitRechargeUpper&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;Operational maximum temperature limit for battery recharging, in degrees Celsius&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

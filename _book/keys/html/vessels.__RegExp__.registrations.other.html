@@ -1,0 +1,31 @@
+<h2>/vessels/&lt;RegExp&gt;/registrations/other</h2>
+<p>Other registration or permits for the vessel.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/registrations/other</code></li>
+<li>Node: <code>other</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;Other registration or permits for the vessel.&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;(^[A-Za-z0-9_-]+$)&quot;: {
+      &quot;description&quot;: &quot;This regex pattern is used for validating the identifier for the registration&quot;,
+      &quot;properties&quot;: {
+        &quot;registration&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The registration code&quot;,
+          &quot;example&quot;: &quot;DOC-2345&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The registration description&quot;,
+          &quot;example&quot;: &quot;Tasmanian National Parks Access Permit 2015&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

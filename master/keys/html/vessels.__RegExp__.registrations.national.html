@@ -1,0 +1,38 @@
+<h2>/vessels/&lt;RegExp&gt;/registrations/national</h2>
+<p>The national registration number of the vessel.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/registrations/national</code></li>
+<li>Node: <code>national</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;description&quot;: &quot;The national registration number of the vessel.&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;(^[A-Za-z0-9_-]+$)&quot;: {
+      &quot;description&quot;: &quot;This regex pattern is used for validating the identifier for the registration&quot;,
+      &quot;properties&quot;: {
+        &quot;country&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The ISO 3166-2 country code.&quot;,
+          &quot;example&quot;: &quot;NZ&quot;,
+          &quot;maxLength&quot;: 2,
+          &quot;minLength&quot;: 2
+        },
+        &quot;registration&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The registration code&quot;,
+          &quot;example&quot;: &quot;NZ654&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;The registration description&quot;,
+          &quot;example&quot;: &quot;New Zealand Part B recreational vessel&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

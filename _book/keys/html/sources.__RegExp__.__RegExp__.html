@@ -1,0 +1,100 @@
+<h2>/sources/&lt;RegExp&gt;/&lt;RegExp&gt;</h2>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/sources/.*/.*</code></li>
+<li>Node: <code>.*</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;anyOf&quot;: [
+    {
+      &quot;properties&quot;: {
+        &quot;talker&quot;: {
+          &quot;description&quot;: &quot;NMEA 0183 talker id, the GP in $GPRMC..&quot;,
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sentences&quot;: {
+          &quot;description&quot;: &quot;NMEA 0183 sentences&quot;,
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;patternProperties&quot;: {
+            &quot;^[A-Z][A-Z][A-Z]$&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+            }
+          }
+        },
+        &quot;n2k&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;properties&quot;: {
+            &quot;src&quot;: {
+              &quot;description&quot;: &quot;NMEA 2000 bus&quot;,
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;pgns&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;description&quot;: &quot;NMEA 2000 pgn numbere&quot;,
+              &quot;patternProperties&quot;: {
+                &quot;[0-9]*&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                }
+              }
+            },
+            &quot;uniqueId&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Unique id of the source device&quot;
+            },
+            &quot;deviceFunction&quot;: {
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;description&quot;: &quot;NMEA 2000 Device Function code&quot;
+            },
+            &quot;deviceClass&quot;: {
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;description&quot;: &quot;NMEA 2000 Device Class code&quot;
+            }
+          }
+        },
+        &quot;manufacturer&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;properties&quot;: {
+            &quot;id&quot;: {
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;description&quot;: &quot;Manufacturer numeric NMEA 2000 id&quot;
+            },
+            &quot;name&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer name&quot;
+            },
+            &quot;productId&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Maunfacturer product Id&quot;
+            },
+            &quot;modelId&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer model&quot;
+            },
+            &quot;softwareVersion&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer software version&quot;
+            },
+            &quot;hardwareVersion&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer hardware version&quot;
+            },
+            &quot;serialNumber&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer serial number&quot;
+            }
+          }
+        }
+      }
+    },
+    {
+      &quot;patternProperties&quot;: {
+        &quot;.*&quot;: {
+          &quot;properties&quot;: {}
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<hr>

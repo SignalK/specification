@@ -1,0 +1,25 @@
+## /resources/notes/<RegExp>/position/meta/longName
+
+*undefined*
+A long name for this value.
+
+* Type: `string`
+* Path: `/resources/notes/^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/position/meta/longName`
+* Node: `longName`
+
+### Example:
+```
+Tachometer, Engine 1
+```
+
+### Source:
+```
+{
+  "type": "string",
+  "title": "LongName schema.",
+  "description": "A long name for this value.",
+  "example": "Tachometer, Engine 1"
+}
+```
+
+---

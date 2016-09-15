@@ -1,0 +1,147 @@
+<h2>/vessels/&lt;RegExp&gt;/steering</h2>
+<p><em>undefined</em>
+Schema describing the steering child-object of a vessel.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/steering</code></li>
+<li>Node: <code>steering</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/steering.json#&quot;,
+  &quot;description&quot;: &quot;Schema describing the steering child-object of a vessel.&quot;,
+  &quot;title&quot;: &quot;steering&quot;,
+  &quot;properties&quot;: {
+    &quot;rudderAngle&quot;: {
+      &quot;description&quot;: &quot;Current rudder angle, +ve is rudder to Starboard&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;rudderAngleTarget&quot;: {
+      &quot;description&quot;: &quot;The angle the rudder should move to, +ve is rudder to Starboard&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;rad&quot;
+    },
+    &quot;autopilot&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;autopilot&quot;,
+      &quot;description&quot;: &quot;Autopilot data&quot;,
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;Autopilot state&quot;,
+          &quot;properties&quot;: {
+            &quot;value&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;on&quot;,
+                &quot;off&quot;,
+                &quot;alarm&quot;
+              ]
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            }
+          }
+        },
+        &quot;mode&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;Operational mode&quot;,
+          &quot;properties&quot;: {
+            &quot;value&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;powersave&quot;,
+                &quot;normal&quot;,
+                &quot;accurate&quot;
+              ]
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            }
+          }
+        },
+        &quot;targetHeadingNorth&quot;: {
+          &quot;description&quot;: &quot;Target heading for autopilot, relative to true North&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        },
+        &quot;targetHeadingMagnetic&quot;: {
+          &quot;description&quot;: &quot;Target heading for autopilot, relative to magnetic North&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        },
+        &quot;headingSource&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;description&quot;: &quot;Current source of heading information&quot;,
+          &quot;properties&quot;: {
+            &quot;value&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;compass&quot;,
+                &quot;wind&quot;,
+                &quot;gps&quot;
+              ]
+            },
+            &quot;source&quot;: {
+              &quot;description&quot;: &quot;Source of this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+            },
+            &quot;timestamp&quot;: {
+              &quot;description&quot;: &quot;Timestamp of the last update to this data&quot;,
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+            }
+          }
+        },
+        &quot;deadZone&quot;: {
+          &quot;description&quot;: &quot;Dead zone to ignore for rudder corrections&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        },
+        &quot;backlash&quot;: {
+          &quot;description&quot;: &quot;Slack in the rudder drive mechanism&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        },
+        &quot;gain&quot;: {
+          &quot;description&quot;: &quot;Auto-pilot gain, higher number equals more rudder movement for a given turn&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;
+        },
+        &quot;maxDriveCurrent&quot;: {
+          &quot;description&quot;: &quot;Maximum current to use to drive servo&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;A&quot;
+        },
+        &quot;maxDriveRate&quot;: {
+          &quot;description&quot;: &quot;Maximum rudder rotation speed&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad/s&quot;
+        },
+        &quot;portLock&quot;: {
+          &quot;description&quot;: &quot;Position of servo on port lock&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        },
+        &quot;starboardLock&quot;: {
+          &quot;description&quot;: &quot;Position of servo on starboard lock&quot;,
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;units&quot;: &quot;rad&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

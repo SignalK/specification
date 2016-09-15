@@ -1,0 +1,42 @@
+<h2>/resources/regions/&lt;RegExp&gt;/feature/geometry</h2>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/resources/regions/^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/feature/geometry</code></li>
+<li>Node: <code>geometry</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;oneOf&quot;: [
+    {
+      &quot;title&quot;: &quot;Polygon&quot;,
+      &quot;properties&quot;: {
+        &quot;type&quot;: {
+          &quot;enum&quot;: [
+            &quot;Polygon&quot;
+          ]
+        },
+        &quot;coordinates&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+        }
+      }
+    },
+    {
+      &quot;title&quot;: &quot;MultiPolygon&quot;,
+      &quot;properties&quot;: {
+        &quot;type&quot;: {
+          &quot;enum&quot;: [
+            &quot;MultiPolygon&quot;
+          ]
+        },
+        &quot;coordinates&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/definitions/polygon&quot;
+          }
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<hr>

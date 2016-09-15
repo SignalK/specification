@@ -1,0 +1,496 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical</h2>
+<p><em>undefined</em>
+Schema describing the electrical child-object of a Vessel.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical</code></li>
+<li>Node: <code>electrical</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/electrical.json#&quot;,
+  &quot;description&quot;: &quot;Schema describing the electrical child-object of a Vessel.&quot;,
+  &quot;title&quot;: &quot;Electrical Properties&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;definitions&quot;: {
+    &quot;identity&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;Electrical ID&quot;,
+      &quot;description&quot;: &quot; Common ID items shared by electrical items&quot;,
+      &quot;properties&quot;: {
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)&quot;
+        },
+        &quot;location&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Installed location of device on vessel&quot;
+        },
+        &quot;dateInstalled&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;,
+          &quot;description&quot;: &quot;Date device was installed&quot;
+        },
+        &quot;manufacturer&quot;: {
+          &quot;properties&quot;: {
+            &quot;name&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Manufacturer's name&quot;
+            },
+            &quot;model&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;description&quot;: &quot;Model or part number&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;dcQuantities&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;DC Quantities&quot;,
+      &quot;description&quot;: &quot;DC common quantities&quot;,
+      &quot;properties&quot;: {
+        &quot;associatedBus&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Name of BUS source is associated with&quot;
+        },
+        &quot;voltage&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;units&quot;: &quot;V&quot;,
+          &quot;allOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;
+            },
+            {
+              &quot;properties&quot;: {
+                &quot;ripple&quot;: {
+                  &quot;description&quot;: &quot;Ripple voltage&quot;,
+                  &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+                  &quot;units&quot;: &quot;V&quot;
+                },
+                &quot;meta&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;nominal&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;units&quot;: &quot;V&quot;,
+                      &quot;description&quot;: &quot;Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)&quot;
+                    },
+                    &quot;warnUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;units&quot;: &quot;V&quot;,
+                      &quot;description&quot;: &quot;Upper operational voltage limit&quot;
+                    },
+                    &quot;warnLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;units&quot;: &quot;V&quot;,
+                      &quot;description&quot;: &quot;Lower operational voltage limit&quot;
+                    },
+                    &quot;faultUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;units&quot;: &quot;V&quot;,
+                      &quot;description&quot;: &quot;Upper fault limit of battery voltage - BMS may disconnect battery&quot;
+                    },
+                    &quot;faultLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;units&quot;: &quot;V&quot;,
+                      &quot;description&quot;: &quot;Lower fault limit of battery voltage - BMS may disconnect battery&quot;
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        &quot;current&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;units&quot;: &quot;A&quot;,
+          &quot;allOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;
+            },
+            {
+              &quot;properties&quot;: {
+                &quot;meta&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;warnUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Upper operational current limit&quot;,
+                      &quot;units&quot;: &quot;A&quot;
+                    },
+                    &quot;warnLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Lower operational current limit&quot;,
+                      &quot;units&quot;: &quot;A&quot;
+                    },
+                    &quot;faultUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Upper fault limit of battery current - BMS may disconnect battery&quot;,
+                      &quot;units&quot;: &quot;A&quot;
+                    },
+                    &quot;faultLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Lower fault limit of battery current - BMS may disconnect battery&quot;,
+                      &quot;units&quot;: &quot;A&quot;
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        &quot;temperature&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;temperature&quot;,
+          &quot;allOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;
+            },
+            {
+              &quot;properties&quot;: {
+                &quot;warnUpper&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Upper operational temperature limit&quot;,
+                  &quot;units&quot;: &quot;K&quot;
+                },
+                &quot;warnLower&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Lower operational temperature limit&quot;,
+                  &quot;units&quot;: &quot;K&quot;
+                },
+                &quot;faultUpper&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Upper fault limit of temperature - device may disable&quot;,
+                  &quot;units&quot;: &quot;K&quot;
+                },
+                &quot;faultLower&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Lower fault limit of temperature - device may disable&quot;,
+                  &quot;units&quot;: &quot;K&quot;
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    &quot;acQuantities&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;AC Quantities&quot;,
+      &quot;description&quot;: &quot;AC equipment common quantities&quot;,
+      &quot;properties&quot;: {
+        &quot;associatedBus&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;description&quot;: &quot;Name of BUS source is assocated with (if applicable, may = NULL)&quot;
+        },
+        &quot;lineNeutralVoltage&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;RMS voltage measured between phase and neutral.&quot;,
+          &quot;units&quot;: &quot;V&quot;
+        },
+        &quot;lineLineVoltage&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;RMS voltage measured between phases&quot;,
+          &quot;units&quot;: &quot;V&quot;
+        },
+        &quot;current&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;RMS current&quot;,
+          &quot;units&quot;: &quot;A&quot;
+        },
+        &quot;frequency&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;AC frequency.&quot;,
+          &quot;units&quot;: &quot;Hz&quot;
+        },
+        &quot;reactivePower&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;Reactive power&quot;,
+          &quot;units&quot;: &quot;W&quot;
+        },
+        &quot;powerFactor&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;Power factor&quot;,
+          &quot;unit&quot;: &quot;ratio&quot;
+        },
+        &quot;powerFactorLagging&quot;: {
+          &quot;description&quot;: &quot;Lead/lag status.&quot;,
+          &quot;example&quot;: &quot;leading&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [
+            &quot;leading&quot;,
+            &quot;lagging&quot;,
+            &quot;error&quot;,
+            &quot;not available&quot;
+          ]
+        },
+        &quot;realPower&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;Real power.&quot;,
+          &quot;units&quot;: &quot;W&quot;
+        },
+        &quot;apparentPower&quot;: {
+          &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+          &quot;description&quot;: &quot;Apparent power.&quot;,
+          &quot;units&quot;: &quot;W&quot;
+        }
+      }
+    }
+  },
+  &quot;properties&quot;: {
+    &quot;batteries&quot;: {
+      &quot;patternProperties&quot;: {
+        &quot;(^[A-Za-z0-9]+$)&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;Battery keyed by instance id&quot;,
+          &quot;description&quot;: &quot;Batteries, one or many, within the vessel&quot;,
+          &quot;allOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/definitions/dcQuantities&quot;
+            },
+            {
+              &quot;properties&quot;: {
+                &quot;meta&quot;: {
+                  &quot;allOf&quot;: [
+                    {
+                      &quot;$ref&quot;: &quot;#/definitions/identity&quot;
+                    },
+                    {
+                      &quot;properties&quot;: {
+                        &quot;chemistry&quot;: {
+                          &quot;type&quot;: &quot;string&quot;,
+                          &quot;description&quot;: &quot;Type of battery FLA, LiFePO4, etc.&quot;
+                        }
+                      }
+                    }
+                  ]
+                },
+                &quot;temperature&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;title&quot;: &quot;temperature&quot;,
+                  &quot;description&quot;: &quot;Additional / unique temperatures associated with a battery&quot;,
+                  &quot;properties&quot;: {
+                    &quot;limitDischargeLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Operational minimum temperature limit for battery discharge, in degrees Celsius&quot;,
+                      &quot;units&quot;: &quot;K&quot;
+                    },
+                    &quot;limitDischargeUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Operational maximum temperature limit for battery discharge, in degrees Celsius&quot;,
+                      &quot;units&quot;: &quot;K&quot;
+                    },
+                    &quot;limitRechargeLower&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Operational minimum temperature limit for battery recharging, in degrees Celsius&quot;,
+                      &quot;units&quot;: &quot;K&quot;
+                    },
+                    &quot;limitRechargeUpper&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Operational maximum temperature limit for battery recharging, in degrees Celsius&quot;,
+                      &quot;units&quot;: &quot;K&quot;
+                    }
+                  }
+                },
+                &quot;capacity&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;title&quot;: &quot;capacity&quot;,
+                  &quot;properties&quot;: {
+                    &quot;nominal&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;The capacity of battery as specified by the manufacturer&quot;,
+                      &quot;units&quot;: &quot;J&quot;
+                    },
+                    &quot;actual&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.&quot;,
+                      &quot;units&quot;: &quot;J&quot;
+                    },
+                    &quot;remaining&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Capacity remaining in battery&quot;,
+                      &quot;units&quot;: &quot;J&quot;
+                    },
+                    &quot;dischargeLimit&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Minimum capacity to be left in the battery while discharging&quot;,
+                      &quot;units&quot;: &quot;J&quot;
+                    },
+                    &quot;stateOfCharge&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+                      &quot;description&quot;: &quot;State of charge, 1 = 100%&quot;,
+                      &quot;units&quot;: &quot;ratio&quot;
+                    },
+                    &quot;stateOfHealth&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+                      &quot;description&quot;: &quot;State of Health, 1 = 100%&quot;,
+                      &quot;units&quot;: &quot;ratio&quot;
+                    },
+                    &quot;dischargeSinceFull&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+                      &quot;description&quot;: &quot;Cumulative discharge since battery was last full&quot;,
+                      &quot;units&quot;: &quot;C&quot;
+                    },
+                    &quot;timeRemaining&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+                      &quot;description&quot;: &quot;Time to discharge to discharge limit at current rate&quot;,
+                      &quot;units&quot;: &quot;s&quot;
+                    }
+                  }
+                },
+                &quot;lifetimeDischarge&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Cumulative charge discharged from battery over operational lifetime of battery&quot;,
+                  &quot;units&quot;: &quot;C&quot;
+                },
+                &quot;lifetimeRecharge&quot;: {
+                  &quot;type&quot;: &quot;number&quot;,
+                  &quot;description&quot;: &quot;Cumulative charge recharged into battery over operational lifetime of battery&quot;,
+                  &quot;units&quot;: &quot;C&quot;
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    &quot;inverters&quot;: {
+      &quot;patternProperties&quot;: {
+        &quot;(^[A-Za-z0-9]+$)&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;Inverter&quot;,
+          &quot;description&quot;: &quot;DC to AC inverter, one or many, within the vessel&quot;,
+          &quot;properties&quot;: {
+            &quot;meta&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/identity&quot;
+            },
+            &quot;dc&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/dcQuantities&quot;
+            },
+            &quot;ac&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/acQuantities&quot;
+            },
+            &quot;mode&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;description&quot;: &quot;Mode of inverter&quot;,
+              &quot;properties&quot;: {
+                &quot;value&quot;: {
+                  &quot;type&quot;: &quot;string&quot;,
+                  &quot;enum&quot;: [
+                    &quot;idle&quot;,
+                    &quot;inverting&quot;,
+                    &quot;disabled&quot;,
+                    &quot;standby&quot;,
+                    &quot;faulted&quot;,
+                    &quot;unknown&quot;,
+                    &quot;other&quot;
+                  ]
+                },
+                &quot;timestamp&quot;: {
+                  &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+                },
+                &quot;$source&quot;: {
+                  &quot;$ref&quot;: &quot;../definitions.json#/definitions/$source&quot;
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    &quot;chargers&quot;: {
+      &quot;patternProperties&quot;: {
+        &quot;(^[A-Za-z0-9]+$)&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;Charger&quot;,
+          &quot;description&quot;: &quot;Battery charger&quot;,
+          &quot;allOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/definitions/dcQuantities&quot;
+            },
+            {
+              &quot;properties&quot;: {
+                &quot;meta&quot;: {
+                  &quot;allOf&quot;: [
+                    {
+                      &quot;$ref&quot;: &quot;#/definitions/identity&quot;
+                    },
+                    {
+                      &quot;properties&quot;: {
+                        &quot;chargingAlgorithm&quot;: {
+                          &quot;enum&quot;: [
+                            &quot;trickle&quot;,
+                            &quot;two stage&quot;,
+                            &quot;three stage&quot;,
+                            &quot;constant current&quot;,
+                            &quot;constant voltage&quot;,
+                            &quot;custom profile&quot;
+                          ]
+                        },
+                        &quot;chargerMode&quot;: {
+                          &quot;enum&quot;: [
+                            &quot;standalone&quot;,
+                            &quot;master&quot;,
+                            &quot;slave&quot;,
+                            &quot;standby&quot;
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                &quot;mode&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;value&quot;: {
+                      &quot;enum&quot;: [
+                        &quot;charging bulk&quot;,
+                        &quot;charging acceptance&quot;,
+                        &quot;charging overcharge&quot;,
+                        &quot;charging float&quot;,
+                        &quot;charging equalize&quot;,
+                        &quot;unknown&quot;,
+                        &quot;other&quot;
+                      ]
+                    },
+                    &quot;timestamp&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+                    },
+                    &quot;source&quot;: {
+                      &quot;$ref&quot;: &quot;../definitions.json#/definitions/source&quot;
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    &quot;ac&quot;: {
+      &quot;description&quot;: &quot;AC buses&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;(^[A-Za-z0-9]+$)&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;AC bus&quot;,
+          &quot;properties&quot;: {
+            &quot;meta&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/identity&quot;
+            },
+            &quot;phase&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;patternProperties&quot;: {
+                &quot;(single)|([A-C])&quot;: {
+                  &quot;$ref&quot;: &quot;#/definitions/acQuantities&quot;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>

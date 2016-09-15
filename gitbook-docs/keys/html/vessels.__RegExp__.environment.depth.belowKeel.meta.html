@@ -1,0 +1,143 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/depth/belowKeel/meta</h2>
+<p><em>undefined</em>
+Provides meta data to enable alarm and display configuration.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/depth/belowKeel/meta</code></li>
+<li>Node: <code>meta</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;Meta schema.&quot;,
+  &quot;description&quot;: &quot;Provides meta data to enable alarm and display configuration.&quot;,
+  &quot;properties&quot;: {
+    &quot;displayName&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;DisplayName schema.&quot;,
+      &quot;description&quot;: &quot;A display name for this value.&quot;,
+      &quot;example&quot;: &quot;Tachometer, Engine 1&quot;
+    },
+    &quot;longName&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;LongName schema.&quot;,
+      &quot;description&quot;: &quot;A long name for this value.&quot;,
+      &quot;example&quot;: &quot;Tachometer, Engine 1&quot;
+    },
+    &quot;shortName&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;ShortName schema.&quot;,
+      &quot;description&quot;: &quot;A short name for this value.&quot;,
+      &quot;example&quot;: &quot;RPM&quot;
+    },
+    &quot;gaugeType&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;gaugeType schema.&quot;,
+      &quot;description&quot;: &quot;The type of gauge necessary to display this value.&quot;,
+      &quot;example&quot;: &quot;sparkline&quot;
+    },
+    &quot;units&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;units schema.&quot;,
+      &quot;description&quot;: &quot;The (derived) SI unit of this value.&quot;,
+      &quot;example&quot;: &quot;m/s&quot;
+    },
+    &quot;timeout&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;title&quot;: &quot;Timeout&quot;,
+      &quot;description&quot;: &quot;The timeout in (fractional) seconds after which this data is invalid.&quot;,
+      &quot;example&quot;: 2
+    },
+    &quot;alertMethod&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;title&quot;: &quot;Alert Method&quot;,
+      &quot;description&quot;: &quot;The method to use to raise the alert. An alert is an event that should be known&quot;,
+      &quot;default&quot;: [
+        &quot;visual&quot;
+      ],
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+      }
+    },
+    &quot;warnMethod&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;title&quot;: &quot;Warn Method&quot;,
+      &quot;description&quot;: &quot;The method to use to raise the warning. A warning is an unexpected event that may require attention&quot;,
+      &quot;default&quot;: [
+        &quot;visual&quot;
+      ],
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+      }
+    },
+    &quot;alarmMethod&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;title&quot;: &quot;Alarm Method&quot;,
+      &quot;description&quot;: &quot;The method to use to raise the alarm. An alarm requires immediate attention, eg no oil pressure&quot;,
+      &quot;default&quot;: [
+        &quot;visual&quot;,
+        &quot;sound&quot;
+      ],
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+      }
+    },
+    &quot;emergencyMethod&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;title&quot;: &quot;Emergency Method&quot;,
+      &quot;description&quot;: &quot;The method to use to raise an emergency. An emergency is an immediate danger to life or vessel&quot;,
+      &quot;default&quot;: [
+        &quot;visual&quot;,
+        &quot;sound&quot;
+      ],
+      &quot;items&quot;: {
+        &quot;$ref&quot;: &quot;#/definitions/alarmMethodEnum&quot;
+      }
+    },
+    &quot;zones&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;title&quot;: &quot;Zones schema.&quot;,
+      &quot;description&quot;: &quot;The zones defining the range of values for this signalk value.&quot;,
+      &quot;items&quot;: [
+        {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;title&quot;: &quot;zone&quot;,
+          &quot;description&quot;: &quot;A zone used to define the display and alarm state when the value is in between bottom and top.&quot;,
+          &quot;required&quot;: [
+            &quot;state&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;lower&quot;: {
+              &quot;id&quot;: &quot;lower&quot;,
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;title&quot;: &quot;Lower&quot;,
+              &quot;description&quot;: &quot;The lowest number in this zone&quot;,
+              &quot;name&quot;: &quot;lower&quot;,
+              &quot;example&quot;: 3500
+            },
+            &quot;upper&quot;: {
+              &quot;id&quot;: &quot;upper&quot;,
+              &quot;type&quot;: &quot;number&quot;,
+              &quot;title&quot;: &quot;Upper&quot;,
+              &quot;description&quot;: &quot;The highest value in this zone&quot;,
+              &quot;name&quot;: &quot;upper&quot;,
+              &quot;example&quot;: 4000
+            },
+            &quot;state&quot;: {
+              &quot;$ref&quot;: &quot;#/definitions/alarmState&quot;
+            },
+            &quot;message&quot;: {
+              &quot;id&quot;: &quot;message&quot;,
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;title&quot;: &quot;message&quot;,
+              &quot;description&quot;: &quot;The message to display for the alarm.&quot;,
+              &quot;default&quot;: &quot;Warning&quot;
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<hr>

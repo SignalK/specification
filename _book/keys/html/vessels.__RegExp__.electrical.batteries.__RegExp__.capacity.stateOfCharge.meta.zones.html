@@ -1,0 +1,54 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/stateOfCharge/meta/zones</h2>
+<p><em>undefined</em>
+The zones defining the range of values for this signalk value.</p>
+<ul>
+<li>Type: <code>array</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical/batteries/(^[A-Za-z0-9]+$)/capacity/stateOfCharge/meta/zones</code></li>
+<li>Node: <code>zones</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;array&quot;,
+  &quot;title&quot;: &quot;Zones schema.&quot;,
+  &quot;description&quot;: &quot;The zones defining the range of values for this signalk value.&quot;,
+  &quot;items&quot;: [
+    {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;title&quot;: &quot;zone&quot;,
+      &quot;description&quot;: &quot;A zone used to define the display and alarm state when the value is in between bottom and top.&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;lower&quot;: {
+          &quot;id&quot;: &quot;lower&quot;,
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;title&quot;: &quot;Lower&quot;,
+          &quot;description&quot;: &quot;The lowest number in this zone&quot;,
+          &quot;name&quot;: &quot;lower&quot;,
+          &quot;example&quot;: 3500
+        },
+        &quot;upper&quot;: {
+          &quot;id&quot;: &quot;upper&quot;,
+          &quot;type&quot;: &quot;number&quot;,
+          &quot;title&quot;: &quot;Upper&quot;,
+          &quot;description&quot;: &quot;The highest value in this zone&quot;,
+          &quot;name&quot;: &quot;upper&quot;,
+          &quot;example&quot;: 4000
+        },
+        &quot;state&quot;: {
+          &quot;$ref&quot;: &quot;#/definitions/alarmState&quot;
+        },
+        &quot;message&quot;: {
+          &quot;id&quot;: &quot;message&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;title&quot;: &quot;message&quot;,
+          &quot;description&quot;: &quot;The message to display for the alarm.&quot;,
+          &quot;default&quot;: &quot;Warning&quot;
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<hr>

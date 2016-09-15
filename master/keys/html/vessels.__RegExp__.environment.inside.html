@@ -1,0 +1,44 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/inside</h2>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/inside</code></li>
+<li>Node: <code>inside</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;temperature&quot;: {
+      &quot;description&quot;: &quot;Current inside air temperature&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;K&quot;
+    },
+    &quot;humidity&quot;: {
+      &quot;description&quot;: &quot;Current inside air relative humidity&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;ratio&quot;
+    },
+    &quot;engineRoom&quot;: {
+      &quot;description&quot;: &quot;Current engine room air temperature&quot;,
+      &quot;$ref&quot;: &quot;#/definitions/objectWithTemperature&quot;
+    },
+    &quot;mainCabin&quot;: {
+      &quot;description&quot;: &quot;Current main cabin air temperature&quot;,
+      &quot;$ref&quot;: &quot;#/definitions/objectWithTemperature&quot;
+    },
+    &quot;refrigerator&quot;: {
+      &quot;description&quot;: &quot;Current refrigerator temperature&quot;,
+      &quot;$ref&quot;: &quot;#/definitions/objectWithTemperature&quot;
+    },
+    &quot;freezer&quot;: {
+      &quot;description&quot;: &quot;Current freezer temperature&quot;,
+      &quot;$ref&quot;: &quot;#/definitions/objectWithTemperature&quot;
+    },
+    &quot;heating&quot;: {
+      &quot;description&quot;: &quot;Current heating temperature&quot;,
+      &quot;$ref&quot;: &quot;#/definitions/objectWithTemperature&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

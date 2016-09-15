@@ -1,0 +1,36 @@
+<h2>/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/stateOfHealth/_attr</h2>
+<p><em>undefined</em>
+Filesystem specific data, e.g. security, possibly more later.</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/electrical/batteries/(^[A-Za-z0-9]+$)/capacity/stateOfHealth/_attr</code></li>
+<li>Node: <code>_attr</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;_attr schema.&quot;,
+  &quot;description&quot;: &quot;Filesystem specific data, e.g. security, possibly more later.&quot;,
+  &quot;properties&quot;: {
+    &quot;_mode&quot;: {
+      &quot;type&quot;: &quot;integer&quot;,
+      &quot;title&quot;: &quot;_mode schema.&quot;,
+      &quot;description&quot;: &quot;Unix style permissions, often written in `owner:group:other` form, `-rw-r--r--`&quot;,
+      &quot;default&quot;: 644
+    },
+    &quot;_owner&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;_owner schema.&quot;,
+      &quot;description&quot;: &quot;The owner of this resource.&quot;,
+      &quot;default&quot;: &quot;self&quot;
+    },
+    &quot;_group&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;title&quot;: &quot;_group schema.&quot;,
+      &quot;description&quot;: &quot;The group owning this resource.&quot;,
+      &quot;default&quot;: &quot;self&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

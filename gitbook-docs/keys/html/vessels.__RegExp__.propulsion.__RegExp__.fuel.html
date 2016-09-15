@@ -1,0 +1,49 @@
+<h2>/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel</h2>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/propulsion/(^[A-Za-z0-9]+$)/fuel</code></li>
+<li>Node: <code>fuel</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;type&quot;: {
+      &quot;description&quot;: &quot;Fuel type&quot;,
+      &quot;enum&quot;: [
+        &quot;diesel&quot;,
+        &quot;petrol&quot;,
+        &quot;electric&quot;,
+        &quot;coal/wood&quot;,
+        &quot;other&quot;
+      ]
+    },
+    &quot;used&quot;: {
+      &quot;description&quot;: &quot;Used fuel since last reset. Resetting is at user discretion&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m3&quot;
+    },
+    &quot;pressure&quot;: {
+      &quot;description&quot;: &quot;Fuel pressure&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;Pa&quot;
+    },
+    &quot;rate&quot;: {
+      &quot;description&quot;: &quot;Fuel rate  of consumption&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m3/s&quot;
+    },
+    &quot;economyRate&quot;: {
+      &quot;description&quot;: &quot;Economy fuel rate of consumption&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m3/s&quot;
+    },
+    &quot;averageRate&quot;: {
+      &quot;description&quot;: &quot;Average fuel rate of consumption&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m3/s&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

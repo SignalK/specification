@@ -1,0 +1,41 @@
+<h2>/vessels/&lt;RegExp&gt;/environment/tide</h2>
+<p><em>undefined</em>
+Tide data</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/environment/tide</code></li>
+<li>Node: <code>tide</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;tide&quot;,
+  &quot;description&quot;: &quot;Tide data&quot;,
+  &quot;properties&quot;: {
+    &quot;heightHigh&quot;: {
+      &quot;description&quot;: &quot;Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m&quot;
+    },
+    &quot;heightNow&quot;: {
+      &quot;description&quot;: &quot;The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m&quot;
+    },
+    &quot;heightLow&quot;: {
+      &quot;description&quot;: &quot;The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/numberValue&quot;,
+      &quot;units&quot;: &quot;m&quot;
+    },
+    &quot;timeLow&quot;: {
+      &quot;description&quot;: &quot;Time of the next low tide in UTC&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    },
+    &quot;timeHigh&quot;: {
+      &quot;description&quot;: &quot;Time of next high tide in UTC&quot;,
+      &quot;$ref&quot;: &quot;../definitions.json#/definitions/timestamp&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

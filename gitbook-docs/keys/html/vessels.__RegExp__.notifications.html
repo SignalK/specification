@@ -1,0 +1,65 @@
+<h2>/vessels/&lt;RegExp&gt;/notifications</h2>
+<p><em>undefined</em>
+Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/notifications</code></li>
+<li>Node: <code>notifications</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;title&quot;: &quot;notifications&quot;,
+  &quot;description&quot;: &quot;Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure&quot;,
+  &quot;properties&quot;: {
+    &quot;mob&quot;: {
+      &quot;description&quot;: &quot;Man overboard&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;fire&quot;: {
+      &quot;description&quot;: &quot;Fire onboard&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;sinking&quot;: {
+      &quot;description&quot;: &quot;Vessel is sinking&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;flooding&quot;: {
+      &quot;description&quot;: &quot;Vessel is flooding&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;collision&quot;: {
+      &quot;description&quot;: &quot;In collision with another vessel or object&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;grounding&quot;: {
+      &quot;description&quot;: &quot;Vessel grounding&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;listing&quot;: {
+      &quot;description&quot;: &quot;Vessel is listing&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;adrift&quot;: {
+      &quot;description&quot;: &quot;Vessel is adrift&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;piracy&quot;: {
+      &quot;description&quot;: &quot;Under attack or danger from pirates&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    },
+    &quot;abandon&quot;: {
+      &quot;description&quot;: &quot;Abandon ship&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;
+    }
+  },
+  &quot;patternProperties&quot;: {
+    &quot;(^[A-Za-z0-9-]+$)&quot;: {
+      &quot;description&quot;: &quot;This regex pattern is used for validation of the path of the alarm&quot;,
+      &quot;$ref&quot;: &quot;groups/notifications.json#&quot;,
+      &quot;example&quot;: &quot;engine&quot;
+    }
+  }
+}
+</code></pre>
+<hr>

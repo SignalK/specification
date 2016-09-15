@@ -1,0 +1,18 @@
+<h2>/vessels/&lt;RegExp&gt;/url</h2>
+<p>A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:.</p>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/url</code></li>
+<li>Node: <code>url</code></li>
+</ul>
+<h3>Example:</h3>
+<pre><code>http://localhost:8080/signalk/v1/api/vessels/self/environment
+</code></pre>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;string&quot;,
+  &quot;description&quot;: &quot;A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:.&quot;,
+  &quot;example&quot;: &quot;http://localhost:8080/signalk/v1/api/vessels/self/environment&quot;
+}
+</code></pre>
+<hr>

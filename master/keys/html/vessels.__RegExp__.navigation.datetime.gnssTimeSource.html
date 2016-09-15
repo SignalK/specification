@@ -1,0 +1,23 @@
+<h2>/vessels/&lt;RegExp&gt;/navigation/datetime/gnssTimeSource</h2>
+<p>Source of GNSS Date and Time</p>
+<ul>
+<li>Type: <code>null</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/navigation/datetime/gnssTimeSource</code></li>
+<li>Node: <code>gnssTimeSource</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;description&quot;: &quot;Source of GNSS Date and Time&quot;,
+  &quot;enum&quot;: [
+    &quot;GPS&quot;,
+    &quot;GLONASS&quot;,
+    &quot;Galileo&quot;,
+    &quot;Beidou&quot;,
+    &quot;IRNSS&quot;,
+    &quot;Radio Signal&quot;,
+    &quot;Internet&quot;,
+    &quot;Local clock&quot;
+  ]
+}
+</code></pre>
+<hr>

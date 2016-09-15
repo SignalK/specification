@@ -1,0 +1,19 @@
+<h2>/vessels/&lt;RegExp&gt;/uuid</h2>
+<p>A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:&lt;issueing authority&gt;:&lt;id type&gt;:&lt;id&gt;. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:&lt;uuid&gt;, where Signal K is the issuing authority and UUID (v4) the ID type.</p>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Path: <code>/vessels/(^urn:mrn:(imo|signalk):(mmsi:[2-7][0-9]{8,8}|uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}))|^(http(s?):.*|mailto:.*|tel:(\+?)[0-9]{4,})$/uuid</code></li>
+<li>Node: <code>uuid</code></li>
+</ul>
+<h3>Example:</h3>
+<pre><code>urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9
+</code></pre>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;string&quot;,
+  &quot;description&quot;: &quot;A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:&lt;issueing authority&gt;:&lt;id type&gt;:&lt;id&gt;. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:&lt;uuid&gt;, where Signal K is the issuing authority and UUID (v4) the ID type.&quot;,
+  &quot;pattern&quot;: &quot;^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$&quot;,
+  &quot;example&quot;: &quot;urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9&quot;
+}
+</code></pre>
+<hr>

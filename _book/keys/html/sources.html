@@ -1,0 +1,176 @@
+<h2>/sources</h2>
+<p><em>undefined</em>
+Metadata about the sources, eg. buses and connected sensors</p>
+<ul>
+<li>Type: <code>object</code></li>
+<li>Path: <code>/sources</code></li>
+<li>Node: <code>sources</code></li>
+</ul>
+<h3>Source:</h3>
+<pre><code>{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;id&quot;: &quot;https://signalk.github.io/specification/schemas/groups/sources.json#&quot;,
+  &quot;title&quot;: &quot;sources&quot;,
+  &quot;description&quot;: &quot;Metadata about the sources, eg. buses and connected sensors&quot;,
+  &quot;patternProperties&quot;: {
+    &quot;.*&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;patternProperties&quot;: {
+        &quot;.*&quot;: {
+          &quot;anyOf&quot;: [
+            {
+              &quot;properties&quot;: {
+                &quot;talker&quot;: {
+                  &quot;description&quot;: &quot;NMEA 0183 talker id, the GP in $GPRMC..&quot;,
+                  &quot;type&quot;: &quot;string&quot;
+                },
+                &quot;sentences&quot;: {
+                  &quot;description&quot;: &quot;NMEA 0183 sentences&quot;,
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;patternProperties&quot;: {
+                    &quot;^[A-Z][A-Z][A-Z]$&quot;: {
+                      &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                    }
+                  }
+                },
+                &quot;n2k&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;src&quot;: {
+                      &quot;description&quot;: &quot;NMEA 2000 bus&quot;,
+                      &quot;type&quot;: &quot;string&quot;
+                    },
+                    &quot;pgns&quot;: {
+                      &quot;type&quot;: &quot;object&quot;,
+                      &quot;description&quot;: &quot;NMEA 2000 pgn numbere&quot;,
+                      &quot;patternProperties&quot;: {
+                        &quot;[0-9]*&quot;: {
+                          &quot;$ref&quot;: &quot;#/definitions/timestamp&quot;
+                        }
+                      }
+                    },
+                    &quot;uniqueId&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Unique id of the source device&quot;
+                    },
+                    &quot;deviceFunction&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;NMEA 2000 Device Function code&quot;
+                    },
+                    &quot;deviceClass&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;NMEA 2000 Device Class code&quot;
+                    }
+                  }
+                },
+                &quot;manufacturer&quot;: {
+                  &quot;type&quot;: &quot;object&quot;,
+                  &quot;properties&quot;: {
+                    &quot;id&quot;: {
+                      &quot;type&quot;: &quot;number&quot;,
+                      &quot;description&quot;: &quot;Manufacturer numeric NMEA 2000 id&quot;
+                    },
+                    &quot;name&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Manufacturer name&quot;
+                    },
+                    &quot;productId&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Maunfacturer product Id&quot;
+                    },
+                    &quot;modelId&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Manufacturer model&quot;
+                    },
+                    &quot;softwareVersion&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Manufacturer software version&quot;
+                    },
+                    &quot;hardwareVersion&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Manufacturer hardware version&quot;
+                    },
+                    &quot;serialNumber&quot;: {
+                      &quot;type&quot;: &quot;string&quot;,
+                      &quot;description&quot;: &quot;Manufacturer serial number&quot;
+                    }
+                  }
+                }
+              }
+            },
+            {
+              &quot;patternProperties&quot;: {
+                &quot;.*&quot;: {
+                  &quot;properties&quot;: {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      &quot;properties&quot;: {
+        &quot;label&quot;: {
+          &quot;description&quot;: &quot;Sources unique name e.g. [type-bus].[id], N2000-01.034&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;N2000-01.034&quot;
+        },
+        &quot;type&quot;: {
+          &quot;description&quot;: &quot;Type of interface i.e. signalk, NMEA0183 or NMEA2000&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;NMEA0183&quot;
+        },
+        &quot;manufacturer&quot;: {
+          &quot;description&quot;: &quot;Manufacturer of the source device&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;Digital Yacht&quot;
+        },
+        &quot;productFunction&quot;: {
+          &quot;description&quot;: &quot;NMEA2000 Product Function Code&quot;,
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;productClass&quot;: {
+          &quot;description&quot;: &quot;NMEA2000 Product Class Code&quot;,
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;productCode&quot;: {
+          &quot;description&quot;: &quot;NMEA2000 Product Code&quot;,
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;productName&quot;: {
+          &quot;description&quot;: &quot;Product Name or Model Number&quot;,
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;softwareVersion&quot;: {
+          &quot;description&quot;: &quot;Version of the device's Software/Firmware&quot;,
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;hardwareVersion&quot;: {
+          &quot;description&quot;: &quot;Version of the device's Hardware&quot;,
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;serialNo&quot;: {
+          &quot;description&quot;: &quot;Device's Serial Number&quot;,
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;installationNote1&quot;: {
+          &quot;description&quot;: &quot;Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;Wired on Navigation Switch/Circuit&quot;
+        },
+        &quot;installationNote2&quot;: {
+          &quot;description&quot;: &quot;Product Installation Note 2 i.e. 'Located under forward bunk'&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;Located under forward bunk&quot;
+        },
+        &quot;manufacturerInfo&quot;: {
+          &quot;description&quot;: &quot;Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'&quot;,
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;example&quot;: &quot;http://digitalyachtamerica.com Tel:+44 1179 554474&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<hr>
