@@ -41,6 +41,12 @@ git push
 ```
 It will be published at http://signalk.github.io/specification automatically. 
 
+Gitbook Documentation
+---------------------
+
+`npm run docs:all` to generate locally, `npm run docs:publish` to publish in gh-pages.
+
+Requires separate installation of `ebook-convert``, see https://toolchain.gitbook.com/ebook.html.
 
 Docson
 ------
