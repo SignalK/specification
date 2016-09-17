@@ -131,7 +131,7 @@ class Parser {
           node: node,
           path: path,
           path_normalised: splitpath.join('/'),
-          path_dots: '$' + splitpath.join('.').replace(/<RegExp>/g, '*'),
+          dotpath: ('$' + splitpath.join('.').replace(/<RegExp>/g, '*')).replace('$.', ''),
           regexp: false,
           title: node,
           subtitle: typeof subtree.title !== 'undefined' ? subtree.title : null,
@@ -153,7 +153,7 @@ class Parser {
         }
 
         this.docs[documentation.path_normalised] = documentation
-        this.json[documentation.path_dots] = documentation
+        this.json[documentation.dotpath.replace('$.', '')] = documentation
       })
 
       return this.docs
