@@ -54,7 +54,7 @@ class Parser {
     this
     .rm(this.options.output) // remove build directory
     .then(() => fs.mkdir(this.options.output)) // create a new build directory
-    .then(() => fs.mkdir(path.join(this.options.output, 'details'))) // create a "details" directory
+    // .then(() => fs.mkdir(path.join(this.options.output, 'details'))) // create a "details" directory
     .then(() => parser(schema)) // parse the schema
     .then(files => {
       Object.keys(files).forEach(key => {
