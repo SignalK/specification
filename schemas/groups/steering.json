@@ -30,9 +30,15 @@
             "value": {
               "type": "string",
               "enum": [
-                "on",
-                "off",
-                "alarm"
+                "auto",
+                "standby",
+                "alarm",
+                "noDrift",
+                "wind",
+                "depthContour",
+                "route",
+                "directControl"
+
               ]
             },
 
@@ -73,19 +79,13 @@
           }
         },
 
-        "targetHeadingNorth": {
-          "description": "Target heading for autopilot, relative to true North",
+        "targetAngle": {
+          "description": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
 
-        "targetHeadingMagnetic": {
-          "description": "Target heading for autopilot, relative to magnetic North",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
-        },
-
-        "headingSource": {
+        "headingReference": {
           "type": "object",
           "description": "Current source of heading information",
           "properties": {

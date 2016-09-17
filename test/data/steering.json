@@ -1,0 +1,31 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "steering": {
+    "rudderAngle": 0.001,
+    "rudderAngleTarget": 0.002,
+    "autopilot": {
+      "state": {
+        "value" : "auto",
+        "source": "foo.bar",
+        "timestamp": "2014-08-15-19:00:15.402"
+      },
+      "mode": {
+        "value": "normal",
+        "source": "foo.bar",
+        "timestamp": "2014-08-15-19:00:15.402"
+      },
+      "targetAngle": 0.2,
+      "headingReference": {
+        "value": "compass",
+        "source": "foo.bar",
+        "timestamp": "2014-08-15-19:00:15.402"
+      },
+      "deadZone": 0.4,
+      "gain": 1,
+      "maxDriveCurrent": 10,
+      "maxDriveRate": 0.5,
+      "portLock": 0.6,
+      "starboardLock": 0.6
+    }
+  }
+}
