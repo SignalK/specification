@@ -42,6 +42,7 @@ class Parser {
     this.json = {}
     this.invalid = []
     this.files = []
+    this.filter = ['/timestamp', '/$source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values']
 
     this.parseOptions()
     this.parse()
@@ -53,7 +54,7 @@ class Parser {
     this
     .rm(this.options.output) // remove build directory
     .then(() => fs.mkdir(this.options.output)) // create a new build directory
-    .then(() => fs.mkdir(path.join(this.options.output, 'html')))
+    .then(() => fs.mkdir(path.join(this.options.output, 'details'))) // create a "details" directory
     .then(() => parser(schema)) // parse the schema
     .then(files => {
       Object.keys(files).forEach(key => {
@@ -88,22 +89,6 @@ class Parser {
       .writeFile(path.join(this.options.output, 'paths.json'), JSON.stringify(keys, null, 2), this.options.encoding)
       .then(_ => {
         this.debug(`Written a list of paths to ${path.join(this.options.output, 'paths.json')}.`)
-        return result
-      })
-    })
-
-    /*
-     * If debug is set to true, write the raw tree to a JSON file.
-     */
-    .then(result => {
-      if (this.options.debug === false) {
-        return result
-      }
-
-      return fs
-      .writeFile(path.join(this.options.output, 'tree.json'), JSON.stringify(this.tree, null, 2), this.options.encoding)
-      .then(() => {
-        this.debug(`Written total tree to ${path.join(this.options.output, 'tree.json')}`)
         return result
       })
     })
@@ -148,6 +133,11 @@ class Parser {
           documentation.regexp = true
         }
 
+        if (node.indexOf('|') !== -1) {
+          splitpath[splitpath.length - 1] = '<RegExp>'
+          documentation.regexp = true
+        }
+
         if (typeof subtree.type === 'undefined') {
           this.invalid.push(splitpath.join('/'))
         }
@@ -179,7 +169,7 @@ class Parser {
       })
 
       return fs
-      .writeFile(path.join(this.options.output, 'keys-with-meta.json'), JSON.stringify(data, null, 2), this.options.encoding)
+      .writeFile(path.join(this.options.output, 'keys-with-metadata.json'), JSON.stringify(data, null, 2), this.options.encoding)
       .then(() => {
         this.debug(`Written total tree to ${path.join(this.options.output, 'keys-with-meta.json')}`)
         return result
@@ -187,22 +177,49 @@ class Parser {
     })
 
     /*
-     * Normalise the path name to use as file name and write a Markdown-formatted file to disk
+     * Normalise the path name to use as filename and write a Markdown-formatted file to disk
      */
     .then(() => {
-      const promises = Object.keys(this.docs).map(p => {
+      let promises = Object.keys(this.docs).map(p => {
         const doc = this.docs[p]
         const fn = (`${p.replace(/\//g, '.')}`).replace(/<|>/g, '__').replace(/^\./, '')
+        let valid = true
 
-        // return fs
-        // .writeFile(path.join(this.options.output, `${fn}.md`), this.generateMarkdown(doc), this.options.encoding)
-        // .then(() => {
+        this.filter.forEach(f => {
+          if (p.indexOf(f) !== -1) {
+            valid = false
+          }
+        })
+
+        if (valid === false) {
+          return null
+        }
+
+        return {
+          path: p,
+          name: `${fn}.md`,
+          file: path.join(this.options.output, 'details', `${fn}.md`)
+        }
+
+        /*
+        return fs
+        .writeFile(path.join(this.options.output, 'details', `${fn}.md`), this.generateMarkdown(doc), this.options.encoding)
+        .then(() => {
           return {
             path: p,
             name: `${fn}.md`,
-            file: path.join(this.options.output, `${fn}.md`)
+            file: path.join(this.options.output, 'details', `${fn}.md`)
           }
-        // })
+        })
+        // */
+      })
+
+      promises = promises.filter(promise => {
+        if (promise === null) {
+          return false
+        }
+
+        return true
       })
 
       return Promise.all(promises)
@@ -213,29 +230,27 @@ class Parser {
      */
     .then(results => {
       const filenames = {}
-      const filter = ['/timestamp', '/$source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values']
 
       results.forEach(result => {
-        filenames[result.name] = result.path
-      })
-
-      let md = '# Signal K Data Model Reference\n\n'
-
-      md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
-
-      Object.keys(filenames).forEach(fn => {
         let valid = true
-        let json = null
 
-        filter.forEach(f => {
-          if (filenames[fn].indexOf(f) !== -1) {
+        this.filter.forEach(f => {
+          if (result.path.indexOf(f) !== -1) {
             valid = false
           }
         })
 
-        if (valid === false) {
-          return
+        if (valid === true) {
+          filenames[result.name] = result.path
         }
+      })
+
+      let summary = '# Signal K Data Model Reference\n'
+      let md = '# Signal K Data Model Reference\n\n'
+      md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
+
+      Object.keys(filenames).forEach(fn => {
+        let json = null
 
         const path = filenames[fn]
         const doc = this.docs[path]
@@ -246,7 +261,7 @@ class Parser {
           this.debug(`Error parsing JSON for path ${path}: ${e.message}`)
         }
 
-        // md += `### [${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}](http://signalk.org/specification/master/keys/html/${fn.replace('.md', '.html')})\n\n`
+        summary += `\n* [${path.replace(/<RegExp>/g, '*').replace(/\//g, '.').replace(/^\./, '')}](./details/${fn})`
         md += `#### ${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}\n\n`
 
         if (doc.subtitle !== null) {
@@ -263,34 +278,29 @@ class Parser {
         md += '---\n\n'
       })
 
-      return fs.writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding).then(() => {
+      return fs
+      .writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding)
+      .then(() => {
         results.push({
           path: '/',
           name: 'index.md',
           file: path.join(this.options.output, 'index.md')
         })
 
+        // return fs.writeFile(path.join(this.options.output, 'SUMMARY.md'), summary, this.options.encoding)
         return results
       })
-    })
-
-    /*
-     * Parse all .md files to HTML in the {OUTPUT}/html folder (@HACK for gitbook)
-     */
-/*
-    .then(results => {
-      return Promise
-      .all(results.map(item => {
-        return this.renderMarkdownFile(item.name)
-      }))
+      /*
       .then(() => {
-        return results.map(item => {
-          item.html = `html/${item.name.replace('.md', '.html')}`
-          return item
+        results.push({
+          path: '/',
+          name: 'SUMMARY.md',
+          file: path.join(this.options.output, 'SUMMARY.md')
         })
+        return results
       })
+      //*/
     })
-*/
 
     /*
      * Print a report to stdout and exit the program.
@@ -300,6 +310,7 @@ class Parser {
         this.options.done(results)
       }
 
+      // console.log(`[DONE] Written ${results.length} files to ${this.options.output}`)
       process.exit(0)
     })
     .catch(err => {
