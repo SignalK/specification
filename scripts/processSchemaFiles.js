@@ -54,7 +54,7 @@ class Parser {
     this
     .rm(this.options.output) // remove build directory
     .then(() => fs.mkdir(this.options.output)) // create a new build directory
-    // .then(() => fs.mkdir(path.join(this.options.output, 'details'))) // create a "details" directory
+    .then(() => fs.mkdir(path.join(this.options.output, 'details'))) // create a "details" directory
     .then(() => parser(schema)) // parse the schema
     .then(files => {
       Object.keys(files).forEach(key => {
@@ -195,13 +195,13 @@ class Parser {
           return null
         }
 
+        /*
         return {
           path: p,
           name: `${fn}.md`,
           file: path.join(this.options.output, 'details', `${fn}.md`)
         }
-
-        /*
+        //**/
         return fs
         .writeFile(path.join(this.options.output, 'details', `${fn}.md`), this.generateMarkdown(doc), this.options.encoding)
         .then(() => {
@@ -245,7 +245,7 @@ class Parser {
         }
       })
 
-      let summary = '# Signal K Data Model Reference\n'
+      let summary = ''
       let md = '# Signal K Data Model Reference\n\n'
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
 
@@ -261,7 +261,7 @@ class Parser {
           this.debug(`Error parsing JSON for path ${path}: ${e.message}`)
         }
 
-        summary += `\n* [${path.replace(/<RegExp>/g, '*').replace(/\//g, '.').replace(/^\./, '')}](./details/${fn})`
+        summary += `  * [${path.replace(/<RegExp>/g, '*').replace(/\//g, '.').replace(/^\./, '')}](keys/details/${fn})\n`
         md += `#### ${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}\n\n`
 
         if (doc.subtitle !== null) {
@@ -287,15 +287,16 @@ class Parser {
           file: path.join(this.options.output, 'index.md')
         })
 
-        // return fs.writeFile(path.join(this.options.output, 'SUMMARY.md'), summary, this.options.encoding)
-        return results
+        return fs.readFile(path.join(this.options.output, '../_SUMMARY.md'), this.options.encoding)
       })
-      /*
+      .then((contents) => {
+        return fs.writeFile(path.join(this.options.output, '../SUMMARY.md'), `${contents}${(contents.charAt(contents.length - 1) !== '\n' ? '\n' : '')}${summary}`, this.options.encoding)
+      })
       .then(() => {
         results.push({
           path: '/',
           name: 'SUMMARY.md',
-          file: path.join(this.options.output, 'SUMMARY.md')
+          file: path.join(this.options.output, '../SUMMARY.md')
         })
         return results
       })
