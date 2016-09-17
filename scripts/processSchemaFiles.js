@@ -39,6 +39,7 @@ class Parser {
     this.debug = () => {}
     this.tree = {}
     this.docs = {}
+    this.json = {}
     this.invalid = []
     this.files = []
 
@@ -130,12 +131,15 @@ class Parser {
           node: node,
           path: path,
           path_normalised: splitpath.join('/'),
+          path_dots: '$' + splitpath.join('.').replace(/<RegExp>/g, '*'),
           regexp: false,
           title: node,
           subtitle: typeof subtree.title !== 'undefined' ? subtree.title : null,
           type: typeof subtree.type !== 'undefined' ? subtree.type : null,
           description: typeof subtree.description !== 'undefined' ? subtree.description : null,
           example: typeof subtree.example !== 'undefined' ? subtree.example : null,
+          enum: (typeof subtree.enum !== 'undefined' && Array.isArray(subtree.enum)) ? subtree.enum : null,
+          units: (typeof subtree.units === 'string' || (typeof subtree.units === 'object' && subtree.units !== null)) ? subtree.units : null,
           json: JSON.stringify(subtree, null, 2)
         }
 
@@ -148,10 +152,38 @@ class Parser {
           this.invalid.push(splitpath.join('/'))
         }
 
-        this.docs[splitpath.join('/')] = documentation
+        this.docs[documentation.path_normalised] = documentation
+        this.json[documentation.path_dots] = documentation
       })
 
       return this.docs
+    })
+
+    /*
+     * Write JSON docs to file
+     */
+    .then(result => {
+      let data = {}
+
+      Object.keys(this.json).forEach(path => {
+        const _doc = this.json[path]
+        let doc = {}
+
+        Object.keys(_doc).forEach(key => {
+          if (_doc[key] !== null && typeof _doc[key] !== 'boolean' && key !== 'json' && key !== 'path_normalised') {
+            doc[key] = _doc[key]
+          }
+        })
+
+        data[path] = doc
+      })
+
+      return fs
+      .writeFile(path.join(this.options.output, 'keys-with-meta.json'), JSON.stringify(data, null, 2), this.options.encoding)
+      .then(() => {
+        this.debug(`Written total tree to ${path.join(this.options.output, 'keys-with-meta.json')}`)
+        return result
+      })
     })
 
     /*
