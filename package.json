@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
+    "postinstall": "cd gitbook-docs && ../node_modules/.bin/gitbook install",
     "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
     "docs:pdf": "gitbook pdf gitbook-docs master/signalk_master.pdf",
     "docs:mobi": "gitbook mobi gitbook-docs master/signalk_master.mobi",
