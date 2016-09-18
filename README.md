@@ -39,21 +39,24 @@ git checkout master schemas/
 git commit -m 'Copy schema from master'
 git push
 ```
-It will be published at http://signalk.github.io/specification automatically. 
+It will be published at http://signalk.github.io/specification automatically.
 
 Gitbook Documentation
 ---------------------
 
-`npm run docs:all` to generate locally, `npm run docs:publish` to publish in gh-pages.
-
 Requires separate installation of `ebook-convert``, see https://toolchain.gitbook.com/ebook.html.
+
+- `npm run docs:serve` for local preview
+- `npm run docs:all` to generate locally
+- `npm run docs:publish` to publish in gh-pages.
+
 
 Docson
 ------
 
 You can browse the Schema using the supplied docson viewer. Just open
 index.html from a local webserver (otherwise the XHR requests won't work) in
-your preferred browser to get started. 
+your preferred browser to get started.
 
 
 Validation
