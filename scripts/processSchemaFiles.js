@@ -184,7 +184,7 @@ class Parser {
      */
     .then(results => {
       const filenames = {}
-      const filter = ['/timestamp', '/$source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values']
+      const filter = ['/timestamp', '/$source', '/source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values']
 
       results.forEach(result => {
         filenames[result.name] = result.path
