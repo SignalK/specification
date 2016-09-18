@@ -1,5 +1,7 @@
 # Background and Design Rationale
 
+## Arrays Are Evil
+
 In Signal K every datapoint should have a predictable and unique uri (address). What we want to maintain is to know that vessels.self.data.temp is always at that uri, and what the json form is. So if its an array thats workable. If its a json object with many instance keys, each which has a arbitrary name and the same internal structure that works too.
 
 In fact the two forms  represent the same data but have different uris and thats the crux. Essentially the first is data.item[collection],  where data.item[1] is instance 1, eg the second (0 based) item in the array.
