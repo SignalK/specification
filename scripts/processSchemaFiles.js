@@ -138,6 +138,9 @@ class Parser {
           example: typeof subtree.example !== 'undefined' ? subtree.example : null,
           json: JSON.stringify(subtree, null, 2)
         }
+        if (subtree.enum) {
+          documentation.enum = subtree.enum
+        }
 
         if (node.indexOf('^') !== -1 || node.indexOf('$') > 0 || node.indexOf('*') !== -1) {
           splitpath[splitpath.length - 1] = '<RegExp>'
@@ -228,6 +231,12 @@ class Parser {
         md += '**Description:** '
         md += (doc.description === null ? '[missing]' : doc.description)
         md += '\n\n'
+
+        if (doc.enum) {
+          md += '**Enum values:**\n'
+          doc.enum.forEach(enumValue => md += `* ${enumValue}\n`)
+        }
+
         md += '---\n\n'
       })
 
