@@ -44,6 +44,8 @@ It will be published at http://signalk.github.io/specification automatically.
 Gitbook Documentation
 ---------------------
 
+The documentation .md sources are at https://github.com/SignalK/specification/tree/master/gitbook-docs.
+
 Requires separate installation of `ebook-convert``, see https://toolchain.gitbook.com/ebook.html.
 
 - `npm run docs:serve` for local preview
