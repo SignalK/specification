@@ -5,7 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json"
+    "postinstall": "cd gitbook-docs && ../node_modules/.bin/gitbook install",
+    "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
+    "docs:pdf": "gitbook pdf gitbook-docs master/signalk_master.pdf",
+    "docs:mobi": "gitbook mobi gitbook-docs master/signalk_master.mobi",
+    "docs:epub": "gitbook pdf gitbook-docs master/signalk_master.epub",
+    "docs:build": "gitbook build gitbook-docs master",
+    "docs:keys": "scripts/processSchemaFiles.js",
+    "docs:serve": "gitbook serve gitbook-docs",
+    "docs:all": "npm run docs:keys && npm run docs:build && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
+    "docs:publish": "npm run docs:all && git add master && git stash && git checkout gh-pages && git checkout stash -- master && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
     "type": "git",
@@ -36,6 +45,11 @@
     "tv4": "^1.2.7"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "gitbook-cli": "^2.3.0",
+    "infuse.js": "^2.0.2",
+    "json-schema-load-tree": "^0.2.0",
+    "markdown-it": "^8.0.0",
+    "mocha": "^2.1.0",
+    "mz": "^2.4.0"
   }
 }
