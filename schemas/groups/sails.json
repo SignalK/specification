@@ -59,16 +59,16 @@
               "default": 666
             },
             "timestamp": {
-              "$ref": "#/definitions/timestamp"
+              "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
-              "$ref": "#/definitions/source"
+              "$ref": "../definitions.json#/definitions/source"
             },
             "_attr": {
-              "$ref": "#/definitions/_attr"
+              "$ref": "../definitions.json#/definitions/_attr"
             },
             "meta": {
-              "$ref": "#/definitions/meta"
+              "$ref": "../definitions.json#/definitions/meta"
             }
           }
         }
