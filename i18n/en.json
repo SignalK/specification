@@ -804,7 +804,7 @@
   },
   "steering.autopilot.targetAngle": {
     "shortName": "Target (relative) heading",
-    "longName": "TTarget heading for autopilot, relative to magnetic North or Apparent wind +port -starboard"
+    "longName": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard"
   },
   "steering.autopilot.headingReference": {
     "shortName": "Heading Reference",
