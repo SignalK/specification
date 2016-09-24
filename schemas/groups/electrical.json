@@ -46,7 +46,7 @@
       "properties": {
         "associatedBus": {
           "type": "string",
-          "description": "Name of BUS source is associated with"
+          "description": "Name of BUS device is associated with"
         },
 
         "voltage": {
@@ -67,7 +67,7 @@
                   "nominal": {
                     "type": "number",
                     "units": "V",
-                    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
+                    "description": "Designed 'voltage' of device (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
                   },
 
                   "warnUpper": {
@@ -85,13 +85,13 @@
                   "faultUpper": {
                     "type": "number",
                     "units": "V",
-                    "description": "Upper fault limit of battery voltage - BMS may disconnect battery"
+                    "description": "Upper fault voltage limit - device may disable/disconnect"
                   },
 
                   "faultLower": {
                     "type": "number",
                     "units": "V",
-                    "description": "Lower fault limit of battery voltage - BMS may disconnect battery"
+                    "description": "Lower fault voltage limit - device may disable/disconnect"
                   }
                 }
               }
@@ -123,13 +123,13 @@
 
                   "faultUpper": {
                     "type": "number",
-                    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+                    "description": "Upper fault current limit - device may disable/disconnect",
                     "units": "A"
                   },
 
                   "faultLower": {
                     "type": "number",
-                    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+                    "description": "Lower fault current limit - device may disable/disconnect",
                     "units": "A"
                   }
                 }
@@ -159,13 +159,13 @@
 
               "faultUpper": {
                 "type": "number",
-                "description": "Upper fault limit of temperature - device may disable",
+                "description": "Upper fault temperature limit - device may disable/disconnect",
                 "units": "K"
               },
 
               "faultLower": {
                 "type": "number",
-                "description": "Lower fault limit of temperature - device may disable",
+                "description": "Lower fault temperature limit - device may disable/disconnect",
                 "units": "K"
               }
             }
@@ -271,25 +271,25 @@
                 "properties": {
                   "limitDischargeLower": {
                     "type": "number",
-                    "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
+                    "description": "Operational minimum temperature limit for battery discharge",
                     "units": "K"
                   },
 
                   "limitDischargeUpper": {
                     "type": "number",
-                    "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
+                    "description": "Operational maximum temperature limit for battery discharge",
                     "units": "K"
                   },
 
                   "limitRechargeLower": {
                     "type": "number",
-                    "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
+                    "description": "Operational minimum temperature limit for battery recharging",
                     "units": "K"
                   },
 
                   "limitRechargeUpper": {
                     "type": "number",
-                    "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
+                    "description": "Operational maximum temperature limit for battery recharging",
                     "units": "K"
                   }
                 }
