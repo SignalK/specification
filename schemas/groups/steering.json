@@ -67,7 +67,7 @@
               "$ref": "../definitions.json#/definitions/timestamp"
             }
           }
-        },
+        }
       },
         "target": {
           "type": "object",
@@ -97,7 +97,7 @@
                   "$ref": "../definitions.json#/definitions/timestamp"
                 }
               }
-            },
+            }
           }
         },
       
@@ -145,4 +145,3 @@
       }
     }
   }
-}
