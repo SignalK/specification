@@ -41,7 +41,7 @@
                         }
                       }
                     },
-                    "manufactureId": {
+                    "manufacturerId": {
                       "type": "number",
                       "description": "Manufacturer numeric NMEA 2000 id"
                     },
