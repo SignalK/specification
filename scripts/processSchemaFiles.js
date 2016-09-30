@@ -348,12 +348,14 @@ class Parser {
         if (typeof data.properties[key]['$ref'] === 'undefined') {
           this.tree[`${prefix}/${key}`] = data.properties[key]
         } else {
-          this.tree[`${prefix}/${key}`] = this.resolveReference(data.properties[key]['$ref'])
+          this.tree[`${prefix}/${key}`] = {}
+          _.assign(this.tree[`${prefix}/${key}`], _.omit(data.properties[key], '$ref'))
+          _.defaults(this.tree[`${prefix}/${key}`], this.resolveReference(data.properties[key]['$ref']))
         }
 
-        if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
-          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf)
-        }
+        // if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
+        //   this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf)
+        // }
 
         if (this.hasProperties(this.tree[`${prefix}/${key}`])) {
           this.parseProperties(`${prefix}/${key}`, this.tree[`${prefix}/${key}`])
