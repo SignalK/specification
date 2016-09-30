@@ -9,12 +9,12 @@
             "130312": ""
           },
           "uniqueId": 1722191,
-          "manufactureId": 437,
+          "manufacturerId": 437,
           "deviceClass": 70,
           "deviceFunction": 140,
           "productID": 1739
         },
-        "manufactureName": "Digital Yacht",
+        "manufacturerName": "Digital Yacht",
         "productName": "N2NET NMEA 2000 AIS",
         "softwareVersion": "040200.08.03.00",
         "hardwareVersion": "0",
