@@ -1,39 +1,76 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
   "description": "A tank, named by a unique identifier",
-  "title": "tank",
+  "definitions": {
+    "tankCollection": {
+      "patternProperties": {
+        ".*": {
+          "name": "Tank",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
+            },
+
+            "type": {
+              "type": "string",
+              "description": "The type of tank",
+              "enum": [
+                "petrol",
+                "fresh water",
+                "greywater",
+                "holding",
+                "lpg",
+                "diesel",
+                "rum"
+              ]
+            },
+
+            "capacity": {
+              "description": "Total capacity",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m3"
+            },
+
+            "currentLevel": {
+              "description": "Level of fluid in tank 0-100%",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ratio"
+            },
+
+            "currentVolume": {
+              "description": "Volume of fluid in tank",
+              "units": "m3",
+              "$ref": "../definitions.json#/definitions/numberValue"
+            }
+          }
+        }
+      }
+    }
+  },
   "properties": {
-    "name": {
-      "type": "string",
-      "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
+    "freshWater": {
+      "$ref": "#/definitions/tankCollection"
     },
-
-    "type": {
-      "type": "string",
-      "description": "The type of tank",
-      "enum": [
-        "petrol",
-        "fresh water",
-        "greywater",
-        "holding",
-        "lpg",
-        "diesel",
-        "rum"
-      ]
+    "wasteWater": {
+      "$ref": "#/definitions/tankCollection"
     },
-
-    "capacity": {
-      "description": "Total capacity",
-      "units": "m3",
-      "$ref": "../definitions.json#/definitions/numberValue"
+    "blackWater": {
+      "$ref": "#/definitions/tankCollection"
     },
-
-    "level": {
-      "description": "Amount of fluid in tank",
-      "units": "m3",
-      "$ref": "../definitions.json#/definitions/numberValue"
+    "fuelWater": {
+      "$ref": "#/definitions/tankCollection"
+    },
+    "fuel": {
+      "$ref": "#/definitions/tankCollection"
+    },
+    "lubrication": {
+      "$ref": "#/definitions/tankCollection"
+    },
+    "liveWell": {
+      "$ref": "#/definitions/tankCollection"
     }
   }
 }

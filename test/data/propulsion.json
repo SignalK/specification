@@ -53,9 +53,34 @@
       "revolutions": {
         "value": 1280,
         "timestamp": "2014-08-15-19:00:15.402",
-        "$source": "foo.bar"
+        "$source": "foo.bar",
+        "meta": {
+          "displayName": "Tachometer",
+          "shortName": "RPM",
+          "warnMethod": ["visual"],
+          "alarmMethod": ["sound"],
+          "zones": [{
+            "upper": 8,
+            "state": "warn",
+            "message": "Engine stopped or rpm very slow!"
+          }, {
+            "lower": 50,
+            "upper": 58.33333333333,
+            "state": "warn",
+            "message": "Engine near maximum rpm!"
+          }, {
+            "lower": 58.33333333333,
+            "upper": 66.66666666666667,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }, {
+            "lower": 66.66666666666667,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }]
+        }
+
       },
-      "maxRevolutions": 3000,
       "oilPressure": {
         "value": 110,
         "timestamp": "2014-08-15-19:00:15.402",

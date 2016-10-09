@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.github.io/specification/schemas/groups/resources.json#",
   "title": "resources",
   "description": "Resources to aid in navigation and operation of the vessel",
@@ -16,11 +16,13 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Chart common name"
+              "description": "Chart common name",
+              "example":"NZ615 Marlborough Sounds"
             },
             "identifier": {
               "type": "string",
-              "description": "Chart number"
+              "description": "Chart number",
+              "example":"NZ615"
             },
             "description": {
               "type": "string",
@@ -28,25 +30,25 @@
             },
             "tilemapUrl": {
               "type": "string",
-              "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
+              "description": "A url to the tilemap of the chart for use in TMS chartplotting apps",
+              "example":"http://{server}:8080/mapcache/NZ615"
             },
-            "anyOf": [
-              {
-                "region": {
-                  "type": "string",
-                  "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
-                }
-              },
-              {
-                "geohash": {
-                  "description": "Position related to chart. Alternative to region",
-                  "$ref": "../definitions.json#/definitions/geohash"
-                }
-              }
-            ],
+            "region": {
+              "type": "string",
+              "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
+            },
+            "geohash": {
+              "description": "Position related to chart. Alternative to region",
+              "$ref": "../definitions.json#/definitions/geohash"
+            },
             "chartUrl": {
               "type": "string",
-              "description": "A url to the chart file's storage location"
+              "description": "A url to the chart file's storage location",
+              "example":"file:///home/pi/freeboard/mapcache/NZ615"
+            },
+            "scale": {
+              "type": "integer",
+              "description": "The scale of the chart, the larger number from 1:200000"
             },
             "chartFormat": {
               "type": "string",
@@ -61,7 +63,12 @@
                 "wkt",
                 "topojson",
                 "geojson",
-                "gpx"
+                "gpx",
+                "tms",
+                "S-57",
+                "S-63",
+                "svg",
+                "other"
               ]
             },
             "timestamp": {
@@ -87,7 +94,8 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Route's common name"
+              "description": "Route's common name",
+              "example":"Nelson Harbour to Adele Is"
             },
             "description": {
               "type": "string",
@@ -108,7 +116,7 @@
             },
             "feature": {
               "title": "Feature",
-              "description": "A Geo JSON feature object",
+              "description": "A Geo JSON feature object which describes the route between the waypoints",
               "required": [
                 "geometry",
                 "properties"
@@ -147,7 +155,7 @@
               }
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
@@ -175,26 +183,18 @@
               "type": "string",
               "description": "A textual description of the note"
             },
-            "anyOf": [
-              {
-                "region": {
-                  "type": "string",
-                  "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
-                }
-              },
-              {
-                "position": {
-                  "description": "Position related to note. Alternative to region or geohash",
-                  "$ref": "../definitions.json#/definitions/position"
-                }
-              },
-              {
-                "geohash": {
-                  "description": "Position related to note. Alternative to region or position",
-                  "$ref": "../definitions.json#/definitions/geohash"
-                }
-              }
-            ],
+            "region": {
+              "type": "string",
+              "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
+            },
+            "position": {
+              "description": "Position related to note. Alternative to region or geohash",
+              "$ref": "../definitions.json#/definitions/position"
+            },
+            "geohash": {
+              "description": "Position related to note. Alternative to region or position",
+              "$ref": "../definitions.json#/definitions/geohash"
+            },
             "mimeType": {
               "type": "string",
               "description": "MIME type of the note"
@@ -204,7 +204,7 @@
               "description": "Location of the note"
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {
@@ -230,7 +230,7 @@
             },
             "feature": {
               "title": "Feature",
-              "description": "A Geo JSON feature object",
+              "description": "A Geo JSON feature object which describes the regions boundary",
               "required": [
                 "geometry",
                 "properties"
@@ -289,7 +289,7 @@
               }
             },
             "timestamp": {
-              "description": "timestamp of the last update to this data",
+              "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
             },
             "source": {

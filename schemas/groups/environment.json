@@ -1,20 +1,121 @@
 {
   "type": "object",
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "id": "https://signalk.github.io/specification/schemas/groups/environmental.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.github.io/specification/schemas/groups/environment.json#",
   "description": "Schema describing the environmental child-object of a Vessel.",
   "title": "environment",
+  "definitions": {
+    "objectWithTemperature": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        }
+      }
+    }
+  },
   "properties": {
-    "airPressure": {
-      "description": "Current air pressure",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "Pa"
+    "outside": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current outside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "dewPointTemperature": {
+          "description": "Current outside dew point temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "apparentWindChillTemperature": {
+          "description": "Current outside apparent wind chill temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "theoreticalWindChillTemperature": {
+          "description": "Current outside theoretical wind chill temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "heatIndexTemperature": {
+          "description": "Current outside heat index temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "pressure": {
+          "description": "Current outside air ambient pressure",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Pa"
+        },
+        "humidity": {
+          "description": "Current outside air relative humidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        }
+      }
+    },
+    "inside": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current inside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "humidity": {
+          "description": "Current inside air relative humidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "engineRoom": {
+          "description": "Current engine room air temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        },
+        "mainCabin": {
+          "description": "Current main cabin air temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        },
+
+        "refrigerator": {
+          "description": "Current refrigerator temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        },
+        "freezer": {
+          "description": "Current freezer temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        },
+        "heating": {
+          "description": "Current heating temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        }
+      }
     },
 
-    "airTemp": {
-      "description": "Current air temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
+    "water": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current water temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "salinity": {
+          "description": "Water salinity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "liveWell": {
+          "description": "Current livewell temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        },
+        "baitWell": {
+          "description": "Current baitwell air temperature",
+          "$ref": "#/definitions/objectWithTemperature"
+        }        
+      }
     },
 
     "depth": {
@@ -47,23 +148,11 @@
         },
 
         "surfaceToTransducer": {
-          "description": "Depth transducer is below the water",
+          "description": "Depth transducer is below the water surface",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         }
       }
-    },
-
-    "humidity": {
-      "description": "Current relative humidity",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "ratio"
-    },
-
-    "salinity": {
-      "description": "Water salinity",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "ratio"
     },
 
     "current": {
@@ -103,19 +192,19 @@
       "description": "Tide data",
       "properties": {
         "heightHigh": {
-          "description": "Next high tide",
+          "description": "Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightNow": {
-          "description": "The current tide height",
+          "description": "The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
 
         "heightLow": {
-          "description": "The next low tide height",
+          "description": "The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
@@ -130,12 +219,6 @@
           "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
-    },
-
-    "waterTemp": {
-      "description": "Current water temperature",
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "units": "K"
     },
 
     "heave": {
@@ -233,24 +316,25 @@
       }
     },
     "mode": {
-        "type": "object",
-        "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
-        "properties": {
-        	"value": {
-            "enum": [
-          	  "day",
-          	  "night",
-          	  "restricted visibility"
-          	]},
+      "type": "object",
+      "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
+      "properties": {
+        "value": {
+          "enum": [
+            "day",
+            "night",
+            "restricted visibility"
+          ]
+        },
 
-          "timestamp": {
-            "$ref": "../definitions.json#/definitions/timestamp"
-          },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
 
-          "source": {
-            "$ref": "../definitions.json#/definitions/source"
-          }
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
         }
       }
+    }
   }
 }

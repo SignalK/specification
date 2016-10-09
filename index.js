@@ -23,12 +23,12 @@ var FullSignalK = require('./src/fullsignalk');
     'communication': require('./schemas/groups/communication.json'),
     'design': require('./schemas/groups/design.json'),
     'navigation': require('./schemas/groups/navigation.json'),
-    'electrical_ac': require('./schemas/groups/electrical_ac.json'),
-    'electrical_dc': require('./schemas/groups/electrical_dc.json'),
+    'electrical': require('./schemas/groups/electrical.json'),
     'environment': require('./schemas/groups/environment.json'),
     'performance': require('./schemas/groups/performance.json'),
     'propulsion': require('./schemas/groups/propulsion.json'),
     'resources': require('./schemas/groups/resources.json'),
+    'sails': require('./schemas/groups/sails.json'),
     'sensors': require('./schemas/groups/sensors.json'),
     'sources': require('./schemas/groups/sources.json'),
     'steering': require('./schemas/groups/steering.json'),
@@ -105,7 +105,8 @@ function chaiAsPromised(chai, utils) {
     this._obj = {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
-      }
+      },
+      'version': '1.0'
     }
     checkValidFullSignalK.call(this);
   });
@@ -114,7 +115,8 @@ function chaiAsPromised(chai, utils) {
     this._obj = {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
-      }
+      },
+      version: "0.0"
     }
     checkValidFullSignalK.call(this);
   });
@@ -211,6 +213,24 @@ function fillIdentityField(vesselData, identity) {
     vesselData.url = identity;
   }
 }
+
+function getSourceId(source) {
+  if (!source) {
+    return 'no_source';
+  }
+  if (source.src || source.pgn) {
+    return source.label +
+      (source.src ? '.' + source.src : '') +
+      (source.instance ? '.' + source.instance : '');
+  }
+  return source.label +
+    (source.talker ? '.' + source.talker : '.XX');
+}
+
+function keyForSourceIdPath(sourceId, path) {
+  return sourceId + "." + path;
+}
+
 module.exports.fillIdentityField = fillIdentityField;
 
 module.exports.validateFull = validateFull;
@@ -231,3 +251,5 @@ module.exports.units = require('./schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
 module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
+module.exports.getSourceId = getSourceId;
+module.exports.keyForSourceIdPath = keyForSourceIdPath;

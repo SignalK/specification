@@ -124,5 +124,35 @@ describe('FullSignalK', function() {
     vessel.should.have.property('name', "WRANGO");
     vessel.should.not.have.property('$source');
     vessel.should.not.have.property('timestamp');
+    vessel.should.not.have.property('pgn');
+  })
+
+  it('Delta with instance produces proper sources hierarchy', function() {
+
+    var msg = {
+      "updates": [{
+        "source": {
+          "label": "N2K",
+          "type": "NMEA2000",
+          "pgn": 130312,
+          "src": "36",
+          "instance": "0"
+        },
+        "timestamp": "2015-01-15-16:15:19.628",
+        "values": [{
+          "path": "environment.water.temperature",
+          "value": 15.2
+        }]
+      }],
+      "context": "vessels.urn:mrn:imo:mmsi:276810000"
+    }
+    var fullSignalK = new FullSignalK();
+    fullSignalK.addDelta(msg);
+    var full = fullSignalK.retrieve();
+    var vessel = full.vessels['urn:mrn:imo:mmsi:276810000'];
+    vessel.environment.water.temperature.should.have.property('value', 15.2);
+    full.sources.should.have.property('N2K');
+    full.sources['N2K'].should.have.property('36');
+    full.sources['N2K']['36'].should.have.property('0');
   })
 })

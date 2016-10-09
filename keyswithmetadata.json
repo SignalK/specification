@@ -1,4 +1,8 @@
 {
+  "notifications.*.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
   "design.displacement": {
     "description": "The displacement of the vessel",
     "units": "kg"
@@ -27,6 +31,20 @@
     "description": "Length at waterline",
     "units": "m"
   },
+  "design.keel.type": {
+    "description": "The type of keel.",
+    "enum": [
+      "long",
+      "fin",
+      "flare",
+      "bulb",
+      "wing",
+      "centerboard",
+      "kanting",
+      "lifting",
+      "daggerboard"
+    ]
+  },
   "design.keel.angle": {
     "description": "A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.",
     "units": "rad"
@@ -43,6 +61,33 @@
     "description": "Total height of the vessel",
     "units": "m"
   },
+  "navigation.lights": {
+    "description": "Current state of the vessels navigation lights",
+    "enum": [
+      "off",
+      "fault",
+      "anchored",
+      "sailing",
+      "motoring",
+      "towing < 200m",
+      "towing > 200m",
+      "pushing",
+      "fishing",
+      "fishing-hampered",
+      "trawling",
+      "trawling-shooting",
+      "trawling-hauling",
+      "pilotage",
+      "not-under-way",
+      "aground",
+      "restricted manouverability",
+      "restricted manouverability towing < 200m",
+      "restricted manouverability towing > 200m",
+      "restricted manouverability underwater operations",
+      "constrained by draft",
+      "mine clearance"
+    ]
+  },
   "navigation.courseOverGroundMagnetic": {
     "description": "Course over ground (magnetic)",
     "units": "rad"
@@ -51,41 +96,157 @@
     "description": "Course over ground (true)",
     "units": "rad"
   },
-  "navigation.activeRoute.bearingActual": {
-    "description": "The current bearing of the next waypoint relative to true North",
-    "units": "rad"
-  },
-  "navigation.activeRoute.distanceActual": {
-    "description": "The current distance to the next waypoint",
+  "navigation.courseRhumbline.crossTrackError": {
+    "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
     "units": "m"
   },
-  "navigation.activeRoute.bearingDirect": {
-    "description": "The bearing relative to true North from last waypoint to the next waypoint",
+  "navigation.courseRhumbline.bearingTrackTrue": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
     "units": "rad"
   },
-  "navigation.activeRoute.courseRequired": {
-    "description": "The course relative to true North towards the next waypoint",
+  "navigation.courseRhumbline.bearingTrackMagnetic": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
     "units": "rad"
   },
-  "navigation.activeRoute.waypoint.xte": {
-    "description": "Cross track error",
+  "navigation.courseRhumbline.activeRoute.estimatedTimeOfArrival.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseRhumbline.activeRoute.startTime.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseRhumbline.nextPoint.distance": {
+    "description": "The distance in meters between the vessel's present position and the nextPoint",
+    "units": "m"
+  },
+  "navigation.courseRhumbline.nextPoint.bearingTrue": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+    "units": "rad"
+  },
+  "navigation.courseRhumbline.nextPoint.bearingMagnetic": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+    "units": "rad"
+  },
+  "navigation.courseRhumbline.nextPoint.velocityMadeGood": {
+    "description": "The velocity component of the vessel towards the nextPoint",
+    "units": "m/s"
+  },
+  "navigation.courseRhumbline.nextPoint.timeToGo": {
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+    "units": "s"
+  },
+  "navigation.courseRhumbline.previousPoint.distance": {
+    "description": "The distance in meters between previousPoint and the vessel's present position",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.crossTrackError": {
+    "description": "The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.bearingTrackTrue": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to true north.",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.bearingTrackMagnetic": {
+    "description": "The bearing of a line between previousPoint and nextPoint, relative to magnetic north.",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.activeRoute.estimatedTimeOfArrival.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseGreatCircle.activeRoute.startTime.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "navigation.courseGreatCircle.nextPoint.distance": {
+    "description": "The distance in meters between the vessel's present position and the nextPoint",
+    "units": "m"
+  },
+  "navigation.courseGreatCircle.nextPoint.bearingTrue": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.nextPoint.bearingMagnetic": {
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+    "units": "rad"
+  },
+  "navigation.courseGreatCircle.nextPoint.velocityMadeGood": {
+    "description": "The velocity component of the vessel towards the nextPoint",
+    "units": "m/s"
+  },
+  "navigation.courseGreatCircle.nextPoint.timeToGo": {
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+    "units": "s"
+  },
+  "navigation.courseGreatCircle.previousPoint.distance": {
+    "description": "The distance in meters between previousPoint and the vessel's present position",
+    "units": "m"
+  },
+  "navigation.racing.distanceStartline": {
+    "description": "The current distance to the start line",
+    "units": "m"
+  },
+  "navigation.racing.timeToStart": {
+    "description": "Time left before start",
+    "units": "s"
+  },
+  "navigation.racing.timePortDown": {
+    "description": "Time to arrive at the start line on port, turning downwind",
+    "units": "s"
+  },
+  "navigation.racing.timePortUp": {
+    "description": "Time to arrive at the start line on port, turning upwind",
+    "units": "s"
+  },
+  "navigation.racing.timeStbdDown": {
+    "description": "Time to arrive at the start line on starboard, turning downwind",
+    "units": "s"
+  },
+  "navigation.racing.timeStbdUp": {
+    "description": "Time to arrive at the start line on starboard, turning upwind",
+    "units": "s"
+  },
+  "navigation.racing.distanceLayline": {
+    "description": "The current distance to the layline",
     "units": "m"
   },
   "navigation.magneticVariation": {
     "description": "The magnetic variation (declination) at the current position",
     "units": "rad"
   },
-  "navigation.destination.longitude": {
-    "description": "Longitude of the destination",
-    "units": "deg"
+  "navigation.magneticVariationAgeOfService": {
+    "description": "Seconds since the 1st Jan 1970 that the variation calculation was made",
+    "units": "s"
   },
-  "navigation.destination.latitude": {
-    "description": "Latitude of the destination",
-    "units": "deg"
+  "navigation.destination.eta.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
   },
-  "navigation.destination.altitude": {
-    "description": "Altitude of the destination",
-    "units": "m"
+  "navigation.gnss.methodQuality": {
+    "description": "Quality of the satellite fix",
+    "enum": [
+      "no GPS",
+      "GNSS Fix",
+      "DGNSS fix",
+      "Precise GNSS",
+      "RTK fixed integer",
+      "RTK float",
+      "Estimated (DR) mode",
+      "Manual input",
+      "Simulator mode",
+      "Error"
+    ]
+  },
+  "navigation.gnss.integrity": {
+    "description": "Integrity of the satellite fix",
+    "enum": [
+      "no Integrity checking",
+      "Safe",
+      "Caution",
+      "Unsafe"
+    ]
   },
   "navigation.gnss.antennaAltitude": {
     "description": "Altitude of antenna",
@@ -104,15 +265,15 @@
     "units": "rad"
   },
   "navigation.position.longitude": {
-    "description": "Longitude of boat",
+    "description": "Longitude",
     "units": "deg"
   },
   "navigation.position.latitude": {
-    "description": "Latitude of boat",
+    "description": "Latitude",
     "units": "deg"
   },
   "navigation.position.altitude": {
-    "description": "Altitude of boat",
+    "description": "Altitude",
     "units": "m"
   },
   "navigation.attitude.roll": {
@@ -147,6 +308,33 @@
     "description": "Trip log value",
     "units": "m"
   },
+  "navigation.state": {
+    "description": "Current navigational state of the vessel",
+    "enum": [
+      "not under command",
+      "anchored",
+      "sailing",
+      "motoring",
+      "towing < 200m",
+      "towing > 200m",
+      "pushing",
+      "fishing",
+      "fishing-hampered",
+      "trawling",
+      "trawling-shooting",
+      "trawling-hauling",
+      "pilotage",
+      "not-under-way",
+      "aground",
+      "restricted manouverability",
+      "restricted manouverability towing < 200m",
+      "restricted manouverability towing > 200m",
+      "restricted manouverability underwater operations",
+      "constrained by draft",
+      "mine clearance",
+      "not defined (example)"
+    ]
+  },
   "navigation.anchor.maxRadius": {
     "description": "Radius of anchor alarm boundary. The distance from anchor to the center of the boat",
     "units": "m"
@@ -156,283 +344,473 @@
     "units": "m"
   },
   "navigation.anchor.position.longitude": {
-    "description": "Longitude of the anchor",
+    "description": "Longitude",
     "units": "deg"
   },
   "navigation.anchor.position.latitude": {
-    "description": "Latitude of the anchor",
+    "description": "Latitude",
     "units": "deg"
   },
   "navigation.anchor.position.altitude": {
-    "description": "Altitude of the anchor",
+    "description": "Altitude",
     "units": "m"
   },
-  "electrical_ac.bus1.phaseA.lineLineVoltage": {
-    "description": "RMS voltage measured between bus phase A and phase B.",
+  "navigation.datetime.gnssTimeSource": {
+    "description": "Source of GNSS Date and Time",
+    "enum": [
+      "GPS",
+      "GLONASS",
+      "Galileo",
+      "Beidou",
+      "IRNSS",
+      "Radio Signal",
+      "Internet",
+      "Local clock"
+    ]
+  },
+  "electrical.batteries.*.voltage": {
     "units": "V"
   },
-  "electrical_ac.bus1.phaseA.lineNeutralVoltage": {
-    "description": "RMS voltage measured between bus phase A and neutral.",
+  "electrical.batteries.*.voltage.ripple": {
+    "description": "Ripple voltage",
     "units": "V"
   },
-  "electrical_ac.bus1.phaseA.frequency": {
-    "description": "Bus phase A frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.bus1.phaseB.lineLineVoltage": {
-    "description": "RMS voltage measured between bus phase B and phase C.",
+  "electrical.batteries.*.voltage.meta.nominal": {
+    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
     "units": "V"
   },
-  "electrical_ac.bus1.phaseB.lineNeutralVoltage": {
-    "description": "RMS voltage measured between bus phase B and neutral.",
+  "electrical.batteries.*.voltage.meta.warnUpper": {
+    "description": "Upper operational voltage limit",
     "units": "V"
   },
-  "electrical_ac.bus1.phaseB.frequency": {
-    "description": "Bus phase B frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.bus1.phaseC.lineLineVoltage": {
-    "description": "RMS voltage measured between bus phase C and phase A.",
+  "electrical.batteries.*.voltage.meta.warnLower": {
+    "description": "Lower operational voltage limit",
     "units": "V"
   },
-  "electrical_ac.bus1.phaseC.lineNeutralVoltage": {
-    "description": "RMS voltage measured between bus phase C and neutral.",
+  "electrical.batteries.*.voltage.meta.faultUpper": {
+    "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical_ac.bus1.phaseC.frequency": {
-    "description": "Bus phase C frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.bus1.average.lineLineVoltage": {
-    "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase bus.",
+  "electrical.batteries.*.voltage.meta.faultLower": {
+    "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
     "units": "V"
   },
-  "electrical_ac.bus1.average.lineNeutralVoltage": {
-    "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase bus.",
-    "units": "V"
+  "electrical.batteries.*.current": {
+    "units": "A"
   },
-  "electrical_ac.bus1.average.frequency": {
-    "description": "Average frequency of the bus.",
-    "units": "Hz"
+  "electrical.batteries.*.current.meta.warnUpper": {
+    "description": "Upper operational current limit",
+    "units": "A"
   },
-  "electrical_ac.utility.phaseA.lineLineVoltage": {
-    "description": "RMS voltage measured between utility phase A and phase B.",
-    "units": "V"
+  "electrical.batteries.*.current.meta.warnLower": {
+    "description": "Lower operational current limit",
+    "units": "A"
   },
-  "electrical_ac.utility.phaseA.lineNeutralVoltage": {
-    "description": "RMS voltage measured between utility phase A and neutral.",
-    "units": "V"
+  "electrical.batteries.*.current.meta.faultUpper": {
+    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
   },
-  "electrical_ac.utility.phaseA.frequency": {
-    "description": "Utility phase A frequency.",
-    "units": "Hz"
+  "electrical.batteries.*.current.meta.faultLower": {
+    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
   },
-  "electrical_ac.utility.phaseA.reactivePower.reactivePower": {
-    "description": "Utility phase A reactive power",
-    "units": "W"
+  "electrical.batteries.*.temperature.warnUpper": {
+    "description": "Upper operational temperature limit",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseA.realPower.realPower": {
-    "description": "Utility phase A real power.",
-    "units": "W"
+  "electrical.batteries.*.temperature.warnLower": {
+    "description": "Lower operational temperature limit",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseA.realPower.apparentPower": {
-    "description": "Utility phase A apparent power.",
-    "units": "W"
+  "electrical.batteries.*.temperature.faultUpper": {
+    "description": "Upper fault limit of temperature - device may disable",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.lineLineVoltage": {
-    "description": "RMS voltage measured between utility phase B and phase C.",
-    "units": "V"
+  "electrical.batteries.*.temperature.faultLower": {
+    "description": "Lower fault limit of temperature - device may disable",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.lineNeutralVoltage": {
-    "description": "RMS voltage measured between utility phase B and neutral.",
-    "units": "V"
+  "electrical.batteries.*.temperature.limitDischargeLower": {
+    "description": "Operational minimum temperature limit for battery discharge, in degrees Celsius",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.frequency": {
-    "description": "Utility phase B frequency.",
-    "units": "Hz"
+  "electrical.batteries.*.temperature.limitDischargeUpper": {
+    "description": "Operational maximum temperature limit for battery discharge, in degrees Celsius",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.reactivePower.reactivePower": {
-    "description": "Utility phase B reactive power",
-    "units": "W"
+  "electrical.batteries.*.temperature.limitRechargeLower": {
+    "description": "Operational minimum temperature limit for battery recharging, in degrees Celsius",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.realPower.realPower": {
-    "description": "Utility phase B real power.",
-    "units": "W"
+  "electrical.batteries.*.temperature.limitRechargeUpper": {
+    "description": "Operational maximum temperature limit for battery recharging, in degrees Celsius",
+    "units": "K"
   },
-  "electrical_ac.utility.phaseB.realPower.apparentPower": {
-    "description": "Utility phase B apparent power.",
-    "units": "W"
+  "electrical.batteries.*.meta.dateInstalled.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
   },
-  "electrical_ac.utility.phaseC.lineLineVoltage": {
-    "description": "RMS voltage measured between utility phase C and phase A.",
-    "units": "V"
-  },
-  "electrical_ac.utility.phaseC.lineNeutralVoltage": {
-    "description": "RMS voltage measured between utility phase C and neutral.",
-    "units": "V"
-  },
-  "electrical_ac.utility.phaseC.frequency": {
-    "description": "Utility phase C frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.utility.phaseC.reactivePower.reactivePower": {
-    "description": "Utility phase C reactive power",
-    "units": "W"
-  },
-  "electrical_ac.utility.phaseC.realPower.realPower": {
-    "description": "Utility phase C real power.",
-    "units": "W"
-  },
-  "electrical_ac.utility.phaseC.realPower.apparentPower": {
-    "description": "Utility phase C apparent power.",
-    "units": "W"
-  },
-  "electrical_ac.utility.average.lineLineVoltage": {
-    "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase utility connection.",
-    "units": "V"
-  },
-  "electrical_ac.utility.average.lineNeutralVoltage": {
-    "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase utility connection.",
-    "units": "V"
-  },
-  "electrical_ac.utility.average.frequency": {
-    "description": "Average frequency of the utility connection.",
-    "units": "Hz"
-  },
-  "electrical_ac.utility.energy.totalExport": {
-    "description": "Total watt hours exported by the utility",
+  "electrical.batteries.*.capacity.nominal": {
+    "description": "The capacity of battery as specified by the manufacturer",
     "units": "J"
   },
-  "electrical_ac.utility.energy.totalImport": {
-    "description": "Total watt hours imported by the utility",
+  "electrical.batteries.*.capacity.actual": {
+    "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
     "units": "J"
   },
-  "electrical_ac.utility.reactivePower.reactivePower": {
-    "description": "In a normally operating system, the reactive power will be less than half the real power. In order to allow for fault conditions, it is desirable to have the same range for reactive power as for real power. Reactive power is a signed quantity, like real power.",
-    "units": "W"
-  },
-  "electrical_ac.utility.realPower.realPower": {
-    "description": "Total real power delivered by the utility",
-    "units": "W"
-  },
-  "electrical_ac.utility.realPower.apparentPower": {
-    "description": "Total apparent power delivered by the utility. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseA.lineLineVoltage": {
-    "description": "RMS voltage measured between generator phase A and phase B.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseA.lineNeutralVoltage": {
-    "description": "RMS voltage measured between generator phase A and neutral.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseA.frequency": {
-    "description": "Generator phase A frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.generator.phaseA.reactivePower.reactivePower": {
-    "description": "Generator phase A reactive power",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseA.realPower.realPower": {
-    "description": "Generator phase A real power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseA.realPower.apparentPower": {
-    "description": "Generator phase A apparent power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseB.lineLineVoltage": {
-    "description": "RMS voltage measured between generator phase B and phase C.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseB.lineNeutralVoltage": {
-    "description": "RMS voltage measured between generator phase B and neutral.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseB.frequency": {
-    "description": "Generator phase B frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.generator.phaseB.reactivePower.reactivePower": {
-    "description": "Generator phase B reactive power",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseB.realPower.realPower": {
-    "description": "Generator phase B real power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseB.realPower.apparentPower": {
-    "description": "Generator phase B apparent power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseC.lineLineVoltage": {
-    "description": "RMS voltage measured between generator phase C and phase A.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseC.lineNeutralVoltage": {
-    "description": "RMS voltage measured between generator phase C and neutral.",
-    "units": "V"
-  },
-  "electrical_ac.generator.phaseC.frequency": {
-    "description": "Generator phase C frequency.",
-    "units": "Hz"
-  },
-  "electrical_ac.generator.phaseC.reactivePower.reactivePower": {
-    "description": "Generator phase C reactive power",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseC.realPower.realPower": {
-    "description": "Generator phase C real power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.phaseC.realPower.apparentPower": {
-    "description": "Generator phase C apparent power.",
-    "units": "W"
-  },
-  "electrical_ac.generator.average.lineLineVoltage": {
-    "description": "Average RMS voltage measured between two hot legs of a 3-phase or split-phase generator.",
-    "units": "V"
-  },
-  "electrical_ac.generator.average.lineNeutralVoltage": {
-    "description": "Average RMS voltage measured between any hot leg and neutral in a 3-phase, split-phase, or single phase generator.",
-    "units": "V"
-  },
-  "electrical_ac.generator.average.frequency": {
-    "description": "Average frequency of the generator output.",
-    "units": "Hz"
-  },
-  "electrical_ac.generator.energy.totalExport": {
-    "description": "Total energy exported by the generator",
+  "electrical.batteries.*.capacity.remaining": {
+    "description": "Capacity remaining in battery",
     "units": "J"
   },
-  "electrical_ac.generator.energy.totalImport": {
-    "description": "Total energy imported by the generator",
+  "electrical.batteries.*.capacity.dischargeLimit": {
+    "description": "Minimum capacity to be left in the battery while discharging",
     "units": "J"
   },
-  "electrical_ac.generator.reactivePower.reactivePower": {
+  "electrical.batteries.*.capacity.stateOfCharge": {
+    "description": "State of charge, 1 = 100%",
+    "units": "ratio"
+  },
+  "electrical.batteries.*.capacity.stateOfHealth": {
+    "description": "State of Health, 1 = 100%",
+    "units": "ratio"
+  },
+  "electrical.batteries.*.capacity.dischargeSinceFull": {
+    "description": "Cumulative discharge since battery was last full",
+    "units": "C"
+  },
+  "electrical.batteries.*.capacity.timeRemaining": {
+    "description": "Time to discharge to discharge limit at current rate",
+    "units": "s"
+  },
+  "electrical.batteries.*.lifetimeDischarge": {
+    "description": "Cumulative charge discharged from battery over operational lifetime of battery",
+    "units": "C"
+  },
+  "electrical.batteries.*.lifetimeRecharge": {
+    "description": "Cumulative charge recharged into battery over operational lifetime of battery",
+    "units": "C"
+  },
+  "electrical.inverters.*.meta.dateInstalled.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "electrical.inverters.*.dc.voltage": {
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.ripple": {
+    "description": "Ripple voltage",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.meta.nominal": {
+    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.meta.warnUpper": {
+    "description": "Upper operational voltage limit",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.meta.warnLower": {
+    "description": "Lower operational voltage limit",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.meta.faultUpper": {
+    "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.voltage.meta.faultLower": {
+    "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical.inverters.*.dc.current": {
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.current.meta.warnUpper": {
+    "description": "Upper operational current limit",
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.current.meta.warnLower": {
+    "description": "Lower operational current limit",
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.current.meta.faultUpper": {
+    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.current.meta.faultLower": {
+    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical.inverters.*.dc.temperature.warnUpper": {
+    "description": "Upper operational temperature limit",
+    "units": "K"
+  },
+  "electrical.inverters.*.dc.temperature.warnLower": {
+    "description": "Lower operational temperature limit",
+    "units": "K"
+  },
+  "electrical.inverters.*.dc.temperature.faultUpper": {
+    "description": "Upper fault limit of temperature - device may disable",
+    "units": "K"
+  },
+  "electrical.inverters.*.dc.temperature.faultLower": {
+    "description": "Lower fault limit of temperature - device may disable",
+    "units": "K"
+  },
+  "electrical.inverters.*.ac.lineNeutralVoltage": {
+    "description": "RMS voltage measured between phase and neutral.",
+    "units": "V"
+  },
+  "electrical.inverters.*.ac.lineLineVoltage": {
+    "description": "RMS voltage measured between phases",
+    "units": "V"
+  },
+  "electrical.inverters.*.ac.current": {
+    "description": "RMS current",
+    "units": "A"
+  },
+  "electrical.inverters.*.ac.frequency": {
+    "description": "AC frequency.",
+    "units": "Hz"
+  },
+  "electrical.inverters.*.ac.reactivePower": {
     "description": "Reactive power",
     "units": "W"
   },
-  "electrical_ac.generator.realPower.realPower": {
-    "description": "Total real power delivered by the generator. Real power must be signed since power may flow in both directions.",
+  "electrical.inverters.*.ac.powerFactorLagging": {
+    "description": "Lead/lag status.",
+    "enum": [
+      "leading",
+      "lagging",
+      "error",
+      "not available"
+    ]
+  },
+  "electrical.inverters.*.ac.realPower": {
+    "description": "Real power.",
     "units": "W"
   },
-  "electrical_ac.generator.realPower.apparentPower": {
-    "description": "Total apparent power delivered by the generator. This is an unsigned quantity, but is delivered signed in order to have an equivalent range to real power.",
+  "electrical.inverters.*.ac.apparentPower": {
+    "description": "Apparent power.",
     "units": "W"
   },
-  "environment.airPressureChangeRateAlarm": {
-    "description": "Change per hour which will cause an alarm",
+  "electrical.inverters.*.mode": {
+    "description": "Mode of inverter",
+    "enum": [
+      "idle",
+      "inverting",
+      "disabled",
+      "standby",
+      "faulted",
+      "unknown",
+      "other"
+    ]
+  },
+  "electrical.chargers.*.voltage": {
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.ripple": {
+    "description": "Ripple voltage",
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.meta.nominal": {
+    "description": "Designed 'voltage' of battery (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)",
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.meta.warnUpper": {
+    "description": "Upper operational voltage limit",
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.meta.warnLower": {
+    "description": "Lower operational voltage limit",
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.meta.faultUpper": {
+    "description": "Upper fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical.chargers.*.voltage.meta.faultLower": {
+    "description": "Lower fault limit of battery voltage - BMS may disconnect battery",
+    "units": "V"
+  },
+  "electrical.chargers.*.current": {
+    "units": "A"
+  },
+  "electrical.chargers.*.current.meta.warnUpper": {
+    "description": "Upper operational current limit",
+    "units": "A"
+  },
+  "electrical.chargers.*.current.meta.warnLower": {
+    "description": "Lower operational current limit",
+    "units": "A"
+  },
+  "electrical.chargers.*.current.meta.faultUpper": {
+    "description": "Upper fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical.chargers.*.current.meta.faultLower": {
+    "description": "Lower fault limit of battery current - BMS may disconnect battery",
+    "units": "A"
+  },
+  "electrical.chargers.*.temperature.warnUpper": {
+    "description": "Upper operational temperature limit",
+    "units": "K"
+  },
+  "electrical.chargers.*.temperature.warnLower": {
+    "description": "Lower operational temperature limit",
+    "units": "K"
+  },
+  "electrical.chargers.*.temperature.faultUpper": {
+    "description": "Upper fault limit of temperature - device may disable",
+    "units": "K"
+  },
+  "electrical.chargers.*.temperature.faultLower": {
+    "description": "Lower fault limit of temperature - device may disable",
+    "units": "K"
+  },
+  "electrical.chargers.*.meta.dateInstalled.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "electrical.chargers.*.meta.chargingAlgorithm": {
+    "enum": [
+      "trickle",
+      "two stage",
+      "three stage",
+      "constant current",
+      "constant voltage",
+      "custom profile"
+    ]
+  },
+  "electrical.chargers.*.meta.chargerMode": {
+    "enum": [
+      "standalone",
+      "master",
+      "slave",
+      "standby"
+    ]
+  },
+  "electrical.chargers.*.mode": {
+    "enum": [
+      "charging bulk",
+      "charging acceptance",
+      "charging overcharge",
+      "charging float",
+      "charging equalize",
+      "unknown",
+      "other"
+    ]
+  },
+  "electrical.ac.*.meta.dateInstalled.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "electrical.ac.*.phase.*.lineNeutralVoltage": {
+    "description": "RMS voltage measured between phase and neutral.",
+    "units": "V"
+  },
+  "electrical.ac.*.phase.*.lineLineVoltage": {
+    "description": "RMS voltage measured between phases",
+    "units": "V"
+  },
+  "electrical.ac.*.phase.*.current": {
+    "description": "RMS current",
+    "units": "A"
+  },
+  "electrical.ac.*.phase.*.frequency": {
+    "description": "AC frequency.",
+    "units": "Hz"
+  },
+  "electrical.ac.*.phase.*.reactivePower": {
+    "description": "Reactive power",
+    "units": "W"
+  },
+  "electrical.ac.*.phase.*.powerFactorLagging": {
+    "description": "Lead/lag status.",
+    "enum": [
+      "leading",
+      "lagging",
+      "error",
+      "not available"
+    ]
+  },
+  "electrical.ac.*.phase.*.realPower": {
+    "description": "Real power.",
+    "units": "W"
+  },
+  "electrical.ac.*.phase.*.apparentPower": {
+    "description": "Apparent power.",
+    "units": "W"
+  },
+  "environment.outside.temperature": {
+    "description": "Current outside air temperature",
+    "units": "K"
+  },
+  "environment.outside.dewPointTemperature": {
+    "description": "Current outside dew point temperature",
+    "units": "K"
+  },
+  "environment.outside.apparentWindChillTemperature": {
+    "description": "Current outside apparent wind chill temperature",
+    "units": "K"
+  },
+  "environment.outside.theoreticalWindChillTemperature": {
+    "description": "Current outside theoretical wind chill temperature",
+    "units": "K"
+  },
+  "environment.outside.heatIndexTemperature": {
+    "description": "Current outside heat index temperature",
+    "units": "K"
+  },
+  "environment.outside.pressure": {
+    "description": "Current outside air ambient pressure",
     "units": "Pa"
   },
-  "environment.airPressure": {
-    "description": "Current air pressure",
-    "units": "Pa"
+  "environment.outside.humidity": {
+    "description": "Current outside air relative humidity",
+    "units": "ratio"
   },
-  "environment.airTemp": {
-    "description": "Current air temperature",
+  "environment.inside.temperature": {
+    "description": "Current inside air temperature",
+    "units": "K"
+  },
+  "environment.inside.humidity": {
+    "description": "Current inside air relative humidity",
+    "units": "ratio"
+  },
+  "environment.inside.engineRoom.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.inside.mainCabin.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.inside.refrigerator.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.inside.freezer.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.inside.heating.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.water.temperature": {
+    "description": "Current water temperature",
+    "units": "K"
+  },
+  "environment.water.salinity": {
+    "description": "Water salinity",
+    "units": "ratio"
+  },
+  "environment.water.liveWell.temperature": {
+    "description": "Temperature",
+    "units": "K"
+  },
+  "environment.water.baitWell.temperature": {
+    "description": "Temperature",
     "units": "K"
   },
   "environment.depth.belowKeel": {
@@ -454,14 +832,6 @@
   "environment.depth.surfaceToTransducer": {
     "description": "Depth transducer is below the water",
     "units": "m"
-  },
-  "environment.humidity": {
-    "description": "Current relative humidity",
-    "units": "ratio"
-  },
-  "environment.salinity": {
-    "description": "Water salinity",
-    "units": "ratio"
   },
   "environment.current.drift": {
     "description": "The speed component of the water current vector",
@@ -487,9 +857,17 @@
     "description": "The next low tide height",
     "units": "m"
   },
-  "environment.waterTemp": {
-    "description": "Current water temperature",
-    "units": "K"
+  "environment.tide.timeLow.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "environment.tide.timeHigh.$ref": {
+    "description": "ISO-8601 (UTC) string representing date and time.",
+    "units": "ISO-8601 (UTC)"
+  },
+  "environment.heave": {
+    "description": "Vertical movement of the vessel due to waves",
+    "units": "m"
   },
   "environment.wind.angleApparent": {
     "description": "Apparent wind angle, negative to port",
@@ -515,10 +893,6 @@
     "description": "The wind direction relative to magnetic north",
     "units": "rad"
   },
-  "environment.wind.speedAlarm": {
-    "description": "The speed above which a wind alarm will be raised",
-    "units": "m/s"
-  },
   "environment.wind.speedTrue": {
     "description": "Wind speed over water (as calculated from speedApparent and vessel's speed through water)",
     "units": "m/s"
@@ -531,8 +905,16 @@
     "description": "Apparent wind speed",
     "units": "m/s"
   },
+  "environment.mode": {
+    "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
+    "enum": [
+      "day",
+      "night",
+      "restricted visibility"
+    ]
+  },
   "performance.polarSpeed": {
-    "description": "The current polar speed based on current polar, trueWindSpeed and truewindAngle.",
+    "description": "The current polar speed based on current polar diagram, trueWindSpeed and truewindAngle.",
     "units": "m/s"
   },
   "performance.polarSpeedRatio": {
@@ -548,7 +930,7 @@
     "units": "m/s"
   },
   "performance.beatAngle": {
-    "description": "The true wind beat angle for the best velocity made good based on current current polar and trueWindSpeed.",
+    "description": "The true wind beat angle for the best velocity made good based on current current polar diagram and trueWindSpeed.",
     "units": "rad"
   },
   "performance.beatAngleVelocityMadeGood": {
@@ -560,7 +942,7 @@
     "units": "m/s"
   },
   "performance.gybeAngle": {
-    "description": "The true wind gybe angle for the best velocity made good downwind based on current polar and trueWindSpeed.",
+    "description": "The true wind gybe angle for the best velocity made good downwind based on current polar diagram and trueWindSpeed.",
     "units": "rad"
   },
   "performance.gybeAngleVelocityMadeGood": {
@@ -569,6 +951,14 @@
   },
   "performance.gybeAngleTargetSpeed": {
     "description": "The target speed for the gybe angle.",
+    "units": "m/s"
+  },
+  "performance.targetAngle": {
+    "description": "The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and trueWindSpeed.",
+    "units": "rad"
+  },
+  "performance.targetSpeed": {
+    "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
     "units": "m/s"
   },
   "performance.leeway": {
@@ -583,49 +973,230 @@
     "description": "True heading on opposite tack.",
     "units": "rad"
   },
-  "propulsion.revolutions": {
+  "propulsion.*.state.value": {
+    "enum": [
+      "stopped",
+      "started",
+      "unusable"
+    ]
+  },
+  "propulsion.*.revolutions": {
     "description": "Engine revolutions",
     "units": "Hz"
   },
-  "propulsion.temperature": {
+  "propulsion.*.temperature": {
     "description": "Engine temperature",
     "units": "K"
   },
-  "propulsion.oilTemperature": {
+  "propulsion.*.oilTemperature": {
     "description": "Oil temperature",
     "units": "K"
   },
-  "propulsion.oilPressure": {
+  "propulsion.*.oilPressure": {
     "description": "Oil pressure",
     "units": "Pa"
   },
-  "propulsion.waterTemperature": {
+  "propulsion.*.alternatorVoltage": {
+    "description": "Alternator voltage",
+    "units": "V"
+  },
+  "propulsion.*.runTime": {
+    "description": "Total running time for engine",
+    "units": "s"
+  },
+  "propulsion.*.coolantTemperature": {
+    "description": "Coolant temperature",
+    "units": "K"
+  },
+  "propulsion.*.coolantPressure": {
+    "description": "Coolant pressure",
+    "units": "Pa"
+  },
+  "propulsion.*.boostPressure": {
+    "description": "Engine boost (turbo, supercharger) pressure",
+    "units": "Pa"
+  },
+  "propulsion.*.engineLoad": {
+    "description": "Engine load ratio, 1 is 100%",
+    "units": "ratio"
+  },
+  "propulsion.*.engineTorque": {
+    "description": "Engine torque ratio, 1 is 100%",
+    "units": "ratio"
+  },
+  "propulsion.*.transmission.gear": {
+    "enum": [
+      "Forward",
+      "Neutral",
+      "Reverse",
+      "Fault"
+    ]
+  },
+  "propulsion.*.transmission.gearRatio": {
+    "description": "Gear ratio, Engine rotations per propeller shaft rotation",
+    "units": "ratio"
+  },
+  "propulsion.*.transmission.oilTemperature": {
+    "description": "Oil temperature",
+    "units": "K"
+  },
+  "propulsion.*.transmission.oilPressure": {
+    "description": "Oil pressure",
+    "units": "Pa"
+  },
+  "propulsion.*.drive.type": {
+    "enum": [
+      "saildrive",
+      "shaft",
+      "outboard",
+      "jet",
+      "pod",
+      "other"
+    ]
+  },
+  "propulsion.*.drive.trimState": {
+    "description": "Trim/tilt state",
+    "units": "ratio"
+  },
+  "propulsion.*.drive.thrustAngle": {
+    "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
+    "units": "rad"
+  },
+  "propulsion.*.drive.propeller.pitch ": {
+    "description": "Current pitch of propeller, the distance the propeller ideally would advance during one revolution of the propeller",
+    "units": "m"
+  },
+  "propulsion.*.drive.propeller.slip": {
+    "description": "Propeller slip, the ratio between propeller pitch and actual distance travelled",
+    "units": "ratio"
+  },
+  "propulsion.*.fuel.type": {
+    "description": "Fuel type",
+    "enum": [
+      "diesel",
+      "petrol",
+      "electric",
+      "coal/wood",
+      "other"
+    ]
+  },
+  "propulsion.*.fuel.used": {
+    "description": "Used fuel since last reset. Resetting is at user discretion",
+    "units": "m3"
+  },
+  "propulsion.*.fuel.pressure": {
+    "description": "Fuel pressure",
+    "units": "Pa"
+  },
+  "propulsion.*.fuel.rate": {
+    "description": "Fuel rate",
+    "units": "m3/s"
+  },
+  "propulsion.*.fuel.economyRate": {
+    "description": "Fuel rate",
+    "units": "m3/s"
+  },
+  "propulsion.*.fuel.averageRate": {
+    "description": "Fuel rate",
+    "units": "m3/s"
+  },
+  "propulsion.*.waterTemperature": {
     "description": "Water temperature",
     "units": "K"
   },
-  "propulsion.exhaustTemperature": {
+  "propulsion.*.exhaustTemperature": {
     "description": "Exhaust temperature",
     "units": "K"
   },
-  "propulsion.fuelRate": {
+  "propulsion.*.fuelRate": {
     "description": "Fuel consumption rate",
     "units": "m3/s"
   },
-  "resources.routes.patternProperties.(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$).distance": {
+  "resources.charts.*.chartFormat": {
+    "description": "The format of the chart",
+    "enum": [
+      "gif",
+      "geotiff",
+      "kap",
+      "png",
+      "jpg",
+      "kml",
+      "wkt",
+      "topojson",
+      "geojson",
+      "gpx"
+    ]
+  },
+  "resources.routes.*.distance": {
     "description": "Total distance from start to end",
     "units": "m"
   },
-  "resources.waypoints.patternProperties.(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$).position.longitude": {
+  "resources.routes.*.feature.type": {
+    "enum": [
+      "Feature"
+    ]
+  },
+  "resources.routes.*.feature.geometry.type": {
+    "enum": [
+      "LineString"
+    ]
+  },
+  "resources.notes.*.position.longitude": {
     "description": "Longitude",
     "units": "deg"
   },
-  "resources.waypoints.patternProperties.(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$).position.latitude": {
+  "resources.notes.*.position.latitude": {
     "description": "Latitude",
     "units": "deg"
   },
-  "resources.waypoints.patternProperties.(^[2-7][0-9]{8,8}$|^[A-F0-9]{8,8}$).position.altitude": {
+  "resources.notes.*.position.altitude": {
     "description": "Altitude",
     "units": "m"
+  },
+  "resources.regions.*.feature.type": {
+    "enum": [
+      "Feature"
+    ]
+  },
+  "resources.regions.*.feature.geometry.oneOf.0.type": {
+    "enum": [
+      "Polygon"
+    ]
+  },
+  "resources.regions.*.feature.geometry.oneOf.1.type": {
+    "enum": [
+      "MultiPolygon"
+    ]
+  },
+  "resources.waypoints.*.feature.type": {
+    "enum": [
+      "Feature"
+    ]
+  },
+  "resources.waypoints.*.feature.geometry.type": {
+    "enum": [
+      "Point"
+    ]
+  },
+  "sails.inventory.*.area": {
+    "description": "The total area of this sail in square meters",
+    "units": "m2"
+  },
+  "sails.inventory.*.minimumWind": {
+    "description": "The minimum wind speed this sail can be used with",
+    "units": "m/s"
+  },
+  "sails.inventory.*.maximumWind": {
+    "description": "The maximum wind speed this sail can be used with",
+    "units": "m/s"
+  },
+  "sails.area.total": {
+    "description": "The total area of all sails on the vessel",
+    "units": "m2"
+  },
+  "sails.area.active": {
+    "description": "The total area of the sails currently in use on the vessel",
+    "units": "m2"
   },
   "steering.rudderAngle": {
     "description": "Current rudder angle, +ve is rudder to Starboard",
@@ -635,6 +1206,22 @@
     "description": "The angle the rudder should move to, +ve is rudder to Starboard",
     "units": "rad"
   },
+  "steering.autopilot.state": {
+    "description": "Autopilot state",
+    "enum": [
+      "on",
+      "off",
+      "alarm"
+    ]
+  },
+  "steering.autopilot.mode": {
+    "description": "Operational mode",
+    "enum": [
+      "powersave",
+      "normal",
+      "accurate"
+    ]
+  },
   "steering.autopilot.targetHeadingNorth": {
     "description": "Target heading for autopilot, relative to true North",
     "units": "rad"
@@ -642,6 +1229,14 @@
   "steering.autopilot.targetHeadingMagnetic": {
     "description": "Target heading for autopilot, relative to magnetic North",
     "units": "rad"
+  },
+  "steering.autopilot.headingSource": {
+    "description": "Current source of heading information",
+    "enum": [
+      "compass",
+      "wind",
+      "gps"
+    ]
   },
   "steering.autopilot.deadZone": {
     "description": "Dead zone to ignore for rudder corrections",
@@ -667,12 +1262,172 @@
     "description": "Position of servo on starboard lock",
     "units": "rad"
   },
-  "tanks.capacity": {
+  "tanks.freshWater.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.freshWater.*.capacity": {
     "description": "Total capacity",
     "units": "m3"
   },
-  "tanks.level": {
-    "description": "Amount of fluid in tank",
+  "tanks.freshWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.freshWater.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.wasteWater.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.wasteWater.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.wasteWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.wasteWater.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.blackWater.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.blackWater.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.blackWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.blackWater.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.fuelWater.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.fuelWater.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.fuelWater.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.fuelWater.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.fuel.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.fuel.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.fuel.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.fuel.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.lubrication.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.lubrication.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.lubrication.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.lubrication.*.currentVolume": {
+    "description": "Volume of fluid in tank",
+    "units": "m3"
+  },
+  "tanks.liveWell.*.type": {
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "holding",
+      "lpg",
+      "diesel",
+      "rum"
+    ]
+  },
+  "tanks.liveWell.*.capacity": {
+    "description": "Total capacity",
+    "units": "m3"
+  },
+  "tanks.liveWell.*.currentLevel": {
+    "description": "Level of fluid in tank 0-100%",
+    "units": "ratio"
+  },
+  "tanks.liveWell.*.currentVolume": {
+    "description": "Volume of fluid in tank",
     "units": "m3"
   }
 }

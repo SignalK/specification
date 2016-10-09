@@ -1,0 +1,124 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "notifications": {
+        "arrivalCircleEntered": {
+          "method": ["visual"],
+          "state": "alert",
+          "message": "You entered the arrival circle of Waypoint 002. Adjusting course towards Waypoint 003.",
+          "timestamp": "(...)",
+          "$source": "a.suitable.path"
+        }
+      },
+
+      "navigation": {
+        "courseGreatCircle": {
+          "crossTrackError": {
+            "value": -8.67,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "bearingTrackTrue": {
+            "value": 0.9162978572970231,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "bearingTrackMagnetic": {
+            "value": 1.1986521,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "activeRoute": {
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
+            "estimatedTimeOfArrival": "2016-04-24T06:24:18.632Z",
+            "startTime": "2016-04-24T05:14:18.632Z"
+          },
+
+          "nextPoint": {
+            "type": "Waypoint",
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/waypoints/urn:mrn:signalk:uuid:4fe4ff38-879a-46ed-9a7d-7caeea475241",
+            "distance": 2407.6000020320143,
+            "bearingTrue": 0.9162978572970231,
+            "velocityMadeGood": 0.2572222873852017,
+            "timeToGo": 9628,
+            "position": {
+              "latitude": 49.287333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "previousPoint": {
+            "type": "Waypoint",
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/waypoints/urn:mrn:signalk:uuid:dd4a4c06-0c1d-4b5e-90c3-963649ee5e6d",
+            "position": {
+              "latitude": 49.287333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          }
+        },
+
+        "courseRhumbline": {
+          "crossTrackError": {
+            "value": -8.67,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "bearingTrackTrue": {
+            "value": 0.9162978572970231,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "bearingTrackMagnetic": {
+            "value": 1.1986521,
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "activeRoute": {
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
+            "estimatedTimeOfArrival": "2016-04-24T06:24:18.632Z",
+            "startTime": "2016-04-24T05:14:18.632Z"
+          },
+
+          "nextPoint": {
+            "type": "Waypoint",
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/waypoints/urn:mrn:signalk:uuid:4fe4ff38-879a-46ed-9a7d-7caeea475241",
+            "distance": 2407.6000020320143,
+            "bearingTrue": 0.9162978572970231,
+            "velocityMadeGood": 0.2572222873852017,
+            "timeToGo": 9628,
+            "position": {
+              "latitude": 49.287333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          },
+
+          "previousPoint": {
+            "type": "Waypoint",
+            "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/waypoints/urn:mrn:signalk:uuid:dd4a4c06-0c1d-4b5e-90c3-963649ee5e6d",
+            "position": {
+              "latitude": 49.287333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
+          }
+        }
+      }
+    }
+  },
+  "version": "v1",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+}

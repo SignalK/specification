@@ -16,13 +16,18 @@
  */
 
 var _ = require('lodash');
-var signalkSchema = require('../')
+var signalkSchema = require('../');
+var getId;
 var debug = require('debug')('signalk:fullsignalk');
 
 
 function FullSignalK(id, type, defaults) {
+  //hack, apparently not available initially, so need to set lazily
+  getId = signalkSchema.getSourceId;
+
   this.root = {
-    vessels: {}
+    vessels: {},
+    version: "0.1.0" // Should we read this from the package.json file?
   };
   if (id) {
     this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
@@ -77,7 +82,11 @@ function findContext(root, contextPath) {
     context = {};
     _.set(root, contextPath, context);
   }
-  signalkSchema.fillIdentityField(context, contextPath.split('.')[1]);
+  var identity = contextPath.split('.')[1];
+  if (!identity) {
+    return undefined;
+  }
+  signalkSchema.fillIdentityField(context, identity);
   return context;
 }
 
@@ -120,11 +129,16 @@ FullSignalK.prototype.updateSource = function(context, source, timestamp) {
 function handleNmea2000Source(labelSource, source, timestamp) {
   if (!labelSource[source.src]) {
     labelSource[source.src] = {
-      src: source.src,
-      pgns: {}
+      n2k: {
+        src: source.src,
+        pgns: {}
+      }
     };
   }
-  labelSource[source.src].pgns[source.pgn] = timestamp
+  if (source.instance && !labelSource[source.src][source.instance]) {
+    labelSource[source.src][source.instance] = {}
+  }
+  labelSource[source.src].n2k.pgns[source.pgn] = timestamp
 }
 
 function handleNmea0183Source(labelSource, source, timestamp) {
@@ -150,6 +164,10 @@ function addValues(context, source, timestamp, pathValues) {
 }
 
 function addValue(context, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
   var valueLeaf;
   if (pathValue.path.length === 0) {
     valueLeaf = context;
@@ -190,8 +208,8 @@ function addValue(context, source, timestamp, pathValue) {
   if (pathValue.path.length != 0) {
     valueLeaf['$source'] = getId(source);
     valueLeaf.timestamp = timestamp;
+    setMessage(valueLeaf, source);
   }
-  setMessage(valueLeaf, source);
 }
 
 function copyLeafValueToLeaf(fromLeaf, toLeaf) {
@@ -220,15 +238,5 @@ function setMessage(leaf, source) {
   }
 }
 
-function getId(source) {
-  if (!source) {
-    return 'no_source';
-  }
-  if (source.src || source.pgn) {
-    return source.label +
-      (source.src ? '.' + source.src : '');
-  }
-  return source.label +
-    (source.talker ? '.' + source.talker : '.XX');
-}
+
 module.exports = FullSignalK;
