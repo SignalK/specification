@@ -25,6 +25,29 @@ const rimraf = require('rimraf')
 const markdown = new (require('markdown-it'))()
 
 
+const units = {
+  "A": "Ampere",
+  "C": "Coulomb",
+  "Hz": "Hertz",
+  "ISO-8601 (UTC)": "ISO-8601 string representation of time in Universal Time Coordinated",
+  "J": "Joule",
+  "K": "Kelvin",
+  "Pa": "Pascal",
+  "V": "Volt",
+  "W": "Watt",
+  "deg": "Degree",
+  "kg": "Kilogram",
+  "m": "Meter",
+  "m/s": "Meters per second",
+  "m2": "Square meter",
+  "m3": "Cubic meter",
+  "m3/s": "Cubic meter per second",
+  "rad": "Radian",
+  "rad/s": "Radian per second",
+  "ratio": "Ratio",
+  "s": "Second"
+}
+
 class Parser {
   constructor (opts) {
     this.options = _.defaults(opts, {
@@ -194,6 +217,13 @@ class Parser {
 
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
 
+      md += "Signal K uses [SI units](https://en.wikipedia.org/wiki/International_System_of_Units) almost everywhere, with the exception of geographic coordinates. The following units are in use:\n"
+
+      _.forOwn(units, (value, key) => {
+        md += `- ${key} : ${value}\n`
+      })
+      md += "\n## Keys\n"
+
       Object.keys(filenames).forEach(fn => {
         let valid = true
         let json = null
@@ -225,7 +255,7 @@ class Parser {
         }
 
         if (json !== null && typeof json.units === 'string') {
-          md += `**Units:** ${json.units}\n\n`
+          md += `**Units:** ${json.units} (${units[json.units]})\n\n`
         }
 
         md += '**Description:** '
