@@ -21,7 +21,7 @@ var getId;
 var debug = require('debug')('signalk:fullsignalk');
 
 
-function FullSignalK(id, type) {
+function FullSignalK(id, type, defaults) {
   //hack, apparently not available initially, so need to set lazily
   getId = signalkSchema.getSourceId;
 
@@ -30,7 +30,7 @@ function FullSignalK(id, type) {
     version: "0.1.0" // Should we read this from the package.json file?
   };
   if (id) {
-    this.root.vessels[id] = {};
+    this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
     this.self = this.root.vessels[id];
     if (type) {
       this.root.vessels[id][type] = id;
