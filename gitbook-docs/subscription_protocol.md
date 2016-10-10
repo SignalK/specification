@@ -43,7 +43,7 @@ First you will want to unsubscribe from the current default (or you may have alr
   "context": "vessels.self",
   "unsubscribe": [
     {
-      "path": "*",
+      "path": "*"
     }
   ]
 }
@@ -104,10 +104,10 @@ This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcr
   "context": "vessels.self",
   "subscribe": [
     {
-      "path": "environment.depth.belowTransducer",
+      "path": "environment.depth.belowTransducer"
     },
     {
-      "path": "navigation.speedThroughWater",
+      "path": "navigation.speedThroughWater"
     }
   ]
 }
