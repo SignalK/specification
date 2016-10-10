@@ -60,4 +60,4 @@ Using the information above a web client or http capable device can discover and
  }
 ```
 
-* Make further REST calls for more specific data, or open a websocket connection and subscribe to data
+* Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start streaming](streaming_api.md) updates.
