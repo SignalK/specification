@@ -69,8 +69,8 @@ To subscribe to the required criteria send a suitable subscribe message:
 }
 ```
 
-* `path=[path.to.key]` is appended to the context to specify subsets of the context. The path value can use jsonPath
-  syntax.
+* `path=[path.to.key]` is appended to the context to specify subsets of the context.
+The path value can use the wildcard `*`. A wildcard in the middle of a path (`propulsion/*/oilTemperature`) allows any value for that part and a wildcard at the end (`propulsion/port/*`) matches all paths beginning with the specified prefix.
 
 The following are optional, included above only for example as it uses defaults anyway:
 
