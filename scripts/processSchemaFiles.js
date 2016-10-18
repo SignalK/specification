@@ -525,8 +525,6 @@ class Parser {
     let path = ref[1].trim()
 
 
-    // relative references might point to the same file or definitions.json
-
     if (file.length === 0) {
       file = refObject.refFile
     }
@@ -541,30 +539,13 @@ class Parser {
 
     path = path.split('/')
 
-    function canBeResolved(cursor, path) {
-      let result = true
-      path.forEach(key => {
-        if (cursor !== null && typeof cursor === 'object' && typeof cursor[key] !== 'undefined') {
-          cursor = cursor[key]
-        } else {
-          result = false
-        }
-      })
-      return result
-    }
-
-    if (!canBeResolved(this.files[file], path)) {
+    // relative references might point to the same file or definitions.json
+    if (_.get(this.files[file], path, "NOT_DEFINED") === "NOT_DEFINED") {
       file = 'definitions.json'
     }
     let cursor = this.files[file]
 
-    path.forEach(key => {
-      if (cursor !== null && typeof cursor === 'object' && typeof cursor[key] !== 'undefined') {
-        cursor = cursor[key]
-      }
-    })
-
-    return cursor
+    return _.get(cursor, path)
   }
 
   parseOptions () {
