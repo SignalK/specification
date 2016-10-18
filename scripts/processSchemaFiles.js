@@ -413,7 +413,8 @@ class Parser {
         }
 
         if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
-          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf)
+          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf, 
+            _.omit(this.tree[`${prefix}/${key}`], ['properties', 'allOf', 'patternProperties', '$key']))
         }
 
         if (this.hasProperties(this.tree[`${prefix}/${key}`])) {
@@ -433,15 +434,14 @@ class Parser {
     return data
   }
 
-  parseAllOf (treePrefix, allOf) {
+  parseAllOf (treePrefix, allOf, baseObject) {
     if (!Array.isArray(allOf)) {
       return
     }
 
-    let temp = {}
     let readablePrefix = `${treePrefix.split('/')[treePrefix.split('/').length - 2]}/${treePrefix.split('/')[treePrefix.split('/').length - 1]}`
 
-    temp = allOf.map(obj => {
+    let temp = [baseObject].concat(allOf).map(obj => {
       if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] !== 'undefined') {
         const ref = this.resolveReference(obj['$ref'])
 
@@ -480,7 +480,9 @@ class Parser {
 
       Object.keys(obj).forEach(key => {
         if (key !== 'properties' && key !== 'patternProperties' && key !== 'allOf' && key !== '$ref') {
-          result[key] = obj[key]
+          if (!result[key]) {
+            result[key] = obj[key]
+          }
         }
 
         if (key === 'properties') {
