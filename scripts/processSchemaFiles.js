@@ -78,10 +78,21 @@ class Parser {
     .then(() => fs.mkdir(path.join(this.options.output, 'html')))
     .then(() => parser(schema)) // parse the schema
     .then(files => {
+      function createFileKeyDecorator(fileKey) {
+        return (value, index, object) => {
+          if (index == "$ref") {
+            return {
+              refString: value,
+              refFile: fileKey
+            }
+          }
+        }
+      }
+
       Object.keys(files).forEach(key => {
         let k = key.replace('https://signalk.github.io/specification/schemas/', '')
         k = k.replace('#', '')
-        files[k] = files[key]
+        files[k] = _.cloneDeep(files[key], createFileKeyDecorator(k))
         delete files[key]
       })
 
@@ -431,7 +442,7 @@ class Parser {
     let readablePrefix = `${treePrefix.split('/')[treePrefix.split('/').length - 2]}/${treePrefix.split('/')[treePrefix.split('/').length - 1]}`
 
     temp = allOf.map(obj => {
-      if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] === 'string') {
+      if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] !== 'undefined') {
         const ref = this.resolveReference(obj['$ref'])
 
         if (ref !== null && typeof ref !== 'undefined') {
@@ -501,7 +512,8 @@ class Parser {
     return result
   }
 
-  resolveReference (origRef) {
+  resolveReference (refObject) {
+    const origRef = refObject.refString
     if (typeof origRef !== 'string') {
       return null
     }
@@ -510,8 +522,11 @@ class Parser {
     let file = ref[0].trim()
     let path = ref[1].trim()
 
+
+    // relative references might point to the same file or definitions.json
+
     if (file.length === 0) {
-      file = 'definitions.json'
+      file = refObject.refFile
     }
 
     if (path.length === 0) {
@@ -523,6 +538,22 @@ class Parser {
     }
 
     path = path.split('/')
+
+    function canBeResolved(cursor, path) {
+      let result = true
+      path.forEach(key => {
+        if (cursor !== null && typeof cursor === 'object' && typeof cursor[key] !== 'undefined') {
+          cursor = cursor[key]
+        } else {
+          result = false
+        }
+      })
+      return result
+    }
+
+    if (!canBeResolved(this.files[file], path)) {
+      file = 'definitions.json'
+    }
     let cursor = this.files[file]
 
     path.forEach(key => {
