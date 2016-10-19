@@ -418,7 +418,7 @@ effect as described here.</p></blockquote><p>This can be a lot of messages, many
   <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.self&quot;</span>,
   <span class="hljs-string">&quot;unsubscribe&quot;</span>: [
     {
-      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
     }
   ]
 }</code></pre>
@@ -438,8 +438,8 @@ effect as described here.</p></blockquote><p>This can be a lot of messages, many
     }
   ]
 }</code></pre>
-<ul><li><code>path=[path.to.key]</code> is appended to the context to specify subsets of the context. The path value can use jsonPath
-syntax.
+<ul><li><code>path=[path.to.key]</code> is appended to the context to specify subsets of the context.
+The path value can use the wildcard <code>*</code>. A wildcard in the middle of a path (<code>propulsion/*/oilTemperature</code>) allows any value for that part and a wildcard at the end (<code>propulsion/port/*</code>) matches all paths beginning with the specified prefix.
 </li></ul>
 <p>The following are optional, included above only for example as it uses defaults anyway:</p><ul><li><code>period=[millisecs]</code> becomes the transmission rate, e.g. every <code>period/1000</code> seconds. Default=1000
 </li>
@@ -459,10 +459,10 @@ those items for the self vessel.</p><p>This can be achieved by a default WebSock
   <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.self&quot;</span>,
   <span class="hljs-string">&quot;subscribe&quot;</span>: [
     {
-      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;environment.depth.belowTransducer&quot;</span>,
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;environment.depth.belowTransducer&quot;</span>
     },
     {
-      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedThroughWater&quot;</span>,
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedThroughWater&quot;</span>
     }
   ]
 }</code></pre>
@@ -537,7 +537,7 @@ message in the buffer.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"next":{"title":"Background and Design Rationale","level":"1.5","depth":1,"path":"design_notes.md","ref":"design_notes.md","articles":[]},"previous":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"subscription_protocol.md","mtime":"2016-09-30T19:08:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-09T18:06:36.253Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"next":{"title":"Background and Design Rationale","level":"1.5","depth":1,"path":"design_notes.md","ref":"design_notes.md","articles":[]},"previous":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"subscription_protocol.md","mtime":"2016-10-18T20:13:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-10-19T04:42:23.899Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
