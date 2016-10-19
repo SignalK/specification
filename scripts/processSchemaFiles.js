@@ -78,10 +78,21 @@ class Parser {
     .then(() => fs.mkdir(path.join(this.options.output, 'html')))
     .then(() => parser(schema)) // parse the schema
     .then(files => {
+      function createFileKeyDecorator(fileKey) {
+        return (value, index, object) => {
+          if (index == "$ref") {
+            return {
+              refString: value,
+              refFile: fileKey
+            }
+          }
+        }
+      }
+
       Object.keys(files).forEach(key => {
         let k = key.replace('https://signalk.github.io/specification/schemas/', '')
         k = k.replace('#', '')
-        files[k] = files[key]
+        files[k] = _.cloneDeep(files[key], createFileKeyDecorator(k))
         delete files[key]
       })
 
@@ -402,7 +413,8 @@ class Parser {
         }
 
         if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
-          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf)
+          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf, 
+            _.omit(this.tree[`${prefix}/${key}`], ['properties', 'allOf', 'patternProperties', '$key']))
         }
 
         if (this.hasProperties(this.tree[`${prefix}/${key}`])) {
@@ -422,16 +434,15 @@ class Parser {
     return data
   }
 
-  parseAllOf (treePrefix, allOf) {
+  parseAllOf (treePrefix, allOf, baseObject) {
     if (!Array.isArray(allOf)) {
       return
     }
 
-    let temp = {}
     let readablePrefix = `${treePrefix.split('/')[treePrefix.split('/').length - 2]}/${treePrefix.split('/')[treePrefix.split('/').length - 1]}`
 
-    temp = allOf.map(obj => {
-      if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] === 'string') {
+    let temp = [baseObject].concat(allOf).map(obj => {
+      if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] !== 'undefined') {
         const ref = this.resolveReference(obj['$ref'])
 
         if (ref !== null && typeof ref !== 'undefined') {
@@ -469,7 +480,9 @@ class Parser {
 
       Object.keys(obj).forEach(key => {
         if (key !== 'properties' && key !== 'patternProperties' && key !== 'allOf' && key !== '$ref') {
-          result[key] = obj[key]
+          if (!result[key]) {
+            result[key] = obj[key]
+          }
         }
 
         if (key === 'properties') {
@@ -501,7 +514,8 @@ class Parser {
     return result
   }
 
-  resolveReference (origRef) {
+  resolveReference (refObject) {
+    const origRef = refObject.refString
     if (typeof origRef !== 'string') {
       return null
     }
@@ -510,8 +524,9 @@ class Parser {
     let file = ref[0].trim()
     let path = ref[1].trim()
 
+
     if (file.length === 0) {
-      file = 'definitions.json'
+      file = refObject.refFile
     }
 
     if (path.length === 0) {
@@ -523,15 +538,14 @@ class Parser {
     }
 
     path = path.split('/')
+
+    // relative references might point to the same file or definitions.json
+    if (_.get(this.files[file], path, "NOT_DEFINED") === "NOT_DEFINED") {
+      file = 'definitions.json'
+    }
     let cursor = this.files[file]
 
-    path.forEach(key => {
-      if (cursor !== null && typeof cursor === 'object' && typeof cursor[key] !== 'undefined') {
-        cursor = cursor[key]
-      }
-    })
-
-    return cursor
+    return _.get(cursor, path)
   }
 
   parseOptions () {
