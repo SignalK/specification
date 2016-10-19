@@ -20,7 +20,6 @@
 const _ = require('lodash')
 const fs = require('mz/fs')
 const path = require('path')
-const parser = require('json-schema-load-tree').default
 const rimraf = require('rimraf')
 const markdown = new (require('markdown-it'))()
 
@@ -63,41 +62,19 @@ class Parser {
     this.tree = {}
     this.docs = {}
     this.invalid = []
-    this.files = []
+    this.fileCache = {}
 
     this.parseOptions()
     this.parse()
   }
 
   parse () {
-    const schema = require(this.options.entry)
-
     this
     .rm(this.options.output) // remove build directory
     .then(() => fs.mkdir(this.options.output)) // create a new build directory
     .then(() => fs.mkdir(path.join(this.options.output, 'html')))
-    .then(() => parser(schema)) // parse the schema
-    .then(files => {
-      function createFileKeyDecorator(fileKey) {
-        return (value, index, object) => {
-          if (index == "$ref") {
-            return {
-              refString: value,
-              refFile: fileKey
-            }
-          }
-        }
-      }
-
-      Object.keys(files).forEach(key => {
-        let k = key.replace('https://signalk.github.io/specification/schemas/', '')
-        k = k.replace('#', '')
-        files[k] = _.cloneDeep(files[key], createFileKeyDecorator(k))
-        delete files[key]
-      })
-
-      this.files = files
-      return this.files['signalk.json']
+    .then(() => {
+      return this.getFile(this.options.entry, '/')
     })
 
     /*
@@ -520,7 +497,7 @@ class Parser {
       return null
     }
 
-    const ref = origRef.replace('../', '').split('#')
+    const ref = origRef.split('#')
     let file = ref[0].trim()
     let path = ref[1].trim()
 
@@ -530,7 +507,7 @@ class Parser {
     }
 
     if (path.length === 0) {
-      return this.files[file]
+      return this.getFile(file, refObject.refFile)
     }
 
     if (path.charAt(0) === '/') {
@@ -539,13 +516,39 @@ class Parser {
 
     path = path.split('/')
 
-    // relative references might point to the same file or definitions.json
-    if (_.get(this.files[file], path, "NOT_DEFINED") === "NOT_DEFINED") {
-      file = 'definitions.json'
+    let cursor = this.getFile(file, refObject.refFile)
+    const result = _.get(cursor, path, "NOT_DEFINED")
+    if (result === "NOT_DEFINED") {
+      console.error("Failed to resolve reference!", JSON.stringify(refObject))
     }
-    let cursor = this.files[file]
+    return result
+  }
 
-    return _.get(cursor, path)
+  getFile (filename, fromFilename) {
+    let filePath = filename
+    if (!fs.existsSync(filePath)) {
+      let directory = path.dirname(fromFilename ? fromFilename : this.options.entry)
+      filePath = path.join(directory, filename)
+    }
+    if (this.fileCache[filePath]) {
+      return this.fileCache[filePath]
+    }
+    let content = fs.readFileSync(filePath, {encoding: this.options.encoding})
+    if (!content) {
+      console.error("Failed to read", filename)
+    }
+
+    function decorateWithFilename(value, index) {
+      if (index == "$ref") {
+        return {
+          refString: value,
+          refFile: filePath
+        }
+      }
+    }
+    const result = _.cloneDeep(JSON.parse(content), decorateWithFilename)
+    this.fileCache[filePath] = result
+    return result
   }
 
   parseOptions () {
