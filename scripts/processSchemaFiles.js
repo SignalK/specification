@@ -499,25 +499,29 @@ class Parser {
 
     const ref = origRef.split('#')
     let file = ref[0].trim()
-    let path = ref[1].trim()
+    let keyPath = ref[1].trim()
 
 
     if (file.length === 0) {
       file = refObject.refFile
     }
 
-    if (path.length === 0) {
+    if (keyPath.length === 0) {
+      if (path.basename(refObject.refFile) === file) {
+        console.error("Avoiding full file self recursion to stop forever loop", refObject.refFile, "->", file)
+        return {}
+      }
       return this.getFile(file, refObject.refFile)
     }
 
-    if (path.charAt(0) === '/') {
-      path = path.replace(/^\//, '')
+    if (keyPath.charAt(0) === '/') {
+      keyPath = keyPath.replace(/^\//, '')
     }
 
-    path = path.split('/')
+    keyPath = keyPath.split('/')
 
     let cursor = this.getFile(file, refObject.refFile)
-    const result = _.get(cursor, path, "NOT_DEFINED")
+    const result = _.get(cursor, keyPath, "NOT_DEFINED")
     if (result === "NOT_DEFINED") {
       console.error("Failed to resolve reference!", JSON.stringify(refObject))
     }
