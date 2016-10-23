@@ -15,8 +15,7 @@
       "type": "object",
       "description": "Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
       "required": [
-        "label",
-        "type"
+        "label"
       ],
       "properties": {
         "label": {
@@ -49,13 +48,17 @@
           "type": "string",
           "description": "Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
           "example":"GP"
+        },
+        "instance": {
+					"type": "string"			
         }
       }
     },
 
     "sourceRef": {
       "type": "string",
-      "description": "Reference to the source under vessel's sources. A dot spearated path to the data. eg [type].[bus].[device]",
+      "pattern": "^[A-Za-z0-9-_.]*$",
+      "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]",
       "example":"NMEA0183.COM1.GP"
     },
 

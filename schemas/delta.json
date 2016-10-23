@@ -16,21 +16,17 @@
       "description": "The updates",
       "items": {
         "type": "object",
-        "required": [
-        "values"        ],
+       	"required": ["values"],
+				
+       	"not":{"allOf": [ 
+					{"required": ["source"]},
+					{"required": ["$source"]}
+				]}
+				,
+            
         "properties": {
-          "source": {
-            "allOf": [
-              {
-              "$ref": "./definitions.json#/definitions/source"              },
-              {
-                "properties": {
-                  "instance": {
-                  "type": "string"                  }
-                }
-              }
-            ]
-          },
+        	"$source": {"$ref": "./definitions.json#/definitions/sourceRef"},
+        	"source": {"$ref": "./definitions.json#/definitions/source"},
           "timestamp": {
           "$ref": "./definitions.json#/definitions/timestamp"          },
           "values": {
