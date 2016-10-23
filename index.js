@@ -46,6 +46,12 @@ function getTv4() {
   for (var schema in subSchemas) {
     tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
+
+  // HACK! two different IDs should not point to the same schema
+  var externalGeometry = require('./schemas/external/geojson/geometry.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/external/geojson/geometry.json', externalGeometry);
+  tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
+
   return tv4;
 }
 
