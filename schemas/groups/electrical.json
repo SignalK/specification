@@ -405,7 +405,7 @@
                 },
 
                 "$source": {
-                  "$ref": "../definitions.json#/definitions/$source"
+                  "$ref": "../definitions.json#/definitions/sourceRef"
                 }
               }
             }
