@@ -36,11 +36,11 @@ By default a Signal K server will provide a new WebSocket client with a delta st
 
 This can be a lot of messages, many you may not need, especially if `vessel.self` has many sensors, or other data sources. Generally you will want to subscribe to a much smaller range of data.
 
-First you will want to unsubscribe from the current default (or you may have already connected with `ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message and send the message over the websocket connection:
+First you will want to unsubscribe from the current default (or you may have already connected with `ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message with wildcards and send the message over the websocket connection:
 
 ```json
 {
-  "context": "vessels.self",
+  "context": "*",
   "unsubscribe": [
     {
       "path": "*"
