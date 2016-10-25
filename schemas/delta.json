@@ -5,50 +5,63 @@
   "title": "SignalK Delta message schema",
   "description": "Schema for defining updates and subscriptions to parts of a SignalK data model, for example for communicating updates of data",
   "required": [
-  "updates"  ],
+    "updates"
+  ],
   "properties": {
     "context": {
       "type": "string",
       "description": "The context path of the updates, eg. the top level path plus object identifier.",
-    "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"    },
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+    },
     "updates": {
       "type": "array",
       "description": "The updates",
       "items": {
         "type": "object",
-       	"required": ["values"],
-				
-       	"not":{"allOf": [ 
-					{"required": ["source"]},
-					{"required": ["$source"]}
-				]}
-				,
-            
+        "required": ["values"],
+
+        "not": {
+          "allOf": [{
+            "required": ["source"]
+          }, {
+            "required": ["$source"]
+          }]
+        },
+
         "properties": {
-        	"$source": {"$ref": "./definitions.json#/definitions/sourceRef"},
-        	"source": {"$ref": "./definitions.json#/definitions/source"},
+          "$source": {
+            "$ref": "./definitions.json#/definitions/sourceRef"
+          },
+          "source": {
+            "$ref": "./definitions.json#/definitions/source"
+          },
           "timestamp": {
-          "$ref": "./definitions.json#/definitions/timestamp"          },
+            "$ref": "./definitions.json#/definitions/timestamp"
+          },
           "values": {
             "type": "array",
             "items": {
               "type": "object",
               "required": [
                 "path",
-              "value"              ],
+                "value"
+              ],
               "properties": {
                 "path": {
                   "type": "string",
                   "description": "The local path to the data value",
-                "example": "navigation.courseOverGroundMagnetic"                },
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
                 "value": {
                   "type": [
                     "string",
                     "number",
                     "object",
                     "boolean",
-                  "null"                  ],
-                "additionalProperties": true                }
+                    "null"
+                  ],
+                  "additionalProperties": true
+                }
               }
             }
           }
@@ -62,34 +75,42 @@
         "type": "object",
         "properties": {
           "path": {
-          	"description": "The relative path of the subscription,  supports jsonPath syntax for complex matches",
-          "type": "string"          },
+            "description": "The relative path of the subscription,  supports jsonPath syntax for complex matches",
+            "type": "string"
+          },
           "period": {
-          	"description": "The period to repeat the message in millisecs",
-          	"example": 1000,
-          	"default": 1000, 
-          "type": "integer"          },
+            "description": "The period to repeat the message in millisecs",
+            "example": 1000,
+            "default": 1000,
+            "type": "integer"
+          },
           "format": {
             "type": "string",
             "description": "The message format for periodic messages",
             "enum": [
-							"full",
-						"delta"						],
-					"default":"delta"          },
+              "full",
+              "delta"
+            ],
+            "default": "delta"
+          },
           "policy": {
-          	"type": "string",
-          	"description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
+            "type": "string",
+            "description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
             "enum": [
-							"instant",
-							"ideal",
-						"fixed"						],
-					"default":"ideal"          },
+              "instant",
+              "ideal",
+              "fixed"
+            ],
+            "default": "ideal"
+          },
           "minPeriod": {
             "type": "integer",
-          "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."          }
+            "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."
+          }
         },
         "required": [
-        "path"        ]
+          "path"
+        ]
       }
     },
     "unsubscribe": {
@@ -98,35 +119,43 @@
       "items": {
         "type": "object",
         "properties": {
-        	"path": {
-          	"description": "The relative path to unsubscribe,  supports jsonPath syntax for complex matches",
-          "type": "string"          },
+          "path": {
+            "description": "The relative path to unsubscribe,  supports jsonPath syntax for complex matches",
+            "type": "string"
+          },
           "period": {
-          	"description": "The period to repeat the message in millisecs",
-          	"example": 1000,
-          	"default": 1000, 
-          "type": "integer"          },
+            "description": "The period to repeat the message in millisecs",
+            "example": 1000,
+            "default": 1000,
+            "type": "integer"
+          },
           "format": {
             "type": "string",
             "description": "The message format for periodic messages",
             "enum": [
-							"full",
-						"delta"						],
-					"default":"delta"          },
+              "full",
+              "delta"
+            ],
+            "default": "delta"
+          },
           "policy": {
-          	"type": "string",
-          	"description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
+            "type": "string",
+            "description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
             "enum": [
-							"instant",
-							"ideal",
-						"fixed"						],
-					"default":"ideal"          },
+              "instant",
+              "ideal",
+              "fixed"
+            ],
+            "default": "ideal"
+          },
           "minPeriod": {
             "type": "integer",
-          "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."          }
+            "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."
+          }
         },
         "required": [
-        "path"        ]
+          "path"
+        ]
       }
     },
     "get": {
@@ -137,10 +166,12 @@
         "properties": {
           "path": {
             "type": "string",
-          "description": "The relative path to GET,  supports jsonPath syntax for complex matches"          }
+            "description": "The relative path to GET,  supports jsonPath syntax for complex matches"
+          }
         },
         "required": [
-        "path"        ]
+          "path"
+        ]
       }
     },
     "list": {
@@ -151,10 +182,12 @@
         "properties": {
           "path": {
             "type": "string",
-          "description": "The relative path to list keys for,  supports jsonPath syntax for complex matches"          }
+            "description": "The relative path to list keys for,  supports jsonPath syntax for complex matches"
+          }
         },
         "required": [
-        "path"        ]
+          "path"
+        ]
       }
     },
     "put": {
@@ -165,18 +198,22 @@
         "properties": {
           "path": {
             "type": "string",
-          "description": "The relative path to set."          },
-					"value": {
-						"type": [
-							"string",
-							"number",
-							"object",
-							"boolean",
-						"null"						],
-					"description": "The value to set at the path"        },
-					"required": [
-						"path",
-          "value"        ]
+            "description": "The relative path to set."
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "object",
+              "boolean",
+              "null"
+            ],
+            "description": "The value to set at the path"
+          },
+          "required": [
+            "path",
+            "value"
+          ]
         }
       }
     }
