@@ -74,10 +74,16 @@
           "description": "Autopilot target",
           "properties": {
             "angle": {
-              "description": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard",
+              "description": "Target heading for autopilot, relative to magnetic North",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
+
+            "wind": {
+              "description": "Target Apparent wind for autopilot, +port -starboard",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },	    
     
             "reference": {
               "type": "object",
