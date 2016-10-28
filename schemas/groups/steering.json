@@ -25,48 +25,50 @@
         "state": {
           "type": "object",
           "description": "Autopilot state",
-
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "auto",
-                "standby",
-                "alarm",
-                "noDrift",
-                "wind",
-                "depthContour",
-                "route",
-                "directControl"
-
-              ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
             },
-
-            "timestamp": {
-              "description": "timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "auto",
+                    "standby",
+                    "alarm",
+                    "noDrift",
+                    "wind",
+                    "depthContour",
+                    "route",
+                    "directControl"
+                  ]
+                }
+              }
             }
-          }
+          ]
         },
 
         "mode": {
           "type": "object",
           "description": "Operational mode",
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "powersave",
-                "normal",
-                "accurate"
-              ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
             },
-
-            "timestamp": {
-              "description": "Timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "powersave",
+                    "normal",
+                    "accurate"
+                  ]
+                }
+              }
             }
-          }
+          ]
         },
         "target": {
           "type": "object",
@@ -78,28 +80,31 @@
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
-    
+
             "reference": {
               "type": "object",
               "description": "Current source of heading information",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "enum": [
-                    "compass",
-                    "wind",
-                    "gps"
-                  ]
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
                 },
-                "timestamp": {
-                  "description": "Timestamp of the last update to this data",
-                  "$ref": "../definitions.json#/definitions/timestamp"
+                {
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "enum": [
+                        "compass",
+                        "wind",
+                        "gps"
+                      ]
+                    }
+                  }
                 }
-              }
+              ]
             }
           }
         },
-      
+
 
         "deadZone": {
           "description": "Dead zone to ignore for rudder corrections",
