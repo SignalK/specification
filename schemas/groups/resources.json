@@ -136,7 +136,7 @@
                       ]
                     },
                     "coordinates": {
-                      "$ref": "#/definitions/lineString"
+                      "$ref": "../external/geojson/geometry.json#/definitions/lineString"
                     }
                   }
                 },
@@ -252,7 +252,7 @@
                           ]
                         },
                         "coordinates": {
-                          "$ref": "#/definitions/polygon"
+                          "$ref": "../external/geojson/geometry.json#/definitions/polygon"
                         }
                       }
                     },
@@ -267,7 +267,7 @@
                         "coordinates": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/definitions/polygon"
+                            "$ref": "../external/geojson/geometry.json#/definitions/polygon"
                           }
                         }
                       }
