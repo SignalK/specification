@@ -802,13 +802,17 @@
     "shortName": "Mode",
     "longName": "Operational Mode of Autopilot"
   },
-  "steering.autopilot.target.angle": {
-    "shortName": "Target (relative) heading",
-    "longName": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard"
+  "steering.autopilot.target.windAngleApparent": {
+    "shortName": "Target wind heading",
+    "longName": "Target heading for autopilot, relative to Apparent wind +port -starboard"
   },
-  "steering.autopilot.target.reference": {
-    "shortName": "Heading Reference",
-    "longName": "Current Reference of Heading"
+  "steering.autopilot.target.headingTrue": {
+    "shortName": "Target true heading",
+    "longName": "Target heading for autopilot, relative to true North"
+  },
+  "steering.autopilot.target.headingMagnetic": {
+    "shortName": "Target magnetic heading",
+    "longName": "Target heading for autopilot, relative to magnetic North"
   },
   "steering.autopilot.deadZone": {
     "shortName": "Dead Zone",
