@@ -433,6 +433,16 @@
       "description": "Vessel speed through the water",
       "units": "m/s"
     },
+    "speedTransverseWater": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Transverse speed through the water (Leeway)",
+      "units": "m/s"
+    },
+    "leewayAngle": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "Leeway Angle derived from transverse speed through the water",
+      "units": "rad"
+    },
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Log value",
