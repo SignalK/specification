@@ -76,7 +76,7 @@
           "description": "Autopilot target",
           "properties": {
             "windAngleApparent": {
-              "description": "Target heading for autopilot, relative to Apparent wind +port -starboard",
+              "description": "Target angle to steer, relative to Apparent wind +port -starboard",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
