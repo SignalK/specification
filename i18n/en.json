@@ -803,8 +803,8 @@
     "longName": "Operational Mode of Autopilot"
   },
   "steering.autopilot.target.windAngleApparent": {
-    "shortName": "Target wind heading",
-    "longName": "Target heading for autopilot, relative to Apparent wind +port -starboard"
+    "shortName": "Target wind angle",
+    "longName": "Target angle to steer, relative to Apparent wind +port -starboard"
   },
   "steering.autopilot.target.headingTrue": {
     "shortName": "Target true heading",
