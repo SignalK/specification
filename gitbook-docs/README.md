@@ -11,7 +11,7 @@ version.
 ## What is Signal K?
 
 **Signal K** is a modern and open data format for marine use. It is an Internet friendly standard built on standard web
-technologies, such as JSON and WebSockets. Signal K is Free and Open Source software. This document is licensed under
+technologies. Signal K is Free and Open Source software. This document is licensed under
 the Creative Commons [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) license. All Signal K source code is
 licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). Signal K is developed in
 the open with help from the marine community. Your ideas and feedback are valuable and welcome.
@@ -48,7 +48,7 @@ understood by existing devices without the need for firmware upgrades.
 
 Signal K does not define the transport or wire protocol. Signal K messages are JSON text and can be sent over almost any
 transport layer. However, we do provide guidance on how to make an initial connection, handle negotiation,
-subscription, and disconnection for a given transport (e.g. TCP/IP or serial).
+subscription, and disconnection for a range of transports (e.g. TCP/IP or serial).
 
 Where possible we use well established standards like HTTPS, REST, WebSockets, MQTT, STOMP, etc. But within each method
 there are always many options in message addressing, formating, or transfer (GET, POST), etc.
