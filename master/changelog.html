@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>REST API · Signal K Documentation</title>
+        <title>Appendix B: Changelog · Signal K Documentation</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="streaming_api.html" />
     
-    
-    <link rel="prev" href="urls_etc.html" />
+    <link rel="prev" href="keys/" />
     
 
     </head>
@@ -249,7 +247,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="rest_api.html">
+        <li class="chapter " data-level="1.4.2" data-path="rest_api.html">
             
                 <a href="rest_api.html">
             
@@ -345,7 +343,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="changelog.html">
+        <li class="chapter active" data-level="1.8" data-path="changelog.html">
             
                 <a href="changelog.html">
             
@@ -388,7 +386,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >REST API</a>
+        <a href="." >Appendix B: Changelog</a>
     </h1>
 </div>
 
@@ -403,18 +401,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="resthttp-api-signalkv1api"><a name="resthttp-api-signalkv1api" class="plugin-anchor" href="#resthttp-api-signalkv1api"><i class="fa fa-link" aria-hidden="true"></i></a>REST/HTTP API: /signalk/v1/api/</h4><p>Note the trailing slash in the path.</p><p>The base URL MUST provide a Signal K document that is valid according to the full Signal K <a href="specification.html">schema
-specification</a>. The contents SHOULD be all the current values of the data items the
-server knows.</p><p>If the path following the base is a valid Signal K path <code>GET</code> MUST retrieve the Signal K branch named by the path; e.g.
-<code>/signalk/v1/api/vessels/123456789/navigation/speedThroughWater</code> returns</p><pre><code class="lang-json">{
-    <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">2.55</span>,
-    <span class="hljs-string">&quot;source&quot;</span>: {
-        <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
-        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;VHW&quot;</span>,
-        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;signalk-parser-nmea0183&quot;</span>
-    },
-    <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2015-08-31T05:45:36.000Z&quot;</span>
-}</code></pre>
+                                <h1 id="signal-k-specification-changelog"><a name="signal-k-specification-changelog" class="plugin-anchor" href="#signal-k-specification-changelog"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Specification Changelog</h1><ul><li>Version 0.0.1
+<ul><li>Change 1
+</li>
+<li>Change 2
+</li></ul>
+</li></ul>
+<ul><li>Version 0.0.0
+</li></ul>
 
                                 
                                 </section>
@@ -442,14 +436,10 @@ server knows.</p><p>If the path following the base is a valid Signal K path <cod
 
             
                 
-                <a href="urls_etc.html" class="navigation navigation-prev " aria-label="Previous page: Ports, Urls and Versioning">
+                <a href="keys/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Appendix A: Keys Reference">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="streaming_api.html" class="navigation navigation-next " aria-label="Next page: Streaming WebSocket API">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -458,7 +448,7 @@ server knows.</p><p>If the path following the base is a valid Signal K path <cod
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"REST API","level":"1.4.2","depth":2,"next":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"previous":{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"rest_api.md","mtime":"2016-10-23T14:23:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-03T21:18:10.602Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Appendix B: Changelog","level":"1.8","depth":1,"previous":{"title":"Appendix A: Keys Reference","level":"1.7","depth":1,"path":"keys/index.md","ref":"keys/index.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"changelog.md","mtime":"2016-10-25T16:47:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-03T21:18:10.602Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
