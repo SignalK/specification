@@ -4,6 +4,7 @@ A Signal K server SHOULD advertise its services over mDNS/Bonjour. The server MU
 
 * `_signalk-http._tcp` for http API
 * `_signalk-ws._tcp` for WebSocket
+* `_signalk-tcp._tcp` for raw TCP socket
 * `_signalk-https._tcp` for HTTPS API
 * `_signalk-wss._tcp` for secure WebSocket
 
