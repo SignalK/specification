@@ -1,3 +1,4 @@
+
 # Discovery and Connection Establishment
 
 #### Service Discovery
@@ -56,6 +57,7 @@ Using the information above a web client or http capable device can discover and
             "version": "1.1.2",
             "signalk-http": "http://192.168.1.2/signalk/v1/api/",
             "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
+            "signalk-tcp": "tcp://192.168.1.2:3858"
         }
      }
  }
