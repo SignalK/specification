@@ -75,21 +75,14 @@ Upon accepting a connection a server MUST send a 'hello' message before any othe
 ```json
 {
   "version": "1.1.2",
-  "source": "actisense.ngw-1.1234567",
   "timestamp": "2015-04-13T01:13:50.524Z",
   "self": "123456789"
 }
 ```
 
-"version" - The 'hello' message MUST contain a "version" element which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will be sent by the server.
+"version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will be sent by the server.
 
-"source" - The 'hello' message MUST contain a "source" element which MUST have a string value that identifies the server as follows: manufacturer/publisher.device/application.uuid, where:
-* maufacturer is the name of a manufacturer or publisher in the list maintained in this repository
-* device is the name of a device or software application made by the manufacturer or publisher in the list maintained in this repository
-* uuid is a uneque identifier attributed to the physical device or installation of the application by the manufacturer/publisher
-When a source is not provided in a signalk-delta message the client SHOULD take the source from the 'hello' as a default.
+"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the server that the 'hello' mesage was sent at. The client SHOULD compare the timestamp to the local time at the client at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the server.
 
-"timestamp" - The 'hello' message SHOULD contain a "timestamp" element which MUST have a string value representing the date and time at the server that the 'hello' mesage was sent at. The client SHOULD compare the timestamp to the local time at the client at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the server.
-
-"self" - The 'hello' massege MAY contain a "self" element whcih MUST have a string value that identifies the vessle the message pertains to.
+"self" - The 'hello' massege MAY contain a "self" property which MUST have a string value that identifies the vessle the message pertains to.
 
