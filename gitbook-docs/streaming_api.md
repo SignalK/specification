@@ -24,13 +24,13 @@ Upon connection a 'hello' message is sent as follows:
 }
 ```
 
-#### Streaming: raw TCP sockets
+#### Streaming: TCP sockets
 
-A signalk server MAY stream signalk-delta over a raw TCP socket.
+A signalk server MAY stream signalk-delta over a TCP socket.
 
-When signalk-delta is streamed over a raw TCP socket:
+When signalk-delta is streamed over a TCP socket:
 
-1. The first character of each signalk-delta message MUST be the openning curly bracke (char(123), '{').
+1. The first character of each signalk-delta message MUST be the openning curly bracket (char(123), '{').
 2. Each signalk-delta message MUST be terminated by a carriage return and new line (char(10) + char(13), '\r\n') sent after the final closing curly bracket (char(125), '}').
 3. The server SHOULD send signalk-delta in a compact manner with any unnessesary white space removed.
 4. The server MAY also send sentences for other protocals (e.g. NMEA0183) interleaved with the signalk-delta messages provided that sentences of the other protocal:
