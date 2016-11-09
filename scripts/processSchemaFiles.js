@@ -224,6 +224,8 @@ class Parser {
         filenames[result.name] = result.path
       })
 
+      const keysWithMeta = {}
+
       let md = '# Signal K Data Model Reference\n\n'
 
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
@@ -258,6 +260,12 @@ class Parser {
           this.debug(`Error parsing JSON for path ${path}: ${e.message}`)
         }
 
+        const key = path.replace(/</g, '').replace(/>/g, '').replace('RegExp', '*')
+        keysWithMeta[key] = {
+          units: json.units,
+          description: doc.description === null ? '[missing]' : doc.description
+        }
+
         // md += `### [${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}](http://signalk.org/specification/master/keys/html/${fn.replace('.md', '.html')})\n\n`
         md += `#### ${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}\n\n`
 
@@ -280,6 +288,8 @@ class Parser {
 
         md += '---\n\n'
       })
+
+      fs.writeFile(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
 
       return fs.writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding).then(() => {
         results.push({
@@ -413,7 +423,7 @@ class Parser {
         }
 
         if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
-          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf, 
+          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf,
             _.omit(this.tree[`${prefix}/${key}`], ['properties', 'allOf', 'patternProperties', '$key']))
         }
 
