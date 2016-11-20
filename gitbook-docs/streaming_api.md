@@ -26,10 +26,12 @@ Upon connection a 'hello' message is sent as follows:
 
 #### Streaming: TCP sockets
 
-A Signal K server MAY stream signalk-delta over a TCP socket.
+A network node MAY stream signalk-delta over a TCP socket.
 
-When signalk-delta is streamed over a TCP socket:
+When a hello or signalk-delta message is sent over a TCP socket:
 
-1. Each signalk-delta message MUST be terminated by a carriage return and new line (char(10) + char(13), '\r\n') sent immediatly after the final closing curly bracket (char(125), '}'). Note: It is common for the APIs for Ethernet and WiFi devices to close a TCP packet when a line feed ( char(13) ) is received.
-2. The first character of each signalk-delta message SHOULD be the openning curly bracket (char(123), '{').
-3. The server SHOULD send signalk-delta in a compact manner with any unnessesary white space removed.
+1. Each message MUST be terminated by a carriage return and new line (char(10) + char(13), '\r\n') sent immediatly after the final closing curly bracket (char(125), '}').
+2. The first character of each message SHOULD be the openning curly bracket (char(123), '{').
+3. The message SHOULD be sent with any unnessesary white space removed.
+
+Note on hardware implementation: The serial APIs for ethernet and wifi modules often close a TCP or UDP packet on receipt of a new line ( char(13) ). Please check the data sheet and ensure the new line character is still sent.
