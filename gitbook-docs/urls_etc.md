@@ -65,7 +65,7 @@ See [Subscription Protocol](subscription_protocol.html) for more details.
 
 #### Streaming Connection "Hello"
 
-Before a node sends any signalk-delta messages over a streaming connection it MUST send a 'hello' message. The format of the 'hello' message is as follows:
+Before a node sends any signalk-delta messages over a Web Socket or TCP connection it MUST send a 'hello' message. The format of the 'hello' message is as follows:
 
 ```json
 {
