@@ -1,4 +1,4 @@
- #### Streaming WebSocket API: /signalk/v1/stream
+3 #### Streaming WebSocket API: /signalk/v1/stream
 
 Initiates a WebSocket connection that will start streaming the server's updates as Signal K delta messages. You can specify the contents of the stream by using a specific URL:
 
@@ -30,8 +30,8 @@ A network node MAY stream signalk-delta over a TCP socket.
 
 When a hello or signalk-delta message is sent over a TCP socket:
 
-1. Each message MUST be terminated by a carriage return and new line (char(10) + char(13), '\r\n') sent immediatly after the final closing curly bracket (char(125), '}').
+1. Each message MUST be terminated by a carriage return and new line (char(13) + char(10), '\r\n') sent immediatly after the final closing curly bracket (char(125), '}').
 2. The first character of each message SHOULD be the openning curly bracket (char(123), '{').
 3. The message SHOULD be sent with any unnessesary white space removed.
 
-Note on hardware implementation: The serial APIs for ethernet and wifi modules often close a TCP or UDP packet on receipt of a new line ( char(13) ). Please check the data sheet and ensure the new line character is still sent.
+Note on hardware implementation: The serial APIs for ethernet and wifi modules often close a TCP or UDP packet on receipt of a new line ( char(10) ). Please check the data sheet and ensure the new line character is still sent.
