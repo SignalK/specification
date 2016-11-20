@@ -3,7 +3,7 @@
 ### Short Names
 
 - `self` refers to the current vessel. Normally used in `vessels.self...`.
--### Ports
+### Ports
 
 The Signal K HTTP and WebSocket services SHOULD be found on the usual HTTP/S ports (80 or 443). The services SHOULD be
 found on the same port, but may be configured for independent ports and MAY be configured for ports other than HTTP/S.
@@ -13,7 +13,7 @@ A Signal K server MAY offer Signal K over TCP or UDP, these services SHOULD be o
 If an alternate port is needed it SHOULD be an arbitrary high port in the range 49152&ndash;65535[[2]](#fn_2).
 
 ### URL Prefix
-Tihe Signal K applications start from the `/signalk` root. This provides some protection against name collisions with
+aTihe Signal K applications start from the `/signalk` root. This provides some protection against name collisions with
 other applications on the same server. Therefore the Signal K entry point will always be found by loading
 `http(s)://«host»:«port»/signalk`.
 
@@ -23,8 +23,7 @@ The version(s) of the Signal K API that a server supports SHALL be available as 
 ```json
 {
     "endpoints": {        "v1": {
-            "version": "1.1.2",            "signalk-http": "http://192.168.1.2/signalk/v1/api/",
-            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
+            "version": "1.1.2",            "signalk-http": "http://192.168.1.2/signalk/v1/api/",            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
         },
         "v3": {
             "version": "3.0",
@@ -80,5 +79,5 @@ Before a node sends any signalk-delta messages over a streaming connection it MU
 
 "timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the node that sent the 'hello' mesage. The timestamp SHOULD be synchronised with UTC. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages received from the sending node.
 
-"self" - The 'hello' massege MAY contain a "self" property which MUST have a string value that identifies the vessle the message pertains to.
+"self" - The 'hello' massage MAY contain a "self" property which MUST have a string value that identifies the vessel the message pertains to.
 
