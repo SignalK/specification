@@ -70,7 +70,7 @@ See [Subscription Protocol](subscription_protocol.html) for more details.
 
 #### Streaming Connection "Hello"
 
-Upon accepting a connection a server MUST send a 'hello' message before any other communicaiton is sent. The format of the 'hello' message is as follows:
+Before a node sends any signalk-delta messages over a streaming connection it MUST send a 'hello' message. The format of the 'hello' message is as follows:
 
 ```json
 {
@@ -80,9 +80,9 @@ Upon accepting a connection a server MUST send a 'hello' message before any othe
 }
 ```
 
-"version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will be sent by the server.
+"version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will follow.
 
-"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the server that the 'hello' mesage was sent at. The client SHOULD compare the timestamp to the local time at the client at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the server.
+"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the node that node that sent the 'hello' mesage. The timestamp SHOULD be synchronised with UTC. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the sending node.
 
 "self" - The 'hello' massege MAY contain a "self" property which MUST have a string value that identifies the vessle the message pertains to.
 
