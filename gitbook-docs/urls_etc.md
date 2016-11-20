@@ -3,7 +3,6 @@
 ### Short Names
 
 - `self` refers to the current vessel. Normally used in `vessels.self...`.
-
 ### Ports
 
 The Signal K HTTP and WebSocket services SHOULD be found on the usual HTTP/S ports (80 or 443). The services SHOULD be
@@ -14,7 +13,6 @@ A Signal K server MAY offer Signal K over TCP or UDP, these services SHOULD be o
 If an alternate port is needed it SHOULD be an arbitrary high port in the range 49152&ndash;65535[[2]](#fn_2).
 
 ### URL Prefix
-
 The Signal K applications start from the `/signalk` root. This provides some protection against name collisions with
 other applications on the same server. Therefore the Signal K entry point will always be found by loading
 `http(s)://«host»:«port»/signalk`.
@@ -24,8 +22,7 @@ other applications on the same server. Therefore the Signal K entry point will a
 The version(s) of the Signal K API that a server supports SHALL be available as a JSON object available at `/signalk`:
 ```json
 {
-    "endpoints": {
-        "v1": {
+    "endpoints": {        "v1": {
             "version": "1.1.2",
             "signalk-http": "http://192.168.1.2/signalk/v1/api/",
             "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
@@ -82,7 +79,7 @@ Before a node sends any signalk-delta messages over a streaming connection it MU
 
 "version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will follow.
 
-"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the node that node that sent the 'hello' mesage. The timestamp SHOULD be synchronised with UTC. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the sending node.
+"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the node that sent the 'hello' mesage. The timestamp SHOULD be synchronised with UTC. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages recieved from the sending node.
 
 "self" - The 'hello' massege MAY contain a "self" property which MUST have a string value that identifies the vessle the message pertains to.
 
