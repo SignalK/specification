@@ -77,7 +77,11 @@ Before a node sends any signalk-delta messages over a Web Socket or TCP connecti
 
 "version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will follow.
 
-"timestamp" - The 'hello' message SHOULD contain a "timestamp" property which MUST have a string value representing the date and time at the node that sent the 'hello' mesage. The timestamp SHOULD be synchronised with UTC. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages received from the sending node.
+"timestamp" - The 'hello' message SHOULD contain a "timestamp" property.
+
+1. The timestamp MUST have a string value representing the date and time at the node that sent the 'hello' message.
+2. The timestamp SHOULD be synchronised with UTC. UTC timestamps MUST end with a capital Z.
+3. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages received from the sending node. If it can not perform this function it MUST delete the timestamp and treat the message as if it had no timestamp.
 
 "self" - The 'hello' massage MAY contain a "self" property which MUST have a string value that identifies the vessel the message pertains to.
 
