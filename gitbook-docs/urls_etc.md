@@ -77,6 +77,6 @@ Upon connection a 'hello' message is sent as follows:
 {
   "version": "1.1.2",
   "timestamp": "2015-04-13T01:13:50.524Z",
-  "self": "123456789"
+  "self": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d"
 }
 ```

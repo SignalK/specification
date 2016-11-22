@@ -15,6 +15,7 @@
   * [Streaming WebSocket API](streaming_api.md)
   * [Discovery & Connection Establishment](connection.md)
   * [Subscription Protocol](subscription_protocol.md)
+  * [Notifications](notifications.md)
 * [Background and Design Rationale](design_notes.md)
 * [How Can I Help?](how_to_help.md)
 * [Appendix A: Keys Reference](keys/index.md)

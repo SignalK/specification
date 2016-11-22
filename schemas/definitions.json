@@ -50,7 +50,7 @@
           "example":"GP"
         },
         "instance": {
-					"type": "string"			
+					"type": "string"
         }
       }
     },
@@ -510,7 +510,7 @@
           "type": "array",
           "title": "Zones schema.",
           "description": "The zones defining the range of values for this signalk value.",
-          "items": [{
+          "items": {
             "type": "object",
             "title": "zone",
             "description": "A zone used to define the display and alarm state when the value is in between bottom and top.",
@@ -546,7 +546,7 @@
                 "default": "Warning"
               }
             }
-          }]
+          }
         }
       }
     },

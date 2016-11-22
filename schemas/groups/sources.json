@@ -21,7 +21,7 @@
                   "type": "object",
                   "patternProperties": {
                     "^[A-Z][A-Z][A-Z]$": {
-                      "$ref": "#/definitions/timestamp"
+                      "$ref": "../definitions.json#/definitions/timestamp"
                     }
                   }
                 },
@@ -37,7 +37,7 @@
                       "description": "NMEA 2000 pgn number",
                       "patternProperties": {
                         "[0-9]*": {
-                          "$ref": "#/definitions/timestamp"
+                          "$ref": "../definitions.json#/definitions/timestamp"
                         }
                       }
                     },

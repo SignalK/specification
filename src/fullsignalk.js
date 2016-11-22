@@ -27,14 +27,13 @@ function FullSignalK(id, type, defaults) {
 
   this.root = {
     vessels: {},
+    self: id,
     version: "0.1.0" // Should we read this from the package.json file?
   };
   if (id) {
     this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
     this.self = this.root.vessels[id];
-    if (type) {
-      this.root.vessels[id][type] = id;
-    }
+    signalkSchema.fillIdentity(this.root)
   }
   this.sources = {};
   this.root.sources = this.sources;
