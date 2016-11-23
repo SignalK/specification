@@ -1,0 +1,99 @@
+{
+  "self":"urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "entertainment": {
+        "input": {
+          "fusion1": {
+            "name": "Sirius XM",
+            "deviceType": "satelliteRadioTuner",
+            "track": {
+              "name": "Locomotive Breath",
+              "artistName": "Jethro Tull",
+              "number": 17,
+              "totalTracks": 18,
+              "genre": "Rock",
+              "releaseDate": 1978,
+              "albumName": "Bursting Out",
+              "elapsedTime": 93,
+              "length": 333
+            },
+            "tuner": {
+              "mode": "siriusXM",
+              "frequency": 26,
+              "stationName": "Classic Vinyl",
+              "isStereo": true,
+              "signalStrength": -7.5
+            }
+          },
+          "fusion2": {
+            "name": "iPod",
+            "deviceType": "iPod Dock",
+            "playbackState": "Playing",
+            "playbackSpeed": 1,
+            "repeatState": "Repeat Track",
+            "shuffleState": "None",
+            "track": {
+              "name": "Sweet Caroline",
+              "artistName": "Neil Diamond",
+              "number": 1,
+              "totalTracks": 1,
+              "genre": "Rock",
+              "releaseDate": 1969,
+              "albumName": "Sweet Caroline (Single)",
+              "elapsedTime": 25,
+              "length": 201
+            }
+          }
+        },
+        "output": {
+          "bridge": {
+            "name": "Bridge Stereo",
+            "deviceType": "stereoAmplifier",
+            "volume": {
+              "master": 23
+            },
+            "equalizer": {
+              "preset": "Classic Rock",
+              "bass": 5,
+              "mid": 1,
+              "treble": -2
+            },
+            "fade": 0,
+            "balance": 3
+          },
+          "aftDeck": {
+            "name": "Aft Deck Stereo",
+            "deviceType": "bluetoothSpeaker",
+            "volume": {
+              "master": -18
+            },
+            "equalizer": {
+              "preset": "Flat",
+              "bass": 0,
+              "mid": 0,
+              "treble": 0
+            },
+            "fade": 0,
+            "balance": 0
+          }
+        },
+        "zone": {
+          "zone1": {
+            "source": "fusion1",
+            "output": "bridge"
+          },
+          "zone2": {
+            "source": "fusion1",
+            "output": "aftDeck"
+          },
+          "zone3": {
+            "source": "fusion2",
+            "output": "saloon"
+          }
+        }
+      }
+    }
+  }
+}
