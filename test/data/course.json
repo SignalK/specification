@@ -35,7 +35,9 @@
           "activeRoute": {
             "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
             "estimatedTimeOfArrival": "2016-04-24T06:24:18.632Z",
-            "startTime": "2016-04-24T05:14:18.632Z"
+            "startTime": "2016-04-24T05:14:18.632Z",
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
           },
 
           "nextPoint": {
@@ -87,7 +89,9 @@
           "activeRoute": {
             "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
             "estimatedTimeOfArrival": "2016-04-24T06:24:18.632Z",
-            "startTime": "2016-04-24T05:14:18.632Z"
+            "startTime": "2016-04-24T05:14:18.632Z",
+            "timestamp": "(...)",
+            "$source": "a.suitable.path"
           },
 
           "nextPoint": {
