@@ -50,7 +50,7 @@
           "example":"GP"
         },
         "instance": {
-					"type": "string"
+          "type": "string"
         }
       }
     },
