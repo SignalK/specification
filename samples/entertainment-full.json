@@ -4,93 +4,185 @@
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "entertainment": {
-        "input": {
-          "fusion1": {
-            "name": "Sirius XM",
-            "deviceType": "satelliteRadioTuner",
-            "track": {
-              "name": "Locomotive Breath",
-              "artistName": "Jethro Tull",
-              "number": 17,
-              "totalTracks": 18,
-              "genre": "Rock",
-              "releaseDate": 1978,
-              "albumName": "Bursting Out",
-              "elapsedTime": 93,
-              "length": 333
+        "device": {
+          "fusion0": {
+            "input": {
+              "siriusXM": {
+                "name": {
+                  "value": "Sirius XM"
+                },
+                "deviceType": {
+                  "value": "Sirius XM"
+                },
+                "audioFormat": {
+                  "value": "stereo"
+                },
+                "track": {
+                  "name": {
+                    "value": "Locomotive Breath"
+                  },
+                  "artistName": {
+                    "value": "Jethro Tull"
+                  },
+                  "number": {
+                    "value": 17
+                  },
+                  "totalTracks": {
+                    "value": 18
+                  },
+                  "genre": {
+                    "value": "Rock"
+                  },
+                  "releaseDate": {
+                    "value": 1978
+                  },
+                  "albumName": {
+                    "value": "Bursting Out"
+                  },
+                  "elapsedTime": {
+                    "value": 93
+                  },
+                  "length": {
+                    "value": 333
+                  }
+                },
+                "tuner": {
+                  "mode": {
+                    "value": "siriusXM"
+                  },
+                  "channel": {
+                    "value": 26
+                  },
+                  "stationName": {
+                    "value": "Classic Vinyl"
+                  },
+                  "signalStrength": {
+                    "value": -7.5
+                  }
+                }
+              },
+              "iPod": {
+                "name": {
+                  "value": "iPod"
+                },
+                "deviceType": {
+                  "value": "iPod Dock"
+                },
+                "transport": {
+                  "playbackState": {
+                    "value": "Playing"
+                  },
+                  "playbackSpeed": {
+                    "value": 1
+                  },
+                  "repeatState": {
+                    "value": "Repeat Track"
+                  },
+                  "shuffleState": {
+                    "value": "None"
+                  }
+                },
+                "track": {
+                  "name": {
+                    "value": "Sweet Caroline"
+                  },
+                  "artistName": {
+                    "value": "Neil Diamond"
+                  },
+                  "number": {
+                    "value": 1
+                  },
+                  "totalTracks": {
+                    "value": 1
+                  },
+                  "genre": {
+                    "value": "Rock"
+                  },
+                  "releaseDate": {
+                    "value": 1969
+                  },
+                  "albumName": {
+                    "value": "Sweet Caroline (Single)"
+                  },
+                  "elapsedTime": {
+                    "value": 25
+                  },
+                  "length": {
+                    "value": 201
+                  }
+                }
+              }
             },
-            "tuner": {
-              "mode": "siriusXM",
-              "frequency": 26,
-              "stationName": "Classic Vinyl",
-              "isStereo": true,
-              "signalStrength": -7.5
+            "output": {
+              "zone1": {
+                "name": {
+                  "value": "Bridge Stereo"
+                },
+                "deviceType": {
+                  "value": "stereoAmplifier"
+                },
+                "$source": "entertainment.device.fusion0.input.siriusXM",
+                "volume": {
+                  "master": {
+                    "value": 23
+                  }
+                },
+                "equalizer": {
+                  "preset": {
+                    "value": "Classic Rock"
+                  },
+                  "bass": {
+                    "value": 5
+                  },
+                  "mid": {
+                    "value": 1
+                  },
+                  "treble": {
+                    "value": -2
+                  }
+                },
+                "fade": {
+                  "value": 0
+                },
+                "balance": {
+                  "value": 3
+                }
+              },
+              "zone2": {
+                "name": {
+                  "value": "Aft Deck Stereo"
+                },
+                "deviceType": {
+                  "value": "stereoAmplifier"
+                },
+                "$source": "entertainment.device.fusion0.input.siriusXM",
+                "volume": {
+                  "master": {
+                    "value": -18
+                  }
+                },
+                "equalizer": {
+                  "preset": {
+                    "value": "Flat"
+                  },
+                  "bass": {
+                    "value": 0
+                  },
+                  "mid": {
+                    "value": 0
+                  },
+                  "treble": {
+                    "value": 0
+                  }
+                },
+                "fade": {
+                  "value": 0
+                },
+                "balance": {
+                  "value": 0
+                }
+              }
             }
-          },
-          "fusion2": {
-            "name": "iPod",
-            "deviceType": "iPod Dock",
-            "playbackState": "Playing",
-            "playbackSpeed": 1,
-            "repeatState": "Repeat Track",
-            "shuffleState": "None",
-            "track": {
-              "name": "Sweet Caroline",
-              "artistName": "Neil Diamond",
-              "number": 1,
-              "totalTracks": 1,
-              "genre": "Rock",
-              "releaseDate": 1969,
-              "albumName": "Sweet Caroline (Single)",
-              "elapsedTime": 25,
-              "length": 201
-            }
-          }
-        },
-        "output": {
-          "bridge": {
-            "name": "Bridge Stereo",
-            "deviceType": "stereoAmplifier",
-            "volume": {
-              "master": 23
-            },
-            "equalizer": {
-              "preset": "Classic Rock",
-              "bass": 5,
-              "mid": 1,
-              "treble": -2
-            },
-            "fade": 0,
-            "balance": 3
-          },
-          "aftDeck": {
-            "name": "Aft Deck Stereo",
-            "deviceType": "bluetoothSpeaker",
-            "volume": {
-              "master": -18
-            },
-            "equalizer": {
-              "preset": "Flat",
-              "bass": 0,
-              "mid": 0,
-              "treble": 0
-            },
-            "fade": 0,
-            "balance": 0
-          }
-        },
-        "zone": {
-          "zone1": {
-            "source": "fusion1",
-            "output": "bridge"
-          },
-          "zone2": {
-            "source": "fusion1",
-            "output": "aftDeck"
-          },
-          "zone3": {
-            "source": "fusion2",
-            "output": "saloon"
           }
         }
       }
