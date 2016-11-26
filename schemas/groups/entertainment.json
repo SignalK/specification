@@ -18,7 +18,7 @@
             "input": {
               "type": "object",
               "title": "Input sources",
-              "description": "A collection of inputs (sources) connected to the device."
+              "description": "A collection of inputs (sources) connected to the device.",
               "patternProperties": {
                 "(^[A-Za-z0-9]$)": {
                   "name": {
@@ -104,7 +104,7 @@
                       },
                       "playbackSpeed": {
                         "title": "Playback Speed",
-                        "description": "Speed multiples at which the media is playing. 1 indicates normal speed."
+                        "description": "Speed multiples at which the media is playing. 1 indicates normal speed.",
                         "example": 2,
                         "$ref": "../definitions.json#/definitions/numberValue"
                       },
@@ -209,14 +209,14 @@
                         "title": "Elapsed Time",
                         "description": "Current elapsed play time",
                         "example": 93,
-                        "units": "s".
+                        "units": "s",
                         "$ref": "../definitions.json#/definitions/numberValue"
                       },
                       "length": {
                         "title": "Track Length",
                         "description": "Length of the current track",
                         "example": 333,
-                        "units": "s".
+                        "units": "s",
                         "$ref": "../definitions.json#/definitions/numberValue"
                       }
                     }
@@ -280,7 +280,7 @@
                         "title": "Selected Frequency",
                         "description": "Current frequency tuner is tuned to",
                         "example": 89100000,
-                        "units": "Hz".
+                        "units": "Hz",
                         "$ref": "../definitions.json#/definitions/numberValue"
                       },
                       "channel": {
@@ -317,7 +317,7 @@
                         "title": "Signal Strength",
                         "description": "Current measured signal strength",
                         "example": 0.000000000031623,
-                        "units": "W".
+                        "units": "W",
                         "$ref": "../definitions.json#/definitions/numberValue"
                       }
                     }
@@ -328,7 +328,7 @@
             "output": {
               "type": "object",
               "title": "Output zones",
-              "description": "A collection of outputs (zones) connected to the device."
+              "description": "A collection of outputs (zones) connected to the device.",
               "patternProperties": {
                 "(^[A-Za-z0-9]$)": {
                   "name": {
@@ -348,7 +348,7 @@
                     "title": "Signal Source",
                     "description": "A JSONpath reference to the source entertainment device",
                     "example": "entertainment.device.fusion0.input.siriusXM"
-                  }
+                  },
                   "audioFormat": {
                     "type": "object",
                     "title": "Audio Format",
@@ -392,7 +392,7 @@
                   },
                   "isMuted": {
                     "title": "Output is Muted",
-                    "description": "Boolean indicating if the output signal is currently muted"
+                    "description": "Boolean indicating if the output signal is currently muted",
                     "example": true,
                     "$ref": "../definitions.json#/definitions/booleanValue"
                   },
@@ -500,7 +500,7 @@
                       }
                     },
                     "patternProperties": {
-                      "(^\d+kHz$)": {
+                      "(^\\d+kHz$)": {
                         "title": "Arbitrary Equalizer Band",
                         "description": "Any equalizer band specified by frequency",
                         "example": 14,
