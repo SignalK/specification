@@ -17,6 +17,7 @@
 
 var _ = require('lodash');
 var FullSignalK = require('./src/fullsignalk');
+var Ajv = require('ajv');
 
   var subSchemas = {
     'notifications': require('./schemas/groups/notifications.json'),
@@ -58,15 +59,40 @@ function getTv4() {
 }
 
 function validateFull(tree) {
-  var signalkSchema = require('./schemas/signalk.json');
+  var ajv = new Ajv({extendRefs:true}); // options can be passed, e.g. {allErrors: true}
+  ajv.addSchema(require('./schemas/signalk.json'), 'signalk')
+  ajv.addSchema(require('./schemas/vessel.json'), "vessel.json")
+  ajv.addSchema(require('./schemas/definitions.json'), "definitions.json")
+  ajv.addSchema(require('./schemas/groups/communication.json'), "communication.json")
+  ajv.addSchema(require('./schemas/groups/environment.json'), "environment.json")
+  ajv.addSchema(require('./schemas/groups/navigation.json'), "navigation.json")
+  ajv.addSchema(require('./schemas/groups/propulsion.json'), "propulsion.json")
+  ajv.addSchema(require('./schemas/groups/electrical.json'), "electrical.json")
+  ajv.addSchema(require('./schemas/groups/notifications.json'), "notifications.json")
+  ajv.addSchema(require('./schemas/groups/steering.json'), "steering.json")
+  ajv.addSchema(require('./schemas/groups/tanks.json'), "tanks.json")
+  ajv.addSchema(require('./schemas/groups/design.json'), "design.json")
+  ajv.addSchema(require('./schemas/groups/sails.json'), "sails.json")
+  ajv.addSchema(require('./schemas/groups/sensors.json'), "sensors.json")
+  ajv.addSchema(require('./schemas/groups/performance.json'), "performance.json")
+  ajv.addSchema(require('./schemas/groups/sources.json'), "sources.json")
+  ajv.addSchema(require('./schemas/groups/resources.json'), "resources.json")
+  ajv.addSchema(require('./schemas/external/geojson/geojson.json'), "geojson.json")
 
-  var tv4 = getTv4();
-  var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
-  var result = tv4.validateResult(tree, signalkSchema, true, true);
+  var ajvValid = ajv.validate('signalk', tree);
+  // if (!ajvValid) console.log(ajv.errorsText());
+
+
+  // var tv4 = getTv4();
+  // var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
+  // var result = tv4.validateResult(tree, signalkSchema, true, true);
   //Hack: validateMultiple marks anyOf last match incorrectly as not valid with banUnknownProperties
   //https://github.com/geraintluff/tv4/issues/128
-  valid.valid = result.valid;
-  return valid;
+  // valid.valid = result.ajvValid;
+  return {
+    valid: ajvValid,
+    errors: ajv.errors || []
+  }
 }
 
 function validateDelta(delta, ignoreContext) {
@@ -101,6 +127,9 @@ function chaiAsPromised(chai, utils) {
       msgBuilder += error.dataPath + ":" + error.message + "\n";
       return msgBuilder;
     }, {});
+    if (!result.valid) {
+      console.log(result)
+    }
     this.assert(
       result.valid
       , message
