@@ -1,0 +1,519 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.github.io/specification/schemas/groups/entertainment.json#",
+  "description": "Schema describing the entertainment system or systems aboard a vessel.",
+  "title": "Entertainment System Information",
+  "type": "object",
+  "properties": {
+    "device": {
+      "type": "object",
+      "title": "Entertainment Devices",
+      "description": "An entertainment device is any component in the AV system,e.g. a TV, radio tuner, amplifier.",
+      "patternProperties": {
+        "(^[A-Za-z0-9]$)": {
+          "type": "object",
+          "title": "Device",
+          "description": "A specific device in the entertainment system",
+          "properties": {
+            "input": {
+              "type": "object",
+              "title": "Input sources",
+              "description": "A collection of inputs (sources) connected to the device."
+              "patternProperties": {
+                "(^[A-Za-z0-9]$)": {
+                  "name": {
+                    "title": "Name",
+                    "description": "User supplied source name",
+                    "example": "Sirius XM",
+                    "$ref": "../definitions.json#/definitions/stringValue"
+                  },
+                  "deviceType": {
+                    "title": "Device Type",
+                    "description": "Type of device",
+                    "example": "Sirius XM",
+                    "$ref": "../definitions.json#/definitions/stringValue"
+                  },
+                  "audioFormat": {
+                    "type": "object",
+                    "title": "Audio Format",
+                    "description": "Audio format supplied by the input",
+                    "example": "Stereo",
+                    "allOf": [{
+                      "$ref": "../definitions.json#/definitions/commonValueFields"
+                    }, {
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "enum": [
+                            "Mono",
+                            "Stereo",
+                            "Surround"
+                          ]
+                        }
+                      }
+                    }]
+                  },
+                  "videoFormat": {
+                    "type": "object",
+                    "title": "Video Format",
+                    "description": "Video format supplied by the input",
+                    "example": "ATSC",
+                    "allOf": [{
+                      "$ref": "../definitions.json#/definitions/commonValueFields"
+                    }, {
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "enum": [
+                            "ATSC",
+                            "DVB",
+                            "NTSC",
+                            "PAL"
+                          ]
+                        }
+                      }
+                    }]
+                  },
+                  "transport": {
+                    "type": "object",
+                    "title": "Transport",
+                    "description": "Values related to the playback status of the media",
+                    "properties": {
+                      "playbackState": {
+                        "type": "object",
+                        "title": "Playback State",
+                        "description": "Indicates whether the media is playing, paused, etc.",
+                        "example": "Playing",
+                        "allOf": [{
+                          "$ref": "../definitions.json#/definitions/commonValueFields"
+                        }, {
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "Stopped",
+                                "Paused",
+                                "Playing",
+                                "Rewinding",
+                                "Skipping Forward",
+                                "Skipping Backward"
+                              ]
+                            }
+                          }
+                        }]
+                      },
+                      "playbackSpeed": {
+                        "title": "Playback Speed",
+                        "description": "Speed multiples at which the media is playing. 1 indicates normal speed."
+                        "example": 2,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "repeatState": {
+                        "type": "object",
+                        "title": "Repeat State",
+                        "description": "Indicates whether the device repeats the current track, album, etc.",
+                        "example": "Repeat Track",
+                        "allOf": [{
+                          "$ref": "../definitions.json#/definitions/commonValueFields"
+                        }, {
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "None",
+                                "Repeat Track",
+                                "Repeat Album",
+                                "Repeat Playlist"
+                              ]
+                            }
+                          }
+                        }]
+                      },
+                      "shuffleState": {
+                        "type": "object",
+                        "title": "Shuffle State",
+                        "description": "Indicates whether the device shuffles the current album, playlist etc.",
+                        "example": "Shuffle All",
+                        "allOf": [{
+                          "$ref": "../definitions.json#/definitions/commonValueFields"
+                        }, {
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "None",
+                                "Shuffle Album",
+                                "Shuffle Playlist",
+                                "Shuffle All"
+                              ]
+                            }
+                          }
+                        }]
+                      }
+                    }
+                  },
+                  "track": {
+                    "type": "object",
+                    "title": "Track",
+                    "description": "Values related to the current track being played",
+                    "properties": {
+                      "name": {
+                        "title": "Name",
+                        "description": "Name or title of the current track",
+                        "example": "Locomotive Breath",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "artistName": {
+                        "title": "Artist Name",
+                        "description": "Name of the performing artist or group",
+                        "example": "Jethro Tull",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "number": {
+                        "title": "Number",
+                        "description": "Number of the current track",
+                        "example": 17,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "totalTracks": {
+                        "title": "Total Tracks",
+                        "description": "Total number of tracks on the current album",
+                        "example": 18,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "genre": {
+                        "title": "Genre",
+                        "description": "Genre of the current track",
+                        "example": "Rock",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "releaseDate": {
+                        "title": "Release Date",
+                        "description": "Album/track release date (typically just year)",
+                        "example": "1978",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "albumName": {
+                        "title": "Album Name",
+                        "description": "Name of the current album",
+                        "example": "Breaking Out",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "albumArt": {
+                        "title": "Album Art",
+                        "description": "Cover art for the album, can be a URL or base64 encoded image.",
+                        "example": "http://example.com/cover_art/breaking_out.jpg",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "elapsedTime": {
+                        "title": "Elapsed Time",
+                        "description": "Current elapsed play time",
+                        "example": 93,
+                        "units": "s".
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "length": {
+                        "title": "Track Length",
+                        "description": "Length of the current track",
+                        "example": 333,
+                        "units": "s".
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      }
+                    }
+                  },
+                  "tuner": {
+                    "type": "object",
+                    "title": "Tuner",
+                    "description": "Values related to a tuner if the input is a tuner-type input",
+                    "properties": {
+                      "mode": {
+                        "type": "object",
+                        "title": "Tuner Mode",
+                        "description": "Indicates the mode the tuner is operating in (or type of tuner for single function tuners)",
+                        "example": "SiriusXM",
+                        "allOf": [{
+                          "$ref": "../definitions.json#/definitions/commonValueFields"
+                        }, {
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "AM",
+                                "FM",
+                                "Shortwave",
+                                "VHF",
+                                "SiriusXM",
+                                "CATV",
+                                "DTV",
+                                "Satellite TV"
+                              ]
+                            }
+                          }
+                        }]
+                      },
+                      "region": {
+                        "type": "object",
+                        "title": "Tuner Operating Region",
+                        "description": "Indicates the broadcast region the tuner is operating in",
+                        "example": "US",
+                        "allOf": [{
+                          "$ref": "../definitions.json#/definitions/commonValueFields"
+                        }, {
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "US",
+                                "Europe",
+                                "Asia",
+                                "Middle East",
+                                "Latin America",
+                                "Australia",
+                                "Russia",
+                                "Japan"
+                              ]
+                            }
+                          }
+                        }]
+                      },
+                      "frequency": {
+                        "title": "Selected Frequency",
+                        "description": "Current frequency tuner is tuned to",
+                        "example": 89100000,
+                        "units": "Hz".
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "channel": {
+                        "title": "Selected Channel",
+                        "description": "For devices which use channel numbers, the currently selected channel",
+                        "example": 16,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "subChannel": {
+                        "title": "Digital Subchannel",
+                        "description": "The currently selected digital sub-channel",
+                        "example": 16.1,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "stationName": {
+                        "title": "Station Name",
+                        "description": "Name or callsign of currently tuned station/channel",
+                        "example": "WTMD",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "isStereo": {
+                        "title": "Signal is Stereo",
+                        "description": "Boolean indicating if the tuner is able to detect a stereo transmission",
+                        "example": true,
+                        "$ref": "../definitions.json#/definitions/booleanValue"
+                      },
+                      "squelch": {
+                        "title": "Squelch Level",
+                        "description": "Current squelch level",
+                        "example": 6,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "signalStrength": {
+                        "title": "Signal Strength",
+                        "description": "Current measured signal strength",
+                        "example": 0.000000000031623,
+                        "units": "W".
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "output": {
+              "type": "object",
+              "title": "Output zones",
+              "description": "A collection of outputs (zones) connected to the device."
+              "patternProperties": {
+                "(^[A-Za-z0-9]$)": {
+                  "name": {
+                    "title": "Name",
+                    "description": "User supplied output name",
+                    "example": "Aft Deck",
+                    "$ref": "../definitions.json#/definitions/stringValue"
+                  },
+                  "deviceType": {
+                    "title": "Device Type",
+                    "description": "Type of device",
+                    "example": "Stereo Amplifier",
+                    "$ref": "../definitions.json#/definitions/stringValue"
+                  },
+                  "$source": {
+                    "type": "string",
+                    "title": "Signal Source",
+                    "description": "A JSONpath reference to the source entertainment device",
+                    "example": "entertainment.device.fusion0.input.siriusXM"
+                  }
+                  "audioFormat": {
+                    "type": "object",
+                    "title": "Audio Format",
+                    "description": "Audio format generated by the output",
+                    "example": "Stereo",
+                    "allOf": [{
+                      "$ref": "../definitions.json#/definitions/commonValueFields"
+                    }, {
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "enum": [
+                            "Mono",
+                            "Stereo",
+                            "Surround"
+                          ]
+                        }
+                      }
+                    }]
+                  },
+                  "videoFormat": {
+                    "type": "object",
+                    "title": "Video Format",
+                    "description": "Video format generated by the output",
+                    "example": "ATSC",
+                    "allOf": [{
+                      "$ref": "../definitions.json#/definitions/commonValueFields"
+                    }, {
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "enum": [
+                            "ATSC",
+                            "DVB",
+                            "NTSC",
+                            "PAL"
+                          ]
+                        }
+                      }
+                    }]
+                  },
+                  "isMuted": {
+                    "title": "Output is Muted",
+                    "description": "Boolean indicating if the output signal is currently muted"
+                    "example": true,
+                    "$ref": "../definitions.json#/definitions/booleanValue"
+                  },
+                  "fade": {
+                    "title": "Fade",
+                    "description": "Signal fade between front and rear channels. Forward is a positive number.",
+                    "example": -1,
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                  },
+                  "balance": {
+                    "title": "Balance",
+                    "description": "Signal balance between left and right channels. Right is a positive number.",
+                    "example": -1,
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                  },
+                  "volume": {
+                    "type": "object",
+                    "title": "Volume",
+                    "description": "Volume parameters",
+                    "properties": {
+                      "master": {
+                        "title": "Master",
+                        "description": "Master volume, applies to all channels",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "frontLeft": {
+                        "title": "Front Left",
+                        "description": "Front left channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "frontRight": {
+                        "title": "Front Right",
+                        "description": "Front right channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "frontCenter": {
+                        "title": "Front Center",
+                        "description": "Front center channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "rearLeft": {
+                        "title": "Rear Left",
+                        "description": "Rear left channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "rearRight": {
+                        "title": "Rear Right",
+                        "description": "Rear right channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "surroundLeft": {
+                        "title": "Surround Left",
+                        "description": "Surround left channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "surroundRight": {
+                        "title": "Surround Right",
+                        "description": "Surround right channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "sub": {
+                        "title": "Subwoofer (LFE)",
+                        "description": "Subwoofer (LFE) channel volume",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      }
+                    }
+                  },
+                  "equalizer": {
+                    "type": "object",
+                    "title": "Equalizer",
+                    "description": "Equalizer parameters",
+                    "properties": {
+                      "preset": {
+                        "title": "Preset",
+                        "description": "Chosen equalizer preset",
+                        "example": "Classical",
+                        "$ref": "../definitions.json#/definitions/stringValue"
+                      },
+                      "bass": {
+                        "title": "Bass Band",
+                        "description": "Equalizer setting for the bass band",
+                        "example": 5,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "mid": {
+                        "title": "Mid Band",
+                        "description": "Equalizer setting for the mid band",
+                        "example": 1,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      },
+                      "treble": {
+                        "title": "Treble Band",
+                        "description": "Equalizer setting for the treble band",
+                        "example": -2,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      }
+                    },
+                    "patternProperties": {
+                      "(^\d+kHz$)": {
+                        "title": "Arbitrary Equalizer Band",
+                        "description": "Any equalizer band specified by frequency",
+                        "example": 14,
+                        "$ref": "../definitions.json#/definitions/numberValue"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

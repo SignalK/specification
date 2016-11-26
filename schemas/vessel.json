@@ -139,6 +139,10 @@
       "description": "Communication data including Radio, Telephone, E-Mail, etc.",
       "$ref": "groups/communication.json#"
     },
+    "entertainment": {
+      "description": "Entertainment system data, including currently playing track, information about AV sources, playback zones, volume levels and equalizer settings."
+      "$ref": "groups/entertainment.json#"
+    },
     "environment": {
       "description": "Environmental data measured locally including Depth, Wind, Temp, etc.",
       "$ref": "groups/environment.json#"

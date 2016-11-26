@@ -313,7 +313,7 @@
 
     "stringValue": {
       "type": "object",
-      "description": "Data should be of type number.",
+      "description": "Data should be of type string.",
       "allOf": [{
         "$ref": "#/definitions/commonValueFields"
       }, {
@@ -350,6 +350,47 @@
         }
       }
     },
+
+    "booleanValue": {
+      "type": "object",
+      "description": "Data should be of type boolean.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "boolean"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesBooleanValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesBooleanValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "boolean"
+        },
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
+        }
+      }
+    },
+
     "nullValue": {
       "type": "object",
       "description": "Data should be of type NULL.",
