@@ -187,7 +187,7 @@ function addValue(context, source, timestamp, pathValue) {
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
-  } else if (valueLeaf.value && valueLeaf['$source'] != getId(source)) {
+  } else if (typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
     // first multiple value
 
     var sourceId = valueLeaf['$source'];
