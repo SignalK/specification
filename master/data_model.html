@@ -415,8 +415,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="signal-k-data-model"><a name="signal-k-data-model" class="plugin-anchor" href="#signal-k-data-model"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Data Model</h1><p>Signal K defines two data formats, full and delta, for representing and transmitting data.</p><p>In additiong the &apos;sparse&apos;
-format is the same as the full format, but doesn&apos;t contain a full tree, just parts of the full tree.</p><h2 id="full-format"><a name="full-format" class="plugin-anchor" href="#full-format"><i class="fa fa-link" aria-hidden="true"></i></a>Full format</h2><p>The simplest format is the full format, which is the complete Signal K data model sent as a JSON string. Abbreviated for
-clarity it looks like this:</p><pre><code class="lang-json">{<span class="hljs-string">&quot;vessels&quot;</span>:{<span class="hljs-string">&quot;9334562&quot;</span>:{<span class="hljs-string">&quot;navigation&quot;</span>:{<span class="hljs-string">&quot;courseOverGroundTrue&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">11.9600000381</span>},<span class="hljs-string">&quot;courseOverGroundMagnetic&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">93.0000000000</span>},<span class="hljs-string">&quot;more&quot;</span>:<span class="hljs-string">&quot;a lot more data here...&quot;</span>,<span class="hljs-string">&quot;waterTemp&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;wind&quot;</span>:{<span class="hljs-string">&quot;speedAlarm&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;directionChangeAlarm&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;directionApparent&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;directionTrue&quot;</span>: {<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;speedApparent&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;speedTrue&quot;</span>: {<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>}}}}}}</code></pre>
+format is the same as the full format, but doesn&apos;t contain a full tree, just parts of the full tree.</p><h2 id="full-format"><a name="full-format" class="plugin-anchor" href="#full-format"><i class="fa fa-link" aria-hidden="true"></i></a>Full format</h2><p>The simplest format is the full format, which is the complete Signal K data model  as a JSON string. Abbreviated for
+clarity it looks like this:</p><pre><code class="lang-json">{<span class="hljs-string">&quot;vessels&quot;</span>:{<span class="hljs-string">&quot;9334562&quot;</span>:{<span class="hljs-string">&quot;navigation&quot;</span>:{<span class="hljs-string">&quot;courseOverGroundTrue&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">11.9600000381</span>},<span class="hljs-string">&quot;courseOverGroundMagnetic&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">93.0000000000</span>},<span class="hljs-string">&quot;more&quot;</span>:<span class="hljs-string">&quot;a lot more data here...&quot;</span>,<span class="hljs-string">&quot;wind&quot;</span>:{<span class="hljs-string">&quot;angleApparent&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;directionTrue&quot;</span>: {<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;speedApparent&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>},<span class="hljs-string">&quot;speedTrue&quot;</span>: {<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">0.0000000000</span>}}}}}}</code></pre>
 <p>Formatted for ease of reading:</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;vessels&quot;</span>: {
     <span class="hljs-string">&quot;9334562&quot;</span>: {
@@ -465,20 +465,13 @@ a key, and defined in the data schema.</p><p>The ordering of keys is also not im
 standards.</p><p>The full format is useful for backups, and for populating a secondary device, or just updating all data, a kind of &apos;this
 is the current state&apos; message.</p><p>However sending the full data model will be wasteful of bandwidth and CPU, when the majority of data does not change
 often. So we want to be able to send parts of the model (i.e. parts of the hierarchical tree).</p><h3 id="sparse-format"><a name="sparse-format" class="plugin-anchor" href="#sparse-format"><i class="fa fa-link" aria-hidden="true"></i></a>Sparse format</h3><p>The sparse format is the same as the full format but only contains a limited part of the tree. This can be one or more
-data values.</p><pre><code class="lang-json">{<span class="hljs-string">&quot;vessels&quot;</span>:{<span class="hljs-string">&quot;self&quot;</span>:{<span class="hljs-string">&quot;navigation&quot;</span>:{<span class="hljs-string">&quot;position&quot;</span>:{<span class="hljs-string">&quot;latitude&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">-41.2936935424</span>}}}}}}
-
-{<span class="hljs-string">&quot;vessels&quot;</span>:{<span class="hljs-string">&quot;self&quot;</span>:{<span class="hljs-string">&quot;navigation&quot;</span>:{<span class="hljs-string">&quot;position&quot;</span>:{<span class="hljs-string">&quot;longitude&quot;</span>:{<span class="hljs-string">&quot;value&quot;</span>:<span class="hljs-number">173.2470855712</span>},<span class="hljs-string">&quot;source&quot;</span>:<span class="hljs-string">&quot;self&quot;</span>,<span class="hljs-string">&quot;timestamp&quot;</span>:<span class="hljs-string">&quot;2014-03-24T00:15:41Z&quot;</span>}}}}}</code></pre>
-<p>or, more efficiently (and formatted):</p><pre><code class="lang-json">{
+data values.</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;vessels&quot;</span>: {
     <span class="hljs-string">&quot;self&quot;</span>: {
       <span class="hljs-string">&quot;navigation&quot;</span>: {
         <span class="hljs-string">&quot;position&quot;</span>: {
-          <span class="hljs-string">&quot;latitude&quot;</span>: {
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">-41.2936935424</span>
-          },
-          <span class="hljs-string">&quot;longitude&quot;</span>: {
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">173.2470855712</span>
-          }
+          <span class="hljs-string">&quot;latitude&quot;</span>: <span class="hljs-number">-41.2936935424</span>,
+          <span class="hljs-string">&quot;longitude&quot;</span>: <span class="hljs-number">173.2470855712</span>
         }
       }
     }
@@ -492,14 +485,9 @@ data values.</p><pre><code class="lang-json">{<span class="hljs-string">&quot;ve
           <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">11.9600000381</span>
         },
         <span class="hljs-string">&quot;position&quot;</span>: {
-          <span class="hljs-string">&quot;latitude&quot;</span>: {
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">-41.2936935424</span>
-          },
-          <span class="hljs-string">&quot;longitude&quot;</span>: {
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">173.2470855712</span>
-          },
-          <span class="hljs-string">&quot;altitude&quot;</span>: {
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">0</span>
+          <span class="hljs-string">&quot;latitude&quot;</span>: <span class="hljs-number">-41.2936935424</span>,
+          <span class="hljs-string">&quot;longitude&quot;</span>: <span class="hljs-number">173.2470855712</span>,
+          <span class="hljs-string">&quot;altitude&quot;</span>: <span class="hljs-number">0</span>
           }
         }
       }
@@ -542,7 +530,7 @@ in clients or sensors that did not hold a copy of the data model.</p><p>The form
       <span class="hljs-string">&quot;values&quot;</span>: [
         {
           <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.courseOverGroundTrue&quot;</span>,
-          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">172.9</span>
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">2.911</span>
         },
         {
           <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedOverGround&quot;</span>,
@@ -571,7 +559,7 @@ of the updated data.</p><p>The &apos;updates&apos; holds an array (JSON array) o
   <span class="hljs-string">&quot;values&quot;</span>: [
     {
       <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.courseOverGroundTrue&quot;</span>,
-      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">172.9</span>
+      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">2.971</span>
     },
     {
       <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedOverGround&quot;</span>,
@@ -624,7 +612,7 @@ project, which will be released in Signal K eventually.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2016-11-04T05:58:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-12T21:27:22.098Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2016-11-27T19:53:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T19:54:42.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
