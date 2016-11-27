@@ -7,11 +7,11 @@ format is the same as the full format, but doesn't contain a full tree, just par
 
 ## Full format
 
-The simplest format is the full format, which is the complete Signal K data model sent as a JSON string. Abbreviated for
+The simplest format is the full format, which is the complete Signal K data model  as a JSON string. Abbreviated for
 clarity it looks like this:
 
 ```json
-{"vessels":{"9334562":{"navigation":{"courseOverGroundTrue":{"value":11.9600000381},"courseOverGroundMagnetic":{"value":93.0000000000},"more":"a lot more data here...","waterTemp":{"value":0.0000000000},"wind":{"speedAlarm":{"value":0.0000000000},"directionChangeAlarm":{"value":0.0000000000},"directionApparent":{"value":0.0000000000},"directionTrue": {"value":0.0000000000},"speedApparent":{"value":0.0000000000},"speedTrue": {"value":0.0000000000}}}}}}
+{"vessels":{"9334562":{"navigation":{"courseOverGroundTrue":{"value":11.9600000381},"courseOverGroundMagnetic":{"value":93.0000000000},"more":"a lot more data here...","wind":{"angleApparent":{"value":0.0000000000},"directionTrue": {"value":0.0000000000},"speedApparent":{"value":0.0000000000},"speedTrue": {"value":0.0000000000}}}}}}
 ```
 
 Formatted for ease of reading:
@@ -81,12 +81,6 @@ often. So we want to be able to send parts of the model (i.e. parts of the hiera
 The sparse format is the same as the full format but only contains a limited part of the tree. This can be one or more
 data values.
 
-```json
-{"vessels":{"self":{"navigation":{"position":{"latitude":{"value":-41.2936935424}}}}}}
-
-{"vessels":{"self":{"navigation":{"position":{"longitude":{"value":173.2470855712},"source":"self","timestamp":"2014-03-24T00:15:41Z"}}}}}
-```
-or, more efficiently (and formatted):
 
 ```json
 {
@@ -94,12 +88,8 @@ or, more efficiently (and formatted):
     "self": {
       "navigation": {
         "position": {
-          "latitude": {
-            "value": -41.2936935424
-          },
-          "longitude": {
-            "value": 173.2470855712
-          }
+          "latitude": -41.2936935424,
+          "longitude": 173.2470855712
         }
       }
     }
@@ -118,14 +108,9 @@ Mix and match of misc values are also valid:
           "value": 11.9600000381
         },
         "position": {
-          "latitude": {
-            "value": -41.2936935424
-          },
-          "longitude": {
-            "value": 173.2470855712
-          },
-          "altitude": {
-            "value": 0
+          "latitude": -41.2936935424,
+          "longitude": 173.2470855712,
+          "altitude": 0
           }
         }
       }
@@ -179,7 +164,7 @@ The format looks like this (pretty printed):
       "values": [
         {
           "path": "navigation.courseOverGroundTrue",
-          "value": 172.9
+          "value": 2.911
         },
         {
           "path": "navigation.speedOverGround",
@@ -222,7 +207,7 @@ The 'updates' holds an array (JSON array) of updates, each of which has a 'sourc
   "values": [
     {
       "path": "navigation.courseOverGroundTrue",
-      "value": 172.9
+      "value": 2.971
     },
     {
       "path": "navigation.speedOverGround",
