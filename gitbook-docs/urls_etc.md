@@ -1,9 +1,8 @@
-#Ports, Urls and Versioning
+##Ports, Urls and Versioning
 
 ### Short Names
 
 - `self` refers to the current vessel. Normally used in `vessels.self...`.
-
 ### Ports
 
 The Signal K HTTP and WebSocket services SHOULD be found on the usual HTTP/S ports (80 or 443). The services SHOULD be
@@ -14,22 +13,17 @@ A Signal K server MAY offer Signal K over TCP or UDP, these services SHOULD be o
 If an alternate port is needed it SHOULD be an arbitrary high port in the range 49152&ndash;65535[[2]](#fn_2).
 
 ### URL Prefix
-
-The Signal K applications start from the `/signalk` root. This provides some protection against name collisions with
+aTihe Signal K applications start from the `/signalk` root. This provides some protection against name collisions with
 other applications on the same server. Therefore the Signal K entry point will always be found by loading
 `http(s)://«host»:«port»/signalk`.
 
 ### Versioning
 
 The version(s) of the Signal K API that a server supports SHALL be available as a JSON object available at `/signalk`:
-
 ```json
 {
-    "endpoints": {
-        "v1": {
-            "version": "1.1.2",
-            "signalk-http": "http://192.168.1.2/signalk/v1/api/",
-            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
+    "endpoints": {        "v1": {
+            "version": "1.1.2",            "signalk-http": "http://192.168.1.2/signalk/v1/api/",            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
         },
         "v3": {
             "version": "3.0",
@@ -69,9 +63,9 @@ If a server does not support some streaming options listed in here it must respo
 
 See [Subscription Protocol](subscription_protocol.html) for more details.
 
-##### Connection Hello
+#### Streaming Connection "Hello"
 
-Upon connection a 'hello' message is sent as follows:
+Before a node sends any signalk-delta messages over a Web Socket or TCP connection it MUST send a 'hello' message. The format of the 'hello' message is as follows:
 
 ```json
 {
@@ -80,3 +74,14 @@ Upon connection a 'hello' message is sent as follows:
   "self": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d"
 }
 ```
+
+"version" - The 'hello' message MUST contain a "version" property which MUST have a string value identifying the lowest version of signalk-delta that defines the format of the messages that will follow.
+
+"timestamp" - The 'hello' message SHOULD contain a "timestamp" property.
+
+1. The timestamp MUST have a string value representing the date and time at the node that sent the 'hello' message.
+2. The timestamp SHOULD be synchronised with UTC. UTC timestamps MUST end with a capital Z.
+3. If the timestamp is not synchronised with UTC then the receiving node SHOULD compare the timestamp with the time at the receiving node at which the 'hello' is received and use the delta to correct the timestamp of subsequent signalk-delta messages received from the sending node. If it can not perform this function it MUST delete the timestamp and treat the message as if it had no timestamp.
+
+"self" - The 'hello' massage MAY contain a "self" property which MUST have a string value that identifies the vessel the message pertains to.
+

@@ -6,6 +6,7 @@ A Signal K server SHOULD advertise its services over mDNS/Bonjour. The server MU
 
 * `_signalk-http._tcp` for http API
 * `_signalk-ws._tcp` for WebSocket
+* `_signalk-tcp._tcp` for raw TCP socket
 * `_signalk-https._tcp` for HTTPS API
 * `_signalk-wss._tcp` for secure WebSocket
 
@@ -54,7 +55,8 @@ Using the information above a web client or http capable device can discover and
         "v1": {
             "version": "1.1.2",
             "signalk-http": "http://192.168.1.2/signalk/v1/api/",
-            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
+            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream",
+            "signalk-tcp": "tcp://192.168.1.2:3858"
         }
      }
  }
