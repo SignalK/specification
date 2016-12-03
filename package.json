@@ -48,7 +48,6 @@
   "devDependencies": {
     "gitbook-cli": "^2.3.0",
     "infuse.js": "^2.0.2",
-    "json-schema-load-tree": "^0.2.0",
     "markdown-it": "^8.0.0",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
