@@ -2,34 +2,29 @@
 
 ## Service Discovery
 
-A Signal K server SHOULD advertise its services using DNS Service Discovery (DNS-SD) via Mutlicast DNS (mDNS); also
-known as Bonjour. The server MUST provide DNS [Service (SRV) Records](https://en.wikipedia.org/wiki/SRV_record) and
-[Text (TXT) Records](https://en.wikipedia.org/wiki/TXT_record) describing the Signal K interfaces it provides. These
-service identifiers are:
+A Signal K server SHOULD advertise its services using [DNS Service Discovery
+(DNS-SD)](https://tools.ietf.org/html/rfc6763) via Mutlicast DNS (mDNS); also known as Bonjour. The server MUST provide
+DNS [Service (SRV) Records](https://en.wikipedia.org/wiki/SRV_record) and [Text (TXT)
+Records](https://en.wikipedia.org/wiki/TXT_record) describing the Signal K interfaces it provides. These service
+identifiers are:
 
 * `_http._tcp` and/or `_https._tcp` for the server's web interface
 * `_signalk-http._tcp` and/or `_signalk-https._tcp` for the Signal K REST API
 * `_signalk-ws._tcp` and/or `_signalk-wss._tcp` for the WebSocket data stream
 
-One of the following parameters MUST be set, both MAY be set:
+If a Signal K server is using DNS-SD, it MUST provide the following parameters (key/value pairs) in the TXT record
+portion of the DNS-SD advertisement:
 
-* `vessel_uuid` is the Signal K UUID which uniquely identifies the vessel
-* `vessel_mmsi` is the MMSI assigned to the vessel
+* `txtvers` is a US-ASCII decimal number identifying the version of the DNS-SD record. Currently, this MUST have a value
+  of 1
+* `roles` specifies which roles the server is capable of providing. See [Roles](#roles) below for details
 
-A vessel may have one or both of these values. One or both MUST be available when advertising the Signal K server.
+The server MAY provide the following values:
 
-The following parameters SHOULD be set in the TXT record:
-
+* `self` is the unique identifier of the vessel using the URN format specified for the `uuid` field in the Signal K
+  schema
 * `server` is the name of the Signal K server software, e.g. signalk-server-node
 * `version` is the version of the Signal K server software
-
-These parameters identify the server and its version. They are purely informational.
-
-The following parameters MAY be set in the TXT record:
-
-* `vessel_name` is the registered name of the vessel
-* `vessel_brand` is the name of the manufacturer of the vessel
-* `vessel_type` is the model of the vessel
 
 An example DNS-SD record set might look something like this
 
@@ -38,30 +33,56 @@ Service data for service 'signalk-http' of type '_signalk-http._tcp' in domain '
     Host 10-1-1-40.local (10.1.1.40),
     port 80,
     TXT data: [
-        'vessel_name=Volare',
-        'vessel_brand=Friendship',
-        'vessel_type=22',
-        'vessel_mmsi=503123456',
-        'vessel_uuid=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'version=0.1.23',
-        'server=signalk-server'
+        'txtvers=1',
+        'roles=master,main',
+        'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
+        'server=signalk-server',
+        'version=0.1.23'
         ]
 
 Service data for service 'signalk-ws' of type '_signalk-ws._tcp' in domain 'local' on 4.0:
     Host 10-1-1-40.local (10.1.1.40),
     port 3000,
     TXT data: [
-        'vessel_name=Volare',
-        'vessel_brand=Friendship',
-        'vessel_type=22',
-        'vessel_mmsi=503123456',
-        'vessel_uuid=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'version=0.1.23',
-        'server=signalk-server'
+        'txtvers=1',
+        'roles=master,main',
+        'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
+        'server=signalk-server',
+        'version=0.1.23'
         ]
 ```
 
-This shows a Signal K server with the HTTP REST API on port 80 and the WebSocket data stream on port 3000.
+This shows a Signal K server with the HTTP REST API on port 80 and the WebSocket data stream on port 3000. The server
+identifies as having the `master` and `main` roles and provides a `self` identifier.
+
+### Roles
+
+The four possible values for `roles` are `master`, `slave`, `main`, and `aux`. These are defined below.
+
+#### Master
+
+`master` is the canonical source for identity and configuration information for the entire vessel.
+
+If there is only one master on the vessel, then it should also provide the main role. The combination of master and main
+informs a client that this server is actively providing identifying information.
+
+##### Main and Aux
+
+If there are more than one masters on the vessel, EXACTLY ONE server should advertise both master and main. All other
+masters should advertise master and aux. Clients should only use the master aux servers for identifying information if
+the master main is not available.
+
+Any server identifying as master MUST be able to provide at a minimum the unique identifier (self) for the vessel.
+
+#### Slave
+
+Any server providing the `slave` role should retrieve identity and configuration information from the master server.
+Slave servers MAY provide configuration and identity information for themselves, but this identity MUST NOT be
+considered valid for the entire vesssel.
+
+##### Main and Aux
+
+The use of main and aux have not been defined for the slave role at this time.
 
 ## Connection Establishment
 
