@@ -317,7 +317,7 @@ class Parser {
         md += '---\n\n'
       })
 
-      fs.writeFile(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
+      fs.writeFileSync(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
 
       return fs.writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding).then(() => {
         results.push({
