@@ -516,7 +516,12 @@ class Parser {
             if (typeof obj[key][k].allOf !== 'undefined') {
               this.reduceParsedAllOf(obj[key][k].allOf, obj[key][k])
             }
-            result.properties[k] = _.merge(result.properties[k] || {}, obj[key][k])
+            result.properties[k] = _.merge(result.properties[k] || {}, obj[key][k], (objectValue, sourceValue, key, object, source) => {
+              if (objectValue && typeof objectValue === "string" && objectValue !== sourceValue) {
+                this.debug("avoiding overriding ", key, ". prev", objectValue, ", rejected", sourceValue)
+                return objectValue
+              }
+            })
           })
         }
 

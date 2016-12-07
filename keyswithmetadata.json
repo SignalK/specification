@@ -643,23 +643,8 @@
   "/vessels/*/electrical/batteries/RegExp": {
     "description": "Batteries, one or many, within the vessel"
   },
-  "/vessels/*/electrical/batteries/RegExp/associatedBus": {
-    "description": "Name of BUS device is associated with"
-  },
-  "/vessels/*/electrical/batteries/RegExp/voltage": {
-    "units": "V",
-    "description": "Data should be of type number."
-  },
-  "/vessels/*/electrical/batteries/RegExp/voltage/ripple": {
-    "units": "V",
-    "description": "Ripple voltage"
-  },
-  "/vessels/*/electrical/batteries/RegExp/current": {
-    "units": "A",
-    "description": "Data should be of type number."
-  },
   "/vessels/*/electrical/batteries/RegExp/temperature": {
-    "description": "Data should be of type number."
+    "description": "Additional / unique temperatures associated with a battery"
   },
   "/vessels/*/electrical/batteries/RegExp/capacity": {
     "description": "[missing]"
@@ -703,6 +688,21 @@
   "/vessels/*/electrical/batteries/RegExp/lifetimeRecharge": {
     "units": "C",
     "description": "Cumulative charge recharged into battery over operational lifetime of battery"
+  },
+  "/vessels/*/electrical/batteries/RegExp/associatedBus": {
+    "description": "Name of BUS device is associated with"
+  },
+  "/vessels/*/electrical/batteries/RegExp/voltage": {
+    "units": "V",
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/batteries/RegExp/voltage/ripple": {
+    "units": "V",
+    "description": "Ripple voltage"
+  },
+  "/vessels/*/electrical/batteries/RegExp/current": {
+    "units": "A",
+    "description": "Data should be of type number."
   },
   "/vessels/*/electrical/inverters": {
     "description": "[missing]"
