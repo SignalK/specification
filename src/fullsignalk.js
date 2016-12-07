@@ -97,12 +97,24 @@ FullSignalK.prototype.addUpdates = function(context, updates) {
 }
 
 FullSignalK.prototype.addUpdate = function(context, update) {
-  if (update.source) {
+  if (typeof update.source != 'undefined') {
     this.updateSource(context, update.source, update.timestamp);
+  } else if (typeof update['$source'] != 'undefined') {
+      this.updateDollarSource(context, update['$source'], update.timestamp);
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
   addValues(context, update.source, update.timestamp, update.values);
+}
+
+FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
+  const parts = dollarSource.split('.')
+  parts.reduce((cursor, part) => {
+    if (typeof cursor[part] === 'undefined') {
+      return cursor[part] = {}
+    }
+    return cursor[part]
+  }, this.sources)
 }
 
 FullSignalK.prototype.updateSource = function(context, source, timestamp) {
