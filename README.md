@@ -6,7 +6,7 @@ JSON Schema files, tests for the schema files and assorted JavaScript utilities
 for working with Signal K delta and full JSON data as well as validation
 utilities.
 
-https://travis-ci.org/SignalK/specification.svg?branch=master
+[![Build Status](https://travis-ci.org/SignalK/specification.svg?branch=master)](https://travis-ci.org/SignalK/specification)
 
 Signal K
 --------
