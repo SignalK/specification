@@ -1,63 +1,100 @@
 # Discovery and Connection Establishment
 
-#### Service Discovery
+## Service Discovery
 
-A Signal K server SHOULD advertise its services over mDNS/Bonjour. The server MUST use the service types
+A Signal K server SHOULD advertise its services using [DNS Service Discovery
+(DNS-SD)](https://tools.ietf.org/html/rfc6763) via Mutlicast DNS (mDNS); also known as Bonjour. The server MUST provide
+DNS [Service (SRV) Records](https://en.wikipedia.org/wiki/SRV_record) and [Text (TXT)
+Records](https://en.wikipedia.org/wiki/TXT_record) describing the Signal K interfaces it provides. These service
+identifiers are:
 
-* `_signalk-http._tcp` for http API
-* `_signalk-ws._tcp` for WebSocket
-* `_signalk-https._tcp` for HTTPS API
-* `_signalk-wss._tcp` for secure WebSocket
+* `_http._tcp` for the server's web interface
+* `_signalk-http._tcp` for the Signal K REST API
+* `_signalk-ws._tcp` for the WebSocket data stream
 
-Furthermore a server SHOULD advertise its web interface with normal Bonjour convention `_http._tcp` and `_https._tcp`.
+If a server is providing Signal K via secure versions of HTTP or WebSockets then they MUST be able to provide a
+redirection to the secure versions of these protocols.
 
-A sample Bonjour record output, dumped using avahi-discover:
+If a Signal K server is using DNS-SD, it MUST provide the following parameters (key/value pairs) in the TXT record
+portion of the DNS-SD advertisement:
+
+* `txtvers` is a US-ASCII decimal number identifying the version of the DNS-SD record. Currently, this MUST have a value
+  of 1
+* `roles` specifies which roles the server is capable of providing. See [Roles](#roles) below for details
+
+The server MAY provide the following values:
+
+* `self` is the unique identifier of the vessel using the URN format specified for the `uuid` field in the Signal K
+  schema. It may also use the URN format specified for the `mmsi` field in the Signal K schema if it exists.
+* `swname` is the name of the Signal K server software, e.g. signalk-server-node
+* `swvers` is the version of the Signal K server software
+
+An example DNS-SD record set is shown below.
 
 ```
-Service data for service 'signalk-http (2)' of type '_signalk-http._tcp' in domain 'local' on 4.0:
+Service data for service 'signalk-http' of type '_signalk-http._tcp' in domain 'local' on 4.0:
     Host 10-1-1-40.local (10.1.1.40),
-    port 8080,
+    port 80,
     TXT data: [
-        'vessel_uuid=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'version=v1.0.0',
-        'vessel_name=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'vessel_mmsi=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'server=signalk-server',
-        'path=/signalk'
+        'txtvers=1',
+        'roles=master,main',
+        'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
+        'swname=signalk-server',
+        'swvers=0.1.23'
         ]
 
-Service data for service 'signalk-ws (2)' of type '_signalk-ws._tcp' in domain 'local' on 4.0:
+Service data for service 'signalk-ws' of type '_signalk-ws._tcp' in domain 'local' on 4.0:
     Host 10-1-1-40.local (10.1.1.40),
     port 3000,
     TXT data: [
-        'vessel_uuid=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'version=v1.0.0',
-        'vessel_name=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'vessel_mmsi=urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5',
-        'server=signalk-server',
-        'path=/signalk'
+        'txtvers=1',
+        'roles=master,main',
+        'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
+        'swname=signalk-server',
+        'swvers=0.1.23'
         ]
 ```
 
-#### Connection Establishment
+These records are advertising a Signal K server with the HTTP REST API on port 80 and the WebSocket data stream on port
+3000. The server identifies as having the `master` and `main` roles and provides a `self` identifier as a UUID.
 
-Using the information above a web client or http capable device can discover and connect to a Signal K server using the following process:
+### Roles
 
-* Listen for Signal K services using Bonjour/mDns.
-* Use the Bonjour record to find the REST api interface `signalk-http`
-* Make a GET call to <host><port><path> (eg `http://10.1.1.40:8080/signalk` from above)
-* And get the endpoints json
+The four possible values for `roles` are `master`, `slave`, `main`, and `aux`. These are defined below.
 
-```json
-{
-    "endpoints": {
-        "v1": {
-            "version": "1.1.2",
-            "signalk-http": "http://192.168.1.2/signalk/v1/api/",
-            "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream"
-        }
-     }
- }
-```
+#### Master
 
-* Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start streaming](streaming_api.md) updates.
+`master` is the canonical source for identity and configuration information for the entire vessel.
+
+If there is only one master on the vessel, then it should also provide the main role. The combination of master and main
+informs a client that this server is actively providing identifying information.
+
+##### Main and Aux
+
+If there are more than one masters on the vessel, EXACTLY ONE server should advertise both master and main. All other
+masters should advertise master and aux. Clients should only use the master aux servers for identifying information if
+the master main is not available.
+
+Any server identifying as master MUST be able to provide at a minimum the unique identifier (self) for the vessel.
+
+#### Slave
+
+Any server providing the `slave` role should retrieve identity and configuration information from the master server.
+Slave servers MAY provide configuration and identity information for themselves, but this identity MUST NOT be
+considered valid for the entire vesssel.
+
+##### Main and Aux
+
+The use of main and aux have not been defined for the slave role at this time.
+
+## Connection Establishment
+
+Using the information above a web client or HTTP capable device can discover and connect to a Signal K server using the
+following process:
+
+* Query for Signal K services using mDNS
+* Connect to the host and port advertised as 'signalk-http' via HTTP (e.g. `http://10.1.1.40:80`)
+* Per the [Ports, Urls and Versioning](urls_etc.md) section, make a GET request for `/signalk` to retrieve a JSON
+  object containing an `endpoints` JSON object
+* Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start
+  streaming](streaming_api.md) updates.
