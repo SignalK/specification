@@ -2,7 +2,11 @@ Signal K Specification
 ======================
 
 This repository contains the (working) specification for Signal K, defined in
-JSON Schema files.
+JSON Schema files, tests for the schema files and assorted JavaScript utilities
+for working with Signal K delta and full JSON data as well as validation
+utilities.
+
+https://travis-ci.org/SignalK/specification.svg?branch=master
 
 Signal K
 --------
