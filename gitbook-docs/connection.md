@@ -8,9 +8,12 @@ DNS [Service (SRV) Records](https://en.wikipedia.org/wiki/SRV_record) and [Text 
 Records](https://en.wikipedia.org/wiki/TXT_record) describing the Signal K interfaces it provides. These service
 identifiers are:
 
-* `_http._tcp` and/or `_https._tcp` for the server's web interface
-* `_signalk-http._tcp` and/or `_signalk-https._tcp` for the Signal K REST API
-* `_signalk-ws._tcp` and/or `_signalk-wss._tcp` for the WebSocket data stream
+* `_http._tcp` for the server's web interface
+* `_signalk-http._tcp` for the Signal K REST API
+* `_signalk-ws._tcp` for the WebSocket data stream
+
+If a server is providing Signal K via secure versions of HTTP or WebSockets then they MUST be able to provide a
+redirection to the secure versions of these protocols.
 
 If a Signal K server is using DNS-SD, it MUST provide the following parameters (key/value pairs) in the TXT record
 portion of the DNS-SD advertisement:
@@ -22,11 +25,11 @@ portion of the DNS-SD advertisement:
 The server MAY provide the following values:
 
 * `self` is the unique identifier of the vessel using the URN format specified for the `uuid` field in the Signal K
-  schema
-* `server` is the name of the Signal K server software, e.g. signalk-server-node
-* `version` is the version of the Signal K server software
+  schema. It may also use the URN format specified for the `mmsi` field in the Signal K schema if it exists.
+* `swname` is the name of the Signal K server software, e.g. signalk-server-node
+* `swvers` is the version of the Signal K server software
 
-An example DNS-SD record set might look something like this
+An example DNS-SD record set is shown below.
 
 ```
 Service data for service 'signalk-http' of type '_signalk-http._tcp' in domain 'local' on 4.0:
@@ -36,8 +39,8 @@ Service data for service 'signalk-http' of type '_signalk-http._tcp' in domain '
         'txtvers=1',
         'roles=master,main',
         'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
-        'server=signalk-server',
-        'version=0.1.23'
+        'swname=signalk-server',
+        'swvers=0.1.23'
         ]
 
 Service data for service 'signalk-ws' of type '_signalk-ws._tcp' in domain 'local' on 4.0:
@@ -47,13 +50,13 @@ Service data for service 'signalk-ws' of type '_signalk-ws._tcp' in domain 'loca
         'txtvers=1',
         'roles=master,main',
         'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
-        'server=signalk-server',
-        'version=0.1.23'
+        'swname=signalk-server',
+        'swvers=0.1.23'
         ]
 ```
 
-This shows a Signal K server with the HTTP REST API on port 80 and the WebSocket data stream on port 3000. The server
-identifies as having the `master` and `main` roles and provides a `self` identifier.
+These records are advertising a Signal K server with the HTTP REST API on port 80 and the WebSocket data stream on port
+3000. The server identifies as having the `master` and `main` roles and provides a `self` identifier as a UUID.
 
 ### Roles
 
