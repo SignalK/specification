@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Streaming WebSocket API · Signal K Documentation</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Streaming WebSocket API · Signal K Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -416,17 +416,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="streaming-websocket-api-signalkv1stream"><a name="streaming-websocket-api-signalkv1stream" class="plugin-anchor" href="#streaming-websocket-api-signalkv1stream"><i class="fa fa-link" aria-hidden="true"></i></a>Streaming WebSocket API: /signalk/v1/stream</h4><p>Initiates a WebSocket connection that will start streaming the server&apos;s updates as Signal K delta messages. You can specify the contents of the stream by using a specific URL:</p><ul><li>ws://hostname/signalk/v1/stream?subscribe=self
-</li>
-<li>ws://hostname/signalk/v1/stream?subscribe=all
-</li>
-<li>ws://hostname/signalk/v1/stream?subscribe=none
-</li></ul>
-<p>With no query parameter the default is <code>self</code>, which will stream the data related to the <code>self</code> object. <code>all</code> will stream all the updates the server sees and <code>none</code> will stream only the heartbeat, until the client issues subscribe messages in the WebSocket stream.</p><p>If a server does not support some streaming options listed in here it must respond with http status code <code>501 Not Implemented</code>.</p><p>See <a href="subscription_protocol.html">Subscription Protocol</a> for more details.</p><h5 id="connection-hello"><a name="connection-hello" class="plugin-anchor" href="#connection-hello"><i class="fa fa-link" aria-hidden="true"></i></a>Connection Hello</h5><p>Upon connection a &apos;hello&apos; message is sent as follows:</p><pre><code class="lang-json">{
+                                <h4 id="streaming-websocket-api-signalkv1stream"><a name="streaming-websocket-api-signalkv1stream" class="plugin-anchor" href="#streaming-websocket-api-signalkv1stream"><i class="fa fa-link" aria-hidden="true"></i></a>Streaming WebSocket API: /signalk/v1/stream</h4>
+<p>Initiates a WebSocket connection that will start streaming the server&apos;s updates as Signal K delta messages. You can specify the contents of the stream by using a specific URL:</p>
+<ul>
+<li>ws://hostname/signalk/v1/stream?subscribe=self</li>
+<li>ws://hostname/signalk/v1/stream?subscribe=all</li>
+<li>ws://hostname/signalk/v1/stream?subscribe=none</li>
+</ul>
+<p>With no query parameter the default is <code>self</code>, which will stream the data related to the <code>self</code> object. <code>all</code> will stream all the updates the server sees and <code>none</code> will stream only the heartbeat, until the client issues subscribe messages in the WebSocket stream.</p>
+<p>If a server does not support some streaming options listed in here it must respond with http status code <code>501 Not Implemented</code>.</p>
+<p>See <a href="subscription_protocol.html">Subscription Protocol</a> for more details.</p>
+<h5 id="connection-hello"><a name="connection-hello" class="plugin-anchor" href="#connection-hello"><i class="fa fa-link" aria-hidden="true"></i></a>Connection Hello</h5>
+<p>Upon connection a &apos;hello&apos; message is sent as follows:</p>
+<pre><code class="lang-json">{
   <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.1.2&quot;</span>,
   <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2015-04-13T01:13:50.524Z&quot;</span>,
   <span class="hljs-string">&quot;self&quot;</span>: <span class="hljs-string">&quot;123456789&quot;</span>
-}</code></pre>
+}
+</code></pre>
 
                                 
                                 </section>
@@ -470,7 +477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"next":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},"previous":{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"streaming_api.md","mtime":"2016-11-12T21:28:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T19:54:42.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"next":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},"previous":{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"streaming_api.md","mtime":"2016-10-09T02:50:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-07T23:01:35.105Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

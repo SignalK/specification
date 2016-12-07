@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Notifications · Signal K Documentation</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Notifications · Signal K Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -416,78 +416,86 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="alarm-alert-and-notification-handling"><a name="alarm-alert-and-notification-handling" class="plugin-anchor" href="#alarm-alert-and-notification-handling"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm, Alert, and Notification Handling</h1><p>Handling alarms, alerts, and notifications in Signal K is a multi-stage process. Alarms, alerts and notifications are
-all handled the same way, and are all referred to as alarms below.</p><p>We need a flexible model to define alarm conditions, and a standard way to announce and record them.</p><h2 id="alarm-process"><a name="alarm-process" class="plugin-anchor" href="#alarm-process"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm Process</h2><ul><li>Define alarm states as zones in the meta object attached to any Signal K value. See [[Metadata for Data Values]]
-</li>
-<li>If the value is within an alarm zone raise the defined alarm.
-</li>
-<li>If the value goes out of the zone, remove the alarm by setting its value to null
-</li>
-<li>Alarms are raised by placing an alarm object in the <code>vessels.self.notifications</code> tree
-</li></ul>
-<h2 id="expected-implementation-behaviour"><a name="expected-implementation-behaviour" class="plugin-anchor" href="#expected-implementation-behaviour"><i class="fa fa-link" aria-hidden="true"></i></a>Expected implementation behaviour</h2><ul><li>The server (or device) should monitor the current value and compare it to the defined zones.
-</li>
-<li>If a value enters an alarm zone, then a key is written to <code>vessels.self.notifications..</code>
-</li>
-<li>If a value leaves an alarm zone, then the key is removed from <code>vessels.self.notifications..</code>
-</li>
+                                <h1 id="alarm-alert-and-notification-handling"><a name="alarm-alert-and-notification-handling" class="plugin-anchor" href="#alarm-alert-and-notification-handling"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm, Alert, and Notification Handling</h1>
+<p>Handling alarms, alerts, and notifications in Signal K is a multi-stage process. Alarms, alerts and notifications are
+all handled the same way, and are all referred to as alarms below.</p>
+<p>We need a flexible model to define alarm conditions, and a standard way to announce and record them.</p>
+<h2 id="alarm-process"><a name="alarm-process" class="plugin-anchor" href="#alarm-process"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm Process</h2>
+<ul>
+<li>Define alarm states as zones in the meta object attached to any Signal K value. See [[Metadata for Data Values]]</li>
+<li>If the value is within an alarm zone raise the defined alarm.</li>
+<li>If the value goes out of the zone, remove the alarm by setting its value to null</li>
+<li>Alarms are raised by placing an alarm object in the <code>vessels.self.notifications</code> tree</li>
+</ul>
+<h2 id="expected-implementation-behaviour"><a name="expected-implementation-behaviour" class="plugin-anchor" href="#expected-implementation-behaviour"><i class="fa fa-link" aria-hidden="true"></i></a>Expected implementation behaviour</h2>
+<ul>
+<li>The server (or device) should monitor the current value and compare it to the defined zones.</li>
+<li>If a value enters an alarm zone, then a key is written to <code>vessels.self.notifications..</code></li>
+<li>If a value leaves an alarm zone, then the key is removed from <code>vessels.self.notifications..</code></li>
 <li>Alarms raised are monitored by an alarm process on the server, which takes appropriate action, sounding alarms, or
-displaying messages.
-</li>
+displaying messages.</li>
 <li>Clients interested in alarms can subcribe to the <code>vessels.self.notifications...</code> tree in the usual way and be informed
-of alarms in the same way as normal signalk keys.
-</li>
-<li>When an alarms is removed, a delta should be sent to subscribers with the path and a null value.
-</li></ul>
-<h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2><p>eg If we exceed our anchor alarm radius: <code>vessels.self.navigation.anchor.currentRadius</code> enters
-<code>vessels.self.navigation.anchor.currentRadius.meta.zones[[50,500, &quot;alarm&quot;, &quot;Dragging anchor!&quot;]],</code></p><p>The alarm is : <code>vessels.self.notifications.navigation.anchor.currentRadius</code></p><p>The alarm object is</p><pre><code>{
+of alarms in the same way as normal signalk keys.</li>
+<li>When an alarms is removed, a delta should be sent to subscribers with the path and a null value.</li>
+</ul>
+<h2 id="example"><a name="example" class="plugin-anchor" href="#example"><i class="fa fa-link" aria-hidden="true"></i></a>Example</h2>
+<p>eg If we exceed our anchor alarm radius: <code>vessels.self.navigation.anchor.currentRadius</code> enters
+<code>vessels.self.navigation.anchor.currentRadius.meta.zones[[50,500, &quot;alarm&quot;, &quot;Dragging anchor!&quot;]],</code></p>
+<p>The alarm is : <code>vessels.self.notifications.navigation.anchor.currentRadius</code></p>
+<p>The alarm object is</p>
+<pre><code>{
   &quot;method&quot;: [&quot;sound&quot;],
   &quot;state&quot;: &quot;alarm&quot;,
   &quot;message&quot;: &quot;Dragging anchor!&quot;,
   &quot;timestamp&quot;: ..,
   &quot;source&quot;: {..}
-}</code></pre>
-<p>The server alarm manager will see this new entry and turn on the alarm. Using a manager process allows flexibility in
+}
+</code></pre><p>The server alarm manager will see this new entry and turn on the alarm. Using a manager process allows flexibility in
 situations where multiple alarms are triggered and your vessel is a mass of flashing and beeping. eg A single &apos;Pause&apos;
-button can give you 5-10 minutes to take action, stopping annoying noise, and removing popup messages from screens.</p><p>Since the <code>vessels.self.notifications</code> tree mirrors the other data in the signal k model, we can selectively watch or
-react to specific branches or keys. When displaying multiple alarms a screen can also sort and filter them.</p><h2 id="other-alarms"><a name="other-alarms" class="plugin-anchor" href="#other-alarms"><i class="fa fa-link" aria-hidden="true"></i></a>Other Alarms</h2><p>Above we have discussed monitoring existing values and raising alarms. There are other alarms that must be considered,
-eg MOB, fire, sinking etc, and misc alerts &quot;GPS signal lost&quot;.etc.</p><p>The <code>vessels.[uuid].notifications</code> tree is the same as any other Signal k branch. Keys can be added and removed as
+button can give you 5-10 minutes to take action, stopping annoying noise, and removing popup messages from screens.</p>
+<p>Since the <code>vessels.self.notifications</code> tree mirrors the other data in the signal k model, we can selectively watch or
+react to specific branches or keys. When displaying multiple alarms a screen can also sort and filter them.</p>
+<h2 id="other-alarms"><a name="other-alarms" class="plugin-anchor" href="#other-alarms"><i class="fa fa-link" aria-hidden="true"></i></a>Other Alarms</h2>
+<p>Above we have discussed monitoring existing values and raising alarms. There are other alarms that must be considered,
+eg MOB, fire, sinking etc, and misc alerts &quot;GPS signal lost&quot;.etc.</p>
+<p>The <code>vessels.[uuid].notifications</code> tree is the same as any other Signal k branch. Keys can be added and removed as
 required in the usual way. Since the branch is being monitored we only need to add a key of any sort to create a
-suitable alarm.</p><p>In the case of an emergency, create a unique key: The alarm is : <code>vessels.[uuid].notifications.[alarm.key]</code></p><p>The alarm object is</p><pre><code>{
+suitable alarm.</p>
+<p>In the case of an emergency, create a unique key: The alarm is : <code>vessels.[uuid].notifications.[alarm.key]</code></p>
+<p>The alarm object is</p>
+<pre><code>{
   &quot;method&quot;: [&quot;visual&quot;, &quot;sound&quot;],
   &quot;state&quot;: &quot;emergency&quot;,
   &quot;message&quot;: &quot;Man Overboard!&quot;,
   ...
-}</code></pre>
-<p>Alarm objects that have been raised this way must be cleared manually, or by the process that created them. You can use
-any suitable path, keeping in mind the context of the alarm.</p><p>eg In the case of an alert, create a unique key by generating a path: The alarm is :
-<code>vessels.[uuid].notifications.navigation.gnss</code></p><p>The alarm object is</p><pre><code>{
+}
+</code></pre><p>Alarm objects that have been raised this way must be cleared manually, or by the process that created them. You can use
+any suitable path, keeping in mind the context of the alarm.</p>
+<p>eg In the case of an alert, create a unique key by generating a path: The alarm is :
+<code>vessels.[uuid].notifications.navigation.gnss</code></p>
+<p>The alarm object is</p>
+<pre><code>{
   &quot;method&quot;: [&quot;visual&quot;],
   &quot;state&quot;: &quot;alert&quot;,
   &quot;message&quot;: &quot;GPS signal lost!&quot;,
   ...
-}</code></pre>
-<h3 id="well-known-names"><a name="well-known-names" class="plugin-anchor" href="#well-known-names"><i class="fa fa-link" aria-hidden="true"></i></a>Well Known Names</h3><p>Some alarms are especially important, eg MOB. This is a list of keys for special alarms.</p><ul><li><code>..notifications.mob.*</code>
-</li>
-<li><code>..notifications.fire.*</code>
-</li>
-<li><code>..notifications.sinking.*</code>
-</li>
-<li><code>..notifications.flooding.*</code>
-</li>
-<li><code>..notifications.collision.*</code>
-</li>
-<li><code>..notifications.grounding.*</code>
-</li>
-<li><code>..notifications.listing.*</code>
-</li>
-<li><code>..notifications.adrift.*</code>
-</li>
-<li><code>..notifications.piracy.*</code>
-</li>
-<li><code>..notifications.abandon.*</code>
-</li></ul>
-<p>An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:</p><pre><code>{
+}
+</code></pre><h3 id="well-known-names"><a name="well-known-names" class="plugin-anchor" href="#well-known-names"><i class="fa fa-link" aria-hidden="true"></i></a>Well Known Names</h3>
+<p>Some alarms are especially important, eg MOB. This is a list of keys for special alarms.</p>
+<ul>
+<li><code>..notifications.mob.*</code></li>
+<li><code>..notifications.fire.*</code></li>
+<li><code>..notifications.sinking.*</code></li>
+<li><code>..notifications.flooding.*</code></li>
+<li><code>..notifications.collision.*</code></li>
+<li><code>..notifications.grounding.*</code></li>
+<li><code>..notifications.listing.*</code></li>
+<li><code>..notifications.adrift.*</code></li>
+<li><code>..notifications.piracy.*</code></li>
+<li><code>..notifications.abandon.*</code></li>
+</ul>
+<p>An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:</p>
+<pre><code>{
   &quot;context&quot;: &quot;vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;,
   &quot;updates&quot;: [
     {
@@ -507,8 +515,9 @@ any suitable path, keeping in mind the context of the alarm.</p><p>eg In the cas
       ]
     }
   }
-}</code></pre>
-<p>The resulting full signalk tree would be:</p><pre><code>{
+}
+</code></pre><p>The resulting full signalk tree would be:</p>
+<pre><code>{
   &quot;vessels&quot;: {
     &quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;: {
       &quot;notifications&quot;: {
@@ -524,8 +533,9 @@ any suitable path, keeping in mind the context of the alarm.</p><p>eg In the cas
       }
     }
   }
-}</code></pre>
-<p>To clear the alarm condition, send:</p><pre><code>{
+}
+</code></pre><p>To clear the alarm condition, send:</p>
+<pre><code>{
   &quot;context&quot;: &quot;vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;,
   &quot;updates&quot;: [
     {
@@ -541,16 +551,22 @@ any suitable path, keeping in mind the context of the alarm.</p><p>eg In the cas
       ]
     }
   ]
-}</code></pre>
-<h2 id="multiple-cases-of-the-same-alarm"><a name="multiple-cases-of-the-same-alarm" class="plugin-anchor" href="#multiple-cases-of-the-same-alarm"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple cases of the same alarm</h2><p>Should multiple cases of the same alarm occur (eg a gps loses signal, then a second gps loses signal) the alarms are
+}
+</code></pre><h2 id="multiple-cases-of-the-same-alarm"><a name="multiple-cases-of-the-same-alarm" class="plugin-anchor" href="#multiple-cases-of-the-same-alarm"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple cases of the same alarm</h2>
+<p>Should multiple cases of the same alarm occur (eg a gps loses signal, then a second gps loses signal) the alarms are
 handled the same as any other multiple values in signalk. However alarms will tend to be re-issued whenever the
-underlying data changes.</p><p>The servers alarm monitoring processes are expected to be smart enough to know that the anchor alarm is triggered, and
-its not necessary to raise a second copy of the same alarm, after all there is only one boat dragging!</p><p>This may be handled differently for notifications. It may be useful to know that your gps&apos;s are all failing
-intermittently, or that . Hence the handling of multiple copies of alarms is an implementation issue, and may vary.</p><h2 id="the-key-should-be-unique"><a name="the-key-should-be-unique" class="plugin-anchor" href="#the-key-should-be-unique"><i class="fa fa-link" aria-hidden="true"></i></a>The key should be unique</h2><p>If we have an alarm <code>vessels.self.notifications.navigation.anchor.currentRadius</code> and we attempt to write another higher
+underlying data changes.</p>
+<p>The servers alarm monitoring processes are expected to be smart enough to know that the anchor alarm is triggered, and
+its not necessary to raise a second copy of the same alarm, after all there is only one boat dragging!</p>
+<p>This may be handled differently for notifications. It may be useful to know that your gps&apos;s are all failing
+intermittently, or that . Hence the handling of multiple copies of alarms is an implementation issue, and may vary.</p>
+<h2 id="the-key-should-be-unique"><a name="the-key-should-be-unique" class="plugin-anchor" href="#the-key-should-be-unique"><i class="fa fa-link" aria-hidden="true"></i></a>The key should be unique</h2>
+<p>If we have an alarm <code>vessels.self.notifications.navigation.anchor.currentRadius</code> and we attempt to write another higher
 in the same tree at <code>vessels.self.notifications</code> it must not replace or remove the existing alarm. Since the
 <code>meta.zones</code> structure is only valid on signalk leaf values this occurs naturally in most circumstances. But it is
 possible to set an alarm value arbitrarily (eg MOB) and care should be taken in implementations that keys do not
 overwrite existing paths.</p>
+
                                 
                                 </section>
                             
@@ -593,7 +609,7 @@ overwrite existing paths.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Notifications","level":"1.4.6","depth":2,"next":{"title":"Background and Design Rationale","level":"1.5","depth":1,"path":"design_notes.md","ref":"design_notes.md","articles":[]},"previous":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"notifications.md","mtime":"2016-11-12T21:42:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T19:54:42.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Notifications","level":"1.4.6","depth":2,"next":{"title":"Background and Design Rationale","level":"1.5","depth":1,"path":"design_notes.md","ref":"design_notes.md","articles":[]},"previous":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"notifications.md","mtime":"2016-12-03T22:18:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-07T23:01:35.105Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Ports, Urls and Versioning · Signal K Documentation</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Ports, Urls and Versioning · Signal K Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -414,12 +414,23 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ports-urls-and-versioning"><a name="ports-urls-and-versioning" class="plugin-anchor" href="#ports-urls-and-versioning"><i class="fa fa-link" aria-hidden="true"></i></a>Ports, Urls and Versioning</h1><h3 id="short-names"><a name="short-names" class="plugin-anchor" href="#short-names"><i class="fa fa-link" aria-hidden="true"></i></a>Short Names</h3><ul><li><code>self</code> refers to the current vessel. Normally used in <code>vessels.self...</code>.
-</li></ul>
-<h3 id="ports"><a name="ports" class="plugin-anchor" href="#ports"><i class="fa fa-link" aria-hidden="true"></i></a>Ports</h3><p>The Signal K HTTP and WebSocket services SHOULD be found on the usual HTTP/S ports (80 or 443). The services SHOULD be
-found on the same port, but may be configured for independent ports and MAY be configured for ports other than HTTP/S.</p><p>A Signal K server MAY offer Signal K over TCP or UDP, these services SHOULD be on port 55555<a href="#fn_1">[1]</a>.</p><p>If an alternate port is needed it SHOULD be an arbitrary high port in the range 49152&#x2013;65535<a href="#fn_2">[2]</a>.</p><h3 id="url-prefix"><a name="url-prefix" class="plugin-anchor" href="#url-prefix"><i class="fa fa-link" aria-hidden="true"></i></a>URL Prefix</h3><p>The Signal K applications start from the <code>/signalk</code> root. This provides some protection against name collisions with
+                                <h1 id="ports-urls-and-versioning"><a name="ports-urls-and-versioning" class="plugin-anchor" href="#ports-urls-and-versioning"><i class="fa fa-link" aria-hidden="true"></i></a>Ports, Urls and Versioning</h1>
+<h3 id="short-names"><a name="short-names" class="plugin-anchor" href="#short-names"><i class="fa fa-link" aria-hidden="true"></i></a>Short Names</h3>
+<ul>
+<li><code>self</code> refers to the current vessel. Normally used in <code>vessels.self...</code>.</li>
+</ul>
+<h3 id="ports"><a name="ports" class="plugin-anchor" href="#ports"><i class="fa fa-link" aria-hidden="true"></i></a>Ports</h3>
+<p>The Signal K HTTP and WebSocket services SHOULD be found on the usual HTTP/S ports (80 or 443). The services SHOULD be
+found on the same port, but may be configured for independent ports and MAY be configured for ports other than HTTP/S.</p>
+<p>A Signal K server MAY offer Signal K over TCP or UDP, these services SHOULD be on port 55555<a href="#fn_1">[1]</a>.</p>
+<p>If an alternate port is needed it SHOULD be an arbitrary high port in the range 49152&#x2013;65535<a href="#fn_2">[2]</a>.</p>
+<h3 id="url-prefix"><a name="url-prefix" class="plugin-anchor" href="#url-prefix"><i class="fa fa-link" aria-hidden="true"></i></a>URL Prefix</h3>
+<p>The Signal K applications start from the <code>/signalk</code> root. This provides some protection against name collisions with
 other applications on the same server. Therefore the Signal K entry point will always be found by loading
-<code>http(s)://&#xAB;host&#xBB;:&#xAB;port&#xBB;/signalk</code>.</p><h3 id="versioning"><a name="versioning" class="plugin-anchor" href="#versioning"><i class="fa fa-link" aria-hidden="true"></i></a>Versioning</h3><p>The version(s) of the Signal K API that a server supports SHALL be available as a JSON object available at <code>/signalk</code>:</p><pre><code class="lang-json">{
+<code>http(s)://&#xAB;host&#xBB;:&#xAB;port&#xBB;/signalk</code>.</p>
+<h3 id="versioning"><a name="versioning" class="plugin-anchor" href="#versioning"><i class="fa fa-link" aria-hidden="true"></i></a>Versioning</h3>
+<p>The version(s) of the Signal K API that a server supports SHALL be available as a JSON object available at <code>/signalk</code>:</p>
+<pre><code class="lang-json">{
     <span class="hljs-string">&quot;endpoints&quot;</span>: {
         <span class="hljs-string">&quot;v1&quot;</span>: {
             <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.1.2&quot;</span>,
@@ -434,24 +445,35 @@ other applications on the same server. Therefore the Signal K entry point will a
         }
 
     }
-}</code></pre>
+}
+</code></pre>
 <p>This response is defined by the <code>discovery.json</code> schema. In this example, the server supports two versions of
 the specification: <code>1.1.2</code> and <code>3.0</code>. For each version, the server indicates which transport protocols it
 supports and the URL that can be used to access that protocol&apos;s endpoint; in the example, the <code>1.1.2</code>
 REST endpoint is located at <code>http://192.168.1.2/signalk/v1/api/</code>. Clients should use one of these published
-endpoints based on the protocol version they wish to use.</p><p>The server must only return valid URLs and should use IANA standard protocol names such as <code>http</code>.
+endpoints based on the protocol version they wish to use.</p>
+<p>The server must only return valid URLs and should use IANA standard protocol names such as <code>http</code>.
 However, a server may support unofficial protocols and may return additional protocol names; for example,
-the response above indicates the server supports a <code>signalk-tcp</code> stream over TCP at on port <code>34568</code>.</p><p>A server may return relative URIs that the client must resolve against the base of the original request.</p><h4 id="streaming-websocket-api-signalkv1stream"><a name="streaming-websocket-api-signalkv1stream" class="plugin-anchor" href="#streaming-websocket-api-signalkv1stream"><i class="fa fa-link" aria-hidden="true"></i></a>Streaming WebSocket API: /signalk/v1/stream</h4><p>Initiates a WebSocket connection that will start streaming the server&apos;s updates as Signal K delta messages. You can specify the contents of the stream by using a specific URL:</p><ul><li>ws://hostname/signalk/v1/stream?subscribe=self
-</li>
-<li>ws://hostname/signalk/v1/stream?subscribe=all
-</li>
-<li>ws://hostname/signalk/v1/stream?subscribe=none
-</li></ul>
-<p>With no query parameter the default is <code>self</code>, which will stream the data related to the <code>self</code> object. <code>all</code> will stream all the updates the server sees and <code>none</code> will stream only the heartbeat, until the client issues subscribe messages in the WebSocket stream.</p><p>If a server does not support some streaming options listed in here it must respond with http status code <code>501 Not Implemented</code>.</p><p>See <a href="subscription_protocol.html">Subscription Protocol</a> for more details.</p><h5 id="connection-hello"><a name="connection-hello" class="plugin-anchor" href="#connection-hello"><i class="fa fa-link" aria-hidden="true"></i></a>Connection Hello</h5><p>Upon connection a &apos;hello&apos; message is sent as follows:</p><pre><code class="lang-json">{
+the response above indicates the server supports a <code>signalk-tcp</code> stream over TCP at on port <code>34568</code>.</p>
+<p>A server may return relative URIs that the client must resolve against the base of the original request.</p>
+<h4 id="streaming-websocket-api-signalkv1stream"><a name="streaming-websocket-api-signalkv1stream" class="plugin-anchor" href="#streaming-websocket-api-signalkv1stream"><i class="fa fa-link" aria-hidden="true"></i></a>Streaming WebSocket API: /signalk/v1/stream</h4>
+<p>Initiates a WebSocket connection that will start streaming the server&apos;s updates as Signal K delta messages. You can specify the contents of the stream by using a specific URL:</p>
+<ul>
+<li>ws://hostname/signalk/v1/stream?subscribe=self</li>
+<li>ws://hostname/signalk/v1/stream?subscribe=all</li>
+<li>ws://hostname/signalk/v1/stream?subscribe=none</li>
+</ul>
+<p>With no query parameter the default is <code>self</code>, which will stream the data related to the <code>self</code> object. <code>all</code> will stream all the updates the server sees and <code>none</code> will stream only the heartbeat, until the client issues subscribe messages in the WebSocket stream.</p>
+<p>If a server does not support some streaming options listed in here it must respond with http status code <code>501 Not Implemented</code>.</p>
+<p>See <a href="subscription_protocol.html">Subscription Protocol</a> for more details.</p>
+<h5 id="connection-hello"><a name="connection-hello" class="plugin-anchor" href="#connection-hello"><i class="fa fa-link" aria-hidden="true"></i></a>Connection Hello</h5>
+<p>Upon connection a &apos;hello&apos; message is sent as follows:</p>
+<pre><code class="lang-json">{
   <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.1.2&quot;</span>,
   <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2015-04-13T01:13:50.524Z&quot;</span>,
   <span class="hljs-string">&quot;self&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d&quot;</span>
-}</code></pre>
+}
+</code></pre>
 
                                 
                                 </section>
@@ -491,7 +513,7 @@ the response above indicates the server supports a <code>signalk-tcp</code> stre
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"next":{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},"previous":{"title":"API","level":"1.4","depth":1,"ref":"","articles":[{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},{"title":"Notifications","level":"1.4.6","depth":2,"path":"notifications.md","ref":"notifications.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"urls_etc.md","mtime":"2016-11-19T17:20:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-11-27T19:54:42.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"next":{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},"previous":{"title":"API","level":"1.4","depth":1,"ref":"","articles":[{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},{"title":"REST API","level":"1.4.2","depth":2,"path":"rest_api.md","ref":"rest_api.md","articles":[]},{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},{"title":"Subscription Protocol","level":"1.4.5","depth":2,"path":"subscription_protocol.md","ref":"subscription_protocol.md","articles":[]},{"title":"Notifications","level":"1.4.6","depth":2,"path":"notifications.md","ref":"notifications.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"urls_etc.md","mtime":"2016-12-03T22:18:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-07T23:01:35.105Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
