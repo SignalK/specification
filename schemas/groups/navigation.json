@@ -219,7 +219,7 @@
                     "longitude": {
                       "type": "number"
                     }
-                  }
+                }
             }
 		  
         },
@@ -234,7 +234,7 @@
                     "longitude": {
                       "type": "number"
                     }
-                  }
+                }
             }
         },
         "distanceStartline": {
