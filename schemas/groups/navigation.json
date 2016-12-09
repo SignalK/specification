@@ -221,7 +221,7 @@
                     }
                 }
             }
-		  
+
         },
         "startLinePort": {
           "description": "Position of starboard start mark",
@@ -542,7 +542,7 @@
     },
     "datetime": {
       "type": "object",
-      "description": "Time and Date from the GNSS Positioning System"
+      "description": "Time and Date from the GNSS Positioning System",
 	  "allOf": [
         {
           "$ref": "../definitions.json#/definitions/commonValueFields"
