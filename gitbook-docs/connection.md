@@ -98,3 +98,5 @@ following process:
   object containing an `endpoints` JSON object
 * Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start
   streaming](streaming_api.md) updates.
+
+  ![alt tag](ikommunicate/iKommunicate_SDK_V1-0_images/Consumer Discovery Process.png)
