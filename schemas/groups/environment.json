@@ -18,7 +18,8 @@
   },
   "properties": {
     "outside": {
-      "type": "object",
+      "description": "Environmental conditions outside of the vessel's hull",
+	  "type": "object",
       "properties": {
         "temperature": {
           "description": "Current outside air temperature",
@@ -59,7 +60,8 @@
     },
     "inside": {
       "type": "object",
-      "properties": {
+      "description": "Environmental conditions inside the vessel's hull",
+	  "properties": {
         "temperature": {
           "description": "Current inside air temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -96,7 +98,8 @@
 
     "water": {
       "type": "object",
-      "properties": {
+      "description": "Environmental conditions of the water that the vessel is sailing in",
+	  "properties": {
         "temperature": {
           "description": "Current water temperature",
           "$ref": "../definitions.json#/definitions/numberValue",

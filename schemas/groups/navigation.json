@@ -27,6 +27,7 @@
         },
         "activeRoute": {
           "type": "object",
+		  "description": "Data required if sailing to an active route, defined in resources.",
           "properties": {
             "href": {
               "description": "A reference (URL) to the presently active route, in resources.",
@@ -205,18 +206,36 @@
     },
     "racing": {
       "type": "object",
-      "properties": {
+      "description": "Specific navigational data related to yacht racing.",
+	  "properties": {
         "startLineStb": {
-          "waypoint": {
-            "description": "UUID of waypoint for starboard start mark",
-            "type": "string"
-          }
+          "description": "Position of starboard start mark",
+		  "position": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                }
+            }
+
         },
         "startLinePort": {
-          "waypoint": {
-            "description": "UUID of waypoint for port start mark",
-            "type": "string"
-          }
+          "description": "Position of starboard start mark",
+		  "position": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    }
+                }
+            }
         },
         "distanceStartline": {
           "description": "The current distance to the start line",
@@ -538,7 +557,8 @@
     },
     "datetime": {
       "type": "object",
-      "allOf": [
+      "description": "Time and Date from the GNSS Positioning System",
+	  "allOf": [
         {
           "$ref": "../definitions.json#/definitions/commonValueFields"
         },
