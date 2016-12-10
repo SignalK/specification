@@ -1119,9 +1119,6 @@
   "/vessels/*/notifications/mob/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/mob/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/fire": {
     "description": "Fire onboard"
   },
@@ -1145,9 +1142,6 @@
   },
   "/vessels/*/notifications/fire/RegExp/message": {
     "description": "Message to display or speak"
-  },
-  "/vessels/*/notifications/fire/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/notifications/sinking": {
     "description": "Vessel is sinking"
@@ -1173,9 +1167,6 @@
   "/vessels/*/notifications/sinking/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/sinking/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/flooding": {
     "description": "Vessel is flooding"
   },
@@ -1199,9 +1190,6 @@
   },
   "/vessels/*/notifications/flooding/RegExp/message": {
     "description": "Message to display or speak"
-  },
-  "/vessels/*/notifications/flooding/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/notifications/collision": {
     "description": "In collision with another vessel or object"
@@ -1227,9 +1215,6 @@
   "/vessels/*/notifications/collision/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/collision/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/grounding": {
     "description": "Vessel grounding"
   },
@@ -1253,9 +1238,6 @@
   },
   "/vessels/*/notifications/grounding/RegExp/message": {
     "description": "Message to display or speak"
-  },
-  "/vessels/*/notifications/grounding/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/notifications/listing": {
     "description": "Vessel is listing"
@@ -1281,9 +1263,6 @@
   "/vessels/*/notifications/listing/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/listing/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/adrift": {
     "description": "Vessel is adrift"
   },
@@ -1307,9 +1286,6 @@
   },
   "/vessels/*/notifications/adrift/RegExp/message": {
     "description": "Message to display or speak"
-  },
-  "/vessels/*/notifications/adrift/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/notifications/piracy": {
     "description": "Under attack or danger from pirates"
@@ -1335,9 +1311,6 @@
   "/vessels/*/notifications/piracy/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/piracy/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/abandon": {
     "description": "Abandon ship"
   },
@@ -1362,9 +1335,6 @@
   "/vessels/*/notifications/abandon/RegExp/message": {
     "description": "Message to display or speak"
   },
-  "/vessels/*/notifications/abandon/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
-  },
   "/vessels/*/notifications/RegExp": {
     "description": "This regex pattern is used for validation of the path of the alarm"
   },
@@ -1376,9 +1346,6 @@
   },
   "/vessels/*/notifications/RegExp/message": {
     "description": "Message to display or speak"
-  },
-  "/vessels/*/notifications/RegExp/RegExp": {
-    "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/steering": {
     "description": "Vessel steering data for steering controls (not Autopilot 'Nav Data')"

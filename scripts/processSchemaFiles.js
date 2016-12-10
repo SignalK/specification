@@ -424,6 +424,7 @@ class Parser {
     }
     const splitPrefix = prefix.split("/")
     if (splitPrefix.length > 1 && splitPrefix[splitPrefix.length - 2] === splitPrefix[splitPrefix.length - 1]) {
+      delete this.tree[prefix]
       this.debug("Avoiding self recursion at", prefix)
       return
     }
