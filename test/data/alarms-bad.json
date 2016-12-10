@@ -10,8 +10,8 @@
             "label": "mode",
             "type": "self"
           },
-          "state": "warn",
-          "method" : "squeak"
+         
+          "method" : ["visual","sound"]
         }
       }
     }

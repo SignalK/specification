@@ -6,6 +6,10 @@ describe('Notifications in the full tree', function() {
   it("should be valid", function() {
     require('./data/alarms.json').should.be.validSignalK;
   });
+  // must have state and method
+   it("should not be valid", function() {
+    require('./data/alarms-bad.json').should.not.be.validSignalK;
+  });
   //and work deeply embedded
   it("should be valid for deep keys", function() {
     require('./data/alarms-deep.json').should.be.validSignalK;
@@ -14,7 +18,7 @@ describe('Notifications in the full tree', function() {
   it("should use alarmState enum", function() {
     require('./data/alarms-invalid1.json').should.not.be.validSignalK;
   });
-  it("should use alarmMethod array with enum", function() {
+  it("should use alarmMethod array", function() {
     require('./data/alarms-invalid2.json').should.not.be.validSignalK;
   });
 });

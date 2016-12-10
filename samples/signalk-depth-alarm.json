@@ -3,8 +3,8 @@
     "environment": {
 	"depth": {
 	    "belowKeel": {
-		"alarmMethod": "sound",
-		"alarmState": "ALARM",
+		"method": "sound",
+		"state": "ALARM",
 		"message": "Running aground!"
 		}
 	    }
