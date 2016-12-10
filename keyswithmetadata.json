@@ -1098,8 +1098,26 @@
   "/vessels/*/notifications/mob": {
     "description": "Man overboard"
   },
+  "/vessels/*/notifications/mob/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/mob/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/mob/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/mob/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/mob/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/mob/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/mob/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/mob/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1107,8 +1125,26 @@
   "/vessels/*/notifications/fire": {
     "description": "Fire onboard"
   },
+  "/vessels/*/notifications/fire/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/fire/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/fire/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/fire/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/fire/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/fire/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/fire/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/fire/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1116,8 +1152,26 @@
   "/vessels/*/notifications/sinking": {
     "description": "Vessel is sinking"
   },
+  "/vessels/*/notifications/sinking/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/sinking/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/sinking/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/sinking/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/sinking/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/sinking/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/sinking/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/sinking/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1125,8 +1179,26 @@
   "/vessels/*/notifications/flooding": {
     "description": "Vessel is flooding"
   },
+  "/vessels/*/notifications/flooding/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/flooding/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/flooding/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/flooding/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/flooding/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/flooding/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/flooding/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/flooding/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1134,8 +1206,26 @@
   "/vessels/*/notifications/collision": {
     "description": "In collision with another vessel or object"
   },
+  "/vessels/*/notifications/collision/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/collision/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/collision/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/collision/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/collision/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/collision/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/collision/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/collision/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1143,8 +1233,26 @@
   "/vessels/*/notifications/grounding": {
     "description": "Vessel grounding"
   },
+  "/vessels/*/notifications/grounding/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/grounding/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/grounding/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/grounding/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/grounding/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/grounding/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/grounding/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/grounding/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1152,8 +1260,26 @@
   "/vessels/*/notifications/listing": {
     "description": "Vessel is listing"
   },
+  "/vessels/*/notifications/listing/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/listing/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/listing/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/listing/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/listing/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/listing/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/listing/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/listing/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1161,8 +1287,26 @@
   "/vessels/*/notifications/adrift": {
     "description": "Vessel is adrift"
   },
+  "/vessels/*/notifications/adrift/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/adrift/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/adrift/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/adrift/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/adrift/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/adrift/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/adrift/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/adrift/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1170,8 +1314,26 @@
   "/vessels/*/notifications/piracy": {
     "description": "Under attack or danger from pirates"
   },
+  "/vessels/*/notifications/piracy/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/piracy/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/piracy/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/piracy/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/piracy/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/piracy/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/piracy/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/piracy/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
@@ -1179,14 +1341,41 @@
   "/vessels/*/notifications/abandon": {
     "description": "Abandon ship"
   },
+  "/vessels/*/notifications/abandon/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/abandon/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/abandon/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/abandon/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/abandon/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/abandon/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/abandon/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/abandon/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
   },
   "/vessels/*/notifications/RegExp": {
     "description": "This regex pattern is used for validation of the path of the alarm"
+  },
+  "/vessels/*/notifications/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/RegExp/RegExp": {
     "description": "This regex pattern is used for validation of the path of the notification"
