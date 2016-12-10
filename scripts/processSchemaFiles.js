@@ -259,17 +259,18 @@ class Parser {
           return result
         }
 
-        if (isEmbedded.bind(this)(path)) {
-          this.debug("Skipping embedded", path)
-          return
-        }
-
         let json = doc.json
 
         const key = path.replace(/</g, '').replace(/>/g, '').replace('RegExp', '*')
         keysWithMeta[key] = {
           units: json.units,
           description: doc.description === null ? '[missing]' : doc.description
+        }
+
+
+        if (isEmbedded.bind(this)(path)) {
+          this.debug("Skipping embedded", path)
+          return
         }
 
         // md += `### [${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}](http://signalk.org/specification/master/keys/html/${fn.replace('.md', '.html')})\n\n`

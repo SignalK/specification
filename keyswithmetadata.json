@@ -229,6 +229,18 @@
   "/vessels/*/environment/current": {
     "description": "Direction and strength of current affecting the vessel"
   },
+  "/vessels/*/environment/current/drift": {
+    "units": "m/s",
+    "description": "The speed component of the water current vector"
+  },
+  "/vessels/*/environment/current/setTrue": {
+    "units": "rad",
+    "description": "The direction component of the water current vector referenced to true (geographic) north"
+  },
+  "/vessels/*/environment/current/setMagnetic": {
+    "units": "rad",
+    "description": "The direction component of the water current vector referenced to magnetic north"
+  },
   "/vessels/*/environment/tide": {
     "description": "Tide data"
   },
@@ -298,6 +310,12 @@
   "/vessels/*/environment/time": {
     "description": "A time reference onboard."
   },
+  "/vessels/*/environment/time/millis": {
+    "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
+  },
+  "/vessels/*/environment/time/timezone": {
+    "description": "Timezone offset in hours and minutes (-)hhmm"
+  },
   "/vessels/*/environment/mode": {
     "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog."
   },
@@ -347,8 +365,62 @@
   "/vessels/*/navigation/courseRhumbline/nextPoint": {
     "description": "The point on earth the vessel's presently navigating towards"
   },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/type": {
+    "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between the vessel's present position and the nextPoint"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/bearingTrue": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/bearingMagnetic": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/velocityMadeGood": {
+    "units": "m/s",
+    "description": "The velocity component of the vessel towards the nextPoint"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/timeToGo": {
+    "units": "s",
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position": {
+    "description": "The position of nextPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position/longitude": {
+    "description": "[missing]"
+  },
   "/vessels/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/type": {
+    "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between previousPoint and the vessel's present position"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position": {
+    "description": "The position of lastPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position/longitude": {
+    "description": "[missing]"
   },
   "/vessels/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -382,8 +454,62 @@
   "/vessels/*/navigation/courseGreatCircle/nextPoint": {
     "description": "The point on earth the vessel's presently navigating towards"
   },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/type": {
+    "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between the vessel's present position and the nextPoint"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/bearingTrue": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/bearingMagnetic": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/velocityMadeGood": {
+    "units": "m/s",
+    "description": "The velocity component of the vessel towards the nextPoint"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/timeToGo": {
+    "units": "s",
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position": {
+    "description": "The position of nextPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
+    "description": "[missing]"
+  },
   "/vessels/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/type": {
+    "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between previousPoint and the vessel's present position"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position": {
+    "description": "The position of lastPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
+    "description": "[missing]"
   },
   "/vessels/*/navigation/racing": {
     "description": "[missing]"
@@ -433,8 +559,21 @@
   "/vessels/*/navigation/destination": {
     "description": "The intended destination of this trip"
   },
+  "/vessels/*/navigation/destination/eta": {
+    "units": "ISO-8601 (UTC)",
+    "description": "ISO-8601 (UTC) string representing date and time."
+  },
+  "/vessels/*/navigation/destination/waypoint": {
+    "description": "UUID of destination waypoint"
+  },
   "/vessels/*/navigation/gnss": {
     "description": "Global satellite navigation meta information"
+  },
+  "/vessels/*/navigation/gnss/methodQuality": {
+    "description": "Quality of the satellite fix"
+  },
+  "/vessels/*/navigation/gnss/integrity": {
+    "description": "Integrity of the satellite fix"
   },
   "/vessels/*/navigation/gnss/satellites": {
     "description": "Number of satellites"
@@ -470,8 +609,32 @@
   "/vessels/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
+  "/vessels/*/navigation/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/vessels/*/navigation/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/vessels/*/navigation/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
+  },
   "/vessels/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
+  },
+  "/vessels/*/navigation/attitude/roll": {
+    "units": "rad",
+    "description": "Vessel roll, +ve is list to starboard"
+  },
+  "/vessels/*/navigation/attitude/pitch": {
+    "units": "rad",
+    "description": "Pitch, +ve is bow up"
+  },
+  "/vessels/*/navigation/attitude/yaw": {
+    "units": "rad",
+    "description": "Yaw, +ve is heading change to starboard"
   },
   "/vessels/*/navigation/rateOfTurn": {
     "units": "rad/s",
@@ -510,8 +673,23 @@
   "/vessels/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
   },
+  "/vessels/*/navigation/anchor/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/vessels/*/navigation/anchor/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/vessels/*/navigation/anchor/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
+  },
   "/vessels/*/navigation/datetime": {
     "description": "[missing]"
+  },
+  "/vessels/*/navigation/datetime/gnssTimeSource": {
+    "description": "Source of GNSS Date and Time"
   },
   "/vessels/*/propulsion": {
     "description": "Engine data, each engine identified by a unique name i.e. Port_Engine"
@@ -646,6 +824,38 @@
   "/vessels/*/electrical/batteries/RegExp/temperature": {
     "description": "Additional / unique temperatures associated with a battery"
   },
+  "/vessels/*/electrical/batteries/RegExp/temperature/limitDischargeLower": {
+    "units": "K",
+    "description": "Operational minimum temperature limit for battery discharge"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/limitDischargeUpper": {
+    "units": "K",
+    "description": "Operational maximum temperature limit for battery discharge"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/limitRechargeLower": {
+    "units": "K",
+    "description": "Operational minimum temperature limit for battery recharging"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/limitRechargeUpper": {
+    "units": "K",
+    "description": "Operational maximum temperature limit for battery recharging"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
+  },
   "/vessels/*/electrical/batteries/RegExp/capacity": {
     "description": "[missing]"
   },
@@ -731,6 +941,22 @@
   "/vessels/*/electrical/inverters/RegExp/dc/temperature": {
     "description": "Data should be of type number."
   },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
+  },
   "/vessels/*/electrical/inverters/RegExp/ac": {
     "description": "AC equipment common quantities"
   },
@@ -797,6 +1023,22 @@
   },
   "/vessels/*/electrical/chargers/RegExp/temperature": {
     "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
   },
   "/vessels/*/electrical/chargers/RegExp/mode": {
     "description": "[missing]"
@@ -1192,11 +1434,38 @@
   "/vessels/*/design/draft": {
     "description": "The draft of the vessel"
   },
+  "/vessels/*/design/draft/minimum": {
+    "units": "m",
+    "description": "The minimum draft of the vessel"
+  },
+  "/vessels/*/design/draft/maximum": {
+    "units": "m",
+    "description": "The maximum draft of the vessel"
+  },
+  "/vessels/*/design/draft/canoe": {
+    "units": "m",
+    "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder"
+  },
   "/vessels/*/design/length": {
     "description": "The various lengths of the vessel"
   },
+  "/vessels/*/design/length/overall": {
+    "units": "m",
+    "description": "Length overall"
+  },
+  "/vessels/*/design/length/hull": {
+    "units": "m",
+    "description": "Length of hull"
+  },
+  "/vessels/*/design/length/waterline": {
+    "units": "m",
+    "description": "Length at waterline"
+  },
   "/vessels/*/design/keel": {
     "description": "Information about the vessel's keel"
+  },
+  "/vessels/*/design/keel/type": {
+    "description": "The type of keel."
   },
   "/vessels/*/design/keel/angle": {
     "units": "rad",
@@ -1217,6 +1486,12 @@
   "/vessels/*/design/rigging": {
     "description": "Information about the vessel's rigging"
   },
+  "/vessels/*/design/rigging/configuration": {
+    "description": "The configuration of the rigging"
+  },
+  "/vessels/*/design/rigging/masts": {
+    "description": "The number of masts on the vessel."
+  },
   "/vessels/*/sails": {
     "description": "Sails data"
   },
@@ -1225,6 +1500,33 @@
   },
   "/vessels/*/sails/inventory/RegExp": {
     "description": "'sail' data type."
+  },
+  "/vessels/*/sails/inventory/RegExp/name": {
+    "description": "An unique identifier by which the crew identifies a sail"
+  },
+  "/vessels/*/sails/inventory/RegExp/type": {
+    "description": "The type of sail"
+  },
+  "/vessels/*/sails/inventory/RegExp/material": {
+    "description": "The material the sail is made from (optional)"
+  },
+  "/vessels/*/sails/inventory/RegExp/brand": {
+    "description": "The brand of the sail (optional)"
+  },
+  "/vessels/*/sails/inventory/RegExp/active": {
+    "description": "Indicates wether this sail is currently in use or not"
+  },
+  "/vessels/*/sails/inventory/RegExp/area": {
+    "units": "m2",
+    "description": "The total area of this sail in square meters"
+  },
+  "/vessels/*/sails/inventory/RegExp/minimumWind": {
+    "units": "m/s",
+    "description": "The minimum wind speed this sail can be used with"
+  },
+  "/vessels/*/sails/inventory/RegExp/maximumWind": {
+    "units": "m/s",
+    "description": "The maximum wind speed this sail can be used with"
   },
   "/vessels/*/sails/area": {
     "description": "An object containing information about the vessels' sails."
@@ -1330,11 +1632,75 @@
   "/resources/charts/*": {
     "description": "A chart"
   },
+  "/resources/charts/*/name": {
+    "description": "Chart common name"
+  },
+  "/resources/charts/*/identifier": {
+    "description": "Chart number"
+  },
+  "/resources/charts/*/description": {
+    "description": "A description of the chart"
+  },
+  "/resources/charts/*/tilemapUrl": {
+    "description": "A url to the tilemap of the chart for use in TMS chartplotting apps"
+  },
+  "/resources/charts/*/region": {
+    "description": "Region related to note. A pointer to a region UUID. Alternative to geohash"
+  },
+  "/resources/charts/*/geohash": {
+    "description": "Position related to chart. Alternative to region"
+  },
+  "/resources/charts/*/chartUrl": {
+    "description": "A url to the chart file's storage location"
+  },
+  "/resources/charts/*/scale": {
+    "description": "The scale of the chart, the larger number from 1:200000"
+  },
+  "/resources/charts/*/chartFormat": {
+    "description": "The format of the chart"
+  },
   "/resources/routes": {
     "description": "A holder for routes, each named with a UUID"
   },
   "/resources/routes/*": {
     "description": "A route, named with a UUID"
+  },
+  "/resources/routes/*/name": {
+    "description": "Route's common name"
+  },
+  "/resources/routes/*/description": {
+    "description": "A description of the route"
+  },
+  "/resources/routes/*/distance": {
+    "units": "m",
+    "description": "Total distance from start to end"
+  },
+  "/resources/routes/*/start": {
+    "description": "The waypoint UUID at the start of the route"
+  },
+  "/resources/routes/*/end": {
+    "description": "The waypoint UUID at the end of the route"
+  },
+  "/resources/routes/*/feature": {
+    "description": "A Geo JSON feature object which describes the route between the waypoints"
+  },
+  "/resources/routes/*/feature/type": {
+    "description": "[missing]"
+  },
+  "/resources/routes/*/feature/geometry": {
+    "description": "[missing]"
+  },
+  "/resources/routes/*/feature/geometry/type": {
+    "description": "[missing]"
+  },
+  "/resources/routes/*/feature/geometry/coordinates": {
+    "description": "An array of two or more positions"
+  },
+  "/resources/routes/*/feature/properties": {
+    "description": "Additional data of any type"
+  },
+  "/resources/routes/*/feature/id": {
+    "description": "[missing]"
   },
   "/resources/notes": {
     "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything"
@@ -1342,14 +1708,62 @@
   "/resources/notes/*": {
     "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything"
   },
+  "/resources/notes/*/title": {
+    "description": "Note's common name"
+  },
+  "/resources/notes/*/description": {
+    "description": "A textual description of the note"
+  },
+  "/resources/notes/*/region": {
+    "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
+  },
   "/resources/notes/*/position": {
     "description": "Position related to note. Alternative to region or geohash"
+  },
+  "/resources/notes/*/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/resources/notes/*/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/resources/notes/*/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
+  },
+  "/resources/notes/*/geohash": {
+    "description": "Position related to note. Alternative to region or position"
+  },
+  "/resources/notes/*/mimeType": {
+    "description": "MIME type of the note"
+  },
+  "/resources/notes/*/url": {
+    "description": "Location of the note"
   },
   "/resources/regions": {
     "description": "A holder for regions, each named with UUID"
   },
   "/resources/regions/*": {
     "description": "A region of interest, each named with a UUID"
+  },
+  "/resources/regions/*/geohash": {
+    "description": "geohash of the approximate boundary of this region"
+  },
+  "/resources/regions/*/feature": {
+    "description": "A Geo JSON feature object which describes the regions boundary"
+  },
+  "/resources/regions/*/feature/type": {
+    "description": "[missing]"
+  },
+  "/resources/regions/*/feature/geometry": {
+    "description": "[missing]"
+  },
+  "/resources/regions/*/feature/properties": {
+    "description": "Additional data of any type"
+  },
+  "/resources/regions/*/feature/id": {
+    "description": "[missing]"
   },
   "/resources/waypoints": {
     "description": "A holder for waypoints, each named with a UUID"
@@ -1359,6 +1773,18 @@
   },
   "/resources/waypoints/*/position": {
     "description": "The position in 3 dimensions"
+  },
+  "/resources/waypoints/*/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/resources/waypoints/*/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/resources/waypoints/*/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
   },
   "/resources/waypoints/*/feature": {
     "description": "A Geo JSON feature object"
