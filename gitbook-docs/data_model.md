@@ -138,9 +138,9 @@ The format looks like this (pretty printed):
     "updates": [{
         "source": {
             "type": "NMEA2000",
-            "src": "1-17",
+            "src": "017",
             "pgn": 127488,
-            "label": "sources.N2000-01.017"
+            "label": "N2000-01.017"
         },
         "timestamp": "2010-01-07T07:18:44Z",
         "values": [{
