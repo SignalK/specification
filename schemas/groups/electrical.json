@@ -51,13 +51,14 @@
 
         "voltage": {
           "type": "object",
-          "units": "V",
+          "description": "Voltage measured as close as possible to the device",
+		  "units": "V",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
             "properties": {
               "ripple": {
-                "description": "Ripple voltage",
+                "description": "DC Ripple voltage",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "V"
               },
@@ -101,7 +102,8 @@
 
         "current": {
           "type": "object",
-          "units": "A",
+          "description": "Current flowing out (+ve) or in (-ve) to the device",
+		  "units": "A",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
@@ -140,7 +142,8 @@
 
         "temperature": {
           "type": "object",
-          "title": "temperature",
+          "description": "Temperature measured within or on the device",
+		  "title": "temperature",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
@@ -241,7 +244,8 @@
 
   "properties": {
     "batteries": {
-      "patternProperties": {
+      "description": "Data about the vessel's batteries",
+	  "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
           "title": "Battery keyed by instance id",
@@ -297,7 +301,8 @@
 
               "capacity": {
                 "type": "object",
-                "title": "capacity",
+                "description": "Data about the battery's capacity",
+				"title": "capacity",
                 "properties": {
                   "nominal": {
                     "type": "number",
@@ -368,7 +373,8 @@
     },
 
     "inverters": {
-      "patternProperties": {
+      "description": "Data about the Inverter that has both DC and AC quantities",
+	  "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
           "title": "Inverter",
@@ -414,7 +420,8 @@
       }
     },
     "chargers": {
-      "patternProperties": {
+      "description": "Data about the Charger that has both DC and AC quantities",
+	  "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
           "title": "Charger",
@@ -451,7 +458,8 @@
               },
               "mode": {
                 "type": "object",
-                "properties": {
+                "description": "Charging mode i.e. float, overcharge, etc.",
+				"properties": {
                   "value": {
                     "enum": [
                       "charging bulk",
@@ -481,14 +489,16 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
-          "title": "AC bus",
-          "properties": {
+          "title": "AC Bus keyed by instance id",
+          "description": "AC Bus, one or many, within the vessel",
+		  "properties": {
             "meta": {
               "$ref": "#/definitions/identity"
             },
             "phase": {
               "type": "object",
-              "patternProperties": {
+			  "description": "Single or A,B or C in 3 Phase systems ",
+			  "patternProperties": {
                 "(single)|([A-C])": {
                   "$ref": "#/definitions/acQuantities"
                 }
