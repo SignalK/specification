@@ -440,7 +440,7 @@
     },
      "speedThroughWaterLongitudinal": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Longitudinal speed through the water (outside boundary layer)",
+      "description": "Longitudinal speed through the water",
       "units": "m/s"
     },
     "leewayAngle": {
