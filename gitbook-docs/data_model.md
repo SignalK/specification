@@ -134,45 +134,26 @@ The format looks like this (pretty printed):
 
 ```json
 {
-  "context": "vessels.230099999",
-  "updates": [
-    {
-      "source": {
-        "pgn": "128275",
-        "device": "/dev/actisense",
-        "timestamp": "2014-08-15-16:00:05.538",
-        "src": "115"
-      },
-      "values": [
-        {
-          "path": "navigation.logTrip",
-          "value": 43374
+    "context": "vessels.urn:mrn:imo:mmsi:234567890",
+    "updates": [{
+        "source": {
+            "type": "NMEA2000",
+            "src": "017",
+            "pgn": 127488,
+            "label": "N2000-01.017"
         },
-        {
-          "path": "navigation.log",
-          "value": 17404540
-        }
-      ]
-    },
-    {
-      "source": {
-        "device": "/dev/actisense",
-        "timestamp": "2014-08-15-16:00:00.081",
-        "src": "115",
-        "pgn": "128267"
-      },
-      "values": [
-        {
-          "path": "navigation.courseOverGroundTrue",
-          "value": 2.911
-        },
-        {
-          "path": "navigation.speedOverGround",
-          "value": 3.85
-        }
-      ]
-    }
-  ]
+        "timestamp": "2010-01-07T07:18:44Z",
+        "values": [{
+            "path": "propulsion.0.revolutions",
+            "value": 16.341667
+        }, {
+            "path": "propulsion.0.boostPressure",
+            "value": 45500.000000
+        }, {
+            "path": "propulsion.0.tiltTrim",
+            "value": 48
+        }]
+    }]
 }
 ```
 
@@ -180,7 +161,7 @@ In more detail we have the header section:
 
 ```json
 {
-  "context": "vessels.230099999",
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
     "updates": [
       ...data goes here...
     ]

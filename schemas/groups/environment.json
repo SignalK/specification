@@ -18,6 +18,7 @@
   },
   "properties": {
     "outside": {
+      "description": "Environmental conditions outside of the vessel's hull",
       "type": "object",
       "properties": {
         "temperature": {
@@ -59,6 +60,7 @@
     },
     "inside": {
       "type": "object",
+      "description": "Environmental conditions inside the vessel's hull",
       "properties": {
         "temperature": {
           "description": "Current inside air temperature",
@@ -96,6 +98,7 @@
 
     "water": {
       "type": "object",
+      "description": "Environmental conditions of the water that the vessel is sailing in",
       "properties": {
         "temperature": {
           "description": "Current water temperature",
@@ -114,7 +117,7 @@
         "baitWell": {
           "description": "Current baitwell air temperature",
           "$ref": "#/definitions/objectWithTemperature"
-        }        
+        }
       }
     },
 

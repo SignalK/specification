@@ -7,6 +7,7 @@
     "tankCollection": {
       "patternProperties": {
         ".*": {
+          "description": "Tank, one or many, within the vessel",
           "name": "Tank",
           "properties": {
             "name": {
@@ -52,24 +53,27 @@
   },
   "properties": {
     "freshWater": {
+      "description": "Fresh water tank (drinking)",
       "$ref": "#/definitions/tankCollection"
     },
     "wasteWater": {
+      "description": "Waste water tank (grey water)",
       "$ref": "#/definitions/tankCollection"
     },
     "blackWater": {
-      "$ref": "#/definitions/tankCollection"
-    },
-    "fuelWater": {
+      "description": "Black water tank (sewage)",
       "$ref": "#/definitions/tankCollection"
     },
     "fuel": {
+      "description": "Fuel tank (petrol or diesel)",
       "$ref": "#/definitions/tankCollection"
     },
     "lubrication": {
+      "description": "Lubrication tank (oil or grease)",
       "$ref": "#/definitions/tankCollection"
     },
     "liveWell": {
+      "description": "Live tank (fish)",
       "$ref": "#/definitions/tankCollection"
     }
   }
