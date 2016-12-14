@@ -27,7 +27,7 @@
         },
         "activeRoute": {
           "type": "object",
-		  "description": "Data required if sailing to an active route, defined in resources.",
+          "description": "Data required if sailing to an active route, defined in resources.",
           "properties": {
             "href": {
               "description": "A reference (URL) to the presently active route, in resources.",
@@ -47,98 +47,92 @@
         "nextPoint": {
           "type": "object",
           "description": "The point on earth the vessel's presently navigating towards",
-          "allOf": [
-            {
-              "$ref": "../definitions.json#/definitions/commonValueFields"
-            },
-            {
-              "properties": {
-                "type": {
-                  "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)",
-                  "type": "string"
-                },
-                "href": {
-                  "description": "A reference (URL) to an object (under resources) this point is related to",
-                  "type": "string"
-                },
-                "distance": {
-                  "description": "The distance in meters between the vessel's present position and the nextPoint",
-                  "units": "m",
-                  "type": "number"
-                },
-                "bearingTrue": {
-                  "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
-                  "units": "rad",
-                  "type": "number"
-                },
-                "bearingMagnetic": {
-                  "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
-                  "units": "rad",
-                  "type": "number"
-                },
-                "velocityMadeGood": {
-                  "description": "The velocity component of the vessel towards the nextPoint",
-                  "units": "m/s",
-                  "type": "number"
-                },
-                "timeToGo": {
-                  "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
-                  "units": "s",
-                  "type": "number"
-                },
-                "position": {
-                  "type": "object",
-                  "description": "The position of nextPoint in two dimensions",
-                  "properties": {
-                    "latitude": {
-                      "type": "number"
-                    },
-                    "longitude": {
-                      "type": "number"
-                    }
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "properties": {
+              "type": {
+                "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)",
+                "type": "string"
+              },
+              "href": {
+                "description": "A reference (URL) to an object (under resources) this point is related to",
+                "type": "string"
+              },
+              "distance": {
+                "description": "The distance in meters between the vessel's present position and the nextPoint",
+                "units": "m",
+                "type": "number"
+              },
+              "bearingTrue": {
+                "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north",
+                "units": "rad",
+                "type": "number"
+              },
+              "bearingMagnetic": {
+                "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north",
+                "units": "rad",
+                "type": "number"
+              },
+              "velocityMadeGood": {
+                "description": "The velocity component of the vessel towards the nextPoint",
+                "units": "m/s",
+                "type": "number"
+              },
+              "timeToGo": {
+                "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction",
+                "units": "s",
+                "type": "number"
+              },
+              "position": {
+                "type": "object",
+                "description": "The position of nextPoint in two dimensions",
+                "properties": {
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
                   }
                 }
               }
             }
-          ]
+          }]
         },
         "previousPoint": {
           "type": "object",
           "description": "The point on earth the vessel's presently navigating from",
-          "allOf": [
-            {
-              "$ref": "../definitions.json#/definitions/commonValueFields"
-            },
-            {
-              "properties": {
-                "type": {
-                  "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)",
-                  "type": "string"
-                },
-                "href": {
-                  "description": "A reference (URL) to an object (under resources) this point is related to",
-                  "type": "string"
-                },
-                "distance": {
-                  "description": "The distance in meters between previousPoint and the vessel's present position",
-                  "units": "m",
-                  "type": "number"
-                },
-                "position": {
-                  "type": "object",
-                  "description": "The position of lastPoint in two dimensions",
-                  "properties": {
-                    "latitude": {
-                      "type": "number"
-                    },
-                    "longitude": {
-                      "type": "number"
-                    }
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "properties": {
+              "type": {
+                "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)",
+                "type": "string"
+              },
+              "href": {
+                "description": "A reference (URL) to an object (under resources) this point is related to",
+                "type": "string"
+              },
+              "distance": {
+                "description": "The distance in meters between previousPoint and the vessel's present position",
+                "units": "m",
+                "type": "number"
+              },
+              "position": {
+                "type": "object",
+                "description": "The position of lastPoint in two dimensions",
+                "properties": {
+                  "latitude": {
+                    "type": "number"
+                  },
+                  "longitude": {
+                    "type": "number"
                   }
                 }
               }
             }
-          ]
+          }]
         }
       }
     }
@@ -207,35 +201,35 @@
     "racing": {
       "type": "object",
       "description": "Specific navigational data related to yacht racing.",
-	  "properties": {
+      "properties": {
         "startLineStb": {
           "description": "Position of starboard start mark",
-		  "position": {
-                  "type": "object",
-                  "properties": {
-                    "latitude": {
-                      "type": "number"
-                    },
-                    "longitude": {
-                      "type": "number"
-                    }
-                }
+          "position": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
             }
+          }
 
         },
         "startLinePort": {
           "description": "Position of starboard start mark",
-		  "position": {
-                  "type": "object",
-                  "properties": {
-                    "latitude": {
-                      "type": "number"
-                    },
-                    "longitude": {
-                      "type": "number"
-                    }
-                }
+          "position": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
             }
+          }
         },
         "distanceStartline": {
           "description": "The current distance to the start line",
@@ -399,43 +393,37 @@
     },
     "position": {
       "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)",
-      "allOf": [
-        {
-          "$ref": "../definitions.json#/definitions/commonValueFields"
-        },
-        {
-          "$ref": "../definitions.json#/definitions/position"
-        }
-      ]
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "$ref": "../definitions.json#/definitions/position"
+      }]
     },
     "attitude": {
       "type": "object",
       "title": "Attitude",
       "description": "Vessel attitude: roll, pitch and yaw",
-      "allOf": [
-        {
-          "$ref": "../definitions.json#/definitions/commonValueFields"
-        },
-        {
-          "properties": {
-            "roll": {
-              "type": "number",
-              "description": "Vessel roll, +ve is list to starboard",
-              "units": "rad"
-            },
-            "pitch": {
-              "type": "number",
-              "description": "Pitch, +ve is bow up",
-              "units": "rad"
-            },
-            "yaw": {
-              "type": "number",
-              "description": "Yaw, +ve is heading change to starboard",
-              "units": "rad"
-            }
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "roll": {
+            "type": "number",
+            "description": "Vessel roll, +ve is list to starboard",
+            "units": "rad"
+          },
+          "pitch": {
+            "type": "number",
+            "description": "Pitch, +ve is bow up",
+            "units": "rad"
+          },
+          "yaw": {
+            "type": "number",
+            "description": "Yaw, +ve is heading change to starboard",
+            "units": "rad"
           }
         }
-      ]
+      }]
     },
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
@@ -457,7 +445,7 @@
       "description": "Transverse speed through the water (Leeway)",
       "units": "m/s"
     },
-     "speedThroughWaterLongitudinal": {
+    "speedThroughWaterLongitudinal": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Longitudinal speed through the water",
       "units": "m/s"
@@ -544,47 +532,41 @@
         },
         "position": {
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "allOf": [
-            {
-              "$ref": "../definitions.json#/definitions/commonValueFields"
-            },
-            {
-              "$ref": "../definitions.json#/definitions/position"
-            }
-          ]
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }, {
+            "$ref": "../definitions.json#/definitions/position"
+          }]
         }
       }
     },
     "datetime": {
       "type": "object",
       "description": "Time and Date from the GNSS Positioning System",
-	  "allOf": [
-        {
-          "$ref": "../definitions.json#/definitions/commonValueFields"
-        },
-        {
-          "properties": {
-            "value": {
-              "type": "string",
-              "description": "GNSS Time and Date in ISO8601 format",
-              "exmple": "2015-12-05T13:11:59Z"
-            },
-            "gnssTimeSource": {
-              "description": "Source of GNSS Date and Time",
-              "enum": [
-                "GPS",
-                "GLONASS",
-                "Galileo",
-                "Beidou",
-                "IRNSS",
-                "Radio Signal",
-                "Internet",
-                "Local clock"
-              ]
-            }
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "GNSS Time and Date in ISO8601 format",
+            "exmple": "2015-12-05T13:11:59Z"
+          },
+          "gnssTimeSource": {
+            "description": "Source of GNSS Date and Time",
+            "enum": [
+              "GPS",
+              "GLONASS",
+              "Galileo",
+              "Beidou",
+              "IRNSS",
+              "Radio Signal",
+              "Internet",
+              "Local clock"
+            ]
           }
         }
-      ]
+      }]
     }
   }
 }
