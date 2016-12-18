@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>REST API · Signal K Documentation</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -416,14 +416,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="resthttp-api-signalkv1api"><a name="resthttp-api-signalkv1api" class="plugin-anchor" href="#resthttp-api-signalkv1api"><i class="fa fa-link" aria-hidden="true"></i></a>REST/HTTP API: /signalk/v1/api/</h4>
-<p>Note the trailing slash in the path.</p>
-<p>The base URL MUST provide a Signal K document that is valid according to the full Signal K <a href="specification.html">schema
+                                <h4 id="resthttp-api-signalkv1api"><a name="resthttp-api-signalkv1api" class="plugin-anchor" href="#resthttp-api-signalkv1api"><i class="fa fa-link" aria-hidden="true"></i></a>REST/HTTP API: /signalk/v1/api/</h4><p>Note the trailing slash in the path.</p><p>The base URL MUST provide a Signal K document that is valid according to the full Signal K <a href="specification.html">schema
 specification</a>. The contents SHOULD be all the current values of the data items the
-server knows.</p>
-<p>If the path following the base is a valid Signal K path <code>GET</code> MUST retrieve the Signal K branch named by the path; e.g.
-<code>/signalk/v1/api/vessels/123456789/navigation/speedThroughWater</code> returns</p>
-<pre><code class="lang-json">{
+server knows.</p><p>If the path following the base is a valid Signal K path <code>GET</code> MUST retrieve the Signal K branch named by the path; e.g.
+<code>/signalk/v1/api/vessels/123456789/navigation/speedThroughWater</code> returns</p><pre><code class="lang-json">{
     <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">2.55</span>,
     <span class="hljs-string">&quot;source&quot;</span>: {
         <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
@@ -431,8 +427,7 @@ server knows.</p>
         <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;signalk-parser-nmea0183&quot;</span>
     },
     <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2015-08-31T05:45:36.000Z&quot;</span>
-}
-</code></pre>
+}</code></pre>
 
                                 
                                 </section>
@@ -476,7 +471,7 @@ server knows.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"REST API","level":"1.4.2","depth":2,"next":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"previous":{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"rest_api.md","mtime":"2016-10-09T02:50:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-07T23:01:35.105Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"REST API","level":"1.4.2","depth":2,"next":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"previous":{"title":"Ports, Urls and Versioning","level":"1.4.1","depth":2,"path":"urls_etc.md","ref":"urls_etc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"rest_api.md","mtime":"2016-11-27T20:01:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-18T19:52:32.937Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <title>Metadata · Signal K Documentation</title>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -416,14 +416,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="metadata"><a name="metadata" class="plugin-anchor" href="#metadata"><i class="fa fa-link" aria-hidden="true"></i></a>Metadata</h1>
-<h3 id="the-use-cases"><a name="the-use-cases" class="plugin-anchor" href="#the-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>The Use Cases</h3>
-<p>Let&apos;s assume we have engine1.rpm as a key/value in Signal K. We want to display it on our dashboard, and monitor alarms for temp, oil, rpm etc.</p>
-<p>We can drop a generic dial gauge on our dash and display rpm, but it can&apos;t know maxRpm, or alarms unless its an engine-specific gauge, and knows where to look in the Signal K schema. So we will end up with a profusion of role specific gauges to maintain. We also have non standard key names for max, min, high, low, etc. which pollute the schema.</p>
-<p>Currently the Signal K server has a set of specific alarm keys. These grow over time and are becoming awkward. The server can only monitor these specific keys at present as there is no mechanism for arbitrary alarm definition.</p>
-<h3 id="metadata-for-a-data-value"><a name="metadata-for-a-data-value" class="plugin-anchor" href="#metadata-for-a-data-value"><i class="fa fa-link" aria-hidden="true"></i></a>Metadata for a Data Value</h3>
-<p>Each data key should have an optional <code>.meta</code> object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.</p>
-<pre><code class="lang-json">{
+                                <h1 id="metadata"><a name="metadata" class="plugin-anchor" href="#metadata"><i class="fa fa-link" aria-hidden="true"></i></a>Metadata</h1><h3 id="the-use-cases"><a name="the-use-cases" class="plugin-anchor" href="#the-use-cases"><i class="fa fa-link" aria-hidden="true"></i></a>The Use Cases</h3><p>Let&apos;s assume we have engine1.rpm as a key/value in Signal K. We want to display it on our dashboard, and monitor alarms for temp, oil, rpm etc.</p><p>We can drop a generic dial gauge on our dash and display rpm, but it can&apos;t know maxRpm, or alarms unless its an engine-specific gauge, and knows where to look in the Signal K schema. So we will end up with a profusion of role specific gauges to maintain. We also have non standard key names for max, min, high, low, etc. which pollute the schema.</p><p>Currently the Signal K server has a set of specific alarm keys. These grow over time and are becoming awkward. The server can only monitor these specific keys at present as there is no mechanism for arbitrary alarm definition.</p><h3 id="metadata-for-a-data-value"><a name="metadata-for-a-data-value" class="plugin-anchor" href="#metadata-for-a-data-value"><i class="fa fa-link" aria-hidden="true"></i></a>Metadata for a Data Value</h3><p>Each data key should have an optional <code>.meta</code> object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;displayName&quot;</span>: <span class="hljs-string">&quot;Tachometer, Engine 1&quot;</span>,
   <span class="hljs-string">&quot;shortName&quot;</span>: <span class="hljs-string">&quot;RPM&quot;</span>,
   <span class="hljs-string">&quot;warnMethod&quot;</span>: <span class="hljs-string">&quot;visual&quot;</span>,
@@ -436,27 +429,12 @@
     {<span class="hljs-string">&quot;lower&quot;</span>:<span class="hljs-number">3000</span>,<span class="hljs-string">&quot;upper&quot;</span>:<span class="hljs-number">3500</span>,<span class="hljs-string">&quot;state&quot;</span>:<span class="hljs-string">&quot;warn&quot;</span>, <span class="hljs-string">&quot;message&quot;</span>:<span class="hljs-string">&quot;Approaching maximum rpm&quot;</span>},
     {<span class="hljs-string">&quot;lower&quot;</span>:<span class="hljs-number">3500</span>,<span class="hljs-string">&quot;upper&quot;</span>:<span class="hljs-number">9999</span>,<span class="hljs-string">&quot;state&quot;</span>:<span class="hljs-string">&quot;alarm&quot;</span>, <span class="hljs-string">&quot;message&quot;</span>:<span class="hljs-string">&quot;Exceeding maximum rpm&quot;</span>}
   ]
-}
-</code></pre>
-<p>Since the settings object is always the same, the tachometer can now limit its range, and display green, yellow, and red sectors. The generic gauge can now perform this role, with correct labels etc.</p>
-<p>The alarms problem is also improved, as the server can run a background process to monitor any key that has a <code>.meta</code> object, and raise a generic alarm event. By recursing the tree the alarm monitoring can find the source (engine1), giving the alarm context. See [[Alarm Handling]]</p>
-<p>The alarms functionality then becomes generic, and grows with the spec. This is may be the case for other functionality also.</p>
-<h3 id="default-configuration"><a name="default-configuration" class="plugin-anchor" href="#default-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Default Configuration</h3>
-<p>Other than a few standard keys it is unlikely that the <code>.meta</code> can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.</p>
-<p>It is probably possible to have profiles that set a range of default <code>.meta</code>, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.</p>
-<h3 id="alarm-management"><a name="alarm-management" class="plugin-anchor" href="#alarm-management"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm Management</h3>
-<p>An alarm watch is set by setting the <code>meta.zones</code> array appropriately. A background process on the server checks for alarm conditions on any attribute with a <code>meta.zones</code> array. If the keys value is within a zone the server sets an alarm key similar to <code>vessels.self.notifications.[original_key_suffix]</code>, eg an alarm set on <code>vessels.self.navigation.courseOverGroundTrue</code> will become <code>vessels.self.notifications.navigation.courseOverGroundTrue</code>.</p>
-<p>The object found at this key should contain the following:</p>
-<pre><code class="lang-json">{
+}</code></pre>
+<p>Since the settings object is always the same, the tachometer can now limit its range, and display green, yellow, and red sectors. The generic gauge can now perform this role, with correct labels etc.</p><p>The alarms problem is also improved, as the server can run a background process to monitor any key that has a <code>.meta</code> object, and raise a generic alarm event. By recursing the tree the alarm monitoring can find the source (engine1), giving the alarm context. See [[Alarm Handling]]</p><p>The alarms functionality then becomes generic, and grows with the spec. This is may be the case for other functionality also.</p><h3 id="default-configuration"><a name="default-configuration" class="plugin-anchor" href="#default-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>Default Configuration</h3><p>Other than a few standard keys it is unlikely that the <code>.meta</code> can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.</p><p>It is probably possible to have profiles that set a range of default <code>.meta</code>, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.</p><h3 id="alarm-management"><a name="alarm-management" class="plugin-anchor" href="#alarm-management"><i class="fa fa-link" aria-hidden="true"></i></a>Alarm Management</h3><p>An alarm watch is set by setting the <code>meta.zones</code> array appropriately. A background process on the server checks for alarm conditions on any attribute with a <code>meta.zones</code> array. If the keys value is within a zone the server sets an alarm key similar to <code>vessels.self.notifications.[original_key_suffix]</code>, eg an alarm set on <code>vessels.self.navigation.courseOverGroundTrue</code> will become <code>vessels.self.notifications.navigation.courseOverGroundTrue</code>.</p><p>The object found at this key should contain the following:</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;any text&quot;</span>,
   <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;[normal|alert|warn|alarm|emergency]&quot;</span>
-}
-</code></pre>
-<h3 id="other-benefits"><a name="other-benefits" class="plugin-anchor" href="#other-benefits"><i class="fa fa-link" aria-hidden="true"></i></a>Other Benefits</h3>
-<p>The common profiles should be exportable and importable. This would allow manufacturers or other users to create profiles for specific products or use cases, which could then be imported to a vessel.</p>
-<p>This may also have possibilities for race control or charter management. For instance a limit on lat/lon would raise an &apos;Out of Bounds&apos; email on a charter vessel.</p>
-<p>A lot of the current max/min/alarm values could be removed to simplify and standardise the spec.</p>
-
+}</code></pre>
+<h3 id="other-benefits"><a name="other-benefits" class="plugin-anchor" href="#other-benefits"><i class="fa fa-link" aria-hidden="true"></i></a>Other Benefits</h3><p>The common profiles should be exportable and importable. This would allow manufacturers or other users to create profiles for specific products or use cases, which could then be imported to a vessel.</p><p>This may also have possibilities for race control or charter management. For instance a limit on lat/lon would raise an &apos;Out of Bounds&apos; email on a charter vessel.</p><p>A lot of the current max/min/alarm values could be removed to simplify and standardise the spec.</p>
                                 
                                 </section>
                             
@@ -499,7 +477,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Metadata","level":"1.3.3","depth":2,"next":{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]},"previous":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model_metadata.md","mtime":"2016-12-03T22:17:51.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-12-07T23:01:35.105Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Metadata","level":"1.3.3","depth":2,"next":{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]},"previous":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model_metadata.md","mtime":"2016-11-27T20:01:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-18T19:52:32.937Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
