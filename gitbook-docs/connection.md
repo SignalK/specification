@@ -99,4 +99,4 @@ following process:
 * Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start
   streaming](streaming_api.md) updates.
 
-  ![alt tag](ikommunicate/iKommunicate_SDK_V1-0_images/Consumer Discovery Process.png)
+[[https://github.com/digitalyacht/ikommunicate/blob/master/iKommunicate_SDK_V1-0_images/Consumer_Discovery_Process.png]]
