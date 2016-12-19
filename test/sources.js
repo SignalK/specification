@@ -1,6 +1,7 @@
-var chai = require('chai');
-chai.Should();
+const chai = require('chai');
+const should = chai.should()
 chai.use(require('../index.js').chaiModule);
+const FullSignalK = require('../src/fullsignalk')
 
 describe('Sources in the full tree', function() {
   it("Sample full tree is valid", function() {
@@ -10,7 +11,7 @@ describe('Sources in the full tree', function() {
 
 
 var deltaWithMiscSources = {
-  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
     "source": {
       "sentence": "HDT",
@@ -65,12 +66,24 @@ var deltaWithMiscSources = {
 
 describe('Sources in delta', function() {
   it("are valid", function() {
+    var fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:200000000')
+    fullSignalK.addDelta(deltaWithMiscSources)
+    var full = fullSignalK.retrieve()
+    full.sources['0183-1']['II'].talker.should.equal('II')
+    full.sources['N2000-01']['37']['n2k']['src'].should.equal('37')
+    console.log(JSON.stringify(full.sources, null, 2))
+    should.exist(full.sources['i2c-0']['0x48'])
+    should.exist(full.sources['1W']['0316013faeff'])
+    //FIXME for some reason tv4 complains about source's type property being undefined
+    // renaming the type property of the source fixes the problem
+    // fix with a better validation tool or dig deeper
+    // full.should.be.validSignalK
     deltaWithMiscSources.should.be.validSignalKDelta;
   });
 });
 
 var deltasWithBadSources = [{
-  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
     "source": {
       "sentence": "HDT",
@@ -85,7 +98,7 @@ var deltasWithBadSources = [{
     }]
   }]
 }, {
-  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
     "source": "test",
     "timestamp": "2016-08-03T07:55:57.000Z",
@@ -95,7 +108,7 @@ var deltasWithBadSources = [{
     }]
   }]
 }, {
-  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
     "$source": "path with space",
     "timestamp": "2016-08-03T07:55:57.000Z",
@@ -105,7 +118,7 @@ var deltasWithBadSources = [{
     }]
   }]
 },{
-  "context": "vessels.urn:mrn:imo:mmsi:000000000",
+  "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
     "$source": {
       "sentence": "HDT",
