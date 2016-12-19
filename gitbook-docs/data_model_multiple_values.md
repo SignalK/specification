@@ -1,95 +1,24 @@
 # Multiple Values for a Key
 
 There are two use cases for multiple data:
-* Multiple versions of a common device - eg two engines
-* Multiple devices providing duplicate data - multiple values for the same signalk key from different sensors, eg COG from both compass and gps
+* Multiple instances of a common device - eg two engines or multiple batteries
+* Multiple devices providing duplicate data - multiple values for the same Signal K key from different sensors, eg COG from both compass and gps or multiple depth sounders
 
-###Multiple versions of a common device
-Consider the data point `temperature`. There are many versions of temperature: air, water, engineRoom, fridge, freezer, main cabin, etc. Some are well-known, and in common usage, some will be very vessel specific.
+## Multiple instances of a common device
 
-So we need a structure that provides a flexible way to hold lots of sub-items. The simple solution is an array of `temperature` objects however https://github.com/SignalK/specification/wiki/Arrays-are-Evil.
+Some parts of the Signal K schema are **device oriented**.
 
-So instead we simply put the individual temperature objects in as children of `temperature`
+For example in electrical domain you have the concept of multiple batteries.
+Each battery has multiple, common quantities like voltage, current and temperature.
+Here we have chosen to organise the Signal K data model hierarchy by instance: multiple batteries are represented as for example `electrical.batteries.starter` and `electrical.batteries.house`. Then underneath that prefix you have the different properties and quantities.
 
-```json
-{
-    "temperature": {
-        "air": {
-            "value": 26.7,
-            "source": "vessels.self.sources.n2k.n2k1-12-0"
-        },
-        "water": {
-            "value": 18.2,
-            "source": "vessels.self.sources.n2k.n2k1-12-1"
-        }
-    }
-}
-```
-And in `vessels.self.sources`
-```json
-{
-   "n2k":{
-        "n2k1-12-0": {
-            "timestamp": "2014-08-15-16: 00: 00.081",
-            "source": {
-                "label": "Outside Ambient Masthead",
-                "bus": "/dev/ttyUSB1"
-            },
-            "value":"dump the raw n2k data here"
-        },
-        "n2k1-12-1": {
-            "timestamp": "2014-08-15-16: 00: 00.081",
-            "value": 18.2,
-            "source": {
-                "label": "Water Temperature",
-                "bus": "/dev/ttyUSB1"
-            }
-        },
-        "n2k2-201-0": {
-            "timestamp": "2014-08-15-16: 00: 00.081",
-            "value": 66.7,
-            "source": {
-                "label": "Engine Room",
-                "bus": "/dev/ttyUSB2"
-            }
-        }
+This organisation allows a user interface to organise the individual readings in meaningul groups and you can query all the values related to that piece of equipment via REST API.
+It maintains the primary requirement that a given data value have a fixed and unique uri, but gives flexibility in the structure and complexities of data.
 
-}
-```
+The same device centric organisation is used in `propulsion` subschema, where the most common use case is having dual engine setup with `propulsion.port` and `propulsion.starboard`.
 
-This scheme allows for both well-known keys `temperature.air` and vessel specific `temperature.aftFreezer`. It is also valid in the following form, but makes it more difficult to refer to the source if it maps to multiple signalk keys (eg NMEA 0183 RMC sentence https://github.com/SignalK/specification/wiki/Samples---NMEA-0183-RMC):
-
-```json
-{
-    "temperature": {
-        "air": {
-            "value": 26.7,
-            "source": "n2k1-12-0",
-            "n2k1-12-0": {
-                "timestamp": "2014-08-15-16: 00: 00.081",
-                "value": 26.7,
-                "source": {
-                    "label": "Outside Ambient Masthead",
-                    "bus": "/dev/ttyUSB1"
-                }
-            }
-        },
-        "water": {
-            "value": 18.2,
-            "source": "n2k1-12-1",
-            "n2k1-12-1": {
-                "timestamp": "2014-08-15-16: 00: 00.081",
-                "value": 18.2,
-                "source": {
-                    "label": "Water Temperature",
-                    "bus": "/dev/ttyUSB1"
-                }
-            }
-        }
-    }
-}
-```
-It maintains the primary requirement that a given data value have a fixed and unique uri, but gives flexibility in the structure and complexities of data. It also fulfils the requirement for discovery of data keys, vessel specific sources, and provides the ability to navigate the structure in a consistent progamatical way.
+_The values `starter`, `house`, `port` and `starboard` are examples and not specified in the schema.
+You are free to use application specific values within the regexp specified in the JSON schema._
 
 ###Multiple devices providing duplicate data
 
