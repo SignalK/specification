@@ -1,7 +1,7 @@
 # Introduction
 
 This is the documentation for the [Signal K Specification](https://github.com/signalk/specification) master (latest)
-version.
+version, which is available in the following formats;
 
 * [html](http://signalk.org/specification/master/) (this document)
 * [pdf](http://signalk.org/specification/master/signalk_master.pdf)
@@ -16,7 +16,11 @@ the Creative Commons [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). Signal K is developed in
 the open with help from the marine community. Your ideas and feedback are valuable and welcome.
 
-**Signal K** consists of the Signal K Data Model and the Signal K Message Format.
+Signal K is designed to work in harmony with the boat's existing navigation equipment that might use NMEA0183, NMEA2000 or proprietary data protocols, converting and enhancing this information in to a modern "web friendly" format that can be shared, processed and displayed on the latest web apps, mobile devices and cloud servers.
+
+At its core, **Signal K** consists of the Signal K Data Model and the Signal K Message Format, which allows marine data to be produced by Signal K sensors or converted via a Signal K gateway (from existing NMEA systems), which is then processed, logged and added to by a Signal K server, before being consumed by and App or Cloud service. The diagram below shows a typical Signal K system...
+
+  ![alt tag](SignalK_Server+Gateway_Diagram.png)
 
 ## Signal K Data Model (A.K.A. The Schema)
 
@@ -58,5 +62,4 @@ predictable.
 
 ## Signal K Implementations
 
-The Signal K project has many implementations of servers, clients, and utilities. These are both proof of concept tests
-and reference code. The goal is to provide a range of software and utilities to simplify development.
+The Signal K project has many implementations of servers, consumers (apps and services), producers (sensors) and gateways. Some of these are Open Source reference designs such as the Signal K Node and Java servers, others are example web apps to help developers get started or cutting edge proof of concept tests and reference code. We are also already seeing manufacturers and developers start to build commercial Signal K products, with an ever increasing number of mobile apps (sold on the Apple App and Android Play Stores) and hardware products like iKommunicate from Digital Yacht.
