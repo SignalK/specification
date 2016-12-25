@@ -1,7 +1,7 @@
 # Introduction
 
 This is the documentation for the [Signal K Specification](https://github.com/signalk/specification) master (latest)
-version.
+version, which is available in the following formats;
 
 * [html](http://signalk.org/specification/master/) (this document)
 * [pdf](http://signalk.org/specification/master/signalk_master.pdf)
@@ -16,7 +16,14 @@ the Creative Commons [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). Signal K is developed in
 the open with help from the marine community. Your ideas and feedback are valuable and welcome.
 
-**Signal K** consists of the Signal K Data Model and the Signal K Message Format.
+Signal K is designed to work in harmony with the boat's existing navigation equipment that might use NMEA0183, NMEA2000 or proprietary data protocols, converting and enhancing this information to a modern "web friendly" format that can be shared, processed and displayed on the latest web apps, mobile devices and cloud servers.
+A typical NMEA based setup consists of an NMEA-Signal K gateway and an optional server. The gateway translates the NMEA data to Signal K and the server can host additional functions like logging, cloud integration and data analysis.
+
+![Gateway and Server setup](gateway_and_server.png)
+
+One major advantage of Signal K is the ability to represent data from heterogeneous sources. In addition to traditional NMEA sources data from generic sensors as well as modern Signal K enabled sensors can be fused into a single data model and a single protocol for accessing the data. Another typical setup is a Signal K server with adapters and converters for the different sources.
+
+![Server only setup](server_only.png)
 
 ## Signal K Data Model (A.K.A. The Schema)
 
@@ -58,5 +65,5 @@ predictable.
 
 ## Signal K Implementations
 
-The Signal K project has many implementations of servers, clients, and utilities. These are both proof of concept tests
-and reference code. The goal is to provide a range of software and utilities to simplify development.
+The Signal K project has Open Source reference server implementations in  [Node](https://github.com/SignalK/signalk-server-node) and [Java ](https://github.com/SignalK/signalk-server-java)  and example web apps and reference code.
+There are also commercial [Signal K applications and solutions](http://signalk.org/applications_solutions.html), including mobile apps available on the Apple App and Android Play Stores, as well as hardware products like [iKommunicate](http://ikommunicate.com/).
