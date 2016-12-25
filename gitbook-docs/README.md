@@ -16,11 +16,14 @@ the Creative Commons [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
 licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). Signal K is developed in
 the open with help from the marine community. Your ideas and feedback are valuable and welcome.
 
-Signal K is designed to work in harmony with the boat's existing navigation equipment that might use NMEA0183, NMEA2000 or proprietary data protocols, converting and enhancing this information in to a modern "web friendly" format that can be shared, processed and displayed on the latest web apps, mobile devices and cloud servers.
+Signal K is designed to work in harmony with the boat's existing navigation equipment that might use NMEA0183, NMEA2000 or proprietary data protocols, converting and enhancing this information to a modern "web friendly" format that can be shared, processed and displayed on the latest web apps, mobile devices and cloud servers.
+A typical NMEA based setup consists of an NMEA-Signal K gateway and an optional server. The gateway translates the NMEA data to Signal K and the server can host additional functions like logging, cloud integration and data analysis.
 
-At its core, **Signal K** consists of the Signal K Data Model and the Signal K Message Format, which allows marine data to be produced by Signal K sensors or converted via a Signal K gateway (from existing NMEA systems), which is then processed, logged and added to by a Signal K server, before being consumed by and App or Cloud service. The diagram below shows a typical Signal K system...
+![Gateway and Server setup](gateway_and_server.png)
 
-  ![alt tag](SignalK_Server+Gateway_Diagram.png)
+One major advantage of Signal K is the ability to represent data from heterogeneous sources. In addition to traditional NMEA sources data from generic sensors as well as modern Signal K enabled sensors can be fused into a single data model and a single protocol for accessing the data. Another typical setup is a Signal K server with adapters and converters for the different sources.
+
+![Server only setup](server_only.png)
 
 ## Signal K Data Model (A.K.A. The Schema)
 
@@ -62,4 +65,5 @@ predictable.
 
 ## Signal K Implementations
 
-The Signal K project has many implementations of servers, consumers (apps and services), producers (sensors) and gateways. Some of these are Open Source reference designs such as the Signal K Node and Java servers, others are example web apps to help developers get started or cutting edge proof of concept tests and reference code. We are also already seeing manufacturers and developers start to build commercial Signal K products, with an ever increasing number of mobile apps (sold on the Apple App and Android Play Stores) and hardware products like iKommunicate from Digital Yacht.
+The Signal K project has Open Source reference server implementations in  [Node](https://github.com/SignalK/signalk-server-node) and [Java ](https://github.com/SignalK/signalk-server-java)  and example web apps and reference code.
+There are also commercial [Signal K applications and solutions](http://signalk.org/applications_solutions.html), including mobile apps available on the Apple App and Android Play Stores, as well as hardware products like [iKommunicate](http://ikommunicate.com/).
