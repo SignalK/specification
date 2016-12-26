@@ -429,28 +429,27 @@ clarity it looks like this:</p><pre><code class="lang-json">{<span class="hljs-s
         <span class="hljs-string">&quot;state&quot;</span>: {
           <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;sailing&quot;</span>,
           <span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;self&quot;</span>,
-          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00: 15: 41Z&quot;</span>
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00:15:41Z&quot;</span>
         },
         <span class="hljs-string">&quot;headingTrue&quot;</span>: {
           <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">23</span>,
           <span class="hljs-string">&quot;source&quot;</span>: {
             <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-string">&quot;128275&quot;</span>,
             <span class="hljs-string">&quot;device&quot;</span>: <span class="hljs-string">&quot;/dev/actisense&quot;</span>,
-            <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15-16:00:05.538&quot;</span>,
             <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;115&quot;</span>
           },
-          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00: 15: 41Z&quot;</span>
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00:15:41Z&quot;</span>
         },
         <span class="hljs-string">&quot;more&quot;</span>: <span class="hljs-string">&quot;a lot more data here...&quot;</span>,
         <span class="hljs-string">&quot;roll&quot;</span>: {
           <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">0</span>,
           <span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;self&quot;</span>,
-          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00: 15: 41Z&quot;</span>
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00:15:41Z&quot;</span>
         },
         <span class="hljs-string">&quot;rateOfTurn&quot;</span>: {
           <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">0</span>,
           <span class="hljs-string">&quot;source&quot;</span>: <span class="hljs-string">&quot;self&quot;</span>,
-          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00: 15: 41Z&quot;</span>
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-03-24T00:15:41Z&quot;</span>
         }
       }
     }
@@ -514,7 +513,7 @@ in clients or sensors that did not hold a copy of the data model.</p><p>The form
             <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">16.341667</span>
         }, {
             <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;propulsion.0.boostPressure&quot;</span>,
-            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">45500.000000</span>
+            <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">45500.0</span>
         }, {
             <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;propulsion.0.tiltTrim&quot;</span>,
             <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">48</span>
@@ -523,20 +522,21 @@ in clients or sensors that did not hold a copy of the data model.</p><p>The form
 }</code></pre>
 <p>In more detail we have the header section:</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.urn:mrn:imo:mmsi:234567890&quot;</span>,
-    <span class="hljs-string">&quot;updates&quot;</span>: [
-      ...data goes here...
-    ]
+  <span class="hljs-string">&quot;updates&quot;</span>: [
+    ...data goes here...
+  ]
 }</code></pre>
-<p>The message can be recognised from the other types by the topmost level having &quot;context&quot; and &quot;updates&quot; rather than
-&quot;vessels&quot;.</p><p>Context is a path from the root of the full tree. In this case &apos;vessels.230099999&apos;. All subsequent data is relative to
-that location. The context could be much more specific, e.g. &apos;vessels.230099999.navigation&apos;, whatever is the common root
-of the updated data.</p><p>The &apos;updates&apos; holds an array (JSON array) of updates, each of which has a &apos;source&apos; and JSON array of &apos;values&apos;.</p><pre><code class="lang-json">{
+<p>A delta message can be recognised from the other types by the topmost level having <code>updates</code> property.
+<code>updates</code> is the only required property.
+If <code>context</code> is missing it is assumed that the data is related to the <code>self</code> context.</p><p>Context is a path from the root of the full tree. In this case &apos;vessels.urn:mrn:imo:mmsi:234567890&apos;. All subsequent data is relative to
+that location. The context could be much more specific, e.g. &apos;vessels.urn:mrn:imo:mmsi:234567890.navigation&apos;, whatever is the common root
+of the updated data.</p><p>The <code>updates</code> holds an array (JSON array) of updates, each of which has a <code>source</code> and a JSON array of <code>values</code>.</p><pre><code class="lang-json">{
   <span class="hljs-string">&quot;source&quot;</span>: {
     <span class="hljs-string">&quot;device&quot;</span>: <span class="hljs-string">&quot;/dev/actisense&quot;</span>,
-    <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15-16:00:00.081&quot;</span>,
     <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;115&quot;</span>,
     <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-string">&quot;128267&quot;</span>
   },
+  <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15-16:00:00.081&quot;</span>,
   <span class="hljs-string">&quot;values&quot;</span>: [
     {
       <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.courseOverGroundTrue&quot;</span>,
@@ -548,13 +548,12 @@ of the updated data.</p><p>The &apos;updates&apos; holds an array (JSON array) o
     }
   ]
 }</code></pre>
-<p>The &apos;source&apos; values is the same and applies to each of the &apos;values&apos; items, which removes data duplication. It also
-allows rich data to be included with minimal impact on message size.</p><p>Each &apos;value&apos; item is then simply a pair of &apos;relative path&apos;, and &apos;value&apos;.</p><h2 id="message-integrity"><a name="message-integrity" class="plugin-anchor" href="#message-integrity"><i class="fa fa-link" aria-hidden="true"></i></a>Message Integrity</h2><p>Many messaging systems specify checksums or other forms of message integrity checking. In Signal K we assume a reliable
+<p>An <code>update</code> has a single <code>source</code> value and it applies to each of the <code>values</code> items.
+In cases where you can get data from only a single source the source may be omitted and the receiver may fill it in when multiplexing data from several sources.</p><p>Each &apos;value&apos; item is then simply a pair of &apos;relative path&apos;, and &apos;value&apos;.</p><h2 id="message-integrity"><a name="message-integrity" class="plugin-anchor" href="#message-integrity"><i class="fa fa-link" aria-hidden="true"></i></a>Message Integrity</h2><p>Many messaging systems specify checksums or other forms of message integrity checking. In Signal K we assume a reliable
 transport will guarantee a valid message. This is true of TCP/IP and some other transports but not always the case. For
 other transports (eg RS232 serial) a specific extended data format will apply, which is suited to that transport. Hence
-at the message level no checksum or other tests need to be made.</p><h2 id="encodingdecoding"><a name="encodingdecoding" class="plugin-anchor" href="#encodingdecoding"><i class="fa fa-link" aria-hidden="true"></i></a>Encoding/Decoding</h2><p>The JSON message format is supported across most programming environments and can be handled with any convenient library.</p><p>On micro-controllers with limited RAM it is wise to read and write using streaming rather than hold the whole message in
-precious RAM. There is an implementation of Signal K JSON streaming on an Arduino Mega (4K RAM) in the related Freeboard
-project, which will be released in Signal K eventually.</p>
+at the message level no checksum or other tests need to be made.</p><h2 id="encodingdecoding"><a name="encodingdecoding" class="plugin-anchor" href="#encodingdecoding"><i class="fa fa-link" aria-hidden="true"></i></a>Encoding/Decoding</h2><p>The JSON message format is supported across most programming environments and can be handled with any convenient library.</p><p>On micro-controllers with limited RAM it is wise to read and write using streaming rather than hold the whole message in precious RAM.
+There is an implementation of Signal K JSON streaming on an Arduino Mega (4K RAM) in the related <a href="https://github.com/rob42/FreeboardPLC_v1_2" target="_blank">Freeboard project</a>.</p>
                                 
                                 </section>
                             
@@ -593,7 +592,7 @@ project, which will be released in Signal K eventually.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2016-12-25T10:46:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-25T12:26:06.447Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2016-12-26T18:08:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-12-26T18:08:39.782Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
