@@ -148,7 +148,7 @@ The format looks like this (pretty printed):
             "value": 16.341667
         }, {
             "path": "propulsion.0.boostPressure",
-            "value": 45500.000000
+            "value": 45500.0
         }, {
             "path": "propulsion.0.tiltTrim",
             "value": 48
@@ -171,8 +171,8 @@ In more detail we have the header section:
 The message can be recognised from the other types by the topmost level having "context" and "updates" rather than
 "vessels".
 
-Context is a path from the root of the full tree. In this case 'vessels.230099999'. All subsequent data is relative to
-that location. The context could be much more specific, e.g. 'vessels.230099999.navigation', whatever is the common root
+Context is a path from the root of the full tree. In this case 'vessels.urn:mrn:imo:mmsi:234567890'. All subsequent data is relative to
+that location. The context could be much more specific, e.g. 'vessels.urn:mrn:imo:mmsi:234567890.navigation', whatever is the common root
 of the updated data.
 
 The 'updates' holds an array (JSON array) of updates, each of which has a 'source' and JSON array of 'values'.
