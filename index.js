@@ -52,6 +52,8 @@ function getTv4() {
   tv4.addSchema('https://signalk.github.io/specification/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
+  tv4.addFormat(require('tv4-formats'))
+
   return tv4;
 }
 
