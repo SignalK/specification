@@ -167,14 +167,15 @@ In more detail we have the header section:
 }
 ```
 
-The message can be recognised from the other types by the topmost level having "context" and "updates" rather than
-"vessels".
+A delta message can be recognised from the other types by the topmost level having `updates` property.
+`updates` is the only required property.
+If `context` is missing it is assumed that the data is related to the `self` context.
 
 Context is a path from the root of the full tree. In this case 'vessels.urn:mrn:imo:mmsi:234567890'. All subsequent data is relative to
 that location. The context could be much more specific, e.g. 'vessels.urn:mrn:imo:mmsi:234567890.navigation', whatever is the common root
 of the updated data.
 
-The 'updates' holds an array (JSON array) of updates, each of which has a 'source' and JSON array of 'values'.
+The `updates` holds an array (JSON array) of updates, each of which has a `source` and a JSON array of `values`.
 
 ```json
 {
@@ -197,8 +198,8 @@ The 'updates' holds an array (JSON array) of updates, each of which has a 'sourc
 }
 ```
 
-The 'source' values is the same and applies to each of the 'values' items, which removes data duplication. It also
-allows rich data to be included with minimal impact on message size.
+An `update` has a single `source` value and it applies to each of the `values` items.
+In cases where you can get data from only a single source the source may be omitted and the receiver may fill it in when multiplexing data from several sources.
 
 Each 'value' item is then simply a pair of 'relative path', and 'value'.
 
