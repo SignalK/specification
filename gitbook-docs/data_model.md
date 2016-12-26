@@ -162,9 +162,9 @@ In more detail we have the header section:
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
-    "updates": [
-      ...data goes here...
-    ]
+  "updates": [
+    ...data goes here...
+  ]
 }
 ```
 
