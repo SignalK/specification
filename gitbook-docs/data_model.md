@@ -29,28 +29,27 @@ Formatted for ease of reading:
         "state": {
           "value": "sailing",
           "source": "self",
-          "timestamp": "2014-03-24T00: 15: 41Z"
+          "timestamp": "2014-03-24T00:15:41Z"
         },
         "headingTrue": {
           "value": 23,
           "source": {
             "pgn": "128275",
             "device": "/dev/actisense",
-            "timestamp": "2014-08-15-16:00:05.538",
             "src": "115"
           },
-          "timestamp": "2014-03-24T00: 15: 41Z"
+          "timestamp": "2014-03-24T00:15:41Z"
         },
         "more": "a lot more data here...",
         "roll": {
           "value": 0,
           "source": "self",
-          "timestamp": "2014-03-24T00: 15: 41Z"
+          "timestamp": "2014-03-24T00:15:41Z"
         },
         "rateOfTurn": {
           "value": 0,
           "source": "self",
-          "timestamp": "2014-03-24T00: 15: 41Z"
+          "timestamp": "2014-03-24T00:15:41Z"
         }
       }
     }
@@ -181,10 +180,10 @@ The 'updates' holds an array (JSON array) of updates, each of which has a 'sourc
 {
   "source": {
     "device": "/dev/actisense",
-    "timestamp": "2014-08-15-16:00:00.081",
     "src": "115",
     "pgn": "128267"
   },
+  "timestamp": "2014-08-15-16:00:00.081",
   "values": [
     {
       "path": "navigation.courseOverGroundTrue",
