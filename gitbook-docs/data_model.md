@@ -214,6 +214,5 @@ at the message level no checksum or other tests need to be made.
 
 The JSON message format is supported across most programming environments and can be handled with any convenient library.
 
-On micro-controllers with limited RAM it is wise to read and write using streaming rather than hold the whole message in
-precious RAM. There is an implementation of Signal K JSON streaming on an Arduino Mega (4K RAM) in the related Freeboard
-project, which will be released in Signal K eventually.
+On micro-controllers with limited RAM it is wise to read and write using streaming rather than hold the whole message in precious RAM.
+There is an implementation of Signal K JSON streaming on an Arduino Mega (4K RAM) in the related [Freeboard project](https://github.com/rob42/FreeboardPLC_v1_2).
