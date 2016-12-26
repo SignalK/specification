@@ -350,6 +350,50 @@
         }
       }
     },
+
+
+    "datetimeValue": {
+      "type": "object",
+      "description": "Data should be of type number.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesDatetimeValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesDatetimeValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "date-time"
+        },
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
+        }
+      }
+    },
+
+
     "nullValue": {
       "type": "object",
       "description": "Data should be of type NULL.",
