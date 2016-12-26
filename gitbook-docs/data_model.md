@@ -163,9 +163,10 @@ A delta message can be recognised from the other types by the topmost level havi
 `updates` is the only required property.
 If `context` is missing it is assumed that the data is related to the `self` context.
 
-Context is a path from the root of the full tree. In this case 'vessels.urn:mrn:imo:mmsi:234567890'. All subsequent data is relative to
-that location. The context could be much more specific, e.g. 'vessels.urn:mrn:imo:mmsi:234567890.navigation', whatever is the common root
-of the updated data.
+Context is a path from the root of the full tree to the _container object_, which is always a vessel with the current Signal K version.
+The delimiter in the context path is `.` (period).
+In this case the context is `vessels.urn:mrn:imo:mmsi:234567890`.
+All subsequent data is relative to that location.
 
 The `updates` holds an array (JSON array) of updates, each of which has a `source` and a JSON array of `values`.
 
@@ -197,7 +198,11 @@ A Signal K producer may not have access to a real time clock or UTC time.
 In these cases timestamp should be omitted.
 Elements in the Signal K processing chain, like a server receiving data from a producer, should fill in timestamp if it is missing in the incoming delta message.
 
-Each 'value' item is then simply a pair of 'relative path', and 'value'.
+Each `value` item is then simply a pair of `path` and `value`.
+The `path` must be a _leaf path_: it must be a path to a leaf the of the full model.
+A leaf is where the actual value of the Signal K property is and where `timestamp`, `$source` and `values` properties are in the full model.
+The value is often a scalar - a numeric value, as in the example above, but it can also be an object.
+For example a `navigation.position` value would be an object like `{"latitude": -41.2936935424, "longitude": 173.2470855712}`.
 
 ## Message Integrity
 
