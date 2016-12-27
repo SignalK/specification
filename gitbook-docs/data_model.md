@@ -56,7 +56,7 @@ the same content, i.e. you won't have as much data about other vessels as you ha
 
 The values are always SI units, and always the same units for the same key. I.e. `speedOverGround` is always meters per
 second, never knots, km/hr, or miles/hr. This means you never have to send 'units' with data, the units are specific for
-a key, and defined in the data schema.
+a key, and defined in the data schema. A simplified version of the JSON schema with the units is available in [Keys Reference in Appendix A](keys/index.md).
 
 The ordering of keys is also not important, they can occur in any order. In this area Signal K follows normal JSON
 standards.
