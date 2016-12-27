@@ -12,7 +12,7 @@ The simplest format is the full format, which is the complete Signal K data mode
 ```json
 {
   "vessels": {
-    "9334562": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "version": "0.1",
       "name": "motu",
       "mmsi": "2345678",
@@ -25,24 +25,23 @@ The simplest format is the full format, which is the complete Signal K data mode
           "timestamp": "2014-03-24T00:15:41Z"
         },
         "headingTrue": {
-          "value": 23,
-          "source": {
-            "pgn": "128275",
-            "device": "/dev/actisense",
-            "src": "115"
-          },
+          "value": 2.3114,
+          "$source": "nmea0183-1.II",
+          "sentence": "HDT",
           "timestamp": "2014-03-24T00:15:41Z"
         },
-        "more": "a lot more data here...",
-        "roll": {
-          "value": 0,
-          "source": "self",
+        "speedThroughWater": {
+          "value": 2.556,
+          "$source": "n2k-1.160",
+          "pgn": 128259,
           "timestamp": "2014-03-24T00:15:41Z"
         },
-        "rateOfTurn": {
-          "value": 0,
-          "source": "self",
-          "timestamp": "2014-03-24T00:15:41Z"
+        "position": {
+          "longitude": 23.53885,
+          "latitude": 60.0844,
+          "$source": "nmea0183-2.GP",
+          "timestamp": "2014-03-24T00:15:42Z",
+          "sentence": "GLL"
         }
       }
     }
