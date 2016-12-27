@@ -201,6 +201,10 @@ The `updates` holds an array (JSON array) of updates, each of which has a `sourc
 An `update` has a single `source` value and it applies to each of the `values` items.
 In cases where you can get data from only a single source the source may be omitted and the receiver may fill it in when multiplexing data from several sources.
 
+A Signal K producer may not have access to a real time clock or UTC time.
+In these cases timestamp should be omitted.
+Elements in the Signal K processing chain, like a server receiving data from a producer, should fill in timestamp if it is missing in the incoming delta message.
+
 Each 'value' item is then simply a pair of 'relative path', and 'value'.
 
 ## Message Integrity
