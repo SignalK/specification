@@ -7,14 +7,7 @@ format is the same as the full format, but doesn't contain a full tree, just par
 
 ## Full format
 
-The simplest format is the full format, which is the complete Signal K data model  as a JSON string. Abbreviated for
-clarity it looks like this:
-
-```json
-{"vessels":{"9334562":{"navigation":{"courseOverGroundTrue":{"value":11.9600000381},"courseOverGroundMagnetic":{"value":93.0000000000},"more":"a lot more data here...","wind":{"angleApparent":{"value":0.0000000000},"directionTrue": {"value":0.0000000000},"speedApparent":{"value":0.0000000000},"speedTrue": {"value":0.0000000000}}}}}}
-```
-
-Formatted for ease of reading:
+The simplest format is the full format, which is the complete Signal K data model  as a JSON string.
 
 ```json
 {
