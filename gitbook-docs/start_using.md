@@ -10,7 +10,7 @@ You can start using Signal K by
   [NMEA 2000](http://www.actisense.com/products/nmea-2000/ngt-1/ngt-1.html) or roll your own with
   [I2C](https://en.wikipedia.org/wiki/I%C2%B2C) sensors) and installing Node or Java server
 * purchasing a commercial Signal K gateway such as an [iKommunicate](https://ikommunicate.com) by Digital Yacht
-* installing OpenPlotter, which includes a Signal K server
+* installing [OpenPlotter](http://www.sailoog.com/en/openplotter), which includes a Signal K server
 
 Once you have a server running (or you start by using the demo server) you can install some Signal K supporting mobile
 apps such as
