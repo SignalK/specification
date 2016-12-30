@@ -163,7 +163,7 @@ A delta message can be recognised from the other types by the topmost level havi
 `updates` is the only required property.
 If `context` is missing it is assumed that the data is related to the `self` context.
 
-Context is a path from the root of the full tree to the _container object_, which is always a vessel with the current Signal K version.
+Context is a path from the root of the full tree to the _container object_, which for vessel related data must refer to the vessel directly under `vessels`.
 The delimiter in the context path is `.` (period).
 In this case the context is `vessels.urn:mrn:imo:mmsi:234567890`.
 All subsequent data is relative to that location.
