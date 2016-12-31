@@ -161,8 +161,7 @@ In more detail we have the header section:
 ```json
 {
   "context": {
-    "scope": "vessel",
-    "id":"vessels.urn:mrn:imo:mmsi:234567890"
+    "vessel": "urn:mrn:imo:mmsi:234567890"
   },
   "updates": [
     ...data goes here...
@@ -178,10 +177,9 @@ required).
 
 The `context` property determines the default scope to which the `updates` should be applied. If not specified, it
 defaults to the vessel for the server sending the delta message (as determined by its `self` attribute).
-The `scope` property may be one of following values (as specified by the `contextScope` enum):
+Exactly one of the following properties may be used:
 
-|Scope|Description|Id|
-|vessel|A single vessel|The unique identifier for the vessel.|
+ `vessel`, a `string` uniquely identifying the vessel
 
 For compatibility with early servers, the `context` property may also be supplied as a `string` in the format
 `vessels.{vesselId}`. This feature is deprecated and may be removed in later versions of this specification.
@@ -228,14 +226,15 @@ In cases where you can get data from only a single source the source may be omit
 
 ### Alternative
 `values` could be an object property containing the new values, for example:
- ```json
- {
-   "values": {
-     "navigation.courseOverGroundTrue": 2.971,
-     "navigation.speedOverGround": 3.85
-   }  
- }
- ```
+```json
+{
+  "values": {
+    "navigation.courseOverGroundTrue": 2.971,
+    "navigation.speedOverGround": 3.85
+  }  
+}
+```
+
 ## Message Integrity
 
 Many messaging systems specify checksums or other forms of message integrity checking. In Signal K we assume a reliable
