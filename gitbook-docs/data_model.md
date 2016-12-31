@@ -160,23 +160,33 @@ In more detail we have the header section:
 
 ```json
 {
-  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "context": {
+    "scope": "vessel",
+    "id":"vessels.urn:mrn:imo:mmsi:234567890"
+  },
   "updates": [
     ...data goes here...
   ]
 }
 ```
 
-A delta message can be recognised from the other types by the topmost level having `updates` property.
-`updates` is the only required property.
-If `context` is missing it is assumed that the data is related to the `self` context.
+A delta message can be recognised from the other types by the topmost level having `updates` property (which is
+required).
 
-Context is a path from the root of the full tree to the _container object_, which for vessel related data must refer to the vessel directly under `vessels`.
-The delimiter in the context path is `.` (period).
-In this case the context is `vessels.urn:mrn:imo:mmsi:234567890`.
-All subsequent data is relative to that location.
+- TODO: Should we include a `version` property to allow delta messages to be improved?
+- TODO: Should we include a `$schema` property? This would imply the version as well.  
 
-The `updates` holds an array (JSON array) of updates, each of which has a `source` and a JSON array of `values`.
+The `context` property determines the default scope to which the `updates` should be applied. If not specified, it
+defaults to the vessel for the server sending the delta message (as determined by its `self` attribute).
+The `scope` property may be one of following values (as specified by the `contextScope` enum):
+
+|Scope|Description|Id|
+|vessel|A single vessel|The unique identifier for the vessel.|
+
+For compatibility with early servers, the `context` property may also be supplied as a `string` in the format
+`vessels.{vesselId}`. This feature is deprecated and may be removed in later versions of this specification.
+
+The `updates` holds an array of update objects, each of which has a header and an array of `values`.
 
 ```json
 {
@@ -199,15 +209,33 @@ The `updates` holds an array (JSON array) of updates, each of which has a `sourc
 }
 ```
 
+The header is comprised of all properties except the `values` array and defines common properties across all values.
+This may include the original `source` of the update or a common `timestamp`.
+The header may also include a `context` object property, overriding the default context in the message header;
+this allows updates to multiple contexts to be sent in a single message (for example, updates to a fleet of vessels).
+ 
+The `values` array is comprised of objects with two properties. The `path` property specifies which value in the context
+is being update and the `value` property contains a new value which replaces the existing value.
+The type of the `value` property must match the type defined for the `path`'s value; it may be a simple scale or a
+more complex object.
+  
+If `source`, `timestamp`, or other header information is omitted, the receiving application should generate appropriate
+values for those meta-properties in its data model. For example, it may use the identity of the sending server and the
+timestamp it received the message.
+
 An `update` has a single `source` value and it applies to each of the `values` items.
 In cases where you can get data from only a single source the source may be omitted and the receiver may fill it in when multiplexing data from several sources.
 
-Each `value` item is then simply a pair of `path` and `value`.
-The `path` must be a _leaf path_: it must be a path to a leaf the of the full model.
-A leaf is where the actual value of the Signal K property is and where `timestamp`, `$source` and `values` properties are in the full model.
-The value is often a scalar - a numeric value, as in the example above, but it can also be an object.
-For example a `navigation.position` value would be an object like `{"latitude": -41.2936935424, "longitude": 173.2470855712}`.
-
+### Alternative
+`values` could be an object property containing the new values, for example:
+ ```json
+ {
+   "values": {
+     "navigation.courseOverGroundTrue": 2.971,
+     "navigation.speedOverGround": 3.85
+   }  
+ }
+ ```
 ## Message Integrity
 
 Many messaging systems specify checksums or other forms of message integrity checking. In Signal K we assume a reliable
