@@ -30,7 +30,7 @@ function FullSignalK(id, type, defaults) {
     self: id,
     version: "0.1.0" // Should we read this from the package.json file?
   };
-  if (id) {
+  if(id) {
     this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
     this.self = this.root.vessels[id];
     signalkSchema.fillIdentity(this.root)
@@ -70,19 +70,19 @@ FullSignalK.prototype.pruneContexts = function(seconds) {
 FullSignalK.prototype.deleteContext = function(contextKey) {
   debug("Deleting context " + contextKey);
   var pathParts = contextKey.split('.');
-  if (pathParts.length === 2) {
+  if(pathParts.length === 2) {
     delete this.root[pathParts[0]][pathParts[1]];
   }
 }
 
 function findContext(root, contextPath) {
   var context = _.get(root, contextPath);
-  if (!context) {
+  if(!context) {
     context = {};
     _.set(root, contextPath, context);
   }
   var identity = contextPath.split('.')[1];
-  if (!identity) {
+  if(!identity) {
     return undefined;
   }
   signalkSchema.fillIdentityField(context, identity);
@@ -99,8 +99,8 @@ FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
 FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   if (typeof update.source != 'undefined') {
     this.updateSource(context, update.source, update.timestamp);
-  } else if (typeof update['$source'] != 'undefined') {
-      this.updateDollarSource(context, update['$source'], update.timestamp);
+  } else if(typeof update['$source'] != 'undefined') {
+    this.updateDollarSource(context, update['$source'], update.timestamp);
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
@@ -110,7 +110,7 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
   const parts = dollarSource.split('.')
   parts.reduce((cursor, part) => {
-    if (typeof cursor[part] === 'undefined') {
+    if(typeof cursor[part] === 'undefined') {
       return cursor[part] = {}
     }
     return cursor[part]
@@ -118,18 +118,18 @@ FullSignalK.prototype.updateDollarSource = function(context, dollarSource, times
 }
 
 FullSignalK.prototype.updateSource = function(context, source, timestamp) {
-  if (!this.sources[source.label]) {
+  if(!this.sources[source.label]) {
     this.sources[source.label] = {};
     this.sources[source.label].label = source.label;
     this.sources[source.label].type = source.type;
   }
 
-  if (source.type === 'NMEA2000' || source.src) {
+  if(source.type === 'NMEA2000' || source.src) {
     handleNmea2000Source(this.sources[source.label], source, timestamp);
     return
   }
 
-  if (source.type === 'NMEA0183' || source.sentence) {
+  if(source.type === 'NMEA0183' || source.sentence) {
     handleNmea0183Source(this.sources[source.label], source, timestamp);
     return
   }
@@ -138,7 +138,7 @@ FullSignalK.prototype.updateSource = function(context, source, timestamp) {
 }
 
 function handleNmea2000Source(labelSource, source, timestamp) {
-  if (!labelSource[source.src]) {
+  if(!labelSource[source.src]) {
     labelSource[source.src] = {
       n2k: {
         src: source.src,
@@ -146,7 +146,7 @@ function handleNmea2000Source(labelSource, source, timestamp) {
       }
     };
   }
-  if (source.instance && !labelSource[source.src][source.instance]) {
+  if(source.instance && !labelSource[source.src][source.instance]) {
     labelSource[source.src][source.instance] = {}
   }
   labelSource[source.src].n2k.pgns[source.pgn] = timestamp
@@ -154,7 +154,7 @@ function handleNmea2000Source(labelSource, source, timestamp) {
 
 function handleNmea0183Source(labelSource, source, timestamp) {
   var talker = source.talker || 'II';
-  if (!labelSource[talker]) {
+  if(!labelSource[talker]) {
     labelSource[talker] = {
       talker: talker,
       sentences: {}
@@ -180,7 +180,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     return;
   }
   var valueLeaf;
-  if (pathValue.path.length === 0) {
+  if(pathValue.path.length === 0) {
     valueLeaf = context;
   } else {
     const splitPath = pathValue.path.split('.');
@@ -196,15 +196,15 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     }, context);
   }
 
-  if (valueLeaf.values) { //multiple values already
+  if(valueLeaf.values) { //multiple values already
     var sourceId = getId(source);
-    if (!valueLeaf.values[sourceId]) {
+    if(!valueLeaf.values[sourceId]) {
       valueLeaf.values[sourceId] = {};
     }
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
-  } else if (typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
+  } else if(typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
     // first multiple value
 
     var sourceId = valueLeaf['$source'];
@@ -221,7 +221,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     setMessage(valueLeaf.values[sourceId], source);
   }
   assignValueToLeaf(pathValue.value, valueLeaf);
-  if (pathValue.path.length != 0) {
+  if(pathValue.path.length != 0) {
     valueLeaf['$source'] = getId(source);
     valueLeaf.timestamp = timestamp;
     setMessage(valueLeaf, source);
@@ -233,22 +233,18 @@ function copyLeafValueToLeaf(fromLeaf, toLeaf) {
 }
 
 function assignValueToLeaf(value, leaf) {
-  if (_.isPlainObject(value)) {
-    _.assign(leaf, value);
-  } else {
-    leaf.value = value;
-  }
+  leaf.value = value;
 }
 
 function setMessage(leaf, source) {
-  if (!source) {
+  if(!source) {
     return;
   }
-  if (source.pgn) {
+  if(source.pgn) {
     leaf.pgn = source.pgn;
     delete leaf.sentence;
   }
-  if (source.sentence) {
+  if(source.sentence) {
     leaf.sentence = source.sentence;
     delete leaf.pgn;
   }

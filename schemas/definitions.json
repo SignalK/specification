@@ -655,22 +655,28 @@
         "$ref": "#/definitions/commonValueFields"
       }, {
         "properties": {
-          "longitude": {
-            "type": "number",
-            "description": "Longitude",
-            "units": "deg",
-            "example": 4.98765245
-          },
-          "latitude": {
-            "type": "number",
-            "description": "Latitude",
-            "units": "deg",
-            "example": 52.0987654
-          },
-          "altitude": {
-            "type": "number",
-            "description": "Altitude",
-            "units": "m"
+          "value": {
+            "type": "object",
+            "required": ["latitude", "longitude"],
+            "properties": {
+              "longitude": {
+                "type": "number",
+                "description": "Longitude",
+                "units": "deg",
+                "example": 4.98765245
+              },
+              "latitude": {
+                "type": "number",
+                "description": "Latitude",
+                "units": "deg",
+                "example": 52.0987654
+              },
+              "altitude": {
+                "type": "number",
+                "description": "Altitude",
+                "units": "m"
+              }
+            }
           }
         }
       }]

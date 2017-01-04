@@ -90,16 +90,8 @@
                 "$ref": "../definitions.json#/definitions/numberValue"
               },
               "position": {
-                "type": "object",
                 "description": "The position of nextPoint in two dimensions",
-                "properties": {
-                  "latitude": {
-                    "type": "number"
-                  },
-                  "longitude": {
-                    "type": "number"
-                  }
-                }
+                "$ref": "../definitions.json#/definitions/position"
               }
             }
           }]
@@ -130,16 +122,8 @@
                 "$ref": "../definitions.json#/definitions/numberValue"
               },
               "position": {
-                "type": "object",
                 "description": "The position of lastPoint in two dimensions",
-                "properties": {
-                  "latitude": {
-                    "type": "number"
-                  },
-                  "longitude": {
-                    "type": "number"
-                  }
-                }
+                "$ref": "../definitions.json#/definitions/position"
               }
             }
           }]
@@ -244,32 +228,11 @@
       "properties": {
         "startLineStb": {
           "description": "Position of starboard start mark",
-          "position": {
-            "type": "object",
-            "properties": {
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              }
-            }
-          }
-
+          "$ref": "../definitions.json#/definitions/position"
         },
         "startLinePort": {
           "description": "Position of starboard start mark",
-          "position": {
-            "type": "object",
-            "properties": {
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              }
-            }
-          }
+          "$ref": "../definitions.json#/definitions/position"
         },
         "distanceStartline": {
           "description": "The current distance to the start line",
@@ -452,11 +415,7 @@
     },
     "position": {
       "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }, {
-        "$ref": "../definitions.json#/definitions/position"
-      }]
+      "$ref": "../definitions.json#/definitions/position"
     },
     "attitude": {
       "type": "object",
@@ -622,11 +581,7 @@
         },
         "position": {
           "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best",
-          "allOf": [{
-            "$ref": "../definitions.json#/definitions/commonValueFields"
-          }, {
-            "$ref": "../definitions.json#/definitions/position"
-          }]
+          "$ref": "../definitions.json#/definitions/position"
         }
       }
     },

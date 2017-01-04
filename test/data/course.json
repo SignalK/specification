@@ -74,8 +74,12 @@
               "$source": "a.suitable.path"
             },
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "timestamp": "(...)",
+              "$source": "a.suitable.path",
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              }
             }
           },
 
@@ -87,8 +91,12 @@
             "timestamp": "2017-01-25T00:23:05.154Z",
             "$source": "a.suitable.path",
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              },
+              "timestamp": "(...)",
+              "$source": "a.suitable.path"
             }
           }
         },
@@ -154,8 +162,12 @@
               "$source": "a.suitable.path"
             },
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              },
+              "timestamp": "(...)",
+              "$source": "a.suitable.path"
             }
           },
 
@@ -167,8 +179,12 @@
             "timestamp": "2017-01-25T00:23:05.385Z",
             "$source": "a.suitable.path",
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "timestamp": "(...)",
+              "$source": "a.suitable.path",
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              }
             }
           }
         }

@@ -7,18 +7,22 @@
           "timestamp": "2015-03-06T16:57:53.643Z",
           "$source": "nmea2.II",
           "sentence": "RMC",
-          "longitude": 173.1693,
-          "latitude": -41.156426,
-          "altitude": 0
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          }
         },
         "anchor": {
           "position": {
             "timestamp": "2015-03-06T16:57:53.643Z",
             "$source": "nmea2.II",
             "sentence": "RMC",
-            "longitude": 173.1693,
-            "latitude": -41.156426,
-            "altitude": 0
+            "value": {
+              "longitude": 173.1693,
+              "latitude": -41.156426,
+              "altitude": 0
+            }
           },
           "currentRadius": {
             "timestamp": "2015-03-06T16:57:53.643Z",
@@ -69,9 +73,11 @@
         "position": {
           "timestamp": "2015-03-06T16:57:53.643Z",
           "$source": "self",
-          "longitude": 173.17,
-          "latitude": -41.157,
-          "altitude": 0
+          "value": {
+            "longitude": 173.17,
+            "latitude": -41.157,
+            "altitude": 0
+          }
         },
         "feature": {
           "type": "Feature",
@@ -89,9 +95,11 @@
         "position": {
           "timestamp": "2015-03-06T16:57:53.643Z",
           "$source": "self",
-          "longitude": 173.13,
-          "latitude": -41.15,
-          "altitude": 0
+          "value": {
+            "longitude": 173.13,
+            "latitude": -41.15,
+            "altitude": 0
+          }
         },
         "feature": {
           "type": "Feature",
