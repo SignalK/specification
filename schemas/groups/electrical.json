@@ -252,8 +252,6 @@
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
-            "$ref": "#/definitions/dcQuantities"
-          }, {
             "properties": {
               "meta": {
                 "allOf": [{
@@ -367,6 +365,8 @@
                 "units": "C"
               }
             }
+          }, {
+              "$ref": "#/definitions/dcQuantities"
           }]
         }
       }

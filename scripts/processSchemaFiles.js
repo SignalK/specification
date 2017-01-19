@@ -20,9 +20,9 @@
 const _ = require('lodash')
 const fs = require('mz/fs')
 const path = require('path')
-const parser = require('json-schema-load-tree').default
 const rimraf = require('rimraf')
 const markdown = new (require('markdown-it'))()
+const RefParser = require('json-schema-ref-parser')
 
 
 const units = {
@@ -63,41 +63,18 @@ class Parser {
     this.tree = {}
     this.docs = {}
     this.invalid = []
-    this.files = []
 
     this.parseOptions()
     this.parse()
   }
 
   parse () {
-    const schema = require(this.options.entry)
-
     this
     .rm(this.options.output) // remove build directory
     .then(() => fs.mkdir(this.options.output)) // create a new build directory
     .then(() => fs.mkdir(path.join(this.options.output, 'html')))
-    .then(() => parser(schema)) // parse the schema
-    .then(files => {
-      function createFileKeyDecorator(fileKey) {
-        return (value, index, object) => {
-          if (index == "$ref") {
-            return {
-              refString: value,
-              refFile: fileKey
-            }
-          }
-        }
-      }
-
-      Object.keys(files).forEach(key => {
-        let k = key.replace('https://signalk.github.io/specification/schemas/', '')
-        k = k.replace('#', '')
-        files[k] = _.cloneDeep(files[key], createFileKeyDecorator(k))
-        delete files[key]
-      })
-
-      this.files = files
-      return this.files['signalk.json']
+    .then(() => {
+      return RefParser.dereference(this.options.entry)
     })
 
     /*
@@ -133,8 +110,17 @@ class Parser {
         return result
       }
 
+      const safeTree = _.pick(this.tree, value => {
+        try {
+          JSON.stringify(value)
+        } catch(e) {
+          return false
+        }
+        return true
+      })
+
       return fs
-      .writeFile(path.join(this.options.output, 'tree.json'), JSON.stringify(this.tree, null, 2), this.options.encoding)
+      .writeFile(path.join(this.options.output, 'tree.json'), JSON.stringify(safeTree, null, 2), this.options.encoding)
       .then(() => {
         this.debug(`Written total tree to ${path.join(this.options.output, 'tree.json')}`)
         return result
@@ -160,6 +146,13 @@ class Parser {
           }
         }
 
+        const skipFields = ['timestamp', '$source', 'source', '_attr', 'meta', 'pgn', 'sentence', 'value', 'values']
+        const embeddedFields =
+          !this.tree[`${path}/timestamp`] ? {} :
+            _.pick(subtree.properties ? _.omit(subtree.properties || {}, skipFields) : {}, (value, key) => {
+              return !this.tree[`${path}/${key}/timestamp`]
+            })
+
         const documentation = {
           node: node,
           path: path,
@@ -170,7 +163,8 @@ class Parser {
           type: typeof subtree.type !== 'undefined' ? subtree.type : null,
           description: typeof subtree.description !== 'undefined' ? subtree.description : null,
           example: typeof subtree.example !== 'undefined' ? subtree.example : null,
-          json: JSON.stringify(subtree, null, 2)
+          json: subtree,
+          embeddedFields: Object.keys(embeddedFields).length > 0 ? embeddedFields : undefined
         }
         if (subtree.enum) {
           documentation.enum = subtree.enum
@@ -239,31 +233,44 @@ class Parser {
 
       Object.keys(filenames).forEach(fn => {
         let valid = true
-        let json = null
-
         filter.forEach(f => {
           if (filenames[fn].indexOf(f) !== -1) {
             valid = false
           }
         })
-
-        if (valid === false) {
+        if (!valid) {
           return
         }
 
         const path = filenames[fn]
         const doc = this.docs[path]
 
-        try {
-          json = JSON.parse(doc.json)
-        } catch (e) {
-          this.debug(`Error parsing JSON for path ${path}: ${e.message}`)
+        function isEmbedded(path) {
+          if (this.docs[`${path}/timestamp`]) {
+            return false
+          }
+          const parts = path.split('/').filter(x => x.length > 0)
+          let soFar = ""
+          let result = false
+          parts.forEach(part => {
+            soFar = soFar + "/" + part
+            result = result || !!this.docs[soFar + '/timestamp']
+          })
+          return result
         }
+
+        let json = doc.json
 
         const key = path.replace(/</g, '').replace(/>/g, '').replace('RegExp', '*')
         keysWithMeta[key] = {
           units: json.units,
           description: doc.description === null ? '[missing]' : doc.description
+        }
+
+
+        if (isEmbedded.bind(this)(path)) {
+          this.debug("Skipping embedded", path)
+          return
         }
 
         // md += `### [${path.replace(/</g, '&lt;').replace(/>/g, '&gt;')}](http://signalk.org/specification/master/keys/html/${fn.replace('.md', '.html')})\n\n`
@@ -282,14 +289,36 @@ class Parser {
         md += '\n\n'
 
         if (doc.enum) {
-          md += '**Enum values:**\n'
+          md += '**Enum values:**\n\n'
           doc.enum.forEach(enumValue => md += `* ${enumValue}\n`)
+          md += '\n'
+        }
+
+        function renderField(key, field, baseIndent) {
+          const descString = field.description ? ` (${field.description})` : ''
+          const unitString = field.units ? `, units: ${field.units} (${units[field.units]})` : ''
+          const enumString = field.enum ? `, enum:\n\n${field.enum.map(x => `${baseIndent}  * ${x}\n`).join('')}` : ''
+          md += `${baseIndent}* ${key}${descString}${unitString}${enumString}\n`
+          if (field.properties) {
+            md += '\n'
+            const subKeys = Object.keys(field.properties)
+            subKeys.forEach(subKey => renderField(subKey, field.properties[subKey], baseIndent + "  "))
+          }
+        }
+
+        if (doc.embeddedFields) {
+          md += '**Fields:**\n\n'
+          Object.keys(doc.embeddedFields).forEach(key => {
+            const field = doc.embeddedFields[key]
+            renderField(key, field, "")
+          })
+          md += '\n'
         }
 
         md += '---\n\n'
       })
 
-      fs.writeFile(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
+      fs.writeFileSync(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
 
       return fs.writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding).then(() => {
         results.push({
@@ -393,20 +422,20 @@ class Parser {
     if (prefix.charAt(prefix.length - 1) === '/') {
       prefix = prefix.replace(/\/+$/, '')
     }
+    const splitPrefix = prefix.split("/")
+    if (splitPrefix.length > 1 && splitPrefix[splitPrefix.length - 2] === splitPrefix[splitPrefix.length - 1]) {
+      delete this.tree[prefix]
+      this.debug("Avoiding self recursion at", prefix)
+      return
+    }
 
     if (typeof data.properties === 'object' && data.properties !== null) {
       Object.keys(data.properties).forEach(key => {
-        if (typeof data.properties[key]['$ref'] === 'undefined') {
-          this.tree[`${prefix}/${key}`] = data.properties[key]
-        } else {
-          this.tree[`${prefix}/${key}`] = {}
-          _.assign(this.tree[`${prefix}/${key}`], _.omit(data.properties[key], '$ref'))
-          _.defaults(this.tree[`${prefix}/${key}`], this.resolveReference(data.properties[key]['$ref']))
-        }
+        this.tree[`${prefix}/${key}`] = data.properties[key]
 
-        // if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
-        //   this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf)
-        // }
+        if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
+          this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf, this.tree[`${prefix}/${key}`] || {})
+        }
 
         if (this.hasProperties(this.tree[`${prefix}/${key}`])) {
           this.parseProperties(`${prefix}/${key}`, this.tree[`${prefix}/${key}`])
@@ -416,29 +445,19 @@ class Parser {
 
     if (typeof data.patternProperties === 'object' && data.patternProperties !== null) {
       Object.keys(data.patternProperties).forEach(key => {
-        if (typeof data.patternProperties[key]['$ref'] === 'undefined') {
-          this.tree[`${prefix}/${key}`] = data.patternProperties[key]
-        } else {
-          this.tree[`${prefix}/${key}`] = this.resolveReference(data.patternProperties[key]['$ref'])
-        }
+        const target = `${prefix}/${key}`
+
+        this.tree[`${prefix}/${key}`] = data.patternProperties[key]
 
         if (typeof this.tree[`${prefix}/${key}`] !== 'undefined' && typeof this.tree[`${prefix}/${key}`].allOf !== 'undefined') {
           this.parseAllOf(`${prefix}/${key}`, this.tree[`${prefix}/${key}`].allOf,
-            _.omit(this.tree[`${prefix}/${key}`], ['properties', 'allOf', 'patternProperties', '$key']))
+            this.tree[`${prefix}/${key}`] || {})
         }
 
         if (this.hasProperties(this.tree[`${prefix}/${key}`])) {
           this.parseProperties(`${prefix}/${key}`, this.tree[`${prefix}/${key}`])
         }
       })
-    }
-
-    if (typeof data['$ref'] !== 'undefined') {
-      this.tree[prefix] = this.resolveReference(data['$ref'])
-
-      if (typeof this.tree[prefix].properties !== 'undefined' || typeof this.tree[prefix].properties !== 'undefined') {
-        this.parseProperties(prefix, this.tree[prefix])
-      }
     }
 
     return data
@@ -451,31 +470,24 @@ class Parser {
 
     let readablePrefix = `${treePrefix.split('/')[treePrefix.split('/').length - 2]}/${treePrefix.split('/')[treePrefix.split('/').length - 1]}`
 
-    let temp = [baseObject].concat(allOf).map(obj => {
-      if (typeof obj === 'object' && obj !== null && typeof obj['$ref'] !== 'undefined') {
-        const ref = this.resolveReference(obj['$ref'])
+    let temp = this.createAllOfArray(allOf, baseObject)
 
-        if (ref !== null && typeof ref !== 'undefined') {
-          return ref
-        } else {
-          console.log(`*** Warning: couldn't resolve ${obj['$ref']} in ${readablePrefix}. No file in $ref value?`)
-        }
-      }
+    this.tree[treePrefix] = this.reduceParsedAllOf(temp)
+  }
 
-      return obj
-    })
+  createAllOfArray (allOf, baseObject) {
+    if (!Array.isArray(allOf)) {
+      return {}
+    }
+
+    const result = [baseObject].concat(allOf)
     .filter(obj => {
       if (obj === null || typeof obj === 'undefined') {
         return false
       }
       return true
     })
-
-    if (!Array.isArray(temp)) {
-      return
-    }
-
-    this.tree[treePrefix] = this.reduceParsedAllOf(temp)
+    return result
   }
 
   reduceParsedAllOf (allOf, result) {
@@ -489,9 +501,11 @@ class Parser {
       }
 
       Object.keys(obj).forEach(key => {
-        if (key !== 'properties' && key !== 'patternProperties' && key !== 'allOf' && key !== '$ref') {
+        if (key !== 'properties' && key !== 'patternProperties' && key !== 'allOf') {
           if (!result[key]) {
             result[key] = obj[key]
+          } else if (result[key] !== obj[key]) {
+            this.debug("avoiding overriding ", key, ". prev", result[key], ", rejected", obj[key])
           }
         }
 
@@ -501,7 +515,15 @@ class Parser {
           }
 
           Object.keys(obj[key]).forEach(k => {
-            result.properties[k] = obj[key][k]
+            if (typeof obj[key][k].allOf !== 'undefined') {
+              this.reduceParsedAllOf(obj[key][k].allOf, obj[key][k])
+            }
+            result.properties[k] = _.merge(result.properties[k] || {}, obj[key][k], (objectValue, sourceValue, key, object, source) => {
+              if (objectValue && typeof objectValue === "string" && objectValue !== sourceValue) {
+                this.debug("avoiding overriding ", key, ". prev", objectValue, ", rejected", sourceValue)
+                return objectValue
+              }
+            })
           })
         }
 
@@ -522,40 +544,6 @@ class Parser {
     })
 
     return result
-  }
-
-  resolveReference (refObject) {
-    const origRef = refObject.refString
-    if (typeof origRef !== 'string') {
-      return null
-    }
-
-    const ref = origRef.replace('../', '').split('#')
-    let file = ref[0].trim()
-    let path = ref[1].trim()
-
-
-    if (file.length === 0) {
-      file = refObject.refFile
-    }
-
-    if (path.length === 0) {
-      return this.files[file]
-    }
-
-    if (path.charAt(0) === '/') {
-      path = path.replace(/^\//, '')
-    }
-
-    path = path.split('/')
-
-    // relative references might point to the same file or definitions.json
-    if (_.get(this.files[file], path, "NOT_DEFINED") === "NOT_DEFINED") {
-      file = 'definitions.json'
-    }
-    let cursor = this.files[file]
-
-    return _.get(cursor, path)
   }
 
   parseOptions () {

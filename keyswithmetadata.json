@@ -6,7 +6,7 @@
     "description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel."
   },
   "/vessels/*": {
-    "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID"
+    "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the vessel. Examples: urn:mrn:imo:mmsi:230099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
   },
   "/vessels/*/url": {
     "description": "URL based identity of the vessel, if available."
@@ -229,6 +229,18 @@
   "/vessels/*/environment/current": {
     "description": "Direction and strength of current affecting the vessel"
   },
+  "/vessels/*/environment/current/drift": {
+    "units": "m/s",
+    "description": "The speed component of the water current vector"
+  },
+  "/vessels/*/environment/current/setTrue": {
+    "units": "rad",
+    "description": "The direction component of the water current vector referenced to true (geographic) north"
+  },
+  "/vessels/*/environment/current/setMagnetic": {
+    "units": "rad",
+    "description": "The direction component of the water current vector referenced to magnetic north"
+  },
   "/vessels/*/environment/tide": {
     "description": "Tide data"
   },
@@ -353,8 +365,62 @@
   "/vessels/*/navigation/courseRhumbline/nextPoint": {
     "description": "The point on earth the vessel's presently navigating towards"
   },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/type": {
+    "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between the vessel's present position and the nextPoint"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/bearingTrue": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/bearingMagnetic": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/velocityMadeGood": {
+    "units": "m/s",
+    "description": "The velocity component of the vessel towards the nextPoint"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/timeToGo": {
+    "units": "s",
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position": {
+    "description": "The position of nextPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseRhumbline/nextPoint/position/longitude": {
+    "description": "[missing]"
+  },
   "/vessels/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/type": {
+    "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between previousPoint and the vessel's present position"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position": {
+    "description": "The position of lastPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseRhumbline/previousPoint/position/longitude": {
+    "description": "[missing]"
   },
   "/vessels/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -388,8 +454,62 @@
   "/vessels/*/navigation/courseGreatCircle/nextPoint": {
     "description": "The point on earth the vessel's presently navigating towards"
   },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/type": {
+    "description": "The type of the next point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between the vessel's present position and the nextPoint"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/bearingTrue": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to true north"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/bearingMagnetic": {
+    "units": "rad",
+    "description": "The bearing of a line between the vessel's current position and nextPoint, relative to magnetic north"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/velocityMadeGood": {
+    "units": "m/s",
+    "description": "The velocity component of the vessel towards the nextPoint"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/timeToGo": {
+    "units": "s",
+    "description": "Time in seconds to reach nextPoint's perpendicular) with current speed & direction"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position": {
+    "description": "The position of nextPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
+    "description": "[missing]"
+  },
   "/vessels/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/type": {
+    "description": "The type of the previous point (e.g. Waypoint, POI, Race Mark, etc)"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/href": {
+    "description": "A reference (URL) to an object (under resources) this point is related to"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/distance": {
+    "units": "m",
+    "description": "The distance in meters between previousPoint and the vessel's present position"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position": {
+    "description": "The position of lastPoint in two dimensions"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
+    "description": "[missing]"
+  },
+  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
+    "description": "[missing]"
   },
   "/vessels/*/navigation/racing": {
     "description": "[missing]"
@@ -489,8 +609,32 @@
   "/vessels/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
+  "/vessels/*/navigation/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/vessels/*/navigation/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/vessels/*/navigation/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
+  },
   "/vessels/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
+  },
+  "/vessels/*/navigation/attitude/roll": {
+    "units": "rad",
+    "description": "Vessel roll, +ve is list to starboard"
+  },
+  "/vessels/*/navigation/attitude/pitch": {
+    "units": "rad",
+    "description": "Pitch, +ve is bow up"
+  },
+  "/vessels/*/navigation/attitude/yaw": {
+    "units": "rad",
+    "description": "Yaw, +ve is heading change to starboard"
   },
   "/vessels/*/navigation/rateOfTurn": {
     "units": "rad/s",
@@ -529,8 +673,23 @@
   "/vessels/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
   },
+  "/vessels/*/navigation/anchor/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/vessels/*/navigation/anchor/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/vessels/*/navigation/anchor/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
+  },
   "/vessels/*/navigation/datetime": {
     "description": "[missing]"
+  },
+  "/vessels/*/navigation/datetime/gnssTimeSource": {
+    "description": "Source of GNSS Date and Time"
   },
   "/vessels/*/propulsion": {
     "description": "Engine data, each engine identified by a unique name i.e. Port_Engine"
@@ -662,17 +821,6 @@
   "/vessels/*/electrical/batteries/RegExp": {
     "description": "Batteries, one or many, within the vessel"
   },
-  "/vessels/*/electrical/batteries/RegExp/associatedBus": {
-    "description": "Name of BUS device is associated with"
-  },
-  "/vessels/*/electrical/batteries/RegExp/voltage": {
-    "units": "V",
-    "description": "[missing]"
-  },
-  "/vessels/*/electrical/batteries/RegExp/current": {
-    "units": "A",
-    "description": "[missing]"
-  },
   "/vessels/*/electrical/batteries/RegExp/temperature": {
     "description": "Additional / unique temperatures associated with a battery"
   },
@@ -691,6 +839,22 @@
   "/vessels/*/electrical/batteries/RegExp/temperature/limitRechargeUpper": {
     "units": "K",
     "description": "Operational maximum temperature limit for battery recharging"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/batteries/RegExp/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
   },
   "/vessels/*/electrical/batteries/RegExp/capacity": {
     "description": "[missing]"
@@ -735,6 +899,21 @@
     "units": "C",
     "description": "Cumulative charge recharged into battery over operational lifetime of battery"
   },
+  "/vessels/*/electrical/batteries/RegExp/associatedBus": {
+    "description": "Name of BUS device is associated with"
+  },
+  "/vessels/*/electrical/batteries/RegExp/voltage": {
+    "units": "V",
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/batteries/RegExp/voltage/ripple": {
+    "units": "V",
+    "description": "Ripple voltage"
+  },
+  "/vessels/*/electrical/batteries/RegExp/current": {
+    "units": "A",
+    "description": "Data should be of type number."
+  },
   "/vessels/*/electrical/inverters": {
     "description": "[missing]"
   },
@@ -749,14 +928,34 @@
   },
   "/vessels/*/electrical/inverters/RegExp/dc/voltage": {
     "units": "V",
-    "description": "[missing]"
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/voltage/ripple": {
+    "units": "V",
+    "description": "Ripple voltage"
   },
   "/vessels/*/electrical/inverters/RegExp/dc/current": {
     "units": "A",
-    "description": "[missing]"
+    "description": "Data should be of type number."
   },
   "/vessels/*/electrical/inverters/RegExp/dc/temperature": {
-    "description": "[missing]"
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/inverters/RegExp/dc/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
   },
   "/vessels/*/electrical/inverters/RegExp/ac": {
     "description": "AC equipment common quantities"
@@ -812,14 +1011,34 @@
   },
   "/vessels/*/electrical/chargers/RegExp/voltage": {
     "units": "V",
-    "description": "[missing]"
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/chargers/RegExp/voltage/ripple": {
+    "units": "V",
+    "description": "Ripple voltage"
   },
   "/vessels/*/electrical/chargers/RegExp/current": {
     "units": "A",
-    "description": "[missing]"
+    "description": "Data should be of type number."
   },
   "/vessels/*/electrical/chargers/RegExp/temperature": {
-    "description": "[missing]"
+    "description": "Data should be of type number."
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/warnUpper": {
+    "units": "K",
+    "description": "Upper operational temperature limit"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/warnLower": {
+    "units": "K",
+    "description": "Lower operational temperature limit"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/faultUpper": {
+    "units": "K",
+    "description": "Upper fault temperature limit - device may disable/disconnect"
+  },
+  "/vessels/*/electrical/chargers/RegExp/temperature/faultLower": {
+    "units": "K",
+    "description": "Lower fault temperature limit - device may disable/disconnect"
   },
   "/vessels/*/electrical/chargers/RegExp/mode": {
     "description": "[missing]"
@@ -879,68 +1098,254 @@
   "/vessels/*/notifications/mob": {
     "description": "Man overboard"
   },
+  "/vessels/*/notifications/mob/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/mob/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/mob/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/mob/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/mob/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/mob/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/mob/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/fire": {
     "description": "Fire onboard"
   },
+  "/vessels/*/notifications/fire/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/fire/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/fire/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/fire/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/fire/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/fire/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/fire/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/sinking": {
     "description": "Vessel is sinking"
   },
+  "/vessels/*/notifications/sinking/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/sinking/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/sinking/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/sinking/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/sinking/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/sinking/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/sinking/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/flooding": {
     "description": "Vessel is flooding"
   },
+  "/vessels/*/notifications/flooding/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/flooding/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/flooding/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/flooding/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/flooding/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/flooding/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/flooding/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/collision": {
     "description": "In collision with another vessel or object"
   },
+  "/vessels/*/notifications/collision/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/collision/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/collision/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/collision/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/collision/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/collision/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/collision/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/grounding": {
     "description": "Vessel grounding"
   },
+  "/vessels/*/notifications/grounding/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/grounding/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/grounding/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/grounding/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/grounding/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/grounding/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/grounding/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/listing": {
     "description": "Vessel is listing"
   },
+  "/vessels/*/notifications/listing/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/listing/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/listing/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/listing/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/listing/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/listing/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/listing/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/adrift": {
     "description": "Vessel is adrift"
   },
+  "/vessels/*/notifications/adrift/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/adrift/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/adrift/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/adrift/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/adrift/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/adrift/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/adrift/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/piracy": {
     "description": "Under attack or danger from pirates"
   },
+  "/vessels/*/notifications/piracy/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/piracy/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/piracy/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/piracy/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/piracy/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/piracy/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/piracy/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/abandon": {
     "description": "Abandon ship"
   },
+  "/vessels/*/notifications/abandon/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/abandon/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/abandon/message": {
+    "description": "Message to display or speak"
+  },
   "/vessels/*/notifications/abandon/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+    "description": "This regex pattern is used for validation of the path of the notification"
+  },
+  "/vessels/*/notifications/abandon/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/abandon/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/abandon/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/notifications/RegExp": {
-    "description": "Notifications, their state, and actions. The notification limits are set in any Signal K key.meta.zones array."
+    "description": "This regex pattern is used for validation of the path of the alarm"
   },
-  "/vessels/*/notifications/RegExp/RegExp": {
-    "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]"
+  "/vessels/*/notifications/RegExp/method": {
+    "description": "Method to use to raise notifications"
+  },
+  "/vessels/*/notifications/RegExp/state": {
+    "description": "Current notification state"
+  },
+  "/vessels/*/notifications/RegExp/message": {
+    "description": "Message to display or speak"
   },
   "/vessels/*/steering": {
     "description": "Vessel steering data for steering controls (not Autopilot 'Nav Data')"
@@ -965,12 +1370,17 @@
   "/vessels/*/steering/autopilot/target": {
     "description": "Autopilot target"
   },
-  "/vessels/*/steering/autopilot/target/angle": {
+  "/vessels/*/steering/autopilot/target/windAngleApparent": {
     "units": "rad",
-    "description": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard"
+    "description": "Target angle to steer, relative to Apparent wind +port -starboard"
   },
-  "/vessels/*/steering/autopilot/target/reference": {
-    "description": "Current source of heading information"
+  "/vessels/*/steering/autopilot/target/headingTrue": {
+    "units": "rad",
+    "description": "Target heading for autopilot, relative to North"
+  },
+  "/vessels/*/steering/autopilot/target/headingMagnetic": {
+    "units": "rad",
+    "description": "Target heading for autopilot, relative to Magnetic North"
   },
   "/vessels/*/steering/autopilot/deadZone": {
     "units": "rad",
@@ -1289,7 +1699,7 @@
     "description": "Sensors, their state, and data."
   },
   "/vessels/*/sensors/RegExp": {
-    "description": "An object describing an individual sensor. It should be an object in vessel, named using a unique name or UUID"
+    "description": "This regex pattern is used for validation UUID identifier for the sensor"
   },
   "/vessels/*/sensors/RegExp/name": {
     "description": "The common name of the sensor"
@@ -1440,7 +1850,7 @@
     "description": "[missing]"
   },
   "/resources/routes/*/feature/geometry/coordinates": {
-    "description": "[missing]"
+    "description": "An array of two or more positions"
   },
   "/resources/routes/*/feature/properties": {
     "description": "Additional data of any type"
@@ -1465,6 +1875,18 @@
   },
   "/resources/notes/*/position": {
     "description": "Position related to note. Alternative to region or geohash"
+  },
+  "/resources/notes/*/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/resources/notes/*/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/resources/notes/*/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
   },
   "/resources/notes/*/geohash": {
     "description": "Position related to note. Alternative to region or position"
@@ -1503,10 +1925,22 @@
     "description": "A holder for waypoints, each named with a UUID"
   },
   "/resources/waypoints/*": {
-    "description": "A waypoint, an object with a signal k position object, and GeoJSON Feature object (see geojson.org, and https://github.com/fge/sample-json-schemas/tree/master/geojson)"
+    "description": "A waypoint, named with a UUID"
   },
   "/resources/waypoints/*/position": {
     "description": "The position in 3 dimensions"
+  },
+  "/resources/waypoints/*/position/longitude": {
+    "units": "deg",
+    "description": "Longitude"
+  },
+  "/resources/waypoints/*/position/latitude": {
+    "units": "deg",
+    "description": "Latitude"
+  },
+  "/resources/waypoints/*/position/altitude": {
+    "units": "m",
+    "description": "Altitude"
   },
   "/resources/waypoints/*/feature": {
     "description": "A Geo JSON feature object"
