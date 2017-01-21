@@ -209,12 +209,12 @@
               "null"
             ],
             "description": "The value to set at the path"
-          },
-          "required": [
-            "path",
-            "value"
-          ]
-        }
+          }
+        },
+        "required": [
+          "path",
+          "value"
+         ]
       }
     }
   }
