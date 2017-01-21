@@ -379,7 +379,8 @@
       "type": "object",
       "properties": {
         "value": {
-          "type": "date-time"
+          "type": "string",
+          "format": "date-time"
         },
         "timestamp": {
           "$ref": "#/definitions/timestamp"
