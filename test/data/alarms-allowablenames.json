@@ -1,0 +1,19 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "notifications": {
+        "moba": {
+          "amob": {
+            "X": {
+              "message": "Message",
+              "state": "alert",
+              "method": ["visual"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

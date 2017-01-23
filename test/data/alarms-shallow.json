@@ -1,0 +1,17 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "notifications": {
+        "steering": {
+          "method": ["sound", "visual"],
+          "state": "alarm",
+          "message": "Steering system failure",
+          "timestamp": "2017-01-23T14:24:17Z"
+        }
+      }
+    }
+  },
+  "version": "v1",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+}
