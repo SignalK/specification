@@ -1,18 +1,22 @@
 {
-	"vessels": 
-	{
-		"366982330": 
-		{
-			"navigation": 
-			{
-				"position": 
-				{
-					"longitude": 173.1693,
-					"latitude": -41.156426,
-					"altitude": 0
-				},
-				"courseOverGroundTrue": 245.69
-			}
-		}
-	}
+  "vessels": {
+    "urn:mrn:imo:mmsi:366982330": {
+      "mmsi": "230099999",
+      "navigation": {
+        "position": {
+          "longitude": 173.1693,
+          "latitude": -41.156426,
+          "altitude": 0,
+          "timestamp": "(...)",
+          "$source": "a.suitable.path"
+        },
+        "courseOverGroundTrue": {
+          "value": 245.69,
+          "timestamp": "(...)",
+          "$source": "a.suitable.path"
+        }
+      }
+    }
+  },
+  "version": "v1"
 }
