@@ -16,12 +16,12 @@
             },
             "temperature": {
               "value": 290,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar"
             },
             "voltage": {
               "value": 12.5,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
                 "nominal": 12,
@@ -32,30 +32,30 @@
               },
               "ripple": {
                 "value": 0.12,
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar"
               }
             },
             "current": {
               "value": 0.1,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar"
             },
             "capacity": {
               "nominal": 2400,
               "stateOfCharge": {
                 "value": 81,
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar"
               },
               "timeRemaining": {
                 "value": 21600,
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar"
               },
               "dischargeSinceFull": {
                 "value": 172800,
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar"
               }
             }
@@ -71,7 +71,7 @@
             },
             "voltage": {
               "value": 12.8,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
                 "nominal": 12
@@ -79,21 +79,21 @@
             },
             "current": {
               "value": 0.1,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar"
             }
           },
           "start": {
             "voltage": {
               "value": 12.8,
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
                 "nominal": 12
               }
             },
             "current": {
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value": 0.05
             }
@@ -112,7 +112,7 @@
               "value": "charging float"
             },
             "current": {
-              "timestamp": "2014-08-15-19:00:15.402",
+              "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value": 2.67
             }
@@ -128,29 +128,29 @@
             },
             "dc": {
               "current": {
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar",
                 "value": 2.67
               }
             },
             "ac": {
               "frequency": {
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar",
                 "value": 50
               },
               "current": {
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar",
                 "value": 0.12
               },
               "lineLineVoltage": {
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar",
                 "value": 400
               },
               "lineNeutralVoltage": {
-                "timestamp": "2014-08-15-19:00:15.402",
+                "timestamp": "2014-08-15T19:00:15.402Z",
                 "$source": "foo.bar",
                 "value": 230
               }
@@ -165,22 +165,22 @@
             "phase": {
               "single": {
                 "frequency": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 50
                 },
                 "current": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 0.12
                 },
                 "lineLineVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 230
                 },
                 "lineNeutralVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 230
                 }
@@ -194,66 +194,66 @@
             "phase": {
               "A": {
                 "frequency": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 50
                 },
                 "current": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 0.12
                 },
                 "lineLineVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 400
                 },
                 "lineNeutralVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 230
                 }
               },
               "B": {
                 "frequency": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 50
                 },
                 "current": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 0.12
                 },
                 "lineLineVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 400
                 },
                 "lineNeutralVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 230
                 }
               },
               "C": {
                 "frequency": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 50
                 },
                 "current": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 0.12
                 },
                 "lineLineVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 400
                 },
                 "lineNeutralVoltage": {
-                  "timestamp": "2014-08-15-19:00:15.402",
+                  "timestamp": "2014-08-15T19:00:15.402Z",
                   "$source": "foo.bar",
                   "value": 230
                 }
