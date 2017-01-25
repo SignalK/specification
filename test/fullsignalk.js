@@ -16,7 +16,7 @@ describe('FullSignalK', function() {
           "pgn": 129038,
           "src": "43"
         },
-        "timestamp": "2014-08-15-19:03:21.532",
+        "timestamp": "2014-08-15T19:03:21.532Z",
         "values": [{
           "path": "navigation.speedOverGround",
           "value": 7.09
@@ -48,7 +48,7 @@ describe('FullSignalK', function() {
           "pgn": 129038,
           "src": "43"
         },
-        "timestamp": "2014-08-15-19:03:21.532",
+        "timestamp": "2014-08-15T19:03:21.532Z",
         "values": [{
           "path": "navigation.speedOverGround",
           "value": 7.09
@@ -76,7 +76,7 @@ describe('FullSignalK', function() {
           "pgn": 129038,
           "src": "43"
         },
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "values": [{
           "path": "navigation.speedOverGround",
           "value": 14.81
@@ -109,7 +109,7 @@ describe('FullSignalK', function() {
           "pgn": 129794,
           "src": "43"
         },
-        "timestamp": "2014-08-15-19:02:31.507",
+        "timestamp": "2014-08-15T19:02:31.507Z",
         "values": [{
           "path": "",
           "value": {
@@ -139,7 +139,7 @@ describe('FullSignalK', function() {
           "src": "36",
           "instance": "0"
         },
-        "timestamp": "2015-01-15-16:15:19.628",
+        "timestamp": "2015-01-15T16:15:19.628Z",
         "values": [{
           "path": "environment.water.temperature",
           "value": 15.2

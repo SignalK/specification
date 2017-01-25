@@ -7,12 +7,12 @@
         "type": "outboard",
         "trimState": {
           "value": 99,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "thrustAngle": {
           "value": 0,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         }
       },
@@ -20,39 +20,39 @@
         "type": "diesel",
         "used": {
           "value": 12.5,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "rate": {
           "value": 0.6,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "averageRate": {
           "value": 1.0,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "economyRate": {
           "value": 0.9,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "pressure": {
           "value": 1100,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
 
         }
       },
       "state": {
         "value": "started",
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "revolutions": {
         "value": 1280,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar",
         "meta": {
           "displayName": "Tachometer",
@@ -83,54 +83,54 @@
       },
       "oilPressure": {
         "value": 110,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "boostPressure": {
         "value": 200,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "engineLoad": {
         "value": 200,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
 
       },
       "engineTorque": {
         "value": 200,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
 
       },
       "oilTemperature": {
         "value": 345,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "coolantTemperature": {
         "value": 355,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "exhaustTemperature": {
         "value": 420,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "coolantPressure": {
         "value": 1100,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "runTime": {
         "value": 3102234,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "alternatorVoltage": {
         "value": 14.1,
-        "timestamp": "2014-08-15-19:00:15.402",
+        "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
       "transmission": {
@@ -139,12 +139,12 @@
         },
         "oilPressure": {
           "value": 100,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         },
         "oilTemperature": {
           "value": 310,
-          "timestamp": "2014-08-15-19:00:15.402",
+          "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         }
       }

@@ -7,14 +7,14 @@
           "temperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "liveWell": {
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           },
@@ -22,7 +22,7 @@
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           }
@@ -31,31 +31,31 @@
           "temperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "dewPointTemperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "apparentWindChillTemperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "theoreticalWindChillTemperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "heatIndexTemperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           }
         },
@@ -63,14 +63,14 @@
           "temperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           },
           "engineRoom": {
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           },
@@ -78,7 +78,7 @@
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           },
@@ -86,7 +86,7 @@
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           },
@@ -94,7 +94,7 @@
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           },
@@ -102,7 +102,7 @@
             "temperature": {
               "value": 0,
               "$source": ".36.0",
-              "timestamp": "",
+              "timestamp": "2017-01-24T23:59:01Z",
               "pgn": 130312
             }
           }
@@ -114,7 +114,7 @@
           "temperature": {
             "value": 0,
             "$source": ".36.0",
-            "timestamp": "",
+            "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
           }
         }
@@ -122,13 +122,13 @@
     }
   },
   "sources": {
-    "": {
+    "N2K-1": {
       "36": {
         "0": {},
         "n2k": {
           "src": "36",
           "pgns": {
-            "130312": ""
+            "130312": "2017-01-25T00:03:05.056Z"
           }
         }
       },
