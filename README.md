@@ -1,6 +1,8 @@
 Signal K Specification
 ======================
 
+[![Join the chat at https://gitter.im/SignalK/specification](https://badges.gitter.im/SignalK/specification.svg)](https://gitter.im/SignalK/specification?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository contains the (working) specification for Signal K, defined in
 JSON Schema files, tests for the schema files and assorted JavaScript utilities
 for working with Signal K delta and full JSON data as well as validation
