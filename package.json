@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
+    "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:prep": "gitbook install gitbook-docs",
     "docs:keys": "scripts/processSchemaFiles.js",
     "docs:html": "gitbook build gitbook-docs master",
@@ -13,7 +14,7 @@
     "docs:mobi": "gitbook mobi gitbook-docs master/signalk_master.mobi",
     "docs:epub": "gitbook pdf gitbook-docs master/signalk_master.epub",
     "docs:serve": "gitbook serve gitbook-docs",
-    "docs:all": "npm run docs:prep && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
+    "docs:all": "npm run docs:prep && npm run docs:changelog && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
     "docs:publish": "npm run docs:all && git add master && git stash && git checkout gh-pages && git pull && git checkout stash -- master && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
@@ -48,6 +49,7 @@
   "devDependencies": {
     "chai": "^1.9.2",
     "gitbook-cli": "^2.3.0",
+    "github-changes": "^1.0.4",
     "infuse.js": "^2.0.2",
     "markdown-it": "^8.0.0",
     "mocha": "^2.1.0",
