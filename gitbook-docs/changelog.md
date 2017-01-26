@@ -1,6 +1,9 @@
 ## Change Log
 
-### upcoming (2017/01/19 20:25 +00:00)
+### upcoming (2017/01/26 19:31 +00:00)
+- [#327](https://github.com/SignalK/specification/pull/327) 	Updated Schema so that date-time must be in UTC (@bkp7)
+- [#324](https://github.com/SignalK/specification/pull/324) Define timestamp as JSON Schema date-time (@bkp7)
+- [#320](https://github.com/SignalK/specification/pull/320) Fix schema files to be valid against http://json-schema.org/draft-04/schema# (@bkp7)
 - [#299](https://github.com/SignalK/specification/pull/299) Generate documentation for object types from local files (@joux3)
 - [#312](https://github.com/SignalK/specification/pull/312) Specify vessel context and leaf path for delta (@tkurki)
 - [#313](https://github.com/SignalK/specification/pull/313) Itemize course properties (@tkurki)
