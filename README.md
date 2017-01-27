@@ -56,6 +56,11 @@ https://toolchain.gitbook.com/ebook.html.
 - `npm run docs:all` to generate locally
 - `npm run docs:publish` to publish in gh-pages.
 
+Changelog
+---------------------
+
+https://github.com/SignalK/specification/tree/master/gitbook-docs/changelog.md
+
 Validation
 ----------
 
