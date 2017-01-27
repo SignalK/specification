@@ -293,7 +293,7 @@
 
     "time": {
       "type": "object",
-      "description": "A time reference onboard.",
+      "description": "A time reference onboard. All clocks dispaying local time should use the offset here. If a timezoneRegion is supplied the timezone must also be supplied.",
       "properties": {
         "millis": {
           "type": "number",
@@ -307,7 +307,15 @@
           "example": -400,
           "maximum": 1300,
           "minimum": -1300,
-          "description": "Timezone offset in hours and minutes (-)hhmm"
+          "description": "Timezone offset from UTC in hours and minutes (-)hhmm. +ve means east of Greenwich",
+          "default": 0
+        },
+        "timezoneRegion":{
+          "type": "string",
+          "title": "IANA Timezone national region",
+          "example": "Europe/Zurich",
+          "description": "Timezone as listed in the IANA timezone database (tz database)",
+          "pattern": "^[a-zA-Z0-9\/+-]+$"
         },
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
@@ -316,6 +324,9 @@
         "source": {
           "$ref": "../definitions.json#/definitions/source"
         }
+      },
+      "dependencies": {
+        "timezoneRegion": ["timezone"]
       }
     },
     "mode": {
