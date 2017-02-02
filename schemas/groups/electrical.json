@@ -51,7 +51,7 @@
 
         "voltage": {
           "type": "object",
-          "description": "Voltage measured as close as possible to the device",
+          "description": "Voltage measured at or as close as possible to the device",
           "units": "V",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
@@ -184,7 +184,7 @@
       "properties": {
         "associatedBus": {
           "type": "string",
-          "description": "Name of BUS source is assocated with (if applicable, may = NULL)"
+          "description": "Name of BUS source is associated with (if applicable, may = NULL)"
         },
         "lineNeutralVoltage": {
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -440,6 +440,7 @@
                         "trickle",
                         "two stage",
                         "three stage",
+                        "four stage",       
                         "constant current",
                         "constant voltage",
                         "custom profile"
@@ -478,6 +479,89 @@
                     "$ref": "../definitions.json#/definitions/source"
                   }
                 }
+              },
+              "voltageSetpoint": {
+                "description": "Goal voltage",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+              }
+            }
+          }]
+        }
+      }
+    },
+    "alternator": {
+      "description": "Data about a Alternator charging device",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Alternator",
+          "description": "Mechanically driven alternator, includes dynamos",
+          "allOf": [{
+            "$ref": "#/definitions/dcQuantities"
+          }, {
+            "properties": {
+              "meta": {
+                "allOf": [{
+                  "$ref": "#/definitions/identity"
+                }, {
+                  "properties": {
+                    "chargingAlgorithm": {
+                      "enum": [
+                        "trickle",
+                        "two stage",
+                        "three stage",
+                        "four stage",       
+                        "constant current",
+                        "constant voltage",
+                        "custom profile"
+                      ]
+                    }
+                  }
+                }]
+              },
+              "mode": {
+                "type": "object",
+                "description": "Charging mode i.e. float, overcharge, etc.",
+                "properties": {
+                  "value": {
+                    "enum": [
+                      "charging bulk",
+                      "charging acceptance",
+                      "charging overcharge",
+                      "charging float",
+                      "charging equalize",
+                      "unknown",
+                      "other"
+                    ]
+                  },
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
+                  "source": {
+                    "$ref": "../definitions.json#/definitions/source"
+                  }
+                }
+              },
+              "revolutions": {
+                "description": "Alternator revolutions per second (x60 for RPM)",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "Hz"
+              },
+              "voltageSetpoint": {
+                "description": "Goal voltage",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+              },
+              "fieldDrive": {
+                "description": "% (0..100) of field voltage applied",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "%"
+              },
+              "regulatorTemperature": {
+                "description": "Current temperature of critical regulator components",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
               }
             }
           }]
