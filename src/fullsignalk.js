@@ -49,7 +49,7 @@ FullSignalK.prototype.retrieve = function() {
 FullSignalK.prototype.addDelta = function(delta) {
   this.emit('delta', delta);
   var context = findContext(this.root, delta.context);
-  this.addUpdates(context, delta.updates);
+  this.addUpdates(context, delta.context, delta.updates);
   this.updateLastModified(delta.context);
 };
 
@@ -89,14 +89,14 @@ function findContext(root, contextPath) {
   return context;
 }
 
-FullSignalK.prototype.addUpdates = function(context, updates) {
+FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
   var len = updates.length;
   for (var i = 0; i < len; ++i) {
-    this.addUpdate(context, updates[i]);
+    this.addUpdate(context, contextPath, updates[i]);
   }
 }
 
-FullSignalK.prototype.addUpdate = function(context, update) {
+FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   if (typeof update.source != 'undefined') {
     this.updateSource(context, update.source, update.timestamp);
   } else if (typeof update['$source'] != 'undefined') {
@@ -104,7 +104,7 @@ FullSignalK.prototype.addUpdate = function(context, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-  addValues(context, update.source || update['$source'], update.timestamp, update.values);
+  addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
 }
 
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
@@ -167,14 +167,14 @@ function handleOtherSource(sourceLeaf, source, timestamp) {
   sourceLeaf.timestamp = timestamp;
 }
 
-function addValues(context, source, timestamp, pathValues) {
+function addValues(context, contextPath, source, timestamp, pathValues) {
   var len = pathValues.length;
   for (var i = 0; i < len; ++i) {
-    addValue(context, source, timestamp, pathValues[i]);
+    addValue(context, contextPath, source, timestamp, pathValues[i]);
   }
 }
 
-function addValue(context, source, timestamp, pathValue) {
+function addValue(context, contextPath, source, timestamp, pathValue) {
   if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
     console.error("Illegal value in delta:" + JSON.stringify(pathValue));
     return;
@@ -183,9 +183,13 @@ function addValue(context, source, timestamp, pathValue) {
   if (pathValue.path.length === 0) {
     valueLeaf = context;
   } else {
-    valueLeaf = pathValue.path.split('.').reduce(function(previous, pathPart) {
+    const splitPath = pathValue.path.split('.');
+    valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
       if (!previous[pathPart]) {
         previous[pathPart] = {};
+        if (i === splitPath.length-1) {
+          previous[pathPart].meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path);
+        }
       }
       return previous[pathPart];
     }, context);
