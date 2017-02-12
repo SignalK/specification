@@ -273,3 +273,30 @@ module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
 module.exports.getSourceId = getSourceId;
 module.exports.keyForSourceIdPath = keyForSourceIdPath;
+
+module.exports.metadata = require('./keyswithmetadata');
+
+var metadataByRegex = []
+_.forIn(module.exports.metadata, (value, key) => {
+  const regexpKey =
+    '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+  if (!regexpKey.endsWith('.*$')) {
+    metadataByRegex.push({
+      regexp: new RegExp(regexpKey),
+      metadata: value
+    })
+  }
+})
+
+module.exports.getUnits = function (path) {
+  const meta = module.exports.getMetadata(path)
+  return meta ? meta.units : undefined
+}
+
+module.exports.getMetadata = function (path) {
+  const result = metadataByRegex.find(entry =>
+    entry.regexp.test('/' + path.replace(/\./g, '/'))
+  )
+  return result ? result.metadata : undefined
+}
+
