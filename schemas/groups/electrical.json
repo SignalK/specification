@@ -238,7 +238,7 @@
           "units": "W"
         }
       }
-    }
+    },
   
     "chargerQuantities": {
       "type": "object",
