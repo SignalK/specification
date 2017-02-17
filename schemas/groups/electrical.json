@@ -245,18 +245,34 @@
       "title": "Charger Quantities",
       "description": "Common charger quantities",
       "properties": {
-        "chargingAlgorithm": {
-          "enum": [
-            "trickle",
-            "two stage",
-            "three stage",
-            "four stage",       
-            "constant current",
-            "constant voltage",
-            "custom profile"
-          ]
-        }, 
-        "mode": {
+          "meta": {
+            "allOf": [{
+              "$ref": "#/definitions/identity"
+            }, {
+              "properties": {
+                "chargingAlgorithm": {
+                  "enum": [
+                    "trickle",
+                    "two stage",
+                    "three stage",
+                    "four stage",       
+                    "constant current",
+                    "constant voltage",
+                    "custom profile"
+                  ]
+                },
+                "chargerMode": {
+                  "enum": [
+                    "standalone",
+                    "master",
+                    "slave",
+                    "standby"
+                  ]
+                }
+              }
+            }]
+          },
+          "mode": {
             "type": "object",
             "description": "Charging mode i.e. float, overcharge, etc.",
             "properties": {
@@ -278,7 +294,7 @@
                 "$ref": "../definitions.json#/definitions/source"
               }
             }
-        },              
+          },
          "setpointVoltage": {
             "description": "Target regulation voltage",
             "$ref": "../definitions.json#/definitions/numberValue",
@@ -288,25 +304,7 @@
             "description": "Target amperage limit",
             "$ref": "../definitions.json#/definitions/numberValue",
             "units": "A"
-        },
-         "meta": {
-                "allOf": [{
-                  "$ref": "#/definitions/identity"
-                }, {
-                  "properties": {
-                    "chargerMode": {
-                      "enum": [
-                        "standalone",
-                        "master",
-                        "slave",
-                        "standby"
-                      ]
-                    }
-                  }
-                }]
-               },
-        
-        
+        },      
         "chargingCycleCurrent": {
           "type": "object",
           "description": "Measurements observed over current 'charging cycle'",
