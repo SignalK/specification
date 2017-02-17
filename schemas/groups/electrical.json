@@ -239,7 +239,7 @@
         }
       }
     }
-  },
+  
     "chargerQuantities": {
       "type": "object",
       "title": "Charger Quantities",
@@ -482,9 +482,8 @@
           }]
         }
       }
-    },
-
-
+    }
+  },
 
   "properties": {
     "batteries": {
