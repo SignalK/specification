@@ -240,6 +240,250 @@
       }
     }
   },
+    "chargerQuantities": {
+      "type": "object",
+      "title": "Charger Quantities",
+      "description": "Common charger quantities",
+      "properties": {
+        "chargingAlgorithm": {
+          "enum": [
+            "trickle",
+            "two stage",
+            "three stage",
+            "four stage",       
+            "constant current",
+            "constant voltage",
+            "custom profile"
+          ]
+        }, 
+        "mode": {
+            "type": "object",
+            "description": "Charging mode i.e. float, overcharge, etc.",
+            "properties": {
+              "value": {
+                "enum": [
+                  "charging bulk",
+                  "charging acceptance",
+                  "charging overcharge",
+                  "charging float",
+                  "charging equalize",
+                  "unknown",
+                  "other"
+                ]
+              },
+              "timestamp": {
+                "$ref": "../definitions.json#/definitions/timestamp"
+              },
+              "source": {
+                "$ref": "../definitions.json#/definitions/source"
+              }
+            }
+        },              
+         "setpointVoltage": {
+            "description": "Target regulation voltage",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "V"
+         }, 
+         "setpointAmperage": {
+            "description": "Target amperage limit",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "A"
+        },
+         "meta": {
+                "allOf": [{
+                  "$ref": "#/definitions/identity"
+                }, {
+                  "properties": {
+                    "chargerMode": {
+                      "enum": [
+                        "standalone",
+                        "master",
+                        "slave",
+                        "standby"
+                      ]
+                    }
+                  }
+                }]
+               },
+        
+        
+        "chargingCycleCurrent": {
+          "type": "object",
+          "description": "Measurements observed over current 'charging cycle'",
+          "title": "temperature",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          },{
+            "properties": {
+            
+              "voltageMax": {
+                "type": "number",
+                "description": "Highest voltage observed",
+                "units": "V"
+              },
+              "currentMax": {
+                "type": "number",
+                "description": "Highest current supplied",
+                "units": "A"
+              },
+              "powerMax": {
+                "type": "number",
+                "description": "Highest wattage supplied",
+                "units": "W"
+              },
+              "temperatureMax": {
+                "type": "number",
+                "description": "Highest internal temperature",
+                "units": "K"
+              },
+              "voltageMin": {
+                "type": "number",
+                "description": "Lowest voltage observed",
+                "units": "V"
+              },
+              "currentMin": {
+                "type": "number",
+                "description": "Lowest current supplied",
+                "units": "A"
+              },
+              "powerMin": {
+                "type": "number",
+                "description": "Lowest wattage supplied",
+                "units": "W"
+              },
+              "deliveredCharge": {
+                "type": "number",
+                "description": "Amount of charge produced",
+                "units": "C"
+              },
+              "deliveredEnergy": {
+                "type": "number",
+                "description": "Amount of energy produced",
+                "units": "E"
+              }
+            }
+          }]
+        },
+        
+        
+
+        "chargingCycleDay": {
+          "type": "object",
+          "description": "Measurements observed over 24hrs / day",
+          "title": "temperature",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          },{
+            "properties": {
+              "voltageMax": {
+                "type": "number",
+                "description": "Highest voltage observed",
+                "units": "V"
+              },
+              "currentMax": {
+                "type": "number",
+                "description": "Highest current supplied",
+                "units": "A"
+              },
+              "powerMax": {
+                "type": "number",
+                "description": "Highest wattage supplied",
+                "units": "W"
+              },
+              "temperatureMax": {
+                "type": "number",
+                "description": "Highest internal temperature",
+                "units": "K"
+              },
+              "voltageMin": {
+                "type": "number",
+                "description": "Lowest voltage observed",
+                "units": "V"
+              },
+              "currentMin": {
+                "type": "number",
+                "description": "Lowest current supplied",
+                "units": "A"
+              },
+              "powerMin": {
+                "type": "number",
+                "description": "Lowest wattage supplied",
+                "units": "W"
+              },
+              "deliveredCharge": {
+                "type": "number",
+                "description": "Amount of charge produced",
+                "units": "C"
+              },
+              "deliveredEnergy": {
+                "type": "number",
+                "description": "Amount of energy produced",
+                "units": "E"
+              }
+            }
+          }]
+        },
+        
+
+        "chargingCycleWeek": {
+          "type": "object",
+          "description": "Measurements observed over past week",
+          "title": "temperature",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          },{
+            "properties": {
+              "voltageMax": {
+                "type": "number",
+                "description": "Highest voltage observed",
+                "units": "V"
+              },
+              "currentMax": {
+                "type": "number",
+                "description": "Highest current supplied",
+                "units": "A"
+              },
+              "powerMax": {
+                "type": "number",
+                "description": "Highest wattage supplied",
+                "units": "W"
+              },
+              "temperatureMax": {
+                "type": "number",
+                "description": "Highest internal temperature",
+                "units": "K"
+              },
+              "voltageMin": {
+                "type": "number",
+                "description": "Lowest voltage observed",
+                "units": "V"
+              },
+              "currentMin": {
+                "type": "number",
+                "description": "Lowest current supplied",
+                "units": "A"
+              },
+              "powerMin": {
+                "type": "number",
+                "description": "Lowest wattage supplied",
+                "units": "W"
+              },
+              "deliveredCharge": {
+                "type": "number",
+                "description": "Amount of charge produced",
+                "units": "C"
+              },
+              "deliveredEnergy": {
+                "type": "number",
+                "description": "Amount of energy produced",
+                "units": "E"
+              }
+            }
+          }]
+        }
+      }
+    },
+
 
 
   "properties": {
@@ -428,70 +672,14 @@
           "description": "Battery charger",
           "allOf": [{
             "$ref": "#/definitions/dcQuantities"
-          }, {
-            "properties": {
-              "meta": {
-                "allOf": [{
-                  "$ref": "#/definitions/identity"
-                }, {
-                  "properties": {
-                    "chargingAlgorithm": {
-                      "enum": [
-                        "trickle",
-                        "two stage",
-                        "three stage",
-                        "four stage",       
-                        "constant current",
-                        "constant voltage",
-                        "custom profile"
-                      ]
-                    },
-                    "chargerMode": {
-                      "enum": [
-                        "standalone",
-                        "master",
-                        "slave",
-                        "standby"
-                      ]
-                    }
-                  }
-                }]
-              },
-              "mode": {
-                "type": "object",
-                "description": "Charging mode i.e. float, overcharge, etc.",
-                "properties": {
-                  "value": {
-                    "enum": [
-                      "charging bulk",
-                      "charging acceptance",
-                      "charging overcharge",
-                      "charging float",
-                      "charging equalize",
-                      "unknown",
-                      "other"
-                    ]
-                  },
-                  "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                  },
-                  "source": {
-                    "$ref": "../definitions.json#/definitions/source"
-                  }
-                }
-              },
-              "voltageSetpoint": {
-                "description": "Goal voltage",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V"
-              }
-            }
+          },{
+            "$ref": "#/definitions/chargerQuantities"
           }]
         }
       }
     },
     "alternator": {
-      "description": "Data about a Alternator charging device",
+      "description": "Data about an Alternator charging device",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -499,59 +687,24 @@
           "description": "Mechanically driven alternator, includes dynamos",
           "allOf": [{
             "$ref": "#/definitions/dcQuantities"
-          }, {
+          },{
+            "$ref": "#/definitions/chargerQuantities"
+          },{
             "properties": {
               "meta": {
                 "allOf": [{
                   "$ref": "#/definitions/identity"
-                }, {
-                  "properties": {
-                    "chargingAlgorithm": {
-                      "enum": [
-                        "trickle",
-                        "two stage",
-                        "three stage",
-                        "four stage",       
-                        "constant current",
-                        "constant voltage",
-                        "custom profile"
-                      ]
-                    }
-                  }
                 }]
               },
-              "mode": {
-                "type": "object",
-                "description": "Charging mode i.e. float, overcharge, etc.",
-                "properties": {
-                  "value": {
-                    "enum": [
-                      "charging bulk",
-                      "charging acceptance",
-                      "charging overcharge",
-                      "charging float",
-                      "charging equalize",
-                      "unknown",
-                      "other"
-                    ]
-                  },
-                  "timestamp": {
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                  },
-                  "source": {
-                    "$ref": "../definitions.json#/definitions/source"
-                  }
-                }
-              },
-              "revolutions": {
+               "revolutions": {
                 "description": "Alternator revolutions per second (x60 for RPM)",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "Hz"
               },
-              "voltageSetpoint": {
-                "description": "Goal voltage",
+               "pullyRatio": {
+                "description": "Machanicial pulley ratio of driving source (Used to back calculate engine RPMs)",
                 "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "V"
+                "units": "ratio"
               },
               "fieldDrive": {
                 "description": "% (0..100) of field voltage applied",
@@ -568,6 +721,99 @@
         }
       }
     },
+   "solar": {
+      "description": "Data about Solar charging device(s)",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Alternator",
+          "description": "Photovolatic charging devices",
+          "allOf": [{
+            "$ref": "#/definitions/dcQuantities"
+          },{
+            "$ref": "#/definitions/chargerQuantities"
+          },{
+            "properties": {
+              "meta": {
+                "allOf": [{
+                  "$ref": "#/definitions/identity"
+                }]
+              },
+                "controllerMode": {
+                  "enum": [
+                    "off",
+                    "idle",
+                    "direct",
+                    "PWM",
+                    "MPPT"
+                  ]
+                },
+                
+                "panelVoltage": {
+                    "description": "Voltage being supplied from Solar Panels to controller",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "V"
+                },
+                "panelCurrent": {
+                    "description": "Amperage being supplied from Solar Panels to controller",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                },
+                "panelTemperagure": {
+                    "description": "Temperature of panels",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "K"
+                },                              
+                "peekVoltage": {
+                    "description": "Maximun voltage supplied from Solar Panels to controller during current cycle",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "V"
+                },
+                 "peekAmperage": {
+                    "description": "Maximun amperage supplied from Solar Panels to controller during current cycle",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                },
+                "peekPower": {
+                    "description": "Maximun power supplied from Solar Panels to controller during current cycle",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "W"
+                },
+                "panelTemperaturePeak": {
+                    "description": "Maximun temperature of Solar Panels during current cycle",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "K"
+                },
+                "panelTemperatureMinimum": {
+                    "description": "Minumum temperature of Solar Panels during current cycle",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "K"
+                },
+                "load": {
+                  "enum": [
+                    "off",
+                    "on",
+                    "n/a"
+                  ]
+                },                
+                "loadCurrent": {
+                    "description": "Amperage being supplied to load",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "A"
+                }
+               }
+           }]
+        }
+      }
+    },
+
+
+  
+    
+    
+    
+    
+    
     "ac": {
       "description": "AC buses",
       "patternProperties": {
