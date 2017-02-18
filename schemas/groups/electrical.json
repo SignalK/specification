@@ -357,7 +357,7 @@
               "deliveredEnergy": {
                 "type": "number",
                 "description": "Amount of energy produced",
-                "units": "E"
+                "units": "J"
               }
             }
           }]
@@ -416,7 +416,7 @@
               "deliveredEnergy": {
                 "type": "number",
                 "description": "Amount of energy produced",
-                "units": "E"
+                "units": "J"
               }
             }
           }]
@@ -474,7 +474,7 @@
               "deliveredEnergy": {
                 "type": "number",
                 "description": "Amount of energy produced",
-                "units": "E"
+                "units": "J"
               }
             }
           }]
