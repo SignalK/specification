@@ -217,6 +217,12 @@
           "quantityDisplay": "B",
           "description": "Magnetic field strength in tesla"
         },
+        "Lux": {
+          "display": "Lux",
+          "quantity": "Light Intensity",
+          "quantityDisplay": "Lux",
+          "description": "Light Intensity in lux"
+        },
         "Pa/s": {
           "display": "Pa/s",
           "quantity": "Pressure rate",
