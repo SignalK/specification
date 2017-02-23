@@ -50,6 +50,22 @@
               "type": "integer",
               "description": "The scale of the chart, the larger number from 1:200000"
             },
+            "chartLayers": {
+              "type": "array",
+              "description": "If the chart format is WMS, the layers enabled for the chart.",
+              "items": {
+                "type": "string",
+                "description": "Identifier for the layer."
+              }
+            },
+            "bounds": {
+              "type": "array",
+              "description": "The bounds of the chart. An array containing the position of the upper left corner, and the lower right corner. Useful when the chart isn't inherently geo-referenced.",
+              "items": {
+                "$ref": "../definitions.json#/definitions/position",
+                "description": "Position of a corner of the chart"
+              }
+            },
             "chartFormat": {
               "type": "string",
               "description": "The format of the chart",
@@ -65,6 +81,7 @@
                 "geojson",
                 "gpx",
                 "tms",
+                "wms",
                 "S-57",
                 "S-63",
                 "svg",
