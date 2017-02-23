@@ -114,7 +114,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
-      'version': '1.0'
+      'version': '1.0.0'
     }
     checkValidFullSignalK.call(this);
   });
@@ -124,7 +124,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
-      version: "0.0"
+      version: "0.0.0"
     }
     checkValidFullSignalK.call(this);
   });
