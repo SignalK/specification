@@ -55,6 +55,11 @@
           "description": "Current outside air relative humidity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
+        },
+        "illuminance": {
+          "description": "Current outside ambient light flux.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Lux"
         }
       }
     },
