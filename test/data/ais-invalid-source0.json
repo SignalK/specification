@@ -1,0 +1,15 @@
+{
+  "vessels": {},
+  "sources": {
+    "vhf": {
+    	"ais-b":{
+				"ais":{
+					"aisType": 0	
+					}
+			},
+			"label": "AIS-0.0",
+			"type": "AIS"
+    }
+  },
+  "version": "1.0"
+}
