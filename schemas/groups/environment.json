@@ -298,7 +298,7 @@
 
     "time": {
       "type": "object",
-      "description": "A time reference onboard.",
+      "description": "A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)",
       "properties": {
         "millis": {
           "type": "number",
@@ -306,13 +306,21 @@
           "example": 1449648657735,
           "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
         },
-        "timezone": {
+        "timezoneOffset": {
           "type": "number",
           "title": "Timezone offset",
           "example": -400,
           "maximum": 1300,
           "minimum": -1300,
-          "description": "Timezone offset in hours and minutes (-)hhmm"
+          "description": "Onboard timezone offset from UTC in hours and minutes (-)hhmm. +ve means east of Greenwich. For use by UIs",
+          "default": 0
+        },
+        "timezoneRegion":{
+          "type": "string",
+          "title": "IANA Timezone national region",
+          "example": "Europe/Zurich",
+          "description": "Onboard timezone offset as listed in the IANA timezone database (tz database)",
+          "pattern": "^[a-zA-Z0-9\/+-]+$"
         },
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
@@ -321,6 +329,9 @@
         "source": {
           "$ref": "../definitions.json#/definitions/source"
         }
+      },
+      "dependencies": {
+        "timezoneRegion": ["timezoneOffset"]
       }
     },
     "mode": {

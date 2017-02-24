@@ -10,7 +10,7 @@
             "label": "Realtime clock",
             "type": "system"
           },
-          "timezone": -1300
+          "timezoneOffset": -1300
         }
       }
     }
