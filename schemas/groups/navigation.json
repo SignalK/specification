@@ -293,6 +293,10 @@
       "description": "The intended destination of this trip",
       "type": "object",
       "properties": {
+      	"commonName": {
+          "description": "Common name of the Destination, eg 'Fiji', also used in ais messages",
+          "type": "string"
+        },
         "eta": {
           "$ref": "../definitions.json#/definitions/timestamp"
         },
