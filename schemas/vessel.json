@@ -166,52 +166,60 @@
       "properties": {
         "mob": {
           "description": "Man overboard",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "fire": {
           "description": "Fire onboard",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "sinking": {
           "description": "Vessel is sinking",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "flooding": {
           "description": "Vessel is flooding",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "collision": {
           "description": "In collision with another vessel or object",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "grounding": {
           "description": "Vessel grounding",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "listing": {
           "description": "Vessel is listing",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "adrift": {
           "description": "Vessel is adrift",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "piracy": {
           "description": "Under attack or danger from pirates",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         },
         "abandon": {
           "description": "Abandon ship",
-          "$ref": "groups/notifications.json#"
+          "$ref": "groups/notifications.json#/definitions/notification"
         }
       },
       "patternProperties": {
-        "(^[A-Za-z0-9-]+$)": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
           "description": "This regex pattern is used for validation of the path of the alarm",
-          "$ref": "groups/notifications.json#",
-          "example": "engine"
+          "oneOf": [
+            {
+              "$ref": "groups/notifications.json#/definitions/notificationBranch",
+              "example": "propulsion"
+            },
+            {
+              "$ref": "groups/notifications.json#/definitions/notification"
+            }
+          ]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "steering": {
       "description": "Vessel steering data for steering controls (not Autopilot 'Nav Data')",
