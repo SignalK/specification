@@ -493,6 +493,7 @@
           "enum": [
             "not under command",
             "anchored",
+            "moored",
             "sailing",
             "motoring",
             "towing < 200m",
@@ -512,6 +513,12 @@
             "restricted manouverability underwater operations",
             "constrained by draft",
             "mine clearance",
+            "Reserved for future amendment of Navigational Status for HSC",
+            "Reserved for future amendment of Navigational Status for WIG",
+            "Reserved for future use-11"
+            "Reserved for future use-12"
+            "Reserved for future use-13"
+            "Reserved for future use-14"
             "not defined (example)"
           ]
         }
