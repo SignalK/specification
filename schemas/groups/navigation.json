@@ -461,7 +461,7 @@
     },
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn (+ve is change to starboard)",
+      "description": "Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications",
       "units": "rad/s"
     },
     "speedOverGround": {
