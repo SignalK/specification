@@ -30,6 +30,10 @@
       "description": "MMSI number of the vessel, if available.",
       "$ref": "definitions.json#/definitions/mmsi"
     },
+    "mothershipMmsi": {
+      "description": "MMSI number of the mothership of this vessel, if available.",
+      "$ref": "definitions.json#/definitions/mmsi"
+    },
     "uuid": {
       "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
       "$ref": "definitions.json#/definitions/uuid",
