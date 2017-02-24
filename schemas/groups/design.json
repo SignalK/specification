@@ -10,6 +10,14 @@
       "description": "The displacement of the vessel",
       "units": "kg"
     },
+		"aisShipType": {
+				"type": "number",
+				"multipleOf" : 1,
+				"minimum": 0,
+				"maximum": 99,
+				"description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php",
+				"example":"15"
+		},
 
     "draft": {
       "type": "object",
