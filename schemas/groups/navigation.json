@@ -319,17 +319,12 @@
       "title": "gnss",
       "description": "Global satellite navigation meta information",
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
         "type": {
           "type": "object",
           "description": "Fix type",
+          "allOf": [{
+						"$ref": "../definitions.json#/definitions/commonValueFields"
+					}],
           "properties": {
             "value": {
               "type": "string",
@@ -350,6 +345,9 @@
         "methodQuality": {
           "type": "object",
           "description": "Quality of the satellite fix",
+          "allOf": [{
+						"$ref": "../definitions.json#/definitions/commonValueFields"
+					}],
           "properties": {
             "value": {
               "type": "string",
@@ -371,6 +369,9 @@
         "integrity": {
           "type": "object",
           "description": "Integrity of the satellite fix",
+          "allOf": [{
+						"$ref": "../definitions.json#/definitions/commonValueFields"
+					}],
           "properties": {
             "value": {
               "type": "string",

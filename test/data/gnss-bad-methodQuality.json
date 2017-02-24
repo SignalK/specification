@@ -4,14 +4,19 @@
       "mmsi": "230099999",
       "navigation": {
         "gnss": {
-					  "timestamp": "2017-01-25T00:23:05Z",
-						"type": {
+					  "type": {
+							"timestamp": "2017-01-25T00:23:05Z",
+							"$source": "a.suitable.path",
 							"value":"Integrated navigation system"
 						},
 						"methodQuality":{
-							"value":"Estimated (DR) mccc"
+							"timestamp": "2017-01-25T00:23:05Z",
+							"$source": "a.suitable.path",
+							"value":"Estimated (DR) nnnn"
 						},
 						"integrity": {
+							"timestamp": "2017-01-25T00:23:05Z",
+					   "$source": "a.suitable.path",
 							"value":"Safe"
 						},
 						"satellites": {
