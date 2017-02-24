@@ -336,7 +336,7 @@
                 "Combined GPS/GLONASS",
                 "Loran-C",
                 "Chayka",
-                "Integrated navigation systemh",
+                "Integrated navigation system",
                 "Surveyed",
                 "Galileo"
               ]
@@ -535,10 +535,10 @@
             "mine clearance",
             "Reserved for future amendment of Navigational Status for HSC",
             "Reserved for future amendment of Navigational Status for WIG",
-            "Reserved for future use-11"
-            "Reserved for future use-12"
-            "Reserved for future use-13"
-            "Reserved for future use-14"
+            "Reserved for future use-11",
+            "Reserved for future use-12",
+            "Reserved for future use-13",
+            "Reserved for future use-14",
             "not defined (example)"
           ]
         }
