@@ -459,6 +459,23 @@
         }
       }]
     },
+    "manouver": {
+			"type": "object",
+			"description": "Special maneuver such as regional passing arrangement. (from ais)",
+			"allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
+			"properties": {
+				"value": {
+					"type": "string",
+					"enum": [
+						"Not available (default)",
+						"No special manouver",
+						"Special manouver"
+					]
+				}
+			}
+		},
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications",
