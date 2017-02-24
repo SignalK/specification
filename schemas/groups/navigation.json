@@ -323,6 +323,26 @@
           "description": "timestamp of the last update to this data",
           "$ref": "../definitions.json#/definitions/timestamp"
         },
+        "type": {
+          "type": "object",
+          "description": "Fix type",
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "Undefined (default)",
+                "GPS",
+                "GLONASS",
+                "Combined GPS/GLONASS",
+                "Loran-C",
+                "Chayka",
+                "Integrated navigation systemh",
+                "Surveyed",
+                "Galileo"
+              ]
+            }
+          }
+        },
         "methodQuality": {
           "type": "object",
           "description": "Quality of the satellite fix",
