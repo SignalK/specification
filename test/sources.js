@@ -141,3 +141,9 @@ describe('Bad sources in delta', function() {
     })
   });
 });
+
+describe('Multiple sources for the same path:', function() {
+  it("value + values are valid", function() {
+    require('./data/multiple-values.json').should.be.validSignalK
+  });
+});

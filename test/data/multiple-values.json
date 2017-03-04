@@ -1,0 +1,51 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "navigation": {
+        "courseOverGroundMagnetic": {
+          "value": 3.615624078431453,
+          "$source": "nmea2.II",
+          "timestamp": "2017-03-04T14:58:48.000Z",
+          "sentence": "VTG",
+          "values": {
+            "nmea1.II": {
+              "value": 3.6376152270065814,
+              "sentence": "VTG",
+              "timestamp": "2017-03-04T14:58:47.000Z"
+            },
+            "nmea2.II": {
+              "value": 3.615624078431453,
+              "timestamp": "2017-03-04T14:58:48.000Z",
+              "sentence": "VTG"
+            }
+          }
+        }
+      }
+    }
+  },
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "version": "0.1.0",
+  "sources": {
+    "nmea1": {
+      "label": "nmea1",
+      "type": "NMEA0183",
+      "II": {
+        "talker": "II",
+        "sentences": {
+          "VTG": "2017-03-04T14:58:47.000Z"
+        }
+      }
+    },
+    "nmea2": {
+      "label": "nmea2",
+      "type": "NMEA0183",
+      "II": {
+        "talker": "II",
+        "sentences": {
+          "VTG": "2017-03-04T14:58:48.000Z"
+        }
+      }
+    }
+  }
+}
