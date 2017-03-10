@@ -315,6 +315,7 @@
         "type": {
           "type": "object",
           "description": "Fix type",
+          "default": "Undefined",
           "allOf": [{
 						"$ref": "../definitions.json#/definitions/commonValueFields"
 					}],
@@ -322,7 +323,7 @@
             "value": {
               "type": "string",
               "enum": [
-                "Undefined (default)",
+                "Undefined",
                 "GPS",
                 "GLONASS",
                 "Combined GPS/GLONASS",
@@ -456,6 +457,7 @@
     "manouver": {
 			"type": "object",
 			"description": "Special maneuver such as regional passing arrangement. (from ais)",
+			"default": "Not available",
 			"allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }],
@@ -463,7 +465,7 @@
 				"value": {
 					"type": "string",
 					"enum": [
-						"Not available (default)",
+						"Not available",
 						"No special manouver",
 						"Special manouver"
 					]
