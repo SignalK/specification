@@ -20,5 +20,6 @@
       "type": "signalk"
     }
   },
-  "version": "1.0"
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
 }
