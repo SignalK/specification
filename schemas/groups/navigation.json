@@ -295,22 +295,15 @@
       "properties": {
       	"commonName": {
           "description": "Common name of the Destination, eg 'Fiji', also used in ais messages",
-          "type": "string"
+          "$ref": "../definitions.json#/definitions/stringValue"
         },
         "eta": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+        	"description": "Expected time of arrival at destination waypoint",
+          "$ref": "../definitions.json#/definitions/datetimeValue"
         },
         "waypoint": {
           "description": "UUID of destination waypoint",
-          "type": "string"
+          "$ref": "../definitions.json#/definitions/stringValue"
         }
       }
     },

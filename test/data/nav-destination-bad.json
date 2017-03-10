@@ -5,7 +5,11 @@
 
       "navigation": {
       	 "destination":{
-      	 		"commonName": 0
+      	 		"commonName": {
+      	 			"value": 0,
+      	 			"$source": "a.suitable.path",
+      	 			"timestamp": "2014-08-15T19:00:15.402Z"
+      	 		}
       	 }
       }
     }
