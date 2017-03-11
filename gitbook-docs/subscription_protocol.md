@@ -85,9 +85,9 @@ You can subscribe to multiple data keys multiple times, from multiple apps or de
 
 ####Multiple value handling in subscriptions
 
-A subscription to a key is for the _simple_ value of the key, eg for a subscription to `navigation.speedThroughWater` we expect to get `navigation.speedThroughWater.value`
+A subscription to a key is for all the updates to that key. If there are multiple sources generating data for that key the client will get all their updates.
 
-If we want the `values` we need to recover the `values` object by a REST or `json get` message (see below), and subscribe to `navigation.speedThroughWater.values.n2kFromFile.43.value`
+If a client wants only the values of a single source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
 
 ####Single use, or intermittent data
 
