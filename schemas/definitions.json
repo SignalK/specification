@@ -226,9 +226,9 @@
         },
         "Pa/s": {
           "display": "Pa/s",
-          "quantity": "Pressure rate",
+          "quantity": "Pressure rate, also viscosity",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per second"
+          "description": "Pressure change rate in pascal per second, also used for viscosity"
         }
       }
     },
