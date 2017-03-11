@@ -1,0 +1,24 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+
+      "navigation": {
+        "trip": {
+          "log": {
+            "value": 8.67,
+            "timestamp": "2017-01-25T00:23:05.201Z",
+            "$source": "a.suitable.path"
+          },
+          "lastResetTime": {
+						"value": "2016-04-24T05:14:18.632Z",
+						"timestamp": "2017-01-25T00:23:05.210Z",
+						"$source": "a.suitable.path"
+					}
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:230099999"
+}

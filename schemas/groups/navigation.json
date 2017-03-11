@@ -507,11 +507,21 @@
       "description": "Log value",
       "units": "m"
     },
-    "logTrip": {
-      "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Trip log value",
-      "units": "m"
-    },
+    "trip": {
+      "type": "object",
+      "description": "Trip data",
+			"properties": {
+				"log": {
+					"$ref": "../definitions.json#/definitions/numberValue",
+					"description": "Trip log value",
+					"units": "m"
+				},
+				"lastReset": {
+					"$ref": "../definitions.json#/definitions/datetimeValue",
+					"description": "Trip log reset time"
+				}
+			}
+		},
     "state": {
       "type": "object",
       "title": "state",
