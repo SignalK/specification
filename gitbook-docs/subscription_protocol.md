@@ -85,9 +85,50 @@ The following are optional, included above only for example as it uses defaults 
 
 You can subscribe to multiple data keys multiple times, from multiple apps or devices. Each app or device simply subscribes to the data it requires, and the server and/or client implementation may combine subscriptions to avoid duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum connections necessary, for instance one websocket connection shared bewteen an instrument panel with many gauges, rather then one websocket connection per gauge.
 
+####Multiple value handling in subscriptions
+
+A subscription to a key is for the _simple_ value of the key, eg for a subscription to `navigation.speedThroughWater` we expect to get `navigation.speedThroughWater.value`
+
+If we want the `values` we need to recover the `values` object by a REST or `json get` message (see below), and subscribe to `navigation.speedThroughWater.values.n2kFromFile.43.value`
+
+####Single use, or intermittent data 
+
 When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client is http capable the REST api is a good choice, or use `get/list/put` messages over websockets or tcp.
 
-The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a json result for the requested path.
+####GET/PUT/LIST variants
+
+The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a json result for the requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.
+```json
+{
+  "context": "vessels.self",
+  "get": [
+    {
+      "path": "environment.depth.belowTransducer"
+    }
+  ]
+}
+
+```
+
+```javascript
+{
+  "context": "vessels",
+   "put": [{
+      "source": {
+        "pgn": "128275",
+        "device": "/dev/actisense",
+        "timestamp": "2014-08-15-16:00:05.538",
+        "src": "115"
+      },
+      "values": [
+        {
+          "path": "navigation.logTrip",
+          "value": 43374
+        }]
+     }
+     ]
+}
+```
 
 
 ### Use Cases and Proposed Solutions
