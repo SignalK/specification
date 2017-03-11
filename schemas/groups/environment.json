@@ -5,14 +5,39 @@
   "description": "Schema describing the environmental child-object of a Vessel.",
   "title": "environment",
   "definitions": {
-    "objectWithTemperature": {
+    "zoneObject": {
       "type": "object",
       "properties": {
         "temperature": {
           "description": "Temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
-        }
+        },
+        "pressure": {
+					"description": "Pressure in zone",
+					"units": "Pa",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"relativeHumidity": {
+					"description": "Relative humidity in zone",
+					"units": "ratio",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"dewPoint": {
+					"description": "Dewpoint in zone",
+					"units": "K",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"airDensity": {
+					"description": "Air density in zone",
+					"units": "kg/m3",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"illuminance": {
+					"description": "Illuminance in zone",
+					"units": "Lux",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				}
       }
     }
   },
@@ -79,24 +104,24 @@
         },
         "engineRoom": {
           "description": "Current engine room air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "mainCabin": {
           "description": "Current main cabin air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
 
         "refrigerator": {
           "description": "Current refrigerator temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "freezer": {
           "description": "Current freezer temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "heating": {
           "description": "Current heating temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         }
       }
     },

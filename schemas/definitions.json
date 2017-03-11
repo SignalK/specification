@@ -98,6 +98,12 @@
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
+        "kg/m3": {
+          "display": "kg/m3",
+          "quantity": "Density",
+          "quantityDisplay": "kg/m3",
+          "description": "Density in kg per cubic meters"
+        },
         "deg": {
           "display": "\u00b0",
           "quantity": "Angle",
