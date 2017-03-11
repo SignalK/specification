@@ -114,14 +114,6 @@
           "description": "Water salinity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
-        },
-        "liveWell": {
-          "description": "Current livewell temperature",
-          "$ref": "#/definitions/objectWithTemperature"
-        },
-        "baitWell": {
-          "description": "Current baitwell air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
         }
       }
     },
