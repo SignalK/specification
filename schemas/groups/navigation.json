@@ -293,12 +293,12 @@
       "description": "The intended destination of this trip",
       "type": "object",
       "properties": {
-      	"commonName": {
+        "commonName": {
           "description": "Common name of the Destination, eg 'Fiji', also used in ais messages",
           "$ref": "../definitions.json#/definitions/stringValue"
         },
         "eta": {
-        	"description": "Expected time of arrival at destination waypoint",
+          "description": "Expected time of arrival at destination waypoint",
           "$ref": "../definitions.json#/definitions/datetimeValue"
         },
         "waypoint": {
@@ -317,8 +317,8 @@
           "description": "Fix type",
           "default": "Undefined",
           "allOf": [{
-						"$ref": "../definitions.json#/definitions/commonValueFields"
-					}],
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
           "properties": {
             "value": {
               "type": "string",
@@ -340,8 +340,8 @@
           "type": "object",
           "description": "Quality of the satellite fix",
           "allOf": [{
-						"$ref": "../definitions.json#/definitions/commonValueFields"
-					}],
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
           "properties": {
             "value": {
               "type": "string",
@@ -364,8 +364,8 @@
           "type": "object",
           "description": "Integrity of the satellite fix",
           "allOf": [{
-						"$ref": "../definitions.json#/definitions/commonValueFields"
-					}],
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
           "properties": {
             "value": {
               "type": "string",
@@ -455,23 +455,23 @@
       }]
     },
     "manouver": {
-			"type": "object",
-			"description": "Special maneuver such as regional passing arrangement. (from ais)",
-			"default": "Not available",
-			"allOf": [{
+      "type": "object",
+      "description": "Special maneuver such as regional passing arrangement. (from ais)",
+      "default": "Not available",
+      "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }],
-			"properties": {
-				"value": {
-					"type": "string",
-					"enum": [
-						"Not available",
-						"No special manouver",
-						"Special manouver"
-					]
-				}
-			}
-		},
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "Not available",
+            "No special manouver",
+            "Special manouver"
+          ]
+        }
+      }
+    },
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications",
