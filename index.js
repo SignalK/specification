@@ -44,6 +44,8 @@ function getTv4() {
   tv4.addSchema('https://signalk.github.io/specification/schemas/aircraft.json', aircraftSchema);
   var atonSchema = require('./schemas/aton.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/aton.json', atonSchema);
+  var sarSchema = require('./schemas/sar.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/sar.json', sarSchema);
   var definitions = require('./schemas/definitions.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 

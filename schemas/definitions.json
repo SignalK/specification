@@ -250,6 +250,12 @@
       "pattern": "^99[0-9]{7}$",
       "example": "993123456"
     },
+    "sarMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for . Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^97[0-9]{7}$",
+      "example": "973123456"
+    },
     "uuid": {
       "type": "string",
       "description": "A unique Signal K flavoured maritime resource identifier (MRN). A MRN is a form of URN, following a specific format: urn:mrn:<issueing authority>:<id type>:<id>. In case of a Signal K uuid, that looks like this: urn:mrn:signalk:uuid:<uuid>, where Signal K is the issuing authority and UUID (v4) the ID type.",
