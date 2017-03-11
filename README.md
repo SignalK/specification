@@ -56,6 +56,8 @@ https://toolchain.gitbook.com/ebook.html.
 - `npm run docs:all` to generate locally
 - `npm run docs:publish` to publish in gh-pages.
 
+The changelog in the documentation is generated based on Github Pull Requests. For things to show up in the changelog you MUST USE PRs! Rewording is possible by rewriting PR titles.
+
 Validation
 ----------
 
