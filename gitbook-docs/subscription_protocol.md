@@ -1,7 +1,5 @@
 # Subscription Protocol
 
-_Subcription protocol is currently available only on the Java server._
-
 ### Introduction
 
 By default a Signal K server will provide a new WebSocket client with a delta stream of the `vessels.self` record, as updates are received from sources. E.g.
@@ -91,7 +89,7 @@ A subscription to a key is for the _simple_ value of the key, eg for a subscript
 
 If we want the `values` we need to recover the `values` object by a REST or `json get` message (see below), and subscribe to `navigation.speedThroughWater.values.n2kFromFile.43.value`
 
-####Single use, or intermittent data 
+####Single use, or intermittent data
 
 When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client is http capable the REST api is a good choice, or use `get/list/put` messages over websockets or tcp.
 
