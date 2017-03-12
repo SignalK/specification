@@ -33,13 +33,20 @@ The alarms problem is also improved, as the server can run a background process 
 
 The alarms functionality then becomes generic, and grows with the spec. This is may be the case for other functionality also.
 
-###Default Configuration
+
+#### Meta.units value
+
+All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value.
+
+See https://github.com/SignalK/specification/blob/master/keyswithmetadata.json
+
+### Default Configuration
 
 Other than a few standard keys it is unlikely that the ```.meta``` can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.
 
 It is probably possible to have profiles that set a range of default ```.meta```, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.
 
-###Alarm Management
+### Alarm Management
 
 An alarm watch is set by setting the `meta.zones` array appropriately. A background process on the server checks for alarm conditions on any attribute with a `meta.zones` array. If the keys value is within a zone the server sets an alarm key similar to `vessels.self.notifications.[original_key_suffix]`, eg an alarm set on `vessels.self.navigation.courseOverGroundTrue` will become `vessels.self.notifications.navigation.courseOverGroundTrue`.
 
@@ -50,7 +57,7 @@ The object found at this key should contain the following:
   "state": "[normal|alert|warn|alarm|emergency]"
 }
 ```
-###Other Benefits
+### Other Benefits
 
 The common profiles should be exportable and importable. This would allow manufacturers or other users to create profiles for specific products or use cases, which could then be imported to a vessel.
 
