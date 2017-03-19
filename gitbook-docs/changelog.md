@@ -1,6 +1,15 @@
 ## Change Log
 
-### upcoming (2017/01/26 19:31 +00:00)
+### upcoming (2017/03/19 16:03 +00:00)
+- [#348](https://github.com/SignalK/specification/pull/348) Add note that meta.units MUST be returned for valid keys (@rob42)
+- [#345](https://github.com/SignalK/specification/pull/345) Added trip.log, and trip.lastReset (@rob42)
+- [#340](https://github.com/SignalK/specification/pull/340) Add slack badge (@bkp7)
+- [#336](https://github.com/SignalK/specification/pull/336) Pattern for version (@bkp7)
+- [#328](https://github.com/SignalK/specification/pull/328) Added timezoneRegion to environment.time (@bkp7)
+- [#321](https://github.com/SignalK/specification/pull/321) Fix notifications schema (@bkp7)
+- [#335](https://github.com/SignalK/specification/pull/335) Added illuminance (@rob42)
+- [#325](https://github.com/SignalK/specification/pull/325) Improvements to the chart model (@emilecantin)
+- [#319](https://github.com/SignalK/specification/pull/319) Add changelog generation (@tkurki)
 - [#327](https://github.com/SignalK/specification/pull/327) 	Updated Schema so that date-time must be in UTC (@bkp7)
 - [#324](https://github.com/SignalK/specification/pull/324) Define timestamp as JSON Schema date-time (@bkp7)
 - [#320](https://github.com/SignalK/specification/pull/320) Fix schema files to be valid against http://json-schema.org/draft-04/schema# (@bkp7)
