@@ -11,6 +11,7 @@
       "units": "kg"
     },
 		"aisShipType": {
+        "type": "string",
 				"enum": [
 					"20 Wing in ground (WIG), all ships of this type",
 					"21 Wing in ground (WIG), Hazardous category A",
