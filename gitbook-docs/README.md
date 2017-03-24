@@ -1,12 +1,12 @@
 # Introduction
 
-This is the documentation for the [Signal K Specification](https://github.com/signalk/specification) master (latest)
+This is the documentation for the [Signal K Specification](https://github.com/signalk/specification) _version_
 version, which is available in the following formats;
 
-* [html](http://signalk.org/specification/master/) (this document)
-* [pdf](http://signalk.org/specification/master/signalk_master.pdf)
-* [epub](http://signalk.org/specification/master/signalk_master.epub)
-* [mobi](http://signalk.org/specification/master/signalk_master.mobi)
+* [html](http://signalk.org/specification/_version_/) (this document) _version_
+* [pdf](http://signalk.org/specification/_version_/signalk.pdf)
+* [epub](http://signalk.org/specification/_version_/signalk.epub)
+* [mobi](http://signalk.org/specification/_version_/signalk.mobi)
 
 ## What is Signal K?
 

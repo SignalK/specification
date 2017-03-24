@@ -1,21 +1,24 @@
 {
   "name": "signalk-schema",
   "version": "0.0.1-1",
+  "config": {
+    "docversion": "master"
+  },
   "description": "SignalK specification schema as an npm module with tests",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
     "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
-    "docs:prep": "gitbook install gitbook-docs",
+    "docs:prep": "gitbook install gitbook-docs && replace _version_ $npm_package_config_docversion gitbook-docs/*",
     "docs:keys": "scripts/processSchemaFiles.js",
-    "docs:html": "gitbook build gitbook-docs master",
-    "docs:pdf": "gitbook pdf gitbook-docs master/signalk_master.pdf",
-    "docs:mobi": "gitbook mobi gitbook-docs master/signalk_master.mobi",
-    "docs:epub": "gitbook pdf gitbook-docs master/signalk_master.epub",
+    "docs:html": "gitbook build gitbook-docs $npm_package_config_docversion",
+    "docs:pdf": "gitbook pdf gitbook-docs $npm_package_config_docversion/signalk.pdf",
+    "docs:mobi": "gitbook mobi gitbook-docs $npm_package_config_docversion/signalk.mobi",
+    "docs:epub": "gitbook pdf gitbook-docs $npm_package_config_docversion/signalk.epub",
     "docs:serve": "gitbook serve gitbook-docs",
     "docs:all": "npm run docs:prep && npm run docs:changelog && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
-    "docs:publish": "npm run docs:all && git add master && git stash && git checkout gh-pages && git pull && git checkout stash -- master && git add master && git commit --allow-empty -m 'Update docs' && git push git@github.com:signalk/specification gh-pages"
+    "docs:publish": "npm run docs:all && git add $npm_package_config_docversion && git stash && git checkout gh-pages && git pull && git checkout stash -- $npm_package_config_docversion && git add master && git commit --allow-empty -m $npm_package_config_docversion && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
     "type": "git",
@@ -54,6 +57,7 @@
     "markdown-it": "^8.0.0",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
+    "replace": "^0.3.0",
     "rimraf": "^2.5.4"
   }
 }
