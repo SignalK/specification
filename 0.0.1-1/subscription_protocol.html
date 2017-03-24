@@ -1,0 +1,628 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Subscription Protocol · Signal K Documentation</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="notifications.html" />
+    
+    
+    <link rel="prev" href="connection.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Signal K Specification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Getting Started
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="data_model.html">
+            
+                <a href="data_model.html">
+            
+                    
+                    Full and Delta Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="permissions.html">
+            
+                <a href="permissions.html">
+            
+                    
+                    Permissions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="urls_etc.html">
+            
+                <a href="urls_etc.html">
+            
+                    
+                    Ports, Urls and Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Discovery & Connection Establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.5" data-path="subscription_protocol.html">
+            
+                <a href="subscription_protocol.html">
+            
+                    
+                    Subscription Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="notifications.html">
+            
+                <a href="notifications.html">
+            
+                    
+                    Notifications
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="design_notes.html">
+            
+                <a href="design_notes.html">
+            
+                    
+                    Background and Design Rationale
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="keys/">
+            
+                <a href="keys/">
+            
+                    
+                    Appendix A: Keys Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                    Appendix B: Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Subscription Protocol</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="subscription-protocol"><a name="subscription-protocol" class="plugin-anchor" href="#subscription-protocol"><i class="fa fa-link" aria-hidden="true"></i></a>Subscription Protocol</h1><h3 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h3><p>By default a Signal K server will provide a new WebSocket client with a delta stream of the <code>vessels.self</code> record, as updates are received from sources. E.g.
+<code>/signalk/v1/stream</code> will provide the following delta stream, every time the log value changes .</p><pre><code class="lang-javascript">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels&quot;</span>,
+   <span class="hljs-string">&quot;updates&quot;</span>: [{
+      <span class="hljs-string">&quot;source&quot;</span>: {
+        <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-string">&quot;128275&quot;</span>,
+        <span class="hljs-string">&quot;device&quot;</span>: <span class="hljs-string">&quot;/dev/actisense&quot;</span>,
+        <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15-16:00:05.538&quot;</span>,
+        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;115&quot;</span>
+      },
+      <span class="hljs-string">&quot;values&quot;</span>: [
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.logTrip&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">43374</span>
+        },
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.log&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">17404540</span>
+        }]
+     }
+     ]
+}</code></pre>
+<blockquote><p>Below we refer to WebSockets, but the same process works in the same way over any transport. E.g. for a raw TCP
+connection the connection causes the above message to be sent, and sending the subscribe messages will have the same
+effect as described here.</p></blockquote><p>This can be a lot of messages, many you may not need, especially if <code>vessel.self</code> has many sensors, or other data sources. Generally you will want to subscribe to a much smaller range of data.</p><p>First you will want to unsubscribe from the current default (or you may have already connected with <code>ws://hostname/signalk/v1/stream?subscribe=none</code>). To unsubscribe all create an <code>unsubscribe</code> message with wildcards and send the message over the websocket connection:</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
+  <span class="hljs-string">&quot;unsubscribe&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
+    }
+  ]
+}</code></pre>
+<p>To subscribe to the required criteria send a suitable subscribe message:</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.self&quot;</span>,
+  <span class="hljs-string">&quot;subscribe&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedThroughWater&quot;</span>,
+      <span class="hljs-string">&quot;period&quot;</span>: <span class="hljs-number">1000</span>,
+      <span class="hljs-string">&quot;format&quot;</span>: <span class="hljs-string">&quot;delta&quot;</span>,
+      <span class="hljs-string">&quot;policy&quot;</span>: <span class="hljs-string">&quot;ideal&quot;</span>,
+      <span class="hljs-string">&quot;minPeriod&quot;</span>: <span class="hljs-number">200</span>
+    },
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.logTrip&quot;</span>,
+      <span class="hljs-string">&quot;period&quot;</span>: <span class="hljs-number">10000</span>
+    }
+  ]
+}</code></pre>
+<ul><li><code>path=[path.to.key]</code> is appended to the context to specify subsets of the context.
+The path value can use the wildcard <code>*</code>. A wildcard in the middle of a path (<code>propulsion/*/oilTemperature</code>) allows any value for that part and a wildcard at the end (<code>propulsion/port/*</code>) matches all paths beginning with the specified prefix.
+</li></ul>
+<p>The following are optional, included above only for example as it uses defaults anyway:</p><ul><li><code>period=[millisecs]</code> becomes the transmission rate, e.g. every <code>period/1000</code> seconds. Default=1000
+</li>
+<li><code>format=[delta|full]</code> specifies delta or full format. Default: delta
+</li>
+<li><p><code>policy=[instant|ideal|fixed]</code>. Default: ideal</p><ul><li><code>instant</code> means send all changes as fast as they are received, but no faster than <code>minPeriod</code>. With this policy the client has an immediate copy of the current state of the server.
+</li>
+<li><code>ideal</code> means use <code>instant</code> policy, but if no changes are received before <code>period</code>, then resend the last known
+values.eg send changes asap, but send the value every <code>period</code> millisecs anyway, whether changed or not.
+</li>
+<li><code>fixed</code> means simply send the last known values every <code>period</code>.
+</li></ul>
+</li>
+<li><p><code>minPeriod=[millisecs]</code> becomes the fastest message transmission rate allowed, e.g. every <code>minPeriod/1000</code> seconds. This is only relevant for policy=&apos;instant&apos; to avoid swamping the client or network.</p></li></ul>
+<p>You can subscribe to multiple data keys multiple times, from multiple apps or devices. Each app or device simply subscribes to the data it requires, and the server and/or client implementation may combine subscriptions to avoid duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum connections necessary, for instance one websocket connection shared bewteen an instrument panel with many gauges, rather then one websocket connection per gauge.</p><h4 id="multiple-value-handling-in-subscriptions"><a name="multiple-value-handling-in-subscriptions" class="plugin-anchor" href="#multiple-value-handling-in-subscriptions"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple value handling in subscriptions</h4><p>A subscription to a key is for the <em>simple</em> value of the key, eg for a subscription to <code>navigation.speedThroughWater</code> we expect to get <code>navigation.speedThroughWater.value</code></p><p>If we want the <code>values</code> we need to recover the <code>values</code> object by a REST or <code>json get</code> message (see below), and subscribe to <code>navigation.speedThroughWater.values.n2kFromFile.43.value</code></p><h4 id="single-use-or-intermittent-data"><a name="single-use-or-intermittent-data" class="plugin-anchor" href="#single-use-or-intermittent-data"><i class="fa fa-link" aria-hidden="true"></i></a>Single use, or intermittent data</h4><p>When data is required once only, or upon request the <code>subscribe/unsubscribe</code> method should not be used. If the client is http capable the REST api is a good choice, or use <code>get/list/put</code> messages over websockets or tcp.</p><h4 id="getputlist-variants"><a name="getputlist-variants" class="plugin-anchor" href="#getputlist-variants"><i class="fa fa-link" aria-hidden="true"></i></a>GET/PUT/LIST variants</h4><p>The <code>get/list/put</code> messages work in the same way as their <code>GET/PUT</code> REST equivalents, returning a json result for the requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.self&quot;</span>,
+  <span class="hljs-string">&quot;get&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;environment.depth.belowTransducer&quot;</span>
+    }
+  ]
+}
+</code></pre>
+<pre><code class="lang-javascript">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels&quot;</span>,
+   <span class="hljs-string">&quot;put&quot;</span>: [{
+      <span class="hljs-string">&quot;source&quot;</span>: {
+        <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-string">&quot;128275&quot;</span>,
+        <span class="hljs-string">&quot;device&quot;</span>: <span class="hljs-string">&quot;/dev/actisense&quot;</span>,
+        <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15-16:00:05.538&quot;</span>,
+        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;115&quot;</span>
+      },
+      <span class="hljs-string">&quot;values&quot;</span>: [
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.logTrip&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">43374</span>
+        }]
+     }
+     ]
+}</code></pre>
+<h3 id="use-cases-and-proposed-solutions"><a name="use-cases-and-proposed-solutions" class="plugin-anchor" href="#use-cases-and-proposed-solutions"><i class="fa fa-link" aria-hidden="true"></i></a>Use Cases and Proposed Solutions</h3><h4 id="local-boat-individual-instruments"><a name="local-boat-individual-instruments" class="plugin-anchor" href="#local-boat-individual-instruments"><i class="fa fa-link" aria-hidden="true"></i></a>Local boat individual instruments</h4><p>A gauge-type display for just one or a few data items for the &apos;self&apos; vessel should be able to specify that it only wants
+those items for the self vessel.</p><p>This can be achieved by a default WebSocket connection <code>/signalk/v1/stream?subcribe=none</code>, then sending a JSON message:</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.self&quot;</span>,
+  <span class="hljs-string">&quot;subscribe&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;environment.depth.belowTransducer&quot;</span>
+    },
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedThroughWater&quot;</span>
+    }
+  ]
+}</code></pre>
+<p>The JSON format is also viable over a simple TCP or serial transport, and is therefore supported as the primary
+subscription method.</p><h4 id="map-display-with-all-known-vessel-positions--directions-served-over-3g-cellular-connection"><a name="map-display-with-all-known-vessel-positions--directions-served-over-3g-cellular-connection" class="plugin-anchor" href="#map-display-with-all-known-vessel-positions--directions-served-over-3g-cellular-connection"><i class="fa fa-link" aria-hidden="true"></i></a>Map display with all known vessel positions &amp; directions, served over 3G cellular connection</h4><pre><code class="lang-javascript">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.*&quot;</span>,
+  <span class="hljs-string">&quot;subscribe&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.position&quot;</span>,
+      <span class="hljs-string">&quot;period&quot;</span>: <span class="hljs-number">120000</span>,
+      <span class="hljs-string">&quot;policy&quot;</span>: <span class="hljs-string">&quot;fixed&quot;</span>
+    },
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.courseOverGround&quot;</span>,
+      <span class="hljs-string">&quot;period&quot;</span>: <span class="hljs-number">120000</span>,
+      <span class="hljs-string">&quot;policy&quot;</span>: <span class="hljs-string">&quot;fixed&quot;</span>
+    }
+  ]
+}</code></pre>
+<p>The result is a delta message of the Signal K data with just position and courseOverGround branches for all known vessels, sent every 2 minutes (120 seconds) even if no data has been updated.</p><h4 id="position-of-a-certain-vessel-immediately-it-changes-but-once-per-minute-at-most"><a name="position-of-a-certain-vessel-immediately-it-changes-but-once-per-minute-at-most" class="plugin-anchor" href="#position-of-a-certain-vessel-immediately-it-changes-but-once-per-minute-at-most"><i class="fa fa-link" aria-hidden="true"></i></a>Position of a certain vessel, immediately it changes, but once per minute at most</h4><pre><code class="lang-javascript">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.230029970&quot;</span>,
+  <span class="hljs-string">&quot;subscribe&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.position&quot;</span>,
+      <span class="hljs-string">&quot;minPeriod&quot;</span>: <span class="hljs-number">60000</span>,
+      <span class="hljs-string">&quot;policy&quot;</span>: <span class="hljs-string">&quot;instant&quot;</span>
+    }
+  ]
+}</code></pre>
+<p>The result will be delta position messages for vessel 230029970, broadcast whenever it changes, but with minimum
+interval of 60 seconds. Messages are delayed to meet the minimum interval with newer messages overriding the previous
+message in the buffer.</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="connection.html" class="navigation navigation-prev " aria-label="Previous page: Discovery & Connection Establishment">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="notifications.html" class="navigation navigation-next " aria-label="Next page: Notifications">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Subscription Protocol","level":"1.4.5","depth":2,"next":{"title":"Notifications","level":"1.4.6","depth":2,"path":"notifications.md","ref":"notifications.md","articles":[]},"previous":{"title":"Discovery & Connection Establishment","level":"1.4.4","depth":2,"path":"connection.md","ref":"connection.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"subscription_protocol.md","mtime":"2017-03-24T19:54:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-03-24T20:03:24.624Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
