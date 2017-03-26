@@ -98,6 +98,12 @@
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
+        "kg/m3": {
+          "display": "kg/m3",
+          "quantity": "Density",
+          "quantityDisplay": "kg/m3",
+          "description": "Density in kg per cubic meters"
+        },
         "deg": {
           "display": "\u00b0",
           "quantity": "Angle",
@@ -226,9 +232,9 @@
         },
         "Pa/s": {
           "display": "Pa/s",
-          "quantity": "Pressure rate",
+          "quantity": "Pressure rate, also viscosity",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per second"
+          "description": "Pressure change rate in pascal per second, also used for viscosity"
         }
       }
     },
