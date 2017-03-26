@@ -1,0 +1,17 @@
+{
+  "sar": {
+    "urn:mrn:imo:mmsi:971982330": {
+      "mmsi": "971982330",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "longitude": 173.1693,
+          "latitude": -41.156426,
+          "$source": "sources.gps_0183_RMC",
+          "altitude": 0
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}
