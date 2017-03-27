@@ -1,6 +1,7 @@
 # Multiple Values for a Key
 
 There are two use cases for multiple data:
+
 * Multiple instances of a common device - eg two engines or multiple batteries
 * Multiple devices providing duplicate data - multiple values for the same Signal K key from different sensors, eg COG from both compass and gps or multiple depth sounders
 
@@ -8,11 +9,10 @@ There are two use cases for multiple data:
 
 Some parts of the Signal K schema are **device oriented**.
 
-For example in electrical domain you have the concept of multiple batteries.
-Each battery has multiple, common quantities like voltage, current and temperature.
-Here we have chosen to organise the Signal K data model hierarchy by instance: multiple batteries are represented as for example `electrical.batteries.starter` and `electrical.batteries.house`. Then underneath that prefix you have the different properties and quantities.
+For example in electrical domain you have the concept of multiple batteries. Each battery has multiple, common quantities like voltage, current and temperature. Here we have chosen to organise the Signal K data model hierarchy by instance: multiple batteries are represented as for example `electrical.batteries.starter` and `electrical.batteries.house`. Then underneath that prefix you have the different properties and quantities.
 
-This organisation allows a user interface to organise the individual readings in meaningul groups and you can query all the values related to that piece of equipment via REST API.
+This organisation allows a user interface to organise the individual readings in meaningful groups and you can query all the values related to that piece of equipment via REST API.
+
 It maintains the primary requirement that a given data value have a fixed and unique uri, but gives flexibility in the structure and complexities of data.
 
 The same device centric organisation is used in `propulsion` subschema, where the most common use case is having dual engine setup with `propulsion.port` and `propulsion.starboard`.
