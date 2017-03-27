@@ -101,16 +101,10 @@
       "type": "object",
       "title": "draft",
       "description": "The draft of the vessel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
 
         "minimum": {
           "description": "The minimum draft of the vessel",
@@ -136,17 +130,10 @@
       "type": "object",
       "title": "length",
       "description": "The various lengths of the vessel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
         "overall": {
           "type": "number",
           "description": "Length overall",
@@ -171,6 +158,9 @@
       "type": "object",
       "title": "keel",
       "description": "Information about the vessel's keel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
         "type": {
           "type": "string",
@@ -199,17 +189,9 @@
           "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
           "units": "ratio",
           "example": 0.8
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
         }
+
+        
       }
     },
 
@@ -229,6 +211,9 @@
       "type": "object",
       "title": "rigging",
       "description": "Information about the vessel's rigging",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
         "configuration": {
           "type": "string",
@@ -238,15 +223,6 @@
         "masts": {
           "type": "number",
           "description": "The number of masts on the vessel."
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
     }

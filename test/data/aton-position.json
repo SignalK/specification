@@ -1,0 +1,19 @@
+{
+  "aton": {
+    "urn:mrn:imo:mmsi:991982330": {
+      "mmsi": "991982330",
+      "name": "A random aton",
+      "atonType": "6 Light, with sectors",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "longitude": 173.1693,
+          "latitude": -41.156426,
+          "$source": "sources.gps_0183_RMC",
+          "altitude": 0
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

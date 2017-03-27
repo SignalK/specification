@@ -106,6 +106,12 @@
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
+        "kg/m3": {
+          "display": "kg/m3",
+          "quantity": "Density",
+          "quantityDisplay": "kg/m3",
+          "description": "Density in kg per cubic meters"
+        },
         "deg": {
           "display": "\u00b0",
           "quantity": "Angle",
@@ -234,9 +240,9 @@
         },
         "Pa/s": {
           "display": "Pa/s",
-          "quantity": "Pressure rate",
+          "quantity": "Pressure rate, also viscosity",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per second"
+          "description": "Pressure change rate in pascal per second, also used for viscosity"
         }
       }
     },
@@ -245,6 +251,24 @@
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
       "pattern": "^[2-7][0-9]{8}$",
       "example": "503123456"
+    },
+    "aircraftMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for aircraft. Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^1[0-9]{8}$",
+      "example": "103123456"
+    },
+    "atonMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for . Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^99[0-9]{7}$",
+      "example": "993123456"
+    },
+    "sarMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for . Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^97[0-9]{7}$",
+      "example": "973123456"
     },
     "uuid": {
       "type": "string",
