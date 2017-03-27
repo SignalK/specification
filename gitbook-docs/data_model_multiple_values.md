@@ -26,99 +26,153 @@ It is quite possible for a key value to come from more than one device. eg posit
 
 All the incoming values may well be valid in their own context, and it is feasible that all of them may be wanted, for instance, displaying depth under each hull on a catamaran.
 
-Hence discarding or averaging is not a solution, and since signalk is unable to derive the best way to handle multiple values it must always fall to a default action, with human over-ride when needed.
+Hence discarding or averaging values is not a solution, we must provide a way to store multiple values for a single measurement.
 
-
-***
-The solution presented below has flaws. See https://github.com/SignalK/specification/issues/48 for discussion.
-***
-
-
-In signal K we can leverage the above method and simply store all the devices in the tree under the main item, and have the main items `source` reference the options. Lets consider this for `courseOverGroundTrue`
+ Lets consider this for `courseOverGroundTrue`
 
 If its the first value for the key, it becomes the default value and looks like this:
 
 ```json
 {
   "vessels": {
-    "self": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "navigation": {
-        "courseOverGroundTrue": {
-          "value": 102.29,
-          "source": "vessels.self.sources.n2k.actisense-115-129026"
+        "courseOverGroundMagnetic": {
+          "value": 3.615624078431453,
+          "$source": "nmea2.II",
+          "timestamp": "2017-03-04T14:58:48.000Z",
+          "sentence": "VTG"
         }
-      },
-      "sources": {
-        "n2k": {
-          "actisense-115-129026": {
-            "value": 102.29,
-            "bus": "/dev/actisense",
-            "timestamp": "2014-08-15-16: 00: 01.083",
-            "src": "115",
-            "pgn": "129026"
-          }
+      }
+    }
+  },
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "version": "0.1.0",
+  "sources": {
+    "nmea2": {
+      "label": "nmea2",
+      "type": "NMEA0183",
+      "II": {
+        "talker": "II",
+        "sentences": {
+          "VTG": "2017-03-04T14:58:48.000Z"
         }
       }
     }
   }
 }
 ```
-It has come from device `vessels.self.sources.n2k.actisense-115-129026`, where further details can be found.
+It has come from device `sources.nmea2.II`, where further details can be found.
 
-If another value with different source arrives, we add the source with a unique name, so both values are in there - if its our preferred source (from persistent config) we auto-switch to it, otherwise we just record it. It look like this:
+If another value with different source arrives, we add the `values` attribute with and values are in there - if its our preferred source (from persistent config) we auto-switch to it, otherwise we just record it. It look like this:
 
 ```json
 {
   "vessels": {
-    "self": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "navigation": {
-        "courseOverGroundTrue": {
-          "timestamp": "2014-08-15-16: 00: 01.083",
-          "value": 102.29,
-          "source": "vessels.self.sources.n2k.actisense-115-129026"
-        }
-      },
-      "sources": {
-        "n2k": {
-          "actisense-115-129026": {
-            "value": 102.29,
-            "bus": "/dev/actisense",
-            "timestamp": "2014-08-15-16: 00: 01.083",
-            "src": "115",
-            "pgn": "129026"
-          },
-          "actisense-201-130577": {
-            "value": 102.29,
-            "bus": "/dev/actisense",
-            "timestamp": "2014-08-15-16: 00: 00.085",
-            "src": "201",
-            "pgn": "130577"
+        "courseOverGroundMagnetic": {
+          "value": 3.615624078431453,
+          "$source": "nmea2.II",
+          "timestamp": "2017-03-04T14:58:48.000Z",
+          "sentence": "VTG",
+          "values": {
+            "nmea1.II": {
+              "value": 3.6376152270065814,
+              "sentence": "VTG",
+              "timestamp": "2017-03-04T14:58:47.000Z"
+            },
+            "nmea2.II": {
+              "value": 3.615624078431453,
+              "sentence": "VTG",
+              "timestamp": "2017-03-04T14:58:48.000Z"
+            }
           }
+        }
+      }
+    }
+  },
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "version": "0.1.0",
+  "sources": {
+    "nmea1": {
+      "label": "nmea1",
+      "type": "NMEA0183",
+      "II": {
+        "talker": "II",
+        "sentences": {
+          "VTG": "2017-03-04T14:58:47.000Z"
+        }
+      }
+    },
+    "nmea2": {
+      "label": "nmea2",
+      "type": "NMEA0183",
+      "II": {
+        "talker": "II",
+        "sentences": {
+          "VTG": "2017-03-04T14:58:48.000Z"
         }
       }
     }
   }
 }
 ```
+###Update messages
 
-### Rules
+When a client subscribes to `navigation.courseOverGroundMagnetic`, they recieve _all_ the values held. The update message does not include the `values` path, the case above looks like:
 
-Now simple rules can apply to obtain the default, or any specific value:
 
-* The implementation must ensure that the `key.value` holds an appropriate value. This will be easy if there is only one, and will probably be user configured if more.
-* If the `source` value is `string` then it is a reference key to the source object, and can be a relative or absolute signalk key.
-* The `source` (as a reference string) also provides a mechanism to handle deprecated keys.
-* If the `source` value is a `json object` then it holds meta data on the source of the value.
-* Alternate sources must be discovered manually, or by implementation specific meta-data.
+```
+{
+  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "updates": [
+    {
+      "source": {
+        "label": "nmea2",
+        "type": "NMEA0183",
+        "II": {
+          "talker": "II",
+          "sentences": {
+            "VTG": "2017-03-04T14:58:48.000Z"
+          }
+        }
+      },
+      "timestamp": "2017-03-04T14:58:48.000Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundMagnetic",
+          "value": 3.615624078431453
+        }
+      ]
+    },
+    {
+      "source": {
+        "label": "nmea1",
+        "type": "NMEA0183",
+        "II": {
+          "talker": "II",
+          "sentences": {
+            "VTG": "2017-03-04T14:58:47.000Z"
+          }
+        }
+      },
+      "timestamp": "2017-03-04T14:58:47.000Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundMagnetic",
+          "value": 3.6376152270065814
+        }
+      ]
+    }
+  ]
+}
 
-To see all the entries, use the REST api or subscribe to the parent object. A given device may choose to subscribe to a specific entry in the object, allowing multiple displays of the key, or users of the various values. The 'list' verb used in a query message can provide available keys.
+```
+Individual updates can be distinguished by their source. 
 
-###Unique names
+If a client wants only the values of a single source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
 
-The identifier for each device should be unique within the server, and possibly be constructed as follows:
 
-    n2k: producerid-sourceid-pgn (producer id from server configuration, others from n2k data) - NOTE: will change, currently under discussion.
-    nmea0183: producerid-talkerid-sentence (like n2k)
-    signalk: any valid string matching regex [a-zA-Z0-9-]. eg alphabet, hyphens, and 0 to 9
-
-(The nmea0183 talker id is not in the schema as I write this, it will be added shortly)
