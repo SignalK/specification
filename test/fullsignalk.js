@@ -156,4 +156,27 @@ describe('FullSignalK', function() {
     full.sources['N2K'].should.have.property('36');
     full.sources['N2K']['36'].should.have.property('0');
   })
+
+  it('Delta with $source produces sources hierarchy and correct $source reference', function() {
+
+    var msg =   {
+      "context": "vessels.urn:mrn:imo:mmsi:276810000",
+      "updates": [{
+        "$source": "1W.0316013faeff",
+        "values": [{
+          "path": "propulsion.engine1.temperature",
+          "value": 301.837
+        }]
+      }]
+    }
+
+    var fullSignalK = new FullSignalK();
+    fullSignalK.addDelta(msg);
+    var full = fullSignalK.retrieve();
+    full.sources.should.have.property('1W');
+    full.sources['1W'].should.have.property('0316013faeff');
+    var vessel = full.vessels['urn:mrn:imo:mmsi:276810000'];
+    vessel.propulsion.engine1.temperature.should.have.property('$source', '1W.0316013faeff')
+  })
+
 })
