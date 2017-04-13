@@ -239,8 +239,11 @@ function getSourceId(source) {
       (source.src ? '.' + source.src : '') +
       (source.instance ? '.' + source.instance : '');
   }
-  return source.label +
-    (source.talker ? '.' + source.talker : '.XX');
+  if (typeof source === 'object') {
+    return source.label + (source.talker ? '.' + source.talker : '.XX');
+  }
+  //source data is actually from $source, not source: {...}
+  return source
 }
 
 function keyForSourceIdPath(sourceId, path) {

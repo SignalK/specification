@@ -104,7 +104,7 @@ FullSignalK.prototype.addUpdate = function(context, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-  addValues(context, update.source, update.timestamp, update.values);
+  addValues(context, update.source || update['$source'], update.timestamp, update.values);
 }
 
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
