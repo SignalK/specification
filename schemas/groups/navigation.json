@@ -454,7 +454,7 @@
         }
       }]
     },
-    "manouver": {
+    "maneuver": {
       "type": "object",
       "description": "Special maneuver such as regional passing arrangement. (from ais)",
       "default": "Not available",
