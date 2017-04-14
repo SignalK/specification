@@ -1,8 +1,10 @@
 #Signal K Data Model
 
+Data transmitted in Signal K format is assumed to be corrected for known sensor in-accuracies and misc required adjustments (like wind arrow offset), but does cannot _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
+
 Signal K defines two data formats, full and delta, for representing and transmitting data.
 
-In additiong the 'sparse'
+In addition the 'sparse'
 format is the same as the full format, but doesn't contain a full tree, just parts of the full tree.
 
 ## Full format
