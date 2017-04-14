@@ -3,8 +3,8 @@
     "urn:mrn:imo:mmsi:230099999": {
       "mmsi": "230099999",
 			"navigation": {
-				"manouver": {
-					"value":"No special manouver",
+				"maneuver": {
+					"value":"No special maneuver",
 					"$source": "a.suitable.path",
 					"timestamp": "2014-08-15T19:00:15.402Z"
 				}
