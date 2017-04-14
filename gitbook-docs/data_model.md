@@ -1,7 +1,6 @@
 #Signal K Data Model
 
-Data transmitted in Signal K format is assumed to be corrected for known sensor in-accuracies and misc required adjustments (like wind arrow offset), but does cannot _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
-
+## Formats
 Signal K defines two data formats, full and delta, for representing and transmitting data.
 
 In addition the 'sparse'
@@ -205,6 +204,12 @@ The `path` must be a _leaf path_: it must be a path to a leaf the of the full mo
 A leaf is where the actual value of the Signal K property is and where `timestamp`, `$source` and `values` properties are in the full model.
 The value is often a scalar - a numeric value, as in the example above, but it can also be an object.
 For example a `navigation.position` value would be an object like `{"latitude": -41.2936935424, "longitude": 173.2470855712}`.
+
+## Data Quality
+
+Data transmitted in Signal K format is assumed to be corrected for known sensor in-accuracies and misc required adjustments (like wind arrow offset), but does cannot _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
+
+A sensor or gateway/server may want to send a message indicating known invalid data. It must send out a Signal K message where the value of the data item is a json `null` and serve the value as a json `null` in the REST api. 
 
 ## Message Integrity
 
