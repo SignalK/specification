@@ -207,9 +207,11 @@ For example a `navigation.position` value would be an object like `{"latitude": 
 
 ## Data Quality
 
-Data transmitted in Signal K format is assumed to be corrected for known sensor in-accuracies and misc required adjustments (like wind arrow offset), but does cannot _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
+Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies and miscellaneous required adjustments (like wind arrow offset), but the is no _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
 
-A sensor or gateway/server may want to send a message indicating known invalid data. It must send out a Signal K message where the value of the data item is a json `null` and serve the value as a json `null` in the REST api. 
+## Missing or invalid data
+
+A sensor or gateway/server may want to send a message indicating known invalid data or the fact that the sensor is functioning but can not provide data, for example when a depth sensor has no bottom fix. In this case the value must be JSON `null` in the delta message and the server must return the value as a json `null` in the REST api.
 
 ## Message Integrity
 
