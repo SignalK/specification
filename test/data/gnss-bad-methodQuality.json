@@ -1,0 +1,65 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "navigation": {
+        "gnss": {
+					  "type": {
+							"timestamp": "2017-01-25T00:23:05Z",
+							"$source": "a.suitable.path",
+							"value":"Integrated navigation system"
+						},
+						"methodQuality":{
+							"timestamp": "2017-01-25T00:23:05Z",
+							"$source": "a.suitable.path",
+							"value":"Estimated (DR) nnnn"
+						},
+						"integrity": {
+							"timestamp": "2017-01-25T00:23:05Z",
+					   "$source": "a.suitable.path",
+							"value":"Safe"
+						},
+						"satellites": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value":12
+						},
+						"antennaAltitude": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value":0.9
+						},
+						"horizontalDilution": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value":10.234
+						},
+						"positionDilution": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value":20.234
+						},
+						"geoidalSeparation": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value":10
+						},
+						"differentialAge": {
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value": 30
+						},
+						"differentialReference":{
+							"timestamp": "2017-01-25T00:23:05Z",
+						  "$source": "a.suitable.path",
+						  "value": 1
+						}
+      		}
+      	}
+      
+    }
+  },
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+  
+}

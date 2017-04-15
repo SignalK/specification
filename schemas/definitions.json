@@ -51,6 +51,14 @@
           "description": "Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
           "example":"GP"
         },
+        "aisType": {
+          "type": "number",
+          "multipleOf" : 1,
+          "minimum": 1,
+          "maximum": 27,
+          "description": "AIS Message Type",
+          "example":"15"
+        },
         "instance": {
 					"type": "string"
         }

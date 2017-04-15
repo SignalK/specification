@@ -293,20 +293,17 @@
       "description": "The intended destination of this trip",
       "type": "object",
       "properties": {
+        "commonName": {
+          "description": "Common name of the Destination, eg 'Fiji', also used in ais messages",
+          "$ref": "../definitions.json#/definitions/stringValue"
+        },
         "eta": {
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+          "description": "Expected time of arrival at destination waypoint",
+          "$ref": "../definitions.json#/definitions/datetimeValue"
         },
         "waypoint": {
           "description": "UUID of destination waypoint",
-          "type": "string"
+          "$ref": "../definitions.json#/definitions/stringValue"
         }
       }
     },
@@ -315,17 +312,36 @@
       "title": "gnss",
       "description": "Global satellite navigation meta information",
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
+        "type": {
+          "type": "object",
+          "description": "Fix type",
+          "default": "Undefined",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "Undefined",
+                "GPS",
+                "GLONASS",
+                "Combined GPS/GLONASS",
+                "Loran-C",
+                "Chayka",
+                "Integrated navigation system",
+                "Surveyed",
+                "Galileo"
+              ]
+            }
+          }
         },
         "methodQuality": {
           "type": "object",
           "description": "Quality of the satellite fix",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
           "properties": {
             "value": {
               "type": "string",
@@ -347,6 +363,9 @@
         "integrity": {
           "type": "object",
           "description": "Integrity of the satellite fix",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/commonValueFields"
+          }],
           "properties": {
             "value": {
               "type": "string",
@@ -435,14 +454,32 @@
         }
       }]
     },
+    "maneuver": {
+      "type": "object",
+      "description": "Special maneuver such as regional passing arrangement. (from ais)",
+      "default": "Not available",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
+      "properties": {
+        "value": {
+          "type": "string",
+          "enum": [
+            "Not available",
+            "No special maneuver",
+            "Special maneuver"
+          ]
+        }
+      }
+    },
     "rateOfTurn": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Rate of turn (+ve is change to starboard)",
+      "description": "Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications",
       "units": "rad/s"
     },
     "speedOverGround": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Vessel speed over ground",
+      "description": "Vessel speed over ground. If converting from AIS 'HIGH' value, set to 102.2 (Ais max value) and add warning in notifications",
       "units": "m/s"
     },
     "speedThroughWater": {
@@ -489,43 +526,46 @@
       "type": "object",
       "title": "state",
       "description": "Current navigational state of the vessel",
-      "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-        "value": {
-          "type": "string",
-          "enum": [
-            "not under command",
-            "anchored",
-            "sailing",
-            "motoring",
-            "towing < 200m",
-            "towing > 200m",
-            "pushing",
-            "fishing",
-            "fishing-hampered",
-            "trawling",
-            "trawling-shooting",
-            "trawling-hauling",
-            "pilotage",
-            "not-under-way",
-            "aground",
-            "restricted manouverability",
-            "restricted manouverability towing < 200m",
-            "restricted manouverability towing > 200m",
-            "restricted manouverability underwater operations",
-            "constrained by draft",
-            "mine clearance",
-            "not defined (example)"
-          ]
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "string",
+            "enum": [
+              "not under command",
+              "anchored",
+              "moored",
+              "sailing",
+              "motoring",
+              "towing < 200m",
+              "towing > 200m",
+              "pushing",
+              "fishing",
+              "fishing-hampered",
+              "trawling",
+              "trawling-shooting",
+              "trawling-hauling",
+              "pilotage",
+              "not-under-way",
+              "aground",
+              "restricted manouverability",
+              "restricted manouverability towing < 200m",
+              "restricted manouverability towing > 200m",
+              "restricted manouverability underwater operations",
+              "constrained by draft",
+              "mine clearance",
+              "Reserved for future amendment of Navigational Status for HSC",
+              "Reserved for future amendment of Navigational Status for WIG",
+              "Reserved for future use-11",
+              "Reserved for future use-12",
+              "Reserved for future use-13",
+              "Reserved for future use-14",
+              "not defined (example)"
+            ]
+          }
         }
-      }
+      }]
     },
     "anchor": {
       "type": "object",
