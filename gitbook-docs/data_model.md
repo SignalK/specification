@@ -207,7 +207,7 @@ For example a `navigation.position` value would be an object like `{"latitude": 
 
 ## Data Quality
 
-Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies and miscellaneous required adjustments (like wind arrow offset), but the is no _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
+Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies and miscellaneous required adjustments (like wind arrow offset), but there is no _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
 
 ## Missing or invalid data
 
