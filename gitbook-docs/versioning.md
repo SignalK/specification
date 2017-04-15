@@ -4,8 +4,6 @@ Our versioning is based on http://snowplowanalytics.com/blog/2014/05/13/introduc
 
 Most of this document is reproduced from there.
 
-# Signal K versioning is based on SchemaVer
-
 When versioning a data schema, we are concerned with the backwards-compatibility between the new schema and existing data represented in earlier versions of the schema. This is the fundamental building block of SchemaVer, and explains the divergence from [Semantic Versioning](http://semver.org/).
 
 Heres a simple formula for our SchemaVer:
@@ -16,17 +14,17 @@ Given a version number MODEL.REVISION.ADDITION-SUFFIX, increment the:
   * REVISION - when you make a schema change which may prevent interaction with some historical data
   * ADDITION - when you make a schema change that is compatible with all historical data
   * SUFFIX - optional - denotes special versions or active development eg `alpha-1`, `SNAPSHOT`
-  
+
   * The first released version of Signal K will be `1.0.0`.
   * The current development version will then move to be `1.0.1-SNAPSHOT`
-  * The next release candidate might then be `1.0.1-alpha-1` 
+  * The next release candidate might then be `1.0.1-alpha-1`
   * The current development version will then move to be `1.0.2-SNAPSHOT`
 
-`SNAPSHOT` denotes a version under active change. If you depend on the `SNAPSHOT` version then every time you build your project it will have changed with what-ever was committed since last time you checked. 
+`SNAPSHOT` denotes a version under active change. If you depend on the `SNAPSHOT` version then every time you build your project it will have changed with what-ever was committed since last time you checked.
 
 Let’s make SchemaVer more concrete with some examples using some (truncated and contrived) Signal K Schemas, in reverse order:
 
-## ADDITION
+## Addition
 
 We have an existing JSON Schema, let’s call this `1.0.0`:
 
@@ -77,7 +75,7 @@ Because our new `phoneNumber` field is not a required field, and because version
 
 Therefore we are looking at an `ADDITION`, and so we bump the schema version to `1.0.1`.
 
-## REVISION
+## Revision
 
 Let’s now make our JSON Schema support additionalProperties - this constitutes another `ADDITION`, so we are now on `1.0.2`:
 
@@ -138,7 +136,7 @@ Will this new schema validate all historical data? Unfortunately we can’t be c
 
 So we are effectively making a `REVISION` to the data schema - so we bump the version to `1.1.0` (resetting `ADDITION` to `0`).
 
-## MODEL
+## Model
 
 Oh dear - we have just realized that not every-one has DSC! It should have been a VHF callsign. Here is our new JSON Schema:
 
@@ -175,9 +173,9 @@ We have changed our `MODEL` - because we can have no reasonable expectation that
 
 Note that we also decided to use this “reboot” of the `MODEL` to change `additionalProperties` back to `false`, because (as we have learnt) it will help us to avoid unnecessary REVISIONs in the future.
 
-## A few supplementary rules
+## Supplementary rules
 
 In Signal K we have a few variations from SchemaVer:
 
   *  We use dots (.) to separate the version parts, not hyphens (-s) as in SchemaVer
-  *  We use a suffix to denote in-progress or special releases, as commonly seen in [Maven](http://books.sonatype.com/mvnref-book/reference/pom-relationships-sect-pom-syntax.html) 
+  *  We use a suffix to denote in-progress or special releases, as commonly seen in [Maven](http://books.sonatype.com/mvnref-book/reference/pom-relationships-sect-pom-syntax.html)
