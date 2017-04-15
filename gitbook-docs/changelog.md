@@ -1,6 +1,15 @@
 ## Change Log
 
-### upcoming (2017/03/19 16:03 +00:00)
+### upcoming (2017/04/16 07:12 +00:00)
+- [#350](https://github.com/SignalK/specification/pull/350) Add page specifying versioning in Signal K (@rob42)
+- [#337](https://github.com/SignalK/specification/pull/337) Ais additions (@rob42)
+- [#351](https://github.com/SignalK/specification/pull/351) Add note on data accuracy (@rob42)
+- [#349](https://github.com/SignalK/specification/pull/349) fix: fix dollarsource references in full tree (@tkurki)
+- [#347](https://github.com/SignalK/specification/pull/347) Multiple value subscriptions documentation (@tkurki)
+- [#344](https://github.com/SignalK/specification/pull/344) Added SAR aircraft, updates tests to handle aircraft, add vessel.mmsi… (@rob42)
+- [#346](https://github.com/SignalK/specification/pull/346) Tanks (@rob42)
+
+### v0.0.1-1 (2017/03/19 16:07 +00:00)
 - [#348](https://github.com/SignalK/specification/pull/348) Add note that meta.units MUST be returned for valid keys (@rob42)
 - [#345](https://github.com/SignalK/specification/pull/345) Added trip.log, and trip.lastReset (@rob42)
 - [#340](https://github.com/SignalK/specification/pull/340) Add slack badge (@bkp7)
