@@ -133,11 +133,7 @@ When a client subscribes to `navigation.courseOverGroundMagnetic`, they recieve 
       "source": {
         "label": "nmea2",
         "type": "NMEA0183",
-        "II": {
-          "talker": "II",
-          "sentences": {
-            "VTG": "2017-03-04T14:58:48.000Z"
-          }
+        "talker": "II"
         }
       },
       "timestamp": "2017-03-04T14:58:48.000Z",
@@ -152,11 +148,7 @@ When a client subscribes to `navigation.courseOverGroundMagnetic`, they recieve 
       "source": {
         "label": "nmea1",
         "type": "NMEA0183",
-        "II": {
-          "talker": "II",
-          "sentences": {
-            "VTG": "2017-03-04T14:58:47.000Z"
-          }
+        "talker": "II"
         }
       },
       "timestamp": "2017-03-04T14:58:47.000Z",
@@ -175,4 +167,7 @@ Individual updates can be distinguished by their source.
 
 If a client wants only the values of a single source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
 
+**Note:** The exact format of the update message is affected by the subscription policy. A policy of `instant` will result in changes being sent immediately, so typically one item in `values` per update. A policy of `fixed` will result in periodic updates which may contain many items in `values`.
+
+The update allows grouping `values` by `source`.
 
