@@ -165,7 +165,7 @@
             }
           }
         },
-        "alternator": {
+        "alternators": {
           "main": {
             "location": "Mains - (house) alternator",
             "manufacturer": {
@@ -239,9 +239,7 @@
               "$source": "foo.bar",
               "value": 12.2
             }
-          }
-        },
-        "solar": {
+          },
           "star240": {
             "location": "Starbord array",
             "manufacturer": {

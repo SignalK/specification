@@ -181,12 +181,12 @@
       },
       "chargeTransferred": {
         "type": "number",
-        "description": "Amount of charge produced(+) or consumed(-) sense last report",
+        "description": "Amount of charge produced(+) or consumed(-) since last report",
         "units": "C"
       },
       "energyTransferred": {
         "type": "number",
-        "description": "Amount of energy produced(+) or consumed(-) sense last report",
+        "description": "Amount of energy produced(+) or consumed(-) since last report",
         "units": "J"
       }
     },
@@ -198,7 +198,7 @@
       "properties": {
         "associatedBus": {
           "type": "string",
-          "description": "Name of BUS source is associated with (if applicable, may = NULL)"
+          "description": "Name of BUS source is associated with (if applicable)"
         },
         "lineNeutralVoltage": {
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -339,8 +339,8 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "V"
        }, 
-       "setpointAmperage": {
-          "description": "Target amperage limit",
+       "setpointCurrent": {
+          "description": "Target current limit",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "A"
       }
@@ -532,7 +532,7 @@
         }
       }
     },
-    "alternator": {
+    "alternators": {
       "description": "Data about an Alternator charging device",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
@@ -627,7 +627,7 @@
 
             "load": {
               "type": "object",
-              "description": "The current state of load attached directly to controller",
+              "description": "State of load port on controller (if applicable)",
               "allOf": [
                 {
                   "$ref": "../definitions.json#/definitions/commonValueFields"
@@ -637,9 +637,8 @@
                     "value": {
                       "type": "string",
                       "enum": [
-                        "off",
-                        "on",
-                        "n/a"
+                        "enabled",
+                        "disabled"
                       ]
                     }
                   }
