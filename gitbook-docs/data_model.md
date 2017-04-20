@@ -141,9 +141,6 @@ The format looks like this (pretty printed):
         }, {
             "path": "propulsion.0.boostPressure",
             "value": 45500.0
-        }, {
-            "path": "propulsion.0.tiltTrim",
-            "value": 48
         }]
     }]
 }
