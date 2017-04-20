@@ -10,21 +10,101 @@
       "description": "The displacement of the vessel",
       "units": "kg"
     },
+    "aisShipType": {
+      "type": "number",
+      "enum": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php",
+      "example": 37
+    },
 
     "draft": {
       "type": "object",
       "title": "draft",
       "description": "The draft of the vessel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
 
         "minimum": {
           "description": "The minimum draft of the vessel",
@@ -50,17 +130,10 @@
       "type": "object",
       "title": "length",
       "description": "The various lengths of the vessel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
-        },
-
         "overall": {
           "type": "number",
           "description": "Length overall",
@@ -85,6 +158,9 @@
       "type": "object",
       "title": "keel",
       "description": "Information about the vessel's keel",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
         "type": {
           "type": "string",
@@ -113,17 +189,9 @@
           "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
           "units": "ratio",
           "example": 0.8
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
         }
+
+        
       }
     },
 
@@ -143,6 +211,9 @@
       "type": "object",
       "title": "rigging",
       "description": "Information about the vessel's rigging",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }],
       "properties": {
         "configuration": {
           "type": "string",
@@ -152,15 +223,6 @@
         "masts": {
           "type": "number",
           "description": "The number of masts on the vessel."
-        },
-
-        "source": {
-          "description": "Source of this data",
-          "$ref": "../definitions.json#/definitions/source"
-        },
-        "timestamp": {
-          "description": "timestamp of the last update to this data",
-          "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
     }

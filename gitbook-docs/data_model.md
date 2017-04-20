@@ -1,8 +1,9 @@
 #Signal K Data Model
 
+## Formats
 Signal K defines two data formats, full and delta, for representing and transmitting data.
 
-In additiong the 'sparse'
+In addition the 'sparse'
 format is the same as the full format, but doesn't contain a full tree, just parts of the full tree.
 
 ## Full format
@@ -140,9 +141,6 @@ The format looks like this (pretty printed):
         }, {
             "path": "propulsion.0.boostPressure",
             "value": 45500.0
-        }, {
-            "path": "propulsion.0.tiltTrim",
-            "value": 48
         }]
     }]
 }
@@ -203,6 +201,14 @@ The `path` must be a _leaf path_: it must be a path to a leaf the of the full mo
 A leaf is where the actual value of the Signal K property is and where `timestamp`, `$source` and `values` properties are in the full model.
 The value is often a scalar - a numeric value, as in the example above, but it can also be an object.
 For example a `navigation.position` value would be an object like `{"latitude": -41.2936935424, "longitude": 173.2470855712}`.
+
+## Data Quality
+
+Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies and miscellaneous required adjustments (like wind arrow offset), but there is no _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
+
+## Missing or invalid data
+
+A sensor or gateway/server may want to send a message indicating known invalid data or the fact that the sensor is functioning but can not provide data, for example when a depth sensor has no bottom fix. In this case the value must be JSON `null` in the delta message and the server must return the value as a json `null` in the REST api.
 
 ## Message Integrity
 

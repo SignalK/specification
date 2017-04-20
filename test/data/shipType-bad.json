@@ -1,0 +1,13 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+			"design": {
+				"aisShipType": 370
+			}
+		}
+	},
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+  
+}

@@ -6,7 +6,7 @@ JSON Schema files, tests for the schema files and assorted JavaScript utilities
 for working with Signal K delta and full JSON data as well as validation
 utilities.
 
-[![Build Status](https://travis-ci.org/SignalK/specification.svg?branch=master)](https://travis-ci.org/SignalK/specification)
+[![Build Status](https://travis-ci.org/SignalK/specification.svg?branch=master)](https://travis-ci.org/SignalK/specification) [![Slack Chat](https://img.shields.io/badge/Chat-Slack-ff69b4.svg "Join us and help develop Signal K. Anyone is welcome!")](http://slack-invite.signalk.org/)
 
 Signal K
 --------
@@ -56,10 +56,7 @@ https://toolchain.gitbook.com/ebook.html.
 - `npm run docs:all` to generate locally
 - `npm run docs:publish` to publish in gh-pages.
 
-Changelog
----------------------
-
-https://github.com/SignalK/specification/tree/master/gitbook-docs/changelog.md
+The changelog in the documentation is generated based on Github Pull Requests. For things to show up in the changelog you MUST USE PRs! Rewording is possible by rewriting PR titles.
 
 Validation
 ----------

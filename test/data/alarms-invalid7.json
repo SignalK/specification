@@ -1,0 +1,20 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "notifications": {
+        "navigation": {
+          "position": {
+            "adrift": {
+              "method": ["sound"],
+              "state": "warn",
+              "message": "We are adrift"
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+}

@@ -20,3 +20,4 @@
 * [How Can I Help?](how_to_help.md)
 * [Appendix A: Keys Reference](keys/index.md)
 * [Appendix B: Changelog](changelog.md)
+* [Appendix C: Versioning](versioning.md)

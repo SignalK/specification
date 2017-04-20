@@ -9,22 +9,6 @@
             "$source": ".36.0",
             "timestamp": "2017-01-24T23:59:01Z",
             "pgn": 130312
-          },
-          "liveWell": {
-            "temperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "2017-01-24T23:59:01Z",
-              "pgn": 130312
-            }
-          },
-          "baitWell": {
-            "temperature": {
-              "value": 0,
-              "$source": ".36.0",
-              "timestamp": "2017-01-24T23:59:01Z",
-              "pgn": 130312
-            }
           }
         },
         "outside": {
@@ -136,5 +120,5 @@
       "type": "NMEA2000"
     }
   },
-  "version": "1.0"
+  "version": "1.0.0"
 }

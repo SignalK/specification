@@ -51,6 +51,14 @@
           "description": "Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
           "example":"GP"
         },
+        "aisType": {
+          "type": "number",
+          "multipleOf" : 1,
+          "minimum": 1,
+          "maximum": 27,
+          "description": "AIS Message Type",
+          "example":"15"
+        },
         "instance": {
 					"type": "string"
         }
@@ -67,6 +75,7 @@
     "version": {
       "type": "string",
       "description": "Version of the Signal K schema/APIs used by the root object.",
+      "pattern": "^[0-9]{1,3}[.][0-9]{1,2}[.][0-9]{1,2}($|-[a-zA-Z0-9]+$)",
       "example": "1.0.0"
     },
     "units": {
@@ -96,6 +105,12 @@
           "quantity": "Flow",
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
+        },
+        "kg/m3": {
+          "display": "kg/m3",
+          "quantity": "Density",
+          "quantityDisplay": "kg/m3",
+          "description": "Density in kg per cubic meters"
         },
         "deg": {
           "display": "\u00b0",
@@ -217,11 +232,17 @@
           "quantityDisplay": "B",
           "description": "Magnetic field strength in tesla"
         },
+        "Lux": {
+          "display": "Lux",
+          "quantity": "Light Intensity",
+          "quantityDisplay": "Lux",
+          "description": "Light Intensity in lux"
+        },
         "Pa/s": {
           "display": "Pa/s",
-          "quantity": "Pressure rate",
+          "quantity": "Pressure rate, also viscosity",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per second"
+          "description": "Pressure change rate in pascal per second, also used for viscosity"
         }
       }
     },
@@ -230,6 +251,24 @@
       "description": "Maritime Mobile Service Identity (MMSI). Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
       "pattern": "^[2-7][0-9]{8}$",
       "example": "503123456"
+    },
+    "aircraftMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for aircraft. Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^1[0-9]{8}$",
+      "example": "103123456"
+    },
+    "atonMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for . Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^99[0-9]{7}$",
+      "example": "993123456"
+    },
+    "sarMmsi": {
+      "type": "string",
+      "description": "Maritime Mobile Service Identity (MMSI) for . Has to be 9 digits. See http://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity for information.",
+      "pattern": "^97[0-9]{7}$",
+      "example": "973123456"
     },
     "uuid": {
       "type": "string",

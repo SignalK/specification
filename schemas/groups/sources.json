@@ -12,6 +12,20 @@
           "anyOf": [
             {
               "properties": {
+              	 "ais": {
+                  "description": "AIS data",
+                  "type": "object",
+                  "properties": {
+										"aisType": {
+												"type": "number",
+												"multipleOf" : 1,
+												"minimum": 1,
+												"maximum": 27,
+												"description": "AIS Message Type",
+												"example":"15"
+										}
+									}
+								 },
                 "talker": {
                   "description": "NMEA 0183 talker id, the GP in $GPRMC..",
                   "type": "string"

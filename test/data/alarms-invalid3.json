@@ -1,0 +1,19 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "notifications": {
+        "mob": {
+          "navigation": { 
+            "method": ["sound", "visual"],
+            "state": "emergency",
+            "message": "Man overboard",
+            "timestamp": "2017-01-23T14:24:17Z"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+}

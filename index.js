@@ -40,6 +40,12 @@ function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('./schemas/vessel.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/vessel.json', vesselSchema);
+  var aircraftSchema = require('./schemas/aircraft.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/aircraft.json', aircraftSchema);
+  var atonSchema = require('./schemas/aton.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/aton.json', atonSchema);
+  var sarSchema = require('./schemas/sar.json');
+  tv4.addSchema('https://signalk.github.io/specification/schemas/sar.json', sarSchema);
   var definitions = require('./schemas/definitions.json');
   tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
 
@@ -114,7 +120,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
-      'version': '1.0'
+      'version': '1.0.0'
     }
     checkValidFullSignalK.call(this);
   });
@@ -124,7 +130,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
-      version: "0.0"
+      version: "0.0.0"
     }
     checkValidFullSignalK.call(this);
   });
@@ -233,8 +239,11 @@ function getSourceId(source) {
       (source.src ? '.' + source.src : '') +
       (source.instance ? '.' + source.instance : '');
   }
-  return source.label +
-    (source.talker ? '.' + source.talker : '.XX');
+  if (typeof source === 'object') {
+    return source.label + (source.talker ? '.' + source.talker : '.XX');
+  }
+  //source data is actually from $source, not source: {...}
+  return source
 }
 
 function keyForSourceIdPath(sourceId, path) {

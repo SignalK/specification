@@ -1,0 +1,34 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "environment": {
+        "outside": {
+          "illuminance": {
+            "value": 20000,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          }
+        }
+      }
+    }
+  },
+  "sources": {
+    "N2K-1": {
+      "36": {
+        "0": {},
+        "n2k": {
+          "src": "36",
+          "pgns": {
+            "130312": "2017-01-25T00:03:05.056Z"
+          }
+        }
+      },
+      "label": "",
+      "type": "NMEA2000"
+    }
+  },
+  "version": "1.0.0",
+  "self": "vessels.urn:mrn:imo:mmsi:230099999"
+}
