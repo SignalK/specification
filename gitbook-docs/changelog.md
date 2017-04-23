@@ -1,6 +1,6 @@
 ## Change Log
 
-### upcoming (2017/04/16 07:12 +00:00)
+### v0.0.1-3 (2017/04/19 04:41 +00:00)
 - [#350](https://github.com/SignalK/specification/pull/350) Add page specifying versioning in Signal K (@rob42)
 - [#337](https://github.com/SignalK/specification/pull/337) Ais additions (@rob42)
 - [#351](https://github.com/SignalK/specification/pull/351) Add note on data accuracy (@rob42)
