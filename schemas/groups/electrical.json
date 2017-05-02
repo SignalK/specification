@@ -198,11 +198,11 @@
       "properties": {
         "associatedBus": {
           "type": "string",
-          "description": "Name of BUS source is associated with (if applicable)"
+          "description": "Name of BUS device is associated with"
         },
         "lineNeutralVoltage": {
           "$ref": "../definitions.json#/definitions/numberValue",
-          "description": "RMS voltage measured between phase and neutral.",
+          "description": "RMS voltage measured between phase and neutral",
           "units": "V"
         },
         "lineLineVoltage": {
