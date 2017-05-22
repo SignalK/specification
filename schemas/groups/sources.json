@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/sources.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/sources.json#",
   "title": "sources",
   "description": "Metadata about the sources, eg. buses and connected sensors",
   "patternProperties": {

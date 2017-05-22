@@ -32,7 +32,7 @@ We have an existing JSON Schema, let’s call this `1.0.0`:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -52,7 +52,7 @@ Now we want to add an additional field to our schema:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -83,7 +83,7 @@ Let’s now make our JSON Schema support additionalProperties - this constitutes
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -108,7 +108,7 @@ After a while, we add a new field, `callsignHf`:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -144,7 +144,7 @@ Oh dear - we have just realized that not every-one has DSC! It should have been 
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {

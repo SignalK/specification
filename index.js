@@ -39,23 +39,23 @@ var FullSignalK = require('./src/fullsignalk');
 function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('./schemas/vessel.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/vessel.json', vesselSchema);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/vessel.json', vesselSchema);
   var aircraftSchema = require('./schemas/aircraft.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/aircraft.json', aircraftSchema);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/aircraft.json', aircraftSchema);
   var atonSchema = require('./schemas/aton.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/aton.json', atonSchema);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/aton.json', atonSchema);
   var sarSchema = require('./schemas/sar.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/sar.json', sarSchema);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/sar.json', sarSchema);
   var definitions = require('./schemas/definitions.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/definitions.json', definitions);
 
   for (var schema in subSchemas) {
-    tv4.addSchema('https://signalk.github.io/specification/schemas/groups/' + schema + '.json', subSchemas[schema]);
+    tv4.addSchema('https://signalk.org/specification/schemas/v1/groups/' + schema + '.json', subSchemas[schema]);
   }
 
   // HACK! two different IDs should not point to the same schema
   var externalGeometry = require('./schemas/external/geojson/geometry.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/external/geojson/geometry.json', externalGeometry);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
   tv4.addFormat(require('tv4-formats'))
@@ -79,7 +79,7 @@ function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
   var deltaSchema = require('./schemas/delta.json');
   var definitions = require('./schemas/definitions.json');
-  tv4.addSchema('https://signalk.github.io/specification/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/schemas/v1/definitions.json', definitions);
 
   if (ignoreContext) {
     delta.context = 'ignored the context, so place a placeholder there';
