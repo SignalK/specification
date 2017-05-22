@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/definitions.json#",
+  "id": "https://signalk.org/specification/schemas/v1/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
   "definitions": {

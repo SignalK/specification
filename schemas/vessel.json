@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/vessel.json#",
+  "id": "https://signalk.org/specification/schemas/v1/vessel.json#",
   "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
   "title": "vessel",
   "anyOf": [
