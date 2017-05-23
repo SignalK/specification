@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/steering.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/steering.json#",
   "description": "Schema describing the steering child-object of a vessel.",
   "title": "steering",
   "properties": {
