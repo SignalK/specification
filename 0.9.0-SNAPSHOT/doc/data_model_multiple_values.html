@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Multiple Values · Signal K Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="data_model_metadata.html" />
+    
+    
+    <link rel="prev" href="data_model.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Signal K Specification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Getting Started
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="data_model.html">
+            
+                <a href="data_model.html">
+            
+                    
+                    Full and Delta Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="permissions.html">
+            
+                <a href="permissions.html">
+            
+                    
+                    Permissions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="urls_etc.html">
+            
+                <a href="urls_etc.html">
+            
+                    
+                    Ports, Urls and Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Discovery & Connection Establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="subscription_protocol.html">
+            
+                <a href="subscription_protocol.html">
+            
+                    
+                    Subscription Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="notifications.html">
+            
+                <a href="notifications.html">
+            
+                    
+                    Notifications
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="design_notes.html">
+            
+                <a href="design_notes.html">
+            
+                    
+                    Background and Design Rationale
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="keys/">
+            
+                <a href="keys/">
+            
+                    
+                    Appendix A: Keys Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                    Appendix B: Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="versioning.html">
+            
+                <a href="versioning.html">
+            
+                    
+                    Appendix C: Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Multiple Values</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="multiple-values-for-a-key"><a name="multiple-values-for-a-key" class="plugin-anchor" href="#multiple-values-for-a-key"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple Values for a Key</h1>
+<p>There are two use cases for multiple data:</p>
+<ul>
+<li>Multiple instances of a common device - eg two engines or multiple batteries</li>
+<li>Multiple devices providing duplicate data - multiple values for the same Signal K key from different sensors, eg COG from both compass and gps or multiple depth sounders</li>
+</ul>
+<h2 id="multiple-instances-of-a-common-device"><a name="multiple-instances-of-a-common-device" class="plugin-anchor" href="#multiple-instances-of-a-common-device"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple instances of a common device</h2>
+<p>Some parts of the Signal K schema are <strong>device oriented</strong>.</p>
+<p>For example in electrical domain you have the concept of multiple batteries. Each battery has multiple, common quantities like voltage, current and temperature. Here we have chosen to organise the Signal K data model hierarchy by instance: multiple batteries are represented as for example <code>electrical.batteries.starter</code> and <code>electrical.batteries.house</code>. Then underneath that prefix you have the different properties and quantities.</p>
+<p>This organisation allows a user interface to organise the individual readings in meaningful groups and you can query all the values related to that piece of equipment via REST API.</p>
+<p>It maintains the primary requirement that a given data value have a fixed and unique uri, but gives flexibility in the structure and complexities of data.</p>
+<p>The same device centric organisation is used in <code>propulsion</code> subschema, where the most common use case is having dual engine setup with <code>propulsion.port</code> and <code>propulsion.starboard</code>.</p>
+<p><em>The values <code>starter</code>, <code>house</code>, <code>port</code> and <code>starboard</code> are examples and not specified in the schema.
+You are free to use application specific values within the regexp specified in the JSON schema.</em></p>
+<h3 id="multiple-devices-providing-duplicate-data"><a name="multiple-devices-providing-duplicate-data" class="plugin-anchor" href="#multiple-devices-providing-duplicate-data"><i class="fa fa-link" aria-hidden="true"></i></a>Multiple devices providing duplicate data</h3>
+<p>It is quite possible for a key value to come from more than one device. eg position (lat/lon) could come from several gps enabled devices, and multiple depth sounders are not uncommon. We need a consistent way to handle this.</p>
+<p>All the incoming values may well be valid in their own context, and it is feasible that all of them may be wanted, for instance, displaying depth under each hull on a catamaran.</p>
+<p>Hence discarding or averaging values is not a solution, we must provide a way to store multiple values for a single measurement.</p>
+<p> Lets consider this for <code>courseOverGroundTrue</code></p>
+<p>If its the first value for the key, it becomes the default value and looks like this:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;vessels&quot;</span>: {
+    <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>: {
+      <span class="hljs-string">&quot;uuid&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>,
+      <span class="hljs-string">&quot;navigation&quot;</span>: {
+        <span class="hljs-string">&quot;courseOverGroundMagnetic&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">3.615624078431453</span>,
+          <span class="hljs-string">&quot;$source&quot;</span>: <span class="hljs-string">&quot;nmea2.II&quot;</span>,
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:48.000Z&quot;</span>,
+          <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;VTG&quot;</span>
+        }
+      }
+    }
+  },
+  <span class="hljs-string">&quot;self&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-string">&quot;sources&quot;</span>: {
+    <span class="hljs-string">&quot;nmea2&quot;</span>: {
+      <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;nmea2&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
+      <span class="hljs-string">&quot;II&quot;</span>: {
+        <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;II&quot;</span>,
+        <span class="hljs-string">&quot;sentences&quot;</span>: {
+          <span class="hljs-string">&quot;VTG&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:48.000Z&quot;</span>
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>It has come from device <code>sources.nmea2.II</code>, where further details can be found.</p>
+<p>If another value with different source arrives, we add the <code>values</code> attribute with and values are in there - if its our preferred source (from persistent config) we auto-switch to it, otherwise we just record it. It look like this:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;vessels&quot;</span>: {
+    <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>: {
+      <span class="hljs-string">&quot;uuid&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>,
+      <span class="hljs-string">&quot;navigation&quot;</span>: {
+        <span class="hljs-string">&quot;courseOverGroundMagnetic&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">3.615624078431453</span>,
+          <span class="hljs-string">&quot;$source&quot;</span>: <span class="hljs-string">&quot;nmea2.II&quot;</span>,
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:48.000Z&quot;</span>,
+          <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;VTG&quot;</span>,
+          <span class="hljs-string">&quot;values&quot;</span>: {
+            <span class="hljs-string">&quot;nmea1.II&quot;</span>: {
+              <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">3.6376152270065814</span>,
+              <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;VTG&quot;</span>,
+              <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:47.000Z&quot;</span>
+            },
+            <span class="hljs-string">&quot;nmea2.II&quot;</span>: {
+              <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">3.615624078431453</span>,
+              <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;VTG&quot;</span>,
+              <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:48.000Z&quot;</span>
+            }
+          }
+        }
+      }
+    }
+  },
+  <span class="hljs-string">&quot;self&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+  <span class="hljs-string">&quot;sources&quot;</span>: {
+    <span class="hljs-string">&quot;nmea1&quot;</span>: {
+      <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;nmea1&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
+      <span class="hljs-string">&quot;II&quot;</span>: {
+        <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;II&quot;</span>,
+        <span class="hljs-string">&quot;sentences&quot;</span>: {
+          <span class="hljs-string">&quot;VTG&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:47.000Z&quot;</span>
+        }
+      }
+    },
+    <span class="hljs-string">&quot;nmea2&quot;</span>: {
+      <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;nmea2&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
+      <span class="hljs-string">&quot;II&quot;</span>: {
+        <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;II&quot;</span>,
+        <span class="hljs-string">&quot;sentences&quot;</span>: {
+          <span class="hljs-string">&quot;VTG&quot;</span>: <span class="hljs-string">&quot;2017-03-04T14:58:48.000Z&quot;</span>
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h3 id="update-messages"><a name="update-messages" class="plugin-anchor" href="#update-messages"><i class="fa fa-link" aria-hidden="true"></i></a>Update messages</h3>
+<p>When a client subscribes to <code>navigation.courseOverGroundMagnetic</code>, they recieve <em>all</em> the values held. The update message does not include the <code>values</code> path, the case above looks like:</p>
+<pre><code>{
+  &quot;context&quot;: &quot;vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d&quot;,
+  &quot;updates&quot;: [
+    {
+      &quot;source&quot;: {
+        &quot;label&quot;: &quot;nmea2&quot;,
+        &quot;type&quot;: &quot;NMEA0183&quot;,
+        &quot;talker&quot;: &quot;II&quot;
+        }
+      },
+      &quot;timestamp&quot;: &quot;2017-03-04T14:58:48.000Z&quot;,
+      &quot;values&quot;: [
+        {
+          &quot;path&quot;: &quot;navigation.courseOverGroundMagnetic&quot;,
+          &quot;value&quot;: 3.615624078431453
+        }
+      ]
+    },
+    {
+      &quot;source&quot;: {
+        &quot;label&quot;: &quot;nmea1&quot;,
+        &quot;type&quot;: &quot;NMEA0183&quot;,
+        &quot;talker&quot;: &quot;II&quot;
+        }
+      },
+      &quot;timestamp&quot;: &quot;2017-03-04T14:58:47.000Z&quot;,
+      &quot;values&quot;: [
+        {
+          &quot;path&quot;: &quot;navigation.courseOverGroundMagnetic&quot;,
+          &quot;value&quot;: 3.6376152270065814
+        }
+      ]
+    }
+  ]
+}
+</code></pre><p>Individual updates can be distinguished by their source. </p>
+<p>If a client wants only the values of a single source it should subscribe to a path that includes the full path under <code>values</code> including the source reference key of the source. The source reference should be enclosed in square brackets:  <code>navigation.speedThroughWater.values[n2kFromFile.43]</code>. The client can retrieve the relevant data via REST API.</p>
+<p><strong>Note:</strong> The exact format of the update message is affected by the subscription policy. A policy of <code>instant</code> will result in changes being sent immediately, so typically one item in <code>values</code> per update. A policy of <code>fixed</code> will result in periodic updates which may contain many items in <code>values</code>.</p>
+<p>The update allows grouping <code>values</code> by <code>source</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="data_model.html" class="navigation navigation-prev " aria-label="Previous page: Full and Delta Models">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="data_model_metadata.html" class="navigation navigation-next " aria-label="Next page: Metadata">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Multiple Values","level":"1.3.2","depth":2,"next":{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},"previous":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model_multiple_values.md","mtime":"2017-05-23T04:54:33.157Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-23T05:00:20.515Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
