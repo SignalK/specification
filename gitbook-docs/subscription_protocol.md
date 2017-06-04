@@ -10,14 +10,15 @@ By default a Signal K server will provide a new WebSocket client with a delta st
   "context": "vessels",
    "updates": [{
       "source": {
+      	"label":"/dev/actisense",
+      	"type": "NMEA2000",
         "pgn": "128275",
-        "device": "/dev/actisense",
         "timestamp": "2014-08-15-16:00:05.538",
         "src": "115"
       },
       "values": [
         {
-          "path": "navigation.logTrip",
+          "path": "navigation.trip.log",
           "value": 43374
         },
         {
@@ -113,14 +114,15 @@ The `get/list/put` messages work in the same way as their `GET/PUT` REST equival
   "context": "vessels",
    "put": [{
       "source": {
+      	"label":"/dev/actisense",
+      	"type": "NMEA2000",
         "pgn": "128275",
-        "device": "/dev/actisense",
         "timestamp": "2014-08-15-16:00:05.538",
         "src": "115"
       },
       "values": [
         {
-          "path": "navigation.logTrip",
+          "path": "navigation.trip.log",
           "value": 43374
         }]
      }

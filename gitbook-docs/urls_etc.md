@@ -21,6 +21,7 @@ other applications on the same server. Therefore the Signal K entry point will a
 
 ### Versioning
 
+See [versioning](versioning.md)
 The version(s) of the Signal K API that a server supports SHALL be available as a JSON object available at `/signalk`:
 
 ```json

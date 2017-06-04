@@ -17,19 +17,19 @@ The simplest format is the full format, which is the complete Signal K data mode
 			"navigation": {
 				"speedOverGround": {
 					"value": 4.32693662,
-					"$source": "demo.0183./dev/ttyUSB0.GP.RMC",
+					"$source": "0183./dev/ttyUSB0.GP.RMC",
 					"timestamp": "2017-05-16T05:15:50.007Z"
 				},
 				"position": {
 					"altitude": 0.0,
 					"latitude": 37.81479,
 					"longitude": -122.44880152,					
-					"$source": "demo.0183./dev/ttyUSB0.GP.RMC",
+					"$source": "0183./dev/ttyUSB0.GP.RMC",
 					"timestamp": "2017-05-16T05:15:50.007Z"
 				},
 				"headingMagnetic": {
 					"value": 5.55014702,
-					"$source": "demo.0183./dev/ttyUSB0.II.HDM",
+					"$source": "0183./dev/ttyUSB0.II.HDM",
 					"timestamp": "2017-05-16T05:15:54.006Z"
 				}
 			},

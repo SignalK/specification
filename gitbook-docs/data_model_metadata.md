@@ -10,7 +10,7 @@ Currently the Signal K server has a set of specific alarm keys. These grow over 
 
 ### Metadata for a Data Value
 
-Each data key should have an optional ```.meta``` object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.
+Each data key should have an optional `.meta` object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.
 ```json
 {
   "displayName": "Tachometer, Engine 1",
@@ -29,7 +29,7 @@ Each data key should have an optional ```.meta``` object. This holds data in a s
 ```
 Since the settings object is always the same, the tachometer can now limit its range, and display green, yellow, and red sectors. The generic gauge can now perform this role, with correct labels etc.
 
-The alarms problem is also improved, as the server can run a background process to monitor any key that has a ```.meta``` object, and raise a generic alarm event. By recursing the tree the alarm monitoring can find the source (engine1), giving the alarm context. See [[Alarm Handling]]
+The alarms problem is also improved, as the server can run a background process to monitor any key that has a `.meta` object, and raise a generic alarm event. By recursing the tree the alarm monitoring can find the source (engine1), giving the alarm context. See [[Alarm Handling]]
 
 The alarms functionality then becomes generic, and grows with the spec. This is may be the case for other functionality also.
 
@@ -42,9 +42,9 @@ See https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.jso
 
 ### Default Configuration
 
-Other than a few standard keys it is unlikely that the ```.meta``` can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.
+Other than a few standard keys it is unlikely that the `.meta` can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.
 
-It is probably possible to have profiles that set a range of default ```.meta```, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.
+It is probably possible to have profiles that set a range of default `.meta`, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.
 
 ### Alarm Management
 
