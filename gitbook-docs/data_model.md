@@ -12,48 +12,89 @@ The simplest format is the full format, which is the complete Signal K data mode
 
 ```json
 {
-  "vessels": {
-    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
-      "version": "0.1",
-      "name": "motu",
-      "mmsi": "2345678",
-      "source": "self",
-      "timezone": "NZDT",
-      "navigation": {
-        "state": {
-          "value": "sailing",
-          "source": "self",
-          "timestamp": "2014-03-24T00:15:41Z"
-        },
-        "headingTrue": {
-          "value": 2.3114,
-          "$source": "nmea0183-1.II",
-          "sentence": "HDT",
-          "timestamp": "2014-03-24T00:15:41Z"
-        },
-        "speedThroughWater": {
-          "value": 2.556,
-          "$source": "n2k-1.160",
-          "pgn": 128259,
-          "timestamp": "2014-03-24T00:15:41Z"
-        },
-        "position": {
-          "longitude": 23.53885,
-          "latitude": 60.0844,
-          "$source": "nmea0183-2.GP",
-          "timestamp": "2014-03-24T00:15:42Z",
-          "sentence": "GLL"
-        }
-      }
-    }
-  }
+	"vessels": {
+		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+			"navigation": {
+				"speedOverGround": {
+					"value": 4.32693662,
+					"$source": "demo.0183./dev/ttyUSB0.GP.RMC",
+					"timestamp": "2017-05-16T05:15:50.007Z"
+				},
+				"position": {
+					"altitude": 0.0,
+					"latitude": 37.81479,
+					"longitude": -122.44880152,					
+					"$source": "demo.0183./dev/ttyUSB0.GP.RMC",
+					"timestamp": "2017-05-16T05:15:50.007Z"
+				},
+				"headingMagnetic": {
+					"value": 5.55014702,
+					"$source": "demo.0183./dev/ttyUSB0.II.HDM",
+					"timestamp": "2017-05-16T05:15:54.006Z"
+				}
+			},
+			"name": "Motu",
+			"uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c"
+		}
+	},
+	"sources": {
+		"0183": {
+			"/dev/ttyUSB0": {
+				"GP": {
+					"RMC": {
+						"label": "GPS-1",
+						"type": "NMEA0183",
+						"talker": "GP",
+						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+						"timestamp": "2017-04-03T06:14:04.451Z"
+					}
+				},
+				"II": {
+					"HDM": {
+						"label": "IMU",
+						"type": "NMEA0183",
+						"talker": "II",
+						"sentence": "$IIHDM,318,M*36",
+						"timestamp": "2017-05-16T05:15:54.006Z"
+					}
+				}
+			}
+		}
+	}
 }
 ```
 
-The message is UTF-8 ASCII text, and the top-level attribute(key) is always "vessels". Below this level is a list of
+The message is UTF-8 ASCII text, and the top-level attribute(key) is always `vessels`. Below this level is a list of
 vessels, identified by their MMSI number or a generated unique id. There may be many vessels, if data has been received
 from AIS or other sources. The format for each vessel's data uses the same standard Signal K structure, but may not have
 the same content, i.e. you won't have as much data about other vessels as you have about your own.
+
+The other top level attribute above is `sources`, which defines a list of sources the data was obtained from. In the `vessels` section are `$source` keys, these point to their relative location in the `sources` tree. This allows several  Signalk keys to reference the same `$source` which is convienient for protocols like NMEA0183 where many Signalk keys may arrive in a single NMEA message.
+
+Alternatively the source data may be embedded directly in place of the `$source` by using the `source` key:
+
+```json
+{
+	"vessels": {
+		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+			"navigation": {
+				"position": {
+					"altitude": 0.0,
+					"latitude": 37.81479,
+					"longitude": -122.44880152,
+					"source": {
+						"label": "GPS-1",
+						"type": "NMEA0183",
+						"talker": "GP",
+						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+						"timestamp": "2017-04-03T06:14:04.451Z"
+					},
+					"timestamp": "2017-05-16T05:15:50.007Z"
+				}
+		}
+	}
+}
+```
 
 The values are always SI units, and always the same units for the same key. I.e. `speedOverGround` is always meters per
 second, never knots, km/hr, or miles/hr. This means you never have to send 'units' with data, the units are specific for
@@ -76,16 +117,16 @@ data values.
 
 ```json
 {
-  "vessels": {
-    "self": {
-      "navigation": {
-        "position": {
-          "latitude": -41.2936935424,
-          "longitude": 173.2470855712
-        }
-      }
-    }
-  }
+	"vessels": {
+		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+			"navigation": {
+				"position": {
+					"latitude": 37.81479,
+					"longitude": -122.44880152
+				}
+			}
+		}
+	}
 }
 ```
 
@@ -93,21 +134,19 @@ Mix and match of misc values are also valid:
 
 ```json
 {
-  "vessels": {
-    "self": {
-      "navigation": {
-        "courseOverGroundTrue": {
-          "value": 11.9600000381
-        },
-        "position": {
-          "latitude": -41.2936935424,
-          "longitude": 173.2470855712,
-          "altitude": 0
-          }
-        }
-      }
-    }
-  }
+	"vessels": {
+		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+			"navigation": {
+				"speedOverGround": {
+					"value": 4.32693662
+				},
+				"position": {
+					"latitude": 37.81479,
+					"longitude": -122.44880152
+				}
+			}
+		}
+	}
 }
 ```
 
