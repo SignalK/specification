@@ -504,7 +504,7 @@
     },
     "log": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Log value",
+      "description": "Total distance traveled",
       "units": "m"
     },
     "trip": {
@@ -513,7 +513,7 @@
 			"properties": {
 				"log": {
 					"$ref": "../definitions.json#/definitions/numberValue",
-					"description": "Trip log value",
+					"description": "Total distance traveled on this trip / since trip reset",
 					"units": "m"
 				},
 				"lastReset": {
