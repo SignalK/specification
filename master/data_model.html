@@ -343,12 +343,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="keys/">
+        <li class="chapter " data-level="1.7" data-path="vesselsBranch.html">
             
-                <a href="keys/">
+                <a href="vesselsBranch.html">
             
                     
-                    Appendix A: Keys Reference
+                    Appendix A: Keys Reference (Vessel)
             
                 </a>
             
@@ -356,12 +356,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="changelog.html">
+        <li class="chapter " data-level="1.8" data-path="otherBranches.html">
+            
+                <a href="otherBranches.html">
+            
+                    
+                    Appendix B: Keys Reference (Others)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="changelog.html">
             
                 <a href="changelog.html">
             
                     
-                    Appendix B: Changelog
+                    Appendix C: Changelog
             
                 </a>
             
@@ -369,12 +382,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="versioning.html">
+        <li class="chapter " data-level="1.10" data-path="versioning.html">
             
                 <a href="versioning.html">
             
                     
-                    Appendix C: Versioning
+                    Appendix D: Versioning
             
                 </a>
             
@@ -470,7 +483,7 @@ vessels, identified by their MMSI number or a generated unique id. There may be 
 from AIS or other sources. The format for each vessel&apos;s data uses the same standard Signal K structure, but may not have
 the same content, i.e. you won&apos;t have as much data about other vessels as you have about your own.</p><p>The values are always SI units, and always the same units for the same key. I.e. <code>speedOverGround</code> is always meters per
 second, never knots, km/hr, or miles/hr. This means you never have to send &apos;units&apos; with data, the units are specific for
-a key, and defined in the data schema. A simplified version of the JSON schema with the units is available in <a href="keys/">Keys Reference in Appendix A</a>.</p><p>The ordering of keys is also not important, they can occur in any order. In this area Signal K follows normal JSON
+a key, and defined in the data schema. A simplified version of the JSON schema with the units is available in <a href="keys/index.md">Keys Reference in Appendix A</a>.</p><p>The ordering of keys is also not important, they can occur in any order. In this area Signal K follows normal JSON
 standards.</p><p>The full format is useful for backups, and for populating a secondary device, or just updating all data, a kind of &apos;this
 is the current state&apos; message.</p><p>However sending the full data model will be wasteful of bandwidth and CPU, when the majority of data does not change
 often. So we want to be able to send parts of the model (i.e. parts of the hierarchical tree).</p><h3 id="sparse-format"><a name="sparse-format" class="plugin-anchor" href="#sparse-format"><i class="fa fa-link" aria-hidden="true"></i></a>Sparse format</h3><p>The sparse format is the same as the full format but only contains a limited part of the tree. This can be one or more
@@ -606,7 +619,7 @@ There is an implementation of Signal K JSON streaming on an Arduino Mega (4K RAM
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2017-05-14T08:28:45.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-05-14T08:30:34.472Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Permissions","level":"1.3.4","depth":2,"path":"permissions.md","ref":"permissions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2017-05-14T08:32:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-06-07T04:48:34.362Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
