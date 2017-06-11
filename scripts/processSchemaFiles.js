@@ -220,6 +220,9 @@ class Parser {
 
       const keysWithMeta = {}
 
+      let vesselsDoc = ""
+      let othersDoc = ""
+
       let md = '# Signal K Data Model Reference\n\n'
 
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
@@ -242,6 +245,7 @@ class Parser {
           return
         }
 
+        md = fn.split('.')[0] === 'vessels' ? vesselsDoc : othersDoc
         const path = filenames[fn]
         const doc = this.docs[path]
 
@@ -316,19 +320,17 @@ class Parser {
         }
 
         md += '---\n\n'
+
+        if (fn.split('.')[0] === 'vessels') {
+          vesselsDoc = md
+        } else {
+          othersDoc = md
+        }
       })
 
       fs.writeFileSync(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
-
-      return fs.writeFile(path.join(this.options.output, 'index.md'), md, this.options.encoding).then(() => {
-        results.push({
-          path: '/',
-          name: 'index.md',
-          file: path.join(this.options.output, 'index.md')
-        })
-
-        return results
-      })
+      fs.writeFileSync(path.join(__dirname, '../gitbook-docs/vesselsBranch.md'), vesselsDoc)
+      fs.writeFileSync(path.join(__dirname, '../gitbook-docs/otherBranches.md'), othersDoc)
     })
 
     /*
