@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/steering.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/steering.json#",
   "description": "Schema describing the steering child-object of a vessel.",
   "title": "steering",
   "properties": {
@@ -25,81 +25,75 @@
         "state": {
           "type": "object",
           "description": "Autopilot state",
-
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "auto",
-                "standby",
-                "alarm",
-                "noDrift",
-                "wind",
-                "depthContour",
-                "route",
-                "directControl"
-
-              ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
             },
-
-            "timestamp": {
-              "description": "timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "auto",
+                    "standby",
+                    "alarm",
+                    "noDrift",
+                    "wind",
+                    "depthContour",
+                    "route",
+                    "directControl"
+                  ]
+                }
+              }
             }
-          }
+          ]
         },
 
         "mode": {
           "type": "object",
           "description": "Operational mode",
-          "properties": {
-            "value": {
-              "type": "string",
-              "enum": [
-                "powersave",
-                "normal",
-                "accurate"
-              ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
             },
-
-            "timestamp": {
-              "description": "Timestamp of the last update to this data",
-              "$ref": "../definitions.json#/definitions/timestamp"
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "powersave",
+                    "normal",
+                    "accurate"
+                  ]
+                }
+              }
             }
-          }
+          ]
         },
         "target": {
           "type": "object",
           "title": "target",
           "description": "Autopilot target",
           "properties": {
-            "angle": {
-              "description": "Target heading for autopilot, relative to magnetic North or Apparent wind +port -starboard",
+            "windAngleApparent": {
+              "description": "Target angle to steer, relative to Apparent wind +port -starboard",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
-    
-            "reference": {
-              "type": "object",
-              "description": "Current source of heading information",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "enum": [
-                    "compass",
-                    "wind",
-                    "gps"
-                  ]
-                },
-                "timestamp": {
-                  "description": "Timestamp of the last update to this data",
-                  "$ref": "../definitions.json#/definitions/timestamp"
-                }
-              }
+            "headingTrue": {
+              "description": "Target heading for autopilot, relative to North",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
+            "headingMagnetic": {
+              "description": "Target heading for autopilot, relative to Magnetic North",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
             }
+
           }
         },
-      
+
 
         "deadZone": {
           "description": "Dead zone to ignore for rudder corrections",

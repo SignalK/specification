@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/propulsion.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/propulsion.json#",
   "title": "propulsion",
   "description": "An engine, named by a unique name within this vessel",
   "patternProperties": {
@@ -90,10 +90,12 @@
         },
         "transmission": {
           "type": "object",
-          "properties": {
+          "description": "The transmission (gear box) of the named engine",
+		      "properties": {
             "gear": {
               "type": "object",
-              "properties": {
+              "description": "Currently selected gear the engine is in i.e. Forward, Reverse, etc.",
+			        "properties": {
                 "value": {
                   "enum": [
                     "Forward",
@@ -123,9 +125,11 @@
         },
         "drive": {
           "type": "object",
-          "properties": {
+          "description": "Data about the engine's drive.",
+		      "properties": {
             "type": {
-              "enum": [
+              "description": "The type of drive the boat has i.e Outboard, shaft, jet, etc.",
+			        "enum": [
                 "saildrive",
                 "shaft",
                 "outboard",
@@ -145,7 +149,8 @@
               "units": "rad"
             },
             "propeller": {
-              "pitch ": {
+              "description": "Data about the drive's propeller (pitch and slip)",
+			        "pitch ": {
                 "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "m"
@@ -160,7 +165,8 @@
         },
         "fuel": {
           "type": "object",
-          "properties": {
+          "description": "Data about the engine's Fuel Supply",
+		      "properties": {
             "type": {
               "description": "Fuel type",
               "enum": [

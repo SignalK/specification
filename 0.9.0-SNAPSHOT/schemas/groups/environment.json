@@ -1,23 +1,49 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/environment.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/environment.json#",
   "description": "Schema describing the environmental child-object of a Vessel.",
   "title": "environment",
   "definitions": {
-    "objectWithTemperature": {
+    "zoneObject": {
       "type": "object",
       "properties": {
         "temperature": {
           "description": "Temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
-        }
+        },
+        "pressure": {
+					"description": "Pressure in zone",
+					"units": "Pa",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"relativeHumidity": {
+					"description": "Relative humidity in zone",
+					"units": "ratio",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"dewPoint": {
+					"description": "Dewpoint in zone",
+					"units": "K",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"airDensity": {
+					"description": "Air density in zone",
+					"units": "kg/m3",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
+				"illuminance": {
+					"description": "Illuminance in zone",
+					"units": "Lux",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				}
       }
     }
   },
   "properties": {
     "outside": {
+      "description": "Environmental conditions outside of the vessel's hull",
       "type": "object",
       "properties": {
         "temperature": {
@@ -54,11 +80,17 @@
           "description": "Current outside air relative humidity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
+        },
+        "illuminance": {
+          "description": "Current outside ambient light flux.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Lux"
         }
       }
     },
     "inside": {
       "type": "object",
+      "description": "Environmental conditions inside the vessel's hull",
       "properties": {
         "temperature": {
           "description": "Current inside air temperature",
@@ -72,30 +104,31 @@
         },
         "engineRoom": {
           "description": "Current engine room air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "mainCabin": {
           "description": "Current main cabin air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
 
         "refrigerator": {
           "description": "Current refrigerator temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "freezer": {
           "description": "Current freezer temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         },
         "heating": {
           "description": "Current heating temperature",
-          "$ref": "#/definitions/objectWithTemperature"
+          "$ref": "#/definitions/zoneObject"
         }
       }
     },
 
     "water": {
       "type": "object",
+      "description": "Environmental conditions of the water that the vessel is sailing in",
       "properties": {
         "temperature": {
           "description": "Current water temperature",
@@ -106,15 +139,7 @@
           "description": "Water salinity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
-        },
-        "liveWell": {
-          "description": "Current livewell temperature",
-          "$ref": "#/definitions/objectWithTemperature"
-        },
-        "baitWell": {
-          "description": "Current baitwell air temperature",
-          "$ref": "#/definitions/objectWithTemperature"
-        }        
+        }
       }
     },
 
@@ -290,7 +315,7 @@
 
     "time": {
       "type": "object",
-      "description": "A time reference onboard.",
+      "description": "A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)",
       "properties": {
         "millis": {
           "type": "number",
@@ -298,13 +323,21 @@
           "example": 1449648657735,
           "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
         },
-        "timezone": {
+        "timezoneOffset": {
           "type": "number",
           "title": "Timezone offset",
           "example": -400,
           "maximum": 1300,
           "minimum": -1300,
-          "description": "Timezone offset in hours and minutes (-)hhmm"
+          "description": "Onboard timezone offset from UTC in hours and minutes (-)hhmm. +ve means east of Greenwich. For use by UIs",
+          "default": 0
+        },
+        "timezoneRegion":{
+          "type": "string",
+          "title": "IANA Timezone national region",
+          "example": "Europe/Zurich",
+          "description": "Onboard timezone offset as listed in the IANA timezone database (tz database)",
+          "pattern": "^[a-zA-Z0-9\/+-]+$"
         },
         "timestamp": {
           "$ref": "../definitions.json#/definitions/timestamp"
@@ -313,6 +346,9 @@
         "source": {
           "$ref": "../definitions.json#/definitions/source"
         }
+      },
+      "dependencies": {
+        "timezoneRegion": ["timezoneOffset"]
       }
     },
     "mode": {

@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/sails.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/sails.json#",
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
 

@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/sources.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/sources.json#",
   "title": "sources",
   "description": "Metadata about the sources, eg. buses and connected sensors",
   "patternProperties": {
@@ -12,6 +12,20 @@
           "anyOf": [
             {
               "properties": {
+              	 "ais": {
+                  "description": "AIS data",
+                  "type": "object",
+                  "properties": {
+										"aisType": {
+												"type": "number",
+												"multipleOf" : 1,
+												"minimum": 1,
+												"maximum": 27,
+												"description": "AIS Message Type",
+												"example":"15"
+										}
+									}
+								 },
                 "talker": {
                   "description": "NMEA 0183 talker id, the GP in $GPRMC..",
                   "type": "string"
@@ -21,7 +35,7 @@
                   "type": "object",
                   "patternProperties": {
                     "^[A-Z][A-Z][A-Z]$": {
-                      "$ref": "#/definitions/timestamp"
+                      "$ref": "../definitions.json#/definitions/timestamp"
                     }
                   }
                 },
@@ -37,7 +51,7 @@
                       "description": "NMEA 2000 pgn number",
                       "patternProperties": {
                         "[0-9]*": {
-                          "$ref": "#/definitions/timestamp"
+                          "$ref": "../definitions.json#/definitions/timestamp"
                         }
                       }
                     },

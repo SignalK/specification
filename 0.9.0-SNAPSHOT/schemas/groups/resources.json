@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/resources.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/resources.json#",
   "title": "resources",
   "description": "Resources to aid in navigation and operation of the vessel",
   "properties": {
@@ -50,6 +50,22 @@
               "type": "integer",
               "description": "The scale of the chart, the larger number from 1:200000"
             },
+            "chartLayers": {
+              "type": "array",
+              "description": "If the chart format is WMS, the layers enabled for the chart.",
+              "items": {
+                "type": "string",
+                "description": "Identifier for the layer."
+              }
+            },
+            "bounds": {
+              "type": "array",
+              "description": "The bounds of the chart. An array containing the position of the upper left corner, and the lower right corner. Useful when the chart isn't inherently geo-referenced.",
+              "items": {
+                "$ref": "../definitions.json#/definitions/position",
+                "description": "Position of a corner of the chart"
+              }
+            },
             "chartFormat": {
               "type": "string",
               "description": "The format of the chart",
@@ -65,6 +81,7 @@
                 "geojson",
                 "gpx",
                 "tms",
+                "wms",
                 "S-57",
                 "S-63",
                 "svg",
@@ -136,7 +153,7 @@
                       ]
                     },
                     "coordinates": {
-                      "$ref": "#/definitions/lineString"
+                      "$ref": "../external/geojson/geometry.json#/definitions/lineString"
                     }
                   }
                 },
@@ -252,7 +269,7 @@
                           ]
                         },
                         "coordinates": {
-                          "$ref": "#/definitions/polygon"
+                          "$ref": "../external/geojson/geometry.json#/definitions/polygon"
                         }
                       }
                     },
@@ -267,7 +284,7 @@
                         "coordinates": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/definitions/polygon"
+                            "$ref": "../external/geojson/geometry.json#/definitions/polygon"
                           }
                         }
                       }

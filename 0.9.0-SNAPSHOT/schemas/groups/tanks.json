@@ -1,12 +1,13 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/tanks.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/tanks.json#",
   "description": "A tank, named by a unique identifier",
   "definitions": {
     "tankCollection": {
       "patternProperties": {
         ".*": {
+          "description": "Tank, one or many, within the vessel",
           "name": "Tank",
           "properties": {
             "name": {
@@ -21,9 +22,12 @@
                 "petrol",
                 "fresh water",
                 "greywater",
+                "blackwater",
                 "holding",
                 "lpg",
                 "diesel",
+                "liveWell",
+                "ballast",
                 "rum"
               ]
             },
@@ -44,6 +48,25 @@
               "description": "Volume of fluid in tank",
               "units": "m3",
               "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "pressure": {
+              "description": "Pressure of contents in tank, especially LPG/gas",
+              "units": "Pa",
+              "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "temperature": {
+              "description": "Temperature of tank, especially cryogenic or LPG/gas",
+              "units": "K",
+              "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "viscosity": {
+              "description": "Viscosity of the fluid, if applicable",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "Pa/s"
+            },
+            "extinguishant": {
+              "description": "The preferred extinguishant to douse a fire in this tank",
+              "$ref": "../definitions.json#/definitions/stringValue"
             }
           }
         }
@@ -52,24 +75,35 @@
   },
   "properties": {
     "freshWater": {
+      "description": "Fresh water tank (drinking)",
       "$ref": "#/definitions/tankCollection"
     },
     "wasteWater": {
+      "description": "Waste water tank (grey water)",
       "$ref": "#/definitions/tankCollection"
     },
     "blackWater": {
-      "$ref": "#/definitions/tankCollection"
-    },
-    "fuelWater": {
+      "description": "Black water tank (sewage)",
       "$ref": "#/definitions/tankCollection"
     },
     "fuel": {
+      "description": "Fuel tank (petrol or diesel)",
       "$ref": "#/definitions/tankCollection"
     },
     "lubrication": {
+      "description": "Lubrication tank (oil or grease)",
       "$ref": "#/definitions/tankCollection"
     },
     "liveWell": {
+      "description": "Live tank (fish)",
+      "$ref": "#/definitions/tankCollection"
+    },
+    "gas": {
+      "description": "Lpg/propane and other gases",
+      "$ref": "#/definitions/tankCollection"
+    },
+    "ballast": {
+      "description": "Ballast tanks",
       "$ref": "#/definitions/tankCollection"
     }
   }

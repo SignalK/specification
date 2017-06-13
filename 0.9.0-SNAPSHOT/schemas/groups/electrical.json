@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/electrical.json#",
+  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/electrical.json#",
   "description": "Schema describing the electrical child-object of a Vessel.",
   "title": "Electrical Properties",
   "type": "object",
@@ -51,13 +51,14 @@
 
         "voltage": {
           "type": "object",
+          "description": "Voltage measured as close as possible to the device",
           "units": "V",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
           }, {
             "properties": {
               "ripple": {
-                "description": "Ripple voltage",
+                "description": "DC Ripple voltage",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "V"
               },
@@ -101,6 +102,7 @@
 
         "current": {
           "type": "object",
+          "description": "Current flowing out (+ve) or in (-ve) to the device",
           "units": "A",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
@@ -140,6 +142,7 @@
 
         "temperature": {
           "type": "object",
+          "description": "Temperature measured within or on the device",
           "title": "temperature",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
@@ -241,6 +244,7 @@
 
   "properties": {
     "batteries": {
+      "description": "Data about the vessel's batteries",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -248,8 +252,6 @@
           "description": "Batteries, one or many, within the vessel",
 
           "allOf": [{
-            "$ref": "#/definitions/dcQuantities"
-          }, {
             "properties": {
               "meta": {
                 "allOf": [{
@@ -297,6 +299,7 @@
 
               "capacity": {
                 "type": "object",
+                "description": "Data about the battery's capacity",
                 "title": "capacity",
                 "properties": {
                   "nominal": {
@@ -362,12 +365,15 @@
                 "units": "C"
               }
             }
+          }, {
+              "$ref": "#/definitions/dcQuantities"
           }]
         }
       }
     },
 
     "inverters": {
+      "description": "Data about the Inverter that has both DC and AC quantities",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -405,7 +411,7 @@
                 },
 
                 "$source": {
-                  "$ref": "../definitions.json#/definitions/$source"
+                  "$ref": "../definitions.json#/definitions/sourceRef"
                 }
               }
             }
@@ -414,6 +420,7 @@
       }
     },
     "chargers": {
+      "description": "Data about the Charger that has both DC and AC quantities",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -451,6 +458,7 @@
               },
               "mode": {
                 "type": "object",
+                "description": "Charging mode i.e. float, overcharge, etc.",
                 "properties": {
                   "value": {
                     "enum": [
@@ -481,13 +489,15 @@
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
-          "title": "AC bus",
+          "title": "AC Bus keyed by instance id",
+          "description": "AC Bus, one or many, within the vessel",
           "properties": {
             "meta": {
               "$ref": "#/definitions/identity"
             },
             "phase": {
               "type": "object",
+              "description": "Single or A,B or C in 3 Phase systems ",
               "patternProperties": {
                 "(single)|([A-C])": {
                   "$ref": "#/definitions/acQuantities"
