@@ -41,6 +41,10 @@
           "description": "NMEA2000 pgn of the source message",
           "example":"130312"
         },
+        "instance": {
+					"type": "string",
+					"description": "NMEA2000 instance value of the source message"
+        },
         "sentence": {
           "type": "string",
           "description": "Sentence type of the source NMEA0183 sentence, $GP[RMC],092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
@@ -58,9 +62,6 @@
           "maximum": 27,
           "description": "AIS Message Type",
           "example":"15"
-        },
-        "instance": {
-					"type": "string"
         }
       }
     },
@@ -68,7 +69,7 @@
     "sourceRef": {
       "type": "string",
       "pattern": "^[A-Za-z0-9-_.]*$",
-      "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]",
+      "description": "Reference to the source under /sources. A dot separated path to the data. eg [type].[bus].[device]",
       "example":"NMEA0183.COM1.GP"
     },
 
