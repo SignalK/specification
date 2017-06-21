@@ -78,6 +78,11 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
+        "intakeManifoldTemperature": {
+          "description": "Intake manifold temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
         "engineLoad": {
           "description": "Engine load ratio, 0<=ratio<=1, 1 is 100%",
           "$ref": "../definitions.json#/definitions/numberValue",
