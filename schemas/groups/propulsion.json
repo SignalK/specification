@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/0.9.0-SNAPSHOT/groups/propulsion.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/propulsion.json#",
   "title": "propulsion",
   "description": "An engine, named by a unique name within this vessel",
   "patternProperties": {
@@ -77,6 +77,11 @@
           "description": "Engine boost (turbo, supercharger) pressure",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
+        },
+        "intakeManifoldTemperature": {
+          "description": "Intake manifold temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
         },
         "engineLoad": {
           "description": "Engine load ratio, 0<=ratio<=1, 1 is 100%",

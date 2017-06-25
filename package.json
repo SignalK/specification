@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
-    "schema:version": "replace 'https://signalk.org/specification/schemas/[^/]+/' 'https://signalk.org/specification/schemas/'$npm_package_version'/' . -r --include='*.j*' --exclude='package.json' ",
+    "schema:version": "replace 'https://signalk.org/specification/[^/]+/schemas/' 'https://signalk.org/specification/'$npm_package_version'/schemas/' . -r --include='*.j*' --exclude='package.json' ",
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && mkdir $npm_package_version && git add $npm_package_version && git mv schemas/ $npm_package_version/ && git commit -m 'Schemas from master' && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:prep": "gitbook install gitbook-docs && replace _version_ $npm_package_version gitbook-docs/*",
