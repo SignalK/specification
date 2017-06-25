@@ -28,7 +28,12 @@
         "material": "dacron",
         "brand": "WB Sails",
         "area": 33.8,
-        "active": true
+        "active": true,
+        "reducedState": {
+          "Reefable": {
+            "reefs" : 0
+          }
+        }
       },
       "genoa": {
         "name": "Cruising genoa",
@@ -36,7 +41,12 @@
         "material": "dacron",
         "brand": "North Sails",
         "area": 44.6,
-        "active": true
+        "active": true,
+        "reducedState": {
+          "Furlable": {
+            "furledRatio" : 0
+          }
+        }
       }
     }
   }

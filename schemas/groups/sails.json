@@ -58,31 +58,31 @@
 							"units": "m/s",
 							"default": 666
 						},
-						"state": {
+						"reducedState": {
 							"oneOf": [{
-									"title": "Reefable",
-									"properties": {
-										"reefs": {
-											"type": "number",
-											"description": "Number of reefs set, 0 means full",
-											"default": 0
+								"properties":{
+									"Reefable":{
+										"properties": {
+											"reefs": {
+												"type": "number",
+												"description": "Number of reefs set, 0 means full",
+												"default": 0
+											}
 										}
-									}
-
-								},
-								{
-									"title": "Furlable",
-									"properties": {
-										"furledRatio": {
-											"type": "number",
-											"description": "Ratio of sail reduction, 0 means full and 1 is completely furled in",
-											"default": 0
+									},
+									"Furlable":{
+										"properties": {
+											"furledRatio": {
+												"type": "number",
+												"description": "Ratio of sail reduction, 0 means full and 1 is completely furled in",
+												"default": 0
+											}
 										}
 									}
 								}
-
-							]
-						},
+							}
+						]
+					},
 						"timestamp": {
 							"$ref": "../definitions.json#/definitions/timestamp"
 						},
