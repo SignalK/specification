@@ -91,6 +91,11 @@
         "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
       },
+      "intakeManifoldTemperature": {
+        "value": 345,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
       "engineLoad": {
         "value": 200,
         "timestamp": "2014-08-15T19:00:15.402Z",
