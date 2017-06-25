@@ -211,19 +211,33 @@
     "pointOfApproach":  {
       "type": "object",
       "description": "Calculated values for other vessels, e.g. from AIS",
+      "allOf": [{
+        "$ref": "../definitions.json#/definitions/commonValueFields"
+      }, {
       "properties":  {
         "closest":  {
           "description": "Closest Point of Approach (CPA), distance between own vessel and other vessel, based on current speeds, headings and positions",
+          "type": "number",
           "units": "m",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "example": 31.2
         },
-        "timeOfClosest": {
+        "timeToClosest": {
           "description": "Time to Closest Point of Approach (TCPA), between own vessel and other vessel, based on current speeds, headings and positions",
+          "type": "number",
           "units": "s",
-          "$ref": "../definitions.json#/definitions/numberValue"
+          "example": 312
+        },
+        "source": {
+          "description": "Source of this data",
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "timestamp": {
+          "description": "Timestamp of the last update to this data",
+          "$ref": "../definitions.json#/definitions/timestamp"
         }
       }
-    },
+    }]
+  },
     "racing": {
       "type": "object",
       "description": "Specific navigational data related to yacht racing.",
