@@ -208,20 +208,20 @@
       "description": "Course information computed with Great Circle",
       "$ref": "#/definitions/course"
     },
-    "pointOfApproach":  {
+    "closestApproach":  {
       "type": "object",
       "description": "Calculated values for other vessels, e.g. from AIS",
       "allOf": [{
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }, {
       "properties":  {
-        "closest":  {
+        "distance":  {
           "description": "Closest Point of Approach (CPA), distance between own vessel and other vessel, based on current speeds, headings and positions",
           "type": "number",
           "units": "m",
           "example": 31.2
         },
-        "timeToClosest": {
+        "timeTo": {
           "description": "Time to Closest Point of Approach (TCPA), between own vessel and other vessel, based on current speeds, headings and positions",
           "type": "number",
           "units": "s",

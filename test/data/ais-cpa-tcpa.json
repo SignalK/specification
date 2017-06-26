@@ -8,12 +8,10 @@
           "timestamp": "2014-08-15T18:00:00.755Z",
           "pgn": 130577,
           "$source": "sourceLabel.160"
-        }
-      },
-      "navigation": {
-        "pointOfApproach":  {
-          "closest": 250,
-          "timeToClosest": 45,
+        },
+        "closestApproach":  {
+          "distance": 250,
+          "timeTo": 45,
           "$source": "foo.bar",
           "timestamp": "2014-08-15T19:00:15.404Z"
         }
