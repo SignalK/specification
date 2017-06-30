@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should()
-chai.use(require('../index.js').chaiModule);
+chai.use(require('../dist/').chaiModule);
 const FullSignalK = require('../src/fullsignalk')
 
 describe('Sources in the full tree', function() {

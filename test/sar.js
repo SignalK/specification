@@ -1,6 +1,6 @@
 var chai = require('chai');
 chai.Should();
-chai.use(require('../index.js').chaiModule);
+chai.use(require('../dist/').chaiModule);
 
 describe('SAR in the full tree - basic position', function() {
   it("Sample full tree is valid", function() {
