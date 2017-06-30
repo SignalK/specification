@@ -1,6 +1,6 @@
 var chai = require('chai');
 chai.Should();
-chai.use(require('../index.js').chaiModule);
+chai.use(require('../dist/').chaiModule);
 var _ = require('lodash')
 
 describe('Identies in the full tree', function() {

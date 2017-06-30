@@ -1,6 +1,6 @@
 var chai = require('chai');
 chai.Should();
-chai.use(require('../index.js').chaiModule);
+chai.use(require('../dist/').chaiModule);
 
 describe('Lux in the full tree - N2K', function() {
   it("Sample full tree is valid", function() {

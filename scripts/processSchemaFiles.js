@@ -328,7 +328,7 @@ class Parser {
         }
       })
 
-      fs.writeFileSync(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
+      fs.writeFileSync(path.join(__dirname, '../src/keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
       fs.writeFileSync(path.join(__dirname, '../gitbook-docs/vesselsBranch.md'), vesselsDoc)
       fs.writeFileSync(path.join(__dirname, '../gitbook-docs/otherBranches.md'), othersDoc)
     })

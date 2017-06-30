@@ -16,37 +16,37 @@
  */
 
 var _ = require('lodash');
-var FullSignalK = require('./src/fullsignalk');
+var FullSignalK = require('./fullsignalk');
 
   var subSchemas = {
-    'notifications': require('./schemas/groups/notifications.json'),
-    'communication': require('./schemas/groups/communication.json'),
-    'design': require('./schemas/groups/design.json'),
-    'navigation': require('./schemas/groups/navigation.json'),
-    'electrical': require('./schemas/groups/electrical.json'),
-    'environment': require('./schemas/groups/environment.json'),
-    'performance': require('./schemas/groups/performance.json'),
-    'propulsion': require('./schemas/groups/propulsion.json'),
-    'resources': require('./schemas/groups/resources.json'),
-    'sails': require('./schemas/groups/sails.json'),
-    'sensors': require('./schemas/groups/sensors.json'),
-    'sources': require('./schemas/groups/sources.json'),
-    'steering': require('./schemas/groups/steering.json'),
-    'tanks': require('./schemas/groups/tanks.json')
+    'notifications': require('../schemas/groups/notifications.json'),
+    'communication': require('../schemas/groups/communication.json'),
+    'design': require('../schemas/groups/design.json'),
+    'navigation': require('../schemas/groups/navigation.json'),
+    'electrical': require('../schemas/groups/electrical.json'),
+    'environment': require('../schemas/groups/environment.json'),
+    'performance': require('../schemas/groups/performance.json'),
+    'propulsion': require('../schemas/groups/propulsion.json'),
+    'resources': require('../schemas/groups/resources.json'),
+    'sails': require('../schemas/groups/sails.json'),
+    'sensors': require('../schemas/groups/sensors.json'),
+    'sources': require('../schemas/groups/sources.json'),
+    'steering': require('../schemas/groups/steering.json'),
+    'tanks': require('../schemas/groups/tanks.json')
   };
 
 
 function getTv4() {
   var tv4 = require('tv4');
-  var vesselSchema = require('./schemas/vessel.json');
+  var vesselSchema = require('../schemas/vessel.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/vessel.json', vesselSchema);
-  var aircraftSchema = require('./schemas/aircraft.json');
+  var aircraftSchema = require('../schemas/aircraft.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/aircraft.json', aircraftSchema);
-  var atonSchema = require('./schemas/aton.json');
+  var atonSchema = require('../schemas/aton.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/aton.json', atonSchema);
-  var sarSchema = require('./schemas/sar.json');
+  var sarSchema = require('../schemas/sar.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/sar.json', sarSchema);
-  var definitions = require('./schemas/definitions.json');
+  var definitions = require('../schemas/definitions.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/definitions.json', definitions);
 
   for (var schema in subSchemas) {
@@ -54,7 +54,7 @@ function getTv4() {
   }
 
   // HACK! two different IDs should not point to the same schema
-  var externalGeometry = require('./schemas/external/geojson/geometry.json');
+  var externalGeometry = require('../schemas/external/geojson/geometry.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
@@ -64,7 +64,7 @@ function getTv4() {
 }
 
 function validateFull(tree) {
-  var signalkSchema = require('./schemas/signalk.json');
+  var signalkSchema = require('../schemas/signalk.json');
 
   var tv4 = getTv4();
   var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
@@ -77,8 +77,8 @@ function validateFull(tree) {
 
 function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
-  var deltaSchema = require('./schemas/delta.json');
-  var definitions = require('./schemas/definitions.json');
+  var deltaSchema = require('../schemas/delta.json');
+  var definitions = require('../schemas/definitions.json');
   tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/definitions.json', definitions);
 
   if (ignoreContext) {
@@ -90,7 +90,7 @@ function validateDelta(delta, ignoreContext) {
 
 function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
-  var schema = require('./schemas/' + schemaName);
+  var schema = require('../schemas/' + schemaName);
   var valid = tv4.validateResult(msg,schema, true, true);
   return valid;
 }
@@ -212,6 +212,7 @@ module.exports.deltaToFull = function(delta) {
 }
 
 function fillIdentity(full) {
+  let identity
   for (identity in full.vessels) {
     fillIdentityField(full.vessels[identity], identity);
     //fill arbitrarily the last id as self, used in tests
@@ -266,7 +267,7 @@ module.exports.chaiModule = chaiAsPromised;
 module.exports.i18n = require('./i18n/');
 module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
-module.exports.units = require('./schemas/definitions').definitions.units;
+module.exports.units = require('../schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata');
 module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";

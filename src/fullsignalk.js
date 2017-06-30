@@ -16,7 +16,7 @@
  */
 
 var _ = require('lodash');
-var signalkSchema = require('../');
+var signalkSchema = require('./');
 var getId;
 var debug = require('debug')('signalk:fullsignalk');
 
