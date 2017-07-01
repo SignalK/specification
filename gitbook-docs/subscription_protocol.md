@@ -83,17 +83,17 @@ The following are optional, included above only for example as it uses defaults 
 
 You can subscribe to multiple data keys multiple times, from multiple apps or devices. Each app or device simply subscribes to the data it requires, and the server and/or client implementation may combine subscriptions to avoid duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum connections necessary, for instance one websocket connection shared bewteen an instrument panel with many gauges, rather then one websocket connection per gauge.
 
-####Multiple value handling in subscriptions
+#### Multiple value handling in subscriptions
 
 A subscription to a key is for all the updates to that key. If there are multiple sources generating data for that key the client will get all their updates.
 
 If a client wants only the values of a single source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
 
-####Single use, or intermittent data
+#### Single use, or intermittent data
 
 When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client is http capable the REST api is a good choice, or use `get/list/put` messages over websockets or tcp.
 
-####GET/PUT/LIST variants
+#### GET/PUT/LIST variants
 
 The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a json result for the requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.
 ```json
