@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/definitions.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
   "definitions": {
@@ -101,15 +101,15 @@
           "description": "Volume in cubic meters"
         },
         "m3/s": {
-          "display": "m3/s",
+          "display": "m\u00b3/s",
           "quantity": "Flow",
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
         "kg/m3": {
-          "display": "kg/m3",
+          "display": "kg/m\u00b3",
           "quantity": "Density",
-          "quantityDisplay": "kg/m3",
+          "quantityDisplay": "kg/m\u00b3",
           "description": "Density in kg per cubic meters"
         },
         "deg": {

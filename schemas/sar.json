@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/aton.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/aton.json#",
   "description": "An object describing an individual SAR beacon, eg EPIRB or transponser. It should be an object in sar, named using MMSI or a UUID",
   "title": "Search and rescue beacons",
   "anyOf": [

@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/environment.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/environment.json#",
   "description": "Schema describing the environmental child-object of a Vessel.",
   "title": "environment",
   "definitions": {

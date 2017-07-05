@@ -1,4 +1,4 @@
-#Getting Started in Developing with Signal K
+# Getting Started in Developing with Signal K
 
 * [Example HTML5 Applications](https://github.com/SignalK/signalk-server-node/tree/master/public/examples)
 * [Signal K JavaScript Client](https://github.com/SignalK/signalk-js-client)

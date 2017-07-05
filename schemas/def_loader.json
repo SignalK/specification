@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/def_loader.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/def_loader.json#",
   "title": "def_loader",
   "description": "Nasty hack to get the definitions loaded first, so they resolve nicely",
 

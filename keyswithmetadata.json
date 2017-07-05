@@ -246,11 +246,11 @@
   },
   "/vessels/*/environment/tide/heightHigh": {
     "units": "m",
-    "description": "Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)"
+    "description": "Next high tide height relative to lowest astronomical tide (LAT/Chart Datum)"
   },
   "/vessels/*/environment/tide/heightNow": {
     "units": "m",
-    "description": "The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)"
+    "description": "The current tide height relative to lowest astronomical tide (LAT/Chart Datum)"
   },
   "/vessels/*/environment/tide/heightLow": {
     "units": "m",
@@ -798,7 +798,7 @@
   },
   "/vessels/*/propulsion/RegExp/fuel/rate": {
     "units": "m3/s",
-    "description": "Fuel rate  of consumption"
+    "description": "Fuel rate of consumption"
   },
   "/vessels/*/propulsion/RegExp/fuel/economyRate": {
     "units": "m3/s",
