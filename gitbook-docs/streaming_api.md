@@ -10,7 +10,7 @@ With no query parameter the default is `self`, which will stream the data relate
 
 If a server does not support some streaming options listed in here it must respond with http status code `501 Not Implemented`.
 
-See [Subscription Protocol](subscription_protocol.html) for more details.
+See [Subscription Protocol](subscription_protocol.md) for more details.
 
 ##### Connection Hello
 
