@@ -178,16 +178,6 @@
             }
           }]
         }
-      },
-      "chargeTransferred": {
-        "type": "number",
-        "description": "Amount of charge produced(+) or consumed(-) since last report",
-        "units": "C"
-      },
-      "energyTransferred": {
-        "type": "number",
-        "description": "Amount of energy produced(+) or consumed(-) since last report",
-        "units": "J"
       }
     },
 
