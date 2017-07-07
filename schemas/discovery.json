@@ -57,9 +57,7 @@
           "description": "Array with the names of the servers capabilities",
           "items": [
             {
-              "type": "string",
-              "description": "Name of a capability.",
-              "example": "subscription"
+              "$ref": "definitions.json#/definitions/serverCapabilityEnum"
             }
           ]
         }

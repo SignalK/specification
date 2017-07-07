@@ -506,6 +506,17 @@
       ]
     },
 
+    "serverCapabilityEnum": {
+      "enum": [
+        "stream",
+        "subscription",
+        "auth",
+        "meta",
+        "ratelimit",
+        "command"
+      ]
+    },
+
     "meta": {
       "type": "object",
       "title": "Meta schema.",
