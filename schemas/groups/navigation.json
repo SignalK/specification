@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.github.io/specification/schemas/groups/navigation.json#",
+  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/navigation.json#",
   "description": "Schema describing the navigation child-object of a Vessel.",
   "title": "navigation",
   "definitions": {
