@@ -81,7 +81,7 @@
     },    
     "sources": {
       "description": "Metadata about the data sources; physical interface, address, protocol, etc.",
-      "$ref": "groups/sources.json#"
+      "$ref": "groups/sources.json#/definitions/sourcesBranch"
     },
     "resources": {
       "description": "Resources to aid in navigation and operation of the vessel including waypoints, routes, notes, etc.",

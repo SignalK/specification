@@ -15,7 +15,7 @@
     },
     "source": {
       "type": "object",
-      "description": "Source of data, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
+      "description": "Source of data in delta format, a record of where the data was received from. An object containing at least the properties defined in 'properties', but can contain anything beyond that.",
       "required": [
         "label"
       ],

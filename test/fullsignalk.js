@@ -71,7 +71,7 @@ describe('FullSignalK', function() {
     var aisDelta = {
       "updates": [{
         "source": {
-          "label": "",
+          "label": "N2K-1",
           "type": "NMEA2000",
           "pgn": 129038,
           "src": "43"
@@ -96,6 +96,7 @@ describe('FullSignalK', function() {
     var fullSignalK = new FullSignalK("urn:mrn:imo:mmsi:276799999", "mmsi");
     console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.addDelta(aisDelta);
+    console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.retrieve().should.be.validSignalK;
 
   })

@@ -8,18 +8,10 @@
     "N2K-1": {
     	"label": "N2K-1",
       "type": "NMEA2000",
-      "36": {
-        "n2k": {
-          "src": "36",
-          "pgns": {
-            "130312": "2017-01-25T00:10:05.123Z"
-          },
-          "uniqueId": 1722191,
-          "manufacturerId": 437,
-          "deviceClass": 70,
-          "deviceFunction": 140,
-          "productID": 1739
-        }
+      "36":{
+      	"other":{
+      		"id": "anything"
+      	}
       },
 			"manufacturerName": "Digital Yacht",
 			"productName": "N2NET NMEA 2000 AIS",
