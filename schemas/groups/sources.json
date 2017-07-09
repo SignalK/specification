@@ -8,7 +8,7 @@
   	 "sourcesBranch": {
 			"type": "object",
 			"patternProperties": {
-				"^((?!^0183$|^n2k$|^ais$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
+				"^((?!^0183$|^n2k$|^ais$|^i2c$|^other$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
 					"description": "This regex pattern is used for validation of the path of the source",
 					"oneOf": [
 						{
@@ -27,7 +27,7 @@
 			"type": "object",
 			
 			"patternProperties": {
-				"^((?!^0183$|^n2k$|^ais$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
+				"^((?!^0183$|^n2k$|^ais$|^i2c$|^other$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
 					"type": "object",
 					"oneOf": [
 							{
