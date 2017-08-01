@@ -106,15 +106,15 @@
               "$source": "foo.bar",
               "value": "two stage"
             },
-            "chargerMode": {
+            "chargerRole": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value":  "standalone"
             },
-            "mode": {
+            "chargingMode": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
-              "value": "charging float"
+              "value": "float"
             },
             "current": {
               "timestamp": "2014-08-15T19:00:15.402Z",
@@ -179,15 +179,15 @@
               "$source": "foo.bar",
               "value": "three stage"
             },
-            "chargerMode": {
+            "chargerRole": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value":  "slave"
             },
-            "mode": {
+            "chargingMode": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
-              "value": "charging bulk"
+              "value": "bulk"
             },
             "voltage": {
               "timestamp": "2014-08-15T19:00:15.402Z",
@@ -219,15 +219,15 @@
               "$source": "foo.bar",
               "value": "three stage"
             },
-            "chargerMode": {
+            "chargerRole": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value":  "standalone"
             },
-            "mode": {
+            "chargingMode": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
-              "value": "charging acceptance"
+              "value": "acceptance"
             },
             "voltage": {
               "timestamp": "2014-08-15T19:00:15.402Z",
@@ -252,15 +252,15 @@
               "$source": "foo.bar",
               "value": "three stage"
             },
-            "chargerMode": {
+            "chargerRole": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value":  "master"
             },
-            "mode": {
+            "chargingMode": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
-              "value": "charging bulk"
+              "value": "bulk"
             },
             "voltage": {
               "timestamp": "2014-08-15T19:00:15.402Z",

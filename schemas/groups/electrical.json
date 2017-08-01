@@ -277,9 +277,9 @@
             }
           ]
         },
-        "chargerMode": {
+        "chargerRole": {
           "type": "object",
-          "description": "Mode of charger",
+          "description": "How is charging source configured?  Standalone, or in sync with another charger?",
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
@@ -299,7 +299,7 @@
             }
           ]
         },
-        "mode": {
+        "chargingMode": {
           "type": "object",
           "description": "Charging mode i.e. float, overcharge, etc.",
           "allOf": [
@@ -311,11 +311,11 @@
                 "value": {
                   "type": "string",
                   "enum": [
-                    "charging bulk",
-                    "charging acceptance",
-                    "charging overcharge",
-                    "charging float",
-                    "charging equalize",
+                    "bulk",
+                    "acceptance",
+                    "overcharge",
+                    "float",
+                    "equalize",
                     "unknown",
                     "other"
                   ]
