@@ -7,21 +7,24 @@
           "method": ["sound", "visual"],
           "state": "emergency",
           "message": "Man overboard",
-          "timestamp": "2017-01-23T14:24:17Z"
+          "timestamp": "2017-01-23T14:24:17Z",
+          "$source": "a.suitable.path"
         },
         "navigation": {
           "position": {
             "method": ["sound"],
             "state": "warn",
             "message": "Position is more than 5 minutes old",
-            "timestamp": "2017-01-23T14:24:21Z"
+            "timestamp": "2017-01-23T14:24:21Z",
+            "$source": "a.suitable.path"
           },
           "course": {
             "crossTrackError": {
               "method": ["visual"],
               "state": "warn",
               "message": "Cross track error is more than 1Nm",
-              "timestamp": "2017-01-23T14:22:17Z"
+              "timestamp": "2017-01-23T14:22:17Z",
+              "$source": "a.suitable.path"
             },
             "nextPoint": {
               "distance": {
@@ -39,7 +42,9 @@
             "oilPressure": {
               "method": ["sound", "visual"],
               "state": "alarm",
-              "message": "Oil pressure is low"
+              "message": "Oil pressure is low",
+              "timestamp": "2017-01-23T14:22:17Z",
+              "$source": "a.suitable.path"
             }
           }
         }

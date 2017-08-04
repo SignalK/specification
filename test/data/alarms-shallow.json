@@ -7,7 +7,8 @@
           "method": ["sound", "visual"],
           "state": "alarm",
           "message": "Steering system failure",
-          "timestamp": "2017-01-23T14:24:17Z"
+          "timestamp": "2017-01-23T14:24:17Z",
+          "$source": "a.suitable.path"
         }
       }
     }
