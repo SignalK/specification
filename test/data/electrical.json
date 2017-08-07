@@ -5,22 +5,20 @@
       "electrical": {
         "batteries": {
           "house1": {
-            "meta": {
               "name": "House battery 1 (forward)",
-              "location": "Under forward bunk",
+              "location": "Lazarette",
               "manufacturer": {
-                "name": "MasterVolt",
-                "model": "AGM 12/130"
+                "name": "Dyno",
+                "model": "D85-29"
               },
-              "chemistry": "FLA"
-            },
+            "chemistry": "FLA",
             "temperature": {
               "value": 290,
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar"
             },
             "voltage": {
-              "value": 12.5,
+              "value": 14.13,
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
@@ -37,12 +35,12 @@
               }
             },
             "current": {
-              "value": 0.1,
+              "value": 124.2,
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar"
             },
             "capacity": {
-              "nominal": 2400,
+              "nominal": 61689600,
               "stateOfCharge": {
                 "value": 81,
                 "timestamp": "2014-08-15T19:00:15.402Z",
@@ -61,14 +59,13 @@
             }
           },
           "house2": {
-            "meta": {
-              "name": "House battery 2 (rear)",
-              "location": "Engine room",
-              "manufacturer": {
-                "name": "MasterVolt",
-                "model": "AGM 12/130"
-              }
-            },
+            "name": "House battery 2",
+            "location": "Engine room",
+            "manufacturer": {
+              "name": "MasterVolt",
+              "model": "AGM 12/130"
+             },
+            "chemistry": "AGM",
             "voltage": {
               "value": 12.8,
               "timestamp": "2014-08-15T19:00:15.402Z",
@@ -101,15 +98,23 @@
         },
         "chargers": {
           "main": {
-            "meta": {
-              "manufacturer": {
-                "name": "C-Tek"
-              },
-              "chargingAlgorithm": "two stage",
-              "chargerMode": "standalone"
+            "manufacturer": {
+              "name": "C-Tek"
             },
-            "mode": {
-              "value": "charging float"
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "two stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "standalone"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "float"
             },
             "current": {
               "timestamp": "2014-08-15T19:00:15.402Z",
@@ -120,11 +125,9 @@
         },
         "inverters": {
           "main": {
-            "meta": {
-              "location": "Under forward bunk",
-              "manufacturer": {
-                "name": "Xantrex"
-              }
+            "location": "Under forward bunk",
+            "manufacturer": {
+              "name": "Xantrex"
             },
             "dc": {
               "current": {
@@ -154,14 +157,131 @@
                 "$source": "foo.bar",
                 "value": 230
               }
+            },
+            "inverterMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "idle"
+            }
+          }
+        },
+        "alternators": {
+          "main": {
+            "location": "Mains - (house) alternator",
+            "manufacturer": {
+              "name": "Leece Neville + Arduino Alt Reg",
+              "model": "4870 + 0.3.6",
+              "URL":  "https://arduinoalternatorregulator.blogspot.com/"         
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "slave"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "bulk"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.13
+            },
+            "setpointVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.52
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 210.5
+            }
+          }
+        },
+        "solar": {
+          "port240": {
+            "location": "Port array",
+            "manufacturer": {
+              "name": "REC + Morningstar",
+              "model": "REC-240 + Tristar MPPT45"      
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "standalone"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "acceptance"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.3
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 12.2
+            }
+          },
+          "star240": {
+            "location": "Starbord array",
+            "manufacturer": {
+              "name": "REC + LibraSolar",
+              "model": "REC-240 + LibraSolar 25A"      
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "master"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "bulk"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.13
+            },
+            "setpointVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.52
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 13.7
             }
           }
         },
         "ac": {
           "utility1": {
-            "meta": {
-              "name": "Single phase shore power"
-            },
+              "name": "Single phase shore power",
             "phase": {
               "single": {
                 "frequency": {
@@ -188,9 +308,7 @@
             }
           },
           "utility3": {
-            "meta": {
-              "name": "Three phase shore power"
-            },
+            "name": "Three phase shore power",
             "phase": {
               "A": {
                 "frequency": {
