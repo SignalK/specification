@@ -228,7 +228,7 @@
 
         },
         "startLinePort": {
-          "description": "Position of starboard start mark",
+          "description": "Position of port start mark",
           "position": {
             "type": "object",
             "properties": {
@@ -271,10 +271,31 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "s"
         },
-        "distanceLayline": {
-          "description": "The current distance to the layline",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m"
+        "layline": {
+          "description": "The layline crossing the current course",
+          "distance":{
+            "description": "The current distance to the layline",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "m"
+          },
+          "time":{
+            "description": "The time to the layline at current speed and heading",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "s"
+          }
+        },
+        "oppositeLayline": {
+          "description": "The layline parallell to current course",
+          "distance":{
+            "description": "The current distance to the layline",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "m"
+          },
+          "time":{
+            "description": "The time to the layline at current speed and heading",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "s"
+          }
         }
       }
     },
