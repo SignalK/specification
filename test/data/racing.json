@@ -36,10 +36,29 @@
             "timestamp": "2014-08-15T19:00:15.402Z",
             "$source": "foo.bar"
           },
-          "distanceLayline": {
-            "value": 547,
-            "timestamp": "2014-08-15T19:00:15.402Z",
-            "$source": "foo.bar"
+          "layline": {
+            "distance":{
+              "value": 18,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            },
+            "time":{
+              "value": 15,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            }
+          },
+          "oppositeLayline": {
+            "distance":{
+              "value": 18,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            },
+            "time":{
+              "value": 15,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            }
           }
         }
       }
