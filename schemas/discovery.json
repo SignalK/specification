@@ -35,6 +35,25 @@
           }
         }
       }
+    },
+    "server": {
+      "type": "object",
+      "description": "Information about this server",
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "description": "The id of this server (signalk-server-node, iKommunicate, etc.)",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of this server",
+          "$ref": "definitions.json#/definitions/version"
+        }
+      }
     }
   }
 }
+  
