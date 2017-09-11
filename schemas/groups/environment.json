@@ -81,6 +81,11 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
+        "airDensity": {
+					"description": "Current outside air density",
+					"units": "kg/m3",
+					"$ref": "../definitions.json#/definitions/numberValue"
+				},
         "illuminance": {
           "description": "Current outside ambient light flux.",
           "$ref": "../definitions.json#/definitions/numberValue",
