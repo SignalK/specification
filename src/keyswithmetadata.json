@@ -783,7 +783,17 @@
     "description": "Time and Date from the GNSS Positioning System"
   },
   "/vessels/*/navigation/datetime/gnssTimeSource": {
-    "description": "Source of GNSS Date and Time"
+    "description": "Source of GNSS Date and Time",
+    "enum": [
+      "GPS",
+      "GLONASS",
+      "Galileo",
+      "Beidou",
+      "IRNSS",
+      "Radio Signal",
+      "Internet",
+      "Local clock"
+    ]
   },
   "/vessels/*/propulsion": {
     "description": "Engine data, each engine identified by a unique name i.e. Port_Engine"
@@ -867,7 +877,15 @@
     "description": "Data about the engine's drive."
   },
   "/vessels/*/propulsion/RegExp/drive/type": {
-    "description": "The type of drive the boat has i.e Outboard, shaft, jet, etc."
+    "description": "The type of drive the boat has i.e Outboard, shaft, jet, etc.",
+    "enum": [
+      "saildrive",
+      "shaft",
+      "outboard",
+      "jet",
+      "pod",
+      "other"
+    ]
   },
   "/vessels/*/propulsion/RegExp/drive/trimState": {
     "units": "ratio",
@@ -884,7 +902,14 @@
     "description": "Data about the engine's Fuel Supply"
   },
   "/vessels/*/propulsion/RegExp/fuel/type": {
-    "description": "Fuel type"
+    "description": "Fuel type",
+    "enum": [
+      "diesel",
+      "petrol",
+      "electric",
+      "coal/wood",
+      "other"
+    ]
   },
   "/vessels/*/propulsion/RegExp/fuel/used": {
     "units": "m3",
@@ -1132,7 +1157,13 @@
     "description": "Power factor"
   },
   "/vessels/*/electrical/inverters/RegExp/ac/powerFactorLagging": {
-    "description": "Lead/lag status."
+    "description": "Lead/lag status.",
+    "enum": [
+      "leading",
+      "lagging",
+      "error",
+      "not available"
+    ]
   },
   "/vessels/*/electrical/inverters/RegExp/ac/realPower": {
     "units": "W",
@@ -1490,7 +1521,13 @@
     "description": "Power factor"
   },
   "/vessels/*/electrical/ac/RegExp/phase/(single)|([A-C])/powerFactorLagging": {
-    "description": "Lead/lag status."
+    "description": "Lead/lag status.",
+    "enum": [
+      "leading",
+      "lagging",
+      "error",
+      "not available"
+    ]
   },
   "/vessels/*/electrical/ac/RegExp/phase/(single)|([A-C])/realPower": {
     "units": "W",
@@ -1510,7 +1547,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/mob/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/mob/message": {
     "description": "Message to display or speak"
@@ -1522,7 +1566,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/fire/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/fire/message": {
     "description": "Message to display or speak"
@@ -1534,7 +1585,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/sinking/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/sinking/message": {
     "description": "Message to display or speak"
@@ -1546,7 +1604,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/flooding/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/flooding/message": {
     "description": "Message to display or speak"
@@ -1558,7 +1623,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/collision/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/collision/message": {
     "description": "Message to display or speak"
@@ -1570,7 +1642,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/grounding/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/grounding/message": {
     "description": "Message to display or speak"
@@ -1582,7 +1661,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/listing/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/listing/message": {
     "description": "Message to display or speak"
@@ -1594,7 +1680,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/adrift/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/adrift/message": {
     "description": "Message to display or speak"
@@ -1606,7 +1699,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/piracy/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/piracy/message": {
     "description": "Message to display or speak"
@@ -1618,7 +1718,14 @@
     "description": "Method to use to raise notifications"
   },
   "/vessels/*/notifications/abandon/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/vessels/*/notifications/abandon/message": {
     "description": "Message to display or speak"
@@ -1701,7 +1808,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/freshWater/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/freshWater/RegExp/capacity": {
     "units": "m3",
@@ -1740,7 +1859,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/wasteWater/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/wasteWater/RegExp/capacity": {
     "units": "m3",
@@ -1779,7 +1910,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/blackWater/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/blackWater/RegExp/capacity": {
     "units": "m3",
@@ -1818,7 +1961,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/fuel/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/fuel/RegExp/capacity": {
     "units": "m3",
@@ -1857,7 +2012,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/lubrication/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/lubrication/RegExp/capacity": {
     "units": "m3",
@@ -1896,7 +2063,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/liveWell/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/liveWell/RegExp/capacity": {
     "units": "m3",
@@ -1935,7 +2114,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/gas/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/gas/RegExp/capacity": {
     "units": "m3",
@@ -1974,7 +2165,19 @@
     "description": "The name of the tank. Useful if multiple tanks of a certain type are on board"
   },
   "/vessels/*/tanks/ballast/RegExp/type": {
-    "description": "The type of tank"
+    "description": "The type of tank",
+    "enum": [
+      "petrol",
+      "fresh water",
+      "greywater",
+      "blackwater",
+      "holding",
+      "lpg",
+      "diesel",
+      "liveWell",
+      "ballast",
+      "rum"
+    ]
   },
   "/vessels/*/tanks/ballast/RegExp/capacity": {
     "units": "m3",
@@ -2011,7 +2214,88 @@
     "description": "The displacement of the vessel"
   },
   "/vessels/*/design/aisShipType": {
-    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php"
+    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php",
+    "enum": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ]
   },
   "/vessels/*/design/draft": {
     "description": "The draft of the vessel"
@@ -2047,7 +2331,18 @@
     "description": "Information about the vessel's keel"
   },
   "/vessels/*/design/keel/type": {
-    "description": "The type of keel."
+    "description": "The type of keel.",
+    "enum": [
+      "long",
+      "fin",
+      "flare",
+      "bulb",
+      "wing",
+      "centerboard",
+      "kanting",
+      "lifting",
+      "daggerboard"
+    ]
   },
   "/vessels/*/design/keel/angle": {
     "units": "rad",
@@ -2968,7 +3263,17 @@
     "description": "Time and Date from the GNSS Positioning System"
   },
   "/aircraft/*/navigation/datetime/gnssTimeSource": {
-    "description": "Source of GNSS Date and Time"
+    "description": "Source of GNSS Date and Time",
+    "enum": [
+      "GPS",
+      "GLONASS",
+      "Galileo",
+      "Beidou",
+      "IRNSS",
+      "Radio Signal",
+      "Internet",
+      "Local clock"
+    ]
   },
   "/aircraft/*/notifications": {
     "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure"
@@ -2984,7 +3289,88 @@
     "description": "The displacement of the vessel"
   },
   "/aircraft/*/design/aisShipType": {
-    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php"
+    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php",
+    "enum": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ]
   },
   "/aircraft/*/design/draft": {
     "description": "The draft of the vessel"
@@ -3020,7 +3406,18 @@
     "description": "Information about the vessel's keel"
   },
   "/aircraft/*/design/keel/type": {
-    "description": "The type of keel."
+    "description": "The type of keel.",
+    "enum": [
+      "long",
+      "fin",
+      "flare",
+      "bulb",
+      "wing",
+      "centerboard",
+      "kanting",
+      "lifting",
+      "daggerboard"
+    ]
   },
   "/aircraft/*/design/keel/angle": {
     "units": "rad",
@@ -3084,7 +3481,41 @@
     "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server."
   },
   "/aton/*/atonType": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "0 Default, Type of AtoN not specified",
+      "1 Reference point",
+      "2 RACON",
+      "3 Fixed structures off-shore, such as oil platforms, wind farms.",
+      "4 Emergency Wreck Marking Buoy",
+      "5 Light, without sectors",
+      "6 Light, with sectors",
+      "7 Leading Light Front",
+      "8 Leading Light Rear",
+      "9 Beacon, Cardinal N",
+      "10 Beacon, Cardinal E",
+      "11 Beacon, Cardinal S",
+      "12 Beacon, Cardinal W",
+      "13 Beacon, Port hand",
+      "14 Beacon, Starboard hand",
+      "15 Beacon, Preferred Channel port hand",
+      "16 Beacon, Preferred Channel starboard hand",
+      "17 Beacon, Isolated danger",
+      "18 Beacon, Safe water",
+      "19 Beacon, Special mark",
+      "20 Cardinal Mark N",
+      "21 Cardinal Mark E",
+      "22 Cardinal Mark S",
+      "23 Cardinal Mark W",
+      "24 Port hand Mark",
+      "25 Starboard hand Mark",
+      "26 Preferred Channel Port hand",
+      "27 Preferred Channel Starboard hand",
+      "28 Isolated danger",
+      "29 Safe Water",
+      "30 Special Mark",
+      "31 Light Vessel/LANBY/Rigs"
+    ]
   },
   "/aton/*/name": {
     "description": "The aton name"
@@ -3798,7 +4229,17 @@
     "description": "Time and Date from the GNSS Positioning System"
   },
   "/aton/*/navigation/datetime/gnssTimeSource": {
-    "description": "Source of GNSS Date and Time"
+    "description": "Source of GNSS Date and Time",
+    "enum": [
+      "GPS",
+      "GLONASS",
+      "Galileo",
+      "Beidou",
+      "IRNSS",
+      "Radio Signal",
+      "Internet",
+      "Local clock"
+    ]
   },
   "/aton/*/notifications": {
     "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure"
@@ -3814,7 +4255,88 @@
     "description": "The displacement of the vessel"
   },
   "/aton/*/design/aisShipType": {
-    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php"
+    "description": "The ais ship type and cargo, see http://www.bosunsmate.org/ais/message5.php",
+    "enum": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ]
   },
   "/aton/*/design/draft": {
     "description": "The draft of the vessel"
@@ -3850,7 +4372,18 @@
     "description": "Information about the vessel's keel"
   },
   "/aton/*/design/keel/type": {
-    "description": "The type of keel."
+    "description": "The type of keel.",
+    "enum": [
+      "long",
+      "fin",
+      "flare",
+      "bulb",
+      "wing",
+      "centerboard",
+      "kanting",
+      "lifting",
+      "daggerboard"
+    ]
   },
   "/aton/*/design/keel/angle": {
     "units": "rad",
@@ -4308,7 +4841,17 @@
     "description": "Time and Date from the GNSS Positioning System"
   },
   "/sar/*/navigation/datetime/gnssTimeSource": {
-    "description": "Source of GNSS Date and Time"
+    "description": "Source of GNSS Date and Time",
+    "enum": [
+      "GPS",
+      "GLONASS",
+      "Galileo",
+      "Beidou",
+      "IRNSS",
+      "Radio Signal",
+      "Internet",
+      "Local clock"
+    ]
   },
   "/sar/*/notifications": {
     "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure"
@@ -4320,7 +4863,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/mob/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/mob/message": {
     "description": "Message to display or speak"
@@ -4332,7 +4882,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/fire/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/fire/message": {
     "description": "Message to display or speak"
@@ -4344,7 +4901,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/sinking/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/sinking/message": {
     "description": "Message to display or speak"
@@ -4356,7 +4920,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/flooding/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/flooding/message": {
     "description": "Message to display or speak"
@@ -4368,7 +4939,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/collision/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/collision/message": {
     "description": "Message to display or speak"
@@ -4380,7 +4958,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/grounding/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/grounding/message": {
     "description": "Message to display or speak"
@@ -4392,7 +4977,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/listing/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/listing/message": {
     "description": "Message to display or speak"
@@ -4404,7 +4996,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/adrift/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/adrift/message": {
     "description": "Message to display or speak"
@@ -4416,7 +5015,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/piracy/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/piracy/message": {
     "description": "Message to display or speak"
@@ -4428,7 +5034,14 @@
     "description": "Method to use to raise notifications"
   },
   "/sar/*/notifications/abandon/state": {
-    "description": "Current notification state"
+    "description": "Current notification state",
+    "enum": [
+      "normal",
+      "alert",
+      "warn",
+      "alarm",
+      "emergency"
+    ]
   },
   "/sar/*/notifications/abandon/message": {
     "description": "Message to display or speak"
@@ -4476,7 +5089,25 @@
     "description": "The bounds of the chart. An array containing the position of the upper left corner, and the lower right corner. Useful when the chart isn't inherently geo-referenced."
   },
   "/resources/charts/*/chartFormat": {
-    "description": "The format of the chart"
+    "description": "The format of the chart",
+    "enum": [
+      "gif",
+      "geotiff",
+      "kap",
+      "png",
+      "jpg",
+      "kml",
+      "wkt",
+      "topojson",
+      "geojson",
+      "gpx",
+      "tms",
+      "wms",
+      "S-57",
+      "S-63",
+      "svg",
+      "other"
+    ]
   },
   "/resources/routes": {
     "description": "A holder for routes, each named with a UUID"
@@ -4504,13 +5135,19 @@
     "description": "A Geo JSON feature object which describes the route between the waypoints"
   },
   "/resources/routes/*/feature/type": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "Feature"
+    ]
   },
   "/resources/routes/*/feature/geometry": {
     "description": "[missing]"
   },
   "/resources/routes/*/feature/geometry/type": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "LineString"
+    ]
   },
   "/resources/routes/*/feature/geometry/coordinates": {
     "description": "An array of two or more positions"
@@ -4573,7 +5210,10 @@
     "description": "A Geo JSON feature object which describes the regions boundary"
   },
   "/resources/regions/*/feature/type": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "Feature"
+    ]
   },
   "/resources/regions/*/feature/geometry": {
     "description": "[missing]"
@@ -4609,13 +5249,19 @@
     "description": "A Geo JSON feature object"
   },
   "/resources/waypoints/*/feature/type": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "Feature"
+    ]
   },
   "/resources/waypoints/*/feature/geometry": {
     "description": "[missing]"
   },
   "/resources/waypoints/*/feature/geometry/type": {
-    "description": "[missing]"
+    "description": "[missing]",
+    "enum": [
+      "Point"
+    ]
   },
   "/resources/waypoints/*/feature/geometry/coordinates": {
     "description": "A single position, in x,y order (Lon, Lat)"

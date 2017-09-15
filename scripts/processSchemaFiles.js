@@ -270,7 +270,9 @@ class Parser {
           units: json.units,
           description: doc.description === null ? '[missing]' : doc.description
         }
-
+        if (doc.enum) {
+          keysWithMeta[key].enum = doc.enum
+        }
 
         if (isEmbedded.bind(this)(path)) {
           this.debug("Skipping embedded", path)
