@@ -38,7 +38,7 @@ The alarms functionality then becomes generic, and grows with the spec. This is 
 
 #### Meta.units value
 
-All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value.
+All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value, even if that particular data key has no data in the full model of that server.
 
 See https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json
 
