@@ -228,7 +228,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
 }
 
 function copyLeafValueToLeaf(fromLeaf, toLeaf) {
-  _.assign(toLeaf, _.omit(fromLeaf, ['$source', 'timestamp']));
+  _.assign(toLeaf, _.omit(fromLeaf, ['$source', 'timestamp', 'meta']));
 }
 
 function assignValueToLeaf(value, leaf) {
