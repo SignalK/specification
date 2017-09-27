@@ -94,7 +94,6 @@ describe('FullSignalK', function() {
       "context": "vessels.urn:mrn:imo:mmsi:276780000"
     };
     var fullSignalK = new FullSignalK("urn:mrn:imo:mmsi:276799999", "mmsi");
-    console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.addDelta(aisDelta);
     fullSignalK.retrieve().should.be.validSignalK;
 
