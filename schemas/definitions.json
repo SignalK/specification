@@ -532,6 +532,13 @@
           "example": "RPM"
         },
 
+        "description": {
+          "type": "string",
+          "title": "ShortName schema.",
+          "description": "A short name for this value.",
+          "example": "RPM"
+        },
+
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
