@@ -59,7 +59,7 @@ FullSignalK.prototype.updateLastModified = function(contextKey) {
 
 FullSignalK.prototype.pruneContexts = function(seconds) {
   var threshold = new Date().getTime() - seconds * 1000;
-  for (contextKey in this.lastModifieds) {
+  for (let contextKey in this.lastModifieds) {
     if (this.lastModifieds[contextKey] < threshold) {
       this.deleteContext(contextKey);
       delete this.lastModifieds[contextKey];
