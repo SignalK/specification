@@ -534,9 +534,9 @@
 
         "description": {
           "type": "string",
-          "title": "ShortName schema.",
-          "description": "A short name for this value.",
-          "example": "RPM"
+          "title": "Description schema.",
+          "description": "Description of the SK path.",
+          "example": "Engine revolutions (x60 for RPM)"
         },
 
         "gaugeType": {
