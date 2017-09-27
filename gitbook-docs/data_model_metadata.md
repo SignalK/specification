@@ -13,6 +13,8 @@ Currently the Signal K server has a set of specific alarm keys. These grow over 
 Each data key should have an optional ```.meta``` object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.
 ```json
 {
+  "units": "Hz",
+  "description": "Engine revolutions (x60 for RPM)",
   "displayName": "Tachometer, Engine 1",
   "shortName": "RPM",
   "warnMethod": "visual",
