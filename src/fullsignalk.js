@@ -187,8 +187,9 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
       if (!previous[pathPart]) {
         previous[pathPart] = {};
-        if (i === splitPath.length-1) {
-          previous[pathPart].meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path);
+        const meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
+        if (meta && i === splitPath.length-1) {
+          previous[pathPart].meta = meta;
         }
       }
       return previous[pathPart];
