@@ -41,6 +41,38 @@
                       "name": "Wing In Ground"
                     },
                     {
+                      "id": 21,
+                      "name": "Wing In Ground hazard cat A"
+                    },
+                    {
+                      "id": 22,
+                      "name": "Wing In Ground hazard cat B"
+                    },
+                    {
+                      "id": 23,
+                      "name": "Wing In Ground hazard cat C"
+                    },
+                    {
+                      "id": 24,
+                      "name": "Wing In Ground hazard cat D"
+                    },
+                    {
+                      "id": 25,
+                      "name": "Wing In Ground"
+                    },
+                    {
+                      "id": 26,
+                      "name": "Wing In Ground"
+                    },
+                    {
+                      "id": 27,
+                      "name": "Wing In Ground"
+                    },
+                    {
+                      "id": 28,
+                      "name": "Wing In Ground"
+                    },
+                    {
                       "id": 29,
                       "name": "Wing In Ground (no other information)"
                     },
@@ -97,6 +129,22 @@
                       "name": "High speed craft hazard cat D"
                     },
                     {
+                      "id": 45,
+                      "name": "High speed craft"
+                    },
+                    {
+                      "id": 46,
+                      "name": "High speed craft"
+                    },
+                    {
+                      "id": 47,
+                      "name": "High speed craft"
+                    },
+                    {
+                      "id": 48,
+                      "name": "High speed craft"
+                    },
+                    {
                       "id": 49,
                       "name": "High speed craft (no additional information)"
                     },
@@ -145,6 +193,38 @@
                       "name": "Passenger ship"
                     },
                     {
+                      "id": 61,
+                      "name": "Passenger ship hazard cat A"
+                    },
+                    {
+                      "id": 62,
+                      "name": "Passenger ship hazard cat B"
+                    },
+                    {
+                      "id": 63,
+                      "name": "Passenger ship hazard cat C"
+                    },
+                    {
+                      "id": 64,
+                      "name": "Passenger ship hazard cat D"
+                    },
+                    {
+                      "id": 65,
+                      "name": "Passenger ship"
+                    },
+                    {
+                      "id": 66,
+                      "name": "Passenger ship"
+                    },
+                    {
+                      "id": 67,
+                      "name": "Passenger ship"
+                    },
+                    {
+                      "id": 68,
+                      "name": "Passenger ship"
+                    },
+                    {
                       "id": 69,
                       "name": "Passenger ship (no additional information)"
                     },
@@ -167,6 +247,22 @@
                     {
                       "id": 74,
                       "name": "Cargo ship hazard cat D"
+                    },
+                    {
+                      "id": 75,
+                      "name": "Cargo ship"
+                    },
+                    {
+                      "id": 76,
+                      "name": "Cargo ship"
+                    },
+                    {
+                      "id": 77,
+                      "name": "Cargo ship"
+                    },
+                    {
+                      "id": 78,
+                      "name": "Cargo ship"
                     },
                     {
                       "id": 79,
@@ -193,6 +289,22 @@
                       "name": "Tanker hazard cat D"
                     },
                     {
+                      "id": 85,
+                      "name": "Tanker"
+                    },
+                    {
+                      "id": 86,
+                      "name": "Tanker"
+                    },
+                    {
+                      "id": 87,
+                      "name": "Tanker"
+                    },
+                    {
+                      "id": 88,
+                      "name": "Tanker"
+                    },
+                    {
                       "id": 89,
                       "name": "Tanker (no additional information)"
                     },
@@ -215,6 +327,22 @@
                     {
                       "id": 94,
                       "name": "Other hazard cat D"
+                    },
+                    {
+                      "id": 95,
+                      "name": "Other"
+                    },
+                    {
+                      "id": 96,
+                      "name": "Other"
+                    },
+                    {
+                      "id": 97,
+                      "name": "Other"
+                    },
+                    {
+                      "id": 98,
+                      "name": "Other"
                     },
                     {
                       "id": 99,
