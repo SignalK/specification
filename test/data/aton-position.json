@@ -6,8 +6,10 @@
       "atonType": {
         "timestamp": "2017-01-25T00:23:05Z",
         "$source": "a.suitable.path",
-        "id": 6,
-        "name": "Light, With Sectors"
+        "value": {
+          "id": 6,
+          "name": "Light, With Sectors"
+        }
       },
       "navigation": {
         "position": {
