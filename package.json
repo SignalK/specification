@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel src --out-dir dist --copy-files && mocha",
+    "prepublish": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
     "schema:version": "replace 'https://signalk.org/specification/[^/]+/schemas/' 'https://signalk.org/specification/'$npm_package_version'/schemas/' . -r --include='*.j*' --exclude='package.json' ",
