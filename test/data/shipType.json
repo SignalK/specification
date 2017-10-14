@@ -6,8 +6,10 @@
 	"aisShipType": {
           "timestamp": "2017-01-25T00:23:05Z",
           "$source": "a.suitable.path",
-          "id": 36,
-          "name": "Sailing"
+          "value": {
+            "id": 36,
+            "name": "Sailing"
+          }
         }
       }
     }
