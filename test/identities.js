@@ -5,7 +5,7 @@ var _ = require('lodash')
 
 describe('Identies in the full tree', function() {
   it("Different identities are valid", function() {
-    require('./data/identities.json').should.be.validSignalK;
+    require('./data/identities.json').should.be.validSignalKIgnoringSelf;
   });
 });
 
