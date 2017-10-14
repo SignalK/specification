@@ -135,6 +135,10 @@
     "units": "ratio",
     "description": "Current outside air relative humidity"
   },
+  "/vessels/*/environment/outside/airDensity": {
+    "units": "kg/m3",
+    "description": "Current outside air density"
+  },
   "/vessels/*/environment/outside/illuminance": {
     "units": "Lux",
     "description": "Current outside ambient light flux."
@@ -2615,6 +2619,10 @@
     "units": "ratio",
     "description": "Current outside air relative humidity"
   },
+  "/aircraft/*/environment/outside/airDensity": {
+    "units": "kg/m3",
+    "description": "Current outside air density"
+  },
   "/aircraft/*/environment/outside/illuminance": {
     "units": "Lux",
     "description": "Current outside ambient light flux."
@@ -3580,6 +3588,10 @@
   "/aton/*/environment/outside/humidity": {
     "units": "ratio",
     "description": "Current outside air relative humidity"
+  },
+  "/aton/*/environment/outside/airDensity": {
+    "units": "kg/m3",
+    "description": "Current outside air density"
   },
   "/aton/*/environment/outside/illuminance": {
     "units": "Lux",
