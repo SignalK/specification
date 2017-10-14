@@ -115,11 +115,16 @@ function chaiAsPromised(chai, utils) {
   }
   Assertion.addProperty('validSignalK', checkValidFullSignalK);
   Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validSignalKIgnoringSelf', function() {
+    this._obj.self = 'urn:mrn:imo:mmsi:230099999';
+    checkValidFullSignalK.call(this);
+  });  
   Assertion.addProperty('validSignalKVessel', function() {
     this._obj = {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
+      self: 'urn:mrn:imo:mmsi:230099999',
       'version': '1.0.0'
     }
     checkValidFullSignalK.call(this);
@@ -130,6 +135,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
+      self: 'urn:mrn:imo:mmsi:230099999',
       version: "0.0.0"
     }
     checkValidFullSignalK.call(this);

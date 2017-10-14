@@ -5,7 +5,7 @@ const FullSignalK = require('../src/fullsignalk')
 
 describe('Sources in the full tree', function() {
   it("Sample full tree is valid", function() {
-    require('./data/sources.json').should.be.validSignalK;
+    require('./data/sources.json').should.be.validSignalKIgnoringSelf;
   });
 });
 
@@ -144,6 +144,6 @@ describe('Bad sources in delta', function() {
 
 describe('Multiple sources for the same path:', function() {
   it("value + values are valid", function() {
-    require('./data/multiple-values.json').should.be.validSignalK
+    require('./data/multiple-values.json').should.be.validSignalKIgnoringSelf
   });
 });
