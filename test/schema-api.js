@@ -54,3 +54,11 @@ describe('metadata:getMetadata', function () {
     })
   })
 })
+
+describe('getAISShipTypeName works', function() {
+  it("ship type 20 is 'Wing In Ground'", function() {
+    expect(
+      signalkSchema.getAISShipTypeName(20)
+    ).to.deep.equal('Wing In Ground')
+  });
+});
