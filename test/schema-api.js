@@ -54,3 +54,20 @@ describe('metadata:getMetadata', function () {
     })
   })
 })
+
+describe('getAISShipTypeName works', function() {
+  it("ship type 20 is 'Wing In Ground'", function() {
+    expect(
+      signalkSchema.getAISShipTypeName(20)
+    ).to.deep.equal('Wing In Ground')
+  });
+});
+
+
+describe('getAtonTypeName works', function() {
+  it("ship type 11 is 'Beacon, Cardinal S'", function() {
+    expect(
+      signalkSchema.getAtonTypeName(11)
+    ).to.deep.equal('Beacon, Cardinal S')
+  });
+});
