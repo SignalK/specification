@@ -25,9 +25,8 @@
           }
         }
       },
-			"label": "",
-			"type": "NMEA2000"
-      
+      "label": "",
+      "type": "NMEA2000"
     }
   },
   "version": "1.0.0",

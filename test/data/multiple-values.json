@@ -31,24 +31,24 @@
       "label": "nmea1",
       "type": "NMEA0183",
       "II": {
-      	"0183":{
-					"talker": "II",
-					"sentences": {
-						"VTG": "2017-03-04T14:58:47.000Z"
-					}
-				}
+        "0183":{
+          "talker": "II",
+          "sentences": {
+            "VTG": "2017-03-04T14:58:47.000Z"
+          }
+        }
       }
     },
     "nmea2": {
       "label": "nmea2",
       "type": "NMEA0183",
       "II": {
-      	"0183":{
-					"talker": "II",
-					"sentences": {
-						"VTG": "2017-03-04T14:58:48.000Z"
-					}
-				}
+        "0183":{
+          "talker": "II",
+          "sentences": {
+            "VTG": "2017-03-04T14:58:48.000Z"
+          }
+        }
       }
     }
   }
