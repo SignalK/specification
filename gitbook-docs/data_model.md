@@ -68,54 +68,6 @@ is the current state' message.
 However sending the full data model will be wasteful of bandwidth and CPU, when the majority of data does not change
 often. So we want to be able to send parts of the model (i.e. parts of the hierarchical tree).
 
-### Sparse format
-
-The sparse format is the same as the full format but only contains a limited part of the tree. This can be one or more
-data values.
-
-
-```json
-{
-  "vessels": {
-    "self": {
-      "navigation": {
-        "position": {
-          "latitude": -41.2936935424,
-          "longitude": 173.2470855712
-        }
-      }
-    }
-  }
-}
-```
-
-Mix and match of misc values are also valid:
-
-```json
-{
-  "vessels": {
-    "self": {
-      "navigation": {
-        "courseOverGroundTrue": {
-          "value": 11.9600000381
-        },
-        "position": {
-          "latitude": -41.2936935424,
-          "longitude": 173.2470855712,
-          "altitude": 0
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-This mix of any combination of values means we don't need to create multiple message types to send different
-combinations of data. Just assemble whatever you want and send it. When parsing an incoming message a device should skip
-values it has no interest in, or doesn't recognise. Hence we avoid the problem of multiple message definitions for the
-same or similar data, and we avoid having to decode multiple messages with fixed formats.
-
 ## Delta format
 
 While building the reference servers and clients it was apparent that a third type of message format was useful. This
