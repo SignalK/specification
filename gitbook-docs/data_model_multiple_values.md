@@ -49,20 +49,20 @@ If its the first value for the key, it becomes the default value and looks like 
     }
   },
   "sources":{
-  	"0183": {
-			"/dev/ttyUSB0": {
-				"GP": {
-					"RMC": {
-						"label": "GPS-1",
-						"type": "NMEA0183",
-						"talker": "GP",
-						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-						"timestamp": "2017-04-03T06:14:04.451Z"
-					}
-				}
-			}
-		}
-	}
+    "0183": {
+      "/dev/ttyUSB0": {
+        "GP": {
+          "RMC": {
+            "label": "GPS-1",
+            "type": "NMEA0183",
+            "talker": "GP",
+            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          }
+        }
+      }
+    }
+  }
 }
 ```
 It has come from device `sources.0183./dev/ttyUSB0.GP`, where further details can be found.
@@ -83,96 +83,89 @@ If another value with different source arrives, we add the `values` attribute wi
           "timestamp": "2017-04-03T06:14:04.451Z"
         },
         "values":{
-        	"0183./dev/ttyUSB0.GP.RMC":{
-        		"value": 3.615624078431440,
-        		"$source": "0183./dev/ttyUSB0.GP.RMC",
-        		"timestamp": "2017-04-03T06:14:04.451Z"
-        	},
-        	"n2k./dev/ikommunicate.128267":{
-        		"value": 3.615624078431453,
-        		"$source": "n2k./dev/ikommunicate.128267",
-        		"timestamp": "2017-04-03T06:14:04.451Z"
-        	}
-        
+          "0183./dev/ttyUSB0.GP.RMC":{
+            "value": 3.615624078431440,
+            "$source": "0183./dev/ttyUSB0.GP.RMC",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          },
+          "n2k./dev/ikommunicate.128267":{
+            "value": 3.615624078431453,
+            "$source": "n2k./dev/ikommunicate.128267",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          }
         }
       }
     }
   },
   "sources":{
-  	"0183": {
-			"/dev/ttyUSB0": {
-				"GP": {
-					"RMC": {
-						"label": "GPS-1",
-						"type": "NMEA0183",
-						"talker": "GP",
-						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-						"timestamp": "2017-04-03T06:14:04.451Z"
-					}
-				}
-			}
-		},
-	"n2k": {
-		"/dev/ikommunicate": {
-			"128267": {
-				"label": "/dev/ikommunicate-128267",
-				"type": "NMEA2000",
-				"device": "/dev/actisense",
-				"src": "115",
-				"pgn": "128267"
-				"timestamp": "2017-04-03T06:14:04.451Z"
-			  }
-			}
-		}
-	}
+    "0183": {
+      "/dev/ttyUSB0": {
+        "GP": {
+          "RMC": {
+            "label": "GPS-1",
+            "type": "NMEA0183",
+            "talker": "GP",
+            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          }
+        }
+      }
+    },
+    "n2k": {
+      "/dev/ikommunicate": {
+        "128267": {
+          "label": "/dev/ikommunicate-128267",
+          "type": "NMEA2000",
+          "device": "/dev/actisense",
+          "src": "115",
+          "pgn": "128267"
+          "timestamp": "2017-04-03T06:14:04.451Z"
+        }
+      }
+    }
+  }
 }
 ```
-###Update messages
+
+### Update messages
 
 When a client subscribes to `navigation.courseOverGroundTrue`, they recieve _all_ the values held. The update message does not include the `values` path, the case above looks like:
 
 
-```
+```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
-  "updates": [
-    {
-      "source": {
-			"label": "GPS-1",
-			"type": "NMEA0183",
-			"talker": "GP",
-			"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-			"timestamp": "2017-04-03T06:14:04.451Z"
-      },
-      "timestamp": "2017-04-03T06:14:04.451Z",
-      "values": [
-        {
-          "path": "navigation.courseOverGroundTrue",
-          "value": 3.615624078431440
-        }
-      ]
+  "updates": [{
+    "source": {
+      "label": "GPS-1",
+      "type": "NMEA0183",
+      "talker": "GP",
+      "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+      "timestamp": "2017-04-03T06:14:04.451Z"
     },
-    {
-      "source": {
-		"label": "/dev/ikommunicate-128267",
-		"type": "NMEA2000",
-		"device": "/dev/actisense",
-		"src": "115",
-		"pgn": "128267"
-		"timestamp": "2017-04-03T06:14:04.451Z"
-      },
-      "timestamp": "2017-04-03T06:14:04.451Z",
-      "values": [
-        {
-          "path": "navigation.courseOverGroundTrue",
-          "value": 3.615624078431453
-        }
-      ]
-    }
-  ]
+    "timestamp": "2017-04-03T06:14:04.451Z",
+    "values": [{
+      "path": "navigation.courseOverGroundTrue",
+      "value": 3.615624078431440
+    }]
+  }, {
+    "source": {
+      "label": "/dev/ikommunicate-128267",
+      "type": "NMEA2000",
+      "device": "/dev/actisense",
+      "src": "115",
+      "pgn": "128267"
+      "timestamp": "2017-04-03T06:14:04.451Z"
+    },
+    "timestamp": "2017-04-03T06:14:04.451Z",
+    "values": [{
+      "path": "navigation.courseOverGroundTrue",
+      "value": 3.615624078431453
+    }]
+  }]
 }
-
 ```
+
 Individual updates can be distinguished by their source. 
 
 If a client wants only the values of a specific source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.courseOverGroundTrue.values[n2k./dev/ikommunicate.128267]`. The client can retrieve the relevant data via REST API.

@@ -12,53 +12,53 @@ The simplest format is the full format, which is the complete Signal K data mode
 
 ```json
 {
-	"vessels": {
-		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-			"navigation": {
-				"speedOverGround": {
-					"value": 4.32693662,
-					"$source": "0183./dev/ttyUSB0.GP.RMC",
-					"timestamp": "2017-05-16T05:15:50.007Z"
-				},
-				"position": {
-					"altitude": 0.0,
-					"latitude": 37.81479,
-					"longitude": -122.44880152,					
-					"$source": "0183./dev/ttyUSB0.GP.RMC",
-					"timestamp": "2017-05-16T05:15:50.007Z"
-				},
-				"headingMagnetic": {
-					"value": 5.55014702,
-					"$source": "0183./dev/ttyUSB0.II.HDM",
-					"timestamp": "2017-05-16T05:15:54.006Z"
-				}
-			},
-			"name": "Motu",
-			"uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c"
-		}
-	},
-	"sources": {
-		"NMEA0183": {
-		"type": "NMEA0183",
-			"ttyUSB0": {
-			"label": "/dev/ttyUSB0",
-				"GP": {
-					"talker": "GP",
-					"RMC": {
-						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-						"timestamp": "2017-04-03T06:14:04.451Z"
-					}
-				},
-				"II": {
-				"talker": "II",
-					"HDM": {
-						"sentence": "$IIHDM,318,M*36",
-						"timestamp": "2017-05-16T05:15:54.006Z"
-					}
-				}
-			}
-		}
-	}
+  "vessels": {
+    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "navigation": {
+        "speedOverGround": {
+          "value": 4.32693662,
+          "$source": "0183./dev/ttyUSB0.GP.RMC",
+          "timestamp": "2017-05-16T05:15:50.007Z"
+        },
+        "position": {
+          "altitude": 0.0,
+          "latitude": 37.81479,
+          "longitude": -122.44880152,
+          "$source": "0183./dev/ttyUSB0.GP.RMC",
+          "timestamp": "2017-05-16T05:15:50.007Z"
+        },
+        "headingMagnetic": {
+          "value": 5.55014702,
+          "$source": "0183./dev/ttyUSB0.II.HDM",
+          "timestamp": "2017-05-16T05:15:54.006Z"
+        }
+      },
+      "name": "Motu",
+      "uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c"
+    }
+  },
+  "sources": {
+    "NMEA0183": {
+      "type": "NMEA0183",
+      "ttyUSB0": {
+        "label": "/dev/ttyUSB0",
+        "GP": {
+          "talker": "GP",
+          "RMC": {
+            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          }
+        },
+        "II": {
+          "talker": "II",
+          "HDM": {
+            "sentence": "$IIHDM,318,M*36",
+            "timestamp": "2017-05-16T05:15:54.006Z"
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -73,24 +73,25 @@ Alternatively the source data may be embedded directly in place of the `$source`
 
 ```json
 {
-	"vessels": {
-		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-			"navigation": {
-				"position": {
-					"altitude": 0.0,
-					"latitude": 37.81479,
-					"longitude": -122.44880152,
-					"source": {
-						"label": "/dev/ttyUSB0",
-						"type": "NMEA0183",
-						"talker": "GP",
-						"sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-						"timestamp": "2017-04-03T06:14:04.451Z"
-					},
-					"timestamp": "2017-05-16T05:15:50.007Z"
-				}
-		}
-	}
+  "vessels": {
+    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "navigation": {
+        "position": {
+          "altitude": 0.0,
+          "latitude": 37.81479,
+          "longitude": -122.44880152,
+          "source": {
+            "label": "/dev/ttyUSB0",
+            "type": "NMEA0183",
+            "talker": "GP",
+            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+            "timestamp": "2017-04-03T06:14:04.451Z"
+          },
+          "timestamp": "2017-05-16T05:15:50.007Z"
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -115,16 +116,16 @@ data values.
 
 ```json
 {
-	"vessels": {
-		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-			"navigation": {
-				"position": {
-					"latitude": 37.81479,
-					"longitude": -122.44880152
-				}
-			}
-		}
-	}
+  "vessels": {
+    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "navigation": {
+        "position": {
+          "latitude": 37.81479,
+          "longitude": -122.44880152
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -132,19 +133,19 @@ Mix and match of misc values are also valid:
 
 ```json
 {
-	"vessels": {
-		"urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-			"navigation": {
-				"speedOverGround": {
-					"value": 4.32693662
-				},
-				"position": {
-					"latitude": 37.81479,
-					"longitude": -122.44880152
-				}
-			}
-		}
-	}
+  "vessels": {
+    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "navigation": {
+        "speedOverGround": {
+          "value": 4.32693662
+        },
+        "position": {
+          "latitude": 37.81479,
+          "longitude": -122.44880152
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -163,23 +164,23 @@ The format looks like this (pretty printed):
 
 ```json
 {
-    "context": "vessels.urn:mrn:imo:mmsi:234567890",
-    "updates": [{
-        "source": {
-        	"label": "N2000-01"
-            "type": "NMEA2000",
-            "src": "017",
-            "pgn": 127488
-        },
-        "timestamp": "2010-01-07T07:18:44Z",
-        "values": [{
-            "path": "propulsion.0.revolutions",
-            "value": 16.341667
-        }, {
-            "path": "propulsion.0.boostPressure",
-            "value": 45500.0
-        }]
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [{
+    "source": {
+      "label": "N2000-01"
+      "type": "NMEA2000",
+      "src": "017",
+      "pgn": 127488
+    },
+    "timestamp": "2010-01-07T07:18:44Z",
+    "values": [{
+      "path": "propulsion.0.revolutions",
+      "value": 16.341667
+    }, {
+      "path": "propulsion.0.boostPressure",
+      "value": 45500.0
     }]
+  }]
 }
 ```
 

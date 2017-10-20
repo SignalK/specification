@@ -8,25 +8,22 @@ By default a Signal K server will provide a new WebSocket client with a delta st
 ```javascript
 {
   "context": "vessels",
-   "updates": [{
-      "source": {
-      	"label":"/dev/actisense",
-      	"type": "NMEA2000",
-        "pgn": "128275",
-        "timestamp": "2014-08-15-16:00:05.538",
-        "src": "115"
-      },
-      "values": [
-        {
-          "path": "navigation.trip.log",
-          "value": 43374
-        },
-        {
-          "path": "navigation.log",
-          "value": 17404540
-        }]
-     }
-     ]
+  "updates": [{
+    "source": {
+      "label":"/dev/actisense",
+      "type": "NMEA2000",
+      "pgn": "128275",
+      "timestamp": "2014-08-15-16:00:05.538",
+      "src": "115"
+    },
+    "values": [{
+      "path": "navigation.trip.log",
+      "value": 43374
+    }, {
+      "path": "navigation.log",
+      "value": 17404540
+    }]
+  }]
 }
 ```
 > Below we refer to WebSockets, but the same process works in the same way over any transport. E.g. for a raw TCP
@@ -40,11 +37,9 @@ First you will want to unsubscribe from the current default (or you may have alr
 ```json
 {
   "context": "*",
-  "unsubscribe": [
-    {
-      "path": "*"
-    }
-  ]
+  "unsubscribe": [{
+    "path": "*"
+  }]
 }
 ```
 To subscribe to the required criteria send a suitable subscribe message:
@@ -52,19 +47,16 @@ To subscribe to the required criteria send a suitable subscribe message:
 ```json
 {
   "context": "vessels.self",
-  "subscribe": [
-    {
-      "path": "navigation.speedThroughWater",
-      "period": 1000,
-      "format": "delta",
-      "policy": "ideal",
-      "minPeriod": 200
-    },
-    {
-      "path": "navigation.logTrip",
-      "period": 10000
-    }
-  ]
+  "subscribe": [{
+    "path": "navigation.speedThroughWater",
+    "period": 1000,
+    "format": "delta",
+    "policy": "ideal",
+    "minPeriod": 200
+  }, {
+    "path": "navigation.logTrip",
+    "period": 10000
+  }]
 }
 ```
 
@@ -100,11 +92,9 @@ The `get/list/put` messages work in the same way as their `GET/PUT` REST equival
 ```json
 {
   "context": "vessels.self",
-  "get": [
-    {
-      "path": "environment.depth.belowTransducer"
-    }
-  ]
+  "get": [{
+    "path": "environment.depth.belowTransducer"
+  }]
 }
 
 ```
@@ -112,21 +102,19 @@ The `get/list/put` messages work in the same way as their `GET/PUT` REST equival
 ```javascript
 {
   "context": "vessels",
-   "put": [{
-      "source": {
-      	"label":"/dev/actisense",
-      	"type": "NMEA2000",
-        "pgn": "128275",
-        "timestamp": "2014-08-15-16:00:05.538",
-        "src": "115"
-      },
-      "values": [
-        {
-          "path": "navigation.trip.log",
-          "value": 43374
-        }]
-     }
-     ]
+  "put": [{
+    "source": {
+      "label":"/dev/actisense",
+      "type": "NMEA2000",
+      "pgn": "128275",
+      "timestamp": "2014-08-15-16:00:05.538",
+      "src": "115"
+     },
+     "values": [{
+       "path": "navigation.trip.log",
+       "value": 43374
+     }]
+  }]
 }
 ```
 
@@ -143,14 +131,11 @@ This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcr
 ```json
 {
   "context": "vessels.self",
-  "subscribe": [
-    {
-      "path": "environment.depth.belowTransducer"
-    },
-    {
-      "path": "navigation.speedThroughWater"
-    }
-  ]
+  "subscribe": [{
+    "path": "environment.depth.belowTransducer"
+  }, {
+    "path": "navigation.speedThroughWater"
+  }]
 }
 ```
 
@@ -162,18 +147,16 @@ subscription method.
 ```javascript
 {
   "context": "vessels.*",
-  "subscribe": [
-    {
-      "path": "navigation.position",
-      "period": 120000,
-      "policy": "fixed"
-    },
-    {
-      "path": "navigation.courseOverGround",
-      "period": 120000,
-      "policy": "fixed"
-    }
-  ]
+  "subscribe": [{
+    "path": "navigation.position",
+    "period": 120000,
+    "policy": "fixed"
+  },
+  {
+    "path": "navigation.courseOverGround",
+    "period": 120000,
+    "policy": "fixed"
+  }]
 }
 ```
 
@@ -184,13 +167,11 @@ The result is a delta message of the Signal K data with just position and course
 ```javascript
 {
   "context": "vessels.230029970",
-  "subscribe": [
-    {
-      "path": "navigation.position",
-      "minPeriod": 60000,
-      "policy": "instant"
-    }
-  ]
+  "subscribe": [{
+    "path": "navigation.position",
+    "minPeriod": 60000,
+    "policy": "instant"
+  }]
 }
 ```
 

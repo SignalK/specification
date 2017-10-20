@@ -42,8 +42,8 @@
           "example":"130312"
         },
         "instance": {
-					"type": "string",
-					"description": "NMEA2000 instance value of the source message"
+          "type": "string",
+          "description": "NMEA2000 instance value of the source message"
         },
         "sentence": {
           "type": "string",
