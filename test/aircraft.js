@@ -20,8 +20,3 @@ describe('Aircraft in the full tree - bad mmsi', function() {
   });
 });
 
-describe('Aircraft in the full tree - has sails', function() {
-  it("Sample full tree is valid", function() {
-    require('./data/aircraft-sails.json').should.not.be.validSignalKIgnoringSelf;
-  });
-});
