@@ -161,7 +161,7 @@
                 "units": "m"
               },
               "slip": {
-                "description": "Propeller slip, the ratio of 'lost' distance (actual distance travelled/propeller pitch distance). 0<=ratio<=1, 0 is 0% slip (ideal), 1 is 100% slip",
+                "description": "Propeller slip, the ratio of 'lost' distance (1 - (actual distance travelled/propeller pitch distance)). 0<=ratio<=1, 0 is 0% slip (ideal), 1 is 100% slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "ratio"
               }
