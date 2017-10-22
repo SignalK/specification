@@ -181,7 +181,8 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
   }
   var valueLeaf;
   if(pathValue.path.length === 0) {
-    valueLeaf = context;
+    _.merge(context, pathValue.value)
+    return
   } else {
     const splitPath = pathValue.path.split('.');
     valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
