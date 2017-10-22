@@ -74,7 +74,7 @@
               "$source": "a.suitable.path"
             },
             "position": {
-              "timestamp": "(...)",
+              "timestamp": "2017-01-25T00:23:05.230Z",
               "$source": "a.suitable.path",
               "value": {
                 "latitude": 49.287333333333336,
@@ -95,7 +95,7 @@
                 "latitude": 49.287333333333336,
                 "longitude": -123.1595
               },
-              "timestamp": "(...)",
+              "timestamp": "2017-01-25T00:23:05.230Z",
               "$source": "a.suitable.path"
             }
           }
@@ -166,7 +166,7 @@
                 "latitude": 49.287333333333336,
                 "longitude": -123.1595
               },
-              "timestamp": "(...)",
+              "timestamp": "2017-01-25T00:23:05.230Z",
               "$source": "a.suitable.path"
             }
           },
@@ -179,7 +179,7 @@
             "timestamp": "2017-01-25T00:23:05.385Z",
             "$source": "a.suitable.path",
             "position": {
-              "timestamp": "(...)",
+              "timestamp": "2017-01-25T00:23:05.385Z",
               "$source": "a.suitable.path",
               "value": {
                 "latitude": 49.287333333333336,
