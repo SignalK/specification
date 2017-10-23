@@ -651,35 +651,82 @@
       "type": "object",
       "title": "position",
       "description": "The position in 3 dimensions",
-      "allOf": [{
-        "$ref": "#/definitions/commonValueFields"
-      }, {
-        "properties": {
-          "value": {
-            "type": "object",
-            "required": ["latitude", "longitude"],
-            "properties": {
-              "longitude": {
-                "type": "number",
-                "description": "Longitude",
-                "units": "deg",
-                "example": 4.98765245
-              },
-              "latitude": {
-                "type": "number",
-                "description": "Latitude",
-                "units": "deg",
-                "example": 52.0987654
-              },
-              "altitude": {
-                "type": "number",
-                "description": "Altitude",
-                "units": "m"
+      "allOf": [
+        {
+          "$ref": "#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "object",
+              "required": [
+                "latitude",
+                "longitude"
+              ],
+              "properties": {
+                "longitude": {
+                  "type": "number",
+                  "description": "Longitude",
+                  "units": "deg",
+                  "example": 4.98765245
+                },
+                "latitude": {
+                  "type": "number",
+                  "description": "Latitude",
+                  "units": "deg",
+                  "example": 52.0987654
+                },
+                "altitude": {
+                  "type": "number",
+                  "description": "Altitude",
+                  "units": "m"
+                }
+              }
+            },
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "object",
+                      "properties": {
+                        "longitude": {
+                          "type": "number",
+                          "description": "Longitude",
+                          "units": "deg",
+                          "example": 4.98765245
+                        },
+                        "latitude": {
+                          "type": "number",
+                          "description": "Latitude",
+                          "units": "deg",
+                          "example": 52.0987654
+                        },
+                        "altitude": {
+                          "type": "number",
+                          "description": "Altitude",
+                          "units": "m"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
-      }]
+      ]
     },
     "waypoint": {
       "type": "object",
