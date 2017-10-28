@@ -47,7 +47,7 @@
         "nextPoint": {
           "type": "object",
           "description": "The point on earth the vessel's presently navigating towards",
-          "allOf": [
+          "anyOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
             },
