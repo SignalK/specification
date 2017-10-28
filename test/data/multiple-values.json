@@ -50,6 +50,30 @@
             }
           }
         },
+        "closestApproach": {
+          "value": {
+            "distance": 250,
+            "timeTo": 45
+          },
+          "$source": "foo.bar",
+          "timestamp": "2014-08-15T19:00:15.404Z",
+          "values": {
+            "foo.bar": {
+              "value": {
+                "distance": 250,
+                "timeTo": 45
+              },
+              "timestamp": "2014-08-15T19:00:15.404Z"
+            },
+            "foo.baz": {
+              "value": {
+                "distance": 251,
+                "timeTo": 46
+              },
+              "timestamp": "2014-08-15T19:00:14.404Z"
+            }
+          }
+        },
         "position": {
           "timestamp": "2015-03-06T16:57:53.643Z",
           "$source": "nmea1.II",

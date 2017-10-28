@@ -223,6 +223,38 @@
                   "example": 312
                 }
               }
+            },
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "object",
+                      "properties": {
+                        "distance": {
+                          "type": "number",
+                          "units": "m"
+                        },
+                        "timeTo": {
+                          "type": "number",
+                          "units": "s"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
