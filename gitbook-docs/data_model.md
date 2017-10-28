@@ -154,6 +154,28 @@ A leaf is where the actual value of the Signal K property is and where `timestam
 The value is often a scalar - a numeric value, as in the example above, but it can also be an object.
 For example a `navigation.position` value would be an object like `{"latitude": -41.2936935424, "longitude": 173.2470855712}`.
 
+There are some static properties in the full model that lack the support for multiple values and metadata such as source and timestamp. An example is a vessel's name, directly under the vessel's root. This static data may appear in the delta stream, for example when received in AIS transmission. In this case the value should be the subtree of the full model, starting from the vessel's root, with just the relevant parts, and the path must be empty, indicating that the value should be merged to the full model mounted where the delta's context property points:
+
+```
+{
+  "context": "vessels.urn:mrn:imo:mmsi:2xxxxxxx",
+  "updates": [
+    {
+      "source": {...},
+      "timestamp": "2014-08-15T19:02:31.507Z",
+      "values": [
+        {
+          "path": "",
+          "value": {
+            "name": "WRANGO"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## Data Quality
 
 Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies and miscellaneous required adjustments (like wind arrow offset), but there is no _guarantee_ that data is accurate, or within certain bounds. Different sources will have different data quality and normal vigilance is always required.
