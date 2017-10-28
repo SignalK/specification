@@ -2,6 +2,35 @@
   "vessels": {
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "environment": {
+        "current": {
+          "value": {
+            "setTrue": 58.9,
+            "drift": 0.28
+          },
+          "timestamp": "2014-08-15T18:00:00.755Z",
+          "pgn": 130577,
+          "$source": "sourceLabel1.160",
+          "values": {
+            "sourceLabel1.160": {
+              "value": {
+                "setTrue": 58.9,
+                "drift": 0.28
+              },
+              "timestamp": "2014-08-15T18:00:00.755Z",
+              "pgn": 130577
+            },
+            "sourceLabel2.166": {
+              "value": {
+                "setTrue": 52.2,
+                "drift": 0.33
+              },
+              "timestamp": "2014-08-15T17:59:00.666Z",
+              "pgn": 130577
+            }
+          }
+        }
+      },
       "navigation": {
         "courseOverGroundMagnetic": {
           "value": 3.615624078431453,
