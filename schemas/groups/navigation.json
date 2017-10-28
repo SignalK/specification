@@ -471,20 +471,64 @@
         },
         {
           "properties": {
-            "roll": {
-              "type": "number",
-              "description": "Vessel roll, +ve is list to starboard",
-              "units": "rad"
+            "value": {
+              "type": "object",
+              "properties": {
+                "roll": {
+                  "type": "number",
+                  "description": "Vessel roll, +ve is list to starboard",
+                  "units": "rad"
+                },
+                "pitch": {
+                  "type": "number",
+                  "description": "Pitch, +ve is bow up",
+                  "units": "rad"
+                },
+                "yaw": {
+                  "type": "number",
+                  "description": "Yaw, +ve is heading change to starboard",
+                  "units": "rad"
+                }
+              }
             },
-            "pitch": {
-              "type": "number",
-              "description": "Pitch, +ve is bow up",
-              "units": "rad"
-            },
-            "yaw": {
-              "type": "number",
-              "description": "Yaw, +ve is heading change to starboard",
-              "units": "rad"
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "object",
+                      "properties": {
+                        "roll": {
+                          "type": "number",
+                          "description": "Vessel roll, +ve is list to starboard",
+                          "units": "rad"
+                        },
+                        "pitch": {
+                          "type": "number",
+                          "description": "Pitch, +ve is bow up",
+                          "units": "rad"
+                        },
+                        "yaw": {
+                          "type": "number",
+                          "description": "Yaw, +ve is heading change to starboard",
+                          "units": "rad"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

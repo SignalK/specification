@@ -32,6 +32,36 @@
         }
       },
       "navigation": {
+        "attitude": {
+          "value": {
+            "yaw": 0.222,
+            "pitch": 0.464,
+            "roll": -2.496
+          },
+          "$source": "n2k1.204",
+          "timestamp": "2013-10-08T15:47:28.263Z",
+          "pgn": 127257,
+          "values": {
+            "n2k1.204": {
+              "value": {
+                "yaw": 0.222,
+                "pitch": 0.464,
+                "roll": -2.496
+              },
+              "timestamp": "2013-10-08T15:47:28.263Z",
+              "pgn": 127257
+            },
+            "n2k1.222": {
+              "value": {
+                "yaw": 0.221,
+                "pitch": 0.460,
+                "roll": -2.490
+              },
+              "timestamp": "2013-10-08T15:47:27.263Z",
+              "pgn": 127257
+            }
+          }
+        },
         "courseOverGroundMagnetic": {
           "value": 3.615624078431453,
           "$source": "nmea2.II",
