@@ -326,18 +326,6 @@
   "/vessels/*/environment/current": {
     "description": "Direction and strength of current affecting the vessel"
   },
-  "/vessels/*/environment/current/drift": {
-    "units": "m/s",
-    "description": "The speed component of the water current vector"
-  },
-  "/vessels/*/environment/current/setTrue": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to true (geographic) north"
-  },
-  "/vessels/*/environment/current/setMagnetic": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to magnetic north"
-  },
   "/vessels/*/environment/tide": {
     "description": "Tide data"
   },
@@ -486,12 +474,6 @@
   "/vessels/*/navigation/courseRhumbline/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/vessels/*/navigation/courseRhumbline/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/vessels/*/navigation/courseRhumbline/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/vessels/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -501,12 +483,6 @@
   },
   "/vessels/*/navigation/courseRhumbline/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
-  },
-  "/vessels/*/navigation/courseRhumbline/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/vessels/*/navigation/courseRhumbline/previousPoint/position/longitude": {
-    "description": "[missing]"
   },
   "/vessels/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -561,12 +537,6 @@
   "/vessels/*/navigation/courseGreatCircle/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/vessels/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/vessels/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -577,11 +547,8 @@
   "/vessels/*/navigation/courseGreatCircle/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
   },
-  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/vessels/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
-    "description": "[missing]"
+  "/vessels/*/navigation/closestApproach": {
+    "description": "Calculated values for other vessels, e.g. from AIS"
   },
   "/vessels/*/navigation/racing": {
     "description": "Specific navigational data related to yacht racing."
@@ -686,18 +653,6 @@
   "/vessels/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
-  "/vessels/*/navigation/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/vessels/*/navigation/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/vessels/*/navigation/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
-  },
   "/vessels/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
   },
@@ -770,18 +725,6 @@
   },
   "/vessels/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
-  },
-  "/vessels/*/navigation/anchor/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/vessels/*/navigation/anchor/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/vessels/*/navigation/anchor/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
   },
   "/vessels/*/navigation/datetime": {
     "description": "Time and Date from the GNSS Positioning System"
@@ -2729,18 +2672,6 @@
   "/aircraft/*/environment/current": {
     "description": "Direction and strength of current affecting the vessel"
   },
-  "/aircraft/*/environment/current/drift": {
-    "units": "m/s",
-    "description": "The speed component of the water current vector"
-  },
-  "/aircraft/*/environment/current/setTrue": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to true (geographic) north"
-  },
-  "/aircraft/*/environment/current/setMagnetic": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to magnetic north"
-  },
   "/aircraft/*/environment/tide": {
     "description": "Tide data"
   },
@@ -2889,12 +2820,6 @@
   "/aircraft/*/navigation/courseRhumbline/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/aircraft/*/navigation/courseRhumbline/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aircraft/*/navigation/courseRhumbline/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/aircraft/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -2904,12 +2829,6 @@
   },
   "/aircraft/*/navigation/courseRhumbline/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
-  },
-  "/aircraft/*/navigation/courseRhumbline/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aircraft/*/navigation/courseRhumbline/previousPoint/position/longitude": {
-    "description": "[missing]"
   },
   "/aircraft/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -2964,12 +2883,6 @@
   "/aircraft/*/navigation/courseGreatCircle/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/aircraft/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aircraft/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/aircraft/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -2980,11 +2893,8 @@
   "/aircraft/*/navigation/courseGreatCircle/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
   },
-  "/aircraft/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aircraft/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
-    "description": "[missing]"
+  "/aircraft/*/navigation/closestApproach": {
+    "description": "Calculated values for other vessels, e.g. from AIS"
   },
   "/aircraft/*/navigation/racing": {
     "description": "Specific navigational data related to yacht racing."
@@ -3089,18 +2999,6 @@
   "/aircraft/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
-  "/aircraft/*/navigation/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/aircraft/*/navigation/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/aircraft/*/navigation/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
-  },
   "/aircraft/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
   },
@@ -3173,18 +3071,6 @@
   },
   "/aircraft/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
-  },
-  "/aircraft/*/navigation/anchor/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/aircraft/*/navigation/anchor/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/aircraft/*/navigation/anchor/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
   },
   "/aircraft/*/navigation/datetime": {
     "description": "Time and Date from the GNSS Positioning System"
@@ -3584,18 +3470,6 @@
   "/aton/*/environment/current": {
     "description": "Direction and strength of current affecting the vessel"
   },
-  "/aton/*/environment/current/drift": {
-    "units": "m/s",
-    "description": "The speed component of the water current vector"
-  },
-  "/aton/*/environment/current/setTrue": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to true (geographic) north"
-  },
-  "/aton/*/environment/current/setMagnetic": {
-    "units": "rad",
-    "description": "The direction component of the water current vector referenced to magnetic north"
-  },
   "/aton/*/environment/tide": {
     "description": "Tide data"
   },
@@ -3744,12 +3618,6 @@
   "/aton/*/navigation/courseRhumbline/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/aton/*/navigation/courseRhumbline/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aton/*/navigation/courseRhumbline/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/aton/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -3759,12 +3627,6 @@
   },
   "/aton/*/navigation/courseRhumbline/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
-  },
-  "/aton/*/navigation/courseRhumbline/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aton/*/navigation/courseRhumbline/previousPoint/position/longitude": {
-    "description": "[missing]"
   },
   "/aton/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -3819,12 +3681,6 @@
   "/aton/*/navigation/courseGreatCircle/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/aton/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aton/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/aton/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -3835,11 +3691,8 @@
   "/aton/*/navigation/courseGreatCircle/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
   },
-  "/aton/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/aton/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
-    "description": "[missing]"
+  "/aton/*/navigation/closestApproach": {
+    "description": "Calculated values for other vessels, e.g. from AIS"
   },
   "/aton/*/navigation/racing": {
     "description": "Specific navigational data related to yacht racing."
@@ -3944,18 +3797,6 @@
   "/aton/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
-  "/aton/*/navigation/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/aton/*/navigation/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/aton/*/navigation/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
-  },
   "/aton/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
   },
@@ -4028,18 +3869,6 @@
   },
   "/aton/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
-  },
-  "/aton/*/navigation/anchor/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/aton/*/navigation/anchor/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/aton/*/navigation/anchor/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
   },
   "/aton/*/navigation/datetime": {
     "description": "Time and Date from the GNSS Positioning System"
@@ -4275,12 +4104,6 @@
   "/sar/*/navigation/courseRhumbline/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/sar/*/navigation/courseRhumbline/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/sar/*/navigation/courseRhumbline/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/sar/*/navigation/courseRhumbline/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -4290,12 +4113,6 @@
   },
   "/sar/*/navigation/courseRhumbline/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
-  },
-  "/sar/*/navigation/courseRhumbline/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/sar/*/navigation/courseRhumbline/previousPoint/position/longitude": {
-    "description": "[missing]"
   },
   "/sar/*/navigation/courseGreatCircle": {
     "description": "Course information computed with Great Circle"
@@ -4350,12 +4167,6 @@
   "/sar/*/navigation/courseGreatCircle/nextPoint/position": {
     "description": "The position of nextPoint in two dimensions"
   },
-  "/sar/*/navigation/courseGreatCircle/nextPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/sar/*/navigation/courseGreatCircle/nextPoint/position/longitude": {
-    "description": "[missing]"
-  },
   "/sar/*/navigation/courseGreatCircle/previousPoint": {
     "description": "The point on earth the vessel's presently navigating from"
   },
@@ -4366,11 +4177,8 @@
   "/sar/*/navigation/courseGreatCircle/previousPoint/position": {
     "description": "The position of lastPoint in two dimensions"
   },
-  "/sar/*/navigation/courseGreatCircle/previousPoint/position/latitude": {
-    "description": "[missing]"
-  },
-  "/sar/*/navigation/courseGreatCircle/previousPoint/position/longitude": {
-    "description": "[missing]"
+  "/sar/*/navigation/closestApproach": {
+    "description": "Calculated values for other vessels, e.g. from AIS"
   },
   "/sar/*/navigation/racing": {
     "description": "Specific navigational data related to yacht racing."
@@ -4475,18 +4283,6 @@
   "/sar/*/navigation/position": {
     "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)"
   },
-  "/sar/*/navigation/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/sar/*/navigation/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/sar/*/navigation/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
-  },
   "/sar/*/navigation/attitude": {
     "description": "Vessel attitude: roll, pitch and yaw"
   },
@@ -4559,18 +4355,6 @@
   },
   "/sar/*/navigation/anchor/position": {
     "description": "The actual anchor position of the vessel in 3 dimensions, probably an estimate at best"
-  },
-  "/sar/*/navigation/anchor/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/sar/*/navigation/anchor/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/sar/*/navigation/anchor/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
   },
   "/sar/*/navigation/datetime": {
     "description": "Time and Date from the GNSS Positioning System"
@@ -4911,18 +4695,6 @@
   "/resources/notes/*/position": {
     "description": "Position related to note. Alternative to region or geohash"
   },
-  "/resources/notes/*/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/resources/notes/*/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/resources/notes/*/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
-  },
   "/resources/notes/*/geohash": {
     "description": "Position related to note. Alternative to region or position"
   },
@@ -4967,18 +4739,6 @@
   },
   "/resources/waypoints/*/position": {
     "description": "The position in 3 dimensions"
-  },
-  "/resources/waypoints/*/position/longitude": {
-    "units": "deg",
-    "description": "Longitude"
-  },
-  "/resources/waypoints/*/position/latitude": {
-    "units": "deg",
-    "description": "Latitude"
-  },
-  "/resources/waypoints/*/position/altitude": {
-    "units": "m",
-    "description": "Altitude"
   },
   "/resources/waypoints/*/feature": {
     "description": "A Geo JSON feature object"
