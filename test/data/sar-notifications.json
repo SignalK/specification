@@ -15,12 +15,14 @@
       },
       "notifications": {
         "mob": {
-          "method": [
-            "sound",
-            "visual"
-          ],
-          "state": "emergency",
-          "message": "Man overboard",
+          "value": {
+            "method": [
+              "sound",
+              "visual"
+            ],
+            "state": "emergency",
+            "message": "Man overboard"
+          },
           "timestamp": "2017-01-23T14:24:17Z",
           "$source": "sources.gps_0183_RMC"
         }
