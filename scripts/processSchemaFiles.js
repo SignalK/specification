@@ -227,7 +227,7 @@ class Parser {
 
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
 
-      md += "Signal K uses [SI units](https://en.wikipedia.org/wiki/International_System_of_Units) almost everywhere, with the exception of geographic coordinates. The following units are in use:\n"
+      md += "Signal K uses [SI units](https://en.wikipedia.org/wiki/International_System_of_Units) almost everywhere, with the exception of geographic coordinates, which are in degrees in WGS84. The following units are in use:\n"
 
       _.forOwn(units, (value, key) => {
         md += `- ${key} : ${value}\n`
