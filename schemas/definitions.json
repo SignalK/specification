@@ -306,6 +306,9 @@
         },
         "sentence": {
           "type": "string"
+        },
+        "preferredSource": {
+          "type": "string"
         }
       }
     },

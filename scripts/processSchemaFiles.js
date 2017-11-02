@@ -146,7 +146,7 @@ class Parser {
           }
         }
 
-        const skipFields = ['timestamp', '$source', 'source', '_attr', 'meta', 'pgn', 'sentence', 'value', 'values']
+        const skipFields = ['timestamp', '$source', 'source', '_attr', 'meta', 'pgn', 'sentence', 'value', 'values', 'preferredSource']
         const embeddedFields =
           !this.tree[`${path}/timestamp`] ? {} :
             _.pick(subtree.properties ? _.omit(subtree.properties || {}, skipFields) : {}, (value, key) => {
@@ -212,7 +212,7 @@ class Parser {
      */
     .then(results => {
       const filenames = {}
-      const filter = ['/timestamp', '/$source', '/source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values']
+      const filter = ['/timestamp', '/$source', '/source', '/_attr', '/meta', '/pgn', '/sentence', '/value', '/values', '/preferredSource']
 
       results.forEach(result => {
         filenames[result.name] = result.path
