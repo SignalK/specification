@@ -364,23 +364,69 @@
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }],
       "properties": {
-
-        "minimum": {
-          "description": "The minimum draft of the vessel",
-          "type": "number",
-          "units": "m"
-        },
-
-        "maximum": {
-          "description": "The maximum draft of the vessel",
-          "type": "number",
-          "units": "m"
-        },
-
-        "canoe": {
-          "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
-          "type": "number",
-          "units": "m"
+        "value": {
+          "type": "object",
+          "properties": {
+            "minimum": {
+              "description": "The minimum draft of the vessel",
+              "type": "number",
+              "units": "m"
+            },
+            "maximum": {
+              "description": "The maximum draft of the vessel",
+              "type": "number",
+              "units": "m"
+            },
+            "current": {
+              "description": "The current draft of the vessel",
+              "type": "number",
+              "units": "m"
+            },
+            "canoe": {
+              "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
+              "type": "number",
+              "units": "m"
+            },
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "minimum": {
+                      "description": "The minimum draft of the vessel",
+                      "type": "number",
+                      "units": "m"
+                    },
+                    "maximum": {
+                      "description": "The maximum draft of the vessel",
+                      "type": "number",
+                      "units": "m"
+                    },
+                    "current": {
+                      "description": "The current draft of the vessel",
+                      "type": "number",
+                      "units": "m"
+                    },
+                    "canoe": {
+                      "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
+                      "type": "number",
+                      "units": "m"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -393,22 +439,59 @@
         "$ref": "../definitions.json#/definitions/commonValueFields"
       }],
       "properties": {
-        "overall": {
-          "type": "number",
-          "description": "Length overall",
-          "units": "m"
+        "value": {
+          "type": "object",
+          "properties": {
+            "overall": {
+              "type": "number",
+              "description": "Length overall",
+              "units": "m"
+            },
+            "hull": {
+              "type": "number",
+              "description": "Length of hull",
+              "units": "m"
+            },
+            "waterline": {
+              "type": "number",
+              "description": "Length at waterline",
+              "units": "m"
+            }
+          }
         },
-
-        "hull": {
-          "type": "number",
-          "description": "Length of hull",
-          "units": "m"
-        },
-
-        "waterline": {
-          "type": "number",
-          "description": "Length at waterline",
-          "units": "m"
+        "values": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "$ref": "../definitions.json#/definitions/timestamp"
+                },
+                "pgn": {
+                  "type": "number"
+                },
+                "sentence": {
+                  "type": "string"
+                },
+                "overall": {
+                  "type": "number",
+                  "description": "Length overall",
+                  "units": "m"
+                },
+                "hull": {
+                  "type": "number",
+                  "description": "Length of hull",
+                  "units": "m"
+                },
+                "waterline": {
+                  "type": "number",
+                  "description": "Length at waterline",
+                  "units": "m"
+                }
+              }
+            }
+          }
         }
       }
     },

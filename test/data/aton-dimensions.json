@@ -24,9 +24,11 @@
       },
       "design": {
         "length": {
-          "overall": 100.4,
           "timestamp": "2014-08-15T19:00:15.404Z",
-          "$source": "foo.bar"
+          "$source": "foo.bar",
+          "value": {
+            "overall": 100.4
+          }
         },
         "beam": {
           "value": 75.4,
