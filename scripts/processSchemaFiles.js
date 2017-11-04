@@ -300,6 +300,18 @@ class Parser {
           md += '\n'
         }
 
+        if (json.properties && json.properties['value'] && json.properties['value'].type === 'object') {
+          md += 'Object value with properties\n'
+          Object.keys(json.properties['value'].properties).forEach(propName => {
+            md += `* ${propName}`
+            if (json.properties['value'].properties[propName].units) {
+              md += ` (${json.properties['value'].properties[propName].units})`
+            }
+            md += '\n'
+          })
+          md += '\n'
+        }
+
         function renderField(key, field, baseIndent) {
           const descString = field.description ? ` (${field.description})` : ''
           const unitString = field.units ? `, units: ${field.units} (${units[field.units]})` : ''

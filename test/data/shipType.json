@@ -3,7 +3,7 @@
     "urn:mrn:imo:mmsi:230099999": {
       "mmsi": "230099999",
       "design": {
-	"aisShipType": {
+        "aisShipType": {
           "timestamp": "2017-01-25T00:23:05Z",
           "$source": "a.suitable.path",
           "value": {
@@ -16,5 +16,4 @@
   },
   "version": "1.0.0",
   "self": "vessels.urn:mrn:imo:mmsi:230099999"
-  
 }

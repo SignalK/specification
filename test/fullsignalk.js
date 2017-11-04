@@ -35,7 +35,7 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(delta);
-    fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('longitude');
+    fullSignalK.retrieve().vessels.foo.navigation.position.value.should.have.property('longitude');
     fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('$source');
   })
 

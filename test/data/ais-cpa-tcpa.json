@@ -9,9 +9,11 @@
           "pgn": 130577,
           "$source": "sourceLabel.160"
         },
-        "closestApproach":  {
-          "distance": 250,
-          "timeTo": 45,
+        "closestApproach": {
+          "value": {
+            "distance": 250,
+            "timeTo": 45
+          },
           "$source": "foo.bar",
           "timestamp": "2014-08-15T19:00:15.404Z"
         }

@@ -3,7 +3,7 @@ chai.Should();
 chai.use(require('../dist/').chaiModule);
 
 describe('Notifications in the full tree', function() {
-  it("should be valid", function() {
+  it("should be valid (simple)", function() {
     require('./data/alarms.json').should.be.validSignalKIgnoringSelf;
   });
   //and work deeply embedded

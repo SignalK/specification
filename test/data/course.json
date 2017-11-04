@@ -4,14 +4,17 @@
       "mmsi": "230099999",
       "notifications": {
         "arrivalCircleEntered": {
-          "method": ["visual"],
-          "state": "alert",
-          "message": "You entered the arrival circle of Waypoint 002. Adjusting course towards Waypoint 003.",
+          "value": {
+            "method": [
+              "visual"
+            ],
+            "state": "alert",
+            "message": "You entered the arrival circle of Waypoint 002. Adjusting course towards Waypoint 003."
+          },
           "timestamp": "2017-01-25T00:23:05Z",
           "$source": "a.suitable.path"
         }
       },
-
       "navigation": {
         "courseGreatCircle": {
           "crossTrackError": {
@@ -19,19 +22,16 @@
             "timestamp": "2017-01-25T00:23:05.201Z",
             "$source": "a.suitable.path"
           },
-
           "bearingTrackTrue": {
             "value": 0.9162978572970231,
             "timestamp": "2017-01-25T00:23:05.201Z",
             "$source": "a.suitable.path"
           },
-
           "bearingTrackMagnetic": {
             "value": 1.1986521,
             "timestamp": "2017-01-25T00:23:05.201Z",
             "$source": "a.suitable.path"
           },
-
           "activeRoute": {
             "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
             "estimatedTimeOfArrival": {
@@ -45,7 +45,6 @@
               "$source": "a.suitable.path"
             }
           },
-
           "nextPoint": {
             "value": {
               "type": "Waypoint",
@@ -74,11 +73,14 @@
               "$source": "a.suitable.path"
             },
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "timestamp": "2017-01-25T00:23:05.230Z",
+              "$source": "a.suitable.path",
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              }
             }
           },
-
           "previousPoint": {
             "value": {
               "type": "Waypoint",
@@ -87,31 +89,31 @@
             "timestamp": "2017-01-25T00:23:05.154Z",
             "$source": "a.suitable.path",
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              },
+              "timestamp": "2017-01-25T00:23:05.230Z",
+              "$source": "a.suitable.path"
             }
           }
         },
-
         "courseRhumbline": {
           "crossTrackError": {
             "value": -8.67,
             "timestamp": "2017-01-25T00:23:05.154Z",
             "$source": "a.suitable.path"
           },
-
           "bearingTrackTrue": {
             "value": 0.9162978572970231,
             "timestamp": "2017-01-25T00:23:05.154Z",
             "$source": "a.suitable.path"
           },
-
           "bearingTrackMagnetic": {
             "value": 1.1986521,
             "timestamp": "2017-01-25T00:23:05.158Z",
             "$source": "a.suitable.path"
           },
-
           "activeRoute": {
             "href": "/vessels/vessels.urn:mrn:imo:mmsi:230099999/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672",
             "estimatedTimeOfArrival": {
@@ -125,7 +127,6 @@
               "$source": "a.suitable.path"
             }
           },
-
           "nextPoint": {
             "value": {
               "type": "Waypoint",
@@ -154,11 +155,14 @@
               "$source": "a.suitable.path"
             },
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              },
+              "timestamp": "2017-01-25T00:23:05.230Z",
+              "$source": "a.suitable.path"
             }
           },
-
           "previousPoint": {
             "value": {
               "type": "Waypoint",
@@ -167,8 +171,12 @@
             "timestamp": "2017-01-25T00:23:05.385Z",
             "$source": "a.suitable.path",
             "position": {
-              "latitude": 49.287333333333336,
-              "longitude": -123.1595
+              "timestamp": "2017-01-25T00:23:05.385Z",
+              "$source": "a.suitable.path",
+              "value": {
+                "latitude": 49.287333333333336,
+                "longitude": -123.1595
+              }
             }
           }
         }

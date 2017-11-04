@@ -1,0 +1,846 @@
+{
+  "@metadata": {
+    "locale": "en"
+  },
+
+  "alarms.anchorAlarmMethod": {
+    "shortName": "Anchor Alarm Method",
+    "longName": "Anchor Alarm Method"
+  },
+  "alarms.anchorAlarmState": {
+    "shortName": "Anchor Alarm State",
+    "longName": "Anchor Alarm State"
+  },
+  "alarms.autopilotAlarmMethod": {
+    "shortName": "Autopilot Alarm Method",
+    "longName": "Autopilot Alarm Method"
+  },
+  "alarms.autopilotAlarmState": {
+    "shortName": "Autopilot Alarm State",
+    "longName": "Autopilot Alarm State"
+  },
+  "alarms.engineAlarmMethod": {
+    "shortName": "Engine Alarm Method",
+    "longName": "Engine Alarm Method"
+  },
+  "alarms.engineAlarmState": {
+    "shortName": "Engine Alarm State",
+    "longName": "Engine Alarm State"
+  },
+  "alarms.fireAlarmMethod": {
+    "shortName": "Fire Alarm Method",
+    "longName": "Fire Alarm Method"
+  },
+  "alarms.fireAlarmState": {
+    "shortName": "Fire Alarm State",
+    "longName": "Fire Alarm State"
+  },
+  "alarms.gasAlarmMethod": {
+    "shortName": "Gas Alarm Method",
+    "longName": "Gas Alarm Method"
+  },
+  "alarms.gasAlarmState": {
+    "shortName": "Gas Alarm State",
+    "longName": "Gas Alarm State"
+  },
+  "alarms.gpsAlarmMethod": {
+    "shortName": "GPS Alarm Method",
+    "longName": "GPS Alarm Method"
+  },
+  "alarms.gpsAlarmState": {
+    "shortName": "GPS Alarm State",
+    "longName": "GPS Alarm State"
+  },
+  "alarms.maydayAlarmMethod": {
+    "shortName": "Mayday Alarm Method",
+    "longName": "Mayday Alarm Method"
+  },
+  "alarms.maydayAlarmState": {
+    "shortName": "Mayday Alarm State",
+    "longName": "Mayday Alarm State"
+  },
+  "alarms.panpanAlarmMethod": {
+    "shortName": "Panpan Alarm Method",
+    "longName": "Panpan Alarm Method"
+  },
+  "alarms.panpanAlarmState": {
+    "shortName": "Panpan Alarm State",
+    "longName": "Panpan Alarm State"
+  },
+  "alarms.powerAlarmMethod": {
+    "shortName": "Power Alarm Method",
+    "longName": "Power Alarm Method"
+  },
+  "alarms.powerAlarmState": {
+    "shortName": "Power Alarm State",
+    "longName": "Power Alarm State"
+  },
+  "alarms.silentInterval": {
+    "shortName": "Silent Interval",
+    "longName": "Silent Interval"
+  },
+  "alarms.windAlarmMethod": {
+    "shortName": "Wind Alarm Method",
+    "longName": "Wind Alarm Method"
+  },
+  "alarms.windAlarmState": {
+    "shortName": "Wind Alarm State",
+    "longName": "Wind Alarm State"
+  },
+
+
+  "communication.callsignDsc": {
+    "shortName": "Callsign DSC",
+    "longName": "Callsign Digital Selective Calling"
+  },
+  "communication.callsignHf": {
+    "shortName": "Callsign HF",
+    "longName": "Callsign HF Radio"
+  },
+  "communication.callsignVhf": {
+    "shortName": "Callsign VHF",
+    "longName": "Callsign VHF Radio"
+  },
+  "communication.cellPhone": {
+    "shortName": "Cell Phone",
+    "longName": "Cell Phone Number"
+  },
+  "communication.emailHf": {
+    "shortName": "Email HF",
+    "longName": "Email HF"
+  },
+  "communication.email": {
+    "shortName": "Email",
+    "longName": "Email Address"
+  },
+  "communication.satPhone": {
+    "shortName": "Sat Phone",
+    "longName": "Satellite Phone"
+  },
+  "communication.skipperName": {
+    "shortName": "Skipper Name",
+    "longName": "Skipper Name"
+  },
+  "communication.crewNames": {
+    "shortName": "Crew Names",
+    "longName": "Crew Names"
+  },
+
+
+  "design.name": {
+    "shortName": "Name",
+    "longName": "Common Name"
+  },
+  "design.displacement": {
+    "shortName": "Displacement",
+    "longName": "Displacement"
+  },
+  "design.draft": {
+    "shortName": "Draft",
+    "longName": "Draft in Meters"
+  },
+  "design.canoeDraft": {
+    "shortName": "Canoe Draft",
+    "longName": "Canoe Draft in Meters"
+  },
+  "design.loa": {
+    "shortName": "LOA",
+    "longName": "Length Overall in Meters"
+  },
+  "design.loh": {
+    "shortName": "LOH",
+    "longName": "Length Over Hull in Meters"
+  },
+  "design.lwl": {
+    "shortName": "LWL",
+    "longName": "Waterline Length in Meters"
+  },
+  "design.beam": {
+    "shortName": "Beam",
+    "longName": "Beam in Meters"
+  },
+  "design.sailArea": {
+    "shortName": "Sail Area",
+    "longName": "Sail Area in Square Meters"
+  },
+  "design.airHeight": {
+    "shortName": "Air Height",
+    "longName": "Air Height in Meters"
+  },
+
+  "environment.airPressureChangeRateAlarm": {
+    "shortName": "Air Pressure Change Rate Alarm",
+    "longName": "Air Pressure Change Rate Alarm in kPa"
+  },
+  "environment.airPressure": {
+    "shortName": "Air Pressure",
+    "longName": "Air Pressure in kPa"
+  },
+  "environment.airTemp": {
+    "shortName": "Air Temperature",
+    "longName": "Air Temperature in Celsius"
+  },
+  "environment.depth": {
+    "shortName": "Depth",
+    "longName": "Depth in Meters"
+  },
+  "environment.depth.belowKeel": {
+    "shortName": "DBK",
+    "longName": "Depth Below Keel",
+    "unit": "m"
+  },
+
+
+  "environment.depth.belowTransducer": {
+    "shortName": "DBT",
+    "longName": "Depth Below Transducer",
+    "unit": "m"
+  },
+  "environment.depth.belowSurface": {
+    "shortName": "Depth Below Surface",
+    "longName": "Depth Below Surface in Meters"
+  },
+  "environment.depth.transducerToKeel": {
+    "shortName": "Depth Transducer to Keel",
+    "longName": "Depth Transducer to Keel in Meters"
+  },
+  "environment.depth.surfaceToTransducer": {
+    "shortName": "Depth Surface to Transducer",
+    "longName": "Depth Surface to Transducer in Meters"
+  },
+  "environment.humidity": {
+    "shortName": "Humidity",
+    "longName": "Relative Humidity"
+  },
+  "environment.salinity": {
+    "shortName": "Salinity",
+    "longName": "Water Salinity"
+  },
+  "environment.tide": {
+    "shortName": "Tide",
+    "longName": "Tide Data"
+  },
+  "environment.tide.heightHigh": {
+    "shortName": "High Tide Height",
+    "longName": "High tide Height in Meters"
+  },
+  "environment.tide.heightNow": {
+    "shortName": "Current Tide Height",
+    "longName": "Current Tide Height in Meters"
+  },
+  "environment.tide.heightLow": {
+    "shortName": "Low Tide Height",
+    "longName": "Low tide Height in Meters"
+  },
+  "environment.tide.timeLow": {
+    "shortName": "Low Tide Time",
+    "longName": "Time of Next Low Tide"
+  },
+  "environment.tide.timeHigh": {
+    "shortName": "High Tide Time",
+    "longName": "Time of Next Low Tide"
+  },
+  "environment.waterTemp": {
+    "shortName": "Water Temperature",
+    "longName": "Water Temperature in Celsius"
+  },
+  "environment.wind": {
+    "shortName": "Wind",
+    "longName": "Wind Data"
+  },
+  "environment.wind.angleApparent": {
+    "shortName": "Angle Apparent",
+    "longName": "Apparent Wind Angle"
+  },
+  "environment.wind.angleTrue": {
+    "shortName": "Angle True",
+    "longName": "True Wind Angle"
+  },
+  "environment.wind.directionChangeAlarm": {
+    "shortName": "Direction Change Alarm",
+    "longName": "Wind Direction Change to Raise Alarm"
+  },
+  "environment.wind.directionTrue": {
+    "shortName": "Direction True",
+    "longName": "True Wind Direction"
+  },
+  "environment.wind.directionMagnetic": {
+    "shortName": "Direction Magnetic",
+    "longName": "Wind Direction Magnetic"
+  },
+  "environment.wind.speedAlarm": {
+    "shortName": "Speed Alarm",
+    "longName": "Wind Speed Alarm in Meters/Second"
+  },
+  "environment.wind.speedTrue": {
+    "shortName": "Speed True",
+    "longName": "True Wind Speed in Meters/Second"
+  },
+  "environment.wind.speedOverGround": {
+    "shortName": "TWS",
+    "longName": "Wind Speed Over Ground in Meters/Second"
+  },
+  "environment.wind.speedApparent": {
+    "shortName": "AWS",
+    "longName": "Apparent Wind Speed in Meters/Second"
+  },
+
+  "navigation.courseOverGroundTrue": {
+    "shortName": "COG(t)",
+    "longName": "Course Over Ground, True"
+  },
+  "navigation.courseOverGroundMagnetic": {
+    "shortName": "COG(m)",
+    "longName": "Course Over Ground, Magnetic"
+  },
+  "navigation.activeRoute": {
+    "shortName": "Active Route",
+    "longName": "Active Route"
+  },
+  "navigation.activeRoute.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Active Route Timestamp"
+  },
+  "navigation.activeRoute.source": {
+    "shortName": "Source",
+    "longName": "Active Route Source"
+  },
+  "navigation.activeRoute.bearingActual": {
+    "shortName": "Actual Bearing",
+    "longName": "Active Route Actual Bearing"
+  },
+  "navigation.activeRoute.bearingDirect": {
+    "shortName": "Direct Bearing",
+    "longName": "Active Route Direct Bearing"
+  },
+  "navigation.activeRoute.courseRequired": {
+    "shortName": "Required Course",
+    "longName": "Active Route Required Course"
+  },
+  "navigation.activeRoute.eta": {
+    "shortName": "ETA",
+    "longName": "Active Route Estimated Time of Arrival"
+  },
+  "navigation.activeRoute.route": {
+    "shortName": "Route",
+    "longName": "Active Route - Route From Route List"
+  },
+  "navigation.activeRoute.startTime": {
+    "shortName": "Start Time",
+    "longName": "Active Route Start Time"
+  },
+  "navigation.activeRoute.waypoint": {
+    "shortName": "Waypoint",
+    "longName": "Active Route Waypoint"
+  },
+  "navigation.activeRoute.waypoint.lastTime": {
+    "shortName": "AR Waypoint TLR",
+    "longName": "Active Route Waypoint Time Last Reached"
+  },
+  "navigation.activeRoute.waypoint.last": {
+    "shortName": "Waypoint Last",
+    "longName": "Active Route Waypoint Last"
+  },
+  "navigation.activeRoute.waypoint.nextEta": {
+    "shortName": "Waypoint Next ETA",
+    "longName": "Active Route Waypoint Next Estimated Time of Arrival"
+  },
+  "navigation.activeRoute.waypoint.next": {
+    "shortName": "Waypoint Next",
+    "longName": "Active Route Next Waypoint"
+  },
+  "navigation.activeRoute.waypoint.xte": {
+    "shortName": "Waypoint XTE",
+    "longName": "Active Route Waypoint Cross Track Error in Meters"
+  },
+  "navigation.magneticVariation": {
+    "shortName": "Magnetic Variation",
+    "longName": "Magnetic Variation at Current Position"
+  },
+  "navigation.destination": {
+    "shortName": "Destination",
+    "longName": "Trip Destination"
+  },
+  "navigation.destination.eta": {
+    "shortName": "ETA",
+    "longName": "Estimated Time of Arrival"
+  },
+  "navigation.destination.source": {
+    "shortName": "Source",
+    "longName": "Source of Data"
+  },
+  "navigation.destination.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp of Last Update"
+  },
+  "navigation.destination.longitude": {
+    "shortName": "Longitude",
+    "longName": "Longitude od Destination"
+  },
+  "navigation.destination.latitude": {
+    "shortName": "Latitude",
+    "longName": "Latitude of Destination"
+  },
+  "navigation.destination.altitude": {
+    "shortName": "Altitude",
+    "longName": "Altitude of Destination"
+  },
+  "navigation.current": {
+    "shortName": "Current",
+    "longName": "Current"
+  },
+  "navigation.current.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp"
+  },
+  "navigation.current.drift": {
+    "shortName": "Drift",
+    "longName": "Current Drift"
+  },
+  "navigation.current.setTrue": {
+    "shortName": "Set True",
+    "longName": "Current Set True"
+  },
+  "navigation.current.setMagnetic": {
+    "shortName": "Set Magnetic",
+    "longName": "Current Set Magnetic"
+  },
+  "navigation.gnss": {
+    "shortName": "GNSS",
+    "longName": "Global Navigation Satellite System"
+  },
+  "navigation.gnss.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp"
+  },
+  "navigation.gnss.quality": {
+    "shortName": "Quality",
+    "longName": "Quality of Fix"
+  },
+  "navigation.gnss.satellites": {
+    "shortName": "Number",
+    "longName": "Number of Satellites"
+  },
+  "navigation.gnss.antennaAltitude": {
+    "shortName": "Antenna Altitude",
+    "longName": "Altitude of Antenna"
+  },
+  "navigation.gnss.horizontalDilution": {
+    "shortName": "Horizontal Dilution",
+    "longName": "Horizontal Position Error"
+  },
+  "navigation.gnss.geoidalSeparation": {
+    "shortName": "Geoidal Separation",
+    "longName": "Geoidal Separation"
+  },
+  "navigation.gnss.differentialAge": {
+    "shortName": "DGPS Age",
+    "longName": "DGPS Age in Seconds"
+  },
+  "navigation.gnss.differentialReference": {
+    "shortName": "Differential Reference",
+    "longName": "DGPS Base Station ID"
+  },
+  "navigation.headingMagnetic": {
+    "shortName": "Heading Magnetic",
+    "longName": "Heading Magnetic in Degrees"
+  },
+  "navigation.headingTrue": {
+    "shortName": "Heading True",
+    "longName": "Heading True in Degrees"
+  },
+  "navigation.position": {
+    "shortName": "Position 3D",
+    "longName": "Position in 3 Dimensions"
+  },
+  "navigation.position.source": {
+    "shortName": "Source",
+    "longName": "Source of Data"
+  },
+  "navigation.position.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp of Last Update"
+  },
+  "navigation.position.longitude": {
+    "shortName": "Longitude",
+    "longName": "Current Longitude"
+  },
+  "navigation.position.latitude": {
+    "shortName": "Latitude",
+    "longName": "Current Latitude"
+  },
+  "navigation.position.altitude": {
+    "shortName": "Altitude",
+    "longName": "Current Altitude"
+  },
+  "navigation.pitch": {
+    "shortName": "Pitch",
+    "longName": "Pitch in Degrees"
+  },
+  "navigation.yaw": {
+    "shortName": "Yaw",
+    "longName": "Yaw in Degrees"
+  },
+  "navigation.rateOfTurn": {
+    "shortName": "Rate of Turn",
+    "longName": "Rate of Turn in Degrees/Second"
+  },
+  "navigation.roll": {
+    "shortName": "Roll",
+    "longName": "Roll in Degrees"
+  },
+  "navigation.speedOverGround": {
+    "shortName": "SOG",
+    "longName": "Speed Over Ground",
+    "unit": "mps"
+  },
+  "navigation.speedThroughWater": {
+    "shortName": "STW",
+    "longName": "Speed Through Water",
+    "unit": "mps"
+  },
+  "navigation.log": {
+    "shortName": "Log",
+    "longName": "Log in Nautical Miles"
+  },
+  "navigation.logTrip": {
+    "shortName": "Trip Log",
+    "longName": "Trip Log in Nautical Miles"
+  },
+  "navigation.state": {
+    "shortName": "State",
+    "longName": "Navigational State of Vessel"
+  },
+  "navigation.state.source": {
+    "shortName": "Source",
+    "longName": "Source of Data"
+  },
+  "navigation.state.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp"
+  },
+  "navigation.state.value": {
+    "shortName": "Value",
+    "longName": "Value"
+  },
+  "navigation.anchor": {
+    "shortName": "Anchor",
+    "longName": "Anchor Data"
+  },
+  "navigation.anchor.source": {
+    "shortName": "Source",
+    "longName": "Source of Data"
+  },
+  "navigation.anchor.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp"
+  },
+  "navigation.anchor.maxRadius": {
+    "shortName": "Max Radius",
+    "longName": "Maximum Anchor Radius in Meters"
+  },
+  "navigation.anchor.currentRadius": {
+    "shortName": "Current Radius",
+    "longName": "Distance to Anchor in Meters"
+  },
+  "navigation.anchor.position": {
+    "shortName": "Anchor Position",
+    "longName": "Anchor Position 3D"
+  },
+  "navigation.anchor.position.source": {
+    "shortName": "Source",
+    "longName": "Source of Data"
+  },
+  "navigation.anchor.position.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp"
+  },
+  "navigation.anchor.position.longitude": {
+    "shortName": "Longitude",
+    "longName": "Longitude of Anchor Position"
+  },
+  "navigation.anchor.position.latitude": {
+    "shortName": "Latitude",
+    "longName": "Latitude of Anchor Position"
+  },
+  "navigation.anchor.position.altitude": {
+    "shortName": "Altitude",
+    "longName": "Altitude of Anchor Position"
+  },
+
+
+  "propulsion.engineType": {
+    "shortName": "Engine Type",
+    "longName": "Type of Engine"
+  },
+  "propulsion.state": {
+    "shortName": "State",
+    "longName": "State of Engine"
+  },
+  "propulsion.revolutions": {
+    "shortName": "RPM",
+    "longName": "Engine Revolutions"
+  },
+  "propulsion.rpmAlarm": {
+    "shortName": "RPM Alarm",
+    "longName": "RPM Limit to Raise Alarm"
+  },
+  "propulsion.engineTemperature": {
+    "shortName": "Engine Temperature",
+    "longName": "Engine Temperature in Degrees Celsius"
+  },
+  "propulsion.engineTemperatureAlarm": {
+    "shortName": "Engine Temperature Alarm",
+    "longName": "Engine Temperature in Degrees Celsius to Raise Alarm"
+  },
+  "propulsion.oilTemperature": {
+    "shortName": "Oil Temperature",
+    "longName": "Oil Temperature in Degrees Celsius"
+  },
+  "propulsion.oilTemperatureAlarm": {
+    "shortName": "Oil Temperature Alarm",
+    "longName": "Oil Temperature in Degrees Celsius to Raise Alarm"
+  },
+  "propulsion.oilPressure": {
+    "shortName": "Oil Pressure",
+    "longName": "Oil Pressure in kPa"
+  },
+  "propulsion.oilPressureAlarm": {
+    "shortName": "Oil Pressure Alarm",
+    "longName": "Oil Pressure Alarm in kPa to Raise Alarm"
+  },
+  "propulsion.waterTemp": {
+    "shortName": "Water Temperature",
+    "longName": "Water Temperature in Degrees Celsius"
+  },
+  "propulsion.waterTempAlarm": {
+    "shortName": "Water Temperature Alarm",
+    "longName": "Water Temperature in Degrees Celsius to Raise Alarm"
+  },
+  "propulsion.exhaustTemp": {
+    "shortName": "Exhaust Temperature",
+    "longName": "Exhaust Temperature in Degrees Celsius"
+  },
+  "propulsion.exhaustTempAlarm": {
+    "shortName": "Exhaust Temperature Alarm",
+    "longName": "Exhaust Temperature in Degrees Celsius to Raise Alarm"
+  },
+  "propulsion.fuelUsageRate": {
+    "shortName": "Fuel Usage Rate",
+    "longName": "Fuel Usage Rate in Liters/Hour"
+  },
+
+
+  "resources.charts": {
+    "shortName": "Charts",
+    "longName": "Charts"
+  },
+  "resources.charts.name": {
+    "shortName": "Name",
+    "longName": "Chart Name"
+  },
+  "resources.charts.identifier": {
+    "shortName": "Identifier",
+    "longName": "Chart Number"
+  },
+  "resources.charts.description": {
+    "shortName": "Description",
+    "longName": "Chart Description"
+  },
+  "resources.charts.tilemapUrl": {
+    "shortName": "Tile Map URL",
+    "longName": "Tile Map URL"
+  },
+  "resources.charts.chartUrl": {
+    "shortName": "Chart URL",
+    "longName": "URL to Chart Storage Location"
+  },
+  "resources.charts.chartFormat": {
+    "shortName": "Chart Format",
+    "longName": "Chart Format"
+  },
+  "resources.routes": {
+    "shortName": "Routes",
+    "longName": "Routes"
+  },
+  "resources.routes.name": {
+    "shortName": "Route Name",
+    "longName": "Route Common Name"
+  },
+  "resources.routes.description": {
+    "shortName": "Description",
+    "longName": "Route Description"
+  },
+  "resources.routes.distance": {
+    "shortName": "Distance",
+    "longName": "Distance of Route "
+  },
+  "resources.routes.waypoints": {
+    "shortName": "Waypoints",
+    "longName": "Route Waypoints"
+  },
+  "resources.notes": {
+    "shortName": "Notes",
+    "longName": "Notes"
+  },
+  "resources.notes.title": {
+    "shortName": "Title",
+    "longName": "Common Name of Area"
+  },
+  "resources.notes.description": {
+    "shortName": "Description",
+    "longName": "Description of Notes"
+  },
+  "resources.notes.region": {
+    "shortName": "Region",
+    "longName": "Region UUID"
+  },
+  "resources.notes.mimeType": {
+    "shortName": "MIME Type",
+    "longName": "MIME Type"
+  },
+  "resources.notes.url": {
+    "shortName": "URL",
+    "longName": "URL"
+  },
+  "resources.regions": {
+    "shortName": "Regions",
+    "longName": "Regions"
+  },
+  "resources.regions.name": {
+    "shortName": "Name",
+    "longName": "Common Name of Region"
+  },
+  "resources.regions.description": {
+    "shortName": "Description",
+    "longName": "Description"
+  },
+  "resources.regions.waypoints": {
+    "shortName": "Waypoints",
+    "longName": "Set of Waypoints Describing Boundary of Region"
+  },
+  "resources.waypoints": {
+    "shortName": "Waypoints",
+    "longName": "Waypoints"
+  },
+  "resources.waypoints.name": {
+    "shortName": "Name",
+    "longName": "Name of Waypoint"
+  },
+  "resources.waypoints.position": {
+    "shortName": "Position",
+    "longName": "Position of Waypoint in 3D"
+  },
+  "resources.waypoints.position.source": {
+    "shortName": "Source",
+    "longName": "Source of Waypoint Position Data"
+  },
+  "resources.waypoints.position.timestamp": {
+    "shortName": "Timestamp",
+    "longName": "Timestamp of Last Update"
+  },
+  "resources.waypoints.position.longitude": {
+    "shortName": "Longitude",
+    "longName": "Longitude of Waypoint"
+  },
+  "resources.waypoints.position.latitude": {
+    "shortName": "Latitude",
+    "longName": "Latitude of Waypoint"
+  },
+  "resources.waypoints.position.altitude": {
+    "shortName": "Altitude",
+    "longName": "Altitude of Waypoint"
+  },
+  "resources.waypoints.description": {
+    "shortName": "Description",
+    "longName": "Description of Waypoint"
+  },
+  "resources.waypoints.type": {
+    "shortName": "Type",
+    "longName": "Type of Waypoint"
+  },
+
+  "sensors.name": {
+    "shortName": "Name",
+    "longName": "Name of Sensor"
+  },
+  "sensors.sensorType": {
+    "shortName": "Sensor Type",
+    "longName": "Sensor Type"
+  },
+  "sensors.sensorData": {
+    "shortName": "Sensor Data",
+    "longName": "Sensor Data"
+  },
+  "sensors.fromBow": {
+    "shortName": "From Bow",
+    "longName": "Distance From Bow in Meters"
+  },
+  "sensors.fromCenter": {
+    "shortName": "From Center",
+    "longName": "Distance From Center in Meters"
+  },
+
+
+  "steering.rudderAngle": {
+    "shortName": "Rudder Angle",
+    "longName": "Rudder Angle in Degrees"
+  },
+  "steering.rudderAngleTarget": {
+    "shortName": "Rudder Angle Target",
+    "longName": "Rudder Angle Target in Degrees"
+  },
+  "steering.autopilot": {
+    "shortName": "Autopilot",
+    "longName": "Autopilot Data"
+  },
+  "steering.autopilot.state": {
+    "shortName": "State",
+    "longName": "Autopilot State"
+  },
+  "steering.autopilot.mode": {
+    "shortName": "Mode",
+    "longName": "Operational Mode of Autopilot"
+  },
+  "steering.autopilot.target.windAngleApparent": {
+    "shortName": "Target wind angle",
+    "longName": "Target angle to steer, relative to Apparent wind +port -starboard"
+  },
+  "steering.autopilot.target.headingTrue": {
+    "shortName": "Target true heading",
+    "longName": "Target heading for autopilot, relative to true North"
+  },
+  "steering.autopilot.target.headingMagnetic": {
+    "shortName": "Target magnetic heading",
+    "longName": "Target heading for autopilot, relative to magnetic North"
+  },
+  "steering.autopilot.deadZone": {
+    "shortName": "Dead Zone",
+    "longName": "Dead Zone for Rudder Corrections in Degrees"
+  },
+  "steering.autopilot.backlash": {
+    "shortName": "Backlash",
+    "longName": "Rudder Slack in Degrees"
+  },
+  "steering.autopilot.gain": {
+    "shortName": "Gain",
+    "longName": "Autopilot Gain"
+  },
+  "steering.autopilot.maxDriveAmps": {
+    "shortName": "Max Drive Amps",
+    "longName": "Maximum Amperage to Drive Servo"
+  },
+  "steering.autopilot.maxDriveRate": {
+    "shortName": "Max Drive Rate",
+    "longName": "Maximum Degrees/Second to Turn Rudder"
+  },
+  "steering.autopilot.portLock": {
+    "shortName": "Port Lock",
+    "longName": "Position of Servo on Port Lock"
+  },
+  "steering.autopilot.starboardLock": {
+    "shortName": "Starboard Lock",
+    "longName": "Position of Servo on Starboard Lock"
+  }
+
+}

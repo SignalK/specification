@@ -2,7 +2,66 @@
   "vessels": {
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "environment": {
+        "current": {
+          "value": {
+            "setTrue": 58.9,
+            "drift": 0.28
+          },
+          "timestamp": "2014-08-15T18:00:00.755Z",
+          "pgn": 130577,
+          "$source": "sourceLabel1.160",
+          "values": {
+            "sourceLabel1.160": {
+              "value": {
+                "setTrue": 58.9,
+                "drift": 0.28
+              },
+              "timestamp": "2014-08-15T18:00:00.755Z",
+              "pgn": 130577
+            },
+            "sourceLabel2.166": {
+              "value": {
+                "setTrue": 52.2,
+                "drift": 0.33
+              },
+              "timestamp": "2014-08-15T17:59:00.666Z",
+              "pgn": 130577
+            }
+          }
+        }
+      },
       "navigation": {
+        "attitude": {
+          "value": {
+            "yaw": 0.222,
+            "pitch": 0.464,
+            "roll": -2.496
+          },
+          "$source": "n2k1.204",
+          "timestamp": "2013-10-08T15:47:28.263Z",
+          "pgn": 127257,
+          "values": {
+            "n2k1.204": {
+              "value": {
+                "yaw": 0.222,
+                "pitch": 0.464,
+                "roll": -2.496
+              },
+              "timestamp": "2013-10-08T15:47:28.263Z",
+              "pgn": 127257
+            },
+            "n2k1.222": {
+              "value": {
+                "yaw": 0.221,
+                "pitch": 0.460,
+                "roll": -2.490
+              },
+              "timestamp": "2013-10-08T15:47:27.263Z",
+              "pgn": 127257
+            }
+          }
+        },
         "courseOverGroundMagnetic": {
           "value": 3.615624078431453,
           "$source": "nmea2.II",
@@ -18,6 +77,57 @@
               "value": 3.615624078431453,
               "timestamp": "2017-03-04T14:58:48.000Z",
               "sentence": "VTG"
+            }
+          }
+        },
+        "closestApproach": {
+          "value": {
+            "distance": 250,
+            "timeTo": 45
+          },
+          "$source": "foo.bar",
+          "timestamp": "2014-08-15T19:00:15.404Z",
+          "values": {
+            "foo.bar": {
+              "value": {
+                "distance": 250,
+                "timeTo": 45
+              },
+              "timestamp": "2014-08-15T19:00:15.404Z"
+            },
+            "foo.baz": {
+              "value": {
+                "distance": 251,
+                "timeTo": 46
+              },
+              "timestamp": "2014-08-15T19:00:14.404Z"
+            }
+          }
+        },
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "nmea1.II",
+          "sentence": "GGL",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426
+          },
+          "values": {
+            "nmea1.II": {
+              "timestamp": "2015-03-06T16:57:53.643Z",
+              "sentence": "GGL",
+              "value": {
+                "longitude": 173.1693,
+                "latitude": -41.156426
+              }
+            },
+            "nmea2.II": {
+              "timestamp": "2015-03-06T16:57:52.643Z",
+              "sentence": "GGL",
+              "value": {
+                "longitude": 173.1692,
+                "latitude": -41.156426
+              }
             }
           }
         }

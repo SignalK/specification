@@ -4,8 +4,22 @@
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "navigation": {
         "racing" : {
-          "startLineStb" : "WP1",
-          "startLinePort" : "WP2",
+          "startLineStb" : {
+            "value": {
+              "latitude": 49.287333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "2014-08-15T19:00:15.402Z",
+            "$source": "foo.bar"
+          },
+          "startLinePort" : {
+            "value": {
+              "latitude": 49.297333333333336,
+              "longitude": -123.1595
+            },
+            "timestamp": "2014-08-15T19:00:15.402Z",
+            "$source": "foo.bar"
+          },
           "distanceStartline": {
             "value": 31,
             "timestamp": "2014-08-15T19:00:15.402Z",
