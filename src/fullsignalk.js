@@ -220,11 +220,15 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
   }
-  assignValueToLeaf(pathValue.value, valueLeaf);
-  if (pathValue.path.length != 0) {
-    valueLeaf['$source'] = getId(source);
-    valueLeaf.timestamp = timestamp;
-    setMessage(valueLeaf, source);
+  var sourceId = getId(source);
+  if ( !valueLeaf.preferredSource || valueLeaf.preferredSource == sourceId )
+  {
+    assignValueToLeaf(pathValue.value, valueLeaf);
+    if (pathValue.path.length != 0) {
+      valueLeaf['$source'] = getId(source);
+      valueLeaf.timestamp = timestamp;
+      setMessage(valueLeaf, source);
+    }
   }
 }
 
