@@ -1,14 +1,14 @@
 # Signal K Data Model
 
 ## Formats
-Signal K defines two data formats-full and delta-for representing and transmitting data.
 
-In addition there is an optional "sparse" representation of the data which uses the same structure as the full format,
-however it does not contain a full tree, just parts of the full tree.
+Signal K defines two data formats—full and delta—for representing and transmitting data. All Signal K data is
+transmitted as UTF-8 JSON.
 
 ## Full Format
 
-The simplest format is the full format, which is the complete Signal K data model represented as a JSON string.
+The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
+Signal K node, which in the case of a Signal K server could me many hundreds of data points.
 
 ```json
 {
@@ -19,19 +19,21 @@ The simplest format is the full format, which is the complete Signal K data mode
       "navigation": {
         "speedOverGround": {
           "value": 4.32693662,
-          "$source": "0183./dev/ttyUSB0.GP.RMC",
+          "$source": "0183.ttyUSB0.GP.RMC",
           "timestamp": "2017-05-16T05:15:50.007Z"
         },
         "position": {
-          "altitude": 0.0,
-          "latitude": 37.81479,
-          "longitude": -122.44880152,
-          "$source": "0183./dev/ttyUSB0.GP.RMC",
+          "value": {
+            "altitude": 0.0,
+            "latitude": 37.81479,
+            "longitude": -122.44880152
+          },
+          "$source": "0183.ttyUSB0.GP.RMC",
           "timestamp": "2017-05-16T05:15:50.007Z"
         },
         "headingMagnetic": {
           "value": 5.55014702,
-          "$source": "0183./dev/ttyUSB0.II.HDM",
+          "$source": "0183.ttyUSB0.II.HDM",
           "timestamp": "2017-05-16T05:15:54.006Z"
         }
       },
@@ -64,20 +66,19 @@ The simplest format is the full format, which is the complete Signal K data mode
 }
 ```
 
-The message is JSON structured UTF-8 text. There are several top level attributes or keys which are always present and
-others which are optional. The `version` key specifies which version of the Signal K specification is being used and is
-always present in a full Signal K model. Also always present in the full model is the `self` key. The value of `self`
-is the key within the `vessels` object which is the local boat. Effectively, it is a pointer into the `vessels` object.
+There are several top level attributes or keys which are always present and others which are optional. The `version`
+key specifies which version of the Signal K specification is being used and must always present in a full Signal K
+model. Also always present in the full model is the `self` key. The value of `self` is the key within the `vessels`
+object which is the local boat. Effectively, it is a pointer into the `vessels` object.
 
-Below the `vessels` object is a list of vessels, identified by their MMSI number or a generated unique id. There may be
+Below the `vessels` object is a list of vessels, identified by their MMSI number or a generated unique ID. There may be
 many vessels if data has been received from AIS or other sources. The format for each vessel’s data uses the same
 standard Signal K structure but may not have the same content; likely you will not have as much data about other
 vessels as you have about your own.
 
-Another top level attribute is `sources`, which defines a list of sources the data was obtained from. In the `vessels`
-section are `$source` keys, these point to their relative location in the `sources` tree. This allows several Signal K
-keys to reference the same `$source` which is convenient for protocols like NMEA0183 where many Signal K keys may
-arrive in a single NMEA message.
+At the same level as `vessels` is `sources`. This contains a list of sources the data was obtained from. Each data
+object within a `vessel` may have a `$source` key which point to a source withing `sources`. Several data objects may
+reference the same `source` since a single NMEA sentence or PGN may map to multiple keys in Signal K.
 
 Alternatively the source data may be embedded directly in place of the `$source` by using the `source` key:
 
@@ -87,15 +88,16 @@ Alternatively the source data may be embedded directly in place of the `$source`
     "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
       "navigation": {
         "position": {
-          "altitude": 0.0,
-          "latitude": 37.81479,
-          "longitude": -122.44880152,
+          "value": {
+            "altitude": 0.0,
+            "latitude": 37.81479,
+            "longitude": -122.44880152
+          },
           "source": {
             "label": "/dev/ttyUSB0",
             "type": "NMEA0183",
             "talker": "GP",
-            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-            "timestamp": "2017-04-03T06:14:04.451Z"
+            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11"
           },
           "timestamp": "2017-05-16T05:15:50.007Z"
         }
@@ -105,70 +107,37 @@ Alternatively the source data may be embedded directly in place of the `$source`
 }
 ```
 
-The values are always SI units, and always the same units for the same key. I.e. `speedOverGround` is always meters per
-second, never knots, km/hr, or miles/hr. This means you never have to send 'units' with data, the units are specific
-for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available in [Keys
-Reference in Appendix A](keys/index.md).
+For more information on sources, see the [sources](sources.md) section.
 
-The ordering of keys is also not important, they can occur in any order. In fact, if are designing a device which
+Data objects in Signal K are organized hierarchically, for example data related to navigation such as position, speed
+through water and heading are all organized under a `navigation` sub-topic within the `vessel` object. Each data object
+has a `value` property which holds the actual value for that specific key. The `value` property may contain a number, a
+string or another object. Signal K keys that are object valued are object valued because the values don‘t have much
+semantic meaning individually. For example position – latitude doesn‘t have much meaning without an associated
+longitude. Therefore, these (and altitude) are grouped together in a single `navigation.position` key.
+
+The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
+meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
+specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
+in [Keys Reference in Appendix A](keys/index.md).
+
+In addition to the `value` and `$source` (or `source`) properties, the data object may also have `meta` and `_attr`
+properties. These are discussed in detail in the [metadata](metadata.md) and [permissions](permissions.md) sections
+respectively. Finally, each data object also has a `timestamp` property which represents the time that the value was
+measured. Timestamps are in ISO 8601 format – specifically the [RFC 3339](https://tools.ietf.org/html/rfc3339)
+extension format, which is slightly more strict than the ISO specification. For instance, it requires four digit years
+and specifies that `T` is used as a separator between the data and time portions of the timestamp.
+
+The ordering of keys is also not important, they can occur in any order. In fact, if you are designing a device which
 consumes Signal K data, it is important to remember that the JSON standard does not guarantee the order of properties
 in an object. You MUST NOT rely on the data you receive to always be in the same order within a Signal K message.
 
-The full format is most useful for getting an install state of a Signal K system, for example when a display device
-first connects to the network or for refreshing a devices state when it loses a network connection.
+The full format is most useful for getting the initial state of a Signal K system, for example when a display device
+first connects to the network or for refreshing a device‘s state when it loses a network connection.
 
 However sending the full data model is wasteful of both bandwidth and CPU, especially when there is a large amount of
-available data, it changes slowly or the consuming device is only interested in a small portion of it. In the majority
-of cases, it is preferable to only exchange small, specific portions of the data.
-
-### Sparse Format
-
-The sparse format is the same as the full format but only contains a limited part of the tree. This can be one or more
-data values.
-
-```json
-{
-  "vessels": {
-    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-      "navigation": {
-        "position": {
-          "latitude": -41.2936935424,
-          "longitude": -122.44880152
-        }
-      }
-    }
-  }
-}
-```
-
-or
-
-```json
-{
-  "vessels": {
-    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-      "navigation": {
-        "speedOverGround": {
-          "value": 4.32693662
-        },
-        "position": {
-          "latitude": 37.81479,
-          "longitude": -122.44880152
-        }
-      }
-    }
-  }
-}
-```
-
-This ability to choose a combination of values means there is no need to create multiple message types to send
-different combinations or types of data. As a producer of Signal K data, you have the freedom to assemble whatever you
-want and send it. This eliminates the need for grouping identifiers like sequence IDs or guesswork on the part of a
-Signal K consumer which needs to know if two or more data points are correlated to a point in time.
-
-When parsing an incoming message a device should skip values it has no interest in or doesn’t recognize. Hence we avoid
-the problem of multiple message definitions for the same or similar data, and we avoid having to decode multiple
-messages with fixed formats.
+available data, or the consuming device is only interested in a small portion of it. In the majority of cases, it is
+preferable to only exchange small, specific portions of the data.
 
 ## Delta Format
 
@@ -232,7 +201,7 @@ property and an array of `values` containing one or more value objects.
     "src": "115",
     "pgn": "128267"
   },
-  "timestamp": "2014-08-15-16:00:00.081",
+  "timestamp": "2014-08-15T16:00:00.081Z",
   "values": [{
     "path": "navigation.courseOverGroundTrue",
     "value": 2.971
