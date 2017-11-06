@@ -13,51 +13,57 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
 ```json
 {
   "version": "v1.0.0",
-  "self": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
-  "vessels": {
-    "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
-      "navigation": {
-        "speedOverGround": {
-          "value": 4.32693662,
-          "$source": "0183.ttyUSB0.GP.RMC",
-          "timestamp": "2017-05-16T05:15:50.007Z"
-        },
-        "position": {
-          "value": {
-            "altitude": 0.0,
-            "latitude": 37.81479,
-            "longitude": -122.44880152
+    "self": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
+    "vessels": {
+      "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+        "navigation": {
+          "speedOverGround": {
+            "value": 4.32693662,
+            "$source": "ttyUSB0.GP",
+            "sentence": "RMC",
+            "timestamp": "2017-05-16T05:15:50.007Z"
           },
-          "$source": "0183.ttyUSB0.GP.RMC",
-          "timestamp": "2017-05-16T05:15:50.007Z"
-        },
-        "headingMagnetic": {
-          "value": 5.55014702,
-          "$source": "0183.ttyUSB0.II.HDM",
-          "timestamp": "2017-05-16T05:15:54.006Z"
-        }
-      },
-      "name": "Motu",
-      "uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c"
-    }
-  },
-  "sources": {
-    "NMEA0183": {
-      "type": "NMEA0183",
-      "ttyUSB0": {
-        "label": "/dev/ttyUSB0",
-        "GP": {
-          "talker": "GP",
-          "RMC": {
-            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-            "timestamp": "2017-04-03T06:14:04.451Z"
+          "position": {
+            "value": {
+              "altitude": 0.0,
+              "latitude": 37.81479,
+              "longitude": -122.44880152
+            },
+            "$source": "0183.ttyUSB0.GP",
+            "sentence": "RMC",
+            "timestamp": "2017-05-16T05:15:50.007Z"
+          },
+          "headingMagnetic": {
+            "value": 5.55014702,
+            "$source": "0183.ttyUSB0.II",
+            "sentence": "HDM",
+            "timestamp": "2017-05-16T05:15:54.006Z"
           }
         },
-        "II": {
-          "talker": "II",
-          "HDM": {
-            "sentence": "$IIHDM,318,M*36",
-            "timestamp": "2017-05-16T05:15:54.006Z"
+        "name": "Motu",
+        "uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c"
+      }
+    },
+    "sources": {
+      "ttyUSB0": {
+        "label": "ttyUSB0",
+        "type": "NMEA0183",
+        "GP": {
+          "talker": "GP",
+          "sentences": {
+            "RMC": {
+              "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
+              "timestamp": "2017-04-03T06:14:04.451Z"
+            }
+          },
+          "II": {
+            "talker": "II",
+            "sentences": {
+              "HDM": {
+                "sentence": "$IIHDM,318,M*36",
+                "timestamp": "2017-05-16T05:15:54.006Z"
+              }
+            }
           }
         }
       }
@@ -90,11 +96,11 @@ Alternatively the source data may be embedded directly in place of the `$source`
         "position": {
           "value": {
             "altitude": 0.0,
-            "latitude": 37.81479,
-            "longitude": -122.44880152
+              "latitude": 37.81479,
+              "longitude": -122.44880152
           },
           "source": {
-            "label": "/dev/ttyUSB0",
+            "label": "ttyUSB0",
             "type": "NMEA0183",
             "talker": "GP",
             "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11"
