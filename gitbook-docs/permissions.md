@@ -1,5 +1,7 @@
 # Permissions Model
 
+**This section is experimental and not implemented in the Node Server Reference Implementation**
+
 The permissions model for Signal K is based on the UNIX file permissions model. This was first developed in the late 1970's and is still perfectly suited to the internet today, so its got to be a pretty sound model!.
 
 So we adapted it for Signal K. See http://www.tutorialspoint.com/unix/unix-file-permission.htm
