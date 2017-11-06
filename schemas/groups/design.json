@@ -29,8 +29,8 @@
                       "description": "The ship type number"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The ship type name"
+                      "type": "string",
+                      "description": "The ship type name"
                     }
                   }
                 },
@@ -353,16 +353,18 @@
               ]
             }
           }
-        }]
+        }
+      ]
     },
-  
     "draft": {
       "type": "object",
       "title": "draft",
       "description": "The draft of the vessel",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }],
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        }
+      ],
       "properties": {
         "value": {
           "type": "object",
@@ -386,42 +388,42 @@
               "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
               "type": "number",
               "units": "m"
-            },
-            "values": {
-              "type": "object",
-              "patternProperties": {
-                ".*": {
-                  "type": "object",
-                  "properties": {
-                    "timestamp": {
-                      "$ref": "../definitions.json#/definitions/timestamp"
-                    },
-                    "pgn": {
-                      "type": "number"
-                    },
-                    "sentence": {
-                      "type": "string"
-                    },
-                    "minimum": {
-                      "description": "The minimum draft of the vessel",
-                      "type": "number",
-                      "units": "m"
-                    },
-                    "maximum": {
-                      "description": "The maximum draft of the vessel",
-                      "type": "number",
-                      "units": "m"
-                    },
-                    "current": {
-                      "description": "The current draft of the vessel",
-                      "type": "number",
-                      "units": "m"
-                    },
-                    "canoe": {
-                      "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
-                      "type": "number",
-                      "units": "m"
-                    }
+            }
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "type": "object",
+                "properties": {
+                  "timestamp": {
+                    "$ref": "../definitions.json#/definitions/timestamp"
+                  },
+                  "pgn": {
+                    "type": "number"
+                  },
+                  "sentence": {
+                    "type": "string"
+                  },
+                  "minimum": {
+                    "description": "The minimum draft of the vessel",
+                    "type": "number",
+                    "units": "m"
+                  },
+                  "maximum": {
+                    "description": "The maximum draft of the vessel",
+                    "type": "number",
+                    "units": "m"
+                  },
+                  "current": {
+                    "description": "The current draft of the vessel",
+                    "type": "number",
+                    "units": "m"
+                  },
+                  "canoe": {
+                    "description": "The draft of the vessel without protrusions such as keel, centerboard, rudder",
+                    "type": "number",
+                    "units": "m"
                   }
                 }
               }
@@ -430,14 +432,15 @@
         }
       }
     },
-
     "length": {
       "type": "object",
       "title": "length",
       "description": "The various lengths of the vessel",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }],
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        }
+      ],
       "properties": {
         "value": {
           "type": "object",
@@ -495,14 +498,15 @@
         }
       }
     },
-
     "keel": {
       "type": "object",
       "title": "keel",
       "description": "Information about the vessel's keel",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }],
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        }
+      ],
       "properties": {
         "type": {
           "type": "string",
@@ -519,43 +523,38 @@
             "daggerboard"
           ]
         },
-
         "angle": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "A number indicating at which angle the keel currently is (in case of a canting keel), negative to port.",
           "units": "rad"
         },
-
         "lift": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "In the case of a lifting keel, centreboard or daggerboard, the part of the keel which is extended. 0 is 'all the way up' and 1 is 'all the way down'. 0.8 would be 80% down.",
           "units": "ratio",
           "example": 0.8
         }
-
-        
       }
     },
-
     "beam": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Beam length",
       "units": "m"
     },
-
     "airHeight": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Total height of the vessel",
       "units": "m"
     },
-
     "rigging": {
       "type": "object",
       "title": "rigging",
       "description": "Information about the vessel's rigging",
-      "allOf": [{
-        "$ref": "../definitions.json#/definitions/commonValueFields"
-      }],
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        }
+      ],
       "properties": {
         "configuration": {
           "type": "string",
