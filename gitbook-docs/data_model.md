@@ -51,18 +51,12 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
         "GP": {
           "talker": "GP",
           "sentences": {
-            "RMC": {
-              "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11",
-              "timestamp": "2017-04-03T06:14:04.451Z"
-            }
+            "RMC": "2017-04-03T06:14:04.451Z"
           },
           "II": {
             "talker": "II",
             "sentences": {
-              "HDM": {
-                "sentence": "$IIHDM,318,M*36",
-                "timestamp": "2017-05-16T05:15:54.006Z"
-              }
+              "HDM": "2017-05-16T05:15:54.006Z"
             }
           }
         }
