@@ -29,13 +29,13 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
               "latitude": 37.81479,
               "longitude": -122.44880152
             },
-            "$source": "0183.ttyUSB0.GP",
+            "$source": "ttyUSB0.GP",
             "sentence": "RMC",
             "timestamp": "2017-05-16T05:15:50.007Z"
           },
           "headingMagnetic": {
             "value": 5.55014702,
-            "$source": "0183.ttyUSB0.II",
+            "$source": "ttyUSB0.II",
             "sentence": "HDM",
             "timestamp": "2017-05-16T05:15:54.006Z"
           }
@@ -128,11 +128,12 @@ specific for a key, and defined in the data schema. A simplified version of the 
 in [Keys Reference in Appendix A](keys/index.md).
 
 In addition to the `value` and `$source` (or `source`) properties, the data object may also have `meta` and `_attr`
-properties. These are discussed in detail in the [metadata](metadata.md) and [permissions](permissions.md) sections
-respectively. Finally, each data object also has a `timestamp` property which represents the time that the value was
-measured. Timestamps are in ISO 8601 format – specifically the [RFC 3339](https://tools.ietf.org/html/rfc3339)
-extension format, which is slightly more strict than the ISO specification. For instance, it requires four digit years
-and specifies that `T` is used as a separator between the data and time portions of the timestamp.
+properties. These are discussed in detail in the [metadata](data_model_metadata.md) and [permissions](permissions.md)
+sections respectively. Finally, each data object also has a `timestamp` property which represents the time that the
+value was measured. Timestamps are in ISO 8601 format – specifically the [RFC
+3339](https://tools.ietf.org/html/rfc3339) extension format, which is slightly more strict than the ISO specification.
+For instance, it requires four digit years and specifies that `T` is used as a separator between the data and time
+portions of the timestamp.
 
 The ordering of keys is also not important, they can occur in any order. In fact, if you are designing a device which
 consumes Signal K data, it is important to remember that the JSON standard does not guarantee the order of properties
