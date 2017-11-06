@@ -227,7 +227,7 @@ class Parser {
 
       md += 'This document is meant as the human-oriented reference to accompany the actual JSON Schema specification and is produced from the schema files. Any changes to the reference material below should be made to the original schema files.\n\n'
 
-      md += "Signal K uses [SI units](https://en.wikipedia.org/wiki/International_System_of_Units) almost everywhere, with the exception of geographic coordinates. The following units are in use:\n"
+      md += "Signal K uses [SI units](https://en.wikipedia.org/wiki/International_System_of_Units) almost everywhere, with the exception of geographic coordinates, which are in degrees in WGS84. The following units are in use:\n"
 
       _.forOwn(units, (value, key) => {
         md += `- ${key} : ${value}\n`
@@ -270,7 +270,9 @@ class Parser {
           units: json.units,
           description: doc.description === null ? '[missing]' : doc.description
         }
-
+        if (doc.enum) {
+          keysWithMeta[key].enum = doc.enum
+        }
 
         if (isEmbedded.bind(this)(path)) {
           this.debug("Skipping embedded", path)
@@ -295,6 +297,18 @@ class Parser {
         if (doc.enum) {
           md += '**Enum values:**\n\n'
           doc.enum.forEach(enumValue => md += `* ${enumValue}\n`)
+          md += '\n'
+        }
+
+        if (json.properties && json.properties['value'] && json.properties['value'].type === 'object') {
+          md += 'Object value with properties\n'
+          Object.keys(json.properties['value'].properties).forEach(propName => {
+            md += `* ${propName}`
+            if (json.properties['value'].properties[propName].units) {
+              md += ` (${json.properties['value'].properties[propName].units})`
+            }
+            md += '\n'
+          })
           md += '\n'
         }
 
@@ -328,7 +342,7 @@ class Parser {
         }
       })
 
-      fs.writeFileSync(path.join(__dirname, '../keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
+      fs.writeFileSync(path.join(__dirname, '../src/keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
       fs.writeFileSync(path.join(__dirname, '../gitbook-docs/vesselsBranch.md'), vesselsDoc)
       fs.writeFileSync(path.join(__dirname, '../gitbook-docs/otherBranches.md'), othersDoc)
     })

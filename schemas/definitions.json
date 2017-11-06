@@ -22,24 +22,24 @@
       "properties": {
         "label": {
           "type": "string",
-          "description":"A label to identify the source bus, eg serial-COM1, eth-local,etc . Can be anything but should follow a predicatable format",
+          "description": "A label to identify the source bus, eg serial-COM1, eth-local,etc . Can be anything but should follow a predicatable format",
           "example": "N2K-1"
         },
         "type": {
           "type": "string",
-          "description":"A human name to identify the type. NMEA0183, NMEA2000, signalk",
+          "description": "A human name to identify the type. NMEA0183, NMEA2000, signalk",
           "default": "NMEA2000",
           "example": "NMEA2000"
         },
         "src": {
           "type": "string",
           "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data",
-          "example":"36"
+          "example": "36"
         },
         "pgn": {
           "type": "number",
           "description": "NMEA2000 pgn of the source message",
-          "example":"130312"
+          "example": "130312"
         },
         "instance": {
           "type": "string",
@@ -48,12 +48,12 @@
         "sentence": {
           "type": "string",
           "description": "Sentence type of the source NMEA0183 sentence, $GP[RMC],092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
-          "example":"RMC"
+          "example": "RMC"
         },
         "talker": {
           "type": "string",
           "description": "Talker id of the source NMEA0183 sentence, $[GP]RMC,092750.000,A,5321.6802,N,00630.3372,W,0.02,31.66,280511,,,A*43",
-          "example":"GP"
+          "example": "GP"
         },
         "aisType": {
           "type": "number",
@@ -62,6 +62,9 @@
           "maximum": 27,
           "description": "AIS Message Type",
           "example":"15"
+        },
+        "instance": {
+          "type": "string"
         }
       }
     },
@@ -69,8 +72,8 @@
     "sourceRef": {
       "type": "string",
       "pattern": "^[A-Za-z0-9-_.]*$",
-      "description": "Reference to the source under /sources. A dot separated path to the data. eg [type].[bus].[device]",
-      "example":"NMEA0183.COM1.GP"
+      "description": "Reference to the source under /sources. A dot spearated path to the data. eg [type].[bus].[device]",
+      "example": "NMEA0183.COM1.GP"
     },
 
     "version": {
@@ -280,7 +283,7 @@
     "url": {
       "type": "string",
       "description": "A location of a resource, potentially relative. For hierarchical schemes (like http), applications must resolve relative URIs (e.g. './v1/api/'). Implementations should support the following schemes: http:, https:, mailto:, tel:, and ws:.",
-      "example":"http://localhost:8080/signalk/v1/api/vessels/self/environment"
+      "example": "http://localhost:8080/signalk/v1/api/vessels/self/environment"
     },
 
     "commonValueFields": {
@@ -533,6 +536,13 @@
           "example": "RPM"
         },
 
+        "description": {
+          "type": "string",
+          "title": "Description schema.",
+          "description": "Description of the SK path.",
+          "example": "Engine revolutions (x60 for RPM)"
+        },
+
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
@@ -645,29 +655,82 @@
       "type": "object",
       "title": "position",
       "description": "The position in 3 dimensions",
-      "allOf": [{
-        "$ref": "#/definitions/commonValueFields"
-      }, {
-        "properties": {
-          "longitude": {
-            "type": "number",
-            "description": "Longitude",
-            "units": "deg",
-            "example": 4.98765245
-          },
-          "latitude": {
-            "type": "number",
-            "description": "Latitude",
-            "units": "deg",
-            "example": 52.0987654
-          },
-          "altitude": {
-            "type": "number",
-            "description": "Altitude",
-            "units": "m"
+      "allOf": [
+        {
+          "$ref": "#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "object",
+              "required": [
+                "latitude",
+                "longitude"
+              ],
+              "properties": {
+                "longitude": {
+                  "type": "number",
+                  "description": "Longitude",
+                  "units": "deg",
+                  "example": 4.98765245
+                },
+                "latitude": {
+                  "type": "number",
+                  "description": "Latitude",
+                  "units": "deg",
+                  "example": 52.0987654
+                },
+                "altitude": {
+                  "type": "number",
+                  "description": "Altitude",
+                  "units": "m"
+                }
+              }
+            },
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "object",
+                      "properties": {
+                        "longitude": {
+                          "type": "number",
+                          "description": "Longitude",
+                          "units": "deg",
+                          "example": 4.98765245
+                        },
+                        "latitude": {
+                          "type": "number",
+                          "description": "Latitude",
+                          "units": "deg",
+                          "example": 52.0987654
+                        },
+                        "altitude": {
+                          "type": "number",
+                          "description": "Altitude",
+                          "units": "m"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-      }]
+      ]
     },
     "waypoint": {
       "type": "object",

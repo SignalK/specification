@@ -3,14 +3,23 @@
     "urn:mrn:imo:mmsi:991982330": {
       "mmsi": "911982330",
       "name": "A random aton",
-      "atonType": "6 Light, with sectors",
+      "atonType": {
+        "timestamp": "2017-01-25T00:23:05Z",
+        "$source": "a.suitable.path",
+        "value": {
+          "id": 6,
+          "name": "Light, With Sectors"
+        }
+      },
       "navigation": {
         "position": {
           "timestamp": "2015-03-06T16:57:53.643Z",
-          "longitude": 173.1693,
-          "latitude": -41.156426,
-          "$source": "sources.gps_0183_RMC",
-          "altitude": 0
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          },
+          "$source": "sources.gps_0183_RMC"
         }
       }
     }

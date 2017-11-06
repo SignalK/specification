@@ -13,6 +13,8 @@ Currently the Signal K server has a set of specific alarm keys. These grow over 
 Each data key should have an optional `.meta` object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.
 ```json
 {
+  "units": "Hz",
+  "description": "Engine revolutions (x60 for RPM)",
   "displayName": "Tachometer, Engine 1",
   "shortName": "RPM",
   "warnMethod": "visual",
@@ -36,7 +38,7 @@ The alarms functionality then becomes generic, and grows with the spec. This is 
 
 #### Meta.units value
 
-All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value.
+All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value, even if that particular data key has no data in the full model of that server.
 
 See https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json
 

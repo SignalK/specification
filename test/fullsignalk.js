@@ -1,6 +1,6 @@
 var chai = require('chai');
 chai.Should();
-chai.use(require('../index.js').chaiModule);
+chai.use(require('../dist/').chaiModule);
 
 var FullSignalK = require('../src/fullsignalk');
 
@@ -35,7 +35,7 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(delta);
-    fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('longitude');
+    fullSignalK.retrieve().vessels.foo.navigation.position.value.should.have.property('longitude');
     fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('$source');
   })
 
@@ -94,7 +94,6 @@ describe('FullSignalK', function() {
       "context": "vessels.urn:mrn:imo:mmsi:276780000"
     };
     var fullSignalK = new FullSignalK("urn:mrn:imo:mmsi:276799999", "mmsi");
-    console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.addDelta(aisDelta);
     console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.retrieve().should.be.validSignalK;

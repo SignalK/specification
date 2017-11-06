@@ -1,5 +1,34 @@
 ## Change Log
 
+### v0.0.1-11 (2017/10/17 18:46 +00:00)
+- [#388](https://github.com/SignalK/specification/pull/388) feature: add schema api to get ship and aton type names from the id (@sbender9)
+- [#386](https://github.com/SignalK/specification/pull/386) fix: better aisShipType and atonType (@sbender9)
+
+### v0.0.1-9 (2017/10/07 14:29 +00:00)
+- [#383](https://github.com/SignalK/specification/pull/383) fix: don't create undefined meta properties (@tkurki)
+
+### v0.0.1-7 (2017/09/27 17:42 +00:00)
+- [#332](https://github.com/SignalK/specification/pull/332) feature: add metadata handling to js lib (@tkurki)
+- [#382](https://github.com/SignalK/specification/pull/382) feature: include enums in keyswithmetadata (@tkurki)
+- [#381](https://github.com/SignalK/specification/pull/381) Add outside air density (@joabakk)
+
+### v0.0.1-6 (2017/08/09 20:02 +00:00)
+- [#368](https://github.com/SignalK/specification/pull/368) Transpile distributed npm module to ES2015 (@tkurki)
+
+### v0.0.1-5 (2017/08/09 19:24 +00:00)
+- [#375](https://github.com/SignalK/specification/pull/375) Add Alternator and Solar devices, create chargerQualitiies + cleanups  (@thomasonw)
+
+### v0.0.1-4 (2017/08/09 17:16 +00:00)
+- [#374](https://github.com/SignalK/specification/pull/374) Add commonValueFields to notifications (@sbender9)
+- [#369](https://github.com/SignalK/specification/pull/369) Minor fixes (@parsley72)
+- [#365](https://github.com/SignalK/specification/pull/365) Add intakeManifoldTemperature to propulsion schema (@anajavi)
+- [#364](https://github.com/SignalK/specification/pull/364) Change from schemas/version to version/schemas (@rob42)
+- [#361](https://github.com/SignalK/specification/pull/361) Fix description typos in performance (@joabakk)
+- [#355](https://github.com/SignalK/specification/pull/355)  [WIP] Convert json id from https://signalk.github.io/specification/schemas… (@rob42)
+- [#357](https://github.com/SignalK/specification/pull/357) Split gitbook doc keys list (@tkurki)
+- [#353](https://github.com/SignalK/specification/pull/353) Fixed typos and text formatting (@aplathan)
+- [#342](https://github.com/SignalK/specification/pull/342) Rewrite multiple sources/values documentation (@tkurki)
+
 ### v0.0.1-3 (2017/04/19 04:41 +00:00)
 - [#350](https://github.com/SignalK/specification/pull/350) Add page specifying versioning in Signal K (@rob42)
 - [#337](https://github.com/SignalK/specification/pull/337) Ais additions (@rob42)

@@ -39,6 +39,10 @@ The version(s) of the Signal K API that a server supports SHALL be available as 
             "signalk-tcp": "tcp://192.168.1.2:34568"
         }
 
+    },
+    "server": {
+        "id": "signalk-node-server",
+        "version": "0.1.21"
     }
 }
 ```
@@ -54,3 +58,6 @@ However, a server may support unofficial protocols and may return additional pro
 the response above indicates the server supports a `signalk-tcp` stream over TCP at on port `34568`.
 
 A server may return relative URIs that the client must resolve against the base of the original request.
+
+A server may return information about itself in the `server` property. The id and version scheme is not
+defined as part of the specification and there is no registry for id values.

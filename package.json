@@ -1,11 +1,13 @@
 {
-  "name": "signalk-schema",
-  "version": "0.9.0-SNAPSHOT",
+  "name": "@signalk/signalk-schema",
+  "version": "0.0.1-12",
   "description": "SignalK specification schema as an npm module with tests",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha",
-    "build": "scripts/extractKeysAndMeta.js >$TMPDIR/keyswithmetadata.json && mv $TMPDIR/keyswithmetadata.json keyswithmetadata.json",
+    "test": "babel src --out-dir dist --copy-files && mocha",
+    "prepublish": "npm run js:dist && npm run docs:keys",
+    "js:watch": "babel --watch src --out-dir dist --copy-files",
+    "js:dist": "babel src --out-dir dist --copy-files",
     "schema:version": "replace 'https://signalk.org/specification/[^/]+/schemas/' 'https://signalk.org/specification/'$npm_package_version'/schemas/' . -r --include='*.j*' --exclude='package.json' ",
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && mkdir $npm_package_version && git add $npm_package_version && git mv schemas/ $npm_package_version/ && git commit -m 'Schemas from master' && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
@@ -49,6 +51,8 @@
     "tv4-formats": "^2.2.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^1.9.2",
     "gitbook-cli": "^2.3.0",
     "github-changes": "^1.0.4",

@@ -3,13 +3,17 @@
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "notifications": {
-        "navigation":{
-          "position":{
-            "message": "Position is more than 5 minutes old",
+        "navigation": {
+          "position": {
+            "value": {
+              "message": "Position is more than 5 minutes old",
+              "state": "alert",
+              "method": [
+                "visual"
+              ]
+            },
             "timestamp": "2014-04-10T08:33:53Z",
-            "$source": "a.suitable.path",
-            "state": "alert",
-            "method" : ["visual"]
+            "$source": "a.suitable.path"
           }
         }
       }
