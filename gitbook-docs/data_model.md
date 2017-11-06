@@ -96,8 +96,8 @@ Alternatively the source data may be embedded directly in place of the `$source`
         "position": {
           "value": {
             "altitude": 0.0,
-              "latitude": 37.81479,
-              "longitude": -122.44880152
+            "latitude": 37.81479,
+            "longitude": -122.44880152
           },
           "source": {
             "label": "ttyUSB0",
