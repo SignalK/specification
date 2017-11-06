@@ -302,6 +302,7 @@ class Parser {
 
         if (json.properties && json.properties['value'] && json.properties['value'].type === 'object') {
           md += 'Object value with properties\n'
+          keysWithMeta[key].properties = JSON.parse(JSON.stringify(json.properties['value'].properties))
           Object.keys(json.properties['value'].properties).forEach(propName => {
             md += `* ${propName}`
             if (json.properties['value'].properties[propName].units) {
