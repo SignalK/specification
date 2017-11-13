@@ -5,7 +5,7 @@ There are two use cases for multiple values for a single data point
 * Multiple instances of a common device-e.g. two engines or multiple batteries.
 * Multiple devices providing duplicate data-multiple values for the same Signal K key from different sensors. This is
   fairly common as most boats have multiple sensors capable of generating the same data (but not necessarily the same
-  value). For example, course over ground (COG) may come from both a compass and GPS or a boat may be equiped with
+  value). For example, course over ground (COG) may come from both a compass and GPS or a boat may be equipped with
   multiple depth sounders.
 
 ## Multiple Instances of a Common Device
@@ -25,8 +25,8 @@ complexities of data.
 The same device centric organisation is used within the `propulsion` subschema, to support the common use case of two
 engines via `propulsion.port` and `propulsion.starboard`.
 
-_The values `starter`, `house`, `port` and `starboard` are examples and not specified in the schema. You are free to
-use application specific values within the regexp specified in the JSON schema._
+> The values `starter`, `house`, `port` and `starboard` are examples and not specified in the schema. You are free to
+use application specific values within the regexp specified in the JSON schema.
 
 ## Multiple Devices Providing Duplicate Data
 
@@ -37,7 +37,7 @@ a catamaran.
 
 Given that the validity of these various sources of data may change in a context-specific way, Signal K provides a
 mechanism for these values to be grouped together so that the consumer of the data may choose which value (or values)
-to display.[1]
+to display[<sup>1</sup>](#fn_1).<a name="ln_1" id="ln_1"></a>
 
 When dealing with multiple sources of data, it becomes important to know where the data is coming from. Signal K
 provides a mechanism for that in the form of the `sources` top level object and references into that object via the
@@ -66,10 +66,10 @@ created.
 }
 ```
 
-It has come from device `sources.0183.ttyUSB0.GP`, where further details can be found.
+It has come from device `sources.ttyUSB0.GP`, where further details can be found.
 
-If another value with different source arrives, we add the `values` attribute with and values are in there - if its our
-preferred source (from persistent config) we auto-switch to it, otherwise we just record it. It look like this:
+If another value with different source arrives, the Signal K server will add the `values` attribute with values from
+both the first and second sources. The initial source‘s data will continue to populate the `value` property in the key.
 
 ```json
 {
@@ -85,14 +85,14 @@ preferred source (from persistent config) we auto-switch to it, otherwise we jus
           "timestamp": "2017-04-03T06:14:04.451Z"
         },
         "values":{
-          "0183.ttyUSB0.GP.RMC":{
+          "ttyUSB0.GP.RMC":{
             "value": 3.615624078431440,
-            "$source": "0183./dev/ttyUSB0.GP.RMC",
+            "$source": "ttyUSB0.GP.RMC",
             "timestamp": "2017-04-03T06:14:04.451Z"
           },
           "n2k.ikommunicate.128267":{
             "value": 3.615624078431453,
-            "$source": "n2k./dev/ikommunicate.128267",
+            "$source": "ikommunicate.128267",
             "timestamp": "2017-04-03T06:14:04.451Z"
           }
         }
@@ -100,34 +100,27 @@ preferred source (from persistent config) we auto-switch to it, otherwise we jus
     }
   },
   "sources":{
-    "0183": {
-      "ttyUSB0": {
-        "GP": {
-          "RMC": {
-            "label": "GPS-1",
-            "type": "NMEA0183",
-            "talker": "GP",
-            "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11"
-          }
+    "ttyUSB0": {
+      "GP": {
+        "sentences": {
+          "RMC": "2017-04-03T06:14:04.451Z"
         }
       }
     },
-    "n2k": {
-      "ikommunicate": {
-        "128267": {
-          "label": "ikommunicate-128267",
-          "type": "NMEA2000",
-          "device": "/dev/actisense",
-          "src": "115",
-          "pgn": "128267"
-        }
+    "ikommunicate": {
+      "128267": {
+        "label": "ikommunicate-128267",
+        "type": "NMEA2000",
+        "device": "/dev/actisense",
+        "src": "115",
+        "pgn": "128267"
       }
     }
   }
 }
 ```
 
-### Update Messages
+### Multiple Values in Delta Messages
 
 When a client subscribes to `navigation.courseOverGroundTrue`, they receive _all_ the values held. The update message
 does not include the `values` path, the case above looks like:
@@ -178,4 +171,5 @@ in periodic updates which may contain many items in `values`.
 The update allows grouping `values` by `source`.
 
 ------
-[1] Determine if the Node server has a way to specify preferred sources
+<a id="fn_1" href="#ln_1">[1]</a> Specifying preferred sources is still an under-development enhancement to the Node
+server.
