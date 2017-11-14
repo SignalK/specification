@@ -45,10 +45,18 @@ A server may return relative URIs that the client must resolve against the base 
 A server may return information about itself in the `server` property. The id and version scheme is not defined as part
 of the specification and there is no registry for id values.
 
-## /signalk/v1/api/
+## /signalk/«version»/api/
 
 **Note the trailing slash in the path**
 
 The base URL MUST provide a Signal K document that is valid according to the full Signal K [schema
 specification]({{site.baseurl}}specification.html). The contents SHOULD be all the current values of the data items the
 server knows in the Signal K full format as specified in [Full and Delta Models](data_model.md).
+
+## /signalk/«version»/api/*
+
+The Signal K data SHOULD be available via the REST API. For example, `GET /signalk/v1/api/vessels` should return all
+of the data under the `vessels` container in JSON format. Likewise, `GET
+/signalk/v1/api/vessels/urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d` should return data for one specific
+vessel. In other words, the full Signal K data model SHOULD be traversable by any client making GET requests to an
+arbitrary depth.
