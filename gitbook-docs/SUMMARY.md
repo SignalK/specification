@@ -10,7 +10,7 @@
   * [Metadata](data_model_metadata.md)
   * [Permissions](permissions.md)
 * [API]()
-  * [Ports, Urls and Versioning](urls_etc.md)
+  * [URLs and Ports](urls_ports.md)
   * [REST API](rest_api.md)
   * [Streaming WebSocket API](streaming_api.md)
   * [Discovery & Connection Establishment](connection.md)
