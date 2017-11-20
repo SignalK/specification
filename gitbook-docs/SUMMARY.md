@@ -15,7 +15,6 @@
   * [Subscription Protocol](subscription_protocol.md)
   * [Discovery & Connection Establishment](connection.md)
   * [Notifications](notifications.md)
-* [Background and Design Rationale](design_notes.md)
 * [How Can I Help?](how_to_help.md)
 * [Appendix A: Keys Reference (Vessel)](vesselsBranch.md)
 * [Appendix B: Keys Reference (Others)](otherBranches.md)
