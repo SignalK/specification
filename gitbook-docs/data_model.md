@@ -155,7 +155,7 @@ An example delta message is presented below.
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
   "updates": [{
     "source": {
-      "label": "N2000-01"
+      "label": "N2000-01",
       "type": "NMEA2000",
       "src": "017",
       "pgn": 127488
