@@ -1,20 +1,20 @@
 # Subscription Protocol
 
-### Introduction
+## Introduction
 
-By default a Signal K server will provide a new WebSocket client with a delta stream of the `vessels.self` record, as updates are received from sources. E.g.
-`/signalk/v1/stream` will provide the following delta stream, every time the log value changes .
+By default a Signal K server will provide a new WebSocket client with a delta stream of the `vessels.self` record, as
+updates are received from sources. E.g. `/signalk/v1/stream` will provide the following delta stream, every time the
+log value changes.
 
-```javascript
+```json
 {
-  "context": "vessels",
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
   "updates": [{
     "source": {
-      "label":"/dev/actisense",
+      "label":"N2000-01",
       "type": "NMEA2000",
-      "pgn": "128275",
-      "timestamp": "2014-08-15-16:00:05.538",
-      "src": "115"
+      "src": "115",
+      "pgn": 128275
     },
     "values": [{
       "path": "navigation.trip.log",
@@ -26,13 +26,18 @@ By default a Signal K server will provide a new WebSocket client with a delta st
   }]
 }
 ```
+
 > Below we refer to WebSockets, but the same process works in the same way over any transport. E.g. for a raw TCP
 > connection the connection causes the above message to be sent, and sending the subscribe messages will have the same
 > effect as described here.
 
-This can be a lot of messages, many you may not need, especially if `vessel.self` has many sensors, or other data sources. Generally you will want to subscribe to a much smaller range of data.
+This can be a lot of messages, many you may not need, especially if your boat has many sensors, or other data sources.
+Often you will want to subscribe to a much smaller range of data. Especially for single value displays, it does not
+make sense to get the entire data stream when only a single value is wanted.
 
-First you will want to unsubscribe from the current default (or you may have already connected with `ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message with wildcards and send the message over the websocket connection:
+First you will want to unsubscribe from the current default (or you may have already connected with
+`ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message with wildcards
+and send the message over the WebSocket connection:
 
 ```json
 {
@@ -42,6 +47,7 @@ First you will want to unsubscribe from the current default (or you may have alr
   }]
 }
 ```
+
 To subscribe to the required criteria send a suitable subscribe message:
 
 ```json
@@ -61,34 +67,48 @@ To subscribe to the required criteria send a suitable subscribe message:
 ```
 
 * `path=[path.to.key]` is appended to the context to specify subsets of the context.
-The path value can use the wildcard `*`. A wildcard in the middle of a path (`propulsion/*/oilTemperature`) allows any value for that part and a wildcard at the end (`propulsion/port/*`) matches all paths beginning with the specified prefix.
+The path value can use the wildcard `*`. A wildcard in the middle of a path (`propulsion/*/oilTemperature`) allows any
+value for that part and a wildcard at the end (`propulsion/port/*`) matches all paths beginning with the specified
+prefix.
 
 The following are optional, included above only for example as it uses defaults anyway:
 
-* `period=[millisecs]` becomes the transmission rate, e.g. every `period/1000` seconds. Default=1000
+* `period=[millisecs]` becomes the transmission rate, e.g. every `period/1000` seconds. Default: 1000
 * `format=[delta|full]` specifies delta or full format. Default: delta
 * `policy=[instant|ideal|fixed]`. Default: ideal
- * `instant` means send all changes as fast as they are received, but no faster than `minPeriod`. With this policy the client has an immediate copy of the current state of the server.
+ * `instant` means send all changes as fast as they are received, but no faster than `minPeriod`. With this policy the
+     client has an immediate copy of the current state of the server.
  * `ideal` means use `instant` policy, but if no changes are received before `period`, then resend the last known
-   values.eg send changes asap, but send the value every `period` millisecs anyway, whether changed or not.
+   values.
  * `fixed` means simply send the last known values every `period`.
-* `minPeriod=[millisecs]` becomes the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds. This is only relevant for policy='instant' to avoid swamping the client or network.
+* `minPeriod=[millisecs]` becomes the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds.
+    This is only relevant for policy='instant' to avoid swamping the client or network.
 
-You can subscribe to multiple data keys multiple times, from multiple apps or devices. Each app or device simply subscribes to the data it requires, and the server and/or client implementation may combine subscriptions to avoid duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum connections necessary, for instance one websocket connection shared bewteen an instrument panel with many gauges, rather then one websocket connection per gauge.
+You can subscribe to multiple data keys multiple times, from multiple apps or devices. Each app or device simply
+subscribes to the data it requires, and the server and/or client implementation may combine subscriptions to avoid
+duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum
+connections necessary, for instance one WebSocket connection shared between an instrument panel with many gauges,
+rather then one WebSocket connection per gauge.
 
-#### Multiple value handling in subscriptions
+## Multiple value handling in subscriptions
 
-A subscription to a key is for all the updates to that key. If there are multiple sources generating data for that key the client will get all their updates.
+A subscription to a key is for all the updates to that key. If there are multiple sources generating data for that key
+the client will get all their updates.
 
-If a client wants only the values of a single source it should subscribe to a path that includes the full path under `values` including the source reference key of the source. The source reference should be enclosed in square brackets:  `navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
+If a client wants only the values of a single source it should subscribe to a path that includes the full path under
+`values` including the source reference key of the source. The source reference should be enclosed in square brackets:
+`navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
 
-#### Single use, or intermittent data
+## Single use, or intermittent data
 
-When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client is http capable the REST api is a good choice, or use `get/list/put` messages over websockets or tcp.
+When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client
+is http capable the REST API is a good choice, or use `get/list/put` messages over WebSockets or TCP.
 
-#### GET/PUT/LIST variants
+## GET/PUT/LIST variants
 
-The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a json result for the requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.
+The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a JSON result for the
+requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.
+
 ```json
 {
   "context": "vessels.self",
@@ -119,12 +139,12 @@ The `get/list/put` messages work in the same way as their `GET/PUT` REST equival
 ```
 
 
-### Use Cases and Proposed Solutions
+## Use Cases and Proposed Solutions
 
-#### Local boat individual instruments
+### Local boat individual instruments
 
-A gauge-type display for just one or a few data items for the 'self' vessel should be able to specify that it only wants
-those items for the self vessel.
+A gauge-type display for just one or a few data items for the 'self' vessel should be able to specify that it only
+wants those items for the self vessel.
 
 This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcribe=none`, then sending a JSON message:
 
@@ -142,7 +162,7 @@ This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcr
 The JSON format is also viable over a simple TCP or serial transport, and is therefore supported as the primary
 subscription method.
 
-#### Map display with all known vessel positions & directions, served over 3G cellular connection
+### Map display with all known vessel positions & directions, served over 3G cellular connection
 
 ```javascript
 {
@@ -160,9 +180,10 @@ subscription method.
 }
 ```
 
-The result is a delta message of the Signal K data with just position and courseOverGround branches for all known vessels, sent every 2 minutes (120 seconds) even if no data has been updated.
+The result is a delta message of the Signal K data with just `position` and `courseOverGround` branches for all known
+vessels, sent every 2 minutes (120 seconds) even if no data has been updated.
 
-#### Position of a certain vessel, immediately it changes, but once per minute at most
+### Position of a certain vessel, immediately it changes, but once per minute at most
 
 ```javascript
 {
