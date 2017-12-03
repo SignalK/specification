@@ -57,7 +57,7 @@ created.
       "navigation": {
         "courseOverGroundTrue": {
           "value": 3.615624078431453,
-          "$source": "ttyUSB0.GP.RMC",
+          "$source": "ttyUSB0.GP",
           "timestamp": "2017-04-03T06:14:04.451Z"
         }
       }
@@ -81,18 +81,18 @@ both the first and second sources. The initial source‘s data will continue to 
       "navigation": {
         "courseOverGroundTrue": {
           "value": 3.615624078431440,
-          "$source": "0183./dev/ttyUSB0.GP.RMC",
+          "$source": "ttyUSB0.GP",
           "timestamp": "2017-04-03T06:14:04.451Z"
         },
         "values":{
           "ttyUSB0.GP.RMC":{
             "value": 3.615624078431440,
-            "$source": "ttyUSB0.GP.RMC",
+            "$source": "ttyUSB0.GP",
             "timestamp": "2017-04-03T06:14:04.451Z"
           },
           "n2k.ikommunicate.128267":{
             "value": 3.615624078431453,
-            "$source": "ikommunicate.128267",
+            "$source": "ikommunicate.2",
             "timestamp": "2017-04-03T06:14:04.451Z"
           }
         }
@@ -108,12 +108,13 @@ both the first and second sources. The initial source‘s data will continue to 
       }
     },
     "ikommunicate": {
-      "128267": {
-        "label": "ikommunicate-128267",
-        "type": "NMEA2000",
-        "device": "/dev/actisense",
-        "src": "115",
-        "pgn": "128267"
+      "2": {
+        "n2k": {
+          "src": "2",
+          "pgns": {
+            "128267": "2017-04-03T06:14:05.221Z"
+          }
+        }
       }
     }
   }
@@ -133,7 +134,7 @@ does not include the `values` path, the case above looks like:
       "label": "GPS-1",
       "type": "NMEA0183",
       "talker": "GP",
-      "sentence": "$GPRMC,061404.000,A,4117.6201,S,17314.8224,E,0.38,354.82,030417,,*11"
+      "sentence": "RMC"
     },
     "timestamp": "2017-04-03T06:14:04.451Z",
     "values": [{
@@ -142,11 +143,10 @@ does not include the `values` path, the case above looks like:
     }]
   }, {
     "source": {
-      "label": "ikommunicate-128267",
+      "label": "actisense",
       "type": "NMEA2000",
-      "device": "/dev/actisense",
       "src": "115",
-      "pgn": "128267"
+      "pgn": 128267
     },
     "timestamp": "2017-04-03T06:14:04.451Z",
     "values": [{
