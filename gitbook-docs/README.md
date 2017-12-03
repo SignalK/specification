@@ -64,9 +64,9 @@ Signal K does not define the transport or wire protocol. Signal K messages are J
 any physical transport layer. However, the Signal K standard does provide guidance on how to establish an initial
 connection, handle negotiation, subscription, and disconnection for a given transport (e.g. TCP/IP or serial).
 
-Where possible Signal K uses well established standards like HTTPS, REST, WebSockets, MQTT, STOMP, etc. However, these
-should not be interpreted as required dependencies of Signal K. It is entirely possible and permissible to implement
-the protocol over any transport that your implementation requires.
+Where possible Signal K uses well established standards like HTTPS, REST, and WebSockets. However, these should not be
+interpreted as required dependencies of Signal K. It is entirely possible and permissible to implement the protocol
+over any transport that your implementation requires.
 
 The goal is to try to establish sensible conventions for each transport in order to make development and
 interconnection more predictable.
