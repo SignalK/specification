@@ -191,6 +191,10 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
         previous[pathPart] = {};
         var meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path);
         if (meta && i === splitPath.length - 1) {
+          //ignore properties from keyswithmetadata.json
+          meta = JSON.parse(JSON.stringify(meta));
+          delete meta.properties;
+
           previous[pathPart].meta = meta;
         }
       }
