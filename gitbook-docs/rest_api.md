@@ -21,7 +21,7 @@ information about the server. Also see [versioning](versioning.md) for details a
       "version": "3.0",
       "signalk-http": "http://localhost/signalk/v3/api/",
       "signalk-ws": "ws://localhost/signalk/v3/stream",
-      "signalk-tcp": "tcp://locahost:8367"
+      "signalk-tcp": "tcp://localhost:8367"
     }
   },
   "server": {
