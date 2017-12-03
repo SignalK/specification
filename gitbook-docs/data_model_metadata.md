@@ -60,7 +60,7 @@ raise a generic alarm event. See the section on [Alarm Handling](notifications.m
 
 ## Implicit Metadata
 
-All keys in the Signal K specification must have `units` and a `desription`. If a client requests the `meta` property
+All keys in the Signal K specification must have `units` and a `description`. If a client requests the `meta` property
 for a valid Signal K key via the HTTP REST interface, the server must return the `units` and `description`, even if no
 value has ever been generated for that key.
 
