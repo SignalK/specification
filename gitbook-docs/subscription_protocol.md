@@ -97,47 +97,13 @@ the client will get all their updates.
 
 If a client wants only the values of a single source it should subscribe to a path that includes the full path under
 `values` including the source reference key of the source. The source reference should be enclosed in square brackets:
-`navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API.
+`navigation.speedThroughWater.values[n2kFromFile.43]`. The client can retrieve the relevant data via REST API. See
+[Multiple Values](data_model_multiple_values.md) for more information.
 
 ## Single use, or intermittent data
 
 When data is required once only, or upon request the `subscribe/unsubscribe` method should not be used. If the client
 is http capable the REST API is a good choice, or use `get/list/put` messages over WebSockets or TCP.
-
-## GET/PUT/LIST variants
-
-The `get/list/put` messages work in the same way as their `GET/PUT` REST equivalents, returning a JSON result for the
-requested path, once only. They exist to allow REST like functionality for devices without HTTP capability.
-
-```json
-{
-  "context": "vessels.self",
-  "get": [{
-    "path": "environment.depth.belowTransducer"
-  }]
-}
-
-```
-
-```javascript
-{
-  "context": "vessels",
-  "put": [{
-    "source": {
-      "label":"/dev/actisense",
-      "type": "NMEA2000",
-      "pgn": "128275",
-      "timestamp": "2014-08-15-16:00:05.538",
-      "src": "115"
-     },
-     "values": [{
-       "path": "navigation.trip.log",
-       "value": 43374
-     }]
-  }]
-}
-```
-
 
 ## Use Cases and Proposed Solutions
 
