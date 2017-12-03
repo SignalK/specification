@@ -118,7 +118,8 @@ longitude. Therefore, these (and altitude) are grouped together in a single `nav
 The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
 meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
 specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
-in [Keys Reference in Appendix A](keys/index.md).
+in [Keys Reference in Appendix A](keys/index.md). The units are also always specified in the values’
+[metadata](data_model_metadata.md) which is available via the [REST API](rest_api.md) in the `meta.units` property.
 
 In addition to the `value` and `$source` (or `source`) properties, the data object may also have `meta` and `_attr`
 properties. These are discussed in detail in the [metadata](data_model_metadata.md) and [permissions](permissions.md)
