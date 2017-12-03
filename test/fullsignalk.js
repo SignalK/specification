@@ -95,7 +95,6 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK("urn:mrn:imo:mmsi:276799999", "mmsi");
     fullSignalK.addDelta(aisDelta);
-    console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.retrieve().should.be.validSignalK;
 
   })

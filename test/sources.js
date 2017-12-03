@@ -71,7 +71,6 @@ describe('Sources in delta', function() {
     var full = fullSignalK.retrieve()
     full.sources['0183-1']['II'].talker.should.equal('II')
     full.sources['N2000-01']['37']['n2k']['src'].should.equal('37')
-    console.log(JSON.stringify(full.sources, null, 2))
     should.exist(full.sources['i2c-0']['0x48'])
     should.exist(full.sources['1W']['0316013faeff'])
     //FIXME for some reason tv4 complains about source's type property being undefined
