@@ -120,14 +120,12 @@ meters per second, never knots, km/hr, or miles/hr. This means you never have to
 specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
 in [Keys Reference in Appendix A](keys/index.md). The units are also always specified in the values’
 [metadata](data_model_metadata.md) which is available via the [REST API](rest_api.md) in the `meta.units` property.
+Besides the `units` property, `meta` provides a lot of other useful information for consumers of the data.
 
-In addition to the `value` and `$source` (or `source`) properties, the data object may also have `meta` and `_attr`
-properties. These are discussed in detail in the [metadata](data_model_metadata.md) and [permissions](permissions.md)
-sections respectively. Finally, each data object also has a `timestamp` property which represents the time that the
-value was measured. Timestamps are in ISO 8601 format – specifically the [RFC
-3339](https://tools.ietf.org/html/rfc3339) extension format, which is slightly more strict than the ISO specification.
-For instance, it requires four digit years and specifies that `T` is used as a separator between the data and time
-portions of the timestamp.
+Finally, each data object also has a `timestamp` property which represents the time that the value was measured.
+Timestamps are in ISO 8601 format – specifically the [RFC 3339](https://tools.ietf.org/html/rfc3339) extension format,
+which is slightly more strict than the ISO specification.  For instance, it requires four digit years and specifies
+that `T` is used as a separator between the data and time portions of the timestamp.
 
 The ordering of keys is also not important, they can occur in any order. In fact, if you are designing a device which
 consumes Signal K data, it is important to remember that the JSON standard does not guarantee the order of properties
