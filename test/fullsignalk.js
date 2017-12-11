@@ -71,7 +71,7 @@ describe('FullSignalK', function() {
     var aisDelta = {
       "updates": [{
         "source": {
-          "label": "",
+          "label": "N2K-1",
           "type": "NMEA2000",
           "pgn": 129038,
           "src": "43"

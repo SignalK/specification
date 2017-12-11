@@ -19,6 +19,9 @@
           "deviceClass": 70,
           "deviceFunction": 140,
           "productID": 1739
+        },
+        "ais":{
+          "aisType": 15
         }
       },
       "manufacturerName": "Digital Yacht",

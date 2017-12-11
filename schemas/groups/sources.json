@@ -4,28 +4,90 @@
   "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/sources.json#",
   "title": "sources",
   "description": "Metadata about the sources, eg. buses and connected sensors",
-  "patternProperties": {
-    ".*": {
+  "definitions":{
+    "sourcesBranch": {
       "type": "object",
       "patternProperties": {
-        ".*": {
-          "anyOf": [
+        "^((?!^0183$|^n2k$|^ais$|^i2c$|^other$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
+          "description": "This regex pattern is used for validation of the path of the source",
+          "oneOf": [
             {
+              "$ref": "#/definitions/sourcesBranch",
+              "example": "ais-b"
+            },
+            {
+              "$ref": "#/definitions/sourceObject"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "sourceObject":{
+      "type": "object",
+
+      "patternProperties": {
+        "^((?!^0183$|^n2k$|^ais$|^i2c$|^other$|^label$|^type$|^manufacturerName$|^productName$|^softwareVersion$|^hardwareVersion$|^serialNumber$|^installationNote[1-2]$|^manufacturerInfo$)[A-Za-z0-9-])+$": {
+          "type": "object",
+          "oneOf": [
+            {
+              "required": [
+                "ais"
+              ]
+            },
+            {
+              "required": [
+                "n2k"
+              ]
+            },
+            {
+              "required": [
+                "0183"
+              ]
+            },
+            {
+              "required": [
+                "i2c"
+              ]
+            },
+            {
+              "required": [
+                "other"
+              ]
+            }
+          ],
+          "properties": {
+            "other": {
+              "description": "Misc data",
+              "type": "object",
+              "additionalProperties": true,
               "properties": {
-              	 "ais": {
-                  "description": "AIS data",
-                  "type": "object",
-                  "properties": {
-										"aisType": {
-												"type": "number",
-												"multipleOf" : 1,
-												"minimum": 1,
-												"maximum": 27,
-												"description": "AIS Message Type",
-												"example":"15"
-										}
-									}
-								 },
+              }
+            },
+            "i2c": {
+              "description": "I2C data",
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+              }
+            },
+            "ais": {
+              "description": "AIS data",
+              "type": "object",
+              "properties": {
+                "aisType": {
+                  "type": "number",
+                  "multipleOf" : 1,
+                  "minimum": 1,
+                  "maximum": 27,
+                  "description": "AIS Message Type",
+                  "example": 15
+                }
+              }
+            },
+            "0183": {
+              "type": "object",
+              "properties": {
                 "talker": {
                   "description": "NMEA 0183 talker id, the GP in $GPRMC..",
                   "type": "string"
@@ -38,55 +100,48 @@
                       "$ref": "../definitions.json#/definitions/timestamp"
                     }
                   }
-                },
-                "n2k": {
-                  "type": "object",
-                  "properties": {
-                    "src": {
-                      "description": "NMEA 2000 bus",
-                      "type": "string"
-                    },
-                    "pgns": {
-                      "type": "object",
-                      "description": "NMEA 2000 pgn number",
-                      "patternProperties": {
-                        "[0-9]*": {
-                          "$ref": "../definitions.json#/definitions/timestamp"
-                        }
-                      }
-                    },
-                    "manufacturerId": {
-                      "type": "number",
-                      "description": "Manufacturer numeric NMEA 2000 id"
-                    },
-                    "uniqueId": {
-                      "type": "number",
-                      "description": "Unique id of the source device"
-                    },
-                    "deviceFunction": {
-                      "type": "number",
-                      "description": "NMEA 2000 Device Function code"
-                    },
-                    "deviceClass": {
-                      "type": "number",
-                      "description": "NMEA 2000 Device Class code"
-                    },
-                    "productID": {
-                      "description": "Manufactures assigned NMEA2000 Product ID",
-                      "type": "number"
-                    }
-                  }
                 }
               }
             },
-            {
-              "patternProperties": {
-                ".*": {
-                  "properties": {}
+            "n2k": {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "description": "NMEA 2000 bus",
+                  "type": "string"
+                },
+                "pgns": {
+                  "type": "object",
+                  "description": "NMEA 2000 pgn number",
+                  "patternProperties": {
+                    "[0-9]*": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    }
+                  }
+                },
+                "manufacturerId": {
+                  "type": "number",
+                  "description": "Manufacturer numeric NMEA 2000 id"
+                },
+                "uniqueId": {
+                  "type": "number",
+                  "description": "Unique id of the source device"
+                },
+                "deviceFunction": {
+                  "type": "number",
+                  "description": "NMEA 2000 Device Function code"
+                },
+                "deviceClass": {
+                  "type": "number",
+                  "description": "NMEA 2000 Device Class code"
+                },
+                "productID": {
+                  "description": "Manufacturers assigned NMEA2000 Product ID",
+                  "type": "number"
                 }
               }
             }
-          ]
+          }
         }
       },
       "properties": {
@@ -136,7 +191,11 @@
           "type": "string",
           "example":"http://digitalyachtamerica.com Tel:+44 1179 554474"
         }
-      }
+      },
+      "required": [
+        "label",
+        "type"
+      ]
     }
   }
 }
