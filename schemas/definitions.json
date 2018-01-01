@@ -62,9 +62,6 @@
           "maximum": 27,
           "description": "AIS Message Type",
           "example":"15"
-        },
-        "instance": {
-          "type": "string"
         }
       }
     },
