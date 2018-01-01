@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/aton.json#",
+  "description": "An object describing an individual SAR beacon, eg EPIRB or transponser. It should be an object in sar, named using MMSI or a UUID",
+  "title": "Search and rescue beacons",
+  "anyOf": [
+    {
+      "required": [
+        "mmsi"
+      ]
+    },
+    {
+      "required": [
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "uuid"
+      ]
+    }
+  ],
+  "properties": {
+    "url": {
+      "description": "URL based identity of the aid to navigation, if available.",
+      "$ref": "definitions.json#/definitions/url"
+    },
+    "mmsi": {
+      "description": "MMSI number of the aid to navigation, if available.",
+      "$ref": "definitions.json#/definitions/sarMmsi"
+    },
+    "uuid": {
+      "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
+      "$ref": "definitions.json#/definitions/uuid",
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+    },
+    "communication": {
+      "description": "Communication data including Radio, Telephone, E-Mail, etc.",
+      "$ref": "groups/communication.json#"
+    },
+    "navigation": {
+      "description": "Navigation data including Position, Course to next WP information, etc.",
+      "$ref": "groups/navigation.json#"
+    },
+    "notifications": {
+      "type": "object",
+      "title": "notifications",
+      "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure",
+            "properties": {
+        "mob": {
+          "description": "Man overboard",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "fire": {
+          "description": "Fire onboard",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "sinking": {
+          "description": "Vessel is sinking",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "flooding": {
+          "description": "Vessel is flooding",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "collision": {
+          "description": "In collision with another vessel or object",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "grounding": {
+          "description": "Vessel grounding",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "listing": {
+          "description": "Vessel is listing",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "adrift": {
+          "description": "Vessel is adrift",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "piracy": {
+          "description": "Under attack or danger from pirates",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "abandon": {
+          "description": "Abandon ship",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        }
+      },
+      "patternProperties": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+          "description": "This regex pattern is used for validation of the path of the alarm",
+          "oneOf": [
+            {
+              "$ref": "groups/notifications.json#/definitions/notificationBranch",
+              "example": "navigation"
+            },
+            {
+              "$ref": "groups/notifications.json#/definitions/notification"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

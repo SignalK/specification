@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/aircraft.json#",
+  "description": "An object describing an individual aircraft. It should be an object in aircraft, named using MMSI or a UUID",
+  "title": "aircraft",
+  "anyOf": [
+    {
+      "required": [
+        "mmsi"
+      ]
+    },
+    {
+      "required": [
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "uuid"
+      ]
+    }
+  ],
+  "properties": {
+    "url": {
+      "description": "URL based identity of the aircraft, if available.",
+      "$ref": "definitions.json#/definitions/url"
+    },
+    "mmsi": {
+      "description": "MMSI number of the aircraft, if available.",
+      "$ref": "definitions.json#/definitions/aircraftMmsi"
+    },
+    "uuid": {
+      "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
+      "$ref": "definitions.json#/definitions/uuid",
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+    },
+    "flag": {
+      "type": "string",
+      "description": "The country of aircraft registration, or flag state of the aircraft",
+      "example": "NZ"
+    },
+    "base": {
+      "type": "string",
+      "description": "The home base of the aircraft",
+      "example": "Nelson"
+    },
+    "registrations": {
+      "type": "object",
+      "description": "The various registrations of the aircraft.",
+      "example": "eg for a New Zealand Part B recreational aircraft: 'NZ654'",
+      "properties": {
+        "imo": {
+          "type": "string",
+          "description": "The IMO number of the aircraft.",
+          "pattern": "^IMO [0-9]{7,7}$",
+          "example": "IMO 9074729",
+          "maxLength": 11,
+          "minLength": 11
+        },
+        "national": {
+          "type": "object",
+          "description": "The national registration number of the aircraft.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+              "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties": {
+                "country": {
+                  "type": "string",
+                  "description": "The ISO 3166-2 country code.",
+                  "example": "NZ",
+                  "maxLength": 2,
+                  "minLength": 2
+                },
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "NZ654"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "New Zealand Part B recreational aircraft"
+                }
+              }
+            }
+          }
+        },
+        "other": {
+          "type": "object",
+          "description": "Other registration or permits for the aircraft.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+              "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties": {
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "DOC-2345"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "Tasmanian National Parks Access Permit 2015"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "communication": {
+      "description": "Communication data including Radio, Telephone, E-Mail, etc.",
+      "$ref": "groups/communication.json#"
+    },
+    "environment": {
+      "description": "Environmental data measured locally including Depth, Wind, Temp, etc.",
+      "$ref": "groups/environment.json#"
+    },
+    "navigation": {
+      "description": "Navigation data including Position, Course to next WP information, etc.",
+      "$ref": "groups/navigation.json#"
+    },
+    "notifications": {
+      "type": "object",
+      "title": "notifications",
+      "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure",
+      "patternProperties": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+          "description": "This regex pattern is used for validation of the path of the alarm",
+          "oneOf": [
+            {
+              "$ref": "groups/notifications.json#/definitions/notificationBranch",
+              "example": "navigation"
+            },
+            {
+              "$ref": "groups/notifications.json#/definitions/notification"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "design": {
+      "description": "Design/dimensional data of this aircraft",
+      "$ref": "groups/design.json#"
+    },
+    "sensors": {
+      "type": "object",
+      "title": "sensors",
+      "description": "Sensors, their state, and data.",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation UUID identifier for the sensor",
+          "$ref": "groups/sensors.json#"
+        }
+      }
+    }
+  }
+}

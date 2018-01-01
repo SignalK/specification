@@ -1,0 +1,221 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/delta.json#",
+  "title": "SignalK Delta message schema",
+  "description": "Schema for defining updates and subscriptions to parts of a SignalK data model, for example for communicating updates of data",
+  "required": [
+    "updates"
+  ],
+  "properties": {
+    "context": {
+      "type": "string",
+      "description": "The context path of the updates, eg. the top level path plus object identifier.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+    },
+    "updates": {
+      "type": "array",
+      "description": "The updates",
+      "items": {
+        "type": "object",
+        "required": ["values"],
+
+        "not": {
+          "allOf": [{
+            "required": ["source"]
+          }, {
+            "required": ["$source"]
+          }]
+        },
+
+        "properties": {
+          "$source": {
+            "$ref": "./definitions.json#/definitions/sourceRef"
+          },
+          "source": {
+            "$ref": "./definitions.json#/definitions/source"
+          },
+          "timestamp": {
+            "$ref": "./definitions.json#/definitions/timestamp"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "value"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "object",
+                    "boolean",
+                    "null"
+                  ],
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "subscribe": {
+      "type": "array",
+      "description": "A subscription request",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "The relative path of the subscription,  supports jsonPath syntax for complex matches",
+            "type": "string"
+          },
+          "period": {
+            "description": "The period to repeat the message in millisecs",
+            "example": 1000,
+            "default": 1000,
+            "type": "integer"
+          },
+          "format": {
+            "type": "string",
+            "description": "The message format for periodic messages",
+            "enum": [
+              "full",
+              "delta"
+            ],
+            "default": "delta"
+          },
+          "policy": {
+            "type": "string",
+            "description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
+            "enum": [
+              "instant",
+              "ideal",
+              "fixed"
+            ],
+            "default": "ideal"
+          },
+          "minPeriod": {
+            "type": "integer",
+            "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    "unsubscribe": {
+      "type": "array",
+      "description": "An unsubscribe request.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "The relative path to unsubscribe,  supports jsonPath syntax for complex matches",
+            "type": "string"
+          },
+          "period": {
+            "description": "The period to repeat the message in millisecs",
+            "example": 1000,
+            "default": 1000,
+            "type": "integer"
+          },
+          "format": {
+            "type": "string",
+            "description": "The message format for periodic messages",
+            "enum": [
+              "full",
+              "delta"
+            ],
+            "default": "delta"
+          },
+          "policy": {
+            "type": "string",
+            "description": "The policy rules for repetition. [instant]=send all changes as fast as they are received, but no faster than minPeriod. [ideal]=use instant policy, but send the value every `period` millisecs anyway, whether changed or not. [fixed]=send the last known values every period. ",
+            "enum": [
+              "instant",
+              "ideal",
+              "fixed"
+            ],
+            "default": "ideal"
+          },
+          "minPeriod": {
+            "type": "integer",
+            "description": "The the fastest message transmission rate allowed, e.g. every `minPeriod/1000` seconds."
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    "get": {
+      "type": "array",
+      "description": "A websockets equivalent to a REST GET request.This is for one-off requests, use the subscribe message for regular changes.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The relative path to GET,  supports jsonPath syntax for complex matches"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    "list": {
+      "type": "array",
+      "description": "Gets a list of known keys for this path",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The relative path to list keys for,  supports jsonPath syntax for complex matches"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      }
+    },
+    "put": {
+      "type": "array",
+      "description": "A websockets equivalent to a REST PUT request. This is for one-off changes, use the updates message for regular changes.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The relative path to set."
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "object",
+              "boolean",
+              "null"
+            ],
+            "description": "The value to set at the path"
+          }
+        },
+        "required": [
+          "path",
+          "value"
+         ]
+      }
+    }
+  }
+}

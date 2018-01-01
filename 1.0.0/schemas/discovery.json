@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/discovery.json#",
+  "title": "SignalK Discovery",
+  "description": "Schema for SignalK discovery resources used to locate server endpoints.",
+  "properties": {
+    "endpoints": {
+      "type": "object",
+      "description": "The set of endpoints known to this server",
+      "patternProperties": {
+        ".*": {
+          "description": "The name of a group of endpoints at the same version level",
+          "type": "object",
+          "required": [
+            "version"
+          ],
+          "properties": {
+            "version": {
+              "description": "The version this group supports",
+              "$ref": "definitions.json#/definitions/version"
+            },
+            "signalk-http": {
+              "description": "The URL of a HTTP(s) REST API endpoint e.g. http://localhost/signalk/v1/api/",
+              "$ref": "definitions.json#/definitions/url"
+            },
+            "signalk-ws": {
+              "description": "The URL of a WebSocket streaming endpoint e.g. http://localhost/signalk/v1/stream",
+              "$ref": "definitions.json#/definitions/url"
+            },
+            "signalk-tcp": {
+              "description": "The URL of a tcp socket streaming endpoint e.g. tcp://localhost:55555",
+              "$ref": "definitions.json#/definitions/url"
+            }
+          }
+        }
+      }
+    },
+    "server": {
+      "type": "object",
+      "description": "Information about this server",
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "description": "The id of this server (signalk-server-node, iKommunicate, etc.)",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of this server",
+          "$ref": "definitions.json#/definitions/version"
+        }
+      }
+    }
+  }
+}
+  

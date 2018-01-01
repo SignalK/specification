@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/performance.json#",
+  "description": "Schema describing the performance child-object of a Vessel.",
+  "title": "performance",
+  "properties": {
+    "polarSpeed": {
+      "description": "The current polar speed based on current polar diagram, WindSpeedTrue and angleTrueWater.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "polarSpeedRatio": {
+      "description": "The ratio of current speed through water to the polar speed.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "ratio"
+    },
+
+    "velocityMadeGood": {
+      "description": "The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading to upwind, negative to downwind.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "velocityMadeGoodToWaypoint": {
+      "description": "The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "beatAngle": {
+      "description": "The true wind beat angle for the best velocity made good based on current current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "beatAngleVelocityMadeGood": {
+      "description": "The velocity made good for the beat angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "beatAngleTargetSpeed": {
+      "description": "The target speed for the beat angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "gybeAngle": {
+      "description": "The true wind gybe angle for the best velocity made good downwind based on current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "gybeAngleVelocityMadeGood": {
+      "description": "The velocity made good for the gybe angle",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "gybeAngleTargetSpeed": {
+      "description": "The target speed for the gybe angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "targetAngle": {
+      "description": "The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "targetSpeed": {
+      "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+
+    "leeway": {
+      "description": "Current leeway",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "tackMagnetic": {
+      "description": "Magnetic heading on opposite tack.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "tackTrue": {
+      "description": "True heading on opposite tack.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    }
+  }
+}

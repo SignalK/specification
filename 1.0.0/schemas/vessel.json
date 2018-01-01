@@ -1,0 +1,262 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/vessel.json#",
+  "description": "An object describing an individual vessel. It should be an object in vessels, named using MMSI or a UUID",
+  "title": "vessel",
+  "anyOf": [
+    {
+      "required": [
+        "mmsi"
+      ]
+    },
+    {
+      "required": [
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "uuid"
+      ]
+    }
+  ],
+  "properties": {
+    "url": {
+      "description": "URL based identity of the vessel, if available.",
+      "$ref": "definitions.json#/definitions/url"
+    },
+    "mmsi": {
+      "description": "MMSI number of the vessel, if available.",
+      "$ref": "definitions.json#/definitions/mmsi"
+    },
+    "mothershipMmsi": {
+      "description": "MMSI number of the mothership of this vessel, if available.",
+      "$ref": "definitions.json#/definitions/mmsi"
+    },
+    "uuid": {
+      "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
+      "$ref": "definitions.json#/definitions/uuid",
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+    },
+    "name": {
+      "type": "string",
+      "description": "The common name of the vessel",
+      "example": "Motu"
+    },
+    "flag": {
+      "type": "string",
+      "description": "The country of ship registration, or flag state of the vessel",
+      "example": "NZ"
+    },
+    "port": {
+      "type": "string",
+      "description": "The home port of the vessel",
+      "example": "Nelson"
+    },
+    "registrations": {
+      "type": "object",
+      "description": "The various registrations of the vessel.",
+      "example": "eg for a New Zealand Part B recreational vessel: 'NZ654'",
+      "properties": {
+        "imo": {
+          "type": "string",
+          "description": "The IMO number of the vessel.",
+          "pattern": "^IMO [0-9]{7,7}$",
+          "example": "IMO 9074729",
+          "maxLength": 11,
+          "minLength": 11
+        },
+        "national": {
+          "type": "object",
+          "description": "The national registration number of the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+              "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties": {
+                "country": {
+                  "type": "string",
+                  "description": "The ISO 3166-2 country code.",
+                  "example": "NZ",
+                  "maxLength": 2,
+                  "minLength": 2
+                },
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "NZ654"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "New Zealand Part B recreational vessel"
+                }
+              }
+            }
+          }
+        },
+        "local": {
+          "type": "object",
+          "description": "A local or state registration number of the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+              "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties": {
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "NZCG-2345"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "Nelson Coast Guard Membership"
+                }
+              }
+            }
+          }
+        },
+        "other": {
+          "type": "object",
+          "description": "Other registration or permits for the vessel.",
+          "patternProperties": {
+            "(^[A-Za-z0-9_-]+$)": {
+              "description": "This regex pattern is used for validating the identifier for the registration",
+              "properties": {
+                "registration": {
+                  "type": "string",
+                  "description": "The registration code",
+                  "example": "DOC-2345"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "The registration description",
+                  "example": "Tasmanian National Parks Access Permit 2015"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "communication": {
+      "description": "Communication data including Radio, Telephone, E-Mail, etc.",
+      "$ref": "groups/communication.json#"
+    },
+    "environment": {
+      "description": "Environmental data measured locally including Depth, Wind, Temp, etc.",
+      "$ref": "groups/environment.json#"
+    },
+    "navigation": {
+      "description": "Navigation data including Position, Course to next WP information, etc.",
+      "$ref": "groups/navigation.json#"
+    },
+    "propulsion": {
+      "type": "object",
+      "title": "propulsion",
+      "description": "Engine data, each engine identified by a unique name i.e. Port_Engine",
+      "$ref": "groups/propulsion.json#"
+    },
+    "electrical": {
+      "type": "object",
+      "title": "electrical",
+      "description": "Electrical data, each electrical device indentified by a unique name i.e. Battery_1",
+      "$ref": "groups/electrical.json#"
+    },
+    "notifications": {
+      "type": "object",
+      "title": "notifications",
+      "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure",
+      "properties": {
+        "mob": {
+          "description": "Man overboard",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "fire": {
+          "description": "Fire onboard",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "sinking": {
+          "description": "Vessel is sinking",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "flooding": {
+          "description": "Vessel is flooding",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "collision": {
+          "description": "In collision with another vessel or object",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "grounding": {
+          "description": "Vessel grounding",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "listing": {
+          "description": "Vessel is listing",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "adrift": {
+          "description": "Vessel is adrift",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "piracy": {
+          "description": "Under attack or danger from pirates",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "abandon": {
+          "description": "Abandon ship",
+          "$ref": "groups/notifications.json#/definitions/notification"
+        }
+      },
+      "patternProperties": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+          "description": "This regex pattern is used for validation of the path of the alarm",
+          "oneOf": [
+            {
+              "$ref": "groups/notifications.json#/definitions/notificationBranch",
+              "example": "propulsion"
+            },
+            {
+              "$ref": "groups/notifications.json#/definitions/notification"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "steering": {
+      "description": "Vessel steering data for steering controls (not Autopilot 'Nav Data')",
+      "$ref": "groups/steering.json#"
+    },
+    "tanks": {
+      "type": "object",
+      "title": "tanks",
+      "description": "Tank data, each tank indentified by a unique name i.e. FreshWater_2",
+      "$ref": "groups/tanks.json#"
+    },
+    "design": {
+      "description": "Design/dimensional data of this vessel",
+      "$ref": "groups/design.json#"
+    },
+    "sails": {
+      "description": "Sails data",
+      "$ref": "groups/sails.json#"
+    },
+    "sensors": {
+      "type": "object",
+      "title": "sensors",
+      "description": "Sensors, their state, and data.",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "description": "This regex pattern is used for validation UUID identifier for the sensor",
+          "$ref": "groups/sensors.json#"
+        }
+      }
+    },
+    "performance": {
+      "description": "Performance Sailing data including VMG, Polar Speed, tack angle, etc.",
+      "$ref": "groups/performance.json#"
+    }
+  }
+}

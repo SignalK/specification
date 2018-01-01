@@ -1,0 +1,249 @@
+  {
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://signalk.org/specification/1.0.0/schemas/aton.json#",
+    "description": "An object describing an individual aid to navigation. It should be an object in aton, named using MMSI or a UUID",
+    "title": "aid to navigation",
+    "anyOf": [
+      {
+        "required": [
+          "mmsi"
+        ]
+      },
+      {
+        "required": [
+          "url"
+        ]
+      },
+      {
+        "required": [
+          "uuid"
+        ]
+      }
+    ],
+    "properties": {
+      "url": {
+        "description": "URL based identity of the aid to navigation, if available.",
+        "$ref": "definitions.json#/definitions/url"
+      },
+      "mmsi": {
+        "description": "MMSI number of the aid to navigation, if available.",
+        "$ref": "definitions.json#/definitions/atonMmsi"
+      },
+      "uuid": {
+        "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
+        "$ref": "definitions.json#/definitions/uuid",
+        "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+      },
+      "atonType": {
+        "type": "object",
+        "description": "The aton type",
+        "allOf": [
+          {
+            "$ref": "definitions.json#/definitions/commonValueFields"
+          },
+          {
+            "properties": {
+              "value": {
+                "type": "object",
+                "allOf": [
+                  {
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "description": "The aton type number"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The aton type name"
+                      }
+                    }
+                  },
+                  {
+                    "enum": [
+                      {
+                        "id": 1,
+                        "name": "Reference Point"
+                      },
+                      {
+                        "id": 2,
+                        "value": "RACON"
+                      },
+                      {
+                        "id": 3,
+                        "name": "Fixed Structure Off Shore"
+                      },
+                      {
+                        "id": 4,
+                        "name": "Emergency Wreck Marking Buoy"
+                      },
+                      {
+                        "id": 5,
+                        "name": "Light, Without Sectors"
+                      },
+                      {
+                        "id": 6,
+                        "name": "Light, With Sectors"
+                      },
+                      {
+                        "id": 7,
+                        "name": "Leading Light Front"
+                      },
+                      {
+                        "id": 8,
+                        "name": "Leading Light Rear"
+                      },
+                      {
+                        "id": 9,
+                        "name": "Beacon, Cardinal N"
+                      },
+                      {
+                        "id": 10,
+                        "name": "Beacon, Cardinal E"
+                      },
+                      {
+                        "id": 11,
+                        "name": "Beacon, Cardinal S"
+                      },
+                      {
+                        "id": 12,
+                        "name": "Beacon, Cardinal W"
+                      },
+                      {
+                        "id": 13,
+                        "name": "Beacon, Port Hand"
+                      },
+                      {
+                        "id": 14,
+                        "name": "Beacon, Starboard Hand"
+                      },
+                      {
+                        "id": 15,
+                        "name": "Beacon, Preferred Channel Port Hand"
+                      },
+                      {
+                        "id": 16,
+                        "name": "Beacon, Preferred Channel Starboard Hand"
+                      },
+                      {
+                        "id": 17,
+                        "name": "Beacon, Isolated Danger"
+                      },
+                      {
+                        "id": 18,
+                        "name": "Beacon, Safe Water"
+                      },
+                      {
+                        "id": 19,
+                        "name": "Beacon, Special Mark"
+                      },
+                      {
+                        "id": 20,
+                        "name": "Cardinal Mark N"
+                      },
+                      {
+                        "id": 21,
+                        "name": "Cardinal Mark E"
+                      },
+                      {
+                        "id": 22,
+                        "name": "Cardinal Mark S"
+                      },
+                      {
+                        "id": 23,
+                        "name": "Cardinal Mark W"
+                      },
+                      {
+                        "id": 24,
+                        "name": "Port Hand Mark"
+                      },
+                      {
+                        "id": 25,
+                        "name": "Starboard Hand Mark"
+                      },
+                      {
+                        "id": 26,
+                        "name": "Preferred Channel Port Hand"
+                      },
+                      {
+                        "id": 27,
+                        "name": "Preferred Channel Starboard Hand"
+                      },
+                      {
+                        "id": 28,
+                        "name": "Isolated danger"
+                      },
+                      {
+                        "id": 29,
+                        "name": "Safe Water"
+                      },
+                      {
+                        "id": 30,
+                        "name": "Special Mark"
+                      },
+                      {
+                        "id": 31,
+                        "name": "Light Vessel/LANBY/Rigs"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "name": {
+        "type": "string",
+        "description": "The aton name",
+        "example": "Motu"
+      },
+      "communication": {
+        "description": "Communication data including Radio, Telephone, E-Mail, etc.",
+        "$ref": "groups/communication.json#"
+      },
+      "environment": {
+        "description": "Environmental data measured locally including Depth, Wind, Temp, etc.",
+        "$ref": "groups/environment.json#"
+      },
+      "navigation": {
+        "description": "Navigation data including Position, Course to next WP information, etc.",
+        "$ref": "groups/navigation.json#"
+      },
+      "notifications": {
+        "type": "object",
+        "title": "notifications",
+        "description": "Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure",
+        "patternProperties": {
+          "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+            "description": "This regex pattern is used for validation of the path of the alarm",
+            "oneOf": [
+              {
+                "$ref": "groups/notifications.json#/definitions/notificationBranch",
+                "example": "navigation"
+              },
+              {
+                "$ref": "groups/notifications.json#/definitions/notification"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "design": {
+        "description": "Design/dimensional data of this ",
+        "$ref": "groups/design.json#"
+      },
+      "sensors": {
+        "type": "object",
+        "title": "sensors",
+        "description": "Sensors, their state, and data.",
+        "patternProperties": {
+          "(^[A-Za-z0-9]+$)": {
+            "description": "This regex pattern is used for validation UUID identifier for the sensor",
+            "$ref": "groups/sensors.json#"
+          }
+        }
+      }
+    }
+  }

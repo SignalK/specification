@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/def_loader.json#",
+  "title": "def_loader",
+  "description": "Nasty hack to get the definitions loaded first, so they resolve nicely",
+
+  "properties": {
+    "source": {
+      "$ref": "definitions.json#/definitions/source"
+    },
+
+    "timestamp": {
+      "$ref": "definitions.json#/definitions/timestamp"
+    },
+
+    "version": {
+      "$ref": "definitions.json#/definitions/version"
+    },
+
+    "number": {
+      "$ref": "definitions.json#/definitions/numberValue"
+    },
+
+    "mmsi": {
+      "$ref": "definitions.json#/definitions/mmsi"
+    },
+
+    "uuid": {
+      "$ref": "definitions.json#/definitions/uuid"
+    }
+  }
+}
