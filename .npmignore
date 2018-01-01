@@ -36,3 +36,7 @@ thumbs.db
 *.iml
 *.swp
 *~
+.vscode
+
+#Gitbook source files, original and generated
+gitbook-docs
