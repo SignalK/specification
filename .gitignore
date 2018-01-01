@@ -29,10 +29,12 @@ node_modules
 .DS_Store
 thumbs.db
 
-# Everything else that's not required for displaying the schemas
-bin
-samples
-test
-index.js
-package.json
+# IDE Stuff
+*.iml
+*.swp
 *~
+.vscode
+
+#Originals, not published in gh-pages
+gitbook-docs
+src
