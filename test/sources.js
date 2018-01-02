@@ -153,14 +153,9 @@ describe('Invalid sources with both n2k and ais:', function() {
     require('./data/invalid-source.json').should.not.be.validSignalK
   });
 });
-describe('Valid sources with no 0183, n2k or ais:', function() {
-  it("No 0183, ais or n2k are valid", function() {
-    require('./data/invalid-source1.json').should.be.validSignalK
-  });
-});
 describe('Valid sources with no 0183,n2k or ais, and other items:', function() {
   it("No 0183, ais or n2k, and other items are valid", function() {
-    require('./data/invalid-source2.json').should.be.validSignalK
+    require('./data/invalid-source2.json').should.not.be.validSignalK
   });
 });
 
