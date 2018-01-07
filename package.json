@@ -12,7 +12,7 @@
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && mkdir $npm_package_version ; git add $npm_package_version && git mv schemas/ $npm_package_version/ && git commit -m 'Schemas from master' && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:prep": "gitbook install gitbook-docs && replace _version_ $npm_package_version gitbook-docs/*",
-    "docs:keys": "scripts/processSchemaFiles.js",
+    "docs:keys": "node scripts/processSchemaFiles.js",
     "docs:html": "gitbook build gitbook-docs $npm_package_version/doc",
     "docs:pdf": "gitbook pdf gitbook-docs $npm_package_version/doc/signalk.pdf",
     "docs:mobi": "gitbook mobi gitbook-docs $npm_package_version/doc/signalk.mobi",
