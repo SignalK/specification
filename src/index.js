@@ -151,7 +151,7 @@ function chaiAsPromised(chai, utils) {
       );
   });
   Assertion.addProperty('validSubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/subscribe');
+    var result = validateWithSchema(this._obj, 'messages/subscribe.json');
     var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
     this.assert(
       result.valid
@@ -160,7 +160,7 @@ function chaiAsPromised(chai, utils) {
       );
   });
   Assertion.addProperty('validUnsubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/unsubscribe');
+    var result = validateWithSchema(this._obj, 'messages/unsubscribe.json');
     var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
     this.assert(
       result.valid
