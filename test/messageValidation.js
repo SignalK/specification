@@ -5,11 +5,11 @@ chai.use(require('../dist/').chaiModule);
 describe('Message validation', function() {
   it('Simple subscribe validates', function() {
     var subscribe =  require('../samples/signalk-subscribe');
-    subscribe.should.be.validSubscriptionMessage;
+    subscribe.should.be.validSubscribeMessage;
   });
 
   it('Simple unsubscribe validates', function() {
     var subscribe =  require('../samples/signalk-unsubscribe');
-    subscribe.should.be.validUnsubscriptionMessage;
+    subscribe.should.be.validUnsubscribeMessage;
   });
 });
