@@ -1,0 +1,36 @@
+{ "self": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9",
+  "vessels": {
+    "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+		    "environment": {
+		        "depth": {
+		            "belowKeel": {
+		                "value": 3.4,
+		                "timestamp": "2015-03-06T16:57:53.643Z",
+		                "$source": "nmea1.II",
+		                "_attr": {
+		                    "_mode": 644,
+		                    "_owner": "self",
+		                    "_group": "self"
+		                },
+		                "meta": {
+		                    "displayName": "Depth Below Keel",
+		                    "longName": "Depth Below Keel in Meters",
+		                    "shortName": "DBK",
+		                    "gaugeType": "sparkLine",
+		                    "units": "Meters (m)",
+		                    "warnMethod": ["visual"],
+		                    "alarmMethod": ["sound"],
+		                    "zones": [
+		                        {"lower":0.0,"upper":1.5,"state":"alarm", "message":"Running aground!"},
+		                        {"lower":1.5,"upper":3.0,"state":"warn", "message":"Shallow water!"},
+		                        {"lower":3.0, "state":"normal"}
+		                    ]
+		                }
+		            }
+		        }
+		    }
+    }
+  },
+  "version": "1.0.0"
+}

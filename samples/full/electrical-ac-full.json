@@ -1,0 +1,206 @@
+{
+  "self":"urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "electrical": {
+        "ac": {
+          "bus1": {
+            "name": "Primary AC Bus",
+            "location": "Engine Room",
+            "dateInstalled": "2010-01-17T00:00:00Z",
+            "phase": {
+              "A": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                }
+              },
+              "B": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                }
+              },
+              "C": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                }
+              }
+            }
+          },
+          "utility": {
+            "phase": {
+              "A": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "current": {
+                  "value": 10,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "reactivePower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 5000
+                },
+                "powerFactor": {
+                  "value": 0.97,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "powerFactorLagging": "leading",
+                "realPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                },
+                "apparentPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                }
+              },
+              "B": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "current": {
+                  "value": 10,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "reactivePower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 5000
+                },
+                "powerFactor": {
+                  "value": 0.97,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "powerFactorLagging": "leading",
+                "realPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                },
+                "apparentPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                }
+              },
+              "C": {
+                "lineLineVoltage": {
+                  "value": 480,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "lineNeutralVoltage": {
+                  "value": 277,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "frequency": {
+                  "value": 60,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "current": {
+                  "value": 10,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "reactivePower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 5000
+                },
+                "powerFactor": {
+                  "value": 0.97,
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
+                "powerFactorLagging": "leading",
+                "realPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                },
+                "apparentPower": {
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01",
+                  "value": 10500
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}
+
+

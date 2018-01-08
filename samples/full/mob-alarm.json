@@ -1,0 +1,19 @@
+{ "self": "urn:mrn:imo:mmsi:366982330",
+  "version": "1.0.0",
+  "vessels": {
+    "urn:mrn:imo:mmsi:366982330": {
+      "mmsi": "366982330",
+      "notifications": {
+        "mob":{
+          "value": {
+            "message": "MOB",
+            "state": "emergency",
+            "method": ["visual", "sound"]
+          },
+          "timestamp": "2014-04-10T08:33:53Z",
+          "$source": "sources.gps_0183_MOB"          
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "endpoints": {
+    "v1": {
+      "version": "1.0.0",
+      "signalk-http": "http://localhost:3000/signalk/v1/api/",
+      "signalk-ws": "ws://localhost:3000/signalk/v1/stream"
+    },
+    "v3": {
+      "version": "3.0.0-Alpha",
+      "signalk-http": "http://localhost/signalk/v3/api/",
+      "signalk-ws": "ws://localhost/signalk/v3/stream",
+      "signalk-tcp": "tcp://localhost:8367"
+    }
+  },
+  "server": {
+    "id": "signalk-server-node",
+    "version": "0.1.33"
+  }
+}

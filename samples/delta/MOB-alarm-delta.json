@@ -1,0 +1,24 @@
+{
+  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "updates": [
+    {
+      "source": {
+        "label": "ttyUSB0",
+        "type": "NMEA0183",
+        "talker": "GP",
+        "sentence": "MOB"
+      },
+      "timestamp": "2014-08-15T16:00:05.538Z",
+      "values": [
+        {
+          "path": "notifications.mob",
+          "value": {
+            "message": "MOB",
+            "state": "emergency",
+            "method": ["visual", "sound"]
+          }
+        }
+      ]
+    }
+  ]
+}
