@@ -34,6 +34,7 @@ function FullSignalK(id, type, defaults) {
     this.root.vessels[id] = defaults && defaults.vessels && defaults.vessels.self ? defaults.vessels.self : {};
     this.self = this.root.vessels[id];
     signalkSchema.fillIdentity(this.root)
+    this.root.self = 'vessels.' + id
   }
   this.sources = {};
   this.root.sources = this.sources;

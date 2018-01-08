@@ -178,4 +178,14 @@ describe('FullSignalK', function() {
     vessel.propulsion.engine1.temperature.should.have.property('$source', '1W.0316013faeff')
   })
 
+  it('MMSI self is set correctly in full tree', function() {
+    var fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:276810000', null, {});
+    fullSignalK.retrieve().self.should.equal('vessels.urn:mrn:imo:mmsi:276810000')
+  })
+
+  it('UUID self is set correctly in full tree', function() {
+    var fullSignalK = new FullSignalK('urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d', null, {});
+    fullSignalK.retrieve().self.should.equal('vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d')
+  })
+
 })
