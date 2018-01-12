@@ -3,7 +3,7 @@
 ## Service Discovery
 
 A Signal K server SHOULD advertise its services using [DNS Service Discovery
-(DNS-SD)](https://tools.ietf.org/html/rfc6763) via Mutlicast DNS (mDNS); also known as Bonjour. The server MUST provide
+(DNS-SD)](https://tools.ietf.org/html/rfc6763) via Multicast DNS (mDNS); also known as Bonjour. The server MUST provide
 DNS [Service (SRV) Records](https://en.wikipedia.org/wiki/SRV_record) and [Text (TXT)
 Records](https://en.wikipedia.org/wiki/TXT_record) describing the Signal K interfaces it provides. These service
 identifiers are:

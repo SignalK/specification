@@ -1,66 +1,106 @@
-#Metadata
+# Metadata
 
-### The Use Cases
+A key part of Signal K is the ability for data consumers such as apps or MFDs to automatically configure themselves
+based on settings retrieved from the server. The metadata component of Signal K facilitates this through an optional
+`meta` object attached to each key in the Signal K data model.
 
-Let's assume we have engine1.rpm as a key/value in Signal K. We want to display it on our dashboard, and monitor alarms for temp, oil, rpm etc.
+## Rationale
 
-We can drop a generic dial gauge on our dash and display rpm, but it can't know maxRpm, or alarms unless its an engine-specific gauge, and knows where to look in the Signal K schema. So we will end up with a profusion of role specific gauges to maintain. We also have non standard key names for max, min, high, low, etc. which pollute the schema.
+In an environment where various critical pieces of information are displayed in multiple locations it becomes quite
+difficult to ensure that all of these devices use the same scale and react the same way to changes in the data. This is
+especially true in an environment where these devices are not tied to the boat. A crew member may bring a personal
+tablet with them for their tactician role during a Wednesday evening race or a harbor pilot may bring a laptop on board
+loaded with local charts. If these devices can load critical configuration data from a central server on the boat, this
+saves time and prevents costly or even disastrous mistakes from occurring due to misconfigured devices.
 
-Currently the Signal K server has a set of specific alarm keys. These grow over time and are becoming awkward. The server can only monitor these specific keys at present as there is no mechanism for arbitrary alarm definition.
+## Metadata for a Data Value
 
-### Metadata for a Data Value
+The `meta` object exists at the same level as `value` and `$source` in each key in the Signal K data model. 
 
-Each data key should have an optional ```.meta``` object. This holds data in a standard way which enables the max/min/alarm and display to be automatically derived.
 ```json
 {
-  "displayName": "Tachometer, Engine 1",
-  "shortName": "RPM",
-  "warnMethod": "visual",
-  "warnMessage": "any text",
-  "alarmMethod": "sound",
-  "alarmMessage": "any text",
+  "displayName": "Port Tachometer",
+  "longName": "Engine 2 Tachometer (x60 for RPM)",
+  "shortName": "Revs",
+  "description": "Revolutions in HZ, measured via the W terminal on the alternator",
+  "gaugeType": "analog",
+  "units": "Hz",
+  "timeout": 1,
+  "alertMethod": ["visual"],
+  "warnMethod": ["visual"],
+  "alarmMethod": ["sound", "visual"],
+  "emergencyMethod": ["sound", "visual"],
   "zones": [
-    {"lower":0.0,"upper":500,"state":"alarm", "message":"Stopped or very slow Rpm"},
-    {"lower":500,"upper":3000,"state":"normal", "message":""},
-    {"lower":3000,"upper":3500,"state":"warn", "message":"Approaching maximum rpm"},
-    {"lower":3500,"upper":9999,"state":"alarm", "message":"Exceeding maximum rpm"}
+    {"upper": 50, "state": "alarm", "message": "Stopped or very slow"},
+    {"lower": 50, "upper": 300, "state": "normal"},
+    {"lower": 300, "upper": 350, "state": "warn", "message": "Approaching maximum"},
+    {"lower": 350, "state": "alarm", "message": "Exceeding maximum"}
   ]
 }
 ```
-Since the settings object is always the same, the tachometer can now limit its range, and display green, yellow, and red sectors. The generic gauge can now perform this role, with correct labels etc.
 
-The alarms problem is also improved, as the server can run a background process to monitor any key that has a ```.meta``` object, and raise a generic alarm event. By recursing the tree the alarm monitoring can find the source (engine1), giving the alarm context. See [[Alarm Handling]]
+In the example `meta` object above, a definition is provided for an analog RPM gauge for the port engine. It provides a
+few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
+of measure. It also specifies a recommended display format via `gaugeType`.
 
-The alarms functionality then becomes generic, and grows with the spec. This is may be the case for other functionality also.
+The `timeout` property tells the consumer how often it should expect to wait before a new value arrives –
+or if the consumer is polling for data, how long it should wait before requesting a new value. This value is specified
+in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05. The `alertMethod`, `warnMethod`, `alarmMethod` and
+`emergencyMethod` properties tell the consumer how it should respond to an abnormal data condition. Presently the
+values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
+these options. It is up to the consumer to decide how to convey these alerts.
 
+The last property in the `meta` object is the `zones` array. This provides a series of hints to the consumer which can
+be used to properly set a range on a display gauge and also color sectors of the gauge to indicate nominal or dangerous
+operating conditions. It also tells the consumer which state the data is in for a given range. Combined with the alert
+method properties, all Signal K consumers can react the same way to a given state.
 
-#### Meta.units value
+It is also possible for a Signal K server to use this information to monitor any data which has a `meta` object and
+raise a generic alarm event. See the section on [Alarm Handling](notifications.md) for more.
 
-All keys in the specification must have `units`. If a client requests the `meta.units` for a valid key eg  `GET /signalk/v1/api/vessels/123456789/navigation/speedThroughWater/meta/units`, the REST interface MUST return proper value.
+## Implicit Metadata
 
-See https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json
+All keys in the Signal K specification must have `units` and a `description`. If a client requests the `meta` property
+for a valid Signal K key via the HTTP REST interface, the server must return the `units` and `description`, even if no
+value has ever been generated for that key.
 
-### Default Configuration
+```javascript
+// GET /signalk/v1/api/vessels/self/environment/depth/belowKeel/meta
 
-Other than a few standard keys it is unlikely that the ```.meta``` can have global defaults, as it is very vessel specific (e.g. a sail boat will have speeds from 0-15kts, a ski boat will have 0-50kts). So the values will have to be configured by the user on the individual vessel as required.
+{
+  "units": "m",
+  "description": "Depth below keel"
+}
+```
 
-It is probably possible to have profiles that set a range of default ```.meta```, e.g. sail vessel, or motor vessel, and if two vessels have the same engine, then the engine profiles will also tend to be the same.
+See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json)
 
-### Alarm Management
+## Default Configuration
 
-An alarm watch is set by setting the `meta.zones` array appropriately. A background process on the server checks for alarm conditions on any attribute with a `meta.zones` array. If the keys value is within a zone the server sets an alarm key similar to `vessels.self.notifications.[original_key_suffix]`, eg an alarm set on `vessels.self.navigation.courseOverGroundTrue` will become `vessels.self.notifications.navigation.courseOverGroundTrue`.
+Signal K does not provide a default set of metadata, it is up to the owner or their installer to configure their Signal
+K environment appropriately for their vessel. However, by centralizing this configuration they will only need to do it
+one time and any future consumers will automatically use this configuration.
+
+## Alarm Management
+
+An alarm watch is set by setting the `meta.zones` array appropriately. A background process on the server checks for
+alarm conditions on any attribute with a `meta.zones` array. If the keys value is within a zone the server sets an
+alarm key similar to `vessels.self.notifications.[original_key_suffix]`, e.g. an alarm set on
+`vessels.self.navigation.courseOverGroundTrue` will become
+`vessels.self.notifications.navigation.courseOverGroundTrue`.
 
 The object found at this key should contain the following:
+
 ```json
 {
   "message": "any text",
   "state": "[normal|alert|warn|alarm|emergency]"
 }
 ```
-### Other Benefits
 
-The common profiles should be exportable and importable. This would allow manufacturers or other users to create profiles for specific products or use cases, which could then be imported to a vessel.
+## Other Benefits
 
-This may also have possibilities for race control or charter management. For instance a limit on lat/lon would raise an 'Out of Bounds' email on a charter vessel.
-
-A lot of the current max/min/alarm values could be removed to simplify and standardise the spec.
+While not strictly part of the Signal K specification, metadata configuration could be shared between boats or even
+provided by manufacturers of production boats or by component suppliers such as engine or refrigerator manufacturers.
+Also, any device which implements Signal K should provide a baseline metadata configuration. As this standard becomes
+more widespread, less individual configuration will need to be performed.

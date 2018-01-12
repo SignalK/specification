@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/propulsion.json#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/propulsion.json#",
   "title": "propulsion",
   "description": "An engine, named by a unique name within this vessel",
   "patternProperties": {
@@ -161,7 +161,7 @@
                 "units": "m"
               },
               "slip": {
-                "description": "Propeller slip, the ratio between propeller pitch and distance travelled. eg 1-(actual distance travelled/propeller pitch). 0<=ratio<=1, 0 is 0% slip, 1 is 100% slip",
+                "description": "Propeller slip, the ratio of 'lost' distance (1 - (actual distance travelled/propeller pitch distance)). 0<=ratio<=1, 0 is 0% slip (ideal), 1 is 100% slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "ratio"
               }

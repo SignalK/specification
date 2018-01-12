@@ -2,10 +2,11 @@ const chai = require('chai');
 const should = chai.should()
 chai.use(require('../dist/').chaiModule);
 const FullSignalK = require('../src/fullsignalk')
+const debug = require('debug')('test:sources')
 
 describe('Sources in the full tree', function() {
   it("Sample full tree is valid", function() {
-    require('./data/sources.json').should.be.validSignalK;
+    require('./data/sources.json').should.be.validSignalKIgnoringSelf;
   });
 });
 
@@ -71,7 +72,6 @@ describe('Sources in delta', function() {
     var full = fullSignalK.retrieve()
     full.sources['0183-1']['II'].talker.should.equal('II')
     full.sources['N2000-01']['37']['n2k']['src'].should.equal('37')
-    console.log(JSON.stringify(full.sources, null, 2))
     should.exist(full.sources['i2c-0']['0x48'])
     should.exist(full.sources['1W']['0316013faeff'])
     //FIXME for some reason tv4 complains about source's type property being undefined
@@ -144,6 +144,51 @@ describe('Bad sources in delta', function() {
 
 describe('Multiple sources for the same path:', function() {
   it("value + values are valid", function() {
-    require('./data/multiple-values.json').should.be.validSignalK
+    require('./data/multiple-values.json').should.be.validSignalKIgnoringSelf
   });
+});
+
+describe('Invalid sources with both n2k and ais:', function() {
+  it("ais + n2k are invalid", function() {
+    require('./data/invalid-source.json').should.not.be.validSignalK
+  });
+});
+describe('Valid sources with no 0183,n2k or ais, and other items:', function() {
+  it("No 0183, ais or n2k, and other items are valid", function() {
+    require('./data/invalid-source2.json').should.not.be.validSignalK
+  });
+});
+
+
+describe('Delta with source.instance', function() {
+  it("produces valid full", function() {
+    const delta = {
+      "context": "vessels.urn:mrn:imo:mmsi:200000000",
+      "updates": [
+        {
+          "source": {
+            "label": "aLabel",
+            "type": "NMEA2000",
+            "pgn": 130312,
+            "src": "41",
+            "instance": "5"
+          },
+          "timestamp": "2015-01-15T16:15:18.136Z",
+          "values": [
+            {
+              "path": "environment.inside.engineRoom.temperature",
+              "value": 70
+            }
+          ]
+        }
+      ]
+    }
+    delta.should.be.validSignalKDelta
+
+    const fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:200000000');
+    fullSignalK.addDelta(delta);
+    const full = fullSignalK.retrieve();
+    debug((JSON.stringify(full, null, 2)))
+    full.should.be.validSignalK
+  })
 });

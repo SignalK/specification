@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/discovery.json#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/discovery.json#",
   "title": "SignalK Discovery",
   "description": "Schema for SignalK discovery resources used to locate server endpoints.",
   "properties": {
@@ -35,6 +35,25 @@
           }
         }
       }
+    },
+    "server": {
+      "type": "object",
+      "description": "Information about this server",
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "description": "The id of this server (signalk-server-node, iKommunicate, etc.)",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of this server",
+          "$ref": "definitions.json#/definitions/version"
+        }
+      }
     }
   }
 }
+  

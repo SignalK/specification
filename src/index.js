@@ -39,23 +39,23 @@ var FullSignalK = require('./fullsignalk');
 function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('../schemas/vessel.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/vessel.json', vesselSchema);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/vessel.json', vesselSchema);
   var aircraftSchema = require('../schemas/aircraft.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/aircraft.json', aircraftSchema);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/aircraft.json', aircraftSchema);
   var atonSchema = require('../schemas/aton.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/aton.json', atonSchema);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/aton.json', atonSchema);
   var sarSchema = require('../schemas/sar.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/sar.json', sarSchema);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/sar.json', sarSchema);
   var definitions = require('../schemas/definitions.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/definitions.json', definitions);
 
   for (var schema in subSchemas) {
-    tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/' + schema + '.json', subSchemas[schema]);
+    tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
 
   // HACK! two different IDs should not point to the same schema
   var externalGeometry = require('../schemas/external/geojson/geometry.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/external/geojson/geometry.json', externalGeometry);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
   tv4.addFormat(require('tv4-formats'))
@@ -79,7 +79,7 @@ function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
   var deltaSchema = require('../schemas/delta.json');
   var definitions = require('../schemas/definitions.json');
-  tv4.addSchema('https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/definitions.json', definitions);
 
   if (ignoreContext) {
     delta.context = 'ignored the context, so place a placeholder there';
@@ -115,11 +115,16 @@ function chaiAsPromised(chai, utils) {
   }
   Assertion.addProperty('validSignalK', checkValidFullSignalK);
   Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
+  Assertion.addProperty('validSignalKIgnoringSelf', function() {
+    this._obj.self = 'urn:mrn:imo:mmsi:230099999';
+    checkValidFullSignalK.call(this);
+  });  
   Assertion.addProperty('validSignalKVessel', function() {
     this._obj = {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
+      self: 'urn:mrn:imo:mmsi:230099999',
       'version': '1.0.0'
     }
     checkValidFullSignalK.call(this);
@@ -130,6 +135,7 @@ function chaiAsPromised(chai, utils) {
       'vessels': {
         'urn:mrn:imo:mmsi:230099999': this._obj
       },
+      self: 'urn:mrn:imo:mmsi:230099999',
       version: "0.0.0"
     }
     checkValidFullSignalK.call(this);
@@ -145,7 +151,7 @@ function chaiAsPromised(chai, utils) {
       );
   });
   Assertion.addProperty('validSubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/subscribe');
+    var result = validateWithSchema(this._obj, 'messages/subscribe.json');
     var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
     this.assert(
       result.valid
@@ -154,7 +160,7 @@ function chaiAsPromised(chai, utils) {
       );
   });
   Assertion.addProperty('validUnsubscribeMessage', function () {
-    var result = validateWithSchema(msg, 'messages/unsubscribe');
+    var result = validateWithSchema(this._obj, 'messages/unsubscribe.json');
     var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
     this.assert(
       result.valid
@@ -273,3 +279,43 @@ module.exports.FullSignalK = FullSignalK;
 module.exports.fakeMmsiId = "urn:mrn:imo:mmsi:230099999";
 module.exports.getSourceId = getSourceId;
 module.exports.keyForSourceIdPath = keyForSourceIdPath;
+
+module.exports.metadata = require('./keyswithmetadata');
+
+var metadataByRegex = []
+_.forIn(module.exports.metadata, (value, key) => {
+  const regexpKey =
+    '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+  if (!regexpKey.endsWith('.*$')) {
+    metadataByRegex.push({
+      regexp: new RegExp(regexpKey),
+      metadata: value
+    })
+  }
+})
+
+module.exports.getUnits = function (path) {
+  const meta = module.exports.getMetadata(path)
+  return meta ? meta.units : undefined
+}
+
+module.exports.getMetadata = function (path) {
+  const result = metadataByRegex.find(entry =>
+    entry.regexp.test('/' + path.replace(/\./g, '/'))
+  )
+  return result ? result.metadata : undefined
+}
+
+module.exports.getAISShipTypeName = function(id) {
+  const the_enum = subSchemas['design'].properties.aisShipType.allOf[1].properties.value.allOf[1].enum;
+  //const the_enum = module.exports.getMetadata('vessels.foo.design.aisShipType').enum
+  var res = the_enum.find(item => { return item.id  == id });
+  return res ? res.name : undefined 
+}
+
+
+module.exports.getAtonTypeName = function(id) {
+  const the_enum = require('../schemas/aton.json').properties.atonType.allOf[1].properties.value.allOf[1].enum;
+  var res = the_enum.find(item => { return item.id  == id });
+  return res ? res.name : undefined 
+}

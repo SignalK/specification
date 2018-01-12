@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/groups/sources.json#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/sources.json#",
   "title": "sources",
   "description": "Metadata about the sources, eg. buses and connected sensors",
   "patternProperties": {
@@ -12,20 +12,20 @@
           "anyOf": [
             {
               "properties": {
-              	 "ais": {
+                "ais": {
                   "description": "AIS data",
                   "type": "object",
                   "properties": {
-										"aisType": {
-												"type": "number",
-												"multipleOf" : 1,
-												"minimum": 1,
-												"maximum": 27,
-												"description": "AIS Message Type",
-												"example":"15"
-										}
-									}
-								 },
+                    "aisType": {
+                      "type": "number",
+                      "multipleOf": 1,
+                      "minimum": 1,
+                      "maximum": 27,
+                      "description": "AIS Message Type",
+                      "example": "15"
+                    }
+                  }
+                },
                 "talker": {
                   "description": "NMEA 0183 talker id, the GP in $GPRMC..",
                   "type": "string"
@@ -93,17 +93,17 @@
         "label": {
           "description": "Sources unique name e.g. [type-bus].[id], N2000-01.034",
           "type": "string",
-          "example":"N2000-01.034"
+          "example": "N2000-01.034"
         },
         "type": {
           "description": "Type of interface i.e. signalk, NMEA0183 or NMEA2000",
           "type": "string",
-          "example":"NMEA0183"
+          "example": "NMEA0183"
         },
         "manufacturerName": {
           "description": "Manufacturer of the source device",
           "type": "string",
-          "example":"Digital Yacht"
+          "example": "Digital Yacht"
         },
         "productName": {
           "description": "Product Name or Model Number",
@@ -124,17 +124,17 @@
         "installationNote1": {
           "description": "Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'",
           "type": "string",
-          "example":"Wired on Navigation Switch/Circuit"
+          "example": "Wired on Navigation Switch/Circuit"
         },
         "installationNote2": {
           "description": "Product Installation Note 2 i.e. 'Located under forward bunk'",
           "type": "string",
-          "example":"Located under forward bunk"
+          "example": "Located under forward bunk"
         },
         "manufacturerInfo": {
           "description": "Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'",
           "type": "string",
-          "example":"http://digitalyachtamerica.com Tel:+44 1179 554474"
+          "example": "http://digitalyachtamerica.com Tel:+44 1179 554474"
         }
       }
     }

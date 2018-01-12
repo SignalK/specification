@@ -6,9 +6,13 @@
         "moba": {
           "amob": {
             "X": {
-              "message": "Message",
-              "state": "alert",
-              "method": ["visual"],
+              "value": {
+                "message": "Message",
+                "state": "alert",
+                "method": [
+                  "visual"
+                ]
+              },
               "timestamp": "2017-01-23T14:22:17Z",
               "$source": "sources.alarm"
             }

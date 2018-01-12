@@ -1,11 +1,12 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/0.9.0-SNAPSHOT/schemas/signalk.json#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/signalk.json#",
   "title": "SignalK",
   "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
   "required": [
-    "version"
+    "version",
+    "self"
   ],
   "anyOf": [
     {
@@ -32,8 +33,8 @@
   "properties": {
     "self": {
       "type": "string",
-      "description": "This holds the key (UUID, MMSI or URL) of this vessel, the actual data is in the vessels array.",
-      "example": "urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+      "description": "This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
     "vessels": {
       "type": "object",

@@ -35,7 +35,7 @@ describe('FullSignalK', function() {
     };
     var fullSignalK = new FullSignalK();
     fullSignalK.addDelta(delta);
-    fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('longitude');
+    fullSignalK.retrieve().vessels.foo.navigation.position.value.should.have.property('longitude');
     fullSignalK.retrieve().vessels.foo.navigation.position.should.have.property('$source');
   })
 
@@ -71,7 +71,7 @@ describe('FullSignalK', function() {
     var aisDelta = {
       "updates": [{
         "source": {
-          "label": "",
+          "label": "N2K-1",
           "type": "NMEA2000",
           "pgn": 129038,
           "src": "43"
@@ -94,7 +94,6 @@ describe('FullSignalK', function() {
       "context": "vessels.urn:mrn:imo:mmsi:276780000"
     };
     var fullSignalK = new FullSignalK("urn:mrn:imo:mmsi:276799999", "mmsi");
-    console.log(JSON.stringify(fullSignalK, null, 2))
     fullSignalK.addDelta(aisDelta);
     fullSignalK.retrieve().should.be.validSignalK;
 
@@ -177,6 +176,16 @@ describe('FullSignalK', function() {
     full.sources['1W'].should.have.property('0316013faeff');
     var vessel = full.vessels['urn:mrn:imo:mmsi:276810000'];
     vessel.propulsion.engine1.temperature.should.have.property('$source', '1W.0316013faeff')
+  })
+
+  it('MMSI self is set correctly in full tree', function() {
+    var fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:276810000', null, {});
+    fullSignalK.retrieve().self.should.equal('vessels.urn:mrn:imo:mmsi:276810000')
+  })
+
+  it('UUID self is set correctly in full tree', function() {
+    var fullSignalK = new FullSignalK('urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d', null, {});
+    fullSignalK.retrieve().self.should.equal('vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d')
   })
 
 })
