@@ -33,13 +33,7 @@ The alarm is : `vessels.self.notifications.navigation.anchor.currentRadius`
 The alarm object is
 
 ```
-{
-  "method": ["sound"],
-  "state": "alarm",
-  "message": "Dragging anchor!",
-  "timestamp": ..,
-  "source": {..}
-}
+[mdInsert -jsonSnippet currentRadius -jsonEllipsify timestamp $..['$source']](../../samples/full/docs-notifications.json)
 ```
 
 The server alarm manager will see this new entry and turn on the alarm. Using a manager process allows flexibility in
@@ -63,12 +57,7 @@ In the case of an emergency, create a unique key: The alarm is : `vessels.[uuid]
 The alarm object is
 
 ```
-{
-  "method": ["visual", "sound"],
-  "state": "emergency",
-  "message": "Man Overboard!",
-  ...
-}
+[mdInsert -jsonSnippet mob -jsonEllipsify $ !value](../../samples/full/docs-notifications.json)
 ```
 
 Alarm objects that have been raised this way must be cleared manually, or by the process that created them. You can use
@@ -80,12 +69,7 @@ eg In the case of an alert, create a unique key by generating a path: The alarm 
 The alarm object is
 
 ```
-{
-  "method": ["visual"],
-  "state": "alert",
-  "message": "GPS signal lost!",
-  ...
-}
+[mdInsert -jsonSnippet gnss -jsonEllipsify $ !value](../../samples/full/docs-notifications.json)
 ```
 
 ### Well Known Names
@@ -105,71 +89,19 @@ Some alarms are especially important, eg MOB. This is a list of keys for special
 An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:
 
 ```
-{
-  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
-  "updates": [
-    {
-      "source": {
-         ...
-        "timestamp": "2014-08-15-16:00:05.538",
-      },
-      "values": [
-        {
-          "path": "notifications.mob",
-          "value": {
-            "message": "MOB",
-            "state": "emergency",
-            "method": ["visual", "sound"]
-          }
-        }
-      ]
-    }
-  }
-}
+[mdInsert -jsonDelKeys $.updates[1] -jsonEllipsify source](../../samples/delta/docs-notifications.json)
 ```
 
 The resulting full signalk tree would be:
 
 ```
-{
-  "vessels": {
-    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
-      "notifications": {
-        "mob":{
-          "message": "MOB",
-          "timestamp": "2014-04-10T08:33:53Z",
-          "source": {
-             ...
-          },
-          "state": "emergency",
-          "method": ["visual", "sound"]
-        }
-      }
-    }
-  }
-}
+[mdInsert -jsonEllipsify $ !vessels -jsonDelKeys navigation -jsonEllipsify uuid $..['$source']](../../samples/full/docs-notifications.json)
 ```
 
 To clear the alarm condition, send:
 
 ```
-{
-  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
-  "updates": [
-    {
-      "source": {
-        ...
-        "timestamp": "2014-08-15-16:00:05.538",
-      },
-      "values": [
-        {
-          "path": "notifications.mob",
-          "value": null
-        }
-      ]
-    }
-  ]
-}
+[mdInsert -jsonDelKeys $.updates[0] -jsonEllipsify source](../../samples/delta/docs-notifications.json)
 ```
 
 ## Multiple cases of the same alarm
