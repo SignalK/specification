@@ -11,7 +11,7 @@
     "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
-    "docs:prep": "gitbook install gitbook-docs && cross-var \"replace-in-file _version_ $npm_package_version ./gitbook-docs/* --verbose\"",
+    "docs:prep": "gitbook install gitbook-docs && cross-var replace-in-file _version_ $npm_package_version ./gitbook-docs/* --verbose",
     "docs:keys": "node scripts/processSchemaFiles.js",
     "docs:html": "cross-var gitbook build gitbook-docs $npm_package_version/doc",
     "docs:pdf": "cross-var gitbook pdf gitbook-docs $npm_package_version/doc/signalk.pdf",
