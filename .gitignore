@@ -42,3 +42,6 @@ gitbook-docs/vesselsBranch.md
 #Generated
 src/keyswithmetadata.json
 dist
+/docs/src/.npmignore
+/docs/src/book.json
+/docs/src/.gitignore
