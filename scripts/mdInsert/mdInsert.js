@@ -73,6 +73,7 @@ function parseMdFiles(src, dest) {
 
 function parseMdFile(file) {
   // parses the file looking for the command mdInsert: '[mdInsert bla bla' and then inserts replacement text for each one it finds
+  console.info("- ./" + file.src);
   var mdText = fs.readFileSync(file.dest, "utf8");
   mdText = parseMdText(mdText, path.dirname(file.src));
   fs.writeFileSync(file.dest, mdText);  // write the results to the file
@@ -81,19 +82,28 @@ function parseMdFile(file) {
 function parseMdText(mdText, rootPath) {
   // parses the text looking for the command mdInsert: '[mdInsert bla bla' and then inserts replacement text for each one it finds
   // the rootPath is used as the basis for any relative paths in the replacement filenames eg. (./docs/myJson.json)
-  regex = /\[mdInsert[ ]?(.*)\]\(([^(]*)\)(?!`)/; // a regex to find [mdInsert...](...). Options are in group 1, the filename is in group 2. Excludes if followed immediately by `
+  var regex = /\[mdInsert[ ]?(.*)\]\(([^(]*)\)(?!`)/; // a regex to find [mdInsert...](...). Options are in group 1, the filename is in group 2. Excludes if followed immediately by `
+  var regexg = /\[mdInsert[ ]?(.*)\]\(([^(]*)\)(?!`)/g; // identical to the on eabove but with global flag
+
+  var lineNos = [];
+  while (regexg.test(mdText)) {
+    lineNos.push(lineColumn(mdText).fromIndex(regexg.lastIndex).line);
+  }
+
   var searchResult = mdText.match(regex);
+  var p = 0;
   while (searchResult != null) { // only loop if match found
     try {
       var insertionText = fs.readFileSync(rootPath + "//" + searchResult[2], "utf8"); // read the file we need to insert
       insertionText = mdInsert(searchResult[1], insertionText); // perform any options/commands on the text we have to insert
+      console.info("    line: " + lineNos[p] + " mdInserted " + insertionText.length + " chars.");
       mdText = mdText.replace(regex, insertionText);  // do the replacement/insert
     }
     catch(err) {
-      var lineCol = lineColumn(mdText).fromIndex(searchResult.index);
-      throw "mdInsert at line: " + lineCol.line + " column: " + lineCol.col + " " + err;
+      throw "mdInsert at line: " + lineNos[p] + " " + err;
     }
     searchResult = mdText.match(regex);  // look for the next match
+    p++;
   }
   return mdText;
 }
@@ -331,9 +341,15 @@ function jsonDelKeys(inpObj, cmdArgs) {
 function deleteJsonKey(json, key) {
   // deltes all occurences of key within json
   var jsonPaths = jp.paths(json, buildJsonSearchPath(key)); // creates an array of all the paths of instances of the key we want to delete
+  var parent;
   for (var i = 0; i < jsonPaths.length; i++) {
     jsonPath = jp.stringify(jsonPaths[i]);
-    delete jp.parent(json, jsonPath)[jsonPaths[i][jsonPaths[i].length - 1]];
+    parent = jp.parent(json, jsonPath);
+    if (Array.isArray(parent)) {
+      parent.splice(jsonPaths[i][jsonPaths[i].length - 1], 1);
+    } else {
+      delete parent[jsonPaths[i][jsonPaths[i].length - 1]];
+    }
   }
 }
 
