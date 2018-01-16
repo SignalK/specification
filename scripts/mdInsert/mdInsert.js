@@ -333,7 +333,7 @@ function deleteJsonKey(json, key) {
   var jsonPaths = jp.paths(json, buildJsonSearchPath(key)); // creates an array of all the paths of instances of the key we want to delete
   for (var i = 0; i < jsonPaths.length; i++) {
     jsonPath = jp.stringify(jsonPaths[i]);
-    delete jp.parent(json, jsonPath)[key];
+    delete jp.parent(json, jsonPath)[jsonPaths[i][jsonPaths[i].length - 1]];
   }
 }
 
