@@ -12,15 +12,15 @@
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:json": "node scripts/mdInsert/mdInsert.js ./docs/src ./docs/gitbook/_build",
     "docs:changelog": "github-changes -f docs/gitbook/_build/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
-    "docs:prep": "gitbook install docs/gitbook",
     "docs:version": "cross-var replace-in-file _version_ $npm_package_version ./docs/gitbook/_build/* --verbose",
     "docs:keys": "node scripts/processSchemaFiles.js",
+    "docs:prep": "gitbook install docs/gitbook && npm run docs:json && npm run docs:changelog && npm run docs:version && npm run docs:keys",
     "docs:html": "cross-var gitbook build docs/gitbook/_build $npm_package_version/doc",
     "docs:pdf": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.pdf",
     "docs:mobi": "cross-var gitbook mobi docs/gitbook/_build $npm_package_version/doc/signalk.mobi",
     "docs:epub": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.epub",
     "docs:serve": "gitbook serve docs/gitbook/_build",
-    "docs:all": "npm run docs:prep && npm run docs:changelog && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
+    "docs:all": "npm run docs:prep && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
     "docs:publish": "npm run docs:all && cross-var git add $npm_package_version && git stash && git checkout gh-pages && git pull && cross-var git checkout stash -- $npm_package_version && git add master && cross-var git commit --allow-empty -m $npm_package_version && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
