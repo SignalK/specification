@@ -10,6 +10,7 @@ const copy = require("recursive-copy");
 const jp = require("jsonpath");
 const stringify = require("json-stringify-pretty-compact");
 const lineColumn = require("line-column");
+const chalk = require("chalk");
 
 // inline test of correct split functionality - the following should split in 13 items
 var test = split("one two[ ' bla[' ] thr]ee f[' o u ']r five' $.six.Data.Devices[0].Type $['Se]v en']['D a t a']['Devices'][0] $..Eight[(@.length - 1)]['Type']  $..Nine[?(@.Found == 1)] $..Ten[{$.EventData..Selected}] $..Eleven[{$..ElevenStill[{$..eleven[?(@.Found == 1)]}]}]    t[' wel ve ']]r OK");
@@ -41,13 +42,14 @@ if (args.length >= 3 && args[2].substr(0,9) === "[mdInsert") { // we have been p
                "  mdCommand    specifies a command string in [] followed by file details in ()\n" +
                "                 eg. [mdInsert -josnSnippet $..source][(./demo.json)");
 } else { // we couldn't recognise the format on the command line
-  console.info("Unrecognised arguments passed to mdInsert. See node mdInsert -help");
+  console.error(chalk.red("Unrecognised arguments passed to mdInsert. See node mdInsert -help"));
 }
 
 function parseMdFiles(src, dest) {
   const filterFnMd = (filePath) => path.extname(filePath) === ".md";
   var cntMd = 0;
   var cntFile = 0;
+  var cntErr = 0;
 
   fs.emptyDirSync(dest); // clear output directory & create if it didn't exist
   copy(src, dest, {results: true}) // copy md files into output directory (with directory structure)
@@ -60,20 +62,36 @@ function parseMdFiles(src, dest) {
         }
       }
       catch (err) {
-        console.error("In file '" + copyOperation.dest + "' " + err);
+        console.error(chalk.red("In file '" + copyOperation.dest + "' " + err));
+        cntErr++;
       }
     })
     .then(function (results) {
-      console.info(cntFile + " file(s) copied, including " + cntMd + " markdown file(s) processed");
+      var result = "";
+      if (cntErr != 0) {
+        result += chalk.red(cntErr + " error(s). ");
+      }
+      if (cntFile == 0) {
+        result += chalk.red("No files copied or processed)");
+      } else if (cntMd == 0) {
+        result += chalk.yellow(cntFile + " file(s) copied, ") + chalk.red("no markdown files processed");
+      } else {
+        if (cntErr != 0) {
+          result += chalk.yellow(cntFile + " file(s) copied, including " + cntMd + " markdown file(s) processed");
+        } else {
+          result += chalk.green(cntFile + " file(s) copied, including " + cntMd + " markdown file(s) processed");
+        }
+      }
+      console.info(result);
     })
     .catch(function (err) {
-      console.error("Processing markdown file failed, unable to copy: " + err);
+      console.error(chalk.red("Processing markdown file failed, unable to copy: " + err));
     });
 }
 
 function parseMdFile(file) {
   // parses the file looking for the command mdInsert: '[mdInsert bla bla' and then inserts replacement text for each one it finds
-  console.info("- ./" + file.src);
+  console.info(chalk.grey("-", file.src));
   var mdText = fs.readFileSync(file.dest, "utf8");
   mdText = parseMdText(mdText, path.dirname(file.src));
   fs.writeFileSync(file.dest, mdText);  // write the results to the file
@@ -96,8 +114,12 @@ function parseMdText(mdText, rootPath) {
     try {
       var insertionText = fs.readFileSync(rootPath + "//" + searchResult[2], "utf8"); // read the file we need to insert
       insertionText = mdInsert(searchResult[1], insertionText); // perform any options/commands on the text we have to insert
-      console.info("    line: " + lineNos[p] + " mdInserted " + insertionText.length + " chars.");
-      mdText = mdText.replace(regex, insertionText);  // do the replacement/insert
+      if (insertionText.length == 0) {
+        console.info(chalk.red("    line: " + lineNos[p] + " mdInserted ") + chalk.red.bold("nothing."));
+      } else {
+        console.info(chalk.cyan("    line: " + lineNos[p] + " mdInserted " + insertionText.length + " chars."));
+        mdText = mdText.replace(regex, insertionText);  // do the replacement/insert
+      }
     }
     catch(err) {
       throw "mdInsert at line: " + lineNos[p] + " " + err;
