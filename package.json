@@ -13,7 +13,7 @@
     "docs:json": "node scripts/mdInsert/mdInsert.js ./docs/src ./docs/gitbook/_build",
     "docs:changelog": "github-changes -f docs/gitbook/_build/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:version": "cross-var replace-in-file _version_ $npm_package_version ./docs/gitbook/_build/* --verbose",
-    "docs:keys": "mkdirp docs/gitbook/_build/keys -p && node scripts/processSchemaFiles.js",
+    "docs:keys": "mkdirp docs/gitbook/_build/keys && node scripts/processSchemaFiles.js",
     "docs:prep": "gitbook install docs/gitbook && npm run docs:json && npm run docs:changelog && npm run docs:version && npm run docs:keys",
     "docs:html": "cross-var gitbook build docs/gitbook/_build $npm_package_version/doc",
     "docs:pdf": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.pdf",
