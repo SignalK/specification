@@ -51,6 +51,7 @@ function parseMdFiles(src, dest) {
   var cntFile = 0;
   var cntErr = 0;
 
+  console.info("mdInsert is copying and processing files from '" + src + "' to '" + dest + "'");
   fs.emptyDirSync(dest); // clear output directory & create if it didn't exist
   copy(src, dest, {results: true}) // copy md files into output directory (with directory structure)
     .on(copy.events.COPY_FILE_COMPLETE, function (copyOperation) {
