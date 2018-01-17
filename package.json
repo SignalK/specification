@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel src --out-dir dist --copy-files && mocha",
-    "DEL?prepublish": "npm run js:dist && npm run docs:keys",
+    "prepare": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
     "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
@@ -13,7 +13,7 @@
     "docs:json": "node scripts/mdInsert/mdInsert.js ./docs/src ./docs/gitbook/_build",
     "docs:changelog": "github-changes -f docs/gitbook/_build/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:version": "cross-var replace-in-file _version_ $npm_package_version ./docs/gitbook/_build/* --verbose",
-    "docs:keys": "node scripts/processSchemaFiles.js",
+    "docs:keys": "mkdirp docs/gitbook/_build/keys -p && node scripts/processSchemaFiles.js",
     "docs:prep": "gitbook install docs/gitbook && npm run docs:json && npm run docs:changelog && npm run docs:version && npm run docs:keys",
     "docs:html": "cross-var gitbook build docs/gitbook/_build $npm_package_version/doc",
     "docs:pdf": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.pdf",
@@ -51,6 +51,7 @@
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^3.10.1",
     "mdInsert": "file:./scripts/mdInsert",
+    "mkdirp": "^0.5.1",
     "replace-in-file": "^3.1.0",
     "tv4": "^1.2.7",
     "tv4-formats": "^2.2.1"
