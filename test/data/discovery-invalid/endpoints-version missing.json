@@ -1,0 +1,18 @@
+{
+  "endpoints": {
+    "v1": {
+      "signalk-http": "http://192.168.1.2/signalk/v1/api/",
+      "signalk-ws": "ws://192.168.1.2:34567/signalk/v1/stream",
+      "signalk-tcp": "tcp://localhost:55555"
+    },
+    "v3": {
+      "version": "3.0.0",
+      "signalk-http": "http://192.168.1.2/signalk/v3/api/",
+      "signalk-ws": "ws://192.168.1.2/signalk/v3/stream"
+    }
+  },
+  "server": {
+    "id": "test-server",
+    "version": "1.0.0"
+  }
+}

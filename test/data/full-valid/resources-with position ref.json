@@ -1,0 +1,145 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "nmea2.II",
+          "sentence": "RMC",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          }
+        },
+        "anchor": {
+          "position": {
+            "timestamp": "2015-03-06T16:57:53.643Z",
+            "$source": "nmea2.II",
+            "sentence": "RMC",
+            "value": {
+              "longitude": 173.1693,
+              "latitude": -41.156426,
+              "altitude": 0
+            }
+          },
+          "currentRadius": {
+            "timestamp": "2015-03-06T16:57:53.643Z",
+            "$source": "self",
+            "value": 10
+          },
+          "currentRadius": {
+            "timestamp": "2015-03-06T16:57:53.643Z",
+            "$source": "self",
+            "value": 50
+          }
+        }
+      }
+    }
+  },
+
+  "resources": {
+    "regions": {
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d": {
+        "geohash": "rbejg:HugeFishFarm",
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [-173.15, -41.155],
+                [-173.15, -41.157],
+                [-173.17, -41.157],
+                [-173.17, -41.155],
+                [-173.15, -41.155]
+              ]
+            ]
+          },
+          "properties": {
+            "name": "Huge fish farm"
+          }
+        },
+        "timestamp": "2015-03-06T16:57:53.643Z",
+        "source": {
+          "label": "region",
+          "type": "manual"
+        }
+      }
+    },
+    "waypoints": {
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021a": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "self",
+          "value": {
+            "longitude": 173.17,
+            "latitude": -41.157,
+            "altitude": 0
+          }
+        },
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [173.17, -41.157]
+          },
+          "properties": {
+            "displayName": "My cool waypoint",
+            "lastVisit": 23456789
+          }
+        }
+      },
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021c": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "self",
+          "value": {
+            "longitude": 173.13,
+            "latitude": -41.15,
+            "altitude": 0
+          }
+        },
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [173.13, -41.15]
+          },
+          "properties": {
+            "displayName": "My cool waypoint",
+            "lastVisit": 23456789
+          }
+        }
+      }
+    },
+
+    "routes": {
+      "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8893-54e8ccc8021d": {
+        "name": "Nelson to Abel Tasman Park",
+        "description": "From Nelson Cut to just off Fishermans Island",
+        "distance": 23.4,
+        "start": "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021d",
+        "end": "urn:mrn:signalk:uuid:c0d79335-4e25-4248-8892-54e8ccc8021c",
+        "feature": {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [173.17, -41.157],
+              [173.15, -41.156],
+              [173.13, -41.15]
+            ]
+          },
+          "properties": {
+            "popupContent": "Follow this route at your own peril...",
+            "underConstruction": true
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

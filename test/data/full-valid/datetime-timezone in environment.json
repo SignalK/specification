@@ -1,0 +1,16 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "environment":{
+        "time": {
+          "timezoneOffset": 300,
+          "timezoneRegion": "Europe/Helsinki",
+          "timestamp": "2014-08-15T19:00:15.123456789Z"
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

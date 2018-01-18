@@ -1,0 +1,125 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "mmsi": "230099999",
+      "environment": {
+        "water": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          }
+        },
+        "outside": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          },
+          "dewPointTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          },
+          "apparentWindChillTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          },
+          "theoreticalWindChillTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          },
+          "heatIndexTemperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          }
+        },
+        "inside": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          },
+          "engineRoom": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "2017-01-24T23:59:01Z",
+              "pgn": 130312
+            }
+          },
+          "mainCabin": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "2017-01-24T23:59:01Z",
+              "pgn": 130312
+            }
+          },
+          "refrigerator": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "2017-01-24T23:59:01Z",
+              "pgn": 130312
+            }
+          },
+          "heating": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "2017-01-24T23:59:01Z",
+              "pgn": 130312
+            }
+          },
+          "freezer": {
+            "temperature": {
+              "value": 0,
+              "$source": ".36.0",
+              "timestamp": "2017-01-24T23:59:01Z",
+              "pgn": 130312
+            }
+          }
+        }
+      },
+      "propulsion": {
+        "exhaust": {
+          "temperature": {
+            "value": 0,
+            "$source": ".36.0",
+            "timestamp": "2017-01-24T23:59:01Z",
+            "pgn": 130312
+          }
+        }
+      }
+    }
+  },
+  "sources": {
+    "N2K-1": {
+      "36": {
+        "label": "",
+        "type": "NMEA2000",
+        "0": {},
+        "n2k": {
+          "src": "36",
+          "pgns": {
+            "130312": "2017-01-25T00:03:05.056Z"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:230099999"
+}

@@ -1,0 +1,25 @@
+{
+  "updates": [{
+    "source": {
+      "label": "",
+      "type": "NMEA2000",
+      "pgn": 129025,
+      "src": "160"
+    },
+    "values": [{
+      "path": "navigation.position",
+      "value": {
+        "longitude": 24.9025173,
+        "latitude": 60.039317,
+        "source": {
+          "label": "",
+          "type": "NMEA2000",
+          "pgn": "129025",
+          "src": "160"
+        },
+        "timestamp": "2014-08-15-16:00:05.770"
+      }
+    }]
+  }],
+  "context": "vessels.123456789"
+}
