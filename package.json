@@ -5,21 +5,23 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel src --out-dir dist --copy-files && mocha",
-    "prepublish": "npm run js:dist && npm run docs:keys",
+    "prepare": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
-    "schema:version": "replace 'https://signalk.org/specification/[^/]+/schemas/' 'https://signalk.org/specification/'$npm_package_version'/schemas/' . -r --include='*.j*' --exclude='package.json' ",
-    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && mkdir $npm_package_version ; git add $npm_package_version && git mv schemas/ $npm_package_version/ && git commit -m 'Schemas from master' && git push",
-    "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
-    "docs:prep": "gitbook install gitbook-docs && replace _version_ $npm_package_version gitbook-docs/*",
-    "docs:keys": "node scripts/processSchemaFiles.js",
-    "docs:html": "gitbook build gitbook-docs $npm_package_version/doc",
-    "docs:pdf": "gitbook pdf gitbook-docs $npm_package_version/doc/signalk.pdf",
-    "docs:mobi": "gitbook mobi gitbook-docs $npm_package_version/doc/signalk.mobi",
-    "docs:epub": "gitbook pdf gitbook-docs $npm_package_version/doc/signalk.epub",
-    "docs:serve": "gitbook serve gitbook-docs",
-    "docs:all": "npm run docs:prep && npm run docs:changelog && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
-    "docs:publish": "npm run docs:all && git add $npm_package_version && git stash && git checkout gh-pages && git pull && git checkout stash -- $npm_package_version && git add master && git commit --allow-empty -m $npm_package_version && git push git@github.com:signalk/specification gh-pages"
+    "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
+    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
+    "docs:json": "node scripts/mdInsert/mdInsert.js ./docs/src ./docs/gitbook/_build",
+    "docs:changelog": "github-changes -f docs/gitbook/_build/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
+    "docs:version": "cross-var replace-in-file _version_ $npm_package_version ./docs/gitbook/_build/* --verbose",
+    "docs:keys": "mkdirp docs/gitbook/_build/keys && node scripts/processSchemaFiles.js",
+    "docs:prep": "gitbook install docs/gitbook && npm run docs:json && npm run docs:changelog && npm run docs:version && npm run docs:keys",
+    "docs:html": "cross-var gitbook build docs/gitbook/_build $npm_package_version/doc",
+    "docs:pdf": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.pdf",
+    "docs:mobi": "cross-var gitbook mobi docs/gitbook/_build $npm_package_version/doc/signalk.mobi",
+    "docs:epub": "cross-var gitbook pdf docs/gitbook/_build $npm_package_version/doc/signalk.epub",
+    "docs:serve": "gitbook serve docs/gitbook/_build",
+    "docs:all": "npm run docs:prep && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
+    "docs:publish": "npm run docs:all && cross-var git add $npm_package_version && git stash && git checkout gh-pages && git pull && cross-var git checkout stash -- $npm_package_version && git add master && cross-var git commit --allow-empty -m $npm_package_version && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
     "type": "git",
@@ -44,9 +46,13 @@
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
     "JSONStream": "^0.7.4",
+    "cross-var": "1.1.0",
     "debug": "^2.2.0",
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^3.10.1",
+    "mdInsert": "file:./scripts/mdInsert",
+    "mkdirp": "^0.5.1",
+    "replace-in-file": "^3.1.0",
     "tv4": "^1.2.7",
     "tv4-formats": "^2.2.1"
   },
@@ -60,7 +66,6 @@
     "markdown-it": "^8.0.0",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
-    "replace": "^0.3.0",
     "rimraf": "^2.5.4"
   }
 }

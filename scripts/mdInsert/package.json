@@ -1,0 +1,17 @@
+{
+  "name": "mdInsert",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkp7/mdInsert"
+  },
+  "license": "CC-BY-SA-2.0",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "fs-extra": "^5.0.0",
+    "json-stringify-pretty-compact": "1.0.4",
+    "jsonpath": "^1.0.0",
+    "line-column": "^1.0.2",
+    "recursive-copy": "^2.0.8"
+  }
+}
