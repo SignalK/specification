@@ -1,0 +1,34 @@
+{
+  "sar": {
+    "urn:mrn:imo:mmsi:971982330": {
+      "mmsi": "971982330",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          },
+          "$source": "sources.gps_0183_RMC"
+        }
+      },
+      "notifications": {
+        "mob": {
+          "value": {
+            "method": [
+              "sound",
+              "visual"
+            ],
+            "state": "emergency",
+            "message": "Man overboard"
+          },
+          "timestamp": "2017-01-23T14:24:17Z",
+          "$source": "sources.gps_0183_RMC"
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:230099999"
+}

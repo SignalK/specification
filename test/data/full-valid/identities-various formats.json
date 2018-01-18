@@ -1,0 +1,17 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+    },
+
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999"
+    },
+
+    "https://vessels.signalk.org/someboatidentity": {
+      "url": "https://vessels.signalk.org/someboatidentity"
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:230099999"
+}

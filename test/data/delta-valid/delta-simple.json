@@ -1,0 +1,16 @@
+{
+  "context": "bar",
+  "updates": [{
+	"source": {
+	  "label": "",
+	  "type": "NMEA0183",
+	  "sentence": "GLL",
+	  "talker": "II"
+	},
+	"timestamp": "2013-10-08T15:47:28.263Z",
+	"values": [{
+	  "path": "a.b.c",
+	  "value": 1234
+	}]
+  }]
+}

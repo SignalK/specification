@@ -1,0 +1,19 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "environment": {
+        "mode": {
+          "value": "night",
+          "timestamp": "2014-04-10T08:33:53Z",
+          "source": {
+            "label": "mode",
+            "type": "self"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0-Beta",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

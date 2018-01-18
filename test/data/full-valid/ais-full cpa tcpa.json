@@ -1,0 +1,25 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "navigation": {
+        "courseOverGroundTrue": {
+          "value": 206.9,
+          "timestamp": "2014-08-15T18:00:00.755Z",
+          "pgn": 130577,
+          "$source": "sourceLabel.160"
+        },
+        "closestApproach": {
+          "value": {
+            "distance": 250,
+            "timeTo": 45
+          },
+          "$source": "foo.bar",
+          "timestamp": "2014-08-15T19:00:15.404Z"
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}
