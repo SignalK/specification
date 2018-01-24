@@ -1,6 +1,6 @@
 ﻿var assert = require('assert');
 var chai = require('chai'); chai.Should();
-chai.use(require('../dist/').chaiModule);
+chai.use(require('@bkp7/schema-js-api').chaiModule);
 
 describe('Samples', function() {
 
