@@ -565,6 +565,28 @@
           "example": "sparkline"
         },
 
+        "displayScale": {
+          "type": "object",
+          "title": "Gauge scale to display.",
+          "description": "Gives details of how the gauge scale should be diplayed",
+          "required": ["lower", "upper"],
+          "properties": {
+            "lower": {
+              "type": "number",
+              "title": "Gauge lower limit.",
+              "description": "The suggested lower limit for the pointer (or equivalent) on the gauge",
+              "example": 0
+            },
+            "upper": {
+              "type": "number",
+              "title": "Gauge upper limit.",
+              "description": "The suggested upper limit for the pointer (or equivalent) on the gauge",
+              "example": 4000
+            }
+          },
+          "additionalProperties": false
+        },
+        
         "units": {
           "type": "string",
           "title": "units schema.",
