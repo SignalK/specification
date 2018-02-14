@@ -6,27 +6,33 @@ By default a Signal K server will provide a new WebSocket client with a delta st
 updates are received from sources. E.g. `/signalk/v1/stream` will provide the following delta stream, every time the
 log value changes.
 
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-subscription_protocol.json)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
-  "updates": [{
-    "source": {
-      "label":"N2000-01",
-      "type": "NMEA2000",
-      "src": "115",
-      "pgn": 128275
-    },
-    "values": [{
-      "path": "navigation.trip.log",
-      "value": 43374
-    }, {
-      "path": "navigation.log",
-      "value": 17404540
-    }]
-  }]
+  "updates": [
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128275
+      },
+      "values": [
+        {
+          "path": "navigation.trip.log",
+          "value": 43374
+        },
+        {
+          "path": "navigation.log",
+          "value": 17404540
+        }
+      ]
+    }
+  ]
 }
 ```
-
+[<]: #
 > Below we refer to WebSockets, but the same process works in the same way over any transport. E.g. for a raw TCP
 > connection the connection causes the above message to be sent, and sending the subscribe messages will have the same
 > effect as described here.
@@ -39,33 +45,38 @@ First you will want to unsubscribe from the current default (or you may have alr
 `ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message with wildcards
 and send the message over the WebSocket connection:
 
+[>]: # (mdpInsert ```json fsnip ../samples/unsubscribe/docs-subscription_protocol.json --prettify 2 20)
 ```json
 {
   "context": "*",
-  "unsubscribe": [{
-    "path": "*"
-  }]
+  "unsubscribe": [
+    {"path": "*"}
+  ]
 }
 ```
-
+[<]: #
 To subscribe to the required criteria send a suitable subscribe message:
 
+[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol1.json --prettify)
 ```json
 {
   "context": "vessels.self",
-  "subscribe": [{
-    "path": "navigation.speedThroughWater",
-    "period": 1000,
-    "format": "delta",
-    "policy": "ideal",
-    "minPeriod": 200
-  }, {
-    "path": "navigation.logTrip",
-    "period": 10000
-  }]
+  "subscribe": [
+    {
+      "path": "navigation.speedThroughWater",
+      "period": 1000,
+      "format": "delta",
+      "policy": "ideal",
+      "minPeriod": 200
+    },
+    {
+      "path": "navigation.logTrip",
+      "period": 10000
+    }
+  ]
 }
 ```
-
+[<]: #
 * `path=[path.to.key]` is appended to the context to specify subsets of the context.
 The path value can use the wildcard `*`. A wildcard in the middle of a path (`propulsion/*/oilTemperature`) allows any
 value for that part and a wildcard at the end (`propulsion/port/*`) matches all paths beginning with the specified
@@ -114,54 +125,62 @@ wants those items for the self vessel.
 
 This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcribe=none`, then sending a JSON message:
 
+[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol2.json --prettify)
 ```json
 {
   "context": "vessels.self",
-  "subscribe": [{
-    "path": "environment.depth.belowTransducer"
-  }, {
-    "path": "navigation.speedThroughWater"
-  }]
+  "subscribe": [
+    {
+      "path": "environment.depth.belowTransducer"
+    },
+    {"path": "navigation.speedThroughWater"}
+  ]
 }
 ```
-
+[<]: #
 The JSON format is also viable over a simple TCP or serial transport, and is therefore supported as the primary
 subscription method.
 
 ### Map display with all known vessel positions & directions, served over 3G cellular connection
 
-```javascript
+[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol3.json --prettify)
+```json
 {
   "context": "vessels.*",
-  "subscribe": [{
-    "path": "navigation.position",
-    "period": 120000,
-    "policy": "fixed"
-  },
-  {
-    "path": "navigation.courseOverGround",
-    "period": 120000,
-    "policy": "fixed"
-  }]
+  "subscribe": [
+    {
+      "path": "navigation.position",
+      "period": 120000,
+      "policy": "fixed"
+    },
+    {
+      "path": "navigation.courseOverGround",
+      "period": 120000,
+      "policy": "fixed"
+    }
+  ]
 }
 ```
-
+[<]: #
 The result is a delta message of the Signal K data with just `position` and `courseOverGround` branches for all known
 vessels, sent every 2 minutes (120 seconds) even if no data has been updated.
 
 ### Position of a certain vessel, immediately it changes, but once per minute at most
 
-```javascript
+[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol4.json --prettify)
+```json
 {
   "context": "vessels.230029970",
-  "subscribe": [{
-    "path": "navigation.position",
-    "minPeriod": 60000,
-    "policy": "instant"
-  }]
+  "subscribe": [
+    {
+      "path": "navigation.position",
+      "minPeriod": 60000,
+      "policy": "instant"
+    }
+  ]
 }
 ```
-
+[<]: #
 The result will be delta position messages for vessel 230029970, broadcast whenever it changes, but with minimum
 interval of 60 seconds. Messages are delayed to meet the minimum interval with newer messages overriding the previous
 message in the buffer.

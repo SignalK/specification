@@ -15,8 +15,9 @@ saves time and prevents costly or even disastrous mistakes from occurring due to
 
 ## Metadata for a Data Value
 
-The `meta` object exists at the same level as `value` and `$source` in each key in the Signal K data model. 
-
+The `meta` object exists at the same level as `value` and `$source` in each key in the Signal K data model.
+ 
+[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
 ```json
 {
   "displayName": "Port Tachometer",
@@ -38,7 +39,7 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   ]
 }
 ```
-
+[<]: #
 In the example `meta` object above, a definition is provided for an analog RPM gauge for the port engine. It provides a
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure. It also specifies a recommended display format via `gaugeType`.

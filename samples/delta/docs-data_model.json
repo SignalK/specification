@@ -1,0 +1,60 @@
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "017",
+        "pgn": 127488
+      },
+      "timestamp": "2010-01-07T07:18:44Z",
+      "values": [
+        {
+          "path": "propulsion.0.revolutions",
+          "value": 16.341667
+        },
+        {
+          "path": "propulsion.0.boostPressure",
+          "value": 45500.0
+        }
+      ]
+    },
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128267
+      },
+      "timestamp": "2014-08-15T16:00:00.081Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 2.971
+        },
+        {
+          "path": "navigation.speedOverGround",
+          "value": 3.85
+        }
+      ]
+    },
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128267
+      },
+      "timestamp": "2014-08-15T19:02:31.507Z",
+      "values": [
+        {
+          "path": "",
+          "value": {
+            "name": "WRANGO"
+          }
+        }
+      ]
+    }
+  ]
+}

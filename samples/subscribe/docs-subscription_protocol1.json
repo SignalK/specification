@@ -1,0 +1,16 @@
+{
+  "context": "vessels.self",
+  "subscribe": [
+    {
+      "path": "navigation.speedThroughWater",
+      "period": 1000,
+      "format": "delta",
+      "policy": "ideal",
+      "minPeriod": 200
+    },
+    {
+      "path": "navigation.logTrip",
+      "period": 10000
+    }
+  ]
+}

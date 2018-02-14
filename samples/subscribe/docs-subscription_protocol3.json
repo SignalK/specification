@@ -1,0 +1,15 @@
+{
+  "context": "vessels.*",
+  "subscribe": [
+    {
+      "path": "navigation.position",
+      "period": 120000,
+      "policy": "fixed"
+    },
+    {
+      "path": "navigation.courseOverGround",
+      "period": 120000,
+      "policy": "fixed"
+    }
+  ]
+}

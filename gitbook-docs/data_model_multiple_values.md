@@ -47,6 +47,7 @@ it is referenced by the `$source` property.
 The first source of a particular data point becomes the default source for that data and a normal Signal K object is
 created.
 
+[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_multiple_values.json --delKeys sources values)
 ```json
 {
   "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
@@ -56,7 +57,7 @@ created.
       "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
       "navigation": {
         "courseOverGroundTrue": {
-          "value": 3.615624078431453,
+          "value": 3.61562407843144,
           "$source": "ttyUSB0.GP",
           "timestamp": "2017-04-03T06:14:04.451Z"
         }
@@ -65,12 +66,13 @@ created.
   }
 }
 ```
-
+[<]: #
 It has come from device `sources.ttyUSB0.GP`, where further details can be found.
 
 If another value with different source arrives, the Signal K server will add the `values` attribute with values from
 both the first and second sources. The initial source‘s data will continue to populate the `value` property in the key.
 
+[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_multiple_values.json)
 ```json
 {
   "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
@@ -82,18 +84,16 @@ both the first and second sources. The initial source‘s data will continue to 
         "courseOverGroundTrue": {
           "value": 3.615624078431440,
           "$source": "ttyUSB0.GP",
-          "timestamp": "2017-04-03T06:14:04.451Z"
-        },
-        "values":{
-          "ttyUSB0.GP.RMC":{
-            "value": 3.615624078431440,
-            "$source": "ttyUSB0.GP",
-            "timestamp": "2017-04-03T06:14:04.451Z"
-          },
-          "n2k.ikommunicate.128267":{
-            "value": 3.615624078431453,
-            "$source": "ikommunicate.2",
-            "timestamp": "2017-04-03T06:14:04.451Z"
+          "timestamp": "2017-04-03T06:14:04.451Z",
+          "values":{
+            "ttyUSB0.GP.RMC":{
+              "value": 3.615624078431440,
+              "timestamp": "2017-04-03T06:14:04.451Z"
+            },
+            "n2k.ikommunicate.128267":{
+              "value": 3.615624078431453,
+              "timestamp": "2017-04-03T06:14:04.451Z"
+            }
           }
         }
       }
@@ -119,44 +119,53 @@ both the first and second sources. The initial source‘s data will continue to 
     }
   }
 }
-```
 
+```
+[<]: #
 ### Multiple Values in Delta Messages
 
 When a client subscribes to `navigation.courseOverGroundTrue`, they receive _all_ the values held. The update message
 does not include the `values` path, the case above looks like:
 
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model_multiple_values.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
-  "updates": [{
-    "source": {
-      "label": "GPS-1",
-      "type": "NMEA0183",
-      "talker": "GP",
-      "sentence": "RMC"
+  "updates": [
+    {
+      "source": {
+        "label": "GPS-1",
+        "type": "NMEA0183",
+        "talker": "GP",
+        "sentence": "RMC"
+      },
+      "timestamp": "2017-04-03T06:14:04.451Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 3.615624078431440
+        }
+      ]
     },
-    "timestamp": "2017-04-03T06:14:04.451Z",
-    "values": [{
-      "path": "navigation.courseOverGroundTrue",
-      "value": 3.615624078431440
-    }]
-  }, {
-    "source": {
-      "label": "actisense",
-      "type": "NMEA2000",
-      "src": "115",
-      "pgn": 128267
-    },
-    "timestamp": "2017-04-03T06:14:04.451Z",
-    "values": [{
-      "path": "navigation.courseOverGroundTrue",
-      "value": 3.615624078431453
-    }]
-  }]
+    {
+      "source": {
+        "label": "actisense",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128267
+      },
+      "timestamp": "2017-04-03T06:14:04.451Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 3.615624078431453
+        }
+      ]
+    }
+  ]
 }
 ```
-
+[<]: #
 Individual updates can be distinguished by their source.
 
 If a client wants only the values of a specific source it should subscribe to a path that includes the full path under

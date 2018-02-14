@@ -9,16 +9,17 @@ configuration changes. As specified in the previous section, all URLs for intera
 Making a `GET` request to `/signalk` returns a JSON object which specifies the available Signal K endpoints and some
 information about the server. Also see [versioning](versioning.md) for details about `version` strings.
 
+[>]: # (mdpInsert ```json fsnip ../samples/discovery/docs-rest_api.json)
 ```json
 {
   "endpoints": {
     "v1": {
-      "version": "1.alpha1",
+      "version": "1.0.0-alpha1",
       "signalk-http": "http://localhost:3000/signalk/v1/api/",
       "signalk-ws": "ws://localhost:3000/signalk/v1/stream"
     },
     "v3": {
-      "version": "3.0",
+      "version": "3.0.0",
       "signalk-http": "http://localhost/signalk/v3/api/",
       "signalk-ws": "ws://localhost/signalk/v3/stream",
       "signalk-tcp": "tcp://localhost:8367"
@@ -30,7 +31,7 @@ information about the server. Also see [versioning](versioning.md) for details a
   }
 }
 ```
-
+[<]: #
 This response is defined by the `discovery.json` schema. In this example, the server supports two versions of the
 specification: `1.alpha1` and `3.0`. For each version, the server indicates which transport protocols it supports and
 the URL that can be used to access that protocol‘s endpoint. Clients should use one of these published endpoints based
