@@ -44,11 +44,9 @@
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
     "JSONStream": "^0.7.4",
-    "cross-var": "1.1.0",
     "debug": "^2.2.0",
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^3.10.1",
-    "replace-in-file": "^3.1.0",
     "tv4": "^1.2.7",
     "tv4-formats": "^2.2.1"
   },
@@ -56,12 +54,14 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^1.9.2",
+    "cross-var": "1.1.0",
     "gitbook-cli": "^2.3.0",
     "github-changes": "^1.0.4",
     "infuse.js": "^2.0.2",
     "markdown-it": "^8.0.0",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
+    "replace-in-file": "^3.1.0",
     "rimraf": "^2.5.4"
   }
 }
