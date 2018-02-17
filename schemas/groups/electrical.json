@@ -147,6 +147,7 @@
         "temperature": {
           "type": "object",
           "description": "Temperature measured within or on the device",
+          "units": "K",
           "title": "temperature",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
