@@ -4,7 +4,7 @@
     "instance0": {
       "label": "Main Engine",
       "revolutions": {
-        "value":  273.319,
+        "value":  43.5,
         "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar",
         "meta": {
@@ -15,7 +15,7 @@
             "upper": "4000 rpm"
           },
           "zones": [{
-            "lower": 376.991,
+            "lower": 60.0,
             "state": "alarm",
             "message": "Engine exceeds maximum rpm!"
           }]
