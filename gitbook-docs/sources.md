@@ -15,10 +15,11 @@ An example of the pointer method is shown below.
 
 ```json
 {
-  "version": "v1.0.0",
+  "version": "1.0.0",
   "self": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
   "vessels": {
     "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
       "navigation": {
         "speedOverGround": {
           "value": 4.32693662,
@@ -59,10 +60,11 @@ Some Signal K producing devices such as gateways may use the direct inclusion me
 
 ```json
 {
-  "version": "v1.0.0",
+  "version": "1.0.0",
   "self": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
   "vessels": {
     "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
+      "uuid": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
       "navigation": {
         "speedOverGround": {
           "value": 4.32693662,
