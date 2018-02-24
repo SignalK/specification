@@ -250,9 +250,6 @@
       "title": "Charger Qualities",
       "description": "Common charger qualities",
       "properties": {
-        "allOf": [{
-            "$ref": "#/definitions/identity"
-            }],
         "chargingAlgorithm": {
           "type": "object",
           "description": "Algorithm being used by the charger",
