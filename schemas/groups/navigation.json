@@ -311,7 +311,7 @@
     },
     "magneticVariation": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The magnetic variation (declination) at the current position",
+      "description": "The magnetic variation (declination) at the current position that must be added to the magnetic heading to derive the true heading. Easterly variations are positive and Westerly variations are negative (in Radians).",
       "units": "rad"
     },
     "magneticVariationAgeOfService": {
