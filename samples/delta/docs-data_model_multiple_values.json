@@ -1,0 +1,35 @@
+{
+  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "updates": [
+    {
+      "source": {
+        "label": "GPS-1",
+        "type": "NMEA0183",
+        "talker": "GP",
+        "sentence": "RMC"
+      },
+      "timestamp": "2017-04-03T06:14:04.451Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 3.615624078431440
+        }
+      ]
+    },
+    {
+      "source": {
+        "label": "actisense",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128267
+      },
+      "timestamp": "2017-04-03T06:14:04.451Z",
+      "values": [
+        {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 3.615624078431453
+        }
+      ]
+    }
+  ]
+}

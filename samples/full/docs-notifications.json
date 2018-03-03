@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "notifications": {
+        "mob": {
+          "value": {
+            "method": [
+              "visual",
+              "sound"
+            ],
+            "state": "emergency",
+            "message": "Man Overboard!"
+          },
+          "timestamp": "2017-04-10T08:33:53Z",
+          "$source": "nmea1.II"
+        },
+        "navigation": {
+          "gnss": {
+            "value": {
+              "method": [
+                "visual"
+              ],
+              "state": "alert",
+              "message": "GPS signal lost!"
+            },
+            "$source": "nmea1.II",
+            "timestamp": "2017-04-10T08:33:53Z"
+          },
+          "anchor": {
+            "currentRadius": {
+              "value": {
+                "method": [
+                  "sound"
+                ],
+                "state": "alarm",
+                "message": "Dragging anchor!"
+              },
+              "timestamp": "2017-04-10T08:33:53Z",
+              "$source": "nmea1.II"
+            }
+          }
+        }
+      }
+    }
+  }
+}

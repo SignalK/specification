@@ -10,9 +10,10 @@ transmitted as UTF-8 JSON.
 The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
 Signal K node, which in the case of a Signal K server could me many hundreds of data points.
 
+[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model.json)
 ```json
 {
-  "version": "v1.0.0",
+  "version": "1.0.0",
   "self": "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c",
   "vessels": {
     "urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c": {
@@ -52,8 +53,8 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
         "talker": "GP",
         "sentences": {
           "RMC": "2017-04-03T06:14:04.451Z"
-        },
-      }
+        }
+      },
       "II": {
         "talker": "II",
         "sentences": {
@@ -63,8 +64,9 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
     }
   }
 }
-```
 
+```
+[<]: #
 There are several top level attributes or keys which are always present and others which are optional. The `version`
 key specifies which version of the Signal K specification is being used and must always present in a full Signal K
 model. Also always present in the full model is the `self` key. The value of `self` is the key within the `vessels`
@@ -148,39 +150,44 @@ Signal K deltas as independent packets of data, much the same way as it would ha
 
 An example delta message is presented below.
 
-```json
-{
-  "context": "vessels.urn:mrn:imo:mmsi:234567890",
-  "updates": [{
-    "source": {
-      "label": "N2000-01",
-      "type": "NMEA2000",
-      "src": "017",
-      "pgn": 127488
-    },
-    "timestamp": "2010-01-07T07:18:44Z",
-    "values": [{
-      "path": "propulsion.0.revolutions",
-      "value": 16.341667
-    }, {
-      "path": "propulsion.0.boostPressure",
-      "value": 45500.0
-    }]
-  }]
-}
-```
-
-The top level of a delta message contains an `updates` property and an optional `context` property.
-
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --delKeys $..updates[2] --delKeys $..updates[1])
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
   "updates": [
-    ...data goes here...
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "017",
+        "pgn": 127488
+      },
+      "timestamp": "2010-01-07T07:18:44Z",
+      "values": [
+        {
+          "path": "propulsion.0.revolutions",
+          "value": 16.341667
+        },
+        {
+          "path": "propulsion.0.boostPressure",
+          "value": 45500
+        }
+      ]
+    }
   ]
 }
 ```
+[<]: #
+The top level of a delta message contains an `updates` property and an optional `context` property.
 
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --ellipsify updates)
+```json
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [...]
+}
+```
+[<]: #
 The optional `context` property roots the updates to a particular location in the Signal K tree. If `context` is
 missing it is assumed that the data is related to the `self` context. The `self` context is the `vessel` object which
 the `self` property of the full model points to.
@@ -192,25 +199,29 @@ a vessel directly under `vessels`. The delimiter in the context path is `.` (per
 The `updates` property holds a JSON array of update objects, each of which may have a  `source` property, a `timestamp`
 property and an array of `values` containing one or more value objects.
 
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --snip $..updates[1])
 ```json
 {
   "source": {
-    "label": "N2000-01"
+    "label": "N2000-01",
     "type": "NMEA2000",
     "src": "115",
-    "pgn": "128267"
+    "pgn": 128267
   },
   "timestamp": "2014-08-15T16:00:00.081Z",
-  "values": [{
-    "path": "navigation.courseOverGroundTrue",
-    "value": 2.971
-  }, {
-    "path": "navigation.speedOverGround",
-    "value": 3.85
-  }]
+  "values": [
+    {
+      "path": "navigation.courseOverGroundTrue",
+      "value": 2.971
+    },
+    {
+      "path": "navigation.speedOverGround",
+      "value": 3.85
+    }
+  ]
 }
 ```
-
+[<]: #
 An `update` has a single `source` value and it applies to each of the `values` items. In cases where data can only
 come from a single source, such as an NMEA 0183 talker connected to a serial port, then the source may be omitted.
 However, if the delta is being passed on by a Signal K server or multiplexer then `source` must be filled in by the
@@ -232,9 +243,10 @@ the delta stream, for example when received in AIS transmission. In this case th
 full model, starting from the vessel's root, with just the relevant parts, and the path must be empty, indicating that
 the value should be merged to the full model mounted where the delta‘s context property points:
 
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --delKeys $..updates[1] --delKeys $..updates[0] --ellipsify source --prettify 2 20)
 ```json
 {
-  "context": "vessels.urn:mrn:imo:mmsi:2xxxxxxx",
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
   "updates": [
     {
       "source": {...},
@@ -251,7 +263,7 @@ the value should be merged to the full model mounted where the delta‘s context
   ]
 }
 ```
-
+[<]: #
 ## Data Quality
 
 Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset

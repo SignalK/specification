@@ -1,0 +1,45 @@
+{
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "version": "0.9.0",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "navigation": {
+        "courseOverGroundTrue": {
+          "value": 3.615624078431440,
+          "$source": "ttyUSB0.GP",
+          "timestamp": "2017-04-03T06:14:04.451Z",
+          "values":{
+            "ttyUSB0.GP.RMC":{
+              "value": 3.615624078431440,
+              "timestamp": "2017-04-03T06:14:04.451Z"
+            },
+            "n2k.ikommunicate.128267":{
+              "value": 3.615624078431453,
+              "timestamp": "2017-04-03T06:14:04.451Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sources":{
+    "ttyUSB0": {
+      "GP": {
+        "sentences": {
+          "RMC": "2017-04-03T06:14:04.451Z"
+        }
+      }
+    },
+    "ikommunicate": {
+      "2": {
+        "n2k": {
+          "src": "2",
+          "pgns": {
+            "128267": "2017-04-03T06:14:05.221Z"
+          }
+        }
+      }
+    }
+  }
+}

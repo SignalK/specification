@@ -1,0 +1,23 @@
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "115",
+        "pgn": 128275
+      },
+      "values": [
+        {
+          "path": "navigation.trip.log",
+          "value": 43374
+        },
+        {
+          "path": "navigation.log",
+          "value": 17404540
+        }
+      ]
+    }
+  ]
+}
