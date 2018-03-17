@@ -188,6 +188,32 @@ function addValues(context, contextPath, source, timestamp, pathValues) {
   }
 }
 
+function addMetas(context, contextPath, source, timestamp, metas) {
+  var len = metas.length;
+  for (var i = 0; i < len; ++i) {
+    addMeta(context, contextPath, source, timestamp, metas[i]);
+  }
+}
+
+function addMeta(context, contextPath, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
+  var valueLeaf;
+
+  const splitPath = pathValue.path.split('.');
+  
+  valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+    return previous[pathPart];
+  }, context);
+
+  valueLeaf.meta = _.merge(valueLeaf.meta || {}, pathValue.value)
+}
+
 function addValue(context, contextPath, source, timestamp, pathValue) {
   let errMessage = ""
   if(_.isUndefined(pathValue.path)){
