@@ -105,7 +105,12 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-  addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  if ( update.values ) {
+    addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  }
+  if ( update.meta ) {
+    addMetas(context, contextPath, update.source || update['$source'], update.timestamp, update.meta);
+  }
 }
 
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
@@ -175,6 +180,32 @@ function addValues(context, contextPath, source, timestamp, pathValues) {
   }
 }
 
+function addMetas(context, contextPath, source, timestamp, metas) {
+  var len = metas.length;
+  for (var i = 0; i < len; ++i) {
+    addMeta(context, contextPath, source, timestamp, metas[i]);
+  }
+}
+
+function addMeta(context, contextPath, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
+  var valueLeaf;
+
+  const splitPath = pathValue.path.split('.');
+  
+  valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+    return previous[pathPart];
+  }, context);
+
+  valueLeaf.meta = _.merge(valueLeaf.meta || {}, pathValue.value)
+}
+
 function addValue(context, contextPath, source, timestamp, pathValue) {
   if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
     console.error("Illegal value in delta:" + JSON.stringify(pathValue));
@@ -195,7 +226,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
           meta = JSON.parse(JSON.stringify(meta))
           delete meta.properties
           
-          previous[pathPart].meta = meta;
+          previous[pathPart].meta = _.merge(previous[pathPart].meta, meta);
         }
       }
       return previous[pathPart];
