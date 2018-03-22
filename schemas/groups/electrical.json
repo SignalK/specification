@@ -719,12 +719,15 @@
               "$ref": "#/definitions/identity"
             },
             {
+              "$ref": "#/definitions/acQualities"
+            },
+            {
               "properties": {
                 "phase": {
                   "type": "object",
-                  "description": "Single or A,B or C in 3 Phase systems ",
+                  "description": "Detailed information for each leg of split or 3-phase systems",
                   "patternProperties": {
-                    "(single)|([A-C])": {
+                    "([A-C])": {
                       "$ref": "#/definitions/acQualities"
                     }
                   }
