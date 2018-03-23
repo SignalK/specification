@@ -46,6 +46,11 @@
                       "description": "NMEA 2000 bus",
                       "type": "string"
                     },
+                    "name": {
+                      "type": "number",
+                      "description": "J1939 NAME value of the originating source of the data",
+                      "example": 1398271
+                    },
                     "pgns": {
                       "type": "object",
                       "description": "NMEA 2000 pgn number",

@@ -4,6 +4,7 @@
       "label": "",
       "type": "NMEA2000",
       "pgn": 129025,
+      "name": 1398271,
       "src": "160"
     },
     "values": [{

@@ -31,6 +31,11 @@
           "default": "NMEA2000",
           "example": "NMEA2000"
         },
+        "name": {
+          "type": "number",
+          "description": "J1939 NAME value of the originating source of the data",
+          "example": 1398271
+        },
         "src": {
           "type": "string",
           "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data",
