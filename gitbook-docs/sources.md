@@ -103,3 +103,9 @@ A final example using a non-NMEA source, in this case an I²C sensor.
 ```
 
 Here, `src` is the address of the device on the I²C bus.
+
+## Sources Group
+
+A Signal K device capable of generating a full data model will have a top level (i.e. at the same level as `vessels`,
+`version` and `self`) group called `sources`. This group provides detailed information about each network bus connected
+to the Signal K gateway or server. Sources are organized hierarchically, following a bus-source-type structure.
