@@ -78,7 +78,7 @@ standard Signal K structure but may not have the same content; likely you will n
 vessels as you have about your own.
 
 At the same level as `vessels` is `sources`. This contains a list of sources the data was obtained from. Each data
-object within a `vessel` may have a `$source` key which point to a source withing `sources`. Several data objects may
+object within a `vessel` may have a `$source` key which point to a source within `sources`. Several data objects may
 reference the same `source` since a single NMEA sentence or PGN may map to multiple keys in Signal K.
 
 Alternatively the source data may be embedded directly in place of the `$source` by using the `source` key:
