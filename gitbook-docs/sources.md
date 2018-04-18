@@ -109,3 +109,53 @@ Here, `src` is the address of the device on the I²C bus.
 A Signal K device capable of generating a full data model will have a top level (i.e. at the same level as `vessels`,
 `version` and `self`) group called `sources`. This group provides detailed information about each network bus connected
 to the Signal K gateway or server. Sources are organized hierarchically, following a bus-source-type structure.
+
+An example of multiple sources is shown below.
+
+```json
+{
+  "vhf": {
+    "label": "AIS Receiver",
+    "type": "VHF",
+    "112334556": {
+      "ais": {
+        "aisType": 15
+      }
+    },
+    "394299113": {
+      "ais": {
+        "aisType": 15
+      }
+    }
+  },
+  "ttyUSB0": {
+    "label": "NMEA 0183",
+    "type": "NMEA0183",
+    "II": {
+      "talker": "II",
+      "sentences": {
+        "VHW": "2018-04-16T01:34:03.881Z"
+      }
+    }
+  },
+  "ttyUSB1": {
+    "label": "NMEA 2000",
+    "type": "NMEA2000",
+    "3": {
+      "1": {},
+      "2": {},
+      "n2k": {
+        "src": "3",
+        "pgns": {
+          "126992": "2017-04-15T18:44:59.006Z"
+        }
+      }
+    }
+  }
+}
+```
+
+You may notice two odd lines in the NMEA 2000 source `"3"`: `"1": {}` and `"2": {}'`. These are placeholders for NMEA
+2000 "instance" values. These are here to provide a valid schema for certain NMEA 2000 PGNs relating to temperature.
+Because temperature paths in the current versio of Signal K do not have the instance inline, consumers must look at the
+instance part of the `$source` or `source` property to determine which specific sensor provided the data.
