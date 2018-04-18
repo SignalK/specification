@@ -52,7 +52,7 @@ Signal K node, which in the case of a Signal K server could me many hundreds of 
         "talker": "GP",
         "sentences": {
           "RMC": "2017-04-03T06:14:04.451Z"
-        },
+        }
       },
       "II": {
         "talker": "II",
