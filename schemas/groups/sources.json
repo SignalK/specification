@@ -59,6 +59,11 @@
                       "type": "number",
                       "description": "Manufacturer numeric NMEA 2000 id"
                     },
+                    "manufacturerName": {
+                      "description": "Manufacturer of the source device",
+                      "type": "string",
+                      "example": "Digital Yacht"
+                    },
                     "uniqueId": {
                       "type": "number",
                       "description": "Unique id of the source device"
@@ -74,6 +79,37 @@
                     "productID": {
                       "description": "Manufactures assigned NMEA2000 Product ID",
                       "type": "number"
+                    },
+                    "productName": {
+                      "description": "Product Name or Model Number",
+                      "type": "string"
+                    },
+                    "softwareVersion": {
+                      "description": "Version of the device's Software/Firmware",
+                      "type": "string"
+                    },
+                    "hardwareVersion": {
+                      "description": "Version of the device's Hardware",
+                      "type": "string"
+                    },
+                    "serialNumber": {
+                      "description": "Device's Serial Number",
+                      "type": "string"
+                    },
+                    "installationNote1": {
+                      "description": "Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'",
+                      "type": "string",
+                      "example": "Wired on Navigation Switch/Circuit"
+                    },
+                    "installationNote2": {
+                      "description": "Product Installation Note 2 i.e. 'Located under forward bunk'",
+                      "type": "string",
+                      "example": "Located under forward bunk"
+                    },
+                    "manufacturerInfo": {
+                      "description": "Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'",
+                      "type": "string",
+                      "example": "http://digitalyachtamerica.com Tel:+44 1179 554474"
                     }
                   }
                 }
@@ -99,42 +135,6 @@
           "description": "Type of interface i.e. signalk, NMEA0183 or NMEA2000",
           "type": "string",
           "example": "NMEA0183"
-        },
-        "manufacturerName": {
-          "description": "Manufacturer of the source device",
-          "type": "string",
-          "example": "Digital Yacht"
-        },
-        "productName": {
-          "description": "Product Name or Model Number",
-          "type": "string"
-        },
-        "softwareVersion": {
-          "description": "Version of the device's Software/Firmware",
-          "type": "string"
-        },
-        "hardwareVersion": {
-          "description": "Version of the device's Hardware",
-          "type": "string"
-        },
-        "serialNumber": {
-          "description": "Device's Serial Number",
-          "type": "string"
-        },
-        "installationNote1": {
-          "description": "Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'",
-          "type": "string",
-          "example": "Wired on Navigation Switch/Circuit"
-        },
-        "installationNote2": {
-          "description": "Product Installation Note 2 i.e. 'Located under forward bunk'",
-          "type": "string",
-          "example": "Located under forward bunk"
-        },
-        "manufacturerInfo": {
-          "description": "Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'",
-          "type": "string",
-          "example": "http://digitalyachtamerica.com Tel:+44 1179 554474"
         }
       }
     }
