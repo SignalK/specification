@@ -43,8 +43,7 @@ In the example `meta` object above, a definition is provided for an analog RPM g
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure. It also specifies a recommended display format via `gaugeType`.
 
-The `timeout` property tells the consumer how often it should expect to wait before a new value arrives –
-or if the consumer is polling for data, how long it should wait before requesting a new value. This value is specified
+The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05. The `alertMethod`, `warnMethod`, `alarmMethod` and
 `emergencyMethod` properties tell the consumer how it should respond to an abnormal data condition. Presently the
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
