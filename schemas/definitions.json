@@ -567,20 +567,20 @@
 
         "displayScale": {
           "type": "object",
-          "title": "Gauge scale to display.",
-          "description": "Gives details of how the gauge scale should be diplayed",
+          "title": "Scale to display.",
+          "description": "Gives details of the display scale against which the value should be displayed",
           "required": ["lower", "upper"],
           "properties": {
             "lower": {
               "type": "number",
-              "title": "Gauge lower limit.",
-              "description": "The suggested lower limit for the pointer (or equivalent) on the gauge",
+              "title": "Display lower limit.",
+              "description": "The suggested lower limit for the pointer (or equivalent) on the display",
               "example": 0
             },
             "upper": {
               "type": "number",
-              "title": "Gauge upper limit.",
-              "description": "The suggested upper limit for the pointer (or equivalent) on the gauge",
+              "title": "Display upper limit.",
+              "description": "The suggested upper limit for the pointer (or equivalent) on the display",
               "example": 4000
             }
           },
