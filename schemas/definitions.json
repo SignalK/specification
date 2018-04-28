@@ -565,6 +565,28 @@
           "example": "sparkline"
         },
 
+        "displayScale": {
+          "type": "object",
+          "title": "Scale to display.",
+          "description": "Gives details of the display scale against which the value should be displayed",
+          "required": ["lower", "upper"],
+          "properties": {
+            "lower": {
+              "type": "number",
+              "title": "Display lower limit.",
+              "description": "The suggested lower limit for the pointer (or equivalent) on the display",
+              "example": 0
+            },
+            "upper": {
+              "type": "number",
+              "title": "Display upper limit.",
+              "description": "The suggested upper limit for the pointer (or equivalent) on the display",
+              "example": 4000
+            }
+          },
+          "additionalProperties": false
+        },
+        
         "units": {
           "type": "string",
           "title": "units schema.",
