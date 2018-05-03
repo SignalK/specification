@@ -55,6 +55,8 @@
         "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar",
         "meta": {
+          "description": "Engine revolutions (x60 for RPM)",
+          "units": "Hz",
           "displayName": "Tachometer",
           "shortName": "RPM",
           "warnMethod": ["visual"],

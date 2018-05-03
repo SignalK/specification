@@ -22,6 +22,8 @@
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
                 "nominal": 12,
                 "warnLower": 12,
                 "faultLower": 11.6,
@@ -71,6 +73,8 @@
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
                 "nominal": 12
               }
             },
@@ -86,6 +90,8 @@
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
                 "nominal": 12
               }
             },

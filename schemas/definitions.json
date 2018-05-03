@@ -346,6 +346,9 @@
                 "$ref": "#/definitions/valuesNumberValue"
               }
             }
+          },
+          "meta": {
+            "required": ["units"]
           }
         }
       }]
@@ -529,6 +532,7 @@
       "type": "object",
       "title": "Meta schema.",
       "description": "Provides meta data to enable alarm and display configuration.",
+      "required": ["description"],
       "properties": {
         "displayName": {
           "type": "string",
@@ -556,6 +560,13 @@
           "title": "Description schema.",
           "description": "Description of the SK path.",
           "example": "Engine revolutions (x60 for RPM)"
+        },
+        
+        "enum": {
+          "type": "array",
+          "title": "Permissible values",
+          "description": "List of permissible values",
+          "example": ["stopped", "started", "unusable"]
         },
 
         "gaugeType": {
