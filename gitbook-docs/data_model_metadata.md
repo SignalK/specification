@@ -60,9 +60,14 @@ raise a generic alarm event. See the section on [Alarm Handling](notifications.m
 
 ## Implicit Metadata
 
-All keys in the Signal K specification must have `units` and a `description`. If a client requests the `meta` property
-for a valid Signal K key via the HTTP REST interface, the server must return the `units` and `description`, even if no
-value has ever been generated for that key.
+All keys in the Signal K specification must have a `description`, and where the key is a numeric value it must have
+`units`.
+
+If a client requests the `meta` property for a valid Signal K key via the HTTP REST interface, the server must return
+the `description` and, if applicable, `units`, even if no value has ever been generated for that key.
+
+If a key has values determined by an enum, the server should include the enum in the meta. NB. in future versions
+it is likely that this will become a mandatory requirement for the server.
 
 ```javascript
 // GET /signalk/v1/api/vessels/self/environment/depth/belowKeel/meta

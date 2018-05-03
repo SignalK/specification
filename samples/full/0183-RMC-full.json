@@ -19,6 +19,8 @@
         },
         "courseOverGroundTrue": {
           "meta": {
+            "description": "Course over ground (true)",
+            "units": "rad",
             "zones": [
               {
                 "lower": 260,
