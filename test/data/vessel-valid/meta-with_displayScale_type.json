@@ -1,0 +1,32 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "environment": {
+    "depth": {
+      "belowKeel": {
+        "value":  43.5,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar",
+        "meta": {
+          "description": "Depth below keel",
+          "units": "m",
+          "displayName": "Depth below Keel",
+          "shortName": "Depth",
+          "displayScale": {
+            "lower": 0.5,
+            "upper": 200,
+            "type": "logarithmic"
+          },
+          "zones": [{
+            "upper": 2.0,
+            "state": "alarm",
+            "message": "Shallow"
+          },{
+            "upper": 5.0,
+            "state": "warn",
+            "message": "Shallow"
+          }]
+        }
+      }
+    }
+  }
+}
