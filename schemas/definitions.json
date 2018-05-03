@@ -511,6 +511,7 @@
       "description": "The alarm state when the value is in this zone.",
       "default": "normal",
       "enum": [
+        "nominal",
         "normal",
         "alert",
         "warn",
