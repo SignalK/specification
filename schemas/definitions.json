@@ -584,7 +584,12 @@
             },
             "type": {
               "type": "string",
-              "enum": ["linear", "logarithmic", "squareroot", "power"],
+              "enum": [
+                "linear",
+                "logarithmic",
+                "squareroot",
+                "power"
+              ],
               "title": "Scale type used on the display.",
               "description": "The suggested type of scale to use",
               "example": "logarithmic"
@@ -597,12 +602,57 @@
             }
           },
           "oneOf": [
-            {"required": ["lower", "upper"], "properties": {"lower": {}, "upper": {}}, "additionalProperties": false},
-            {"required": ["lower", "upper", "type"], "properties": {"lower": {}, "upper": {}, "type": {"enum": ["linear", "squareroot", "logarithmic"]}}, "additionalProperties": false},
-            {"required": ["lower", "upper", "type", "power"], "properties": {"lower": {}, "upper": {}, "type": {"enum": ["power"]}, "power": {}}, "additionalProperties": false}
+            {
+              "required": [
+                "lower",
+                "upper"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {}
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "linear",
+                    "squareroot",
+                    "logarithmic"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type",
+                "power"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "power"
+                  ]
+                },
+                "power": {}
+              },
+              "additionalProperties": false
+            }
           ]
         },
-        
         "units": {
           "type": "string",
           "title": "units schema.",
