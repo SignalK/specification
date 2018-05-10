@@ -62,14 +62,14 @@ method properties, all Signal K consumers can react the same way to a given stat
 
 The possible states in ascending order of severity are:
 
-| state/zone | description | conventional colour |
+| State/Zone | Description |
 |------------|--------|--------|
-| nominal    | this is a special type of normal state/zone (see below)        | green/none |
-| normal     | the normal operating range for the value in question (default)            | green/none |
-| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes | green/none |
-| warn       | Indicates a condition that requires immediate attention but not immediate action | yellow |
-| alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage | red |
-| emergency  | the value indicates a life-threatening condition | red |
+| nominal    | this is a special type of normal state/zone (see below)        |
+| normal     | the normal operating range for the value in question (default)            |
+| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
+| warn       | Indicates a condition that requires immediate attention but not immediate action |
+| alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
+| emergency  | the value indicates a life-threatening condition |
 
 `nominal`: A example use of this is for engine monitoring eg. coolant temperature where there is a normal (no warnings)
 (green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at
@@ -83,9 +83,9 @@ they need to be within the bounds of the `upper` and `lower` specified in `displ
 
 If zones overlap each other the state/zone with the highest severity will take precedence. This is true for both alerts and
 gauge/display rendering. Any part of the range which is not explicitly within a zone is considered to be `normal` (the default).
-As such zones with a state of `normal` have no effect and their remove would result in no changes to either displays or alerts.
+As such, zones with a state of `normal` have no effect and their removal would result in no changes to either displays or alerts.
 
-The can be multiple zones with the same `state`, for example if a different message is required, or if they are on different parts of the scale.
+There can be multiple zones with the same `state`, for example if a different message is required, or if they are on different parts of the scale.
 
 Signal K servers will use the `zone` information to monitor any data which has a `meta` object and
 raise a generic alarm event. See the section on [Alarm Handling](notifications.md) for more.
