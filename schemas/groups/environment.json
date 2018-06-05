@@ -101,38 +101,19 @@
     "inside": {
       "type": "object",
       "description": "Environmental conditions inside the vessel's hull",
-      "properties": {
-        "temperature": {
-          "description": "Current inside air temperature",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "K"
+      "allOf": [
+        {
+          "patternProperties": {
+            "[A-Za-z0-9]+": {
+              "description": "This regex pattern is used for validation of the identifier for the environmental zone, eg. engineRoom, mainCabin, refrigerator",
+              "$ref": "#/definitions/zoneObject"
+            }
+          }
         },
-        "humidity": {
-          "description": "Current inside air relative humidity",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "ratio"
-        },
-        "engineRoom": {
-          "description": "Current engine room air temperature",
-          "$ref": "#/definitions/zoneObject"
-        },
-        "mainCabin": {
-          "description": "Current main cabin air temperature",
-          "$ref": "#/definitions/zoneObject"
-        },
-        "refrigerator": {
-          "description": "Current refrigerator temperature",
-          "$ref": "#/definitions/zoneObject"
-        },
-        "freezer": {
-          "description": "Current freezer temperature",
-          "$ref": "#/definitions/zoneObject"
-        },
-        "heating": {
-          "description": "Current heating temperature",
+        {
           "$ref": "#/definitions/zoneObject"
         }
-      }
+      ]
     },
     "water": {
       "type": "object",

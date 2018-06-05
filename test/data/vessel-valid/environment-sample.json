@@ -1,0 +1,29 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "environment": {
+    "inside": {
+      "temperature": {
+        "value": 288.1,
+        "timestamp": "2018-02-28T09:46:55.302Z",
+        "$source": "foo.bar"
+      },
+      "relativeHumidity": {
+        "value": 0.84,
+        "timestamp": "2018-02-28T09:46:55.302Z",
+        "$source": "foo.bar"
+      },
+      "engineRoom2": {
+        "temperature": {
+          "value": 288.1,
+          "timestamp": "2018-02-28T09:46:55.302Z",
+          "$source": "foo.bar"
+        },
+        "relativeHumidity": {
+          "value": 0.86,
+          "timestamp": "2018-02-28T09:46:55.302Z",
+          "$source": "foo.bar"
+        }
+      }
+    }
+  }
+}
