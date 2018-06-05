@@ -13,6 +13,11 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
+        "heatIndexTemperature": {
+          "description": "Current heat index temperature in zone",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
         "pressure": {
           "description": "Pressure in zone",
           "units": "Pa",
