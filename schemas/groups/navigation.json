@@ -269,23 +269,8 @@
           "$ref": "../definitions.json#/definitions/position"
         },
         "startLinePort": {
-<<<<<<< HEAD
           "description": "Position of port start mark",
-          "position": {
-            "type": "object",
-            "properties": {
-              "latitude": {
-                "type": "number"
-              },
-              "longitude": {
-                "type": "number"
-              }
-            }
-          }
-=======
-          "description": "Position of starboard start mark",
           "$ref": "../definitions.json#/definitions/position"
->>>>>>> SignalK/master
         },
         "distanceStartline": {
           "description": "The current distance to the start line",
