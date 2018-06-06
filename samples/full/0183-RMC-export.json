@@ -1,0 +1,23 @@
+{ "self":"urn:mrn:imo:mmsi:366982330",
+  "vessels": {
+    "urn:mrn:imo:mmsi:366982330": {
+      "mmsi": "366982330",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426
+          },
+          "$source": "sources.gps_0183_RMC"
+        },
+        "courseOverGroundTrue": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "sources.gps_0183_RMC",
+          "value": 245.69
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

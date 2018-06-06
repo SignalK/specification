@@ -147,6 +147,7 @@
         "temperature": {
           "type": "object",
           "description": "Temperature measured within or on the device",
+          "units": "K",
           "title": "temperature",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
@@ -249,9 +250,6 @@
       "title": "Charger Qualities",
       "description": "Common charger qualities",
       "properties": {
-        "allOf": [{
-            "$ref": "#/definitions/identity"
-            }],
         "chargingAlgorithm": {
           "type": "object",
           "description": "Algorithm being used by the charger",

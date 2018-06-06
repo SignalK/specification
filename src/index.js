@@ -270,7 +270,6 @@ module.exports.validateVessel = function(vesselData) {
 module.exports.fillIdentity = fillIdentity;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
-module.exports.i18n = require('./i18n/');
 module.exports.getTv4 = getTv4;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('../schemas/definitions').definitions.units;

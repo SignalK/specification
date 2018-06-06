@@ -1,0 +1,49 @@
+{
+  "sar": {
+    "urn:mrn:imo:mmsi:976982330": {
+      "mmsi": "976982330",
+      "sails": {
+					"area": {
+						"total": {
+							"value": 82,
+							"timestamp": "2014-08-15T19:00:15.404Z",
+							"$source": "foo.bar"
+						},
+						"active": {
+							"value": 78.4,
+							"timestamp": "2014-08-15T19:00:15.404Z",
+							"$source": "foo.bar"
+						}
+					},
+					"inventory": {
+						"racingMain": {
+							"name": "Racing main 2016",
+							"type": "main",
+							"material": "mylar",
+							"brand": "WB Sails",
+							"area": 34,
+							"active": false
+						},
+						"cruisingMain": {
+							"name": "Cruising main",
+							"type": "main",
+							"material": "dacron",
+							"brand": "WB Sails",
+							"area": 33.8,
+							"active": true
+						},
+						"genoa": {
+							"name": "Cruising genoa",
+							"type": "genoa",
+							"material": "dacron",
+							"brand": "North Sails",
+							"area": 44.6,
+							"active": true
+						}
+					}
+				}
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:230099999"
+}

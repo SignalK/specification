@@ -86,13 +86,13 @@
         "s": {
           "display": "s",
           "quantity": "Time",
-          "quantityDisplay": "T",
+          "quantityDisplay": "t",
           "description": "Elapsed time (interval) in seconds"
         },
         "Hz": {
           "display": "Hz",
           "quantity": "Frequency",
-          "quantityDisplay": "F",
+          "quantityDisplay": "f",
           "description": "Frequency in Hertz"
         },
         "m3": {
@@ -107,11 +107,17 @@
           "quantityDisplay": "Q",
           "description": "Liquid or gas flow in cubic meters per second"
         },
+        "kg/s": {
+          "display": "kg/s",
+          "quantity": "Mass flow rate",
+          "quantityDisplay": "\u1e41",
+          "description": "Liquid or gas flow in kilograms per second"
+        },
         "kg/m3": {
           "display": "kg/m\u00b3",
           "quantity": "Density",
-          "quantityDisplay": "kg/m\u00b3",
-          "description": "Density in kg per cubic meters"
+          "quantityDisplay": "\u03c1",
+          "description": "Density in kg per cubic meter"
         },
         "deg": {
           "display": "\u00b0",
@@ -134,7 +140,7 @@
         "A": {
           "display": "A",
           "quantity": "Current",
-          "quantityDisplay": "i",
+          "quantityDisplay": "I",
           "description": "Electrical current in ampere"
         },
         "C": {
@@ -153,7 +159,13 @@
           "display": "W",
           "quantity": "Power",
           "quantityDisplay": "P",
-          "description": "Electrical power in watt"
+          "description": "Power in watt"
+        },
+        "Nm": {
+          "display": "Nm",
+          "quantity": "Torque",
+          "quantityDisplay": "\u03c4",
+          "description": "Torque in Newton meter"
         },
         "J": {
           "display": "J",
@@ -175,9 +187,9 @@
         },
         "m/s": {
           "display": "m/s",
-          "quantity": "Velocity",
+          "quantity": "Speed",
           "quantityDisplay": "v",
-          "description": "Velocity in meters per second"
+          "description": "Speed in meters per second"
         },
         "m2": {
           "display": "\u33a1",
@@ -188,7 +200,7 @@
         "K": {
           "display": "K",
           "quantity": "Temperature",
-          "quantityDisplay": "t",
+          "quantityDisplay": "T",
           "description": "Temperature in kelvin"
         },
         "Pa": {
@@ -234,16 +246,22 @@
           "description": "Magnetic field strength in tesla"
         },
         "Lux": {
-          "display": "Lux",
+          "display": "lx",
           "quantity": "Light Intensity",
-          "quantityDisplay": "Lux",
+          "quantityDisplay": "Ev",
           "description": "Light Intensity in lux"
         },
         "Pa/s": {
           "display": "Pa/s",
-          "quantity": "Pressure rate, also viscosity",
+          "quantity": "Pressure rate",
           "quantityDisplay": "R",
-          "description": "Pressure change rate in pascal per second, also used for viscosity"
+          "description": "Pressure change rate in pascal per second"
+        },
+        "Pa.s": {
+          "display": "Pa s",
+          "quantity": "Viscosity",
+          "quantityDisplay": "\u03bc",
+          "description": "Viscosity in pascal seconds"
         }
       }
     },
@@ -328,6 +346,9 @@
                 "$ref": "#/definitions/valuesNumberValue"
               }
             }
+          },
+          "meta": {
+            "required": ["units"]
           }
         }
       }]
@@ -511,6 +532,7 @@
       "type": "object",
       "title": "Meta schema.",
       "description": "Provides meta data to enable alarm and display configuration.",
+      "required": ["description"],
       "properties": {
         "displayName": {
           "type": "string",
@@ -539,6 +561,13 @@
           "description": "Description of the SK path.",
           "example": "Engine revolutions (x60 for RPM)"
         },
+        
+        "enum": {
+          "type": "array",
+          "title": "Permissible values",
+          "description": "List of permissible values",
+          "example": ["stopped", "started", "unusable"]
+        },
 
         "gaugeType": {
           "type": "string",
@@ -547,6 +576,94 @@
           "example": "sparkline"
         },
 
+        "displayScale": {
+          "type": "object",
+          "title": "Scale to display.",
+          "description": "Gives details of the display scale against which the value should be displayed",
+          "properties": {
+            "lower": {
+              "type": "number",
+              "title": "Display lower limit.",
+              "description": "The suggested lower limit for the pointer (or equivalent) on the display",
+              "example": 0
+            },
+            "upper": {
+              "type": "number",
+              "title": "Display upper limit.",
+              "description": "The suggested upper limit for the pointer (or equivalent) on the display",
+              "example": 4000
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "linear",
+                "logarithmic",
+                "squareroot",
+                "power"
+              ],
+              "title": "Scale type used on the display.",
+              "description": "The suggested type of scale to use",
+              "example": "logarithmic"
+            },
+            "power": {
+              "type": "number",
+              "title": "Selected power for display scale",
+              "description": "The power to use when the displayScale/type is set to 'power'. Can be any numeric value except zero.",
+              "example": 2
+            }
+          },
+          "oneOf": [
+            {
+              "required": [
+                "lower",
+                "upper"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {}
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "linear",
+                    "squareroot",
+                    "logarithmic"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type",
+                "power"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "power"
+                  ]
+                },
+                "power": {}
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
         "units": {
           "type": "string",
           "title": "units schema.",

@@ -1,0 +1,8 @@
+{
+  "updates": [{
+	"values": [{
+	  "path": "a.b.c",
+	  "value": 1234
+	}]
+  }]
+}

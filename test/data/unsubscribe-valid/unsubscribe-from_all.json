@@ -1,0 +1,6 @@
+{
+  "context": "*",
+  "unsubscribe": [{
+    "path": "*"
+  }]
+}

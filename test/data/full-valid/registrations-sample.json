@@ -1,0 +1,36 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "registrations": {
+        "imo": "IMO 1234567",
+        "national":{
+          "partA":{
+            "country":"NZ",
+            "registration":"NZ12345",
+            "description":"New Zealand Part A recreational vessel"
+          },
+          "partB":{
+            "country":"NZ",
+            "registration":"NZ12345",
+            "description":"New Zealand Part B recreational vessel"
+          }
+        },
+        "local":{
+          "coastGuard":{
+            "registration":"NZCG12345",
+            "description":"New Zealand Coast Guard"
+          }
+        },
+        "other":{
+          "tassieDoc":{
+            "registration":"DOC12345",
+            "description":"Tassie DOC park permit"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

@@ -1,0 +1,393 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "electrical": {
+        "batteries": {
+          "house1": {
+              "name": "House battery 1 (forward)",
+              "location": "Lazarette",
+              "manufacturer": {
+                "name": "Dyno",
+                "model": "D85-29"
+              },
+            "chemistry": "FLA",
+            "temperature": {
+              "value": 290,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            },
+            "voltage": {
+              "value": 14.13,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
+                "nominal": 12,
+                "warnLower": 12,
+                "faultLower": 11.6,
+                "warnUpper": 14.4,
+                "faultUpper": 15.2
+              },
+              "ripple": {
+                "value": 0.12,
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar"
+              }
+            },
+            "current": {
+              "value": 124.2,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            },
+            "capacity": {
+              "nominal": 61689600,
+              "stateOfCharge": {
+                "value": 81,
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar"
+              },
+              "timeRemaining": {
+                "value": 21600,
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar"
+              },
+              "dischargeSinceFull": {
+                "value": 172800,
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar"
+              }
+            }
+          },
+          "house2": {
+            "name": "House battery 2",
+            "location": "Engine room",
+            "manufacturer": {
+              "name": "MasterVolt",
+              "model": "AGM 12/130"
+             },
+            "chemistry": "AGM",
+            "voltage": {
+              "value": 12.8,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
+                "nominal": 12
+              }
+            },
+            "current": {
+              "value": 0.1,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar"
+            }
+          },
+          "start": {
+            "voltage": {
+              "value": 12.8,
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "meta": {
+                "description": "Voltage measured at or as close as possible to the device",
+                "units": "V",
+                "nominal": 12
+              }
+            },
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 0.05
+            }
+          }
+        },
+        "chargers": {
+          "main": {
+            "manufacturer": {
+              "name": "C-Tek"
+            },
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "two stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "standalone"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "float"
+            },
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 2.67
+            }
+          }
+        },
+        "inverters": {
+          "main": {
+            "location": "Under forward bunk",
+            "manufacturer": {
+              "name": "Xantrex"
+            },
+            "dc": {
+              "current": {
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar",
+                "value": 2.67
+              }
+            },
+            "ac": {
+              "frequency": {
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar",
+                "value": 50
+              },
+              "current": {
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar",
+                "value": 0.12
+              },
+              "lineLineVoltage": {
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar",
+                "value": 400
+              },
+              "lineNeutralVoltage": {
+                "timestamp": "2014-08-15T19:00:15.402Z",
+                "$source": "foo.bar",
+                "value": 230
+              }
+            },
+            "inverterMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "idle"
+            }
+          }
+        },
+        "alternators": {
+          "main": {
+            "location": "Mains - (house) alternator",
+            "manufacturer": {
+              "name": "Leece Neville + Arduino Alt Reg",
+              "model": "4870 + 0.3.6",
+              "URL":  "https://arduinoalternatorregulator.blogspot.com/"         
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "slave"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "bulk"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.13
+            },
+            "setpointVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.52
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 210.5
+            }
+          }
+        },
+        "solar": {
+          "port240": {
+            "location": "Port array",
+            "manufacturer": {
+              "name": "REC + Morningstar",
+              "model": "REC-240 + Tristar MPPT45"      
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "standalone"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "acceptance"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.3
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 12.2
+            }
+          },
+          "star240": {
+            "location": "Starbord array",
+            "manufacturer": {
+              "name": "REC + LibraSolar",
+              "model": "REC-240 + LibraSolar 25A"      
+            },
+            "associatedBus": "house1",
+            "chargingAlgorithm": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "three stage"
+            },
+            "chargerRole": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value":  "master"
+            },
+            "chargingMode": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": "bulk"
+            },
+            "voltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.13
+            },
+            "setpointVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 14.52
+            },            
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 13.7
+            }
+          }
+        },
+        "ac": {
+          "utility1": {
+              "name": "Single phase shore power",
+            "phase": {
+              "single": {
+                "frequency": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 230
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              }
+            }
+          },
+          "utility3": {
+            "name": "Three phase shore power",
+            "phase": {
+              "A": {
+                "frequency": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              },
+              "B": {
+                "frequency": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              },
+              "C": {
+                "frequency": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 50
+                },
+                "current": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 0.12
+                },
+                "lineLineVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 400
+                },
+                "lineNeutralVoltage": {
+                  "timestamp": "2014-08-15T19:00:15.402Z",
+                  "$source": "foo.bar",
+                  "value": 230
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

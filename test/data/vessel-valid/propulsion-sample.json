@@ -1,0 +1,160 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "propulsion": {
+    "instance0": {
+      "label": "Main Engine - The Olde Faithful",
+      "drive": {
+        "type": "outboard",
+        "trimState": {
+          "value": 99,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "thrustAngle": {
+          "value": 0,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        }
+      },
+      "fuel": {
+        "type": "diesel",
+        "used": {
+          "value": 12.5,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "rate": {
+          "value": 0.6,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "averageRate": {
+          "value": 1.0,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "economyRate": {
+          "value": 0.9,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "pressure": {
+          "value": 1100,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+
+        }
+      },
+      "state": {
+        "value": "started",
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "revolutions": {
+        "value": 1280,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar",
+        "meta": {
+          "description": "Engine revolutions (x60 for RPM)",
+          "units": "Hz",
+          "displayName": "Tachometer",
+          "shortName": "RPM",
+          "warnMethod": ["visual"],
+          "alarmMethod": ["sound"],
+          "zones": [{
+            "upper": 8,
+            "state": "warn",
+            "message": "Engine stopped or rpm very slow!"
+          }, {
+            "lower": 50,
+            "upper": 58.33333333333,
+            "state": "warn",
+            "message": "Engine near maximum rpm!"
+          }, {
+            "lower": 58.33333333333,
+            "upper": 66.66666666666667,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }, {
+            "lower": 66.66666666666667,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }]
+        }
+
+      },
+      "oilPressure": {
+        "value": 110,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "boostPressure": {
+        "value": 200,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "intakeManifoldTemperature": {
+        "value": 345,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "engineLoad": {
+        "value": 200,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+
+      },
+      "engineTorque": {
+        "value": 200,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+
+      },
+      "oilTemperature": {
+        "value": 345,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "coolantTemperature": {
+        "value": 355,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "exhaustTemperature": {
+        "value": 420,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "coolantPressure": {
+        "value": 1100,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "runTime": {
+        "value": 3102234,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "alternatorVoltage": {
+        "value": 14.1,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+      },
+      "transmission": {
+        "gear": {
+          "value": "Forward"
+        },
+        "oilPressure": {
+          "value": 100,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "oilTemperature": {
+          "value": 310,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        }
+      }
+    }
+  }
+}

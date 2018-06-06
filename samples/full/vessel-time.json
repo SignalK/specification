@@ -1,0 +1,19 @@
+{ "self": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9",
+  "vessels": {
+    "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9": {
+      "uuid": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9",
+      "environment": {
+        "time": {
+          "millis": 1449648657735,
+          "timestamp": "2014-04-10T08:33:53Z",
+          "source": {
+            "label": "Realtime clock",
+            "type": "system"
+          },
+          "timezoneOffset": -1300
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

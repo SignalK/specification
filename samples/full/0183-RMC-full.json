@@ -1,0 +1,80 @@
+{ "self":"urn:mrn:imo:mmsi:366982330",
+  "vessels": {
+    "urn:mrn:imo:mmsi:366982330": {
+      "mmsi": "366982330",
+      "navigation": {
+        "position": {
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          },
+          "$source": "sources.gps_0183_RMC",
+          "_attr": {
+            "_mode": 644,
+            "_owner": "self",
+            "_group": "self"
+          }
+        },
+        "courseOverGroundTrue": {
+          "meta": {
+            "description": "Course over ground (true)",
+            "units": "rad",
+            "zones": [
+              {
+                "lower": 260,
+                "upper": 360,
+                "state": "alarm"
+              },
+              {
+                "lower": 220,
+                "upper": 230,
+                "state": "warn"
+              },
+              {
+                "lower": 0,
+                "upper": 220,
+                "state": "alarm"
+              },
+              {
+                "lower": 220,
+                "upper": 260,
+                "state": "normal"
+              }
+            ],
+            "shortName": "COG",
+            "alarmMethod": [
+              "sound"
+            ],
+            "warnMethod": [
+              "visual"
+            ],
+            "displayName": "COG (True)"
+          },
+          "timestamp": "2015-03-06T16:57:53.643Z",
+          "$source": "sources.gps_0183_RMC",
+          "_attr": {
+            "_mode": 644,
+            "_owner": "self",
+            "_group": "self"
+          },
+          "value": 245.69
+        }
+      }
+    }
+  },
+  "sources": {
+    "gps_0183_RMC": {
+      "timestamp": "2015-03-06T16:57:53.643Z",
+      "src": "$GPRMC,033025.000,A,4115.6426,S,17316.9300,E,0.05,245.69,090113,,*15",
+      "bus": "/dev/ttyUSB1"
+    },
+    "_attr": {
+      "_mode": 644,
+      "_owner": "self",
+      "_group": "self"
+    }
+  },
+  "version": "0.1.0"
+}

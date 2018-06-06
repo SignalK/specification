@@ -1,0 +1,15 @@
+{
+  "updates": [{
+    "source": {
+      "label": "",
+      "type": "NMEA2000",
+      "pgn": 129025,
+      "src": "160"
+    },
+    "values": [{
+      "path": "navigation.position",
+      "value": 1.0
+    }]
+  }],
+  "context": "vessels.123456789"
+}

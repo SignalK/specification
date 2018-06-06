@@ -1,0 +1,24 @@
+{ "self":"urn:mrn:imo:mmsi:366982330",
+  "vessels": {
+    "urn:mrn:imo:mmsi:366982330": {
+      "mmsi": "230099999",
+      "navigation": {
+        "position": {
+          "value": {
+            "longitude": 173.1693,
+            "latitude": -41.156426,
+            "altitude": 0
+          },
+          "timestamp": "2015-01-25T12:01:01Z",
+          "$source": "a.suitable.path"
+        },
+        "courseOverGroundTrue": {
+          "value": 245.69,
+          "timestamp": "2015-01-25T12:01:01Z",
+          "$source": "a.suitable.path"
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

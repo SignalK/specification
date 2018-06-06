@@ -1,0 +1,10 @@
+{
+  "context": "vessels.230029970",
+  "subscribe": [
+    {
+      "path": "navigation.position",
+      "minPeriod": 60000,
+      "policy": "instant"
+    }
+  ]
+}

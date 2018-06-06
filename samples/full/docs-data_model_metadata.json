@@ -1,0 +1,65 @@
+{
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "propulsion": {
+        "instance0": {
+          "label": "Port Engine",
+          "revolutions": {
+            "value": 1280,
+            "timestamp": "2014-08-15T19:00:15.402Z",
+            "$source": "foo.bar",
+            "meta": {
+              "displayName": "Port Tachometer",
+              "longName": "Engine 2 Tachometer (x60 for RPM)",
+              "shortName": "Revs",
+              "description": "Revolutions in HZ, measured via the W terminal on the alternator",
+              "gaugeType": "analog",
+              "units": "Hz",
+              "timeout": 1,
+              "alertMethod": [
+                "visual"
+              ],
+              "warnMethod": [
+                "visual"
+              ],
+              "alarmMethod": [
+                "sound",
+                "visual"
+              ],
+              "emergencyMethod": [
+                "sound",
+                "visual"
+              ],
+              "zones": [
+                {
+                  "upper": 50,
+                  "state": "alarm",
+                  "message": "Stopped or very slow"
+                },
+                {
+                  "lower": 50,
+                  "upper": 300,
+                  "state": "normal"
+                },
+                {
+                  "lower": 300,
+                  "upper": 350,
+                  "state": "warn",
+                  "message": "Approaching maximum"
+                },
+                {
+                  "lower": 350,
+                  "state": "alarm",
+                  "message": "Exceeding maximum"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

@@ -4,13 +4,6 @@ chai.use(require('../dist/').chaiModule);
 const FullSignalK = require('../src/fullsignalk')
 const debug = require('debug')('test:sources')
 
-describe('Sources in the full tree', function() {
-  it("Sample full tree is valid", function() {
-    require('./data/sources.json').should.be.validSignalKIgnoringSelf;
-  });
-});
-
-
 var deltaWithMiscSources = {
   "context": "vessels.urn:mrn:imo:mmsi:200000000",
   "updates": [{
@@ -81,84 +74,6 @@ describe('Sources in delta', function() {
     deltaWithMiscSources.should.be.validSignalKDelta;
   });
 });
-
-var deltasWithBadSources = [{
-  "context": "vessels.urn:mrn:imo:mmsi:200000000",
-  "updates": [{
-    "source": {
-      "sentence": "HDT",
-      "label": "0183-1",
-      "talker": "II"
-    },
-    "$source": "i2c-0.0x48.amps",
-    "timestamp": "2016-08-03T07:55:57.000Z",
-    "values": [{
-      "path": "navigation.headingTrue",
-      "value": 0.2231
-    }]
-  }]
-}, {
-  "context": "vessels.urn:mrn:imo:mmsi:200000000",
-  "updates": [{
-    "source": "test",
-    "timestamp": "2016-08-03T07:55:57.000Z",
-    "values": [{
-      "path": "navigation.headingTrue",
-      "value": 0.2231
-    }]
-  }]
-}, {
-  "context": "vessels.urn:mrn:imo:mmsi:200000000",
-  "updates": [{
-    "$source": "path with space",
-    "timestamp": "2016-08-03T07:55:57.000Z",
-    "values": [{
-      "path": "navigation.headingTrue",
-      "value": 0.2231
-    }]
-  }]
-},{
-  "context": "vessels.urn:mrn:imo:mmsi:200000000",
-  "updates": [{
-    "$source": {
-      "sentence": "HDT",
-      "label": "0183-1",
-      "talker": "II"
-    },
-    "timestamp": "2016-08-03T07:55:57.000Z",
-    "values": [{
-      "path": "navigation.headingTrue",
-      "value": 0.2231
-    }]
-  }]
-}]
-
-
-describe('Bad sources in delta', function() {
-  it("are not valid", function() {
-    deltasWithBadSources.forEach(function(delta) {
-      delta.should.not.be.validSignalKDelta;
-    })
-  });
-});
-
-describe('Multiple sources for the same path:', function() {
-  it("value + values are valid", function() {
-    require('./data/multiple-values.json').should.be.validSignalKIgnoringSelf
-  });
-});
-
-describe('Invalid sources with both n2k and ais:', function() {
-  it("ais + n2k are invalid", function() {
-    require('./data/invalid-source.json').should.not.be.validSignalK
-  });
-});
-describe('Valid sources with no 0183,n2k or ais, and other items:', function() {
-  it("No 0183, ais or n2k, and other items are valid", function() {
-    require('./data/invalid-source2.json').should.not.be.validSignalK
-  });
-});
-
 
 describe('Delta with source.instance', function() {
   it("produces valid full", function() {

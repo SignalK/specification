@@ -32,7 +32,7 @@ We have an existing JSON Schema, let’s call this `1.0.0`:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
+  "id": "https://signalk.org/demospecification/1.0.0/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -52,11 +52,11 @@ Now we want to add an additional field to our schema:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
+  "id": "https://signalk.org/demospecification/1.0.1/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
-  	"dscAddress": {
+    "dscAddress": {
       "type": "string",
       "description": "MMSI Callsign for VHF communication"
     },
@@ -71,7 +71,7 @@ Now we want to add an additional field to our schema:
 }
 ```
 
-Because our new `phoneNumber` field is not a required field, and because version `1.0.0` had `additionalProperties` set to `false`, we know that all historical data will work with this new schema.
+Because our new `phoneNumber` field is not a required field, and because version `1.0.0` had `additionalProperties` set to `false`, we know that all historical data will work with this new schema, ie. any json which validates against 1.0.0 will also be valid against 1.0.1.
 
 Therefore we are looking at an `ADDITION`, and so we bump the schema version to `1.0.1`.
 
@@ -83,11 +83,11 @@ Let’s now make our JSON Schema support additionalProperties - this constitutes
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
+  "id": "https://signalk.org/demospecification/1.0.2/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
-  	"dscAddress": {
+    "dscAddress": {
       "type": "string",
       "description": "MMSI Callsign for VHF communication"
     },
@@ -108,11 +108,11 @@ After a while, we add a new field, `callsignHf`:
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
+  "id": "https://signalk.org/demospecification/1.1.0/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
-  	"dscAddress": {
+    "dscAddress": {
       "type": "string",
       "description": "MMSI Callsign for VHF communication"
     },
@@ -132,7 +132,7 @@ After a while, we add a new field, `callsignHf`:
 }
 ```
 
-Will this new schema validate all historical data? Unfortunately we can’t be certain, because there could be historical JSONs where the analyst added their own `callsignHf` field.
+Will this new schema validate all historical data? Unfortunately we can’t be certain, because there could be historical JSONs where the analyst added their own `callsignHf` field which was not a string.
 
 So we are effectively making a `REVISION` to the data schema - so we bump the version to `1.1.0` (resetting `ADDITION` to `0`).
 
@@ -144,7 +144,7 @@ Oh dear - we have just realized that not every-one has DSC! It should have been 
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/schemas/v1/groups/communication.json#",
+  "id": "https://signalk.org/demospecification/2.0.0/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
@@ -172,6 +172,8 @@ Oh dear - we have just realized that not every-one has DSC! It should have been 
 We have changed our `MODEL` - because we can have no reasonable expectation that any of the historical data can interact with this schema. That means our new version is `2.0.0`
 
 Note that we also decided to use this “reboot” of the `MODEL` to change `additionalProperties` back to `false`, because (as we have learnt) it will help us to avoid unnecessary REVISIONs in the future.
+
+**Note:** https://signalk.org/demospecification/... is not real, it is just used here for illustration. The real schemas are located at: https://signalk.org/specification/...
 
 ## Supplementary rules
 

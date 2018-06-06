@@ -1,0 +1,27 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "propulsion": {
+    "instance0": {
+      "label": "Main Engine",
+      "revolutions": {
+        "value":  43.5,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar",
+        "meta": {
+          "description": "Engine revolutions (x60 for RPM)",
+          "units": "Hz",
+          "displayName": "Tachometer",
+          "shortName": "RPM",
+          "displayScale": {
+            "upper": 66.6667
+          },
+          "zones": [{
+            "lower": 60.0,
+            "state": "alarm",
+            "message": "Engine exceeds maximum rpm!"
+          }]
+        }
+      }
+    }
+  }
+}

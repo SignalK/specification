@@ -32,16 +32,19 @@ The alarm is : `vessels.self.notifications.navigation.anchor.currentRadius`
 
 The alarm object is
 
+[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip currentRadius --ellipsify timestamp "'$..['\$source']'")
 ```
 {
-  "method": ["sound"],
-  "state": "alarm",
-  "message": "Dragging anchor!",
-  "timestamp": ..,
-  "source": {..}
+  "value": {
+    "method": ["sound"],
+    "state": "alarm",
+    "message": "Dragging anchor!"
+  },
+  "timestamp": "...",
+  "$source": "..."
 }
 ```
-
+[<]: #
 The server alarm manager will see this new entry and turn on the alarm. Using a manager process allows flexibility in
 situations where multiple alarms are triggered and your vessel is a mass of flashing and beeping. eg A single 'Pause'
 button can give you 5-10 minutes to take action, stopping annoying noise, and removing popup messages from screens.
@@ -62,15 +65,18 @@ In the case of an emergency, create a unique key: The alarm is : `vessels.[uuid]
 
 The alarm object is
 
+[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip mob --ellipsify $ ~value)
 ```
 {
-  "method": ["visual", "sound"],
-  "state": "emergency",
-  "message": "Man Overboard!",
+  "value": {
+    "method": ["visual", "sound"],
+    "state": "emergency",
+    "message": "Man Overboard!"
+  },
   ...
 }
 ```
-
+[<]: #
 Alarm objects that have been raised this way must be cleared manually, or by the process that created them. You can use
 any suitable path, keeping in mind the context of the alarm.
 
@@ -79,15 +85,18 @@ eg In the case of an alert, create a unique key by generating a path: The alarm 
 
 The alarm object is
 
+[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip gnss --ellipsify $ ~value)
 ```
 {
-  "method": ["visual"],
-  "state": "alert",
-  "message": "GPS signal lost!",
+  "value": {
+    "method": ["visual"],
+    "state": "alert",
+    "message": "GPS signal lost!"
+  },
   ...
 }
 ```
-
+[<]: #
 ### Well Known Names
 
 Some alarms are especially important, eg MOB. This is a list of keys for special alarms.
@@ -104,15 +113,14 @@ Some alarms are especially important, eg MOB. This is a list of keys for special
 
 An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:
 
+[>]: # (mdpInsert ``` fsnip ../samples/delta/docs-notifications.json --delKeys $.updates[1] --ellipsify source)
 ```
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
   "updates": [
     {
-      "source": {
-         ...
-        "timestamp": "2014-08-15-16:00:05.538",
-      },
+      "source": {...},
+      "timestamp": "2017-08-15T16:00:05.200Z",
       "values": [
         {
           "path": "notifications.mob",
@@ -124,43 +132,45 @@ An example to send an MOB alarm from an N2K source, the gateway would convert an
         }
       ]
     }
-  }
+  ]
 }
 ```
-
+[<]: #
 The resulting full signalk tree would be:
 
+[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --ellipsify $ ~vessels --delKeys navigation --ellipsify uuid "'$..['\$source']'")
 ```
 {
   "vessels": {
     "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "...",
       "notifications": {
-        "mob":{
-          "message": "MOB",
-          "timestamp": "2014-04-10T08:33:53Z",
-          "source": {
-             ...
+        "mob": {
+          "value": {
+            "method": ["visual", "sound"],
+            "state": "emergency",
+            "message": "Man Overboard!"
           },
-          "state": "emergency",
-          "method": ["visual", "sound"]
+          "timestamp": "2017-04-10T08:33:53Z",
+          "$source": "..."
         }
       }
     }
-  }
+  },
+  ...
 }
 ```
-
+[<]: #
 To clear the alarm condition, send:
 
+[>]: # (mdpInsert ``` fsnip ../samples/delta/docs-notifications.json --delKeys $.updates[0] --ellipsify source)
 ```
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
   "updates": [
     {
-      "source": {
-        ...
-        "timestamp": "2014-08-15-16:00:05.538",
-      },
+      "source": {...},
+      "timestamp": "2017-08-15T16:00:05.538Z",
       "values": [
         {
           "path": "notifications.mob",
@@ -171,7 +181,7 @@ To clear the alarm condition, send:
   ]
 }
 ```
-
+[<]: #
 ## Multiple cases of the same alarm
 
 Should multiple cases of the same alarm occur (eg a gps loses signal, then a second gps loses signal) the alarms are

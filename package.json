@@ -1,6 +1,6 @@
 {
   "name": "@signalk/signalk-schema",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
@@ -8,18 +8,18 @@
     "prepublish": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
-    "schema:version": "replace 'https://signalk.org/specification/[^/]+/schemas/' 'https://signalk.org/specification/'$npm_package_version'/schemas/' . -r --include='*.j*' --exclude='package.json' ",
-    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && mkdir $npm_package_version ; git add $npm_package_version && git mv schemas/ $npm_package_version/ && git commit -m 'Schemas from master' && git push",
+    "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
+    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
-    "docs:prep": "gitbook install gitbook-docs && replace _version_ $npm_package_version gitbook-docs/*",
+    "docs:prep": "gitbook install gitbook-docs && cross-var replace-in-file /_version_/g $npm_package_version ./gitbook-docs/* --isRegex --verbose && mdprepare gitbook-docs/*.md",
     "docs:keys": "node scripts/processSchemaFiles.js",
-    "docs:html": "gitbook build gitbook-docs $npm_package_version/doc",
-    "docs:pdf": "gitbook pdf gitbook-docs $npm_package_version/doc/signalk.pdf",
-    "docs:mobi": "gitbook mobi gitbook-docs $npm_package_version/doc/signalk.mobi",
-    "docs:epub": "gitbook pdf gitbook-docs $npm_package_version/doc/signalk.epub",
+    "docs:html": "cross-var gitbook build gitbook-docs $npm_package_version/doc",
+    "docs:pdf": "cross-var gitbook pdf gitbook-docs $npm_package_version/doc/signalk.pdf",
+    "docs:mobi": "cross-var gitbook mobi gitbook-docs $npm_package_version/doc/signalk.mobi",
+    "docs:epub": "cross-var gitbook pdf gitbook-docs $npm_package_version/doc/signalk.epub",
     "docs:serve": "gitbook serve gitbook-docs",
     "docs:all": "npm run docs:prep && npm run docs:changelog && npm run docs:keys && npm run docs:html && npm run docs:pdf && npm run docs:mobi && npm run docs:epub",
-    "docs:publish": "npm run docs:all && git add $npm_package_version && git stash && git checkout gh-pages && git pull && git checkout stash -- $npm_package_version && git add master && git commit --allow-empty -m $npm_package_version && git push git@github.com:signalk/specification gh-pages"
+    "docs:publish": "npm run docs:all && cross-var git add $npm_package_version && git stash && git checkout gh-pages && git pull && cross-var git checkout stash -- $npm_package_version && git add master && cross-var git commit --allow-empty -m $npm_package_version && git push git@github.com:signalk/specification gh-pages"
   },
   "repository": {
     "type": "git",
@@ -54,13 +54,16 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^1.9.2",
+    "cross-var": "1.1.0",
+    "fsnip": "^0.9.5",
     "gitbook-cli": "^2.3.0",
     "github-changes": "^1.0.4",
     "infuse.js": "^2.0.2",
     "markdown-it": "^8.0.0",
+    "mdprepare": "^0.9.3",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
-    "replace": "^0.3.0",
+    "replace-in-file": "^3.1.0",
     "rimraf": "^2.5.4"
   }
 }

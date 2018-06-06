@@ -1,0 +1,21 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "propulsion": {
+    "instance0": {
+      "label": "Main Engine - The Olde Faithful",
+      "state": {
+        "value": "started",
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar",
+        "meta": {
+          "description": "The current state of the engine",
+          "enum": [
+            "stopped",
+            "started",
+            "unusable"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+    }
+  },
+  "sources": {
+    "vhf": {
+      "ais-b":{
+        "ais":{
+          "aisType": 28.3
+        }
+      },
+      "label": "AIS-28.0",
+      "type": "AIS"
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+}

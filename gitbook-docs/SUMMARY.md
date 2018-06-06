@@ -8,6 +8,7 @@
   * [Full and Delta Models](data_model.md)
   * [Multiple Values](data_model_multiple_values.md)
   * [Metadata](data_model_metadata.md)
+  * [Sources](sources.md)
 * [API]()
   * [URLs and Ports](urls_ports.md)
   * [REST API](rest_api.md)
