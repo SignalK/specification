@@ -269,7 +269,7 @@
           "$ref": "../definitions.json#/definitions/position"
         },
         "startLinePort": {
-          "description": "Position of starboard start mark",
+          "description": "Position of port start mark",
           "$ref": "../definitions.json#/definitions/position"
         },
         "distanceStartline": {
@@ -302,10 +302,37 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "s"
         },
-        "distanceLayline": {
-          "description": "The current distance to the layline",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "m"
+        "layline": {
+          "type": "object",
+          "description": "The layline crossing the current course",
+          "properties":{
+            "distance":{
+              "description": "The current distance to the layline",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m"
+            },
+            "time":{
+              "description": "The time to the layline at current speed and heading",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "s"
+            }
+          }
+        },
+        "oppositeLayline": {
+          "type": "object",
+          "description": "The layline parallell to current course",
+          "properties":{
+            "distance":{
+              "description": "The current distance to the layline",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m"
+            },
+            "time":{
+              "description": "The time to the layline at current speed and heading",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "s"
+            }
+          }
         }
       }
     },
