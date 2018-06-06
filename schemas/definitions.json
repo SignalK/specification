@@ -580,7 +580,6 @@
           "type": "object",
           "title": "Scale to display.",
           "description": "Gives details of the display scale against which the value should be displayed",
-          "required": ["lower", "upper"],
           "properties": {
             "lower": {
               "type": "number",
@@ -593,11 +592,78 @@
               "title": "Display upper limit.",
               "description": "The suggested upper limit for the pointer (or equivalent) on the display",
               "example": 4000
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "linear",
+                "logarithmic",
+                "squareroot",
+                "power"
+              ],
+              "title": "Scale type used on the display.",
+              "description": "The suggested type of scale to use",
+              "example": "logarithmic"
+            },
+            "power": {
+              "type": "number",
+              "title": "Selected power for display scale",
+              "description": "The power to use when the displayScale/type is set to 'power'. Can be any numeric value except zero.",
+              "example": 2
             }
           },
-          "additionalProperties": false
+          "oneOf": [
+            {
+              "required": [
+                "lower",
+                "upper"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {}
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "linear",
+                    "squareroot",
+                    "logarithmic"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "required": [
+                "lower",
+                "upper",
+                "type",
+                "power"
+              ],
+              "properties": {
+                "lower": {},
+                "upper": {},
+                "type": {
+                  "enum": [
+                    "power"
+                  ]
+                },
+                "power": {}
+              },
+              "additionalProperties": false
+            }
+          ]
         },
-        
         "units": {
           "type": "string",
           "title": "units schema.",

@@ -16,7 +16,7 @@ saves time and prevents costly or even disastrous mistakes from occurring due to
 ## Metadata for a Data Value
 
 The `meta` object exists at the same level as `value` and `$source` in each key in the Signal K data model.
- 
+
 [>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
 ```json
 {
@@ -27,15 +27,16 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   "gaugeType": "analog",
   "units": "Hz",
   "timeout": 1,
+  "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
   "alertMethod": ["visual"],
   "warnMethod": ["visual"],
   "alarmMethod": ["sound", "visual"],
   "emergencyMethod": ["sound", "visual"],
   "zones": [
-    {"upper": 50, "state": "alarm", "message": "Stopped or very slow"},
-    {"lower": 50, "upper": 300, "state": "normal"},
-    {"lower": 300, "upper": 350, "state": "warn", "message": "Approaching maximum"},
-    {"lower": 350, "state": "alarm", "message": "Exceeding maximum"}
+    {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
+    {"lower": 4, "upper": 60, "state": "normal"},
+    {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
+    {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
   ]
 }
 ```
@@ -45,7 +46,28 @@ few different options for the consumer to use to display the name of the measure
 of measure. It also specifies a recommended display format via `gaugeType`.
 
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
-in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05. The `alertMethod`, `warnMethod`, `alarmMethod` and
+in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
+
+The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
+values. The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
+scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
+scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
+`"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
+0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear. In using these scales the type defines the
+function which is applied to all values in order to calculate % scale deflection of the pointer/needle/plot:
+
+| Type        | Formula for % deflection             |
+| ----------- | ------------------------------------ |
+| linear      | (V - L)/(U - L)                      |
+| logarithmic | (log(V) - log(L) / (log(U) - log(L)) |
+| squareroot  | (√V - √L) / (√U - √L)                |
+| power (P)   | (Vᴾ - Lᴾ) / (Uᴾ - Lᴾ)                |
+
+Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and P = power
+
+Note that on a logarithmic scale neither L nor U can be zero. 
+
+The `alertMethod`, `warnMethod`, `alarmMethod` and
 `emergencyMethod` properties tell the consumer how it should respond to an abnormal data condition. Presently the
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
