@@ -4,7 +4,6 @@
   "id": "https://signalk.org/specification/1.0.0/schemas/groups/sails.json#",
   "description": "An object describing the vessels sails if the vessel is a sailboat.",
   "title": "sails",
-
   "properties": {
     "inventory": {
       "type": "object",
@@ -13,20 +12,23 @@
         "(^[a-zA-Z0-9]+$)": {
           "type": "object",
           "description": "'sail' data type.",
-          "required": ["name", "type", "active", "area"],
+          "required": [
+            "name",
+            "type",
+            "active",
+            "area"
+          ],
           "properties": {
             "name": {
               "type": "string",
               "description": "An unique identifier by which the crew identifies a sail",
               "example": "J1"
             },
-
             "type": {
               "type": "string",
               "description": "The type of sail",
               "example": "Genaker"
             },
-
             "material": {
               "type": "string",
               "description": "The material the sail is made from (optional)",
@@ -58,6 +60,24 @@
               "units": "m/s",
               "default": 666
             },
+            "reducedState": {
+              "properties": {
+                "reduced": {
+                  "type": "boolean",
+                  "description": "describes whether the sail is reduced or not"
+                },
+                "reefs": {
+                  "type": "number",
+                  "description": "Number of reefs set, 0 means full",
+                  "default": 0
+                },
+                "furledRatio": {
+                  "type": "number",
+                  "description": "Ratio of sail reduction, 0 means full and 1 is completely furled in",
+                  "default": 0
+                }
+              }
+            },
             "timestamp": {
               "$ref": "../definitions.json#/definitions/timestamp"
             },
@@ -74,7 +94,6 @@
         }
       }
     },
-
     "area": {
       "type": "object",
       "description": "An object containing information about the vessels' sails.",
@@ -84,7 +103,6 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m2"
         },
-
         "active": {
           "description": "The total area of the sails currently in use on the vessel",
           "$ref": "../definitions.json#/definitions/numberValue",
