@@ -45,6 +45,8 @@ In the example `meta` object above, a definition is provided for an analog RPM g
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure. It also specifies a recommended display format via `gaugeType`.
 
+###`timeout`
+
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
@@ -72,12 +74,45 @@ The `alertMethod`, `warnMethod`, `alarmMethod` and
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
 
+###`alertMethod`, etc
+The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
+abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
+array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.
+
+###`zones`
 The last property in the `meta` object is the `zones` array. This provides a series of hints to the consumer which can
-be used to properly set a range on a display gauge and also color sectors of the gauge to indicate nominal or dangerous
+be used to properly set a range on a display gauge and also color sectors of a gauge to indicate normal or dangerous
 operating conditions. It also tells the consumer which state the data is in for a given range. Combined with the alert
 method properties, all Signal K consumers can react the same way to a given state.
 
-It is also possible for a Signal K server to use this information to monitor any data which has a `meta` object and
+The possible states in ascending order of severity are:
+
+| State/Zone | Description |
+|------------|--------|--------|
+| nominal    | this is a special type of normal state/zone (see below)        |
+| normal     | the normal operating range for the value in question (default)            |
+| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
+| warn       | Indicates a condition that requires immediate attention but not immediate action |
+| alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
+| emergency  | the value indicates a life-threatening condition |
+
+`nominal`: A example use of this is for engine monitoring eg. coolant temperature where there is a normal (no warnings)
+(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at
+all (typically remains vertical or horizontal). This is really useful if you have many gauges (multiple motors with multiple
+sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
+be relevant if the gauge/display design permits it.
+
+The `upper` and `lower` values in the zones do not need to be contiguous, they don't have to both be present in a zone, nor do
+they need to be within the bounds of the `upper` and `lower` specified in `displayScale`. When they are outside of the
+`displayScale` range they will still give rise to alerts. Both `upper` and `lower` values are considered to be inclusive.
+
+If zones overlap each other the state/zone with the highest severity will take precedence. This is true for both alerts and
+gauge/display rendering. Any part of the range which is not explicitly within a zone is considered to be `normal` (the default).
+As such, zones with a state of `normal` have no effect and their removal would result in no changes to either displays or alerts.
+
+There can be multiple zones with the same `state`, for example if a different message is required, or if they are on different parts of the scale.
+
+Signal K servers will use the `zone` information to monitor any data which has a `meta` object and
 raise a generic alarm event. See the section on [Alarm Handling](notifications.md) for more.
 
 ## Implicit Metadata
