@@ -18,6 +18,16 @@
               "gaugeType": "analog",
               "units": "Hz",
               "timeout": 1,
+              "displayUnits": {
+                "display": "RPM",
+                "description": "Revolutions per Minute",
+                "factor": 60.0
+              },
+              "displayScale": {
+                "lower": 0,
+                "upper": 75,
+                "type": "linear"
+              },
               "alertMethod": [
                 "visual"
               ],
@@ -34,23 +44,23 @@
               ],
               "zones": [
                 {
-                  "upper": 50,
+                  "upper": 4,
                   "state": "alarm",
                   "message": "Stopped or very slow"
                 },
                 {
-                  "lower": 50,
-                  "upper": 300,
+                  "lower": 4,
+                  "upper": 60,
                   "state": "normal"
                 },
                 {
-                  "lower": 300,
-                  "upper": 350,
+                  "lower": 60,
+                  "upper": 65,
                   "state": "warn",
                   "message": "Approaching maximum"
                 },
                 {
-                  "lower": 350,
+                  "lower": 65,
                   "state": "alarm",
                   "message": "Exceeding maximum"
                 }

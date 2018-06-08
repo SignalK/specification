@@ -671,6 +671,51 @@
           "description": "The (derived) SI unit of this value.",
           "example": "m/s"
         },
+        "displayUnits": {
+          "type": "object",
+          "title": "Display Units",
+          "description": "The preferred units to be used for displaying this value",
+          "required": ["display"],
+          "properties": {
+            "display": {
+              "type": "string",
+              "title": "Units display symbol",
+              "description": "Units symbol or abbreviation to display",
+              "example": "°F"
+            },
+            "description": {
+              "type": "string", 
+              "title": "Units name",
+              "description": "Units description, expansion of units symbol",
+              "example": "Degrees Fahrenheit"
+            },
+            "factor": {
+              "type": "number",
+              "title": "Conversion Factor from SI units",
+              "description": "The factor to be applied in order to convert SI units to display units. ie. displayValue = (SIValue ^ exponent) * factor + offset",
+              "default": 1.0
+            },
+            "offset": {
+              "type": "number",
+              "title": "Conversion offset from SI units",
+              "description": "The offset to be applied after applying the factor to convert SI units to display units. ie. displayValue = (SIValue ^ exponent) * factor + offset",
+              "default": 0.0
+            },
+            "exponent": {
+              "type": "number",
+              "title": "Conversion exponent applied to SI units",
+              "description": "The exponent to be applied to convert SI units to display units. ie. displayValue = (SIValue ^ exponent) * factor + offset",
+              "default": 1.0
+            },
+            "log10": {
+              "type": "boolean",
+              "title": "Indicates if conversion formula is logarithmic",
+              "description": "If true the conversion from SI units is logarithmic ie. displayValue = log10(SIValue ^ exponent) * factor + offset",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
         "timeout": {
           "type": "number",
           "title": "Timeout",
