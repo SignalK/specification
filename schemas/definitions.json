@@ -570,13 +570,6 @@
           "example": ["stopped", "started", "unusable"]
         },
 
-        "gaugeType": {
-          "type": "string",
-          "title": "gaugeType schema.",
-          "description": "gaugeType is deprecated. The type of gauge necessary to display this value.",
-          "example": "sparkline"
-        },
-
         "displayScale": {
           "type": "object",
           "title": "Scale to display.",
