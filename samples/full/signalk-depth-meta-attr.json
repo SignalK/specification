@@ -18,7 +18,6 @@
 		                    "displayName": "Depth Below Keel",
 		                    "longName": "Depth Below Keel in Meters",
 		                    "shortName": "DBK",
-		                    "gaugeType": "sparkLine",
 		                    "units": "Meters (m)",
 		                    "warnMethod": ["visual"],
 		                    "alarmMethod": ["sound"],

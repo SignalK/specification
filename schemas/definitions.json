@@ -573,7 +573,7 @@
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
-          "description": "The type of gauge necessary to display this value.",
+          "description": "gaugeType is deprecated. The type of gauge necessary to display this value.",
           "example": "sparkline"
         },
 

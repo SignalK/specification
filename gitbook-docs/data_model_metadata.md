@@ -24,7 +24,6 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   "longName": "Engine 2 Tachometer (x60 for RPM)",
   "shortName": "Revs",
   "description": "Revolutions in HZ, measured via the W terminal on the alternator",
-  "gaugeType": "analog",
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
@@ -43,7 +42,7 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
 [<]: #
 In the example `meta` object above, a definition is provided for an analog RPM gauge for the port engine. It provides a
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
-of measure. It also specifies a recommended display format via `gaugeType`.
+of measure.
 
 ###`timeout`
 

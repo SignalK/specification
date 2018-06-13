@@ -15,7 +15,6 @@
               "longName": "Engine 2 Tachometer (x60 for RPM)",
               "shortName": "Revs",
               "description": "Revolutions in HZ, measured via the W terminal on the alternator",
-              "gaugeType": "analog",
               "units": "Hz",
               "timeout": 1,
               "alertMethod": [
