@@ -1,0 +1,51 @@
+{
+  "self": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9",
+  "vessels": {
+    "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "propulsion": {
+        "main": {
+          "runTime": {
+            "value": 9246240,
+            "timestamp": "2016-04-07T13:57:53.621Z",
+            "$source": "nmea1.II",
+            "meta": {
+              "description": "Total running time for engine (Engine Hours in seconds)",
+              "displayName": "Hours",
+              "longName": "Engine Hours",
+              "units": "s",
+              "displayUnits": {
+                "display": "hrs",
+                "description": "Hours",
+                "factor": 3600
+              }
+            }
+          },
+          "coolantTemperature": {
+            "value": 358.3,
+            "timestamp": "2016-04-07T13:57:53.613Z",
+            "$source": "nmea1.II",
+            "meta": {
+              "description": "Coolant temperature",
+              "displayName": "Temp",
+              "longName": "Coolant Temperature",
+              "units": "K",
+              "displayUnits": {
+                "display": "°F",
+                "description": "Fahrenheit",
+                "factor": 1.8,
+                "offset": -459.67
+              },
+              "displayScale": {
+                "lower": 310.928,
+                "upper": 394.261,
+                "type": "linear"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

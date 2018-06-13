@@ -26,6 +26,11 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   "description": "Revolutions in HZ, measured via the W terminal on the alternator",
   "units": "Hz",
   "timeout": 1,
+  "displayUnits": {
+    "display": "RPM",
+    "description": "Revolutions per Minute",
+    "factor": 60
+  },
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
   "alertMethod": ["visual"],
   "warnMethod": ["visual"],
@@ -49,8 +54,46 @@ of measure.
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
+###`displayUnits`
+
+The `displayUnits` object provides information regarding the recommended Units to be used when displaying this value. The
+method of conversion from the SI unit the value is provided in, to the value to be displayed is provided by four properties:
+`factor`, `offset`, `exponent` and `log10`. None of these are required and the values to be assumed for each when they are
+not present are `1.0`, `0.0`, `1.0` and `false` respectively.
+
+For example:
+
+[>]: # (mdpInsert ```json fsnip ../samples/full/docs-displayUnits.json --snip $..coolantTemperature.meta --prettify 2 85)
+```json
+{
+  "description": "Coolant temperature",
+  "displayName": "Temp",
+  "longName": "Coolant Temperature",
+  "units": "K",
+  "displayUnits": {
+    "display": "°F",
+    "description": "Fahrenheit",
+    "factor": 1.8,
+    "offset": -459.67
+  }
+}
+```
+[<]: #
+
+When `log10` is false the conversion formula is: displayValue = (SIValue ^ exponent) \* factor + offset. If `log10` is true
+the conversion formula is: displayValue = log10(SIValue ^ exponent) \* factor + offset.
+
+There is no list of approved or possible displayUnits, therefore any displayUnit can be accomodated by the server by providing
+appropriate conversion values within `displayUnits`.
+
+The consumer may either use the displayUnits as specified in this section by the server (effectively a vessel wide unit to
+display), or it may use any other display unit (allowing consumer level display units to be specified).
+
+###`displayScale`
+
 The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
-values. The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
+values. The `lower` and `upper` indicate the extent of the scale to be shown (stated in SI units). Some values are better
+shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
 scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
@@ -73,7 +116,7 @@ The `alertMethod`, `warnMethod`, `alarmMethod` and
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
 
-###`alertMethod`, etc
+###`alertMethod, etc`
 The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
 abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
 array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.

@@ -21,6 +21,11 @@
           "meta": {
             "description": "Course over ground (true)",
             "units": "rad",
+            "displayUnits": {
+              "display": "°",
+              "description": "degrees",
+              "factor": 57.2957795131
+            },
             "zones": [
               {
                 "lower": 260,
