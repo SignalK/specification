@@ -20,10 +20,10 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
 [>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
 ```json
 {
+  "description": "Engine revolutions (x60 for RPM)",
   "displayName": "Port Tachometer",
-  "longName": "Engine 2 Tachometer (x60 for RPM)",
-  "shortName": "Revs",
-  "description": "Revolutions in HZ, measured via the W terminal on the alternator",
+  "longName": "Engine 2 Tachometer",
+  "shortName": "Engine 2 Tacho",
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
@@ -43,6 +43,21 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
 In the example `meta` object above, a definition is provided for an analog RPM gauge for the port engine. It provides a
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure.
+
+###`description`
+
+This is the description for the Signal K path and must always be the same as the description property within the Signal K
+Schema for that path.
+
+###`displayName`
+
+This is used on or near any display or gauge which shows the data. Units can change and are presented separately, therefore no
+indication of units should be included in displayName. eg. "Port"
+
+###`longName` `shortName`
+
+These are human readable names for the particular instance of this value. Presented to users to identify the value. The short
+version may be used by consumers where space is at a premium. As with displayName units should not be included.
 
 ###`timeout`
 
@@ -134,7 +149,7 @@ it is likely that this will become a mandatory requirement for the server.
 }
 ```
 
-See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json)
+See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/1.0.4/keyswithmetadata.json)
 
 ## Default Configuration
 

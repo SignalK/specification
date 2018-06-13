@@ -16,7 +16,7 @@
 		                "meta": {
 		                    "description": "Depth below keel",
 		                    "displayName": "Depth Below Keel",
-		                    "longName": "Depth Below Keel in Meters",
+		                    "longName": "Depth Below Keel",
 		                    "shortName": "DBK",
 		                    "units": "Meters (m)",
 		                    "warnMethod": ["visual"],
