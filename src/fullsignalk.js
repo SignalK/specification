@@ -220,13 +220,14 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
       if (!previous[pathPart]) {
         previous[pathPart] = {};
+      }
+      if ( i === splitPath.length-1) {
         let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
-        if (meta && i === splitPath.length-1) {
+        if ( meta ) {
           //ignore properties from keyswithmetadata.json
           meta = JSON.parse(JSON.stringify(meta))
           delete meta.properties
-          
-          previous[pathPart].meta = _.merge(previous[pathPart].meta, meta);
+          previous[pathPart].meta = _.merge(previous[pathPart].meta || {}, meta);
         }
       }
       return previous[pathPart];
