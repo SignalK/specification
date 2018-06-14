@@ -18,7 +18,14 @@
       "description": "The updates",
       "items": {
         "type": "object",
-        "required": ["values"],
+        "oneOf": [
+          {
+            "required": ["values"]
+          },
+          {
+            "required": ["meta"]
+          }
+        ],
 
         "not": {
           "allOf": [{
@@ -39,6 +46,33 @@
             "$ref": "./definitions.json#/definitions/timestamp"
           },
           "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "value"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "object",
+                    "boolean",
+                    "null"
+                  ],
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "meta": {
             "type": "array",
             "items": {
               "type": "object",
