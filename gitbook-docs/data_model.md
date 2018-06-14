@@ -263,6 +263,32 @@ the value should be merged to the full model mounted where the delta‘s context
   ]
 }
 ```
+## Delta Format For Metadata
+
+Metadata can also be specified via a delta. The delta is very similiar to the `values` deltas above, but instead of having `values` key, it will have a `meta` key. Note that a client could multiple meta deltas for any given path from different sources, so the client merge the meta information.
+
+```json
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "source": {...},
+      "timestamp": "2014-08-15T19:02:31.507Z",
+      "meta":[
+        {
+          "path": "environment.wind.speedApparent",
+          "value":
+            {
+              "units": "m/s",
+              "description": "Apparent wind speed"
+            }
+        }
+      ]
+    }
+  ]
+}
+```
+
 [<]: #
 ## Data Quality
 
