@@ -277,7 +277,7 @@
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
               "value": 14.52
-            },            
+            },
             "current": {
               "timestamp": "2014-08-15T19:00:15.402Z",
               "$source": "foo.bar",
@@ -287,34 +287,50 @@
         },
         "ac": {
           "utility1": {
-              "name": "Single phase shore power",
-            "phase": {
-              "single": {
-                "frequency": {
-                  "timestamp": "2014-08-15T19:00:15.402Z",
-                  "$source": "foo.bar",
-                  "value": 50
-                },
-                "current": {
-                  "timestamp": "2014-08-15T19:00:15.402Z",
-                  "$source": "foo.bar",
-                  "value": 0.12
-                },
-                "lineLineVoltage": {
-                  "timestamp": "2014-08-15T19:00:15.402Z",
-                  "$source": "foo.bar",
-                  "value": 230
-                },
-                "lineNeutralVoltage": {
-                  "timestamp": "2014-08-15T19:00:15.402Z",
-                  "$source": "foo.bar",
-                  "value": 230
-                }
-              }
+            "name": "Single phase shore power",
+            "frequency": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 50
+            },
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 0.12
+            },
+            "lineLineVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 230
+            },
+            "lineNeutralVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 230
             }
           },
           "utility3": {
             "name": "Three phase shore power",
+            "frequency": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 50
+            },
+            "current": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 0.12
+            },
+            "lineLineVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 400
+            },
+            "lineNeutralVoltage": {
+              "timestamp": "2014-08-15T19:00:15.402Z",
+              "$source": "foo.bar",
+              "value": 230
+            },
             "phase": {
               "A": {
                 "frequency": {
