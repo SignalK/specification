@@ -87,13 +87,7 @@
                   "example": "navigation.courseOverGroundMagnetic"
                 },
                 "value": {
-                  "type": [
-                    "string",
-                    "number",
-                    "object",
-                    "boolean",
-                    "null"
-                  ],
+                  "$ref": "./definitions.json#/definitions/meta"
                   "additionalProperties": true
                 }
               }
