@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.0.0/schemas/delta.json#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/hello.json#",
   "title": "SignalK Websockets Hello message schema",
   "description": "Schema for defining the hello message passed from the server to a client following succesful websocket connection",
   "required": [
@@ -34,7 +34,8 @@
         },
         {
           "pattern": "^aton.(urn:mrn:(imo:mmsi:99[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
-        },{
+        },
+        {
           "pattern": "^sar.(urn:mrn:(imo:mmsi:97[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
         }
       ]
