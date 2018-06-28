@@ -94,7 +94,7 @@ following process:
 
 * Query for Signal K services using mDNS
 * Connect to the host and port advertised as 'signalk-http' via HTTP (e.g. `http://10.1.1.40:80`)
-* Per the [Ports, Urls and Versioning](urls_etc.md) section, make a GET request for `/signalk` to retrieve a JSON
+* Per the [Urls and Ports](urls_ports.md) section, make a GET request for `/signalk` to retrieve a JSON
   object containing an `endpoints` JSON object
 * Make further [REST calls](rest_api.md) for more specific data, or open a websocket connection to [start
   streaming](streaming_api.md) updates.
