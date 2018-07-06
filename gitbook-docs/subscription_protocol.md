@@ -60,7 +60,7 @@ To subscribe to the required criteria send a suitable subscribe message:
 [>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol1.json --prettify)
 ```json
 {
-  "context": "vessels.self",
+  "context": "self",
   "subscribe": [
     {
       "path": "navigation.speedThroughWater",
@@ -128,7 +128,7 @@ This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcr
 [>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol2.json --prettify)
 ```json
 {
-  "context": "vessels.self",
+  "context": "self",
   "subscribe": [
     {
       "path": "environment.depth.belowTransducer"
@@ -170,7 +170,7 @@ vessels, sent every 2 minutes (120 seconds) even if no data has been updated.
 [>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol4.json --prettify)
 ```json
 {
-  "context": "vessels.230029970",
+  "context": "vessels.urn:mrn:imo:mmsi:230029970",
   "subscribe": [
     {
       "path": "navigation.position",

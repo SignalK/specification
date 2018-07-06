@@ -1,5 +1,5 @@
 {
-  "context": "vessels.230029970",
+  "context": "vessels.urn:mrn:imo:mmsi:230029970",
   "subscribe": [
     {
       "path": "navigation.position",

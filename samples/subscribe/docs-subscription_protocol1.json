@@ -1,5 +1,5 @@
 {
-  "context": "vessels.self",
+  "context": "self",
   "subscribe": [
     {
       "path": "navigation.speedThroughWater",
