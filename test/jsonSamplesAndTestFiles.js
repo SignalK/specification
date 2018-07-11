@@ -13,6 +13,15 @@ describe('Samples', function() {
     })
   });
   
+  describe('hello', function() {
+    getFiles('./samples/hello').forEach(function(file) {
+      it(file, function() {
+        assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+        require('../samples/hello/' + file).should.be.validSignalKHello;
+      });
+    })
+  });
+  
   describe('delta', function() {
     getFiles('./samples/delta').forEach(function(file) {
       it(file, function() {
@@ -86,6 +95,25 @@ describe('Unit tests', function() {
         it(file, function () {
           assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
           require('../test/data/discovery-invalid/' + file).should.not.be.validDiscovery;
+        });
+      })
+    });
+  });
+
+  describe('hello', function () {
+    describe('valid', function () {
+      getFiles('./test/data/hello-valid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/hello-valid/' + file).should.be.validSignalKHello;
+        });
+      })
+    });
+    describe('invalid', function () {
+      getFiles('./test/data/hello-invalid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/hello-invalid/' + file).should.not.be.validSignalKHello;
         });
       })
     });

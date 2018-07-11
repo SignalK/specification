@@ -1,0 +1,10 @@
+{
+    "name": "foobar marine server",
+    "version": "1.0.4",
+    "timestamp": "2018-06-21T15:09:16.704Z",
+    "self": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+    "roles": [
+        "master",
+        "main"
+    ]
+}

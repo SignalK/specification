@@ -29,6 +29,8 @@ The server MAY provide the following values:
 * `swname` is the name of the Signal K server software, e.g. signalk-server-node
 * `swvers` is the version of the Signal K server software
 
+`swname`, `self` amd `roles` MUST be the same values as provided by the `name`, `self` and `roles` properties within the [Websocket hello message](streaming_api.md) (if implemented).
+
 An example DNS-SD record set is shown below.
 
 ```
@@ -38,7 +40,7 @@ Service data for service 'signalk-http' of type '_signalk-http._tcp' in domain '
     TXT data: [
         'txtvers=1',
         'roles=master,main',
-        'self=urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
+        'self=vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d',
         'swname=signalk-server',
         'swvers=0.1.23'
         ]

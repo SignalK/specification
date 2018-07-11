@@ -140,6 +140,15 @@ function chaiAsPromised(chai, utils) {
     }
     checkValidFullSignalK.call(this);
   });
+  Assertion.addProperty('validSignalKHello', function () {
+    var result = validateWithSchema(this._obj, 'hello.json');
+    var message = result.error ? result.error.message + ':' + result.error.dataPath : '';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to be valid SignalK hello message'
+      );
+  });
   Assertion.addProperty('validSignalKDelta', function () {
     var result = validateDelta(this._obj);
     var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
