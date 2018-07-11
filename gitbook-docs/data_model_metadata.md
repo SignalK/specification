@@ -21,9 +21,9 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
 ```json
 {
   "displayName": "Port Tachometer",
-  "longName": "Engine 2 Tachometer (x60 for RPM)",
-  "shortName": "Revs",
-  "description": "Revolutions in HZ, measured via the W terminal on the alternator",
+  "longName": "Engine 2 Tachometer",
+  "shortName": "Tacho",
+  "description": "Engine revolutions (x60 for RPM)",
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
