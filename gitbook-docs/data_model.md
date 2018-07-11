@@ -159,6 +159,7 @@ An example delta message is presented below.
       "source": {
         "label": "N2000-01",
         "type": "NMEA2000",
+        "name": 1398271,
         "src": "017",
         "pgn": 127488
       },
@@ -205,6 +206,7 @@ property and an array of `values` containing one or more value objects.
   "source": {
     "label": "N2000-01",
     "type": "NMEA2000",
+    "name": 1398271,
     "src": "115",
     "pgn": 128267
   },

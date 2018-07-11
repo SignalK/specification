@@ -111,6 +111,7 @@ both the first and second sources. The initial source‘s data will continue to 
       "2": {
         "n2k": {
           "src": "2",
+          "name": 1398271,
           "pgns": {
             "128267": "2017-04-03T06:14:05.221Z"
           }
@@ -152,6 +153,7 @@ does not include the `values` path, the case above looks like:
         "label": "actisense",
         "type": "NMEA2000",
         "src": "115",
+        "name": 1398271,
         "pgn": 128267
       },
       "timestamp": "2017-04-03T06:14:04.451Z",

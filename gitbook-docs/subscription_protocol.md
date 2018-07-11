@@ -16,6 +16,7 @@ log value changes.
         "label": "N2000-01",
         "type": "NMEA2000",
         "src": "115",
+        "name": 1398271,
         "pgn": 128275
       },
       "values": [
