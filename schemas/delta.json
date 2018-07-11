@@ -20,13 +20,21 @@
         "type": "object",
         "oneOf": [
           {
-            "required": ["values"]
+            "required": ["values"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "values": {}},
+            "additionalProperties": false
           },
           {
-            "required": ["meta"]
+            "required": ["meta"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "meta": {}},
+            "additionalProperties": false
+          },
+          {
+            "required": ["values", "meta"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "values": {}, "meta": {}},
+            "additionalProperties": false
           }
         ],
-
         "not": {
           "allOf": [{
             "required": ["source"]
