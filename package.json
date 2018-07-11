@@ -4,10 +4,8 @@
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
-    "test": "babel src --out-dir dist --copy-files && mocha",
-    "prepublish": "npm run js:dist && npm run docs:keys",
-    "js:watch": "babel --watch src --out-dir dist --copy-files",
-    "js:dist": "babel src --out-dir dist --copy-files",
+    "test": "mocha",
+    "prepublish": "npm run docs:keys",
     "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
@@ -64,6 +62,7 @@
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
     "replace-in-file": "^3.1.0",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "@bkp7/schema-js-api": "0.0.5"
   }
 }
