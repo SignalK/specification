@@ -1,0 +1,19 @@
+{
+  "context": "bar",
+  "updates": [{
+	"source": {
+	  "label": "schema"
+	},
+	"timestamp": "2013-10-08T15:47:28.263Z",
+	"meta": [{
+	  "path": "a.b.c",
+	  "value": {
+            "units": "m"
+          }
+        }],
+        "values": [{
+	  "path": "a.b.c",
+	  "value": 1234
+	}]
+  }]
+}
