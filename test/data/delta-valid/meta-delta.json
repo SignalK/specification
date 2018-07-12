@@ -8,6 +8,7 @@
 	"meta": [{
 	  "path": "a.b.c",
 	  "value": {
+	          "description": "...",
             "units": "m"
           }
 	}]
