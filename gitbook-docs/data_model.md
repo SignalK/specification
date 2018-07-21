@@ -8,7 +8,7 @@ transmitted as UTF-8 JSON.
 ## Full Format
 
 The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
-Signal K node, which in the case of a Signal K server could me many hundreds of data points.
+Signal K node, which in the case of a Signal K server could be many hundreds of data points.
 
 [>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model.json)
 ```json
@@ -263,32 +263,42 @@ the value should be merged to the full model mounted where the delta‘s context
   ]
 }
 ```
+[<]: #
 ## Delta Format For Metadata
 
-Metadata can also be specified via a delta. The delta is very similiar to the `values` deltas above, but instead of having `values` key, it will have a `meta` key. Note that a client could multiple meta deltas for any given path from different sources, so the client merge the meta information.
+Metadata can also be updated via a delta within the `meta` key.
 
+Since meta data is not often updated it is only sent when there has been a change. See [Subscription Protocol](subscription_protocol.md) for details.
+
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model_meta_deltas.json --prettify 2 20)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
   "updates": [
     {
-      "source": {...},
       "timestamp": "2014-08-15T19:02:31.507Z",
-      "meta":[
+      "meta": [
         {
           "path": "environment.wind.speedApparent",
-          "value":
-            {
-              "units": "m/s",
-              "description": "Apparent wind speed"
-            }
+          "value": {
+            "units": "m/s",
+            "description": "Apparent wind speed",
+            "displayName": "Apparent Wind Speed",
+            "shortName": "AWS",
+            "zones": [
+              {
+                "upper": 15.4333,
+                "state": "warn",
+                "message": "high wind speed"
+              }
+            ]
+          }
         }
       ]
     }
   ]
 }
 ```
-
 [<]: #
 ## Data Quality
 
