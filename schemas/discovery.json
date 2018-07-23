@@ -49,8 +49,8 @@
           "type": "string"
         },
         "version": {
-          "description": "The version of this server",
-          "$ref": "definitions.json#/definitions/version"
+          "description": "The version of this server (not limited to signalk versioning rules).",
+          "type": "string"
         }
       }
     }

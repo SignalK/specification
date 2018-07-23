@@ -20,10 +20,10 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
 [>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
 ```json
 {
-  "description": "Engine revolutions (x60 for RPM)",
   "displayName": "Port Tachometer",
   "longName": "Engine 2 Tachometer",
-  "shortName": "Engine 2 Tacho",
+  "shortName": "Tacho",
+  "description": "Engine revolutions (x60 for RPM)",
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
@@ -149,7 +149,7 @@ it is likely that this will become a mandatory requirement for the server.
 }
 ```
 
-See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/1.0.4/keyswithmetadata.json)
+See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/_version_/keyswithmetadata.json)
 
 ## Default Configuration
 

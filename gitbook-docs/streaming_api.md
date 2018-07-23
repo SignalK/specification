@@ -18,12 +18,35 @@ See [Subscription Protocol](subscription_protocol.md) for more details.
 
 ## Connection Hello
 
-Upon connection a 'hello' message is sent as follows:
+Upon connection the server MUST send a 'hello' JSON message, for example:
 
+[>]: # (mdpInsert ```json cat ../samples/hello/docs-hello.json)
 ```json
 {
-  "version": "1.1.2",
-  "timestamp": "2015-04-13T01:13:50.524Z",
-  "self": "123456789"
+    "name": "foobar marine server",
+    "version": "1.0.4",
+    "timestamp": "2018-06-21T15:09:16.704Z",
+    "self": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+    "roles": [
+        "master",
+        "main"
+    ]
 }
 ```
+[<]: #
+This response is defined by the `hello.json` schema.
+
+The server MUST provide:
+- `roles` which specifies which roles the server is capable of providing. See [roles](connection.md#roles) for details about possible server roles.
+- `version` which specifies the version of the SignalK schema and APIs that the server is using. See [versioning](versioning.md) for details about `version` strings.
+
+The server SHOULD provide:
+- `timestamp` but only if the server is equipped with a time source and it has been set.
+
+The server MAY provide:
+- `self` is the unique identifier of the vessel using the URN format specified for the uuid field in the Signal K schema. It may also use the URN format specified for the mmsi field in the Signal K schema if it exists. This is only provided if the server relates to a specific vessel, aircraft, aid to navigation or sar.
+- `name` is the name of the Signal K server software, e.g. signalk-server
+
+`name`, `self` and `roles` MUST return the same values as provided in the `swname`, `self` and `roles` properties within the [DNS-SD advertisement](connection.md) (if implemented).
+
+`version` MUST be the same value as `version` within the associated endpoints list provided by the http `GET` request to `/signalk` within the [REST API](rest_api.md) (if implemented).
