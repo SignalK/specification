@@ -9,21 +9,17 @@ configuration changes. As specified in the previous section, all URLs for intera
 Making a `GET` request to `/signalk` returns a JSON object which specifies the available Signal K endpoints and some
 information about the server. Also see [versioning](versioning.md) for details about `version` strings.
 
-[>]: # (mdpInsert ```json fsnip ../samples/discovery/docs-rest_api.json)
+[>]: # (mdpInsert ```json fsnip ../samples/discovery/docs-rest_api.json --ellipsify v3)
 ```json
 {
   "endpoints": {
     "v1": {
       "version": "1.0.0-alpha1",
-      "signalk-http": "http://localhost:3000/signalk/v1/api/",
-      "signalk-ws": "ws://localhost:3000/signalk/v1/stream"
-    },
-    "v3": {
-      "version": "3.0.0",
-      "signalk-http": "http://localhost/signalk/v3/api/",
-      "signalk-ws": "ws://localhost/signalk/v3/stream",
+      "signalk-http": "https://localhost:3000/signalk/v1/api/",
+      "signalk-ws": "ws://localhost:3000/signalk/v1/stream",
       "signalk-tcp": "tcp://localhost:8367"
-    }
+    },
+    "v3": {...}
   },
   "server": {
     "id": "signalk-server-node",
@@ -48,7 +44,16 @@ of the specification and there is no registry for id values. If providfed, the `
 as `swname` and `swvers` within the [DNS-SD advertisement](connection.md) (if implemented), and also the `id` MUST
 provide the same value as `name` within the [Websocket hello message](streaming_api.md) (if implemented).
 
-## /signalk/«version»/api/
+# v1 specification
+
+If a REST API is provided it MUST be located at `http[s]://<<host>>:[port]/signalk/v1/api/`
+If a streaming websocket is provided it MUST be located at `ws[s]://<<host>>:[port]/signalk/v1/stream`
+
+The discovery json document published by an IPv4 address should advertise IPv4 endpoints and similarly the discovery json at an IPv6 address should advertise IPv6 endpoints.
+
+Version 1 of the dicovery document does not support multiple versions of signalk on the same server, and does not support both a secure and plain endpoint for a given service. eg. the REST API can be available over http or https but not both. Version 1 consumers MUST support secure versions of the protocols.
+
+## /signalk/v1/api/
 
 **Note the trailing slash in the path**
 
@@ -56,7 +61,7 @@ The base URL MUST provide a Signal K document that is valid according to the ful
 specification]({{site.baseurl}}specification.html). The contents SHOULD be all the current values of the data items the
 server knows in the Signal K full format as specified in [Full and Delta Models](data_model.md).
 
-## /signalk/«version»/api/*
+## /signalk/v1/api/*
 
 The Signal K data SHOULD be available via the REST API. For example, `GET /signalk/v1/api/vessels` should return all
 of the data under the `vessels` container in JSON format. Likewise, `GET
