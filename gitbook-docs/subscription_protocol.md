@@ -86,7 +86,7 @@ The following are optional, included above only for example as it uses defaults 
 
 * `period=[millisecs]` becomes the transmission rate, e.g. every `period/1000` seconds. Default: 1000
 * `format=[delta|full]` specifies delta or full format. Default: delta
-* `policy=[instant|ideal|fixed]`. Default: ideal
+* `policy=[instant|ideal|fixed]`. Default: ideal. (does not apply to meta - see below)
  * `instant` means send all changes as fast as they are received, but no faster than `minPeriod`. With this policy the
      client has an immediate copy of the current state of the server.
  * `ideal` means use `instant` policy, but if no changes are received before `period`, then resend the last known
@@ -100,6 +100,13 @@ subscribes to the data it requires, and the server and/or client implementation 
 duplication as it prefers on a per connection basis. At the same time it is good practice to open the minimum
 connections necessary, for instance one WebSocket connection shared between an instrument panel with many gauges,
 rather then one WebSocket connection per gauge.
+
+## Meta data
+Meta is updated via the `meta` section within the delta message. As meta changes infrequently it is only sent when it has changed.
+
+Servers implementing the subscription model (ie. using deltas) SHOULD implement meta deltas. Where meta deltas are implemented, servers MUST only ever send full copies of the meta for a leaf, ie. they MUST NEVER send a partial meta.
+
+Upon receiving a new subscription a server MUST send the meta for each leaf subscribed to; this MAY be in the same JSON document as the values, or in a separate one prior to sending values for that leaf or leaves. Subsequently the server MUST resend the full meta for a leaf each time any item in that meta is changed. This is equivalent to the `instant` subscription for values. Therefore meta is never subscribed on an `ideal` or `fixed` policy, irrespective of the policy requested by the consumer (which applies to values only).
 
 ## Multiple value handling in subscriptions
 
