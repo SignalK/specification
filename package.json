@@ -1,6 +1,6 @@
 {
   "name": "@signalk/signalk-schema",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
@@ -47,8 +47,7 @@
     "debug": "^2.2.0",
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^3.10.1",
-    "tv4": "^1.2.7",
-    "tv4-formats": "^2.2.1"
+    "tv4": "^1.2.7"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

@@ -58,8 +58,6 @@ function getTv4() {
   tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
-  tv4.addFormat(require('tv4-formats'))
-
   return tv4;
 }
 
@@ -118,7 +116,7 @@ function chaiAsPromised(chai, utils) {
   Assertion.addProperty('validSignalKIgnoringSelf', function() {
     this._obj.self = 'urn:mrn:imo:mmsi:230099999';
     checkValidFullSignalK.call(this);
-  });  
+  });
   Assertion.addProperty('validSignalKVessel', function() {
     this._obj = {
       'vessels': {
@@ -318,12 +316,12 @@ module.exports.getAISShipTypeName = function(id) {
   const the_enum = subSchemas['design'].properties.aisShipType.allOf[1].properties.value.allOf[1].enum;
   //const the_enum = module.exports.getMetadata('vessels.foo.design.aisShipType').enum
   var res = the_enum.find(item => { return item.id  == id });
-  return res ? res.name : undefined 
+  return res ? res.name : undefined
 }
 
 
 module.exports.getAtonTypeName = function(id) {
   const the_enum = require('../schemas/aton.json').properties.atonType.allOf[1].properties.value.allOf[1].enum;
   var res = the_enum.find(item => { return item.id  == id });
-  return res ? res.name : undefined 
+  return res ? res.name : undefined
 }
