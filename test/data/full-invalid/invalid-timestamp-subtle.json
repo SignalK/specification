@@ -1,0 +1,17 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:311982330": {
+      "mmsi": "311982330",
+
+      "navigation": {
+        "courseOverGroundTrue": {
+          "$source": "sources.gps_0183_RMC",
+          "timestamp": "2015-03-06 16:57",
+          "value": 0
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": ""
+}
