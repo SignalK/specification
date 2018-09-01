@@ -7,17 +7,11 @@ pids
 *.pid
 *.seed
 
-# source files (transpiled under dist)
-src
-
 # samples
 samples
 
 # test
 test
-
-#scripts
-scripts
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
@@ -37,6 +31,3 @@ thumbs.db
 *.swp
 *~
 .vscode
-
-#Gitbook source files, original and generated
-gitbook-docs
