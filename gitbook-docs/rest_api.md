@@ -4,6 +4,8 @@ Signal K producers MAY implement an HTTP API which consumers can use to self-con
 configuration changes. As specified in the previous section, all URLs for interacting with Signal K are rooted at
 `/signalk`.
 
+A Signal K server implementing the HTTP API may support http/2.
+
 ## GET /signalk
 
 Making a `GET` request to `/signalk` returns a JSON object which specifies the available Signal K endpoints and some
