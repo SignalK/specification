@@ -48,7 +48,7 @@
     "json-schema-ref-parser": "^3.1.2",
     "lodash": "^3.10.1",
     "tv4": "^1.2.7",
-    "tv4-formats": "^2.2.1"
+    "tv4-formats": "^3.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
