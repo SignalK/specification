@@ -1,5 +1,6 @@
 Signal K Specification
 ======================
+See the [latest published version](http://signalk.org/specification/).
 
 This repository contains the (working) specification for Signal K, defined in
 JSON Schema files, tests for the schema files and assorted JavaScript utilities
