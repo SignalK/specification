@@ -21,3 +21,4 @@
 * [Appendix B: Keys Reference (Others)](otherBranches.md)
 * [Appendix C: Changelog](changelog.md)
 * [Appendix D: Versioning](versioning.md)
+* [Appendix E: Access Rwquests](access_requests.md)
