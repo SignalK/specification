@@ -2,8 +2,6 @@
 
 When a device needs to gain access to a secured Signal K server, it will use "Acceds Requests" to request and gain access to the server.
 
-This also provides the process for a server to allow new users to request access to its administration interface via a "Sign Up" link.
-
 A device could be a display, engine sensor, temperature sensor.
 
 Definitions:
@@ -19,9 +17,7 @@ The server will return a json response with a request identifier:
 
 `{"requestId":"60240a45-bbcb-46f0-8df6-c7a3e048bec0"}`
 
-A Signal K notification is sent out when this happens and In the admin ui, there is a list of devices that are requesting access:
-
-<img width="1354" alt="image" src="https://user-images.githubusercontent.com/7853683/45527333-feadec80-b7a8-11e8-8307-cebab640ea20.png">
+The server should then provide a process for an administrator to review and approve or deny the request.
 
 In the mean time, a device should poll the server using the requestId in the response above to see if it has been granted access and get the token:
 
