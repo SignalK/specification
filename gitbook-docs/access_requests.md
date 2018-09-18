@@ -41,5 +41,12 @@ $ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2
 {"status":"APPROVED","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM"}
 ```
 
+There was an error with the request:
+
+```
+$ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2a58eb
+{"status":"ERROR", "message": "A device with clientId '1234-45653-343453' has already requested access"}
+```
+
 On approval, the device would save the token in a secure way and use it when sending or requesting data. Subsequently, when a device gets an 'Access Denied' response, it should send a new request for access to get a new token.
 
