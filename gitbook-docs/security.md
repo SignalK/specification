@@ -6,7 +6,7 @@ Signal K security is based on JWT (JSON Web Token)
 
 A device or web site can login to a signalk server using  User Name a Password using a REST request.
 
-The url for the request is `/signalk/v1/login` and should be a POST with a `Content-Type` of `application/json` with the User Name and Password in the body or it can have a `Content-Type` of `application/x-www-form-urlencoded` for web based login forms.
+The url for the request is `/signalk/v1/auth/login` and should be a POST with a `Content-Type` of `application/json` with the User Name and Password in the body or it can have a `Content-Type` of `application/x-www-form-urlencoded` for web based login forms.
 
 ```json
 {
@@ -32,7 +32,7 @@ In response to invalid login information, the server will return HTTP error code
 
 Web based clients should be sure to include the `JAUTHENTICATION` cookie in all requests
 
-To logout, a web based client should send an HTTP PUT request to `/signalk/v1/logout`
+To logout, a web based client should send an HTTP PUT request to `/signalk/v1/auth/logout`
 
 ### WS clients
 
