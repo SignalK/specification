@@ -11,11 +11,15 @@ Definitions:
 ## Device Requests
 The device will send a REST request to the server:
 
-`curl -k --header "Content-Type: application/json"  --request POST --data '{"clientId":"1234-45653-343453","description": "My Awesome Sensor"}'  https://localhost:3443/access/requests`
+`curl -k --header "Content-Type: application/json"  --request POST --data '{"clientId":"1234-45653-343453","description": "My Awesome Sensor"}'  https://localhost:3443/signalk/v1/access/requests`
 
-The server will return a json response with a request identifier:
+The server will return an HTTP status code 202 and a json response with an href to check the status and get the response:
 
-`{"requestId":"60240a45-bbcb-46f0-8df6-c7a3e048bec0"}`
+```json
+{
+  "href": "/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185"
+}
+```
 
 The server should then provide a process for an administrator to review and approve or deny the request.
 
@@ -23,29 +27,45 @@ In the mean time, a device should poll the server using the requestId in the res
 
 The request is pending:
 ```
-$ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2a58eb
-{"status":"PENDING"}$ 
+curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
+  "state": "PENDING"
+}
 ```
 
 The request is denied:
 
 ```
-$ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2a58eb
-{"status":"'DENIED'"}$ 
+$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
+  "state":"COMPLETED", 
+  "result: "SUCCESS", 
+  "permission": "DENIED"
+}
 ```
 
-The request was approved:
+The request was approved: (`expirationTime` is optional)
 
 ```
-$ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2a58eb
-{"status":"APPROVED","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM"}
+$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
+  "state":"COMPLETED", 
+  "result": "SUCCESS",
+  "permission": APPROVED",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
+  "expirationTime": "2018-09-20T16:51:31.350Z"
+}
 ```
 
 There was an error with the request:
 
 ```
-$ curl -k https://localhost:3443/access/requests/ee759b2b-9051-4188-ab2d-56b97f2a58eb
-{"status":"ERROR", "message": "A device with clientId '1234-45653-343453' has already requested access"}
+$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
+  "state":"COMPLETED", 
+  "result: "INVALID", 
+  "message": "A device with clientId '1234-45653-343453' has already requested access"
+}
 ```
 
 On approval, the device would save the token in a secure way and use it when sending or requesting data. Subsequently, when a device gets an 'Access Denied' response, it should send a new request for access to get a new token.
