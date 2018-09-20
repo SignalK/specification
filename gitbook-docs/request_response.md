@@ -1,0 +1,113 @@
+# Request/Response
+
+## WS and other non-http protocols
+
+The exact format of the message for a specific request is definted elsewhere in the specification.
+
+A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server.
+
+
+A request to PUT a value:
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "put": {
+    "path": "electrical.switches.anchorLight.state",
+    "value": 1
+  }
+}
+```
+
+The server will respond with a message which includes the `requestId` and a `response` object.
+
+The response object will always include a `state` value. `state` can be `PENDING` or `COMPLETED`
+
+When the state is `COMPLETED`, the response object will contain a `result` value. `result` wil one of the following:
+
+- SUCCESS - the request was succesfull
+- FAILURE - something went wrong carrying out the request on the server side
+- INVALID - something is wrong with the clients request
+- TIMEOUT - timeout on the server side trying to carry out the request
+- NOTSUPPORTED - the server does not support the request
+- PERMISSIONDENIED - the client does not have permission to make the request
+
+The response object can optionally contain a `message`
+
+The response object may contain other data depending on the specific request being made. For example, a response to login could contain a `token`.
+
+A server may respond to a request multiple times depending on how it processes the request.
+
+When a server cannot process the request immediately, it will respond with the `state` PENDING:
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "response": {
+    "state": "PENDING"
+  }
+}
+```
+
+When processing is done, but it was not succesfull:
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "response": {
+    "state": "COMPLETED",
+    "result": "FAILURE",
+    "message": "Unable to contact the light"
+  }
+}
+```
+
+When processing completed successfully:
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "response": {
+    "state": "COMPLETED",
+    "result": "SUCCESS"
+  }
+}
+```
+
+## HTTP
+
+HTTP request use REST api semantics and the reponses are similar to the `response` object used above.
+
+One difference is that the `result` value above is translated to HTTP response codes:
+
+- SUCCESS - 200
+- PERMISSIONDENIED - 403
+- NOTSUPPORTED - 405
+- INVALID - 400 
+- FAILURE - 502 
+- TIMEOUT - 504
+
+When a request is PENDING, an HTTP 202 (Acepted) code will be returned and the body will include an `href` to use to check the status of the request.
+
+HTTP response code 202
+```json
+{
+  "href": "/signalk/v1/api/actions/12567"  
+}
+```
+
+The contents of message when checking the status will include the values defined aboe for the `result` object. And may also include extra information related to the request.
+
+For example, the result of a PUT request:
+```json
+{
+   "path" : "steering.autopilot.target.headingTrue",
+   "source": "actisense.204",
+   "user": "john@smith.com",
+   "requestedValue" : 1.57,
+   "startTime" : "2018-02-27T20:59:21.868Z",
+   "endTime" : "2018-02-27T20:59:41.871Z",
+   "state": "COMPLETED",
+   "result": "SUCCESS"
+}
+```
