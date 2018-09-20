@@ -2,6 +2,8 @@
 
 PUT requestes are sent to a server to request a change to a value. For example, a client would use PUT to switch the anchor light on or off, change the heading of the autopilot, or set position of the anchor.
 
+See [Request/Response](request_response.md) for more details on request/response in Signal K.
+
 ## Making a request to change a value
 To change a value, a PUT request should be sent via HTTP or using a SignalK 'put' delta. 
 
@@ -27,38 +29,14 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
   }
 }
 ```
+### HTTP Response when there's an error
 
-## The response to a request to change a value
-
-The possible responses the server can make to this request.
-* Permission denied
-* The request is not supported
-* There was an error processing the request
-* The request was processed and the value has been changed
-* The request has been received and is being worked on asynchronously
-
-I will cover these for HTTP methods since there is no defined way to do request/response over ws or other protocols.
-
-### HTTP response for permission denied
-
-HTTP response code 403 (Forbidden)
-
-### HTTP response when the request is not supported
-
-HTTP response code 405 (Method Not Allowed)
-
-### HTTP response when there is an error processing the request
-
-HTTP response codes:
- 400 (something wrong with the client's request) 
- 502 (something went wrong carrying out the request on the server side)
- 504 (timeout on the server side trying to carry out the request
-
+HTTP response code 403:
 JSON response body:
 ```
 {
   "state": "COMPLETED",
-  "message": "Unable to reach device"
+  "result": "PERMISSIONDENIED"
 }
 ```
 
@@ -69,6 +47,7 @@ JSON response body:
 ```
 {
   "state": "COMPLETED",
+  "result": "SUCCESS"
 }
 ```
 
@@ -80,15 +59,11 @@ HTTP response code 202 (Accepted)
 JSON response body:
 ```
 {
-  "state":"PENDING",
-  "action": {
-    "id":12567,
-    "href": "/signalk/v1/api/actions/12567"
-   }
+  "href": "/signalk/v1/actions/12567"
 }
 ```
 
-#### Response to `/signalk/v1/api/actions/12567` when the request has completed successfully 
+#### Response to `/signalk/v1/actions/12567` when the request has completed successfully 
 
 ```
 {
@@ -105,7 +80,7 @@ JSON response body:
 }
 ```
 
-#### Response to `/signalk/v1/api/actions/12567` when the request has failed
+#### Response to `/signalk/v1/actions/12567` when the request has failed
 
 ```
 {
