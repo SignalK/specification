@@ -87,7 +87,17 @@ One difference is that the `result` value above is translated to HTTP response c
 - FAILURE - 502 
 - TIMEOUT - 504
 
-When a request is PENDING, an HTTP 202 (Acepted) code will be returned and the body will include an `href` to use to check the status of the request.
+The response when a server succcesfully processes a login request synchronously:
+
+HTTP response code 200
+```json
+{
+  "state": "COMPLETED",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM"
+}
+```
+
+When a request is PENDING, an HTTP 202 (Acepted) code will be returned and the body will include an `href` to use to check the status of the request:
 
 HTTP response code 202
 ```json
