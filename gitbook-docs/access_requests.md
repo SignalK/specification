@@ -43,8 +43,10 @@ The request is denied:
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state":"COMPLETED", 
-  "result: 200, 
-  "permission": "DENIED"
+  "result: 200,
+  "accessRequest: {
+    "permission": "DENIED"
+  }
 }
 ```
 
@@ -55,9 +57,11 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 {
   "state":"COMPLETED", 
   "result": 200,
-  "permission": APPROVED",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
-  "expirationTime": "2018-09-20T16:51:31.350Z"
+  "accessRequest": {
+    "permission": APPROVED",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
+    "expirationTime": "2018-09-20T16:51:31.350Z"
+  }
 }
 ```
 
