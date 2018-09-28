@@ -2,6 +2,8 @@
 
 When a device needs to gain access to a secured Signal K server, it can use "Access Requests" to request and be granted access to the server.
 
+See [Request/Response](request_response.md) for more information on request/reponse semantics.
+
 A device could be a display or for example an engine sensor or a temperature sensor.
 
 Definitions:
@@ -41,7 +43,7 @@ The request is denied:
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state":"COMPLETED", 
-  "result: "SUCCESS", 
+  "result: 200, 
   "permission": "DENIED"
 }
 ```
@@ -52,7 +54,7 @@ The request is approved: (`expirationTime` is optional)
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state":"COMPLETED", 
-  "result": "SUCCESS",
+  "result": 200,
   "permission": APPROVED",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
   "expirationTime": "2018-09-20T16:51:31.350Z"
@@ -65,7 +67,7 @@ There was an error with the request:
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state":"COMPLETED", 
-  "result: "INVALID", 
+  "result: 400, 
   "message": "A device with clientId '1234-45653-343453' has already requested access"
 }
 ```
