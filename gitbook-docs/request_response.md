@@ -4,14 +4,14 @@
 
 The exact format of the message for a specific request is definted elsewhere in the specification.
 
-A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server.
+A request should include the `context` when appropriate and may include a client generated `correlationId`. The `correlationId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server.
 
 
 For example. a request to PUT a value:
 ```json
 {
   "context": "vessels.self",
-  "requestId": "123345-23232-232323",
+  "correlationId": "184743-434373-348483",
   "put": {
     "path": "electrical.switches.anchorLight.state",
     "value": 1
@@ -19,9 +19,9 @@ For example. a request to PUT a value:
 }
 ```
 
-The server will respond with a message which includes the `requestId` and a `state`.
+The server will respond with a message which includes the `requestId`, `correlationId` if provided, and a `state`.
 
-The response object will always include a `state` value. `state` can be `PENDING` or `COMPLETED`
+The `state` can be `PENDING` or `COMPLETED`
 
 When the state is `COMPLETED`, the message will contain a `result` value. The `result` will be any standard HTTP code including the folowing.
 
@@ -40,6 +40,7 @@ The response object may contain other objects depending on the specific request 
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
+  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 200,
   "login": {
@@ -55,6 +56,7 @@ When a server cannot process the request immediately, it will respond with the `
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
+  "correlationId": "184743-434373-348483",
   "state": "PENDING"
 }
 ```
@@ -64,6 +66,7 @@ When processing is done, but it was not succesfull:
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
+  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 502,
   "message": "Unable to contact the light"
@@ -75,6 +78,7 @@ When processing completed successfully:
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
+  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 200
 }
