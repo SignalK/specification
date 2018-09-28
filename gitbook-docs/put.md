@@ -36,7 +36,7 @@ JSON response body:
 ```
 {
   "state": "COMPLETED",
-  "result": "PERMISSIONDENIED"
+  "result": 403
 }
 ```
 
@@ -47,7 +47,7 @@ JSON response body:
 ```
 {
   "state": "COMPLETED",
-  "result": "SUCCESS"
+  "result": 202
 }
 ```
 
@@ -76,7 +76,7 @@ JSON response body:
    "id" : 12567,
    "endTime" : "2018-02-27T20:59:41.871Z",
    "state": "COMPLETED"
-   "result" : "SUCCESS"
+   "result" : 200
 }
 ```
 
@@ -93,7 +93,7 @@ JSON response body:
    "id" : 12567,
    "endTime" : "2018-02-27T20:59:41.871Z",
    "state": "COMPLETED"
-   "result" : "FAILURE",
+   "result" : 502,
    "message": "Unable to reach device"
 }
 ```
