@@ -1,12 +1,19 @@
 # Security
 
-Signal K security is based on JWT (JSON Web Token)
+## Communications Security
 
-## Logging into a server via HTTP
+For privacy and data integrity REST and WebSocket communications should be secured with Transport Layer Security (TLS). All communications over unsecure protocols like HTTP and WebSockets without TLS must be considered insecure even with authentication and access control mechanisms in place.
 
-A device or web site can login to a signalk server using  User Name a Password using a REST request.
+## Authentication
 
-The url for the request is `/signalk/v1/auth/login` and should be a POST with a `Content-Type` of `application/json` with the User Name and Password in the body or it can have a `Content-Type` of `application/x-www-form-urlencoded` for web based login forms.
+Authentication for Signal K REST and WebSocket connections is based on http cookies or tokens carried in the http header.
+
+### Logging into a server via HTTP
+
+A device or a web client can login to a Signal K server using User Name a Password using a REST request.
+
+The url for the request is `/signalk/v1/auth/login` and should be a POST with either `Content-Type` of `application/json` with the properties `username` and `password` in the body OR
+`Content-Type` of `application/x-www-form-urlencoded` for web based login forms.
 
 ```json
 {
@@ -15,32 +22,34 @@ The url for the request is `/signalk/v1/auth/login` and should be a POST with a 
 }
 ```
 
-In response to a valid login, the server will set the `JAUTHENTICATION` HTTP cookie and include the JWT token in the body of a HTTP 200 reponse.
+In response to a valid login, the server will set a HTTP cookie and include the token type and the token value in the body of a HTTP 200 reponse. The response `Content-Type` must be `application/json`.
 
 ```json
 {
+  "type": "JWT",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNzI3MzkzNiwiZXhwIjoxNTY4ODMxNTM2fQ.oeYVJZgztSF8YgbpJibtv41fOnJObT4RdOyZ_UI9is8"
 }
 ```
 
-In response to invalid login information, the server will return HTTP error code 401 (Unauthorized)
+In response to invalid login information the server must return HTTP error code 401 (Unauthorized).
 
+If the server does not implement this authentication mechanism it must return http error code 501 Not implemented.
 
-## Providing authorization to the server in subsquent requests
+### Providing authorization to the server in subsquent requests
 
-### We based clients
+#### Web based clients
 
-Web based clients should be sure to include the `JAUTHENTICATION` cookie in all requests
+Web based clients should be sure to include the cookie set in the authentication response in all subsequent requests.
 
-To logout, a web based client should send an HTTP PUT request to `/signalk/v1/auth/logout`
+To logout, a web based client should send an HTTP PUT request to `/signalk/v1/auth/logout`.
 
-### WS clients
+#### WebSocket Clients
 
-Clients can include the `JAUTHENTICATION` cookie with the initial request.
+Clients can include the authentication cookie with the initial request.
 
-Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should be `JWT {token}`, for example `Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNzI3MzkzNiwiZXhwIjoxNTY4ODMxNTM2fQ.oeYVJZgztSF8YgbpJibtv41fOnJObT4RdOyZ_UI9is8`
+Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should be `{type} {token}`, for example `Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNzI3MzkzNiwiZXhwIjoxNTY4ODMxNTM2fQ.oeYVJZgztSF8YgbpJibtv41fOnJObT4RdOyZ_UI9is8`
 
-#Other clients
+#### Other clients
 
 Clients using other kinds of protocals can include the `token` in the signal messages they send.
 
@@ -56,5 +65,5 @@ Clients using other kinds of protocals can include the `token` in the signal mes
 
 ## Device Access
 
-For access to a server from devices that don't have any user interaction, like sensors, they should aquire a token using Acesss Requests: [Appendix E: Access Rwquests](access_requests.md)
+Devices that don't have any user interaction, like sensors with no input mechanisms, should acquire a token using Access Requests: [Appendix E: Access Requests](access_requests.md)
 
