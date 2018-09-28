@@ -23,7 +23,7 @@ The server will respond with a message which includes the `requestId` and a `sta
 
 The response object will always include a `state` value. `state` can be `PENDING` or `COMPLETED`
 
-When the state is `COMPLETED`, the message will contain a `result` value. `result` wil one of the following and standard HTTP result codes are used.
+When the state is `COMPLETED`, the message will contain a `result` value. The `result` will be any standard HTTP code including the folowing.
 
 - 200 - the request was succesfull
 - 502 - something went wrong carrying out the request on the server side
@@ -34,7 +34,19 @@ When the state is `COMPLETED`, the message will contain a `result` value. `resul
 
 The message can optionally contain a `message`
 
-The response object may contain other data depending on the specific request being made. For example, a response to login could contain a `token`.
+The response object may contain other objects depending on the specific request being made. For example, a response to auth request could contain a `login` object.
+
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "state": "COMPLETED",
+  "result": 200,
+  "login": {
+       "token": "....." 
+   }
+}
+```
 
 A server may respond to a request multiple times depending on how it processes the request.
 
@@ -68,7 +80,7 @@ When processing completed successfully:
 }
 ```
 
-The state of a request can also be by sending the following:
+The state of a request can also be found by sending the following:
 
 ```json
 {
