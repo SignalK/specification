@@ -22,6 +22,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 ```
 {
   "context": "vessels.self",
+  "correlationId": "184743-434373-348483",
   "put": {
     "path": "steering.autopilot.target.headingTrue",
     "source": "actisense.204",
@@ -68,15 +69,13 @@ JSON response body:
 ```
 {
    "context" : "vessels.self",
-   "path" : "steering.autopilot.target.headingTrue",
-   "source": "actisense.204",
-   "user": "john@smith.com",
-   "requestedValue" : 1.57,
-   "startTime" : "2018-02-27T20:59:21.868Z",
-   "id" : 12567,
-   "endTime" : "2018-02-27T20:59:41.871Z",
    "state": "COMPLETED"
-   "result" : 200
+   "result" : 200,
+   "put": {
+     "path" : "steering.autopilot.target.headingTrue",
+     "source": "actisense.204",
+     "value" : 1.57
+   }  
 }
 ```
 
@@ -85,16 +84,14 @@ JSON response body:
 ```
 {
    "context" : "vessels.self",
-   "path" : "steering.autopilot.target.headingTrue",
-   "source": "actisense.204",
-   "user": "john@smith.com",
-   "requestedValue" : 1.57,
-   "startTime" : "2018-02-27T20:59:21.868Z",
-   "id" : 12567,
-   "endTime" : "2018-02-27T20:59:41.871Z",
    "state": "COMPLETED"
    "result" : 502,
-   "message": "Unable to reach device"
+   "message": "Unable to reach device",
+   "put": {
+     "path" : "steering.autopilot.target.headingTrue",
+     "source": "actisense.204",
+     "value" : 1.57,
+   }
 }
 ```
 
@@ -103,14 +100,13 @@ JSON response body:
 ```
 {
    "context" : "vessels.self",
-   "path" : "steering.autopilot.target.headingTrue",
-   "source": "actisense.204",
-   "user": "john@smith.com",
-   "requestedValue" : 1.57,
-   "startTime" : "2018-02-27T20:59:21.868Z",
-   "id" : 12567,
    "state": "PENDING",
-   "percentComplete": 0.45
+   "percentComplete": 0.45,
+   "put": {
+     "path" : "steering.autopilot.target.headingTrue",
+     "source": "actisense.204",
+     "value" : 1.57
+   }
 }
 ```
 
