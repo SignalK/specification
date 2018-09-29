@@ -4,7 +4,7 @@
 
 The exact format of the message for a specific request is definted elsewhere in the specification.
 
-A request should include the `context` when appropriate and may include a client generated `correlationId`. The `correlationId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server.
+A request should include the `context` when appropriate and may include a client generated `correlationId`. The `correlationId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server if it was provided. The `correlationId` should only be used by the client to match up asynchronous requests.
 
 
 For example. a request to PUT a value:
