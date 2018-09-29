@@ -126,13 +126,12 @@ The contents of message when checking the status will include the values defined
 For example, the result of a PUT request:
 ```json
 {
-   "path" : "steering.autopilot.target.headingTrue",
-   "source": "actisense.204",
-   "user": "john@smith.com",
-   "requestedValue" : 1.57,
-   "startTime" : "2018-02-27T20:59:21.868Z",
-   "endTime" : "2018-02-27T20:59:41.871Z",
    "state": "COMPLETED",
-   "result": 200
+   "result": 200,
+   "put": {
+     "path" : "steering.autopilot.target.headingTrue",
+     "source": "actisense.204",
+     "value" : 1.57
+   }
 }
 ```
