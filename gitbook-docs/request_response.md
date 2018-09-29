@@ -100,7 +100,7 @@ This will result in a reply like the examples above.
 
 HTTP request use REST api semantics and the reponses are similar to the `response` object used above.
 
-One difference is that the `result` value above is sent as the HTTP response codes:
+One difference is that the `result` value above is sent as the HTTP response code.
 
 The response when a server succcesfully processes a login request synchronously:
 
@@ -117,6 +117,7 @@ When a request is PENDING, an HTTP 202 (Acepted) code will be returned and the b
 HTTP response code 202
 ```json
 {
+  "state": "PENDING",
   "href": "/signalk/v1/api/actions/12567"  
 }
 ```
