@@ -30,6 +30,7 @@ When the state is `COMPLETED`, the message will contain a `result` value. The `r
 - 400 - something is wrong with the client's request
 - 504 - timeout on the server side trying to carry out the request
 - 405 - the server does not support the request
+- 401 - the request has not been applied because it lacks valid authentication credentials
 - 403 - the client does not have permission to make the request
 
 The message can optionally contain a `message`.
