@@ -2,7 +2,7 @@
 
 ## WS and other non-http protocols
 
-The exact format of the message for a specific request is definted elsewhere in the specification.
+The exact format of the message for a specific request is defined elsewhere in the specification.
 
 A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it must be a v4 uuid. It will always be included in any response to the request by the server. 
 
@@ -23,16 +23,16 @@ The server will respond with a message which includes the `requestId`, `correlat
 
 The `state` can be `PENDING` or `COMPLETED`
 
-When the state is `COMPLETED`, the message will contain a `result` value. The `result` will be any standard HTTP code including the folowing.
+When the state is `COMPLETED`, the message will contain a `result` value. The `result` will be any standard HTTP code including the following.
 
 - 200 - the request was succesfull
 - 502 - something went wrong carrying out the request on the server side
-- 400 - something is wrong with the clients request
+- 400 - something is wrong with the client's request
 - 504 - timeout on the server side trying to carry out the request
 - 405 - the server does not support the request
 - 403 - the client does not have permission to make the request
 
-The message can optionally contain a `message`
+The message can optionally contain a `message`.
 
 The response object may contain other objects depending on the specific request being made. For example, a response to auth request could contain a `login` object.
 
@@ -118,12 +118,12 @@ HTTP response code 202
 }
 ```
 
-The contents of message when checking the status will include the values defined aboe for the `result` object. And may also include extra information related to the request.
+The contents of the response message when checking the status will include the values defined above for the `result` object and may also include extra information related to the request.
 
 For example, the result of a PUT request:
 ```json
 {
    "state": "COMPLETED",
-   "result": 200,
+   "result": 200
 }
 ```
