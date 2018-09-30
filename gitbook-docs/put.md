@@ -71,11 +71,6 @@ JSON response body:
    "context" : "vessels.self",
    "state": "COMPLETED"
    "result" : 200,
-   "put": {
-     "path" : "steering.autopilot.target.headingTrue",
-     "source": "actisense.204",
-     "value" : 1.57
-   }  
 }
 ```
 
@@ -87,11 +82,6 @@ JSON response body:
    "state": "COMPLETED"
    "result" : 502,
    "message": "Unable to reach device",
-   "put": {
-     "path" : "steering.autopilot.target.headingTrue",
-     "source": "actisense.204",
-     "value" : 1.57,
-   }
 }
 ```
 
@@ -102,11 +92,6 @@ JSON response body:
    "context" : "vessels.self",
    "state": "PENDING",
    "percentComplete": 0.45,
-   "put": {
-     "path" : "steering.autopilot.target.headingTrue",
-     "source": "actisense.204",
-     "value" : 1.57
-   }
 }
 ```
 
