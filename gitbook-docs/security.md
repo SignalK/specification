@@ -27,13 +27,50 @@ In response to a valid login, the server will set a HTTP cookie and include the 
 ```json
 {
   "type": "JWT",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNzI3MzkzNiwiZXhwIjoxNTY4ODMxNTM2fQ.oeYVJZgztSF8YgbpJibtv41fOnJObT4RdOyZ_UI9is8"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUz"
 }
 ```
 
 In response to invalid login information the server must return HTTP error code 401 (Unauthorized).
 
 If the server does not implement this authentication mechanism it must return http error code 501 Not implemented.
+
+### Logging into a server via Web Sockets and and similar transports
+
+The client should send a message like the following. 
+
+```json
+{ 
+  "requestId": "1234-45653-343454", 
+  "login": { 
+    "username":  "john_doe",
+    "password": "password"
+  } 
+}
+```
+
+If the login is successfull, the server will send a response like the following:
+
+```json
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 200,
+  "login": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNiZW5kZXIiLCJpYXQiOjE1MzgzMzgwNDU"
+  }
+}
+```
+
+If the login fails, the server will send a response like the following:
+
+```json
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 401,
+}
+```
 
 ### Providing authorization to the server in subsquent requests
 
