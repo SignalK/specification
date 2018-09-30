@@ -4,7 +4,7 @@
 
 The exact format of the message for a specific request is definted elsewhere in the specification.
 
-A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it should be a uuid. It will always be included in any response to the request by the server. The server may reject a `requestId` if it is a duplicate or is not sufficietly unique.
+A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it must be a v4 uuid. It will always be included in any response to the request by the server. 
 
 
 For example. a request to PUT a value:
