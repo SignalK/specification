@@ -4,14 +4,14 @@
 
 The exact format of the message for a specific request is definted elsewhere in the specification.
 
-A request should include the `context` when appropriate and may include a client generated `correlationId`. The `correlationId` is a string and its contents are defined by the client. It will always be included in any response to the request by the server if it was provided. The `correlationId` should only be used by the client to match up asynchronous requests.
+A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it should be a uuid. It will always be included in any response to the request by the server. The server may reject a `requestId` if it is a duplicate or is not sufficietly unique.
 
 
 For example. a request to PUT a value:
 ```json
 {
   "context": "vessels.self",
-  "correlationId": "184743-434373-348483",
+  "requestId": "123345-23232-232323",
   "put": {
     "path": "electrical.switches.anchorLight.state",
     "value": 1
@@ -40,7 +40,6 @@ The response object may contain other objects depending on the specific request 
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
-  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 200,
   "login": {
@@ -56,7 +55,6 @@ When a server cannot process the request immediately, it will respond with the `
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
-  "correlationId": "184743-434373-348483",
   "state": "PENDING"
 }
 ```
@@ -66,7 +64,6 @@ When processing is done, but it was not succesfull:
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
-  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 502,
   "message": "Unable to contact the light"
@@ -78,7 +75,6 @@ When processing completed successfully:
 {
   "context": "vessels.self",
   "requestId": "123345-23232-232323",
-  "correlationId": "184743-434373-348483",
   "state": "COMPLETED",
   "result": 200
 }
@@ -129,10 +125,5 @@ For example, the result of a PUT request:
 {
    "state": "COMPLETED",
    "result": 200,
-   "put": {
-     "path" : "steering.autopilot.target.headingTrue",
-     "source": "actisense.204",
-     "value" : 1.57
-   }
 }
 ```
