@@ -1,6 +1,6 @@
 # Request/Response
 
-## WS and other non-http protocols
+## WebSockets and similar transports
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
 
