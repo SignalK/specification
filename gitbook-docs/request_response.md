@@ -39,7 +39,6 @@ The response object may contain other objects depending on the specific request 
 
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
   "result": 200,
@@ -54,7 +53,6 @@ A server may respond to a request multiple times depending on how it processes t
 When a server cannot process the request immediately, it will respond with the `state` PENDING:
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "state": "PENDING"
 }
@@ -63,7 +61,6 @@ When a server cannot process the request immediately, it will respond with the `
 When processing is done, but it was not succesfull:
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
   "result": 502,
@@ -74,7 +71,6 @@ When processing is done, but it was not succesfull:
 When processing completed successfully:
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
   "result": 200
@@ -85,7 +81,6 @@ The state of a request can also be found by sending the following:
 
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "query": true
 }
