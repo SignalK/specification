@@ -1,6 +1,6 @@
 # Request/Response
 
-## WebSockets and similar transports
+## WebSockets and other full-duplex protocols
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
 
