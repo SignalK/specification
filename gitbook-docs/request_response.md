@@ -59,7 +59,8 @@ When a server cannot process the request immediately, it will respond with the `
 ```json
 {
   "requestId": "123345-23232-232323",
-  "state": "PENDING"
+  "state": "PENDING",
+  "statusCode": 202
 }
 ```
 
@@ -108,7 +109,8 @@ HTTP response code 200
 ```json
 {
   "state": "COMPLETED",
-  "token": "eyJhbGciOiJIUzI1NiI...aQ8sN1XBAP8bt3tNBT1WiIttm3qM"
+  "token": "eyJhbGciOiJIUzI1NiI...aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
+  "statusCode": 200
 }
 ```
 
@@ -120,7 +122,8 @@ HTTP response code 202
 ```json
 {
   "state": "PENDING",
-  "href": "/signalk/v1/api/actions/12567"
+  "href": "/signalk/v1/api/actions/12567",
+  "statusCode": 202
 }
 ```
 
