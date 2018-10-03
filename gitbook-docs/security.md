@@ -2,17 +2,17 @@
 
 ## Communications Security
 
-For privacy and data integrity REST and WebSocket communications should be secured with Transport Layer Security (TLS). All communications over unsecure protocols like HTTP and WebSockets without TLS must be considered insecure even with authentication and access control mechanisms in place.
+For privacy and data integrity REST and WebSockets communications should be secured with Transport Layer Security (TLS). All communications over unsecure protocols like HTTP and WebSockets without TLS must be considered insecure even with authentication and access control mechanisms in place.
 
 ## Authentication
 
-Authentication for Signal K REST and WebSocket connections is based on http cookies or tokens carried in the http header.
+Authentication for Signal K REST and WebSockets connections is based on http cookies or tokens carried in the HTTP header.
 
 ### Logging into a server via HTTP
 
-A device or a web client can login to a Signal K server using User Name a Password using a REST request.
+A device or a web client can login to a Signal K server using User Name and Password using a REST request.
 
-The url for the request is `/signalk/v1/auth/login` and should be a POST with either `Content-Type` of `application/json` with the properties `username` and `password` in the body OR
+The URL for the request is `/signalk/v1/auth/login` and should be a POST with either `Content-Type` of `application/json` with the properties `username` and `password` in the body OR
 `Content-Type` of `application/x-www-form-urlencoded` for web based login forms.
 
 ```json
@@ -22,7 +22,7 @@ The url for the request is `/signalk/v1/auth/login` and should be a POST with ei
 }
 ```
 
-In response to a valid login, the server will set a HTTP cookie and include the token type and the token value in the body of a HTTP 200 reponse. The response `Content-Type` must be `application/json`.
+In response to a valid login, the server will set a HTTP cookie and include the token type and the token value in the body of a HTTP 200 response. The response `Content-Type` must be `application/json`.
 
 ```json
 {
@@ -33,9 +33,9 @@ In response to a valid login, the server will set a HTTP cookie and include the 
 
 In response to invalid login information the server must return HTTP error code 401 (Unauthorized).
 
-If the server does not implement this authentication mechanism it must return http error code 501 Not implemented.
+If the server does not implement this authentication mechanism it must return HTTP error code 501 (Not Implemented).
 
-### Logging into a server via Web Sockets and and similar transports
+### Logging into a server via Web Sockets and similar transports
 
 The client should send a message like the following. 
 
@@ -49,7 +49,7 @@ The client should send a message like the following.
 }
 ```
 
-If the login is successfull, the server will send a response like the following:
+If the login is successful, the server will send a response like the following:
 
 ```json
 {
@@ -72,7 +72,7 @@ If the login fails, the server will send a response like the following:
 }
 ```
 
-### Providing authorization to the server in subsquent requests
+### Providing authorization to the server in subsequent requests
 
 #### Web based clients
 
@@ -80,7 +80,7 @@ Web based clients should be sure to include the cookie set in the authentication
 
 To logout, a web based client should send an HTTP PUT request to `/signalk/v1/auth/logout`.
 
-#### WebSocket Clients
+#### WebSockets Clients
 
 Clients can include the authentication cookie with the initial request.
 
@@ -88,7 +88,7 @@ Clients can include the `Authorization` HTTP header with the initial connect req
 
 #### Other clients
 
-Clients using other kinds of protocals can include the `token` in the signal messages they send.
+Clients using other kinds of protocols can include the `token` in the signal messages they send.
 
 ```json
 {
