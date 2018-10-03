@@ -23,7 +23,7 @@ The device will send a REST request to the server:
 $ curl -k \
     --header "Content-Type: application/json" \
     --request POST \
-    --data '{"clientId":"1234-45653-343453","description": "My Awesome Humidity Sensor"}' \
+    --data '{"clientId":"1234-45653-343453","description":"My Awesome Humidity Sensor"}' \
     https://localhost:3443/signalk/v1/access/requests
 ```
 
@@ -40,7 +40,7 @@ href to check the status and get the response.
 
 The server should then provide a process for an administrator to review and approve or deny the request.
 
-In the mean time, a device should poll the server using the `requestId` in the response above to see if it has been
+In the meantime, a device should poll the server using the `requestId` in the response above to see if it has been
 granted access and get the token.
 
 ### Response to a Pending Request
@@ -58,8 +58,8 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
-  "result: 200,
-  "accessRequest: {
+  "result": 200,
+  "accessRequest": {
     "permission": "DENIED"
   }
 }
@@ -67,7 +67,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 
 ### Response to an Approved Request
 
-_Note:_ The `expirationTime` property is optional
+_Note:_ The `expirationTime` property is optional.
 
 ```sh
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
@@ -75,7 +75,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
   "state": "COMPLETED",
   "result": 200,
   "accessRequest": {
-    "permission": APPROVED",
+    "permission": "APPROVED",
     "token": "eyJhbGciOiJIUzI1NiIs...BAP8bt3tNBT1WiIttm3qM",
     "expirationTime": "2018-09-20T16:51:31.350Z"
   }
@@ -88,7 +88,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
-  "result: 400,
+  "result": 400,
   "message": "A device with clientId '1234-45653-343453' has already requested access"
 }
 ```
