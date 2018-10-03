@@ -4,10 +4,10 @@
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
 
-A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it must be a [v4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It will always be included in any response to the request by the server.
+A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it must be a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It will always be included in any response to the request by the server.
 
 
-For example. a request to PUT a value:
+For example, a request to PUT a value:
 ```json
 {
   "context": "vessels.self",
@@ -25,7 +25,7 @@ The `state` can be `PENDING` or `COMPLETED`
 
 When the state is `COMPLETED`, the message will contain a `statusCode` value. The `statusCode` will be any standard HTTP code including the following.
 
-- 200 - the request was succesfull
+- 200 - the request was successful
 - 502 - something went wrong carrying out the request on the server side
 - 400 - something is wrong with the client's request
 - 504 - timeout on the server side trying to carry out the request
@@ -35,7 +35,7 @@ When the state is `COMPLETED`, the message will contain a `statusCode` value. Th
 
 The message can optionally contain a `message`.
 
-The response object may contain other objects depending on the specific request being made. For example, a response to auth request could contain a `login` object.
+The response object may contain other objects depending on the specific request being made. For example, a response to an authentication request could contain a `login` object.
 
 ```json
 {
@@ -58,7 +58,7 @@ When a server cannot process the request immediately, it will respond with the `
 }
 ```
 
-When processing is done, but it was not succesfull:
+When processing is done, but it was not successful:
 ```json
 {
   "requestId": "123345-23232-232323",
@@ -90,11 +90,11 @@ This will result in a reply like the examples above.
 
 ## HTTP
 
-HTTP request use REST api semantics and the reponses are similar to the `response` object used above.
+HTTP request use REST API semantics and the responses are similar to the `response` object used above.
 
 One difference is that the `statusCode` value above is sent as the HTTP response code.
 
-The response when a server succcesfully processes a login request synchronously:
+The response when a server successfully processes a login request synchronously:
 
 HTTP response code 200
 ```json
@@ -104,7 +104,7 @@ HTTP response code 200
 }
 ```
 
-When a request is PENDING, an HTTP 202 (Acepted) code will be returned and the body will include an `href` to use to check the status of the request:
+When a request is PENDING, an HTTP 202 (Accepted) code will be returned and the body will include an `href` to use to check the status of the request:
 
 HTTP response code 202
 ```json
