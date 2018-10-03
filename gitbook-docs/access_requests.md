@@ -58,7 +58,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
-  "result": 200,
+  "statusCode": 200,
   "accessRequest": {
     "permission": "DENIED"
   }
@@ -73,7 +73,7 @@ _Note:_ The `expirationTime` property is optional.
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
-  "result": 200,
+  "statusCode": 200,
   "accessRequest": {
     "permission": "APPROVED",
     "token": "eyJhbGciOiJIUzI1NiIs...BAP8bt3tNBT1WiIttm3qM",
@@ -88,7 +88,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
-  "result": 400,
+  "statusCode": 400,
   "message": "A device with clientId '1234-45653-343453' has already requested access"
 }
 ```
