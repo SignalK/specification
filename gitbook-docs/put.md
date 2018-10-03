@@ -42,7 +42,7 @@ JSON response body:
 ```json
 {
   "state": "COMPLETED",
-  "result": 403
+  "statusCode": 403
 }
 ```
 
@@ -54,7 +54,7 @@ JSON response body:
 ```json
 {
   "state": "COMPLETED",
-  "result": 200
+  "statusCode": 200
 }
 ```
 
@@ -67,6 +67,7 @@ HTTP response code 202 (Accepted)
 JSON response body:
 ```json
 {
+  "state": "PENDING",
   "href": "/signalk/v1/actions/12567"
 }
 ```
@@ -79,7 +80,7 @@ A client may periodically GET the URL provided above to check the status of the 
 {
    "context": "vessels.self",
    "state": "COMPLETED"
-   "result": 200,
+   "statusCode": 200,
 }
 ```
 
@@ -89,7 +90,7 @@ A client may periodically GET the URL provided above to check the status of the 
 {
    "context": "vessels.self",
    "state": "COMPLETED"
-   "result": 502,
+   "statusCode": 502,
    "message": "Unable to reach device",
 }
 ```
