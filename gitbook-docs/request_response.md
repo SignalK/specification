@@ -100,7 +100,7 @@ This will result in a reply like the examples above.
 
 HTTP requests use REST API semantics and the responses are similar to the `response` object used above.
 
-One difference is that the `statusCode` value is sent as the HTTP response code.
+One difference is that the `statusCode` value is also sent as the HTTP response code.
 
 The response when a server successfully processes a login request synchronously:
 
