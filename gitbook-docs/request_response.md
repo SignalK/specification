@@ -23,7 +23,7 @@ The server will respond with a message which includes the `requestId`, `correlat
 
 The `state` can be `PENDING` or `COMPLETED`
 
-When the state is `COMPLETED`, the message will contain a `result` value. The `result` will be any standard HTTP code including the following.
+When the state is `COMPLETED`, the message will contain a `statusCode` value. The `statusCode` will be any standard HTTP code including the following.
 
 - 200 - the request was succesfull
 - 502 - something went wrong carrying out the request on the server side
@@ -41,7 +41,7 @@ The response object may contain other objects depending on the specific request 
 {
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
-  "result": 200,
+  "statusCode": 200,
   "login": {
        "token": "....." 
    }
@@ -63,7 +63,7 @@ When processing is done, but it was not succesfull:
 {
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
-  "result": 502,
+  "statusCode": 502,
   "message": "Unable to contact the light"
 }
 ```
@@ -73,7 +73,7 @@ When processing completed successfully:
 {
   "requestId": "123345-23232-232323",
   "state": "COMPLETED",
-  "result": 200
+  "statusCode": 200
 }
 ```
 
@@ -92,7 +92,7 @@ This will result in a reply like the examples above.
 
 HTTP request use REST api semantics and the reponses are similar to the `response` object used above.
 
-One difference is that the `result` value above is sent as the HTTP response code.
+One difference is that the `statusCode` value above is sent as the HTTP response code.
 
 The response when a server succcesfully processes a login request synchronously:
 
@@ -120,6 +120,6 @@ For example, the result of a PUT request:
 ```json
 {
    "state": "COMPLETED",
-   "result": 200
+   "statusCode": 200
 }
 ```
