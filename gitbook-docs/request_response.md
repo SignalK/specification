@@ -1,13 +1,15 @@
 # Request/Response
 
-## WebSockets and other full-duplex protocols
+## WebSockets and Other Full-duplex Protocols
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
 
-A request should include the `context` when appropriate and must include a client generated `requestId`. The `requestId` is a string and it must be a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It will always be included in any response to the request by the server.
-
+A request should include the `context` when appropriate and must include a client generated `requestId`. The
+`requestId` is a string and it must be a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It
+will always be included in any response to the request by the server.
 
 For example, a request to PUT a value:
+
 ```json
 {
   "context": "vessels.self",
@@ -21,9 +23,10 @@ For example, a request to PUT a value:
 
 The server will respond with a message which includes the `requestId`, `correlationId` if provided, and a `state`.
 
-The `state` can be `PENDING` or `COMPLETED`
+The `state` can be `PENDING` or `COMPLETED`.
 
-When the state is `COMPLETED`, the message will contain a `statusCode` value. The `statusCode` will be any standard HTTP code including the following.
+When the state is `COMPLETED`, the message will contain a `statusCode` value. The `statusCode` will be any standard
+HTTP code including the following.
 
 - 200 - the request was successful
 - 502 - something went wrong carrying out the request on the server side
@@ -35,7 +38,8 @@ When the state is `COMPLETED`, the message will contain a `statusCode` value. Th
 
 The message can optionally contain a `message`.
 
-The response object may contain other objects depending on the specific request being made. For example, a response to an authentication request could contain a `login` object.
+The response object may contain other objects depending on the specific request being made. For example, a response to
+an authentication request could contain a `login` object.
 
 ```json
 {
@@ -43,14 +47,15 @@ The response object may contain other objects depending on the specific request 
   "state": "COMPLETED",
   "statusCode": 200,
   "login": {
-       "token": "....." 
-   }
+    "token": "....."
+  }
 }
 ```
 
 A server may respond to a request multiple times depending on how it processes the request.
 
 When a server cannot process the request immediately, it will respond with the `state` PENDING:
+
 ```json
 {
   "requestId": "123345-23232-232323",
@@ -59,6 +64,7 @@ When a server cannot process the request immediately, it will respond with the `
 ```
 
 When processing is done, but it was not successful:
+
 ```json
 {
   "requestId": "123345-23232-232323",
@@ -69,6 +75,7 @@ When processing is done, but it was not successful:
 ```
 
 When processing completed successfully:
+
 ```json
 {
   "requestId": "123345-23232-232323",
@@ -100,23 +107,27 @@ HTTP response code 200
 ```json
 {
   "state": "COMPLETED",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUzLTM0MzQ1MyIsImlhdCI6MTUzNjg4NDY5MSwiZXhwIjoxNTY4NDQyMjkxfQ.5wypdKin5Q-gsi9aQ8sN1XBAP8bt3tNBT1WiIttm3qM"
+  "token": "eyJhbGciOiJIUzI1NiI...aQ8sN1XBAP8bt3tNBT1WiIttm3qM"
 }
 ```
 
-When a request is PENDING, an HTTP 202 (Accepted) code will be returned and the body will include an `href` to use to check the status of the request:
+When a request is PENDING, an HTTP 202 (Accepted) code will be returned and the body will include an `href` to use to
+check the status of the request:
 
 HTTP response code 202
+
 ```json
 {
   "state": "PENDING",
-  "href": "/signalk/v1/api/actions/12567"  
+  "href": "/signalk/v1/api/actions/12567"
 }
 ```
 
-The contents of the response message when checking the status will include the values defined above for the `result` object and may also include extra information related to the request.
+The contents of the response message when checking the status will include the values defined above for the `result`
+object and may also include extra information related to the request.
 
 For example, the result of a PUT request:
+
 ```json
 {
    "state": "COMPLETED",
