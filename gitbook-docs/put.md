@@ -1,11 +1,11 @@
 # PUT Requests
 
-PUT requestes are sent to a server to request a change to a value. For example, a client would use PUT to switch the anchor light on or off, change the heading of the autopilot, or set position of the anchor.
+PUT requests are sent to a server to request a change to a value. For example, a client would use PUT to switch the anchor light on or off, change the heading of the autopilot, or set position of the anchor.
 
 See [Request/Response](request_response.md) for more details on request/response in Signal K.
 
 ## Making a request to change a value
-To change a value, a PUT request should be sent via HTTP or using a SignalK 'put' delta. 
+To change a value, a PUT request should be sent via HTTP or using a Signal K 'put' delta.
 
 The "source" field is optional. If a request is sent without the source and their is more than one source for the value, that will result in a  400 HTTP error response.
 
