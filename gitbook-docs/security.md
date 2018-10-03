@@ -8,16 +8,20 @@ with authentication and access control mechanisms in place.
 
 ## Authentication
 
-Authentication for Signal K REST and WebSockets connections is based on http cookies or tokens carried in the HTTP
+Authentication for Signal K REST and WebSockets connections is based on HTTP cookies or tokens carried in the HTTP
 header.
 
-### Logging into a server via HTTP
+### Authentication via HTTP
 
-A device or a web client can login to a Signal K server using User Name and Password using a REST request.
+A device or a web client can authenticate with a Signal K server by providing a username and password via a standard
+HTTP POST request to `/signalk/«version»/auth/login`.
 
-The URL for the request is `/signalk/v1/auth/login` and should be a POST with either `Content-Type` of
-`application/json` with the properties `username` and `password` in the body OR `Content-Type` of
-`application/x-www-form-urlencoded` for web based login forms.
+The `«version»` field is the endpoint version identifier chosen by the client from those offered by the server. See the
+[REST API](rest_api.md) documentation for the structure of these identifiers.
+
+The client may send the login request with a `Content-Type` of `application/json` with the properties `username` and
+`password` in the body OR with a `Content-Type` of `application/x-www-form-urlencoded` with the `username` and
+`password` fields.
 
 ```json
 {
@@ -26,8 +30,8 @@ The URL for the request is `/signalk/v1/auth/login` and should be a POST with ei
 }
 ```
 
-In response to a valid login, the server will set a HTTP cookie and include the token type and the token value in the
-body of a HTTP 200 response. The response `Content-Type` must be `application/json`.
+In response to a valid login, the server shall respond with a 200 (OK) status, set an HTTP session cookie and include
+the token type and the token value in the body of the response. The response `Content-Type` must be `application/json`.
 
 ```json
 {
@@ -40,7 +44,7 @@ In response to invalid login information the server must return HTTP error code 
 
 If the server does not implement this authentication mechanism it must return HTTP error code 501 (Not Implemented).
 
-### Logging into a server via Web Sockets and similar transports
+### Authentication via WebSockets and Similar Transports
 
 The client should send a message like the following.
 
@@ -73,17 +77,17 @@ If the login fails, the server will send a response like the following:
 {
   "requestId": "1234-45653-343454",
   "state": "COMPLETED",
-  "result": 401,
+  "result": 401
 }
 ```
 
-### Providing authorization to the server in subsequent requests
+### Providing Authorization to the Server in Subsequent Requests
 
-#### Web based clients
+#### Web Based Clients
 
 Web based clients should be sure to include the cookie set in the authentication response in all subsequent requests.
 
-To logout, a web based client should send an HTTP PUT request to `/signalk/v1/auth/logout`.
+To logout, a web based client should send an HTTP PUT request to `/signalk/«version»/auth/logout`.
 
 #### WebSockets Clients
 
@@ -92,7 +96,7 @@ Clients can include the authentication cookie with the initial request.
 Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should
 be `{type} {token}`, for example `Authorization: JWT eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
 
-#### Other clients
+#### Other Clients
 
 Clients using other kinds of protocols can include the `token` in the Signal K messages they send.
 
@@ -110,5 +114,5 @@ Clients using other kinds of protocols can include the `token` in the Signal K m
 
 ## Device Access
 
-Devices that don’t have any user interaction, like sensors with no input mechanisms, should acquire a token using
-Access Requests: [Appendix E: Access Requests](access_requests.md)
+Devices which don’t have any user interaction such as sensors with no input mechanisms should acquire a token using
+the [Access Requests](access_requests.md) mechanism.
