@@ -21,12 +21,11 @@ For example, a request to PUT a value:
 }
 ```
 
-The server will respond with a message which includes the `requestId`, `correlationId` if provided, and a `state`.
+The server will respond with a message which includes the `requestId`, a `state`, and a `statusCode`.
 
 The `state` can be `PENDING` or `COMPLETED`.
 
-When the state is `COMPLETED`, the message will contain a `statusCode` value. The `statusCode` will be any standard
-HTTP code including the following.
+The `statusCode` will be any standard HTTP code including the following.
 
 - 200 - the request was successful
 - 400 - something is wrong with the client's request
