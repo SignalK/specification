@@ -34,6 +34,7 @@ href to check the status and get the response.
 
 ```json
 {
+  "state": "PENDING",
   "href": "/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185"
 }
 ```
