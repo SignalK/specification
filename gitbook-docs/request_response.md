@@ -29,12 +29,12 @@ When the state is `COMPLETED`, the message will contain a `statusCode` value. Th
 HTTP code including the following.
 
 - 200 - the request was successful
-- 502 - something went wrong carrying out the request on the server side
 - 400 - something is wrong with the client's request
-- 504 - timeout on the server side trying to carry out the request
-- 405 - the server does not support the request
 - 401 - the request has not been applied because it lacks valid authentication credentials
 - 403 - the client does not have permission to make the request
+- 405 - the server does not support the request
+- 502 - something went wrong carrying out the request on the server side
+- 504 - timeout on the server side trying to carry out the request
 
 The message can optionally contain a `message`.
 
@@ -97,13 +97,14 @@ This will result in a reply like the examples above.
 
 ## HTTP
 
-HTTP request use REST API semantics and the responses are similar to the `response` object used above.
+HTTP requests use REST API semantics and the responses are similar to the `response` object used above.
 
-One difference is that the `statusCode` value above is sent as the HTTP response code.
+One difference is that the `statusCode` value is sent as the HTTP response code.
 
 The response when a server successfully processes a login request synchronously:
 
 HTTP response code 200
+
 ```json
 {
   "state": "COMPLETED",
