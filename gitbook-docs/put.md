@@ -96,12 +96,12 @@ A client may periodically GET the URL provided above to check the status of the 
 
 #### Response Indicating Process is in Progress
 
-_Note:_ `percentComplete` is optional
+_Note:_ `progress` is optional and is specified as a ratio (a number from zero to one)
 
 ```json
 {
    "context": "vessels.self",
    "state": "PENDING",
-   "percentComplete": 0.45,
+   "progress": 0.45,
 }
 ```
