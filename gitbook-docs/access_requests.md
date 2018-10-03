@@ -58,6 +58,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
 {
   "state": "COMPLETED",
+  "result": 200,
   "accessRequest": {
     "permission": "DENIED"
   }
