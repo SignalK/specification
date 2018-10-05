@@ -30,7 +30,8 @@ information about the server. Also see [versioning](versioning.md) for details a
   "server": {
     "id": "signalk-server-node",
     "version": "0.1.33"
-  }
+  },
+  "authenticationRequired": "always"
 }
 ```
 [<]: #
@@ -49,6 +50,8 @@ A server MAY return information about itself in the `server` property. The id an
 of the specification and there is no registry for id values. If providfed, the `id` and `version` MUST be the same values
 as `swname` and `swvers` within the [DNS-SD advertisement](connection.md) (if implemented), and also the `id` MUST
 provide the same value as `name` within the [Websocket hello message](streaming_api.md) (if implemented).
+
+A server MAY return information to indicate when it requires authentication. The value can be `always`, `forwrite` or `never`.
 
 ## /signalk/«version»/api/
 
