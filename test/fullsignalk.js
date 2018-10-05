@@ -3,7 +3,7 @@ chai.Should();
 chai.use(require('../dist/').chaiModule);
 
 var FullSignalK = require('../src/fullsignalk');
-
+var signalkSchema = require('../src/index.js')
 
 
 describe('FullSignalK', function() {
@@ -188,4 +188,34 @@ describe('FullSignalK', function() {
     fullSignalK.retrieve().self.should.equal('vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d')
   })
 
+  it('Generates valid SignalK even when it adds some meta information', () => {
+    const delta = { "updates": [
+      {
+        "source":{"label":"","type":"NMEA2000","pgn":129029,"src":"3"},
+        "timestamp":"2017-04-15T15:50:48.664Z",
+        "values": [
+          {"path":"navigation.position","value":{"longitude":-76.3972731,"latitude":39.0536632}},
+          {"path":"navigation.gnss.antennaAltitude","value":1},
+          {"path":"navigation.gnss.satellites","value":18},
+          {"path":"navigation.gnss.horizontalDilution","value":0.73},
+          {"path":"navigation.gnss.positionDilution","value":1.2},
+          {"path":"navigation.gnss.geoidalSeparation","value":-0.01},
+          {"path":"navigation.gnss.differentialAge","value":30},
+          {"path":"navigation.gnss.differentialReference","value":22},
+          {"path":"navigation.gnss.type","value":"Combined GPS/GLONASS"},
+          {"path":"navigation.gnss.methodQuality","value":"GNSS Fix"},
+          {"path":"navigation.gnss.integrity","value":"no Integrity checking"}
+        ]
+      }
+    ]}
+
+    const fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:276810000', null, {});
+    if (!delta.context) {
+      delta.context = 'vessels.' + signalkSchema.fakeMmsiId
+    }
+    fullSignalK.addDelta(delta);
+
+    const full = fullSignalK.retrieve()
+    full.should.be.validSignalK
+  })
 })
