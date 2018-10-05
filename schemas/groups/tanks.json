@@ -27,6 +27,7 @@
                 "lpg",
                 "diesel",
                 "liveWell",
+                "baitWell",
                 "ballast",
                 "rum"
               ]
@@ -96,6 +97,10 @@
     },
     "liveWell": {
       "description": "Live tank (fish)",
+      "$ref": "#/definitions/tankCollection"
+    },
+    "baitWell": {
+      "description": "Bait tank",
       "$ref": "#/definitions/tankCollection"
     },
     "gas": {
