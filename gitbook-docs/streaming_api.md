@@ -30,7 +30,8 @@ Upon connection the server MUST send a 'hello' JSON message, for example:
     "roles": [
         "master",
         "main"
-    ]
+    ],
+    "authenticationRequired": "always"
 }
 ```
 [<]: #
@@ -46,6 +47,7 @@ The server SHOULD provide:
 The server MAY provide:
 - `self` is the unique identifier of the vessel using the URN format specified for the uuid field in the Signal K schema. It may also use the URN format specified for the mmsi field in the Signal K schema if it exists. This is only provided if the server relates to a specific vessel, aircraft, aid to navigation or sar.
 - `name` is the name of the Signal K server software, e.g. signalk-server
+- `authenticationRequired` indicates when when the server requires authentication. The value can be `always`, `forwrite` or `never`.
 
 `name`, `self` and `roles` MUST return the same values as provided in the `swname`, `self` and `roles` properties within the [DNS-SD advertisement](connection.md) (if implemented).
 
