@@ -107,6 +107,7 @@ HTTP response code 200
 
 ```json
 {
+  "requestId": "123345-23232-232323",
   "state": "COMPLETED",
   "token": "eyJhbGciOiJIUzI1NiI...aQ8sN1XBAP8bt3tNBT1WiIttm3qM",
   "statusCode": 200
@@ -120,6 +121,7 @@ HTTP response code 202
 
 ```json
 {
+  "requestId": "123345-23232-232323",
   "state": "PENDING",
   "href": "/signalk/v1/api/actions/12567",
   "statusCode": 202
@@ -133,6 +135,7 @@ For example, the result of a PUT request:
 
 ```json
 {
+   "requestId": "123345-23232-232323",
    "state": "COMPLETED",
    "statusCode": 200
 }
