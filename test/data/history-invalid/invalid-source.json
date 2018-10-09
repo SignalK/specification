@@ -1,0 +1,23 @@
+{
+  "version": "1.1.0",
+  "startDate": "2018-10-06T04:00:00Z",
+  "endDate": "2018-10-06T04:00:02Z",
+
+  "objects": [
+    {
+      "context": "vessels.urn:mrn:xxx",
+      "timestamps": [ "2018-10-06T04:00:00Z", "2018-10-06T04:01:00Z", "2018-10-06T04:00:02Z"],
+      "properties": [
+        {
+          "path": "navigation.position",
+          "source": { "pgn": "invalid source because missing label" },
+          "values": [
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1}
+          ]
+        }
+      ]
+    }
+  ]
+}

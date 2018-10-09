@@ -2,8 +2,8 @@
 
 ## Formats
 
-Signal K defines two data formats—full and delta—for representing and transmitting data. All Signal K data is
-transmitted as UTF-8 JSON.
+Signal K defines three data formats—full, delta and history—for representing and
+transmitting data. All Signal K data is transmitted as UTF-8 JSON.
 
 ## Full Format
 
@@ -264,6 +264,64 @@ the value should be merged to the full model mounted where the delta‘s context
 }
 ```
 [<]: #
+
+## History format
+
+The history format is available since SignalK 1.1 and is designed to efficiently
+represent and transfer information over a period of time.
+
+It can be used as a response from a server to a client (for example over HTTP)
+or as a file format, in which case the recommended extension is `.skl`.
+
+[>]: # (mdpInsert ```json fsnip ../samples/history/basic.json)
+```json
+{
+  "version": "1.1.0",
+  "startDate": "2018-10-06T04:00:00Z",
+  "endDate": "2018-10-06T04:00:02Z",
+  "generator": "Hand-written with love with the spec",
+
+  "objects": [
+    {
+      "context": "vessels.urn:mrn:xxx",
+      "timestamps": [ "2018-10-06T04:00:00Z", "2018-10-06T04:01:00Z", "2018-10-06T04:00:02Z"],
+      "properties": [
+        {
+          "path": "navigation.position",
+          "source": { "label": "NMEA1" },
+          "values": [
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1}
+          ]
+        },
+        {
+          "path": "navigation.speedOverGround",
+          "source": { "label": "NMEA1" },
+          "values": [ 12.2, 12.1, 10.9 ]
+        }
+      ]
+    }
+  ]
+}
+```
+[<]: #
+
+The `startDate` and `endDate` are both required fields and specify the timespan
+covered by data in this file. There MUST NOT be any timestamp outside of that
+range.
+
+The history format can convey information about all SignalK objects: vessels,
+aircrafts, atons, etc. For each object included in the file, a list of
+timestamps is provided and then a list of properties and their values. For all
+the properties, the list of values will have the same length as the list of
+timestamps. The n-th item was measured at time of timestamp n.
+
+If a value was not defined at a certain time, it can be null in the array of
+values.
+
+An object (vessel, aircraft, etc) must be unique in the file.
+
 ## Data Quality
 
 Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset

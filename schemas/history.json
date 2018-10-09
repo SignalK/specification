@@ -1,0 +1,89 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.1.0/schemas/history.json#",
+  "title": "SignalK History message schema",
+  "description": "Schema to provide values of SignalK variables over a time period.",
+  "required": [
+    "version",
+    "startDate",
+    "endDate",
+    "objects"
+  ],
+
+  "properties": {
+    "version": {
+      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.0.0.",
+      "$ref": "definitions.json#/definitions/version"
+    },
+    "self": {
+      "type": "string",
+      "description": "This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+    },
+    "startDate": {
+      "$ref": "./definitions.json#/definitions/timestamp"
+    },
+    "endDate": {
+      "$ref": "./definitions.json#/definitions/timestamp"
+    },
+    "generator": {
+      "type": "string",
+      "description": "Information about the program which generated this file.",
+      "example": "SignalK Server 1.0.1"
+    },
+    "objects": {
+      "type": "array",
+      "description": "A wrapper object for SignalK objects, each describing vessels/aircrafts/etc in range, including this vessel.",
+      "items": {
+        "type": "object",
+        "required": [ "context", "timestamps", "properties" ],
+        "properties": {
+          "context": {
+            "type": "string",
+            "description": "The context path of the updates, eg. the top level path plus object identifier.",
+            "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+          },
+          "timestamps": {
+            "type": "array",
+            "description": "Timestamps of the data records.",
+            "items": {
+              "$ref": "./definitions.json#/definitions/timestamp"
+            }
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [ "path", "source", "values" ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
+                "source": {
+                  "$ref": "./definitions.json#/definitions/source"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "object",
+                      "boolean",
+                      "null"
+                    ],
+                    "_fixme": "additionalProperties required otherwise the position object fails - is there a better way?",
+                    "additionalProperties": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
