@@ -346,9 +346,6 @@
                 "$ref": "#/definitions/valuesNumberValue"
               }
             }
-          },
-          "meta": {
-            "required": ["units"]
           }
         }
       }]
@@ -562,7 +559,7 @@
           "description": "Description of the SK path.",
           "example": "Engine revolutions (x60 for RPM)"
         },
-        
+
         "enum": {
           "type": "array",
           "title": "Permissible values",
