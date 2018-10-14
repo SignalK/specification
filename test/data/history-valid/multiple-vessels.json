@@ -1,0 +1,48 @@
+{
+  "version": "1.1.0",
+  "startDate": "2018-10-06T04:00:00Z",
+  "endDate": "2018-10-06T04:00:02Z",
+
+  "objects": [
+    {
+      "context": "vessels.urn:mrn:xxx",
+      "timestamps": [ "2018-10-06T04:00:00Z", "2018-10-06T04:01:00Z", "2018-10-06T04:00:02Z"],
+      "properties": [
+        {
+          "path": "navigation.position",
+          "source": { "label": "NMEA1" },
+          "values": [
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1},
+            { "longitude": -182.2, "latitude": -42.1}
+          ]
+        },
+        {
+          "path": "navigation.speedOverGround",
+          "source": { "label": "NMEA1" },
+          "values": [ 12.2, 12.1, 10.9 ]
+        }
+      ]
+    },
+    {
+      "context": "vessels.urn:mrn:yyy",
+      "timestamps": [ "2018-10-06T04:01:05Z", "2018-10-06T04:02:00Z"],
+      "properties": [
+        {
+          "path": "navigation.position",
+          "source": { "label": "AIS" },
+          "values": [
+            { "longitude": -182.21, "latitude": -42.01},
+            { "longitude": -182.22, "latitude": -42.0}
+          ]
+        },
+        {
+          "path": "navigation.speedOverGround",
+          "source": { "label": "AIS" },
+          "values": [ 2.2, 2.1 ]
+        }
+      ]
+    }
+
+  ]
+}

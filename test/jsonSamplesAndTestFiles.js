@@ -12,7 +12,7 @@ describe('Samples', function() {
       });
     })
   });
-  
+
   describe('hello', function() {
     getFiles('./samples/hello').forEach(function(file) {
       it(file, function() {
@@ -21,7 +21,7 @@ describe('Samples', function() {
       });
     })
   });
-  
+
   describe('delta', function() {
     getFiles('./samples/delta').forEach(function(file) {
       it(file, function() {
@@ -30,7 +30,7 @@ describe('Samples', function() {
       });
     })
   });
-  
+
   describe('subscribe', function() {
     getFiles('./samples/subscribe').forEach(function(file) {
       it(file, function() {
@@ -39,7 +39,7 @@ describe('Samples', function() {
       });
     })
   });
-  
+
   describe('unsubscribe', function() {
     getFiles('./samples/unsubscribe').forEach(function(file) {
       it(file, function() {
@@ -48,7 +48,7 @@ describe('Samples', function() {
       });
     })
   });
-  
+
   describe('discovery', function() {
     getFiles('./samples/discovery').forEach(function(file) {
       it(file, function() {
@@ -57,7 +57,15 @@ describe('Samples', function() {
       });
     })
   });
-  
+
+  describe('history', function() {
+    getFiles('./samples/history').forEach(function(file) {
+      it(file, function() {
+        assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+        require('../samples/history/' + file).should.be.validSignalKHistory;
+      });
+    })
+  });
 });
 
 describe('Unit tests', function() {
@@ -195,6 +203,24 @@ describe('Unit tests', function() {
     });
   });
 
+  describe('history', function () {
+    describe('valid', function () {
+      getFiles('./test/data/history-valid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/history-valid/' + file).should.be.validSignalKHistory;
+        });
+      })
+    });
+    describe('invalid', function () {
+      getFiles('./test/data/history-invalid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/history-invalid/' + file).should.not.be.validSignalKHistory;
+        });
+      })
+    });
+  });
 });
 
 function getFiles(dir, fileList){

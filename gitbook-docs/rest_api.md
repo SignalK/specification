@@ -65,3 +65,11 @@ of the data under the `vessels` container in JSON format. Likewise, `GET
 /signalk/v1/api/vessels/urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d` should return data for one specific
 vessel. In other words, the full Signal K data model SHOULD be traversable by any client making GET requests to an
 arbitrary depth.
+
+## /signalk/«version»/history/
+
+If the Signal K server supports serving history, it will always return a valid SignalK History document. Otherwise, the endpoint should return an HTTP Error 404.
+
+TO BE DEFINED:
+ - Parameters to limit the time range
+ - Parameters to limit the objects returned.

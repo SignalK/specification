@@ -18,22 +18,22 @@
 var _ = require('lodash');
 var FullSignalK = require('./fullsignalk');
 
-  var subSchemas = {
-    'notifications': require('../schemas/groups/notifications.json'),
-    'communication': require('../schemas/groups/communication.json'),
-    'design': require('../schemas/groups/design.json'),
-    'navigation': require('../schemas/groups/navigation.json'),
-    'electrical': require('../schemas/groups/electrical.json'),
-    'environment': require('../schemas/groups/environment.json'),
-    'performance': require('../schemas/groups/performance.json'),
-    'propulsion': require('../schemas/groups/propulsion.json'),
-    'resources': require('../schemas/groups/resources.json'),
-    'sails': require('../schemas/groups/sails.json'),
-    'sensors': require('../schemas/groups/sensors.json'),
-    'sources': require('../schemas/groups/sources.json'),
-    'steering': require('../schemas/groups/steering.json'),
-    'tanks': require('../schemas/groups/tanks.json')
-  };
+var subSchemas = {
+  'notifications': require('../schemas/groups/notifications.json'),
+  'communication': require('../schemas/groups/communication.json'),
+  'design': require('../schemas/groups/design.json'),
+  'navigation': require('../schemas/groups/navigation.json'),
+  'electrical': require('../schemas/groups/electrical.json'),
+  'environment': require('../schemas/groups/environment.json'),
+  'performance': require('../schemas/groups/performance.json'),
+  'propulsion': require('../schemas/groups/propulsion.json'),
+  'resources': require('../schemas/groups/resources.json'),
+  'sails': require('../schemas/groups/sails.json'),
+  'sensors': require('../schemas/groups/sensors.json'),
+  'sources': require('../schemas/groups/sources.json'),
+  'steering': require('../schemas/groups/steering.json'),
+  'tanks': require('../schemas/groups/tanks.json')
+};
 
 
 function getTv4() {
@@ -88,6 +88,29 @@ function validateDelta(delta, ignoreContext) {
   return valid;
 }
 
+function validateHistory(history) {
+  var tv4 = require('tv4');
+  var historySchema = require('../schemas/history.json');
+  var definitions = require('../schemas/definitions.json');
+  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/definitions.json', definitions);
+
+  var valid = tv4.validateMultiple(history, historySchema, true, true);
+
+  if (valid.valid) {
+    // For each object in the history
+    history.objects.forEach(objectHistory => {
+      // Make sure that all the properties array have the same length as timestamps
+      objectHistory.properties.forEach(property => {
+        if (property.values.length != objectHistory.timestamps.length) {
+          valid.valid = false
+          valid.errors.push(new Error(`Property ${property.path} has ${property.values.length} values (expected ${objectHistory.timestamps.length})`))
+        }
+      })
+    })
+  }
+  return valid;
+}
+
 function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
   var schema = require('../schemas/' + schemaName);
@@ -118,7 +141,7 @@ function chaiAsPromised(chai, utils) {
   Assertion.addProperty('validSignalKIgnoringSelf', function() {
     this._obj.self = 'urn:mrn:imo:mmsi:230099999';
     checkValidFullSignalK.call(this);
-  });  
+  });
   Assertion.addProperty('validSignalKVessel', function() {
     this._obj = {
       'vessels': {
@@ -184,6 +207,16 @@ function chaiAsPromised(chai, utils) {
       result.valid
       , message
       , 'expected #{this} to not be valid SignalK discovery document'
+      );
+  });
+  Assertion.addProperty('validSignalKHistory', function () {
+    var result = validateHistory(this._obj);
+    var message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
+      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK history'
       );
   });
 }
@@ -318,12 +351,12 @@ module.exports.getAISShipTypeName = function(id) {
   const the_enum = subSchemas['design'].properties.aisShipType.allOf[1].properties.value.allOf[1].enum;
   //const the_enum = module.exports.getMetadata('vessels.foo.design.aisShipType').enum
   var res = the_enum.find(item => { return item.id  == id });
-  return res ? res.name : undefined 
+  return res ? res.name : undefined
 }
 
 
 module.exports.getAtonTypeName = function(id) {
   const the_enum = require('../schemas/aton.json').properties.atonType.allOf[1].properties.value.allOf[1].enum;
   var res = the_enum.find(item => { return item.id  == id });
-  return res ? res.name : undefined 
+  return res ? res.name : undefined
 }
