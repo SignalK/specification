@@ -77,4 +77,4 @@ The hello message for a history playback stream MUST NOT contain the `timestamp`
 ```
 [<]: #
 
-A server MAY respond with `501 Not Implemented` status code if it does not support history playback and with `400 Bad Request` if it does not have data to play back for the given time period. A `400 Not Found` response is also acceptable to be backwards compatible.
+A server MAY respond with `501 Not Implemented` status code if it does not support history playback and with `400 Bad Request` if it does not have data to play back for the given time period. A `404 Not Found` response is also acceptable to be backwards compatible.
