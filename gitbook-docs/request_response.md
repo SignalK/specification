@@ -34,7 +34,7 @@ The `statusCode` will be any standard HTTP code including the following.
 
 The message can optionally contain an informational, human oriented `message`.
 
-The response object may contain other objects depending on the specific request being made. For example, a response to
+The response object may contain other response data depending on the specific request being made. For example, a response to
 an authentication request could contain a `login` object.
 
 ```json
