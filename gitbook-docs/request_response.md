@@ -1,5 +1,7 @@
 # Request/Response
 
+Requests are used to ask the server to take specific actions. This shows how requests should be formed by the client and how the reponses should look. The details of different request types are defined in other parts of the specification.
+
 ## WebSockets and Other Full-duplex Protocols
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
