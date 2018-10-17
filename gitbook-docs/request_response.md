@@ -4,15 +4,12 @@
 
 The exact format of the message for a specific request is defined elsewhere in the specification.
 
-A request should include the `context` when appropriate and must include a client generated `requestId`. The
-`requestId` is a string and it must be a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It
-will always be included in any response to the request by the server.
+A request must include a client generated `requestId`. The`requestId` is a string and it must be a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). It will always be included in any response to the request by the server.
 
 For example, a request to PUT a value:
 
 ```json
 {
-  "context": "vessels.self",
   "requestId": "123345-23232-232323",
   "put": {
     "path": "electrical.switches.anchorLight.state",
