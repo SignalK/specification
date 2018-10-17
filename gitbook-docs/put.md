@@ -79,7 +79,7 @@ A client may periodically GET the URL provided above to check the status of the 
 ```json
 {
    "context": "vessels.self",
-   "state": "COMPLETED"
+   "state": "COMPLETED",
    "statusCode": 200,
 }
 ```
@@ -89,7 +89,7 @@ A client may periodically GET the URL provided above to check the status of the 
 ```json
 {
    "context": "vessels.self",
-   "state": "COMPLETED"
+   "state": "COMPLETED",
    "statusCode": 502,
    "message": "Unable to reach device",
 }
@@ -103,6 +103,6 @@ _Note:_ `progress` is optional and is specified as a ratio (a number from zero t
 {
    "context": "vessels.self",
    "state": "PENDING",
-   "progress": 0.45,
+   "progress": 0.45
 }
 ```
