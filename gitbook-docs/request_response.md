@@ -114,7 +114,7 @@ HTTP response code 200
 ```
 
 When a request is PENDING, an HTTP 202 (Accepted) code will be returned and the body will include an `href` to use to
-check the status of the request:
+check the status of the request. A client should then periodically poll the server to get the status. A client should not poll the server at a rate less than 500ms.
 
 HTTP response code 202
 
