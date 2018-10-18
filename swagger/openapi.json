@@ -1,0 +1,706 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Signalk Web API's",
+    "description": "Signalk servers support a set of REST API's to enable various funtionality",
+    "contact": {
+      "email": "info@signalk.org"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths": {
+    "/signalk/v1/apps/install": {
+      "get": {
+        "tags": [
+          "Webapp management API"
+        ],
+        "summary": "Install a webapp@version",
+        "description": "Installs the webapp",
+        "operationId": "install",
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "description": "Name of webapp as found on npmjs.com",
+            "schema": {
+              "type": "string"
+            },
+            "example": "@signalk/freeboard-sk"
+          },
+          {
+            "name": "appVersion",
+            "in": "query",
+            "description": "Version of webapp as found on npmjs.com",
+            "schema": {
+              "type": "string"
+            },
+            "example": "0.0.4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful install of appName@appVersion"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/remove": {
+      "get": {
+        "tags": [
+          "Webapp management API"
+        ],
+        "summary": "Removes a webapp",
+        "description": "Removes the webapp",
+        "operationId": "remove",
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "description": "Name of webapp without scope (@../)",
+            "schema": {
+              "type": "string"
+            },
+            "example": "freeboard-sk"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful removal of appName"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/update": {
+      "get": {
+        "tags": [
+          "Webapp management API"
+        ],
+        "summary": "Update a webapp@version",
+        "description": "Removes any current version and install the new webapp@version",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "appName",
+            "in": "query",
+            "description": "Name of webapp as found on npmjs.com",
+            "schema": {
+              "type": "string"
+            },
+            "example": "@signalk/freeboard-sk"
+          },
+          {
+            "name": "appVersion",
+            "in": "query",
+            "description": "Version of webapp as found on npmjs.com",
+            "schema": {
+              "type": "string"
+            },
+            "example": "0.0.4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful update of appName@appVersion"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/list": {
+      "get": {
+        "tags": [
+          "Webapp management API"
+        ],
+        "summary": "Return a list of installed webapps",
+        "description": "Concatenates the package.json files from the installed apps as a json array ",
+        "operationId": "list",
+        "responses": {
+          "200": {
+            "description": "Successful retrieval of apps list"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/search": {
+      "get": {
+        "tags": [
+          "Webapp management API"
+        ],
+        "summary": "Search for a webapp",
+        "description": "Returns a list of avaliable signalk webapps from npmjs.org.",
+        "operationId": "search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "Npm tag, usually 'signalk-webapp'",
+            "schema": {
+              "type": "string"
+            },
+            "example": "signalk-webapp"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful removal of appName"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/authenticate/validate": {
+      "get": {
+        "tags": [
+          "Authentication API"
+        ],
+        "summary": "Validate",
+        "description": "Validates the token if provided in a cookie, returning the token or an updated replacement (in a cookie). Returns 400 if no cookie is not provided",
+        "operationId": "validate",
+        "parameters": [
+          {
+            "name": "SK-TOKEN",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Set-Cookie": {
+                "description": "The cookie is renewed and returned.",
+                "style": "simple"
+              }
+            }
+          },
+          "400": {
+            "description": "No token"
+          },
+          "403": {
+            "description": "No permission",
+            "headers": {
+              "Set-Cookie": {
+                "description": "The cookie is expired and returned.",
+                "style": "simple"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/authenticate/login": {
+      "post": {
+        "tags": [
+          "Authentication API"
+        ],
+        "summary": "Login (json)",
+        "description": "Login with username and password as json data, return token as Cookie",
+        "operationId": "loginJson",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "examples": {
+                "username": {
+                  "summary": "form encoded username&password",
+                  "description": "username",
+                  "value": "username"
+                }
+              }
+            },
+            "application/json": {
+              "examples": {
+                "json": {
+                  "description": "json",
+                  "value": "username"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Set-Cookie": {
+                "description": "The new cookie is returned.",
+                "style": "simple"
+              }
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/authenticate/logout": {
+      "get": {
+        "tags": [
+          "Authentication API"
+        ],
+        "summary": "Logout",
+        "description": "Logout, returns an expired token in a Cookie",
+        "operationId": "logout",
+        "parameters": [
+          {
+            "name": "SK-TOKEN",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Set-Cookie": {
+                "description": "The cookie is expired and returned.",
+                "style": "simple"
+              }
+            }
+          },
+          "400": {
+            "description": "No token"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/api": {
+      "get": {
+        "tags": [
+          "REST API"
+        ],
+        "summary": "Request all signalk data",
+        "description": "Returns the full signalk data tree as json in full format. ",
+        "operationId": "getAll",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "REST API"
+        ],
+        "summary": "PUT a signalk message",
+        "description": " PUT a signalk message. Processes the message, with request/response semantics, use this in preference to POST if you require confirmation of the message processing outcome.",
+        "operationId": "put",
+        "requestBody": {
+          "description": "A signalk message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad request if message is not understood"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "REST API"
+        ],
+        "summary": "Post a signalk message",
+        "description": " Post a signalk message. Has the same result as using non-http transport. This is a 'fire-and-forget' method, see PUT ",
+        "operationId": "post",
+        "requestBody": {
+          "description": "A signalk message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad request if message is not understood"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/api/self": {
+      "get": {
+        "tags": [
+          "REST API"
+        ],
+        "summary": "Request self uuid",
+        "description": "Returns the uuid of this vessel.",
+        "operationId": "getSelf",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "examples": {
+                  "self": {
+                    "description": "self",
+                    "value": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/api/{path}": {
+      "get": {
+        "tags": [
+          "REST API"
+        ],
+        "summary": "Request signalk data at path",
+        "description": "Returns the signalk data tree found at path as json in full format.",
+        "operationId": "get",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "description": "A signalk path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "/vessel/self/navigation"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/history/{path}": {
+      "get": {
+        "tags": [
+          "History API"
+        ],
+        "summary": "Request signalk historic data",
+        "description": "Request Signalk history and receive data",
+        "operationId": "getHistory",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "description": "A signalk path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "/vessel/self/navigation"
+          },
+          {
+            "name": "fromTime",
+            "in": "query",
+            "description": "An ISO 8601 format date/time string, defaults to current time -4h",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2015-03-07T12:37:10.523Z"
+          },
+          {
+            "name": "toTime",
+            "in": "query",
+            "description": "An ISO 8601 format date/time string, defaults to current time",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2016-03-07T12:37:10.523Z"
+          },
+          {
+            "name": "timeSlice",
+            "in": "query",
+            "description": "Returned data will be aggregated by 'timeSlice', with one data point returned per timeslice. Supports s,m,h,d abbreviations (default 10m)",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": "10m"
+          },
+          {
+            "name": "aggregation",
+            "in": "query",
+            "description": "The aggregation method for the data in a timeSlice.(average|mean|sum|count|max|min) (default 'mean')",
+            "schema": {
+              "type": "string"
+            },
+            "example": "mean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "update": {
+                    "description": "update",
+                    "value": "{\"test\"}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          },
+          "501": {
+            "description": "History not supported"
+          }
+        }
+      }
+    },
+    "/signalk/v1/history": {
+      "post": {
+        "tags": [
+          "History API"
+        ],
+        "summary": "Request signalk historic data",
+        "description": "Post a Signalk HISTORY message and receive data",
+        "operationId": "postHistory",
+        "requestBody": {
+          "description": "A signalk HISTORY message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "update": {
+                    "description": "update",
+                    "value": "{\"test\"}"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          },
+          "501": {
+            "description": "History not supported"
+          }
+        }
+      }
+    },
+    "/signalk/v1/stream": {
+      "get": {
+        "tags": [
+          "Websocket Stream API"
+        ],
+        "summary": "Request a websocket stream",
+        "description": "Submit a Signalk path and receive a stream of UPDATE messages. ",
+        "operationId": "getWS",
+        "parameters": [
+          {
+            "name": "subscribe",
+            "in": "query",
+            "description": "A signalk path",
+            "schema": {
+              "type": "string"
+            },
+            "example": "/vessel/self/navigation"
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "Switching to websocket"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Websocket Stream API"
+        ],
+        "summary": "Request a websocket stream",
+        "description": "Post a Signalk SUBSCRIBE message and receive a stream of UPDATE messages. ",
+        "operationId": "post",
+        "requestBody": {
+          "description": "A signalk SUBSCRIBE message",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignalkSubscribe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "101": {
+            "description": "Switching to websocket"
+          },
+          "403": {
+            "description": "No permission"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Subscribe_____": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "period": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "format": {
+            "type": "string"
+          },
+          "policy": {
+            "type": "string"
+          },
+          "minPeriod": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "SignalkSubscribe": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "subscribe": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subscribe_____"
+            }
+          }
+        }
+      }
+    }
+  }
+}
