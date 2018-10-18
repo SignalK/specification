@@ -1,0 +1,11 @@
+{
+    "name": "foobar marine server",
+    "version": "1.1.4",
+    "startTime": "2018-08-24T15:19:09Z",
+    "playbackRate": 1,
+    "self": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+    "roles": [
+        "master",
+        "main"
+    ]
+}

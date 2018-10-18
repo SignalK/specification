@@ -65,3 +65,9 @@ of the data under the `vessels` container in JSON format. Likewise, `GET
 /signalk/v1/api/vessels/urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d` should return data for one specific
 vessel. In other words, the full Signal K data model SHOULD be traversable by any client making GET requests to an
 arbitrary depth.
+
+## History snapshot retrieval
+
+A server MAY support retrieving historical data. The history snapshot retrieval endpoint is `/signalk/v1/snapshot` and functions like the full model endpoint at `/signalk/v1/api`. The client specifies the requested timestamp with request parameter `time`, for example `https://localhost:3443/signalk/v1/snapshot/vessels/self?time=2018-08-24T15:19:09Z`. The server will attempt to create the request part of the full model at the requested time.
+
+A server MAY respond with `501 Not Implemented` status code if it does not support history snapshot retrieval and with `400 Bad Request` if it does not have data for the requested timestamp. A `404 Not Found` response is also acceptable to be backwards compatible.

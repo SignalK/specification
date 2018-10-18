@@ -50,3 +50,31 @@ The server MAY provide:
 `name`, `self` and `roles` MUST return the same values as provided in the `swname`, `self` and `roles` properties within the [DNS-SD advertisement](connection.md) (if implemented).
 
 `version` MUST be the same value as `version` within the associated endpoints list provided by the http `GET` request to `/signalk` within the [REST API](rest_api.md) (if implemented).
+
+## History playback
+
+The server MAY support history playback from a certain point in time with a specified rate.
+
+To create a WebSocket connection that plays back data the client uses the request parameter `startTime` to specify the start timestamp and the optional request parameter `playbackRate` to specify the rate. Rate value parameter is a floating point value with value `1` equal to real time playback and for example `0.5` to half the real time rate and `5` to five times real time rate. Omitting the `playbackRate` will result in real time playback.
+
+The playback api is located at `/signalk/v1/playback`. An example url for history playback streaming: `wss://localhost:3443/signalk/v1/playback?subscribe=self&startTime=2018-08-24T15:19:09Z&playbackRate=5`.
+
+The hello message for a history playback stream MUST NOT contain the `timestamp` property and MUST include the properties `startTime` and `playbackRate`. The delta stream format for history playback is the normal streaming format. Timestamps indicate the time data was originally captured.
+
+[>]: # (mdpInsert ```json cat ../samples/hello/docs-hello-playback.json)
+```json
+{
+    "name": "foobar marine server",
+    "version": "1.1.4",
+    "startTime": "2018-08-24T15:19:09Z",
+    "playbackRate": 1,
+    "self": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+    "roles": [
+        "master",
+        "main"
+    ]
+}
+```
+[<]: #
+
+A server MAY respond with `501 Not Implemented` status code if it does not support history playback and with `400 Bad Request` if it does not have data to play back for the given time period. A `404 Not Found` response is also acceptable to be backwards compatible.
