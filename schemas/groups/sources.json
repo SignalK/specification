@@ -115,7 +115,12 @@
                 }
               }
             }
-          ]
+          ],
+          "patternProperties": {
+            ".*": {
+              "properties": {}
+            }
+          }
         }
       },
       "properties": {
