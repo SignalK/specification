@@ -1,0 +1,718 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Full and Delta Models · Signal K Documentation</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="data_model_multiple_values.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Signal K Specification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Getting Started
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="data_model.html">
+            
+                <a href="data_model.html">
+            
+                    
+                    Full and Delta Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="sources.html">
+            
+                <a href="sources.html">
+            
+                    
+                    Sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="urls_ports.html">
+            
+                <a href="urls_ports.html">
+            
+                    
+                    URLs and Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="subscription_protocol.html">
+            
+                <a href="subscription_protocol.html">
+            
+                    
+                    Subscription Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Discovery & Connection Establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="notifications.html">
+            
+                <a href="notifications.html">
+            
+                    
+                    Notifications
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="put.html">
+            
+                <a href="put.html">
+            
+                    
+                    PUT Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="vesselsBranch.html">
+            
+                <a href="vesselsBranch.html">
+            
+                    
+                    Appendix A: Keys Reference (Vessel)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="otherBranches.html">
+            
+                <a href="otherBranches.html">
+            
+                    
+                    Appendix B: Keys Reference (Others)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                    Appendix C: Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="versioning.html">
+            
+                <a href="versioning.html">
+            
+                    
+                    Appendix D: Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Full and Delta Models</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="signal-k-data-model"><a name="signal-k-data-model" class="plugin-anchor" href="#signal-k-data-model"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Data Model</h1><h2 id="formats"><a name="formats" class="plugin-anchor" href="#formats"><i class="fa fa-link" aria-hidden="true"></i></a>Formats</h2><p>Signal K defines two data formats&#x2014;full and delta&#x2014;for representing and transmitting data. All Signal K data is
+transmitted as UTF-8 JSON.</p><h2 id="full-format"><a name="full-format" class="plugin-anchor" href="#full-format"><i class="fa fa-link" aria-hidden="true"></i></a>Full Format</h2><p>The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
+Signal K node, which in the case of a Signal K server could me many hundreds of data points.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0&quot;</span>,
+  <span class="hljs-string">&quot;self&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;</span>,
+  <span class="hljs-string">&quot;vessels&quot;</span>: {
+    <span class="hljs-string">&quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;</span>: {
+      <span class="hljs-string">&quot;navigation&quot;</span>: {
+        <span class="hljs-string">&quot;speedOverGround&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">4.32693662</span>,
+          <span class="hljs-string">&quot;$source&quot;</span>: <span class="hljs-string">&quot;ttyUSB0.GP&quot;</span>,
+          <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;RMC&quot;</span>,
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-05-16T05:15:50.007Z&quot;</span>
+        },
+        <span class="hljs-string">&quot;position&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: {
+            <span class="hljs-string">&quot;altitude&quot;</span>: <span class="hljs-number">0.0</span>,
+            <span class="hljs-string">&quot;latitude&quot;</span>: <span class="hljs-number">37.81479</span>,
+            <span class="hljs-string">&quot;longitude&quot;</span>: <span class="hljs-number">-122.44880152</span>
+          },
+          <span class="hljs-string">&quot;$source&quot;</span>: <span class="hljs-string">&quot;ttyUSB0.GP&quot;</span>,
+          <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;RMC&quot;</span>,
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-05-16T05:15:50.007Z&quot;</span>
+        },
+        <span class="hljs-string">&quot;headingMagnetic&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">5.55014702</span>,
+          <span class="hljs-string">&quot;$source&quot;</span>: <span class="hljs-string">&quot;ttyUSB0.II&quot;</span>,
+          <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;HDM&quot;</span>,
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-05-16T05:15:54.006Z&quot;</span>
+        }
+      },
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Motu&quot;</span>,
+      <span class="hljs-string">&quot;uuid&quot;</span>: <span class="hljs-string">&quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;sources&quot;</span>: {
+    <span class="hljs-string">&quot;ttyUSB0&quot;</span>: {
+      <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;ttyUSB0&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
+      <span class="hljs-string">&quot;GP&quot;</span>: {
+        <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;GP&quot;</span>,
+        <span class="hljs-string">&quot;sentences&quot;</span>: {
+          <span class="hljs-string">&quot;RMC&quot;</span>: <span class="hljs-string">&quot;2017-04-03T06:14:04.451Z&quot;</span>
+        }
+      },
+      <span class="hljs-string">&quot;II&quot;</span>: {
+        <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;II&quot;</span>,
+        <span class="hljs-string">&quot;sentences&quot;</span>: {
+          <span class="hljs-string">&quot;HDM&quot;</span>: <span class="hljs-string">&quot;2017-05-16T05:15:54.006Z&quot;</span>
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>There are several top level attributes or keys which are always present and others which are optional. The <code>version</code>
+key specifies which version of the Signal K specification is being used and must always present in a full Signal K
+model. Also always present in the full model is the <code>self</code> key. The value of <code>self</code> is the key within the <code>vessels</code>
+object which is the local boat. Effectively, it is a pointer into the <code>vessels</code> object.</p><p>Below the <code>vessels</code> object is a list of vessels, identified by their MMSI number or a generated unique ID. There may be
+many vessels if data has been received from AIS or other sources. The format for each vessel&#x2019;s data uses the same
+standard Signal K structure but may not have the same content; likely you will not have as much data about other
+vessels as you have about your own.</p><p>At the same level as <code>vessels</code> is <code>sources</code>. This contains a list of sources the data was obtained from. Each data
+object within a <code>vessel</code> may have a <code>$source</code> key which point to a source within <code>sources</code>. Several data objects may
+reference the same <code>source</code> since a single NMEA sentence or PGN may map to multiple keys in Signal K.</p><p>Alternatively the source data may be embedded directly in place of the <code>$source</code> by using the <code>source</code> key:</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;vessels&quot;</span>: {
+    <span class="hljs-string">&quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;</span>: {
+      <span class="hljs-string">&quot;navigation&quot;</span>: {
+        <span class="hljs-string">&quot;position&quot;</span>: {
+          <span class="hljs-string">&quot;value&quot;</span>: {
+            <span class="hljs-string">&quot;altitude&quot;</span>: <span class="hljs-number">0.0</span>,
+            <span class="hljs-string">&quot;latitude&quot;</span>: <span class="hljs-number">37.81479</span>,
+            <span class="hljs-string">&quot;longitude&quot;</span>: <span class="hljs-number">-122.44880152</span>
+          },
+          <span class="hljs-string">&quot;source&quot;</span>: {
+            <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;ttyUSB0&quot;</span>,
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA0183&quot;</span>,
+            <span class="hljs-string">&quot;talker&quot;</span>: <span class="hljs-string">&quot;GP&quot;</span>,
+            <span class="hljs-string">&quot;sentence&quot;</span>: <span class="hljs-string">&quot;PRMC&quot;</span>
+          },
+          <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2017-05-16T05:15:50.007Z&quot;</span>
+        }
+      }
+    }
+  }
+}</code></pre>
+<p>For more information on sources, see the <a href="sources.html">sources</a> section.</p><p>Data objects in Signal K are organized hierarchically, for example data related to navigation such as position, speed
+through water and heading are all organized under a <code>navigation</code> sub-topic within the <code>vessel</code> object. Each data object
+has a <code>value</code> property which holds the actual value for that specific key. The <code>value</code> property may contain a number, a
+string or another object. Signal K keys that are object valued are object valued because the values don&#x2018;t have much
+semantic meaning individually. For example position &#x2013; latitude doesn&#x2018;t have much meaning without an associated
+longitude. Therefore, these (and altitude) are grouped together in a single <code>navigation.position</code> key.</p><p>The values are always SI units, and always the same units for the same key. Therefore, <code>speedOverGround</code> is always
+meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
+specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
+in <a href="keys/index.md">Keys Reference in Appendix A</a>. The units are also always specified in the values&#x2019;
+<a href="data_model_metadata.html">metadata</a> which is available via the <a href="rest_api.html">REST API</a> in the <code>meta.units</code> property.
+Besides the <code>units</code> property, <code>meta</code> provides a lot of other useful information for consumers of the data.</p><p>Finally, each data object also has a <code>timestamp</code> property which represents the time that the value was measured.
+Timestamps are in ISO 8601 format &#x2013; specifically the <a href="https://tools.ietf.org/html/rfc3339" target="_blank">RFC 3339</a> extension format,
+which is slightly more strict than the ISO specification.  For instance, it requires four digit years and specifies
+that <code>T</code> is used as a separator between the data and time portions of the timestamp.</p><p>The ordering of keys is also not important, they can occur in any order. In fact, if you are designing a device which
+consumes Signal K data, it is important to remember that the JSON standard does not guarantee the order of properties
+in an object. You MUST NOT rely on the data you receive to always be in the same order within a Signal K message.</p><p>The full format is most useful for getting the initial state of a Signal K system, for example when a display device
+first connects to the network or for refreshing a device&#x2018;s state when it loses a network connection.</p><p>However sending the full data model is wasteful of both bandwidth and CPU, especially when there is a large amount of
+available data, or the consuming device is only interested in a small portion of it. In the majority of cases, it is
+preferable to only exchange small, specific portions of the data.</p><h2 id="delta-format"><a name="delta-format" class="plugin-anchor" href="#delta-format"><i class="fa fa-link" aria-hidden="true"></i></a>Delta Format</h2><p>By far, the most commonly produced Signal K format is the delta format. Conceptually, the delta is an update to an
+existing Signal K data model. A device consuming deltas could either build up a view of the Signal K full tree by
+consuming and combining deltas or it could request from a Signal K server the current full tree model and apply deltas
+to that as they are received. It is also entirely possible for a device to remain essentially stateless and treat
+Signal K deltas as independent packets of data, much the same way as it would handle NMEA sentences or PGNs.</p><p>An example delta message is presented below.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.urn:mrn:imo:mmsi:234567890&quot;</span>,
+  <span class="hljs-string">&quot;updates&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;source&quot;</span>: {
+        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;N2000-01&quot;</span>,
+        <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA2000&quot;</span>,
+        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;017&quot;</span>,
+        <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-number">127488</span>
+      },
+      <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2010-01-07T07:18:44Z&quot;</span>,
+      <span class="hljs-string">&quot;values&quot;</span>: [
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;propulsion.0.revolutions&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">16.341667</span>
+        },
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;propulsion.0.boostPressure&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">45500</span>
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<p>The top level of a delta message contains an <code>updates</code> property and an optional <code>context</code> property.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.urn:mrn:imo:mmsi:234567890&quot;</span>,
+  <span class="hljs-string">&quot;updates&quot;</span>: [...]
+}</code></pre>
+<p>The optional <code>context</code> property roots the updates to a particular location in the Signal K tree. If <code>context</code> is
+missing it is assumed that the data is related to the <code>self</code> context. The <code>self</code> context is the <code>vessel</code> object which
+the <code>self</code> property of the full model points to.</p><p>Context is a path from the root of the full tree to the <em>container object</em>, which for vessel related data must refer to
+a vessel directly under <code>vessels</code>. The delimiter in the context path is <code>.</code> (period). In this case the context is
+<code>vessels.urn:mrn:imo:mmsi:234567890</code>. All subsequent data is relative to that location.</p><p>The <code>updates</code> property holds a JSON array of update objects, each of which may have a  <code>source</code> property, a <code>timestamp</code>
+property and an array of <code>values</code> containing one or more value objects.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;source&quot;</span>: {
+    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;N2000-01&quot;</span>,
+    <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;NMEA2000&quot;</span>,
+    <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;115&quot;</span>,
+    <span class="hljs-string">&quot;pgn&quot;</span>: <span class="hljs-number">128267</span>
+  },
+  <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15T16:00:00.081Z&quot;</span>,
+  <span class="hljs-string">&quot;values&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.courseOverGroundTrue&quot;</span>,
+      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">2.971</span>
+    },
+    {
+      <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;navigation.speedOverGround&quot;</span>,
+      <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">3.85</span>
+    }
+  ]
+}</code></pre>
+<p>An <code>update</code> has a single <code>source</code> value and it applies to each of the <code>values</code> items. In cases where data can only
+come from a single source, such as an NMEA 0183 talker connected to a serial port, then the source may be omitted.
+However, if the delta is being passed on by a Signal K server or multiplexer then <code>source</code> must be filled in by the
+server so that downstream consumers can discern where the update comes from.</p><p>In cases where a Signal K producer does not have access to a real time clock or GPS time then <code>timestamp</code> should be
+omitted. Elements in the Signal K processing chain-such as a server receiving data from a producer-should fill in
+timestamp if it is missing in the incoming delta message.</p><p>Each <code>value</code> item is then simply a pair of <code>path</code> and <code>value</code>. The <code>path</code> must be a <em>leaf path</em>: it must be a path to
+a leaf the of the full model.  A leaf is where the actual value of the Signal K property is and where <code>timestamp</code>,
+<code>$source</code> and <code>values</code> properties are in the full model. The value is often a scalar-a single numeric value, as in the
+example above-but it can also be an object. For example a <code>navigation.position</code> value would be an object like
+<code>{&quot;latitude&quot;: -41.2936935424, &quot;longitude&quot;: 173.2470855712}</code>.</p><p>There are some static properties in the full model that lack the support for multiple values and metadata such as
+source and timestamp. An example is a vessel&#x2018;s name, directly under the vessel&#x2018;s root. This static data may appear in
+the delta stream, for example when received in AIS transmission. In this case the value should be the subtree of the
+full model, starting from the vessel&apos;s root, with just the relevant parts, and the path must be empty, indicating that
+the value should be merged to the full model mounted where the delta&#x2018;s context property points:</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;context&quot;</span>: <span class="hljs-string">&quot;vessels.urn:mrn:imo:mmsi:234567890&quot;</span>,
+  <span class="hljs-string">&quot;updates&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;source&quot;</span>: {...},
+      <span class="hljs-string">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;2014-08-15T19:02:31.507Z&quot;</span>,
+      <span class="hljs-string">&quot;values&quot;</span>: [
+        {
+          <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+          <span class="hljs-string">&quot;value&quot;</span>: {
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;WRANGO&quot;</span>
+          }
+        }
+      ]
+    }
+  ]
+}</code></pre>
+<h2 id="data-quality"><a name="data-quality" class="plugin-anchor" href="#data-quality"><i class="fa fa-link" aria-hidden="true"></i></a>Data Quality</h2><p>Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset
+due to misalignment of a masthead unit on the mast, but there is no <em>guarantee</em> that data is accurate, or within
+certain bounds. Different sources will have different data quality and normal vigilance is always required.</p><h2 id="missing-or-invalid-data"><a name="missing-or-invalid-data" class="plugin-anchor" href="#missing-or-invalid-data"><i class="fa fa-link" aria-hidden="true"></i></a>Missing or Invalid Data</h2><p>A sensor or gateway/server may want to send a message indicating known invalid data or the fact that the sensor is
+functioning but can not provide data, for example when a depth sensor has no bottom fix. In this case the value must be
+JSON <code>null</code> in the delta message and the server must return the value as a JSON <code>null</code> in the REST API.</p><h2 id="message-integrity"><a name="message-integrity" class="plugin-anchor" href="#message-integrity"><i class="fa fa-link" aria-hidden="true"></i></a>Message Integrity</h2><p>Many messaging systems specify checksums or other forms of message integrity checking. Signal K assumes a reliable
+transport will guarantee a valid message. This is true of TCP/IP and some other transports but not always the case. For
+other transports (e.g. RS-232 serial) a specific extended data format will apply, which is suited to that transport.
+Hence at the message level no checksum or other tests need to be made.</p><h2 id="encodingdecoding"><a name="encodingdecoding" class="plugin-anchor" href="#encodingdecoding"><i class="fa fa-link" aria-hidden="true"></i></a>Encoding/Decoding</h2><p>The JSON message format is supported across most programming environments and can be handled with any convenient
+library.</p><p>On micro-controllers with limited RAM it may be necessary to read and write Signal K data using a streaming process
+rather than reading the entire message into RAM before processing. There is an implementation of Signal K JSON
+streaming on an Arduino Mega (4K RAM) in the related
+<a href="https://github.com/rob42/FreeboardMega/tree/signal_k_dev/lib/SignalK" target="_blank">Freeboard project</a>.</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="data_model_multiple_values.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Multiple Values">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Full and Delta Models","level":"1.3.1","depth":2,"next":{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},"previous":{"title":"Data Model","level":"1.3","depth":1,"ref":"","articles":[{"title":"Full and Delta Models","level":"1.3.1","depth":2,"path":"data_model.md","ref":"data_model.md","articles":[]},{"title":"Multiple Values","level":"1.3.2","depth":2,"path":"data_model_multiple_values.md","ref":"data_model_multiple_values.md","articles":[]},{"title":"Metadata","level":"1.3.3","depth":2,"path":"data_model_metadata.md","ref":"data_model_metadata.md","articles":[]},{"title":"Sources","level":"1.3.4","depth":2,"path":"sources.md","ref":"sources.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"data_model.md","mtime":"2018-10-28T07:35:16.422Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-10-28T07:35:33.652Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
