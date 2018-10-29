@@ -65,6 +65,8 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 }
 ```
 
+WHen a device gets a denied response, it should refrain from sending furthing access frequests until the device is reset, rebooted or the user takes some action.
+
 ### Response to an Approved Request
 
 _Note:_ The `expirationTime` property is optional.
@@ -93,5 +95,9 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 }
 ```
 
-On approval, the device would save the token in a secure way and use it when sending or requesting data. Subsequently,
-when a device gets an __Access Denied__ response, it should send a new request for access to get a new token.
+### After Access Approval
+
+On approval, the device would save the token in a secure way and use it when sending or requesting data. 
+
+At some point in the future the provided token could expire, access to the server could be revoked or the server could be replaced. In all cases the server will respond to requests with a 403 status code. The device should then submit a new request for access and follow the process defined above.
+
