@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Request/Response · Signal K Documentation</title>
+        <title>Appendix E: Access Requests · Signal K Documentation</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="put.html" />
     
-    
-    <link rel="prev" href="notifications.html" />
+    <link rel="prev" href="versioning.html" />
     
 
     </head>
@@ -314,7 +312,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.7" data-path="request_response.html">
+        <li class="chapter " data-level="1.4.7" data-path="request_response.html">
             
                 <a href="request_response.html">
             
@@ -410,7 +408,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="access_requests.html">
+        <li class="chapter active" data-level="1.10" data-path="access_requests.html">
             
                 <a href="access_requests.html">
             
@@ -453,7 +451,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Request/Response</a>
+        <a href="." >Appendix E: Access Requests</a>
     </h1>
 </div>
 
@@ -468,76 +466,53 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="requestresponse"><a name="requestresponse" class="plugin-anchor" href="#requestresponse"><i class="fa fa-link" aria-hidden="true"></i></a>Request/Response</h1><p>Requests are used to ask the server to take specific actions. This shows how requests should be formed by the client and how the reponses should look. The details of different request types are defined in other parts of the specification.</p><h2 id="websockets-and-other-full-duplex-protocols"><a name="websockets-and-other-full-duplex-protocols" class="plugin-anchor" href="#websockets-and-other-full-duplex-protocols"><i class="fa fa-link" aria-hidden="true"></i></a>WebSockets and Other Full-duplex Protocols</h2><p>The exact format of the message for a specific request is defined elsewhere in the specification.</p><p>A request must include a client generated <code>requestId</code>. The<code>requestId</code> is a string and it must be a <a href="https://tools.ietf.org/html/rfc4122.html#section-4.4" target="_blank">version 4 UUID</a>. It will always be included in any response to the request by the server.</p><p>For example, a request to PUT a value:</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-  <span class="hljs-string">&quot;put&quot;</span>: {
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;electrical.switches.anchorLight.state&quot;</span>,
-    <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">1</span>
-  }
-}</code></pre>
-<p>The server will respond with a message which includes the <code>requestId</code>, a <code>state</code>, and a <code>statusCode</code>.</p><p>The <code>state</code> can be <code>PENDING</code> or <code>COMPLETED</code>.</p><p>The <code>statusCode</code> will be any standard HTTP code including the following.</p><ul><li>200 - the request was successful
+                                <h1 id="access-requests"><a name="access-requests" class="plugin-anchor" href="#access-requests"><i class="fa fa-link" aria-hidden="true"></i></a>Access Requests</h1><p>When a device needs to gain access to a secured Signal K server, it can use <strong>Access Requests</strong> to request and be
+granted access to the server.</p><p>See <a href="request_response.html">Request/Response</a> for more information on request/response semantics.</p><p>A device could be a display or for example an engine sensor or a temperature sensor.</p><h2 id="definitions"><a name="definitions" class="plugin-anchor" href="#definitions"><i class="fa fa-link" aria-hidden="true"></i></a>Definitions</h2><ul><li><code>clientId</code> is a string that uniquely identifies a device. It must be a <a href="https://tools.ietf.org/html/rfc4122.html#section-4.4" target="_blank">v4 UUID</a>  The client should use the same
+value for all its requests.
 </li>
-<li>400 - something is wrong with the client&apos;s request
-</li>
-<li>401 - the request has not been applied because it lacks valid authentication credentials
-</li>
-<li>403 - the client does not have permission to make the request
-</li>
-<li>405 - the server does not support the request
-</li>
-<li>502 - something went wrong carrying out the request on the server side
-</li>
-<li>504 - timeout on the server side trying to carry out the request
+<li><code>requestId</code> is a string generated by the server in response to an access request and used by the client to correlate
+the request with the results. The client should not rely on the format or contents of this string.
 </li></ul>
-<p>The message can optionally contain an informational, human oriented <code>message</code>.</p><p>The response object may contain other response data depending on the specific request being made. For example, a response to
-an authentication request could contain a <code>login</code> object.</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
+<h2 id="device-requests"><a name="device-requests" class="plugin-anchor" href="#device-requests"><i class="fa fa-link" aria-hidden="true"></i></a>Device Requests</h2><p>The device will send a REST request to the server:</p><pre><code class="lang-sh">$ curl -k \
+    --header <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+    --request POST \
+    --data <span class="hljs-string">&apos;{&quot;clientId&quot;:&quot;1234-45653-343453&quot;,&quot;description&quot;:&quot;My Awesome Humidity Sensor&quot;}&apos;</span> \
+    https://localhost:3443/signalk/v1/access/requests</code></pre>
+<p>If the server does not support access requests it must return HTTP status code 501 Not Implemented.</p><p>For a successfully received access request the server must return an HTTP status code 202 and a JSON response with an
+href to check the status and get the response.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;PENDING&quot;</span>,
+  <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185&quot;</span>
+}</code></pre>
+<p>The server should then provide a process for an administrator to review and approve or deny the request.</p><p>In the meantime, a device should poll the server using the <code>requestId</code> in the response above to see if it has been
+granted access and get the token.</p><h3 id="response-to-a-pending-request"><a name="response-to-a-pending-request" class="plugin-anchor" href="#response-to-a-pending-request"><i class="fa fa-link" aria-hidden="true"></i></a>Response to a Pending Request</h3><pre><code class="lang-sh">$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
+  <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;PENDING&quot;</span>
+}</code></pre>
+<h3 id="response-to-a-denied-request"><a name="response-to-a-denied-request" class="plugin-anchor" href="#response-to-a-denied-request"><i class="fa fa-link" aria-hidden="true"></i></a>Response to a Denied Request</h3><pre><code class="lang-sh">$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
   <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">200</span>,
-  <span class="hljs-string">&quot;login&quot;</span>: {
-    <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;.....&quot;</span>
+  <span class="hljs-string">&quot;statusCode&quot;</span>: 200,
+  <span class="hljs-string">&quot;accessRequest&quot;</span>: {
+    <span class="hljs-string">&quot;permission&quot;</span>: <span class="hljs-string">&quot;DENIED&quot;</span>
   }
 }</code></pre>
-<p>A server may respond to a request multiple times depending on how it processes the request.</p><p>When a server cannot process the request immediately, it will respond with the <code>state</code> PENDING:</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-  <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;PENDING&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">202</span>
-}</code></pre>
-<p>When processing is done, but it was not successful:</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
+<p>WHen a device gets a denied response, it should refrain from sending furthing access frequests until the device is reset, rebooted or the user takes some action.</p><h3 id="response-to-an-approved-request"><a name="response-to-an-approved-request" class="plugin-anchor" href="#response-to-an-approved-request"><i class="fa fa-link" aria-hidden="true"></i></a>Response to an Approved Request</h3><p><em>Note:</em> The <code>expirationTime</code> property is optional.</p><pre><code class="lang-sh">$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
   <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">502</span>,
-  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;Unable to contact the light&quot;</span>
+  <span class="hljs-string">&quot;statusCode&quot;</span>: 200,
+  <span class="hljs-string">&quot;accessRequest&quot;</span>: {
+    <span class="hljs-string">&quot;permission&quot;</span>: <span class="hljs-string">&quot;APPROVED&quot;</span>,
+    <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiIs...BAP8bt3tNBT1WiIttm3qM&quot;</span>,
+    <span class="hljs-string">&quot;expirationTime&quot;</span>: <span class="hljs-string">&quot;2018-09-20T16:51:31.350Z&quot;</span>
+  }
 }</code></pre>
-<p>When processing completed successfully:</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
+<h3 id="response-indicating-an-error-with-the-request"><a name="response-indicating-an-error-with-the-request" class="plugin-anchor" href="#response-indicating-an-error-with-the-request"><i class="fa fa-link" aria-hidden="true"></i></a>Response Indicating an Error With the Request</h3><pre><code class="lang-sh">$ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8b23-10a330827185
+{
   <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">200</span>
+  <span class="hljs-string">&quot;statusCode&quot;</span>: 400,
+  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;A device with clientId &apos;1234-45653-343453&apos; has already requested access&quot;</span>
 }</code></pre>
-<p>The state of a request can also be found by sending the following:</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-  <span class="hljs-string">&quot;query&quot;</span>: <span class="hljs-literal">true</span>
-}</code></pre>
-<p>This will result in a reply like the examples above.</p><h2 id="http"><a name="http" class="plugin-anchor" href="#http"><i class="fa fa-link" aria-hidden="true"></i></a>HTTP</h2><p>HTTP requests use REST API semantics and the responses are similar to the <code>response</code> object used above.</p><p>One difference is that the <code>statusCode</code> value is also sent as the HTTP response code.</p><p>The response when a server successfully processes a login request synchronously:</p><p>HTTP response code 200</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-  <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
-  <span class="hljs-string">&quot;token&quot;</span>: <span class="hljs-string">&quot;eyJhbGciOiJIUzI1NiI...aQ8sN1XBAP8bt3tNBT1WiIttm3qM&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">200</span>
-}</code></pre>
-<p>When a request is PENDING, an HTTP 202 (Accepted) code will be returned and the body will include an <code>href</code> to use to
-check the status of the request. A client should then periodically poll the server to get the status. A client should not poll the server at a rate less than 500ms.</p><p>HTTP response code 202</p><pre><code class="lang-json">{
-  <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-  <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;PENDING&quot;</span>,
-  <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;/signalk/v1/api/actions/12567&quot;</span>,
-  <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">202</span>
-}</code></pre>
-<p>The contents of the response message when checking the status will include the values defined above for the <code>result</code>
-object and may also include extra information related to the request.</p><p>For example, the result of a PUT request:</p><pre><code class="lang-json">{
-   <span class="hljs-string">&quot;requestId&quot;</span>: <span class="hljs-string">&quot;123345-23232-232323&quot;</span>,
-   <span class="hljs-string">&quot;state&quot;</span>: <span class="hljs-string">&quot;COMPLETED&quot;</span>,
-   <span class="hljs-string">&quot;statusCode&quot;</span>: <span class="hljs-number">200</span>
-}</code></pre>
-
+<h3 id="after-access-approval"><a name="after-access-approval" class="plugin-anchor" href="#after-access-approval"><i class="fa fa-link" aria-hidden="true"></i></a>After Access Approval</h3><p>On approval, the device would save the token in a secure way and use it when sending or requesting data.</p><p>At some point in the future the provided token could expire, access to the server could be revoked or the server could be replaced. In all cases the server will respond to requests with a 403 status code. The device should then submit a new request for access and follow the process defined above.</p>
                                 
                                 </section>
                             
@@ -564,14 +539,10 @@ object and may also include extra information related to the request.</p><p>For 
 
             
                 
-                <a href="notifications.html" class="navigation navigation-prev " aria-label="Previous page: Notifications">
+                <a href="versioning.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Appendix D: Versioning">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="put.html" class="navigation navigation-next " aria-label="Next page: PUT Requests">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -580,7 +551,7 @@ object and may also include extra information related to the request.</p><p>For 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Request/Response","level":"1.4.7","depth":2,"next":{"title":"PUT Requests","level":"1.4.8","depth":2,"path":"put.md","ref":"put.md","articles":[]},"previous":{"title":"Notifications","level":"1.4.6","depth":2,"path":"notifications.md","ref":"notifications.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"request_response.md","mtime":"2018-11-07T13:52:33.344Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-11-07T13:52:51.818Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Appendix E: Access Requests","level":"1.10","depth":1,"previous":{"title":"Appendix D: Versioning","level":"1.9","depth":1,"path":"versioning.md","ref":"versioning.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"access_requests.md","mtime":"2018-11-07T13:52:31.020Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-11-07T13:52:51.818Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
