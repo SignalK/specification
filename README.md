@@ -67,12 +67,13 @@ Validation against Signal K schema can be done
 - by explicitly calling validate packaged as an npm module
 - by using a Chai assertion, available in the npm module
 
-As you can see in the example below the current implementation assumes that the
-input is a subtree under vessels.mmsi path.
-
 ```
-echo '{"navigation":{"courseOverGroundTru":{"value":70.1,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"},"speedOverGround":{"value":0.01,"source":{"label":"","type":"NMEA2000","pgn":"130577","src":"160"},"timestamp":"2014-08-15-10:01:35.236"}}}' | bin/validate.js
-Unknown property (not in schema):/vessels/230099999/navigation/courseOverGroundTru
+cat test/data/full-invalid/vessel-mmsi_bad.json | bin/validate.js
+{
+  "errors": [
+    {
+      "message": "String does not match pattern: ^[2-7][0-9]{8}$",
+      "params" .....etc
 ```
 
 ```javascript

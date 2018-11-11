@@ -21,6 +21,14 @@
     "timestamp": {
       "$ref": "./definitions.json#/definitions/timestamp"
     },
+    "startTime": {
+      "$ref": "./definitions.json#/definitions/timestamp",
+      "description": "Starttime for history playback connections"
+    },
+    "playbackRate": {
+      "type": "number",
+      "description": "Playback rate for history playback connections: 1 is real time, 2 is two times and 0.5 half the real time rate"
+    },
     "self": {
       "type": "string",
       "description": "This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.",
