@@ -1,0 +1,594 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Signal K Specification · Signal K Documentation</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Signal K Specification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Getting Started
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="data_model.html">
+            
+                <a href="data_model.html">
+            
+                    
+                    Full and Delta Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="sources.html">
+            
+                <a href="sources.html">
+            
+                    
+                    Sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="urls_ports.html">
+            
+                <a href="urls_ports.html">
+            
+                    
+                    URLs and Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="subscription_protocol.html">
+            
+                <a href="subscription_protocol.html">
+            
+                    
+                    Subscription Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Discovery & Connection Establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="notifications.html">
+            
+                <a href="notifications.html">
+            
+                    
+                    Notifications
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="security.html">
+            
+                <a href="security.html">
+            
+                    
+                    Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="request_response.html">
+            
+                <a href="request_response.html">
+            
+                    
+                    Request/Response
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="put.html">
+            
+                <a href="put.html">
+            
+                    
+                    PUT Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="vesselsBranch.html">
+            
+                <a href="vesselsBranch.html">
+            
+                    
+                    Appendix A: Keys Reference (Vessel)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="otherBranches.html">
+            
+                <a href="otherBranches.html">
+            
+                    
+                    Appendix B: Keys Reference (Others)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                    Appendix C: Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="versioning.html">
+            
+                <a href="versioning.html">
+            
+                    
+                    Appendix D: Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="access_requests.html">
+            
+                <a href="access_requests.html">
+            
+                    
+                    Appendix E: Access Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Signal K Specification</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h1><p>This is the documentation for the <a href="https://github.com/signalk/specification" target="_blank">Signal K Specification</a> 1.3.0
+version, which is available in the following formats;</p><ul><li><a href="http://signalk.org/specification/1.3.0/doc/" target="_blank">html</a> (this document) 1.3.0
+</li>
+<li><a href="http://signalk.org/specification/1.3.0/doc/signalk.pdf" target="_blank">pdf</a>
+</li>
+<li><a href="http://signalk.org/specification/1.3.0/doc/signalk.epub" target="_blank">epub</a>
+</li>
+<li><a href="http://signalk.org/specification/1.3.0/doc/signalk.mobi" target="_blank">mobi</a>
+</li></ul>
+<h2 id="what-is-signal-k"><a name="what-is-signal-k" class="plugin-anchor" href="#what-is-signal-k"><i class="fa fa-link" aria-hidden="true"></i></a>What is Signal K?</h2><p><strong>Signal K</strong> is a modern and open data format for marine use. It is an Internet friendly standard built on common web
+technologies, such as JSON and WebSockets. Signal K is Free and Open Source software. This document is licensed under
+the Creative Commons <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA</a> license. All Signal K source code is
+licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License, Version 2.0</a>. Signal K is developed in
+the open with help from the marine community. Your ideas and feedback are valuable and welcome.</p><p>Signal K is designed to work in harmony with a boat&#x2019;s existing navigation equipment which may use NMEA0183, NMEA2000 or
+proprietary data protocols, converting and enhancing this information into a modern &#x201C;web friendly&#x201D; format which can be
+shared, processed and displayed on the latest web apps, mobile devices and cloud servers. A typical NMEA based
+installation consists of an NMEA to Signal K gateway and an optional Signal K server. The gateway translates NMEA data
+into Signal K format and the server can host additional functions like logging, cloud integration and data analysis.</p><p><img alt="Gateway and Server setup" src="gateway_and_server.png"></p><p>One major advantage of Signal K is the ability to represent data from heterogeneous sources. In addition to traditional
+NMEA sources, data from generic sensors as well as modern Signal K enabled sensors can be fused into a single data
+model and a single protocol for accessing the data. Another typical configuration is a Signal K server with adapters
+and converters for the different sources.</p><p><img alt="Server only setup" src="server_only.png"></p><h2 id="signal-k-data-model-aka-the-schema"><a name="signal-k-data-model-aka-the-schema" class="plugin-anchor" href="#signal-k-data-model-aka-the-schema"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Data Model (A.K.A. The Schema)</h2><p>The Signal K Data Model or schema defines a universal model for marine related information and it is specified as a
+JSON schema. See the <a href="data_model.html">Signal K Data Model</a> section for details.</p><p>In traditional marine standards there are many tightly defined messages, each with a specific purpose, but there is no
+data model to relate them. Furthermore, any device which needs to decode those messages must have a copy of the data
+dictionary in order to do so. By defining a data model in JSON we can make the messaging layer simpler and easily
+extensible. We define consistent units and meta data for each data point in the model. This means that a specific data
+point (e.g. COG) will always be found at a predictable address.</p><p>It also means that a display device such as a chartplotter implementing Signal K does not need to know about the data
+model beforehand. It can query the central Signal K server on the boat to get all the information it needs to display
+any data point. This <strong>metadata</strong> may include information such as the unit of measure, minimum and maximum permissible
+values, alarm thresholds and localized display name for every data point in the model.</p><h3 id="signal-k-message-format"><a name="signal-k-message-format" class="plugin-anchor" href="#signal-k-message-format"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Message Format</h3><p>Signal K defines methods for combining arbitrary data from the Data Model into valid messages. These messages are in
+UTF-8 JSON format.</p><p>Rather than define hundreds of specific messages, Signal K has a few common message formats which can contain any
+combination of data from the Data Model. This means that there is no need to define new messages for every new data
+point or command which needs to be supported, rather the message format remains the same and only the data transmitted
+needs to change. It means that any device can read any message and a device can introduce a new data point which can be
+understood by existing devices without the need for firmware upgrades.</p><h2 id="signal-k-transport-layer"><a name="signal-k-transport-layer" class="plugin-anchor" href="#signal-k-transport-layer"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Transport Layer</h2><p>Signal K does not define the transport or wire protocol. Signal K messages are JSON text and can be sent over almost
+any physical transport layer. However, the Signal K standard does provide guidance on how to establish an initial
+connection, handle negotiation, subscription, and disconnection for a given transport (e.g. TCP/IP or serial).</p><p>Where possible Signal K uses well established standards like HTTPS, REST, and WebSockets. However, these should not be
+interpreted as required dependencies of Signal K. It is entirely possible and permissible to implement the protocol
+over any transport that your implementation requires.</p><p>The goal is to try to establish sensible conventions for each transport in order to make development and
+interconnection more predictable.</p><h2 id="signal-k-implementations"><a name="signal-k-implementations" class="plugin-anchor" href="#signal-k-implementations"><i class="fa fa-link" aria-hidden="true"></i></a>Signal K Implementations</h2><p>The Signal K project has Open Source reference server implementations in
+<a href="https://github.com/SignalK/signalk-server-node" target="_blank">Node</a> and <a href="https://github.com/SignalK/signalk-server-java" target="_blank">Java</a>.
+There are also several web apps provided by the project which can be installed directly in the Node and Java servers or
+downloaded from <a href="https://github.com/SignalK" target="_blank">Signal K GitHub</a>. There are also commercial
+<a href="http://signalk.org/applications_solutions.html" target="_blank">Signal K applications and solutions</a>, including mobile apps available
+on the Apple App and Android Play Stores, as well as hardware products like <a href="http://ikommunicate.com/" target="_blank">iKommunicate</a>.</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Signal K Specification","level":"1.1","depth":1,"next":{"title":"Getting Started","level":"1.2","depth":1,"ref":"","articles":[{"title":"Using SK","level":"1.2.1","depth":2,"path":"start_using.md","ref":"start_using.md","articles":[]},{"title":"Developing with SK","level":"1.2.2","depth":2,"path":"start_developing.md","ref":"start_developing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"README.md","mtime":"2018-11-11T16:08:46.491Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-11-11T16:09:07.558Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

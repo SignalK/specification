@@ -1,0 +1,599 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>REST API · Signal K Documentation</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="streaming_api.html" />
+    
+    
+    <link rel="prev" href="urls_ports.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Signal K Specification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Getting Started
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="start_using.html">
+            
+                <a href="start_using.html">
+            
+                    
+                    Using SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="start_developing.html">
+            
+                <a href="start_developing.html">
+            
+                    
+                    Developing with SK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Data Model
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="data_model.html">
+            
+                <a href="data_model.html">
+            
+                    
+                    Full and Delta Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="data_model_multiple_values.html">
+            
+                <a href="data_model_multiple_values.html">
+            
+                    
+                    Multiple Values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="data_model_metadata.html">
+            
+                <a href="data_model_metadata.html">
+            
+                    
+                    Metadata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="sources.html">
+            
+                <a href="sources.html">
+            
+                    
+                    Sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="urls_ports.html">
+            
+                <a href="urls_ports.html">
+            
+                    
+                    URLs and Ports
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="rest_api.html">
+            
+                <a href="rest_api.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="streaming_api.html">
+            
+                <a href="streaming_api.html">
+            
+                    
+                    Streaming WebSocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="subscription_protocol.html">
+            
+                <a href="subscription_protocol.html">
+            
+                    
+                    Subscription Protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="connection.html">
+            
+                <a href="connection.html">
+            
+                    
+                    Discovery & Connection Establishment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="notifications.html">
+            
+                <a href="notifications.html">
+            
+                    
+                    Notifications
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="security.html">
+            
+                <a href="security.html">
+            
+                    
+                    Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="request_response.html">
+            
+                <a href="request_response.html">
+            
+                    
+                    Request/Response
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="put.html">
+            
+                <a href="put.html">
+            
+                    
+                    PUT Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="how_to_help.html">
+            
+                <a href="how_to_help.html">
+            
+                    
+                    How Can I Help?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="vesselsBranch.html">
+            
+                <a href="vesselsBranch.html">
+            
+                    
+                    Appendix A: Keys Reference (Vessel)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="otherBranches.html">
+            
+                <a href="otherBranches.html">
+            
+                    
+                    Appendix B: Keys Reference (Others)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                    Appendix C: Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="versioning.html">
+            
+                <a href="versioning.html">
+            
+                    
+                    Appendix D: Versioning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="access_requests.html">
+            
+                <a href="access_requests.html">
+            
+                    
+                    Appendix E: Access Requests
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >REST API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="rest-api"><a name="rest-api" class="plugin-anchor" href="#rest-api"><i class="fa fa-link" aria-hidden="true"></i></a>REST API</h1><p>Signal K producers MAY implement an HTTP API which consumers can use to self-configure, poll for Signal K data or make
+configuration changes. As specified in the previous section, all URLs for interacting with Signal K are rooted at
+<code>/signalk</code>.</p><p>A Signal K server implementing the HTTP API may support http/2.</p><h2 id="get-signalk"><a name="get-signalk" class="plugin-anchor" href="#get-signalk"><i class="fa fa-link" aria-hidden="true"></i></a>GET /signalk</h2><p>Making a <code>GET</code> request to <code>/signalk</code> returns a JSON object which specifies the available Signal K endpoints and some
+information about the server. Also see <a href="versioning.html">versioning</a> for details about <code>version</code> strings.</p><pre><code class="lang-json">{
+  <span class="hljs-string">&quot;endpoints&quot;</span>: {
+    <span class="hljs-string">&quot;v1&quot;</span>: {
+      <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0-alpha1&quot;</span>,
+      <span class="hljs-string">&quot;signalk-http&quot;</span>: <span class="hljs-string">&quot;http://localhost:3000/signalk/v1/api/&quot;</span>,
+      <span class="hljs-string">&quot;signalk-ws&quot;</span>: <span class="hljs-string">&quot;ws://localhost:3000/signalk/v1/stream&quot;</span>
+    },
+    <span class="hljs-string">&quot;v3&quot;</span>: {
+      <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;3.0.0&quot;</span>,
+      <span class="hljs-string">&quot;signalk-http&quot;</span>: <span class="hljs-string">&quot;http://localhost/signalk/v3/api/&quot;</span>,
+      <span class="hljs-string">&quot;signalk-ws&quot;</span>: <span class="hljs-string">&quot;ws://localhost/signalk/v3/stream&quot;</span>,
+      <span class="hljs-string">&quot;signalk-tcp&quot;</span>: <span class="hljs-string">&quot;tcp://localhost:8367&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;server&quot;</span>: {
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;signalk-server-node&quot;</span>,
+    <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.33&quot;</span>
+  }
+}</code></pre>
+<p>This response is defined by the <code>discovery.json</code> schema. In this example, the server supports two versions of the
+specification: <code>1.alpha1</code> and <code>3.0</code>. For each version, the server indicates which transport protocols it supports and
+the URL that can be used to access that protocol&#x2018;s endpoint. Clients should use one of these published endpoints based
+on the protocol version they wish to use.</p><p>The server must only return valid URLs and should use IANA standard protocol names such as <code>http</code>. However, a server
+may support unofficial protocols and may return additional protocol names; for example, the response above indicates
+the server supports a <code>signalk-tcp</code> stream over TCP at on port 8367.</p><p>A server may return relative URIs that the client must resolve against the base of the original request.</p><p>A server MAY return information about itself in the <code>server</code> property. The id and version scheme is not defined as part
+of the specification and there is no registry for id values. If providfed, the <code>id</code> and <code>version</code> MUST be the same values
+as <code>swname</code> and <code>swvers</code> within the <a href="connection.html">DNS-SD advertisement</a> (if implemented), and also the <code>id</code> MUST
+provide the same value as <code>name</code> within the <a href="streaming_api.html">Websocket hello message</a> (if implemented).</p><h2 id="signalk&#xAB;version&#xBB;api"><a name="signalk&#xAB;version&#xBB;api" class="plugin-anchor" href="#signalk&#xAB;version&#xBB;api"><i class="fa fa-link" aria-hidden="true"></i></a>/signalk/&#xAB;version&#xBB;/api/</h2><p><strong>Note the trailing slash in the path</strong></p><p>The base URL MUST provide a Signal K document that is valid according to the full Signal K <a href="specification.html">schema
+specification</a>. The contents SHOULD be all the current values of the data items the
+server knows in the Signal K full format as specified in <a href="data_model.html">Full and Delta Models</a>.</p><h2 id="signalk&#xAB;version&#xBB;api"><a name="signalk&#xAB;version&#xBB;api" class="plugin-anchor" href="#signalk&#xAB;version&#xBB;api"><i class="fa fa-link" aria-hidden="true"></i></a>/signalk/&#xAB;version&#xBB;/api/*</h2><p>The Signal K data SHOULD be available via the REST API. For example, <code>GET /signalk/v1/api/vessels</code> should return all
+of the data under the <code>vessels</code> container in JSON format. Likewise, <code>GET
+/signalk/v1/api/vessels/urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d</code> should return data for one specific
+vessel. In other words, the full Signal K data model SHOULD be traversable by any client making GET requests to an
+arbitrary depth.</p><h2 id="history-snapshot-retrieval"><a name="history-snapshot-retrieval" class="plugin-anchor" href="#history-snapshot-retrieval"><i class="fa fa-link" aria-hidden="true"></i></a>History snapshot retrieval</h2><p>A server MAY support retrieving historical data. The history snapshot retrieval endpoint is <code>/signalk/v1/snapshot</code> and functions like the full model endpoint at <code>/signalk/v1/api</code>. The client specifies the requested timestamp with request parameter <code>time</code>, for example <code>https://localhost:3443/signalk/v1/snapshot/vessels/self?time=2018-08-24T15:19:09Z</code>. The server will attempt to create the request part of the full model at the requested time.</p><p>A server MAY respond with <code>501 Not Implemented</code> status code if it does not support history snapshot retrieval and with <code>400 Bad Request</code> if it does not have data for the requested timestamp. A <code>404 Not Found</code> response is also acceptable to be backwards compatible.</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="urls_ports.html" class="navigation navigation-prev " aria-label="Previous page: URLs and Ports">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="streaming_api.html" class="navigation navigation-next " aria-label="Next page: Streaming WebSocket API">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"REST API","level":"1.4.2","depth":2,"next":{"title":"Streaming WebSocket API","level":"1.4.3","depth":2,"path":"streaming_api.md","ref":"streaming_api.md","articles":[]},"previous":{"title":"URLs and Ports","level":"1.4.1","depth":2,"path":"urls_ports.md","ref":"urls_ports.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Signal K Documentation","gitbook":"*"},"file":{"path":"rest_api.md","mtime":"2018-11-11T16:08:49.630Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-11-11T16:09:07.558Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
