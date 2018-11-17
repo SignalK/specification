@@ -26,11 +26,13 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 {
   "context": "vessels.self",
   "correlationId": "184743-434373-348483",
-  "put": {
-    "path": "steering.autopilot.target.headingTrue",
-    "source": "actisense.204",
-    "value": 1.52
-  }
+  "put": [
+		  {
+		    "path": "steering.autopilot.target.headingTrue",
+		    "source": "actisense.204",
+		    "value": 1.52
+		  }
+	  ]
 }
 ```
 
