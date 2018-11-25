@@ -65,7 +65,7 @@ $ curl -k https://localhost:3443/signalk/v1/access/requests/358b5f32-76bf-4b33-8
 }
 ```
 
-WHen a device gets a denied response, it should refrain from sending furthing access frequests until the device is reset, rebooted or the user takes some action.
+When a device gets a denied response, it should refrain from sending further access requests until the device is reset, rebooted or the user takes some action.
 
 ### Response to an Approved Request
 
