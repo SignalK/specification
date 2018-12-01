@@ -1,0 +1,49 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "sails": {
+    "area": {
+      "total": {
+        "value": 82,
+        "timestamp": "2014-08-15T19:00:15.404Z",
+        "$source": "foo.bar"
+      },
+      "active": {
+        "value": 78.4,
+        "timestamp": "2014-08-15T19:00:15.404Z",
+        "$source": "foo.bar"
+      }
+    },
+    "inventory": {
+      "racingMain": {
+        "name": "Racing main 2016",
+        "type": "main",
+        "material": "mylar",
+        "brand": "WB Sails",
+        "area": 34,
+        "active": false
+      },
+      "cruisingMain": {
+        "name": "Cruising main",
+        "type": "main",
+        "material": "dacron",
+        "brand": "WB Sails",
+        "area": 33.8,
+        "active": true,
+        "reducedState": false
+      },
+      "genoa": {
+        "name": "Cruising genoa",
+        "type": "genoa",
+        "material": "dacron",
+        "brand": "North Sails",
+        "area": 44.6,
+        "active": true,
+        "reducedState": {
+          "reduced": true,
+          "reefs": 1,
+          "furledRatio": 0
+        }
+      }
+    }
+  }
+}
