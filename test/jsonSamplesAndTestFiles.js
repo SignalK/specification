@@ -138,6 +138,17 @@ describe('Unit tests', function() {
     });
   });
 
+  describe('put', function () {
+    describe('valid', function () {
+      getFiles('./test/data/put-valid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/put-valid/' + file).should.be.validSignalKPut;
+        });
+      })
+    });
+  });
+
   describe('subscribe', function () {
     describe('valid', function () {
       getFiles('./test/data/subscribe-valid').forEach(function (file) {
