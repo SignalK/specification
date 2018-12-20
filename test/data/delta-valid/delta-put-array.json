@@ -1,0 +1,8 @@
+{
+  "context": "bar",
+  "requestId": "123345-23232-232323",
+  "put": [{
+	  "path": "a.b.c",
+	  "value": 1234
+  }]
+}

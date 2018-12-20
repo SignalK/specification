@@ -25,7 +25,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 ```json
 {
   "context": "vessels.self",
-  "correlationId": "184743-434373-348483",
+  "requestId": "123345-23232-232323",
   "put": [
 		  {
 		    "path": "steering.autopilot.target.headingTrue",
@@ -35,6 +35,23 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 	  ]
 }
 ```
+
+####NOTE####
+The above PUT request (v1) uses an array to allow multiple keys in a single PUT. This is deprecated and strongly discouraged as it causes complex problems 
+with the request/response semantics in cases of partial failures.  An alternative format has been added to the v1 specification where the  PUT request is:
+
+```json
+{
+  "context": "vessels.self",
+  "requestId": "123345-23232-232323",
+  "put": {
+		    "path": "steering.autopilot.target.headingTrue",
+		    "source": "actisense.204",
+		    "value": 1.52
+		  }
+}
+```
+In the v2 API the array format will be removed. Implementors are recommended to support both in the interim.
 
 ### HTTP Error Response
 
@@ -50,7 +67,7 @@ JSON response body:
 
 ### HTTP Success Response
 
-HTTP response code 200 (OK)
+HTTP response code 200 (OK), sent if _all_ keys in the PUT array are successfully completed.
 
 JSON response body:
 ```json
@@ -86,14 +103,26 @@ A client may periodically GET the URL provided above to check the status of the 
 }
 ```
 
-#### Response Indicating Failure
+#### Responses Indicating Failure
+
+HTTP response code 422 (Unprocessable Entity), sent if _any_ keys in the PUT array failed
 
 ```json
 {
    "context": "vessels.self",
    "state": "COMPLETED",
-   "statusCode": 502,
-   "message": "Unable to reach device",
+   "statusCode": 422,
+   "message": "Unprocessable Entity",
+}
+```
+HTTP response codes 5** (Server errors), sent if _any_ keys in the PUT array failed
+
+```json
+{
+   "context": "vessels.self",
+   "state": "COMPLETED",
+   "statusCode": 5**,
+   "message": "Server error",
 }
 ```
 
