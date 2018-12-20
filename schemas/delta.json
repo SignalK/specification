@@ -201,7 +201,7 @@
     "get": {
       "oneOf":[{
 	      "type": "array",
-	      "description": "A transport agnostic equivalent to a REST GET request.This is for one-off requests, use the SUBSCRIBE message for regular changes.",
+	      "description": "DEPRECATED: Prefer GET format with no array. A transport agnostic equivalent to a REST GET request.This is for one-off requests, use the SUBSCRIBE message for regular changes.",
 	      "items": {
 	        "type": "object",
 	        "properties": {
@@ -248,7 +248,7 @@
     "put": {
 	    "oneOf":[{
 	      "type": "array",
-	      "description": "A transport agnostic equivalent to a REST PUT request. PUT requests use 'request/response' semantics, if no acknowlegement is required use the UPDATES message.",
+	      "description": "DEPRECATED: Prefer PUT format with no array. A transport agnostic equivalent to a REST PUT request. PUT requests use 'request/response' semantics, if no acknowlegement is required use the UPDATES message.",
 	      "items": {
 	        "type": "object",
 	        "properties": {
