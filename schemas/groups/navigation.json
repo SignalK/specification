@@ -481,7 +481,7 @@
     },
     "magneticDeviation": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Magnetic deviation of the compass at the current headingRaw (if known)",
+      "description": "Magnetic deviation of the compass at the current headingRaw",
       "units": "rad"
     },
     "headingRaw": {
