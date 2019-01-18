@@ -44,6 +44,21 @@ In the example `meta` object above, a definition is provided for an analog RPM g
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure.
 
+###`description`
+
+This is the description for the Signal K path and must always be the same as the description property within the Signal K
+Schema for that path.
+
+###`displayName`
+
+This is used on or near any display or gauge which shows the data. Units can change and are presented separately, therefore no
+indication of units should be included in displayName. eg. "Port"
+
+###`longName` `shortName`
+
+These are human readable names for the particular instance of this value. Presented to users to identify the value. The short
+version may be used by consumers where space is at a premium. As with displayName units should not be included.
+
 ###`timeout`
 
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified

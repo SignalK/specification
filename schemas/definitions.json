@@ -535,7 +535,7 @@
         "displayName": {
           "type": "string",
           "title": "DisplayName schema.",
-          "description": "A display name for this value.",
+          "description": "A display name for this value. This is shown on the gauge and should not include units.",
           "example": "Tachometer, Engine 1"
         },
 
@@ -550,7 +550,7 @@
           "type": "string",
           "title": "ShortName schema.",
           "description": "A short name for this value.",
-          "example": "RPM"
+          "example": "Tacho 1"
         },
 
         "description": {
