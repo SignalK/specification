@@ -476,17 +476,17 @@
     },
     "headingMagnetic": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading of the vessel, equals 'headingRaw adjusted for magneticDeviation'",
+      "description": "Current magnetic heading of the vessel, equals 'headingCompass adjusted for magneticDeviation'",
       "units": "rad"
     },
     "magneticDeviation": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Magnetic deviation of the compass at the current headingRaw",
+      "description": "Magnetic deviation of the compass at the current headingCompass",
       "units": "rad"
     },
-    "headingRaw": {
+    "headingCompass": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "Current magnetic heading received from the compass.",
+      "description": "Current magnetic heading received from the compass. This is not adjusted for magneticDeviation of the compass",
       "units": "rad"
     },
     "headingTrue": {
