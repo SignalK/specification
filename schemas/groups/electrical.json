@@ -143,7 +143,11 @@
             }
           }]
         },
-
+        "Power": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Power measured at device.",
+          "units": "W"
+        },
         "temperature": {
           "type": "object",
           "description": "Temperature measured within or on the device",
