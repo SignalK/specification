@@ -1,0 +1,7 @@
+{
+  "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
+  "get": [{
+	  "path": "a.b.c"
+  }]
+}
