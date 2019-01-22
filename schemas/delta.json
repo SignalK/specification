@@ -3,59 +3,19 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "https://signalk.org/specification/1.0.0/schemas/delta.json#",
   "title": "SignalK Delta message schema",
-  "description": "Schema for defining SignalK messages, for example for communicating updates of data",
-
-  "oneOf": [{
-            "required": ["updates"]
-          }, {
-            "required": ["subscribe"]
-          },          {
-            "required": ["unsubscribe"]
-          },{
-            "required": ["get"]
-          },{
-            "required": ["list"]
-          },{
-            "required": ["put","requestId"]
-          }
-    	],
-  "not": {
-          "anyOf":[{
-            "required": ["updates"]
-          }, {
-            "required": ["subscribe"]
-          },          {
-            "required": ["unsubscribe"]
-          },{
-            "required": ["get"]
-          },{
-            "required": ["list"]
-          },
-          { "oneOf":[
-          	{
-           	 "required": ["put"]
-          	},{
-         	   "required": ["put","requestId"]
-         	 }
-          ]}
-       	]
-          
-    },
-    
+  "description": "Schema for defining updates and subscriptions to parts of a SignalK data model, for example for communicating updates of data",
+  "required": [
+    "updates"
+  ],
   "properties": {
     "context": {
       "type": "string",
       "description": "The context path of the updates, eg. the top level path plus object identifier.",
       "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
     },
-    "requestId": {
-      "type": "string",
-      "description": "a [version 4 UUID](https://tools.ietf.org/html/rfc4122.html#section-4.4). See Signal K request/response semantics for use",
-      "example": "123345-23232-232323"
-    },
     "updates": {
       "type": "array",
-      "description": "An array of key/value pairs and their current state. Typically used to notify clients that a change has occurred. Updates use 'fire and forget' semantics, if explicit acknowlegement is required use the PUT message.",
+      "description": "The updates",
       "items": {
         "type": "object",
         "required": ["values"],

@@ -61,6 +61,8 @@
               "default": 666
             },
             "reducedState": {
+              "type": "object",
+              "description": "An object describing reduction of sail area",
               "properties": {
                 "reduced": {
                   "type": "boolean",
