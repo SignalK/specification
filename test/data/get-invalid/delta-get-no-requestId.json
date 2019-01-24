@@ -1,0 +1,6 @@
+{
+  "context": "bar",
+  "get": {
+	  "path": "a.b.c"
+  }
+}

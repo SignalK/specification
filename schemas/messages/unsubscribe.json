@@ -1,10 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/",
+  "id": "https://signalk.org/specification/1.0.0/schemas/messages/unsubscribe.json#",
+  "title": "SignalK UNSUBSCRIBE message schema",
   "type": "object",
-  "title": "Unsubscribe schema.",
   "description": "A message to allow a client to unsubscribe from data updates from a signalk server",
-  "name": "/",
   "properties": {
     "context": {
       "id": "context",
