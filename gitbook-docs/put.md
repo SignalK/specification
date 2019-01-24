@@ -38,7 +38,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 
 The `context` key is optional, and defaults to `vessels.self`, which is the usual case. You can include it to be able to set values on other vessels.
 
-####NOTE####
+#### NOTE ####
 The above PUT request (v1) uses an array to allow multiple keys in a single PUT. This is deprecated and strongly discouraged as it causes complex problems 
 with the request/response semantics in cases of partial failures.  An alternative format has been added to the v1 specification where the  PUT request is:
 
@@ -57,6 +57,6 @@ with the request/response semantics in cases of partial failures.  An alternativ
 
 In the v2 API the array format will be removed. Implementors are recommended to support both in the interim.
 
-##Return states
+## Return states
 
 A PUT request in the array format is only successful if _ALL_ if the items are successful. It is up to the client to ascertain which were in error, and why.

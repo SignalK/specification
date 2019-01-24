@@ -31,7 +31,7 @@ GET http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 
 The `context` key is optional, and defaults to `vessels.self`, which is the usual case. You can include it to be able to set values on other vessels.
 
-####NOTE####
+#### NOTE ####
 The above GET request (v1) uses an array to allow multiple keys in a single GET. This is deprecated and strongly discouraged as it cannot work via http.  
 An alternative format has been added to the v1 specification where the  GET request is:
 
@@ -49,6 +49,6 @@ An alternative format has been added to the v1 specification where the  GET requ
 
 In the v2 API the array format will be removed. Implementors are recommended to support both in the interim.
 
-##Return states
+## Return states
 
 A GET request in the array format is only successful if _ALL_ if the items are successful. It is up to the client to ascertain which were in error, and why.
