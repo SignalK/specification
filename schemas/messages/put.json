@@ -5,7 +5,7 @@
     "title": "SignalK PUT message schema",
     "description": "Schema for request/response updates to parts of a SignalK data model, for example turning on anchor watch",
     "required": [
-      "requestId","put"
+      "requestId","context", "put"
     ],
     "properties": {
         "requestId": {
