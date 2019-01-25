@@ -159,6 +159,32 @@ function chaiAsPromised(chai, utils) {
       , 'expected #{this} to not be valid SignalK delta'
       );
   });
+  Assertion.addProperty('validSignalKPut', function () {
+    var result = validateWithSchema(this._obj, 'messages/put.json');
+    var message = result.error ? result.error.message : ''
+    if (result.errors) {
+      message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
+      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+    }
+    this.assert(
+      result.valid
+      , message
+      , 'expected #{this} to not be valid SignalK put'
+      );
+  });
+  Assertion.addProperty('validSignalKGet', function () {
+	    var result = validateWithSchema(this._obj, 'messages/get.json');
+	    var message = result.error ? result.error.message : ''
+	    if (result.errors) {
+	      message = result.errors.length === 0 ? '' : result.errors[0].message + ':' + result.errors[0].dataPath +
+	      ' (' + (result.errors.length-1) + ' other errors not reported here)';
+	    }
+	    this.assert(
+	      result.valid
+	      , message
+	      , 'expected #{this} to not be valid SignalK get'
+	      );
+	  });
   Assertion.addProperty('validSubscribeMessage', function () {
     var result = validateWithSchema(this._obj, 'messages/subscribe.json');
     var message = result.error ? result.error.message + ':' + result.error.dataPath : '';

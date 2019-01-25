@@ -1,0 +1,7 @@
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
+  "put": {
+	  "path": "a.b.c",
+	  "value": 1234
+  }
+}
