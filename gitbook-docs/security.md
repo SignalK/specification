@@ -8,8 +8,8 @@ with authentication and access control mechanisms in place.
 
 ## Authentication
 
-Authentication for Signal K connections is based on a token carried in the message, or in a cookie for a HTTP
-request. The tokens can be of any type, but are typically JWT tokens.See https://jwt.io/
+Authentication for Signal K connections is based on a token carried in the message, or in a cookie or tokens carried in the HTTP
+`Authorization` header for a HTTP request. The tokens can be of any type.
 
 There are 3  authentication actions:
 
@@ -17,7 +17,7 @@ There are 3  authentication actions:
 * logout - invalidate a token
 * validate - validate a token with auto-renewal if valid. 
 
-All 3 actions can be done via HTTP REST semantics for web based clients, or by sending signalk messages for others.
+All 3 actions can be done via HTTP REST semantics for web based clients, or by sending Signal K messages for others.
 
 ### Authentication via HTTP
 
@@ -39,11 +39,11 @@ The client may send the login request with a `Content-Type` of `application/json
 ```
 
 In response to a valid login, the server shall respond with a 200 (OK) status, set an HTTP session cookie and include
-the token type and the token value in the body of the response. The response `Content-Type` must be `application/json`.
+the token expiry in seconds and the token value in the body of the response. The response `Content-Type` must be `application/json`.
 
 ```json
 {
-  "type": "JWT",
+  "expiry": 86400,
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUz"
 }
 ```
@@ -74,7 +74,7 @@ If the login is successful, the server will send a response like the following:
   "state": "COMPLETED",
   "result": 200,
   "login": {
-  	"type": "JWT",
+  	"expiry": 86400,
     "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
   }
 }
@@ -89,27 +89,23 @@ If the login fails, the server will send a response like the following:
   "result": 401
 }
 ```
-The `result` codes are the same as normally used in HTTP
+The `result` codes are the same as normally used in HTTP.
 
 ### Providing Authorization to the Server in Subsequent Requests
 
 #### Web Based Clients
 
-Web based clients should be sure to include the cookie set in the authentication response in all subsequent requests.
-
-```
-Cookie: SK_TOKEN=eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6IltcInNraXBwZXJcIl0iLCJpYXQiOjE1ND...
-
-```
+Web based clients should be sure to include the cookie or `Authorization` HTTP header obtained from the authentication response in all subsequent requests.
 
 #### WebSockets Clients
 
-Clients can include the authentication cookie with the initial request. 
+Clients can include the authentication cookie with the initial request.
 
 Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should
-be `{type} {token}`, for example `Authorization: JWT eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
+be `BEARER {token}`, for example `Authorization: BEARER eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
 
-They must still send the token in every message.
+Note that clients with a token should also include the `token` key in every signalk message sent over the websocket connection 
+as they would for other streaming protocols.
 
 #### Other Clients
 
@@ -144,7 +140,7 @@ Clients using other kinds of protocols can send the following message.
 ```json
 {
   "requestId": "1234-45653-343454",
-  "login": {
+  "validate": {
     "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
   }
 }
@@ -159,7 +155,7 @@ On success:
   "requestId": "1234-45653-343454",
   "state": "COMPLETED",
   "result": 200,
-  "login": {
+  "validate": {
     "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
   }
 }
@@ -177,7 +173,7 @@ On success:
 ### Logout
 
 #### Web Clients
-To logout, a web based client should send an HTTP PUT request to `/signalk/«version»/auth/logout` with the token in the cookie.
+To logout, a web based client should send an HTTP PUT request to `/signalk/«version»/auth/logout` with the token in the cookie or in the HTTP header.
 
 #### Other Clients
 
@@ -200,9 +196,8 @@ On success:
 ```
 {
   "requestId": "1234-45653-343454",
-  "logout": {
-    "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
-  }
+  "state": "COMPLETED",
+  "result": 200
 }
 ```
 On error (`result` could be any HTTP code):
