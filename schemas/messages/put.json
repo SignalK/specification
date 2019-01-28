@@ -12,6 +12,11 @@
           "type": "string",
           "pattern": "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
         },
+        "token": {
+          "type": "string",
+          "description": "The authentication token.",
+	      "example": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+        },
         "context": {
 	      "type": "string",
 	      "description": "The context path of the put, eg. the top level path plus object identifier. Optional, defaults to 'vessels.self'",
