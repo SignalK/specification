@@ -186,6 +186,25 @@ describe('Unit tests', function() {
       })
     });
   });
+  
+  describe('auth', function () {
+    describe('valid', function () {
+      getFiles('./test/data/auth-valid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/auth-valid/' + file).should.be.validAuthMessage;
+        });
+      })
+    });
+    describe('invalid', function () {
+      getFiles('./test/data/auth-invalid').forEach(function (file) {
+        it(file, function () {
+          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+          require('../test/data/auth-invalid/' + file).should.not.be.validAuthMessage;
+        });
+      })
+    });
+  });
 
   describe('vessel', function () {
     describe('valid', function () {
