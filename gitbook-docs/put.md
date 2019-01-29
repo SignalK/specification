@@ -12,42 +12,6 @@ To change a value, a PUT request should be sent via HTTP or using a Signal K __p
 The `source` field is optional. If a request is sent without the source and there is more than one source for the
 value, the server should respond with a 400 (Bad Request) HTTP status code.
 
-The PUT request is defined such that it puts the value as the _leaf_ node of the path. 
-
-You must use the full signalk path to the resource, 
-including `vessels.self` if needed. This allows us to PUT to the root paths such as `resources` without added server complexity.
-
-Take care, if you write to a path, eg `resources.waypoints` with an object 
-
-```
-{
-	"urn:mrn:signalk:uuid:66d09...3094f83": {
-		"feature": {
-			...
-		},
-		"position": {
-			...
-		}
-	}
-}
-
-``` 
-then `resource.waypoints` will be set to that object. When you send another waypoint it will _overwrite_ the current object.
-
-The correct way is to PUT to the full path to the leaf, eg `resources.waypoints.urn:mrn:signalk:uuid:66d09...3094f83` with an object 
-
-```
-   {
-		"feature": {
-			...
-		},
-		"position": {
-			...
-		}
-   }
-
-``` 
-
 ### Via HTTP
 ```
 PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/headingTrue
@@ -72,7 +36,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 ```
 [<]: #
 
-
+The `context` key is optional, and defaults to `vessels.self`, which is the usual case. You can include it to be able to set values on other vessels.
 
 #### NOTE ####
 The above PUT request (v1) uses an array to allow multiple keys in a single PUT. This is deprecated and strongly discouraged as it causes complex problems 
