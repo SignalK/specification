@@ -1,0 +1,1175 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Signalk Web API's",
+    "description" : "Signalk servers support a set of REST API's to enable various funtionality",
+    "contact" : {
+      "email" : "info@signalk.org"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths" : {
+    "/signalk/v1/apps/install" : {
+      "get" : {
+        "tags" : [ "Webapp management API" ],
+        "summary" : "Install a webapp@version",
+        "description" : "Installs the webapp",
+        "operationId" : "install",
+        "parameters" : [ {
+          "name" : "appName",
+          "in" : "query",
+          "description" : "Name of webapp as found on npmjs.com",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "@signalk/freeboard-sk"
+        }, {
+          "name" : "appVersion",
+          "in" : "query",
+          "description" : "Version of webapp as found on npmjs.com",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "1.0.0"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful install of appName@appVersion"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/remove" : {
+      "get" : {
+        "tags" : [ "Webapp management API" ],
+        "summary" : "Removes a webapp",
+        "description" : "Removes the webapp",
+        "operationId" : "remove",
+        "parameters" : [ {
+          "name" : "appName",
+          "in" : "query",
+          "description" : "Name of webapp",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "@signalk/freeboard-sk"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful removal of appName"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/list" : {
+      "get" : {
+        "tags" : [ "Webapp management API" ],
+        "summary" : "Return a list of installed webapps",
+        "description" : "Concatenates the package.json files from the installed apps as a json array ",
+        "operationId" : "list",
+        "responses" : {
+          "200" : {
+            "description" : "Successful retrieval of apps list"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/apps/search" : {
+      "get" : {
+        "tags" : [ "Webapp management API" ],
+        "summary" : "Search for a webapp",
+        "description" : "Returns a list of availible signalk webapps from npmjs.org.",
+        "operationId" : "search",
+        "parameters" : [ {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "Npm tag, default 'signalk-webapp'",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "signalk-webapp"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful retrieval of data"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/auth/validate" : {
+      "get" : {
+        "tags" : [ "Authentication API" ],
+        "summary" : "Validate",
+        "description" : "Validates the token, returning the token or an updated replacement.",
+        "operationId" : "validate",
+        "parameters" : [ {
+          "name" : "SK-TOKEN",
+          "in" : "cookie",
+          "description" : "You must have a real cookie, swagger cant create one for you. Use login",
+          "required" : true,
+          "allowEmptyValue" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 200,
+                    "token" : "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 500
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "No permission",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 403,\n}"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "No token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 400,\n}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signalk/v1/auth/login" : {
+      "post" : {
+        "tags" : [ "Authentication API" ],
+        "summary" : "Login (json)",
+        "description" : "Login with username and password as json data, return token as json",
+        "operationId" : "login",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"username\":\"john_doe\",\"password\":\"password\"}"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 200,
+                    "login" : {
+                      "token" : "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 500
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 501
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 401
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "No permission",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 403,\n}"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "No username or password",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 400,\n}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signalk/v1/auth/logout" : {
+      "put" : {
+        "tags" : [ "Authentication API" ],
+        "summary" : "Logout",
+        "description" : "Logout, invalidates and expires the token",
+        "operationId" : "logout",
+        "parameters" : [ {
+          "name" : "SK-TOKEN",
+          "in" : "cookie",
+          "description" : "You must have a real cookie, swagger cant create one for you. Use login",
+          "required" : true,
+          "allowEmptyValue" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 200,\n}"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "1234-45653-343454",
+                    "state" : "COMPLETED",
+                    "result" : 500
+                  }
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "No permission",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 403,\n}"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "No token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "{\n  \"requestId\": \"1234-45653-343454\",\n  \"state\": \"COMPLETED\",\n  \"result\": 400,\n}"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signalk/v1/api" : {
+      "get" : {
+        "tags" : [ "REST API" ],
+        "summary" : "Request all signalk data",
+        "description" : "Returns the full signalk data tree as json in full format. ",
+        "operationId" : "getAll",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "self" : "urn:mrn:imo:mmsi:366982330",
+                    "vessels" : {
+                      "urn:mrn:imo:mmsi:366982330" : {
+                        "mmsi" : "230099999",
+                        "navigation" : {
+                          "position" : {
+                            "value" : {
+                              "longitude" : 173.1693,
+                              "latitude" : -41.156426,
+                              "altitude" : 0
+                            },
+                            "timestamp" : "2015-01-25T12:01:01.000Z",
+                            "$source" : "a.suitable.path"
+                          },
+                          "courseOverGroundTrue" : {
+                            "value" : 245.69,
+                            "timestamp" : "2015-01-25T12:01:01.000Z",
+                            "$source" : "a.suitable.path"
+                          }
+                        }
+                      }
+                    },
+                    "version" : "1.0.0"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "REST API" ],
+        "summary" : "Post a signalk GET message",
+        "description" : " Post a signalk GET message. Has the same result as using non-http transport. This is a 'fire-and-forget' method, see PUT ",
+        "operationId" : "post",
+        "requestBody" : {
+          "description" : "A signalk message",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\n  \"context\": \"vessels.self\",\n  \"requestId\": \"184743-434373-348483\",\n  \"get\": {\n    \"path\": \"navigation\",\n  }\n}"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "position" : {
+                      "value" : {
+                        "longitude" : 173.1693,
+                        "latitude" : -41.156426,
+                        "altitude" : 0
+                      },
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    },
+                    "courseOverGroundTrue" : {
+                      "value" : 245.69,
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          },
+          "400" : {
+            "description" : "Bad request if message is not understood"
+          }
+        }
+      }
+    },
+    "/signalk/v1/api/self" : {
+      "get" : {
+        "tags" : [ "REST API" ],
+        "summary" : "Request self uuid",
+        "description" : "Returns the uuid of this vessel.",
+        "operationId" : "getSelf",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "vessels.urn:mrn:signalk:uuid:a8fb07c0-1ffd-4663-899c-f16c2baf8270"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/api/{path}" : {
+      "get" : {
+        "tags" : [ "REST API" ],
+        "summary" : "Request signalk data at path",
+        "description" : "Returns the signalk data tree found at path as json in full format.",
+        "operationId" : "get",
+        "parameters" : [ {
+          "name" : "path",
+          "in" : "path",
+          "description" : "A signalk path, eg /vessels/self/navigation",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "/vessels/self/navigation"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "position" : {
+                      "value" : {
+                        "longitude" : 173.1693,
+                        "latitude" : -41.156426,
+                        "altitude" : 0
+                      },
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    },
+                    "courseOverGroundTrue" : {
+                      "value" : 245.69,
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "REST API" ],
+        "summary" : "PUT a signalk message",
+        "description" : " PUT a signalk message. Processes the message, with request/response semantics, use this in preference to POST if you require confirmation of the message processing outcome.",
+        "operationId" : "put",
+        "parameters" : [ {
+          "name" : "path",
+          "in" : "path",
+          "description" : "A signalk path to a leaf, eg /vessel/self/navigation/anchor/maxRadius",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "/vessel/self/navigation/anchor/maxRadius"
+        } ],
+        "requestBody" : {
+          "description" : "A signalk value to set for this key",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"value\":75.0}"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "requestId" : "123345-23232-232323",
+                    "state" : "COMPLETED",
+                    "statusCode" : 200
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          },
+          "400" : {
+            "description" : "Bad request if message is not understood"
+          }
+        }
+      }
+    },
+    "/signalk" : {
+      "get" : {
+        "tags" : [ "Signalk Root Endpoint" ],
+        "summary" : "Request signalk endpoints and server details",
+        "description" : "Returns the json endpoints message for this server",
+        "operationId" : "onGet",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "endpoints" : {
+                      "v1" : {
+                        "version" : "1.0.0-alpha1",
+                        "signalk-http" : "http://localhost:3000/signalk/v1/api/",
+                        "signalk-ws" : "ws://localhost:3000/signalk/v1/stream"
+                      },
+                      "v3" : {
+                        "version" : "3.0.0",
+                        "signalk-http" : "http://localhost/signalk/v3/api/",
+                        "signalk-ws" : "ws://localhost/signalk/v3/stream",
+                        "signalk-tcp" : "tcp://localhost:8367"
+                      }
+                    },
+                    "server" : {
+                      "id" : "signalk-server-node",
+                      "version" : "0.1.33"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/signalk/v1/history/{path}" : {
+      "get" : {
+        "tags" : [ "History API" ],
+        "summary" : "Request signalk historic data",
+        "description" : "Request Signalk history and receive data",
+        "operationId" : "getHistory",
+        "parameters" : [ {
+          "name" : "path",
+          "in" : "path",
+          "description" : "A signalk path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "/vessel/self/navigation"
+        }, {
+          "name" : "fromTime",
+          "in" : "query",
+          "description" : "An ISO 8601 format date/time string, defaults to current time -4h",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2015-03-07T12:37:10.523Z"
+        }, {
+          "name" : "toTime",
+          "in" : "query",
+          "description" : "An ISO 8601 format date/time string, defaults to current time",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2016-03-07T12:37:10.523Z"
+        }, {
+          "name" : "timeSlice",
+          "in" : "query",
+          "description" : "Returned data will be aggregated by 'timeSlice', with one data point returned per timeslice. Supports s,m,h,d abbreviations (default 10m)",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "example" : "10m"
+        }, {
+          "name" : "aggregation",
+          "in" : "query",
+          "description" : "The aggregation method for the data in a timeSlice.(average|mean|sum|count|max|min) (default 'mean')",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "mean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "update" : {
+                    "description" : "update",
+                    "value" : "{\"test\"}"
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "History not supported"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/history" : {
+      "post" : {
+        "tags" : [ "History API" ],
+        "summary" : "Request signalk historic data",
+        "description" : "Post a Signalk HISTORY message and receive data",
+        "operationId" : "postHistory",
+        "requestBody" : {
+          "description" : "A signalk HISTORY message",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "update" : {
+                    "description" : "update",
+                    "value" : "{\"test\"}"
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "History not supported"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/playback" : {
+      "get" : {
+        "tags" : [ "Websocket Playback API" ],
+        "summary" : "Request a websocket stream",
+        "description" : "Submit a Signalk path, startTime and playbackRate to replay history. ",
+        "operationId" : "getPlaybackWS",
+        "parameters" : [ {
+          "name" : "subscribe",
+          "in" : "query",
+          "description" : "Subscribe mode ( none | self | all )",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "self"
+        }, {
+          "name" : "startTime",
+          "in" : "query",
+          "description" : "An ISO 8601 format date/time string",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2015-03-07T12:37:10.523Z"
+        }, {
+          "name" : "playbackRate",
+          "in" : "query",
+          "description" : "Playback rate multiplier, eg '2' = twice normal speed",
+          "schema" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "example" : 2
+        } ],
+        "responses" : {
+          "101" : {
+            "description" : "Switching to websocket",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "context" : "vessels.366982330.navigation",
+                    "updates" : [ {
+                      "values" : [ {
+                        "path" : "position",
+                        "value" : {
+                          "longitude" : 173.1693,
+                          "latitude" : -41.156426,
+                          "altitude" : 0
+                        }
+                      }, {
+                        "path" : "courseOverGroundTrue",
+                        "value" : 245.69
+                      } ],
+                      "$source" : "sources.gps_0183_RMC",
+                      "timestamp" : "2015-03-07T12:37:10.523Z"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "History not implemented"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Websocket Playback API" ],
+        "summary" : "Request a websocket stream",
+        "description" : "Post a Signalk SUBSCRIBE message with startTime and playbackRate to replay history.  ",
+        "operationId" : "postPlayback",
+        "requestBody" : {
+          "description" : "A signalk SUBSCRIBE message",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\n  \"context\": \"vessels.self\",\n  \"subscribe\": [\n    {\n      \"path\": \"navigation\",\n      \"period\": 1000,\n      \"format\": \"delta\",\n      \"policy\": \"ideal\",\n      \"minPeriod\": 200,\n      \"startTime\": \"2015-03-07T12:37:10.523Z\",\n      \"playbackRate\": 2\n    },\n  ]\n}"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "101" : {
+            "description" : "Switching to websocket",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "context" : "vessels.366982330.navigation",
+                    "updates" : [ {
+                      "values" : [ {
+                        "path" : "position",
+                        "value" : {
+                          "longitude" : 173.1693,
+                          "latitude" : -41.156426,
+                          "altitude" : 0
+                        }
+                      }, {
+                        "path" : "courseOverGroundTrue",
+                        "value" : 245.69
+                      } ],
+                      "$source" : "sources.gps_0183_RMC",
+                      "timestamp" : "2015-03-07T12:37:10.523Z"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    },
+    "/signalk/v1/snapshot/self" : {
+      "get" : {
+        "tags" : [ "REST Snapshot API" ],
+        "summary" : "Request self uuid",
+        "description" : "Returns the uuid of this vessel at 'time' to obtain the historic value.  ",
+        "operationId" : "getSelfSnapshot",
+        "parameters" : [ {
+          "name" : "time",
+          "in" : "query",
+          "description" : "Optional: An ISO 8601 format date/time string",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2015-03-07T12:37:10.523Z"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : "vessels.urn:mrn:signalk:uuid:a8fb07c0-1ffd-4663-899c-f16c2baf8270"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Snapshot not implemented if time parameter is understood but not implemented"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          },
+          "400" : {
+            "description" : "Bad request if time parameter is not understood"
+          }
+        }
+      }
+    },
+    "/signalk/v1/snapshot" : {
+      "get" : {
+        "tags" : [ "REST Snapshot API" ],
+        "summary" : "Request all signalk data",
+        "description" : "Returns the full signalk data tree as json in full format, valid at 'time' to obtain the historic value. ",
+        "operationId" : "getAllSnapshot",
+        "parameters" : [ {
+          "name" : "time",
+          "in" : "query",
+          "description" : "An ISO 8601 format date/time string",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2015-03-07T12:37:10.523Z"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "self" : "urn:mrn:imo:mmsi:366982330",
+                    "vessels" : {
+                      "urn:mrn:imo:mmsi:366982330" : {
+                        "mmsi" : "230099999",
+                        "navigation" : {
+                          "position" : {
+                            "value" : {
+                              "longitude" : 173.1693,
+                              "latitude" : -41.156426,
+                              "altitude" : 0
+                            },
+                            "timestamp" : "2015-01-25T12:01:01.000Z",
+                            "$source" : "a.suitable.path"
+                          },
+                          "courseOverGroundTrue" : {
+                            "value" : 245.69,
+                            "timestamp" : "2015-01-25T12:01:01.000Z",
+                            "$source" : "a.suitable.path"
+                          }
+                        }
+                      }
+                    },
+                    "version" : "1.0.0"
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "History not implemented if time parameter is understood but not implemented"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          },
+          "400" : {
+            "description" : "Bad request if time parameter is not understood"
+          }
+        }
+      }
+    },
+    "/signalk/v1/snapshot/{path}" : {
+      "get" : {
+        "tags" : [ "REST Snapshot API" ],
+        "summary" : "Request signalk data at path",
+        "description" : "Returns the signalk data tree found at path as json in full format at 'time' to obtain the historic value. ",
+        "operationId" : "getSnapshot",
+        "parameters" : [ {
+          "name" : "path",
+          "in" : "path",
+          "description" : "A signalk path, eg /vessels/self/navigation",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "/vessel/self/navigation"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "An ISO 8601 format date/time string",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "2015-03-07T12:37:10.523Z"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "position" : {
+                      "value" : {
+                        "longitude" : 173.1693,
+                        "latitude" : -41.156426,
+                        "altitude" : 0
+                      },
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    },
+                    "courseOverGroundTrue" : {
+                      "value" : 245.69,
+                      "timestamp" : "2015-01-25T12:01:01.000Z",
+                      "$source" : "a.suitable.path"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "History not implemented if time parameter is understood but not implemented"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          },
+          "400" : {
+            "description" : "Bad request if time parameter is not understood"
+          }
+        }
+      }
+    },
+    "/signalk/v1/stream" : {
+      "get" : {
+        "tags" : [ "Websocket Stream API" ],
+        "summary" : "Request a websocket stream",
+        "description" : "Submit a Signalk path and receive a stream of UPDATE messages. ",
+        "operationId" : "getWS",
+        "parameters" : [ {
+          "name" : "subscribe",
+          "in" : "query",
+          "description" : "Subscribe mode ( none | self | all )",
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "self"
+        } ],
+        "responses" : {
+          "101" : {
+            "description" : "Switching to websocket",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "context" : "vessels.366982330.navigation",
+                    "updates" : [ {
+                      "values" : [ {
+                        "path" : "position",
+                        "value" : {
+                          "longitude" : 173.1693,
+                          "latitude" : -41.156426,
+                          "altitude" : 0
+                        }
+                      }, {
+                        "path" : "courseOverGroundTrue",
+                        "value" : 245.69
+                      } ],
+                      "$source" : "sources.gps_0183_RMC",
+                      "timestamp" : "2015-03-07T12:37:10.523Z"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Websocket Stream API" ],
+        "summary" : "Request a websocket stream",
+        "description" : "Post a Signalk SUBSCRIBE message and receive a stream of UPDATE messages. ",
+        "operationId" : "post",
+        "requestBody" : {
+          "description" : "A signalk SUBSCRIBE message",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"context\":\"vessels.self\",\"subscribe\":[{\"path\":\"navigation.speedThroughWater\",\"period\":1000,\"format\":\"delta\",\"policy\":\"ideal\",\"minPeriod\":200},{\"path\":\"navigation.logTrip\",\"period\":10000}]}"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "101" : {
+            "description" : "Switching to websocket",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "example" : {
+                    "context" : "vessels.366982330.navigation",
+                    "updates" : [ {
+                      "values" : [ {
+                        "path" : "position",
+                        "value" : {
+                          "longitude" : 173.1693,
+                          "latitude" : -41.156426,
+                          "altitude" : 0
+                        }
+                      }, {
+                        "path" : "courseOverGroundTrue",
+                        "value" : 245.69
+                      } ],
+                      "$source" : "sources.gps_0183_RMC",
+                      "timestamp" : "2015-03-07T12:37:10.523Z"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error"
+          },
+          "403" : {
+            "description" : "No permission"
+          }
+        }
+      }
+    }
+  }
+}
