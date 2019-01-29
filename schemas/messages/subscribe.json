@@ -18,15 +18,11 @@
       "id": "websocket.connectionkey",
       "type": "string",
       "title": "Websocket.connectionkey.",
-      "description": "An optional session key that is used in STOMP and MQTT messages where there are no session facilities, NOTE: Deprecated, use token instead",
+      "description": "An optional session key that is used in STOMP and MQTT messages where there are no session facilities",
       "name": "websocket.connectionkey",
       "example": "d2f691ac-a5ed-4cb7-b361-9072a24ce6bc"
     },
-    "token": {
-          "type": "string",
-          "description": "The authentication token.",
-	      "example": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
-    },
+
     "reply-to": {
       "id": "reply-to",
       "type": "string",

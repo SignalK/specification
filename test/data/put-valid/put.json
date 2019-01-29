@@ -1,6 +1,5 @@
 {
   "requestId": "c0d79334-4e25-4245-8892-54e8ccc8021d",
-  "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
   "put": {
     "path": "electrical.switches.anchorLight.state",
     "value": 1

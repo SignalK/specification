@@ -5,17 +5,12 @@
     "title": "SignalK PUT message schema",
     "description": "Schema for request/response updates to parts of a SignalK data model, for example turning on anchor watch",
     "required": [
-      "requestId","context", "put"
+      "requestId","put"
     ],
     "properties": {
         "requestId": {
           "type": "string",
           "pattern": "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
-        },
-        "token": {
-          "type": "string",
-          "description": "The authentication token.",
-	      "example": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
         },
         "context": {
 	      "type": "string",
