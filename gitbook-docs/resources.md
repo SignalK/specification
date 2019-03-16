@@ -112,6 +112,8 @@ Specific use cases may require a richer set of options to target the entries to 
 
 ## CREATING a Resource Entry
 
+_Note: The creation, update or deletion of a resource should trigger the relevent Delta UPDATE message._
+
 ### Via HTTP
 
 __1. Where the server will generate the UUID of the new resource:__
