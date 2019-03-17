@@ -43,24 +43,61 @@ As the number of entries within a specific resource group can be large, you can 
 
 These parameters can be used individually or together to return the required resource entries.
 
-`GET "/signalk/v1/api/resources/routes?bounds=r1f2r&maxcount=200"`
+```
+GET "/signalk/v1/api/resources/routes?geohash=r1f2r&maxcount=200"
+```
 
 #### 1. Restrict by Bounded Area
 
-You can request resources that fall within a bounded geographic area by using the `bounds` parameter with a __geohash__ to define the size of the bounded area.
+You can request resources that fall within a bounded geographic area by using one of the following parameters:
+
+- __GeoHash__:
+Use the `geohash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
+
+- __SW / NE coordinates__:
+Use the `bounds` parameter to suppy an array `[x1,y1,x2,y2]` that defines the SW and NE corners of the bounded area from within which resources will be returned.
+
+- __Distance from vessel__:
+Use the `distance` parameter to specify the number of meters from the vessel that the bounded area (square) from within which resources will be returned.
+
+_Examples:_
 
 ### Via HTTP
 
-`GET "/signalk/v1/api/resources/routes?bounds=r1f2r"` 
+```
+GET "/signalk/v1/api/resources/routes?geohash=r1f2r" 
 
-### Via a Delta
+GET "/signalk/v1/api/resources/routes?bounds=[138.23, -38.123, 139.76,-37.89]" 
+
+GET "/signalk/v1/api/resources/routes?distance=10000"
+```
+
+### Via Delta
 
 ```json
 {
   "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
   "get": [{
         "path": "resources.notes",
-        "params": { "bounds": "r1f2r" }
+        "params": { "geohash": "r1f2r" }
+  }]
+}
+
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371e25",
+  "get": [{
+        "path": "resources.waypoints",
+        "params": { 
+            "bounds": [138.23, -38.123, 139.76,-37.89]
+        }
+  }]
+}
+
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
+  "get": [{
+        "path": "resources.notes",
+        "params": { "distance": 10000 }
   }]
 }
 ```
@@ -71,7 +108,9 @@ You can specify the maximum number of resource entries that are returned by usin
 
 ### Via HTTP
 
-`GET "/signalk/v1/api/resources/routes?maxcount=200"` 
+```
+GET "/signalk/v1/api/resources/routes?maxcount=100"
+``` 
 
 ### Via a Delta
 
@@ -80,8 +119,19 @@ You can specify the maximum number of resource entries that are returned by usin
   "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
   "get": [{
         "path": "resources.notes",
-        "params": { "maxcount": 200 }
+        "params": { "maxcount": 100 }
   }]
+}
+```
+
+_Note: The Delta response to a request where the snumber of returned resources has been capped at `maxcount` should include a `message` indicating this._
+
+```json
+{
+  "requestId": "123345-23232-232323",
+  "state": "COMPLETED",
+  "statusCode": 200,
+  "message": "Maximum number of items returned."
 }
 ```
 
@@ -91,7 +141,9 @@ Specific use cases may require a richer set of options to target the entries to 
 
 ### Via HTTP
 
-`GET "/signalk/v1/api/resources/routes?myparam=myparam_value&maxcount=150"`
+```
+GET "/signalk/v1/api/resources/routes?myparam=myparam_value&maxcount=150"
+```
 
 ### Via a Delta
 
@@ -101,8 +153,8 @@ Specific use cases may require a richer set of options to target the entries to 
   "get": [{
         "path": "resources.notes",
         "params": { 
-            "bounds": "r1f2r", 
-            "maxcount": 200 
+            "myparam": "myparam_value", 
+            "maxcount": 150 
         }
   }]
 }
@@ -322,7 +374,9 @@ _Note: The `context` attribute is not required when making Resource requests._
 
 Send an HTTP DELETE request to the path of the resource.
 
-`DELETE http://localhost:3000/signalk/v1/api/vessels/resources/notes/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd`
+```
+DELETE http://localhost:3000/signalk/v1/api/vessels/resources/notes/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd
+```
 
 ### Via a Delta
 
