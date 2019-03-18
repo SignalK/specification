@@ -55,10 +55,10 @@ You can request resources that fall within a bounded geographic area by using on
 Use the `geohash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
 
 - __SW / NE coordinates__:
-Use the `bounds` parameter to suppy an array `[x1,y1,x2,y2]` that defines the SW and NE corners of the bounded area from within which resources will be returned.
+Use the `bounds` parameter to suppy an array `x1,y1,x2,y2` that defines the SW `x1,y1` and NE `x2,y2` corners of the bounded area from within which resources will be returned.
 
 - __Distance from vessel__:
-Use the `distance` parameter to specify the number of meters from the vessel that the bounded area (square) from within which resources will be returned.
+Use the `distance` parameter to specify the number of meters to the edge of a bounded area _(a square of which the vessel is at the center)_ from within which resources will be returned.
 
 _Examples:_
 
@@ -67,7 +67,7 @@ _Examples:_
 ```
 GET "/signalk/v1/api/resources/routes?geohash=r1f2r" 
 
-GET "/signalk/v1/api/resources/routes?bounds=[138.23, -38.123, 139.76,-37.89]" 
+GET "/signalk/v1/api/resources/routes?bounds=138.23,-38.123, 139.76,-37.89" 
 
 GET "/signalk/v1/api/resources/routes?distance=10000"
 ```
@@ -88,7 +88,7 @@ GET "/signalk/v1/api/resources/routes?distance=10000"
   "get": [{
         "path": "resources.waypoints",
         "params": { 
-            "bounds": [138.23, -38.123, 139.76,-37.89]
+            "bounds": "138.23,-38.123,139.76,-37.89"
         }
   }]
 }
