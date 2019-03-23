@@ -11,6 +11,9 @@ with authentication and access control mechanisms in place.
 Authentication for Signal K connections is based on a token carried in the message, or in a cookie or tokens carried in the HTTP
 `Authorization` header for a HTTP request. The tokens can be of any type.
 
+__Note__: a signalk server should never simply echo or redistribute a message received without removing or replacing the token. 
+That would result in A's token being sent to B, which allows the B to impersonate A.  
+
 There are 3  authentication actions:
 
 * authenticate - login and obtain a token
@@ -52,7 +55,7 @@ In response to invalid login information the server must return HTTP error code 
 
 If the server does not implement this authentication mechanism it must return HTTP error code 501 (Not Implemented).
 
-### Authentication via WebSockets, Tcp, and Similar Transports
+### Authentication via WebSockets, TCP, and Similar Transports
 
 The client should send a the following message 
 
@@ -102,7 +105,7 @@ Web based clients should be sure to include the cookie or `Authorization` HTTP h
 Clients can include the authentication cookie with the initial request.
 
 Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should
-be `BEARER {token}`, for example `Authorization: BEARER eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
+be `Bearer {token}`, for example `Authorization: Bearer eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
 
 Note that clients with a token should also include the `token` key in every signalk message sent over the websocket connection 
 as they would for other streaming protocols.
