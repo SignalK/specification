@@ -43,88 +43,47 @@ As the number of entries within a specific resource group can be large, you can 
 
 These parameters can be used individually or together to return the required resource entries.
 
+### via HTTP
+Parameters are specified as a query string _e.g. ../resources/routes?param1=value1&param2=value2"_
+
+### via Delta
+
+Parameters are specified within a `params` object in the __GET__ request.
+
+_Example_
 ```
-GET "/signalk/v1/api/resources/routes?geohash=r1f2r&maxcount=200"
-```
-
-#### 1. Restrict by Bounded Area
-
-You can request resources that fall within a bounded geographic area by using one of the following parameters:
-
-- __GeoHash__:
-Use the `geohash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
-
-- __SW / NE coordinates__:
-Use the `bounds` parameter to suppy an array `x1,y1,x2,y2` that defines the SW `x1,y1` and NE `x2,y2` corners of the bounded area from within which resources will be returned.
-
-- __Distance from vessel__:
-Use the `distance` parameter to specify the number of meters to the edge of a bounded area _(a square of which the vessel is at the center)_ from within which resources will be returned.
-
-_Examples:_
-
-### Via HTTP
-
-```
-GET "/signalk/v1/api/resources/routes?geohash=r1f2r" 
-
-GET "/signalk/v1/api/resources/routes?bounds=138.23,-38.123, 139.76,-37.89" 
-
-GET "/signalk/v1/api/resources/routes?distance=10000"
+"get": [{
+    "path": "resources.notes",
+    "params": { 
+        "param1": value1,
+        "param2": value2
+    }
+}]
 ```
 
-### Via Delta
+#### 1. Specify maximum number entries to return
 
-```json
-{
-  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
-  "get": [{
-        "path": "resources.notes",
-        "params": { "geohash": "r1f2r" }
-  }]
-}
+You can specify the maximum number of resource entries that are returned by using the `limit` parameter.
 
-{
-  "requestId": "6b0e776f-811a-4b35-980e-b93405371e25",
-  "get": [{
-        "path": "resources.waypoints",
-        "params": { 
-            "bounds": "138.23,-38.123,139.76,-37.89"
-        }
-  }]
-}
-
-{
-  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
-  "get": [{
-        "path": "resources.notes",
-        "params": { "distance": 10000 }
-  }]
-}
-```
-
-#### 2. Specify maximum number of returned entries
-
-You can specify the maximum number of resource entries that are returned by using the `maxcount` parameter.
-
-### Via HTTP
+### via HTTP
 
 ```
-GET "/signalk/v1/api/resources/routes?maxcount=100"
+GET "/signalk/v1/api/resources/routes?limit=100"
 ``` 
 
-### Via a Delta
+### via Delta
 
 ```json
 {
-  "requestId": "6b0e776f-811a-4b35-980e-b93405371bc5",
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371ac5",
   "get": [{
         "path": "resources.notes",
-        "params": { "maxcount": 100 }
+        "params": { "limit": 100 }
   }]
 }
 ```
 
-_Note: The Delta response to a request where the snumber of returned resources has been capped at `maxcount` should include a `message` indicating this._
+_Note: The Delta response to a request where the number of returned resources has been capped at `limit` should include a `message` indicating this._
 
 ```json
 {
@@ -135,17 +94,35 @@ _Note: The Delta response to a request where the snumber of returned resources h
 }
 ```
 
-#### Implementation specific parameters
 
-Specific use cases may require a richer set of options to target the entries to be returned. In these cases implementors can provide their own parameters for use in conjunction with those defined above as part of their product / solution.
+#### 2. Restrict by Bounded Area
 
-### Via HTTP
+You can request resources that fall within a bounded geographic area by using one of the following parameters:
+
+- __GeoHash__:
+Use the `geohash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
+
+- __SW / NE coordinates__:
+Use the `geobounds` parameter to supply the coordinates  `x1,y1,x2,y2` that define the SW `(x1,y1)` and NE `(x2,y2)` corners of the bounded area from within which resources will be returned.
+
+- __Distance from vessel__:
+Use the `geobox` parameter to specify the radius _(in meters)_ of a square, with the vessel at the center, from within which resources will be returned.
+
+_Examples:_
+
+### via HTTP
 
 ```
-GET "/signalk/v1/api/resources/routes?myparam=myparam_value&maxcount=150"
+GET "/signalk/v1/api/resources/routes?geohash=r1f2r" 
+
+GET "/signalk/v1/api/resources/routes?geobounds=138.23,-38.123, 139.76,-37.89" 
+
+GET "/signalk/v1/api/resources/routes?geobox=10000"
+
+GET "/signalk/v1/api/resources/routes?geohash=r1f2r&limit=200"
 ```
 
-### Via a Delta
+### via Delta
 
 ```json
 {
@@ -153,8 +130,46 @@ GET "/signalk/v1/api/resources/routes?myparam=myparam_value&maxcount=150"
   "get": [{
         "path": "resources.notes",
         "params": { 
-            "myparam": "myparam_value", 
-            "maxcount": 150 
+            "geo": {
+                "hash": "r1f2r" 
+            }
+        }
+  }]
+}
+
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371e25",
+  "get": [{
+        "path": "resources.waypoints",
+        "params": { 
+            "geo": {
+                "bounds": [138.23,-38.123,139.76,-37.89]
+            }
+        }
+  }]
+}
+
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371b35",
+  "get": [{
+        "path": "resources.notes",
+        "params": { 
+            "geo": {
+                "box": 10000 
+            }
+        }
+  }]
+}
+
+{
+  "requestId": "6b0e776f-811a-4b35-980e-b93405371b45",
+  "get": [{
+        "path": "resources.notes",
+        "params": { 
+            "geo": {
+                "hash": "r1f2r"
+            },
+            "limit": 100
         }
   }]
 }
@@ -170,12 +185,12 @@ A resource is identified by a __uuid__ which will be generated by the Signal K s
 
 The Signal K server will emit a Delta UPDATE message for the new resource upon success.
 
-### Via HTTP
+### via HTTP
 
 Send an HTTP POST request to the appropriate resource path containing a payload of the following format:
 ```json
 {
-    "value": { resource_data },
+    "value": { <resource_data> },
     "source": "sourceId"
 }
 ```
@@ -202,14 +217,14 @@ POST http://localhost:3000/signalk/v1/api/vessels/resources/notes
 The `source` field is optional. If a request is sent without the source and there is more than one source for the
 value, the server should respond with a 400 (Bad Request) HTTP status code.
 
-### Via a Delta
+### via Delta
 
 __1. Where the server will generate the UUID of the new resource:__
 
 Send a PUT message to the appropriate resource path containing a payload of the following format:
 ```json
 {
-    "value": { resource_data },
+    "value": { <resource_data> },
     "path": "resources.<resource_group>"
 }
 ```
@@ -247,12 +262,12 @@ A resource to be updated is identified by the supplied __uuid__.
 
 The Signal K server will emit a Delta UPDATE message for the updated resource upon success.
 
-### Via HTTP
+### via HTTP
 
 Send an HTTP PUT request to the path of the resource _(which includes the resource uuid)_ with a payload of the following format:
 ```json
 {
-    "value": { resource_data },
+    "value": { <resource_data> },
     "source": "sourceId"
 }
 ```
@@ -275,12 +290,12 @@ PUT http://localhost:3000/signalk/v1/api/vessels/resources/notes/urn:mrn:signalk
 }
 ```
 
-### Via a Delta
+### via Delta
 
 Send a PUT message to the appropriate resource path containing a payload of the following format:
 ```json
 {
-    "value": { resource_data },
+    "value": { <resource_data> },
     "path": "resources.<resource_group>.<uuid>"
 }
 ```
@@ -314,18 +329,20 @@ To delete a resource entry the appropriate HTTP or Delta request is made to the 
 
 The Signal K server will emit a Delta UPDATE message for the deleted resource _(with a value of `null`)_ upon success.
 
-### Via HTTP
+__Note:__ _Attempting to delete a resource may fail due to it containing links / references to other resources, permissions, etc._ See [Request/Response](request_response.md) for details.
 
-Send an HTTP DELETE request to the path of the resource _(which includes the resource uuid)_.
+### via HTTP
+
+Send an HTTP DELETE request to the path of the resource that is to be removed.
 
 _Example:_
 ```
 DELETE http://localhost:3000/signalk/v1/api/vessels/resources/notes/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd
 ```
 
-### Via a Delta
+### via a Delta
 
-Send a PUT message to the appropriate resource path containing a payload with a value of `null`.
+Send a PUT message to the path of the resource to be removed with a value of `null`.
 
 ```json
 {
