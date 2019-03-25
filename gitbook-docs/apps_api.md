@@ -25,7 +25,7 @@ It returns a json array in the form:
 	"location": "../@mxtommy/kip/package/public/index.html",
 	"_location": "../@mxtommy/kip/package/public/index.html", //DEPRECATED
 // if available include manifest.json
-	"manifest": {..contect on manifest.json..}
+	"manifest": {..content of manifest.json..}
 //recommended
 	"licence": "",
 	"author": "Thomas St.Pierre <thomas@samoht.ca>",
