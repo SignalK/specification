@@ -107,8 +107,6 @@ Clients can include the authentication cookie with the initial request.
 Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should
 be `Bearer {token}`, for example `Authorization: Bearer eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
 
-Note that clients with a token can also include the `token` key in every signalk message sent over the websocket connection 
-as they would for other streaming protocols.
 
 #### Other Clients
 
