@@ -20,7 +20,7 @@ There are 3  authentication actions:
 * logout - invalidate a token
 * validate - validate a token with auto-renewal if valid. 
 
-All 3 actions can be done via HTTP REST semantics for web based clients, or by sending Signal K messages for others.
+All 3 actions can be done via HTTP requests or by sending Signal K messages for non HTTP clients
 
 ### Authentication via HTTP
 
@@ -77,7 +77,7 @@ If the login is successful, the server will send a response like the following:
   "state": "COMPLETED",
   "result": 200,
   "login": {
-  	"expiry": 86400,
+  	"timeToLive": 86400,
     "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
   }
 }
@@ -130,9 +130,10 @@ Clients using other kinds of protocols must include the `token` in the Signal K 
 
 Tokens may have a short expiry time and need to be renewed periodically, or a token's current validity may be unknown. 
 
-#### Web Clients
-To validate a token, a web based client should send an HTTP GET request to `/signalk/«version»/auth/validate` with the token in the cookie.
-If the token is valid, it will be renewed, and the new cookie set in the response.
+#### HTTP Clients
+
+To validate a token, a web based client should send an HTTP GET request to `/signalk/«version»/auth/validate` with the token in the cookie, or in the header.
+If the token is valid, a new token is created with new expiry time, and a new cookie or header set in the response. This effectively renews a token.
 
 The reply message will be returned in any case.
 
@@ -175,8 +176,8 @@ On success:
 
 ### Logout
 
-#### Web Clients
-To logout, a web based client should send an HTTP PUT request to `/signalk/«version»/auth/logout` with the token in the cookie or in the HTTP header.
+#### HTTP Clients
+To logout, an http based client should send an HTTP PUT request to `/signalk/«version»/auth/logout` with the token in the cookie or in the HTTP header.
 
 #### Other Clients
 
