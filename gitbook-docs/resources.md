@@ -100,26 +100,26 @@ _Note: The Delta response to a request where the number of returned resources ha
 You can request resources that fall within a bounded geographic area by using one of the following parameters:
 
 - __GeoHash__:
-Use the `geohash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
+Use the `geo.hash` parameter along with a __geohash__ to define the bounded area from within which resources will be returned.
 
 - __SW / NE coordinates__:
-Use the `geobounds` parameter to supply the coordinates  `x1,y1,x2,y2` that define the SW `(x1,y1)` and NE `(x2,y2)` corners of the bounded area from within which resources will be returned.
+Use the `geo.bounds` parameter to supply the coordinates  `x1,y1,x2,y2` that define the SW `(x1,y1)` and NE `(x2,y2)` corners of the bounded area from within which resources will be returned.
 
 - __Distance from vessel__:
-Use the `geobox` parameter to specify the radius _(in meters)_ of a square, with the vessel at the center, from within which resources will be returned.
+Use the `geo.box` parameter to specify the radius _(in meters)_ of a square, with the vessel at the center, from within which resources will be returned.
 
 _Examples:_
 
 ### via HTTP
 
 ```
-GET "/signalk/v1/api/resources/routes?geohash=r1f2r" 
+GET "/signalk/v1/api/resources/routes?geo.hash=r1f2r" 
 
-GET "/signalk/v1/api/resources/routes?geobounds=138.23,-38.123, 139.76,-37.89" 
+GET "/signalk/v1/api/resources/routes?geo.bounds=138.23,-38.123,139.76,-37.89" 
 
-GET "/signalk/v1/api/resources/routes?geobox=10000"
+GET "/signalk/v1/api/resources/routes?geo.box=10000"
 
-GET "/signalk/v1/api/resources/routes?geohash=r1f2r&limit=200"
+GET "/signalk/v1/api/resources/routes?geo.hash=r1f2r&limit=200"
 ```
 
 ### via Delta
