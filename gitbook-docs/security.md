@@ -11,7 +11,7 @@ with authentication and access control mechanisms in place.
 Authentication for Signal K connections is based on a token carried in the message, or in a cookie or tokens carried in the HTTP
 `Authorization` header for a HTTP request. The tokens can be of any type.
 
-__Note__: a signalk server should never simply echo or redistribute a message received without removing or replacing the token. 
+__Note__: a Signal K server should never simply echo or redistribute a message received without removing or replacing the token. 
 That would result in A's token being sent to B, which allows the B to impersonate A.  
 
 There are 3  authentication actions:
