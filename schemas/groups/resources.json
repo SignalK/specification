@@ -202,14 +202,14 @@
             },
             "region": {
               "type": "string",
-              "description": "Region related to note. A pointer to a region UUID. Alternative to position or geohash"
+              "description": "Region related to note. A pointer to a region UUID. Can be defined in additon to position or geohash"
             },
             "position": {
-              "description": "Position related to note. Alternative to region or geohash",
+              "description": "Position related to note. Alternative to geohash",
               "$ref": "../definitions.json#/definitions/position"
             },
             "geohash": {
-              "description": "Position related to note. Alternative to region or position",
+              "description": "Position related to note. Alternative to position",
               "$ref": "../definitions.json#/definitions/geohash"
             },
             "mimeType": {
@@ -220,6 +220,14 @@
               "type": "string",
               "description": "Location of the note"
             },
+            "group": {
+                "type": "string",
+                "description": "Name of a group or collection to which the note is attached"
+            }, 
+            "author": {
+                "type": "string",
+                "description": "Name of the creator of the note"
+            },                         
             "timestamp": {
               "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
