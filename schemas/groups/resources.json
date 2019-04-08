@@ -227,7 +227,15 @@
             "author": {
                 "type": "string",
                 "description": "Name of the creator of the note"
-            },                         
+            }, 
+            "readOnly": {
+                "type": "boolean",
+                "description": "Indicates whether the whether the content of the Note is permitted to be changed."
+            },
+            "published": {
+                "type": "boolean",
+                "description": "Indicates whether the note is available only for use on this server or shared with others."
+            },                                                
             "timestamp": {
               "description": "Timestamp of the last update to this data",
               "$ref": "../definitions.json#/definitions/timestamp"
