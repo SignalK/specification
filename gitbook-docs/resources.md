@@ -1,22 +1,38 @@
 # Resources
 
-Resources are collections of objects that are used to represent data that serves as additional information to aid with navigation, etc. 
+Resources are top level path in the Signal K API `/signalk/v1/api/resources` which comprises a collection of paths that provide access to additional information in order to aid and/or enhance navigation. 
 
-Resources are:
-- Usually persisted in a non-volatile data store _(i.e. not lost when server re-starts)_
-- Potentially large in number and / or record size
+Resource data can differ from _sensor_ data in the following ways:
+- Is non-volatile _(not lost when server re-starts)_
+- Can represent a large collection of entries, each of which may be large in size
 - Able to be created, updated and deleted by both applications and server processes
-- A top level path in the Signal K API: `/signalk/v1/api/resources/*`
 
-Resource entries:
-- Of a specific type are grouped under a specific path _i.e. `/signalk/v1/api/resources/waypoints`_
 
-- Are identified by a __uuid__. _e.g. `urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd`_
+Resources are grouped under a specific path based on their type _i.e. `.../resources/waypoints`_ and can represent data that is hosted locally or provided via a service.
 
-- Originating from other vessels will have a `$source` attribute that contains the id of the source vessel.
+The Signal K specification defines the following resource group paths and associated schemas:
+- __routes__: `.../resources/routes`
+- __waypoints__: `.../resources/waypoints`
+- __notes__: `.../resources/notes`
+- __regions__: `.../resources/regions`
 
-- May contain references to other resources in either the same or different group. _i.e. A route's `start` and `end` attribute contains a reference to a `waypoint` resource._
+Group paths under `.../resources/` should clearly identify the type of data hosted.
 
+_e.g. `.../resources/weather`,  `.../resources/video`_
+
+Each resource entry within a group must be uniquely identified, this can be via a __name__ or __uuid__. 
+
+_e.g. `.../resources/waypoints/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd`_
+
+_e.g. `.../resources/video/bowCamera`_
+
+Resource entries originating from another host or service will have a `$source` attribute containing a value identifying the source.
+
+Additionally resource entries may contain references to other resources in either the same or different group. 
+
+_i.e. A route's `start` and `end` attributes contain a reference to a `waypoint` resource._
+
+---
 
 ## Working with Resources
 
@@ -42,6 +58,8 @@ Resource entries are returned when either an HTTP or Delta __GET__ request is ma
 As the number of entries within a specific resource group can be large, you can provide parameters with your request to limit the number of entries returned.
 
 These parameters can be used individually or together to return the required resource entries.
+
+_Note: The ability to use parameters to restrict the returned entries will be determined by the provider of the resource._
 
 ### via HTTP
 Parameters are specified as a query string _e.g. ../resources/routes?param1=value1&param2=value2"_
