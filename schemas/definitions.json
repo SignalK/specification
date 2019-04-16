@@ -505,6 +505,19 @@
       }
     },
 
+    "notificationLevel": {
+      "type": "string",
+      "title": "notificationLevel",
+      "description": "The alarm level when a notification is raised.",
+      "default": "normal",
+      "enum": [
+        "normal",
+        "alert",
+        "warn",
+        "alarm",
+        "emergency"
+      ]
+    },
     "alarmState": {
       "type": "string",
       "title": "alarmState",

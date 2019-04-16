@@ -28,7 +28,7 @@
                 },
                 "state": {
                   "description": "Current notification state",
-                  "$ref": "../definitions.json#/definitions/alarmState"
+                  "$ref": "../definitions.json#/definitions/notificationLevel"
                 },
                 "message": {
                   "description": "Message to display or speak",
