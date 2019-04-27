@@ -202,14 +202,14 @@
             },
             "region": {
               "type": "string",
-              "description": "Region related to note. A pointer to a region UUID. Can be defined in additon to position or geohash"
+              "description": "A pointer to a region UUID to which the Note is related. Can be defined in addition to position or geohash"
             },
             "position": {
-              "description": "Position related to note. Alternative to geohash",
+              "description": "Position related to note.",
               "$ref": "../definitions.json#/definitions/position"
             },
             "geohash": {
-              "description": "Position related to note. Alternative to position",
+              "description": "Area related to note. Geohash area should encompass the position value (if it is defined).",
               "$ref": "../definitions.json#/definitions/geohash"
             },
             "mimeType": {
