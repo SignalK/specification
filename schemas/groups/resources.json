@@ -224,17 +224,38 @@
                 "type": "string",
                 "description": "Name of a group or collection to which the note is attached"
             }, 
-            "author": {
-                "type": "string",
-                "description": "Name of the creator of the note"
+            "authors": {
+                "type": "array",
+                "description": "List of note author(s)",
+                "anyOf": [
+                    {
+                      "$ref": "../definitions.json#/definitions/commonValueFields"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of author"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "E-mail address of author"
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "Link to author details"
+                            }  
+                        }                                             
+                    }
+                ]
             }, 
             "readOnly": {
                 "type": "boolean",
-                "description": "Indicates whether the whether the content of the Note is permitted to be changed."
+                "description": "Indicates whether the content of the Note is permitted to be changed."
             },
-            "published": {
+            "draft": {
                 "type": "boolean",
-                "description": "Indicates whether the note is available only for use on this server or shared with others."
+                "description": "Indicates whether the note is available only for use on the local server."
             },                                                
             "timestamp": {
               "description": "Timestamp of the last update to this data",
