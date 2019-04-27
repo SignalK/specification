@@ -5,7 +5,7 @@ anchor light, the heading of the autopilot, or position of the anchor.
 
 See [Request/Response](request_response.md) for more details on request/response in Signal K.
 
-## Making a Request to Change a Value
+## Making a Request to Get a Value
 
 To get a value, a GET request should be sent via HTTP or using a Signal K __get__ message.
 
