@@ -252,6 +252,10 @@ module.exports.deltaToFull = function(delta) {
   return result;
 }
 
+module.exports.addMetadataRegex = function(newRegex) {
+  metadataByRegex.unshift(newRegex);
+}
+
 function fillIdentity(full) {
   let identity
   for (identity in full.vessels) {

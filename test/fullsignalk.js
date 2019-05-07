@@ -218,4 +218,56 @@ describe('FullSignalK', function() {
     const full = fullSignalK.retrieve()
     full.should.be.validSignalK
   })
+
+  it('Generates valid SignalK with user meta information', () => {
+    const userMeta = {
+      "vessels": {
+        "self": {
+          "mmsi": "276810000",
+          "uuid": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9",
+          "environment": {
+            "water": {
+              "temperature": {
+                "meta": {
+                  "displayName": "-- temperature --"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    var msg = {
+      "updates": [{
+        "source": {
+          "label": "N2K",
+          "type": "NMEA2000",
+          "pgn": 130312,
+          "src": "36",
+          "instance": "0"
+        },
+        "timestamp": "2015-01-15T16:15:19.628Z",
+        "values": [{
+          "path": "environment.water.temperature",
+          "value": 15.2
+        }, {
+          "path": "navigation.courseOverGroundTrue",
+          "value": 2.485697921257882
+        }]
+      }],
+      "context": "vessels.urn:mrn:imo:mmsi:276810000"
+    }
+
+    const fullSignalK = new FullSignalK('urn:mrn:imo:mmsi:276810000', null, userMeta);
+    fullSignalK.addDelta(msg);
+    var full = fullSignalK.retrieve();
+    full.should.be.validSignalK
+    var vessel = full.vessels['urn:mrn:imo:mmsi:276810000'];
+    vessel.environment.water.temperature.meta.should.have.property('displayName', '-- temperature --');
+    vessel.environment.water.temperature.meta.should.have.property('units', 'K');
+    vessel.environment.water.temperature.should.have.property('value', 15.2);
+    vessel.navigation.courseOverGroundTrue.meta.should.have.property('units', 'rad');
+    vessel.navigation.courseOverGroundTrue.should.have.property('value', 2.485697921257882);
+  })
 })

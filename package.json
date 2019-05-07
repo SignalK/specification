@@ -4,7 +4,7 @@
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
-    "test": "babel src --out-dir dist --copy-files && mocha",
+    "test": "babel src --out-dir dist --copy-files && mocha --timeout 10000",
     "prepublish": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",

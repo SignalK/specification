@@ -35,10 +35,29 @@ function FullSignalK(id, type, defaults) {
     this.self = this.root.vessels[id];
     signalkSchema.fillIdentity(this.root)
     this.root.self = 'vessels.' + id
+    fillWithUserMetadata(this.self, this.root.self);
   }
   this.sources = {};
   this.root.sources = this.sources;
   this.lastModifieds = {};
+}
+
+function fillWithUserMetadata(obj, path) {
+  for (var k in obj) {
+    if (obj[k] && typeof obj[k] === 'object') {
+      var currentPath = (path.length ? path + '.' : '') + k;
+      if (obj[k].hasOwnProperty('meta')) {
+        var meta = signalkSchema.getMetadata(currentPath);
+        obj[k].meta = _.defaults(obj[k].meta, meta);
+        var newRegex = {};
+        newRegex.regexp = new RegExp('^/' + currentPath.replace(/\./g, '\/') + '$');
+        newRegex.metadata = _.assign(obj[k].meta);
+        signalkSchema.addMetadataRegex(newRegex)
+        delete obj[k].meta.properties;
+      }
+      fillWithUserMetadata(obj[k], currentPath);
+    }
+  }
 }
 
 require("util").inherits(FullSignalK, require("events").EventEmitter);
@@ -194,7 +213,6 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
           //ignore properties from keyswithmetadata.json
           meta = JSON.parse(JSON.stringify(meta))
           delete meta.properties
-          
           previous[pathPart].meta = meta;
         }
       }
