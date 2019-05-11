@@ -251,7 +251,8 @@
             }, 
             "properties": {
                 "type": "object",
-                "description": "Extension properties placholder for use by applications."
+                "description": "Extension properties placholder for use by applications.",
+                "additionalProperties": true
             },                                              
             "timestamp": {
               "description": "Timestamp of the last update to this data",
