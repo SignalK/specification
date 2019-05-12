@@ -6,14 +6,7 @@
                 "description": "Big Island Approach notes.....",
                 "mimeType": "text/html",
                 "url": "https://myhost.com/bigisland.html",
-                "group": "Islands",
-                "authors": [
-                    {
-                        "name": "Joe Smith",
-                        "email": "joe.smith@mail.com",
-                        "url": "www.joesmith.org" 
-                    }
-                ],             
+                "group": "Islands",           
                 "geohash": "rbejg",
                 "position": {
                     "timestamp": "2015-03-06T16:57:53.643Z",
@@ -38,22 +31,10 @@
                 "title": "Small Island",
                 "description": "Small Island Approach notes.....",
                 "mimeType": "text/html",
-                "group": "Islands",
-                "authors": [
-                    {
-                        "name": "Jane Brown",
-                        "email": "jane.brown@mail.com",
-                        "url": "www.janeb.org" 
-                    }
-                ],             
+                "group": "Islands",            
                 "position": {
-                    "timestamp": "2015-03-06T16:57:53.643Z",
-                    "$source": "self",
-                    "value": {
-                        "longitude": 173.17,
-                        "latitude": -41.157,
-                        "altitude": 0
-                    }
+                    "longitude": 173.17,
+                    "latitude": -41.157
                 },
                 "timestamp": "2015-03-06T16:57:53.643Z",
                 "source": {
@@ -63,12 +44,7 @@
             },      
             "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021f": {
                 "title": "Dusky Shoal",
-                "description": "Anchoring information for Dsuky Shoal.....",
-                "authors": [
-                    {
-                        "name": "Ian West"
-                    }
-                ],             
+                "description": "Anchoring information for Dsuky Shoal.....",           
                 "geohash": "rbejg",
                 "properties": {
                     "draft": true
