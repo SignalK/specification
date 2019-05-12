@@ -227,27 +227,7 @@
             "authors": {
                 "type": "array",
                 "description": "List of note author(s)",
-                "anyOf": [
-                    {
-                      "$ref": "../definitions.json#/definitions/commonValueFields"
-                    },
-                    {
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "description": "Name of author"
-                            },
-                            "email": {
-                                "type": "string",
-                                "description": "E-mail address of author"
-                            },
-                            "url": {
-                                "type": "string",
-                                "description": "Link to author details"
-                            }  
-                        }                                             
-                    }
-                ]
+                "items": { "$ref": "#/definitions/author" }
             }, 
             "properties": {
                 "type": "object",
@@ -266,6 +246,25 @@
         }
       }
     },
+    "definitions": {
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of author"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "E-mail address of author"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Link to author details"
+                }  
+            } 
+        }  
+    },    
     "regions": {
       "type": "object",
       "title": "region",
