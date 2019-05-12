@@ -188,62 +188,62 @@
             "title": "notes",
             "description": "A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything",
             "patternProperties": {
-            "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
-                "type": "object",
-                "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
-                "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Note's common name"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "A textual description of the note"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "A pointer to a region UUID to which the Note is related. Can be defined in addition to position or geohash"
-                },
-                "position": {
-                    "description": "Position related to note.",
-                    "$ref": "../definitions.json#/definitions/position"
-                },
-                "geohash": {
-                    "description": "Area related to note. Geohash area should encompass the position value (if it is defined).",
-                    "$ref": "../definitions.json#/definitions/geohash"
-                },
-                "mimeType": {
-                    "type": "string",
-                    "description": "MIME type of the note"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "Location of the note"
-                },
-                "group": {
-                    "type": "string",
-                    "description": "Name of a group or collection to which the note is attached"
-                }, 
-                "authors": {
-                    "type": "array",
-                    "description": "List of note author(s)",
-                    "items": { "$ref": "#/definitions/author" }
-                }, 
-                "properties": {
+                "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
                     "type": "object",
-                    "description": "Extension properties placholder for use by applications.",
-                    "additionalProperties": true
-                },                                              
-                "timestamp": {
-                    "description": "Timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
+                    "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "description": "Note's common name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "A textual description of the note"
+                        },
+                        "region": {
+                            "type": "string",
+                            "description": "A pointer to a region UUID to which the Note is related. Can be defined in addition to position or geohash"
+                        },
+                        "position": {
+                            "description": "Position related to note.",
+                            "$ref": "../definitions.json#/definitions/position"
+                        },
+                        "geohash": {
+                            "description": "Area related to note. Geohash area should encompass the position value (if it is defined).",
+                            "$ref": "../definitions.json#/definitions/geohash"
+                        },
+                        "mimeType": {
+                            "type": "string",
+                            "description": "MIME type of the note"
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "Location of the note"
+                        },
+                        "group": {
+                            "type": "string",
+                            "description": "Name of a group or collection to which the note is attached"
+                        }, 
+                        "authors": {
+                            "type": "array",
+                            "description": "List of note author(s)",
+                            "items": { "$ref": "#/definitions/author" }
+                        }, 
+                        "properties": {
+                            "type": [ "object", "null" ],
+                            "description": "Extension properties placholder for use by applications.",
+                            "additionalProperties": true                            
+                        },                                              
+                        "timestamp": {
+                            "description": "Timestamp of the last update to this data",
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "source": {
+                            "description": "Source of this data",
+                            "$ref": "../definitions.json#/definitions/source"
+                        }
+                    }
                 }
-                }
-            }
             }
         },  
         "regions": {
@@ -251,84 +251,84 @@
             "title": "region",
             "description": "A holder for regions, each named with UUID",
             "patternProperties": {
-            "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
-                "type": "object",
-                "description": "A region of interest, each named with a UUID",
-                "properties": {
-                "geohash": {
-                    "description": "geohash of the approximate boundary of this region",
-                    "$ref:": "../definitions.json#/definitions/geohash"
-                },
-                "feature": {
-                    "title": "Feature",
-                    "description": "A Geo JSON feature object which describes the regions boundary",
-                    "required": [
-                    "geometry",
-                    "properties"
-                    ],
+                "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+                    "type": "object",
+                    "description": "A region of interest, each named with a UUID",
                     "properties": {
-                    "type": {
-                        "enum": [
-                        "Feature"
-                        ]
-                    },
-                    "geometry": {
-                        "oneOf": [
-                        {
-                            "title": "Polygon",
+                        "geohash": {
+                            "description": "geohash of the approximate boundary of this region",
+                            "$ref:": "../definitions.json#/definitions/geohash"
+                        },
+                        "feature": {
+                            "title": "Feature",
+                            "description": "A Geo JSON feature object which describes the regions boundary",
+                            "required": [
+                            "geometry",
+                            "properties"
+                            ],
                             "properties": {
                             "type": {
                                 "enum": [
-                                "Polygon"
+                                "Feature"
                                 ]
                             },
-                            "coordinates": {
-                                "$ref": "../external/geojson/geometry.json#/definitions/polygon"
+                            "geometry": {
+                                "oneOf": [
+                                {
+                                    "title": "Polygon",
+                                    "properties": {
+                                    "type": {
+                                        "enum": [
+                                        "Polygon"
+                                        ]
+                                    },
+                                    "coordinates": {
+                                        "$ref": "../external/geojson/geometry.json#/definitions/polygon"
+                                    }
+                                    }
+                                },
+                                {
+                                    "title": "MultiPolygon",
+                                    "properties": {
+                                    "type": {
+                                        "enum": [
+                                        "MultiPolygon"
+                                        ]
+                                    },
+                                    "coordinates": {
+                                        "type": "array",
+                                        "items": {
+                                        "$ref": "../external/geojson/geometry.json#/definitions/polygon"
+                                        }
+                                    }
+                                    }
+                                }
+                                ]
+                            },
+                            "properties": {
+                                "type": [
+                                "object",
+                                "null"
+                                ],
+                                "description": "Additional data of any type",
+                                "additionalProperties": true
+                            },
+                            "id": {
+                                "FIXME": "may be there, type not known (string? number?)"
                             }
+
                             }
                         },
-                        {
-                            "title": "MultiPolygon",
-                            "properties": {
-                            "type": {
-                                "enum": [
-                                "MultiPolygon"
-                                ]
-                            },
-                            "coordinates": {
-                                "type": "array",
-                                "items": {
-                                "$ref": "../external/geojson/geometry.json#/definitions/polygon"
-                                }
-                            }
-                            }
+                        "timestamp": {
+                            "description": "Timestamp of the last update to this data",
+                            "$ref": "../definitions.json#/definitions/timestamp"
+                        },
+                        "source": {
+                            "description": "Source of this data",
+                            "$ref": "../definitions.json#/definitions/source"
                         }
-                        ]
-                    },
-                    "properties": {
-                        "type": [
-                        "object",
-                        "null"
-                        ],
-                        "description": "Additional data of any type",
-                        "additionalProperties": true
-                    },
-                    "id": {
-                        "FIXME": "may be there, type not known (string? number?)"
                     }
-
-                    }
-                },
-                "timestamp": {
-                    "description": "Timestamp of the last update to this data",
-                    "$ref": "../definitions.json#/definitions/timestamp"
-                },
-                "source": {
-                    "description": "Source of this data",
-                    "$ref": "../definitions.json#/definitions/source"
                 }
-                }
-            }
             }
         },
         "waypoints": {
@@ -336,10 +336,10 @@
             "title": "waypoints",
             "description": "A holder for waypoints, each named with a UUID",
             "patternProperties": {
-            "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
-                "description": "A waypoint, named with a UUID",
-                "$ref": "../definitions.json#/definitions/waypoint"
-            }
+                "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+                    "description": "A waypoint, named with a UUID",
+                    "$ref": "../definitions.json#/definitions/waypoint"
+                }
             }
         }
     },
