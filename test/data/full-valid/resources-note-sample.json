@@ -1,7 +1,7 @@
 { 
     "resources": {
         "notes": {
-            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d": {
+            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021b": {
                 "title": "Big Island",
                 "description": "Big Island Approach notes.....",
                 "mimeType": "text/html",
@@ -18,34 +18,6 @@
                     }
                 },            
                 "region": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021e",
-                "properties": {
-                    "draft": true
-                },
-                "timestamp": "2015-03-06T16:57:53.643Z",
-                "source": {
-                    "label": "note",
-                    "type": "manual"
-                }                
-            },
-            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021a": {
-                "title": "Small Island",
-                "description": "Small Island Approach notes.....",
-                "mimeType": "text/html",
-                "group": "Islands",            
-                "position": {
-                    "longitude": 173.17,
-                    "latitude": -41.157
-                },
-                "timestamp": "2015-03-06T16:57:53.643Z",
-                "source": {
-                    "label": "note",
-                    "type": "manual"
-                }                
-            },      
-            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021f": {
-                "title": "Dusky Shoal",
-                "description": "Anchoring information for Dsuky Shoal.....",           
-                "geohash": "rbejg",
                 "properties": {
                     "draft": true
                 },
