@@ -1,7 +1,7 @@
 { 
     "resources": {
         "notes": {
-            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021b": {
+            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d": {
                 "title": "Big Island",
                 "description": "Big Island Approach notes.....",
                 "mimeType": "text/html",
@@ -18,6 +18,12 @@
                     }
                 },            
                 "region": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021e",
+                "authors": [
+                    {"name": "John Smith"}
+                ],
+                "properties": {
+                    "draft": true
+                },
                 "timestamp": "2015-03-06T16:57:53.643Z",
                 "source": {
                     "label": "note",
