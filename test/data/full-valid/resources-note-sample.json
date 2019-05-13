@@ -1,4 +1,22 @@
 { 
+    "vessels": {
+        "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+            "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+            "navigation": {
+                "position": {
+                    "timestamp": "2015-03-06T16:57:53.643Z",
+                    "$source": "nmea2.II",
+                    "sentence": "RMC",
+                    "value": {
+                        "longitude": 173.1693,
+                        "latitude": -41.156426,
+                        "altitude": 0
+                    }
+                }
+            }
+        }
+    },
+
     "resources": {
         "notes": {
             "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021d": {
