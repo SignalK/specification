@@ -190,17 +190,6 @@
                 "^urn:mrn:signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
                     "type": "object",
                     "description": "A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything",
-                    "anyOf": [
-                        {
-                            "required": ["region"]
-                        },
-                        {
-                            "required": ["position"]
-                        },
-                        {
-                            "required": ["geohash"]
-                        }                                                
-                    ],
                     "properties": {
                         "title": {
                             "type": "string",

@@ -1,10 +1,13 @@
 # Notes
 
-Notes are a Signal K resource type that provide a means to attach information to a geographic location or area. They are accessed via the Signal K API path `/signalk/v1/api/resources/notes`.
+Notes are a Signal K resource type that provide a means to capture and display additional information in a variety of formats. They are accessed via the Signal K API path `/signalk/v1/api/resources/notes`.
 
-Notes are associated to a geographic location (position), area (Geohash) or feature (`Region`) and therefore at least one of the `position`, `geohash` or `region` properties need to be defined.
+Notes can contian both text and / or a link to additional text, images, etc.
 
-Additionally, notes can be associated with other notes to form a collection. This is done by assigning the same `group` value to each of the notes considered to be part of the collection.
+They can stand alone or be associated with: 
+- a geographic location by assigning a value to `position`
+- an area by assigning a value to `geohash` or `region` 
+- other notes by entering the same value in `group`  for each of the related notes.
 
 ---
 
