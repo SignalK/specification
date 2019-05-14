@@ -37,7 +37,11 @@
                 },            
                 "region": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021e",
                 "authors": [
-                    {"name": "John Smith"}
+                    {
+                        "name": "John Smith",
+                        "email": "john.smith@mail.com",
+                        "url": "https://jsmith.org"
+                    }
                 ],
                 "properties": {
                     "draft": true
@@ -47,9 +51,31 @@
                     "label": "note",
                     "type": "manual"
                 }                
-            }
+            },
+            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8022d": {
+                "title": "Little Island",
+                "description": "Little Island Approach notes.....",          
+                "geohash": "rbejg",          
+                "region": "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8021e",
+                "timestamp": "2015-03-06T16:57:53.643Z",
+                "source": {
+                    "label": "note",
+                    "type": "manual"
+                }                
+            },
+            "urn:mrn:signalk:uuid:c0d79335-4e25-4245-8892-54e8ccc8023d": {
+                "title": "Other Island",
+                "description": "Other Island Approach notes.....",          
+                "geohash": "rbejg",
+                "timestamp": "2015-03-06T16:57:53.643Z",
+                "source": {
+                    "label": "note",
+                    "type": "manual"
+                }                
+            }            
         }
-    },
+    },        
+    
     "version": "1.0.0",
     "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d"
   }
