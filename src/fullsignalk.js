@@ -151,6 +151,9 @@ function handleNmea2000Source(labelSource, source, timestamp) {
 
   _.assign(existing.n2k, source)
   delete existing.n2k.pgn
+  delete existing.n2k.label
+  delete existing.n2k.instance
+  delete existing.n2k.type
   
   if(source.instance && !labelSource[source.src][source.instance]) {
     labelSource[source.src][source.instance] = {}
