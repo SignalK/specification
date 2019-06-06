@@ -11,7 +11,7 @@ and a connection to a Signal K server which supplies json data via the Signal K 
 
 ## API root
 
-The Aps API root is `signalk/v1/apps/`
+The Apps API root is `signalk/v1/apps/`
 
 ## List
 
@@ -19,11 +19,12 @@ The Aps API root is `signalk/v1/apps/`
 It returns a json array in the form:
 ```
 [{
-//mandatory
+//mandatory.
+// [server_apps_root] is the location of installed apps from server html root.
 	"name": "Kip",
 	"description": "Really cool instrument app!!",
-	"location": "../@mxtommy/kip/package/public/index.html",
-	"_location": "../@mxtommy/kip/package/public/index.html", //DEPRECATED
+	"location": "[server_apps_root]/@mxtommy/kip/package/public/index.html",
+	"_location": "[server_apps_root]/@mxtommy/kip/package/public/index.html", //DEPRECATED
 // if available include manifest.json
 	"manifest": {..content of manifest.json..}
 //recommended
@@ -115,7 +116,7 @@ It returns a json array in the form:
 `signalk/v1/apps/install?appName=@signalk/freeboard-sk&appVersion=1.3.1`, with params selected from above. This will install the app into
 the preferred location on the Signal K server, from which the `list` call can be used to generate the app menu.
 
-# Remove
+# Uninstall
 
-`signalk/v1/apps/remove?appName=@signalk/freeboard-sk`, with params selected from `list`. This will remove the app.
+`signalk/v1/apps/uninstall?appName=@signalk/freeboard-sk`, with params selected from `list`. This will uninstall the app.
 
