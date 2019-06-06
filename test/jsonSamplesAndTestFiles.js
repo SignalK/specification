@@ -147,7 +147,34 @@ describe('Unit tests', function() {
         });
       })
     });
+    describe('invalid', function () {
+        getFiles('./test/data/put-invalid').forEach(function (file) {
+          it(file, function () {
+            assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+            require('../test/data/put-invalid/' + file).should.not.be.validSignalKPut;
+          });
+        })
+      });
   });
+  
+  describe('get', function () {
+	    describe('valid', function () {
+	      getFiles('./test/data/get-valid').forEach(function (file) {
+	        it(file, function () {
+	          assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+	          require('../test/data/get-valid/' + file).should.be.validSignalKGet;
+	        });
+	      })
+	    });
+	    describe('invalid', function () {
+	        getFiles('./test/data/get-invalid').forEach(function (file) {
+	          it(file, function () {
+	            assert.equal(file.indexOf(' '), -1, "spaces are not permitted in file names");
+	            require('../test/data/get-invalid/' + file).should.not.be.validSignalKGet;
+	          });
+	        })
+	      });
+	  });
 
   describe('subscribe', function () {
     describe('valid', function () {

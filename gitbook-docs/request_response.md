@@ -22,7 +22,7 @@ For example, a request to PUT a value:
 
 The server will respond with a message which includes the `requestId`, a `state`, and a `statusCode`.
 
-The `state` can be `PENDING` or `COMPLETED`.
+The `state` can be `FAILED`, `PENDING` or `COMPLETED`.
 
 The `statusCode` will be any standard HTTP code including the following.
 
@@ -52,6 +52,8 @@ an authentication request could contain a `login` object.
 
 A server may respond to a request multiple times depending on how it processes the request.
 
+### PENDING
+
 When a server cannot process the request immediately, it will respond with the `state` PENDING:
 
 ```json
@@ -61,6 +63,18 @@ When a server cannot process the request immediately, it will respond with the `
   "statusCode": 202
 }
 ```
+### FAILED
+
+When a server fails read, or process the request (eg a server error), it will respond with the `state` FAILED:
+
+```json
+{
+  "requestId": "123345-23232-232323",
+  "state": "FAILED",
+  "statusCode": 500
+}
+```
+###COMPLETED
 
 When processing is done, but it was not successful:
 
@@ -72,7 +86,6 @@ When processing is done, but it was not successful:
   "message": "Unable to contact the light"
 }
 ```
-
 When processing completed successfully:
 
 ```json
@@ -82,6 +95,7 @@ When processing completed successfully:
   "statusCode": 200
 }
 ```
+###Query a Request
 
 The state of a request can also be found by sending the following:
 

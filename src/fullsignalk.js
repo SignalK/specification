@@ -139,14 +139,22 @@ FullSignalK.prototype.updateSource = function(context, source, timestamp) {
 }
 
 function handleNmea2000Source(labelSource, source, timestamp) {
-  if(!labelSource[source.src]) {
-    labelSource[source.src] = {
+  let existing = labelSource[source.src]
+
+  if ( !existing ) {
+    existing = labelSource[source.src] = {
       n2k: {
-        src: source.src,
-        pgns: {}
+        pgns:{}
       }
-    };
+    }
   }
+
+  _.assign(existing.n2k, source)
+  delete existing.n2k.pgn
+  delete existing.n2k.label
+  delete existing.n2k.instance
+  delete existing.n2k.type
+  
   if(source.instance && !labelSource[source.src][source.instance]) {
     labelSource[source.src][source.instance] = {}
   }
