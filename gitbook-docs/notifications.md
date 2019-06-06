@@ -26,7 +26,7 @@ We need a flexible model to define alarm conditions, and a standard way to annou
 ## Example
 
 eg If we exceed our anchor alarm radius: `vessels.self.navigation.anchor.currentRadius` enters
-`vessels.self.navigation.anchor.currentRadius.meta.zones[[50,500, "alarm", "Dragging anchor!"]],`
+`vessels.self.navigation.anchor.currentRadius.meta.zones : [ {lower: "0", upper: maxRadius, state : "normal"}, {lower: maxRadius, upper: 999999, state: "alarm"}]`
 
 The alarm is : `vessels.self.notifications.navigation.anchor.currentRadius`
 
