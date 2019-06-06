@@ -46,7 +46,7 @@ the token expiry in seconds and the token value in the body of the response. The
 
 ```json
 {
-  "expiry": 86400,
+  "timeToLive": 86400,
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUz"
 }
 ```
@@ -130,7 +130,7 @@ Tokens may have a short expiry time and need to be renewed periodically, or a to
 
 #### HTTP Clients
 
-To validate a token, a web based client should send an HTTP GET request to `/signalk/«version»/auth/validate` with the token in the cookie, or in the header.
+To validate a token, a web based client should send an HTTP POST request to `/signalk/«version»/auth/validate` with the token in the cookie, or in the header.
 If the token is valid, a new token is created with new expiry time, and a new cookie or header set in the response. This effectively renews a token.
 
 The reply message will be returned in any case.
