@@ -8,8 +8,19 @@ with authentication and access control mechanisms in place.
 
 ## Authentication
 
-Authentication for Signal K REST and WebSockets connections is based on HTTP cookies or tokens carried in the HTTP
-header.
+Authentication for Signal K connections is based on a token carried in the message, or in a cookie or tokens carried in the HTTP
+`Authorization` header for a HTTP request. The tokens can be of any type.
+
+__Note__: a Signal K server should never simply echo or redistribute a message received without removing or replacing the token. 
+That would result in A's token being sent to B, which allows the B to impersonate A.  
+
+There are 3  authentication actions:
+
+* authenticate - login and obtain a token
+* logout - invalidate a token
+* validate - validate a token with auto-renewal if valid. 
+
+All 3 actions can be done via HTTP requests or by sending Signal K messages for non HTTP clients
 
 ### Authentication via HTTP
 
@@ -31,11 +42,11 @@ The client may send the login request with a `Content-Type` of `application/json
 ```
 
 In response to a valid login, the server shall respond with a 200 (OK) status, set an HTTP session cookie and include
-the token type and the token value in the body of the response. The response `Content-Type` must be `application/json`.
+the token expiry in seconds and the token value in the body of the response. The response `Content-Type` must be `application/json`.
 
 ```json
 {
-  "type": "JWT",
+  "timeToLive": 86400,
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUz"
 }
 ```
@@ -44,9 +55,9 @@ In response to invalid login information the server must return HTTP error code 
 
 If the server does not implement this authentication mechanism it must return HTTP error code 501 (Not Implemented).
 
-### Authentication via WebSockets and Similar Transports
+### Authentication via WebSockets, TCP, and Similar Transports
 
-The client should send a message like the following.
+The client should send a the following message 
 
 ```json
 {
@@ -66,6 +77,7 @@ If the login is successful, the server will send a response like the following:
   "state": "COMPLETED",
   "result": 200,
   "login": {
+  	"timeToLive": 86400,
     "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
   }
 }
@@ -80,25 +92,25 @@ If the login fails, the server will send a response like the following:
   "result": 401
 }
 ```
+The `result` codes are the same as normally used in HTTP.
 
 ### Providing Authorization to the Server in Subsequent Requests
 
 #### Web Based Clients
 
-Web based clients should be sure to include the cookie set in the authentication response in all subsequent requests.
-
-To logout, a web based client should send an HTTP PUT request to `/signalk/«version»/auth/logout`.
+Web based clients should be sure to include the cookie or `Authorization` HTTP header obtained from the authentication response in all subsequent requests.
 
 #### WebSockets Clients
 
 Clients can include the authentication cookie with the initial request.
 
 Clients can include the `Authorization` HTTP header with the initial connect request. The format of the header should
-be `{type} {token}`, for example `Authorization: JWT eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
+be `Bearer {token}`, for example `Authorization: Bearer eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8`
+
 
 #### Other Clients
 
-Clients using other kinds of protocols can include the `token` in the Signal K messages they send.
+Clients using other kinds of protocols must include the `token` in the Signal K messages they send.
 
 ```json
 {
@@ -109,6 +121,93 @@ Clients using other kinds of protocols can include the `token` in the Signal K m
       "path": "*"
     }
   ]
+}
+```
+
+### Token Validation
+
+Tokens may have a short expiry time and need to be renewed periodically, or a token's current validity may be unknown. 
+
+#### HTTP Clients
+
+To validate a token, a web based client should send an HTTP POST request to `/signalk/«version»/auth/validate` with the token in the cookie, or in the header.
+If the token is valid, a new token is created with new expiry time, and a new cookie or header set in the response. This effectively renews a token.
+
+The reply message will be returned in any case.
+
+#### Other Clients
+
+Clients using other kinds of protocols can send the following message.
+
+```json
+{
+  "requestId": "1234-45653-343454",
+  "validate": {
+    "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+  }
+}
+```
+#### Reply Messages
+
+Any validation request results in one of the following messages
+
+On success:
+```
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 200,
+  "validate": {
+    "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+  }
+}
+```
+
+ On error (`result` could be any HTTP code):
+```
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 401
+}
+```
+
+### Logout
+
+#### HTTP Clients
+To logout, an http based client should send an HTTP PUT request to `/signalk/«version»/auth/logout` with the token in the cookie or in the HTTP header.
+
+#### Other Clients
+
+Clients using other kinds of protocols should send the following message.
+
+```json
+{
+  "requestId": "1234-45653-343454",
+  "logout": {
+    "token": "eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8"
+  }
+}
+```
+
+#### Reply Messages
+
+In both cases the reply will be
+
+On success:
+```
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 200
+}
+```
+On error (`result` could be any HTTP code):
+```
+{
+  "requestId": "1234-45653-343454",
+  "state": "COMPLETED",
+  "result": 401
 }
 ```
 
