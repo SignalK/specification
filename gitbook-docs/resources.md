@@ -8,23 +8,24 @@ Resource data can differ from _sensor_ data in the following ways:
 - Able to be created, updated and deleted by both applications and server processes
 
 
-Resources are grouped under a specific path based on their type _i.e. `.../resources/waypoints`_ and can represent data that is hosted locally or provided via a service.
+Resources are grouped under a specific path based on their type. The Signal K specification defines the following resource group paths and associated schemas:
+- __routes__: `/signalk/v1/api/resources/routes`
+- __waypoints__: `/signalk/v1/api/resources/waypoints`
+- __notes__: `/signalk/v1/api/resources/notes`
+- __regions__: `/signalk/v1/api/resources/regions`
 
-The Signal K specification defines the following resource group paths and associated schemas:
-- __routes__: `.../resources/routes`
-- __waypoints__: `.../resources/waypoints`
-- __notes__: `.../resources/notes`
-- __regions__: `.../resources/regions`
 
-Group paths under `.../resources/` should clearly identify the type of data hosted.
+Additional resource types can be defined under `/signalk/v1/api/resources/`, the assigned path should clearly identify the type of data hosted.  
 
-_e.g. `.../resources/weather`,  `.../resources/video`_
+_For example: Video steams from attached cameras could appear in `/signalk/v1/api/resources/video`._
 
 Each resource entry within a group must be uniquely identified, this can be via a __name__ or __uuid__. 
 
-_e.g. `.../resources/waypoints/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd`_
+```
+signalk/v1/api/resources/waypoints/urn:mrn:signalk:uuid:36f9b6b5-959f-46a1-8a68-82159742aadd_
 
-_e.g. `.../resources/video/bowCamera`_
+signalk/v1/api/resources/video/bowCamera
+```
 
 Resource entries originating from another host or service will have a `$source` attribute containing a value identifying the source.
 
@@ -236,8 +237,6 @@ The `source` field is optional. If a request is sent without the source and ther
 value, the server should respond with a 400 (Bad Request) HTTP status code.
 
 ### via Delta
-
-__1. Where the server will generate the UUID of the new resource:__
 
 Send a PUT message to the appropriate resource path containing a payload of the following format:
 ```json
