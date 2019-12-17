@@ -78,3 +78,13 @@ The hello message for a history playback stream MUST NOT contain the `timestamp`
 [<]: #
 
 A server MAY respond with `501 Not Implemented` status code if it does not support history playback and with `400 Bad Request` if it does not have data to play back for the given time period. A `404 Not Found` response is also acceptable to be backwards compatible.
+
+## Streaming over TCP
+
+A server MAY provide streaming delta service over TCP. See [Urls and Ports](urls_ports.md) and [Discovery and Connection Establishment](connection.md) for more details.
+
+The messages MUST be serialised as JSON with one message per line using line terminator `\r\n` (carriage return and newline).
+
+As there is no way to specify the subscription policy using url parameters as when opening a WebSocket connection the initial subscription policy is `none`, no active subscriptions. The client can modify the subscriptions after connection is established.
+
+Connection `hello` is the same as when using WebSockets.

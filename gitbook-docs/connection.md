@@ -11,6 +11,7 @@ identifiers are:
 * `_http._tcp` for the server's web interface
 * `_signalk-http._tcp` for the Signal K REST API
 * `_signalk-ws._tcp` for the WebSocket data stream
+* `_signalk-tcp._tcp` for the TCP data stream
 
 If a server is providing Signal K via secure versions of HTTP or WebSockets then they MUST be able to provide a
 redirection to the secure versions of these protocols.
