@@ -3,7 +3,7 @@
 ## WebSocket API: /signalk/«version»/stream
 
 Initiates a WebSocket connection that will start streaming the server’s updates as Signal K delta messages. You can
-specify the contents of the strea by using the `subscribe` query parameter.
+specify the contents of the stream by using the `subscribe` query parameter.
 
 - ws://hostname/signalk/«version»/stream?subscribe=self
 - ws://hostname/signalk/«version»/stream?subscribe=all
