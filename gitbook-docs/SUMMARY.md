@@ -12,7 +12,7 @@
 * [API]()
   * [URLs and Ports](urls_ports.md)
   * [REST API](rest_api.md)
-  * [Streaming WebSocket API](streaming_api.md)
+  * [Streaming API](streaming_api.md)
   * [Subscription Protocol](subscription_protocol.md)
   * [Discovery & Connection Establishment](connection.md)
   * [Notifications](notifications.md)

@@ -1,4 +1,6 @@
-# Streaming WebSocket API: /signalk/«version»/stream
+# Streaming API
+
+## WebSocket API: /signalk/«version»/stream
 
 Initiates a WebSocket connection that will start streaming the server’s updates as Signal K delta messages. You can
 specify the contents of the strea by using the `subscribe` query parameter.
@@ -16,7 +18,7 @@ Implemented`.
 
 See [Subscription Protocol](subscription_protocol.md) for more details.
 
-## Connection Hello
+### Connection Hello
 
 Upon connection the server MUST send a 'hello' JSON message, for example:
 
@@ -51,7 +53,7 @@ The server MAY provide:
 
 `version` MUST be the same value as `version` within the associated endpoints list provided by the http `GET` request to `/signalk` within the [REST API](rest_api.md) (if implemented).
 
-## History playback
+### History playback
 
 The server MAY support history playback from a certain point in time with a specified rate.
 
