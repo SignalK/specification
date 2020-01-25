@@ -1,7 +1,9 @@
-# Streaming WebSocket API: /signalk/«version»/stream
+# Streaming API
+
+## WebSocket API: /signalk/«version»/stream
 
 Initiates a WebSocket connection that will start streaming the server’s updates as Signal K delta messages. You can
-specify the contents of the strea by using the `subscribe` query parameter.
+specify the contents of the stream by using the `subscribe` query parameter.
 
 - ws://hostname/signalk/«version»/stream?subscribe=self
 - ws://hostname/signalk/«version»/stream?subscribe=all
@@ -16,7 +18,7 @@ Implemented`.
 
 See [Subscription Protocol](subscription_protocol.md) for more details.
 
-## Connection Hello
+### Connection Hello
 
 Upon connection the server MUST send a 'hello' JSON message, for example:
 
@@ -51,7 +53,7 @@ The server MAY provide:
 
 `version` MUST be the same value as `version` within the associated endpoints list provided by the http `GET` request to `/signalk` within the [REST API](rest_api.md) (if implemented).
 
-## History playback
+### History playback
 
 The server MAY support history playback from a certain point in time with a specified rate.
 
@@ -78,3 +80,13 @@ The hello message for a history playback stream MUST NOT contain the `timestamp`
 [<]: #
 
 A server MAY respond with `501 Not Implemented` status code if it does not support history playback and with `400 Bad Request` if it does not have data to play back for the given time period. A `404 Not Found` response is also acceptable to be backwards compatible.
+
+## Streaming over TCP
+
+A server MAY provide streaming delta service over TCP. See [Urls and Ports](urls_ports.md) and [Discovery and Connection Establishment](connection.md) for more details.
+
+The messages MUST be serialised as JSON with one message per line using line terminator `\r\n` (carriage return and newline).
+
+As there is no way to specify the subscription policy using url parameters as when opening a WebSocket connection the initial subscription policy is `none`, no active subscriptions. The client can modify the subscriptions after connection is established.
+
+Connection `hello` is the same as when using WebSockets.
