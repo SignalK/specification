@@ -1,6 +1,6 @@
 {
   "name": "@signalk/signalk-schema",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
