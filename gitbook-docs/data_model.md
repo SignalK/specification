@@ -8,7 +8,7 @@ transmitted as UTF-8 JSON.
 ## Full Format
 
 The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
-Signal K node, which in the case of a Signal K server could me many hundreds of data points.
+Signal K node, which in the case of a Signal K server could be many hundreds of data points.
 
 [>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model.json)
 ```json
