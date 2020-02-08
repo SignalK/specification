@@ -1,0 +1,112 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:246326000": {
+      "mmsi": "246326000",
+      "name": "UTGERDINA",
+      "design": {
+        "length": {
+          "meta": {
+            "description": "The various lengths of the vessel"
+          },
+          "value": {
+            "overall": 641
+          },
+          "$source": "DUMMY_LABEL.AI",
+          "timestamp": "2020-02-08T09:48:58.219Z",
+          "sentence": "VDM"
+        },
+        "beam": {
+          "meta": {
+            "units": "m",
+            "description": "Beam length"
+          },
+          "value": 65,
+          "$source": "DUMMY_LABEL.AI",
+          "timestamp": "2020-02-08T09:48:58.219Z",
+          "sentence": "VDM"
+        },
+        "draft": {
+          "meta": {
+            "description": "The draft of the vessel"
+          },
+          "value": {
+            "current": 14.1
+          },
+          "$source": "DUMMY_LABEL.AI",
+          "timestamp": "2020-02-08T09:48:58.219Z",
+          "sentence": "VDM"
+        },
+        "aisShipType": {
+          "meta": {
+            "description": "The ais ship type see http://www.bosunsmate.org/ais/message5.php"
+          },
+          "value": {
+            "id": 67,
+            "name": "Passenger ship"
+          },
+          "$source": "DUMMY_LABEL.AI",
+          "timestamp": "2020-02-08T09:48:58.219Z",
+          "sentence": "VDM"
+        }
+      },
+      "sensors": {
+        "ais": {
+          "fromBow": {
+            "meta": {
+              "description": "The distance from the bow to the sensor location"
+            },
+            "value": 256,
+            "$source": "DUMMY_LABEL.AI",
+            "timestamp": "2020-02-08T09:48:58.219Z",
+            "sentence": "VDM"
+          },
+          "fromCenter": {
+            "meta": {
+              "description": "The distance from the centerline to the sensor location, -ve to starboard, +ve to port"
+            },
+            "value": -27.5,
+            "$source": "DUMMY_LABEL.AI",
+            "timestamp": "2020-02-08T09:48:58.219Z",
+            "sentence": "VDM"
+          },
+          "class": {
+            "value": "A",
+            "$source": "DUMMY_LABEL.AI",
+            "timestamp": "2020-02-08T09:48:58.219Z",
+            "sentence": "VDM"
+          }
+        }
+      },
+      "navigation": {
+        "destination": {
+          "commonName": {
+            "meta": {
+              "description": "Common name of the Destination, eg 'Fiji', also used in ais messages"
+            },
+            "value": "OOI SILEN",
+            "$source": "DUMMY_LABEL.AI",
+            "timestamp": "2020-02-08T09:48:58.219Z",
+            "sentence": "VDM"
+          }
+        }
+      },
+      "communication": {
+        "callsignVhf": "PH510"
+      }
+    }
+  },
+  "self": "urn:mrn:imo:mmsi:246326000",
+  "version": "0.1.0",
+  "sources": {
+    "DUMMY_LABEL": {
+      "label": "DUMMY_LABEL",
+      "type": "NMEA0183",
+      "AI": {
+        "talker": "AI",
+        "sentences": {
+          "VDM": "2020-02-08T09:48:58.219Z"
+        }
+      }
+    }
+  }
+}

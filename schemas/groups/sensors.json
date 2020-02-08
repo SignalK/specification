@@ -28,6 +28,12 @@
     "fromCenter": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The distance from the centerline to the sensor location, -ve to starboard, +ve to port"
+    },
+
+    "class": {
+      "$ref": "../definitions.json#/definitions/stringValue",
+      "pattern_": "^[AB]\\Z",
+      "description": "AIS transponder class in sensors.ais.class, A or B"
     }
   }
 }
