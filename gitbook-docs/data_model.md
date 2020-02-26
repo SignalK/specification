@@ -264,6 +264,42 @@ the value should be merged to the full model mounted where the delta‘s context
 }
 ```
 [<]: #
+## Delta Format For Metadata
+
+Metadata can also be updated via a delta within the `meta` key.
+
+Since meta data is not often updated it is only sent when there has been a change. See [Subscription Protocol](subscription_protocol.md) for details.
+
+[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model_meta_deltas.json --prettify 2 20)
+```json
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "timestamp": "2014-08-15T19:02:31.507Z",
+      "meta": [
+        {
+          "path": "environment.wind.speedApparent",
+          "value": {
+            "units": "m/s",
+            "description": "Apparent wind speed",
+            "displayName": "Apparent Wind Speed",
+            "shortName": "AWS",
+            "zones": [
+              {
+                "upper": 15.4333,
+                "state": "warn",
+                "message": "high wind speed"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+[<]: #
 ## Data Quality
 
 Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset
