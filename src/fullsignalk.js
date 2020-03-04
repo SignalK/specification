@@ -198,7 +198,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
         if (!previous[pathPart]) {
           previous[pathPart] = {};
         }
-        if ( i === splitPath.length-1 ) {
+        if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
           let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
           if (meta ) {
             //ignore properties from keyswithmetadata.json
