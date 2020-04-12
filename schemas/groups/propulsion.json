@@ -96,20 +96,27 @@
         "transmission": {
           "type": "object",
           "description": "The transmission (gear box) of the named engine",
-		      "properties": {
+	  "properties": {
             "gear": {
               "type": "object",
               "description": "Currently selected gear the engine is in i.e. Forward, Reverse, etc.",
-			        "properties": {
-                "value": {
-                  "enum": [
-                    "Forward",
-                    "Neutral",
-                    "Reverse",
-                    "Fault"
-                  ]
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+	          "properties": {
+                    "value": {
+                      "enum": [
+                        "Forward",
+                        "Neutral",
+                        "Reverse",
+                        "Fault"
+                      ]
+                    }
+                  }
                 }
-              }
+              ]
             },
             "gearRatio": {
               "description": "Gear ratio, engine rotations per propeller shaft rotation",

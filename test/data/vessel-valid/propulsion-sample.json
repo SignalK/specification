@@ -142,7 +142,9 @@
       },
       "transmission": {
         "gear": {
-          "value": "Forward"
+          "value": "Forward",
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
         },
         "oilPressure": {
           "value": 100,
