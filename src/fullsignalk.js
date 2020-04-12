@@ -195,16 +195,19 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
   } else {
     const splitPath = pathValue.path.split('.');
     valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
-      if (!previous[pathPart]) {
-        previous[pathPart] = {};
-        let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
-        if (meta && i === splitPath.length-1) {
-          //ignore properties from keyswithmetadata.json
-          meta = JSON.parse(JSON.stringify(meta))
-          delete meta.properties
-          
-          previous[pathPart].meta = meta;
+        if (!previous[pathPart]) {
+          previous[pathPart] = {};
         }
+        if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
+          let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
+          if (meta ) {
+            //ignore properties from keyswithmetadata.json
+            meta = JSON.parse(JSON.stringify(meta))
+            delete meta.properties
+
+            _.assign(meta, previous[pathPart].meta)
+            previous[pathPart].meta = meta            
+          }
       }
       return previous[pathPart];
     }, context);
