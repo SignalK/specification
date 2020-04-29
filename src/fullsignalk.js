@@ -154,7 +154,7 @@ function handleNmea2000Source(labelSource, source, timestamp) {
   delete existing.n2k.label
   delete existing.n2k.instance
   delete existing.n2k.type
-  
+
   if(source.instance && !labelSource[source.src][source.instance]) {
     labelSource[source.src][source.instance] = {}
   }
@@ -184,10 +184,23 @@ function addValues(context, contextPath, source, timestamp, pathValues) {
 }
 
 function addValue(context, contextPath, source, timestamp, pathValue) {
-  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
-    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+  let errMessage = ""
+  if(_.isUndefined(pathValue.path)){
+    errMessage += "path"
+  }
+
+  if(_.isUndefined(pathValue.value)){
+    errMessage += errMessage.length > 0 ? " and value" : "value"
+  }
+
+  if(errMessage.length > 0){
+    errMessage = "Delta is missing " + errMessage + " in " + JSON.stringify(pathValue)
+    errMessage += " from source " + JSON.stringify(source)
+
+    console.error(errMessage);
     return;
   }
+
   var valueLeaf;
   if(pathValue.path.length === 0) {
     _.merge(context, pathValue.value)
@@ -206,7 +219,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
             delete meta.properties
 
             _.assign(meta, previous[pathPart].meta)
-            previous[pathPart].meta = meta            
+            previous[pathPart].meta = meta
           }
       }
       return previous[pathPart];
