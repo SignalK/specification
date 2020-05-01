@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/generic.json#",
+  "title": "Generic Data",
+  "description": "Generic data that should be user defined based on vessel usage.",
+  "type": "object",
+  "properties": {
+    "temperatures": {
+      "title": "User Defined Temperatures",
+      "description": "Generic temperatures outside of the NMEA defined sources.",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "User Defined Temperature",
+          "description": "Instance of user defined temperature.",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "properties": {
+                "temperature": {
+                  "description": "User defined temperature",
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "units": "K"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pressure": {
+      "title": "Actual Pressure",
+      "description": "Generic pressure sources that will vary based on vessel usage.",
+      "type": "object",
+      "properties": {
+        "atmospheric": {
+          "title": "Atmospheric Pressure",
+          "description": "Atmospheric pressure",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "properties": {
+                "pressure": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "units": "Pa"
+                }
+              }
+            }
+          }
+        },
+        "water": {
+          "title": "Water Pressure",
+          "description": "Water pressure",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "properties": {
+                "pressure": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "units": "Pa"
+                }
+              }
+            }
+          }
+        },
+        "steam": {
+          "title": "Steam Pressure",
+          "description": "Steam pressure",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "properties": {
+                "pressure": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "units": "Pa"
+                }
+              }
+            }
+          }
+        },
+        "compressedAir": {
+          "title": "Compressed Air Pressure",
+          "description": "Compressed air pressure",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "properties": {
+                "pressure": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "units": "Pa"
+                }
+              }
+            }
+          }
+        },
+        "hydraulic": {
+          "title": "Hydraulic Pressure",
+          "description": "Hydraulic pressure",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "pressure": {
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "Pa"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

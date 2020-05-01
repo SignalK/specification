@@ -1,0 +1,35 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:311982330": {
+      "mmsi": "311982330",
+      "generic": {
+        "temperatures": {
+          "userDefined129": {
+            "0": {
+              "temperature": {
+                "value": 295.3,
+                "$source": "ydwg-2000.41.0",
+                "timestamp": "2020-04-30T21:54:45.402Z",
+                "pgn": 130312
+              }
+            }
+          }
+        },
+        "pressure": {
+          "water": {
+            "0": {
+              "pressure": {
+                "value": 0,
+                "$source": "ydwg-2000.88.2",
+                "timestamp": "2020-04-30T21:54:44.481Z",
+                "pgn": 130314
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0",
+  "self": "urn:mrn:imo:mmsi:311982330"
+}
