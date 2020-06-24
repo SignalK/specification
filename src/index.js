@@ -285,8 +285,9 @@ function getSourceId(source) {
   if (!source) {
     return 'no_source';
   }
-  if (source.src || source.pgn) {
+  if (source.canName || source.src || source.pgn) {
     return source.label +
+      (source.canName ? '.' + source.canName : '') +
       (source.src ? '.' + source.src : '') +
       (source.instance ? '.' + source.instance : '');
   }
