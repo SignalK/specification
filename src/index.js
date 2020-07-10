@@ -285,10 +285,10 @@ function getSourceId(source) {
   if (!source) {
     return 'no_source';
   }
-  if (source.src || source.pgn) {
-    return source.label +
-      (source.src ? '.' + source.src : '') +
-      (source.instance ? '.' + source.instance : '');
+  if (source.canName ) {
+    return `${source.label}.${source.canName}`
+  } else if ( source.src ) {
+    return `${source.label}.${source.src}`
   }
   if (typeof source === 'object') {
     return source.label + (source.talker ? '.' + source.talker : '.XX');

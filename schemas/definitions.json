@@ -36,6 +36,11 @@
           "description": "NMEA2000 src value or any similar value for encapsulating the original source of the data",
           "example": "36"
         },
+        "canName": {
+          "type": "string",
+          "description": "NMEA2000 can name of the source device",
+          "example": "13877444229283709432"
+        },
         "pgn": {
           "type": "number",
           "description": "NMEA2000 pgn of the source message",
