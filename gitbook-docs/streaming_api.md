@@ -13,6 +13,8 @@ With no query parameter the default is `self`, which will stream the data relate
 stream all the updates the server sees and `none` will stream only the heartbeat, until the client issues subscribe
 messages in the WebSocket stream.
 
+A server may send the latest values it has cached when a client connects via WebSocket. A client can control this behavior with query parameter `sendCachedValues`. `false` will suppress sending the values and `true` force it. With no `sendCachedValues` parameter the server should send them.
+
 If a server does not support some streaming options listed in here it must respond with HTTP status code `501 Not
 Implemented`.
 
