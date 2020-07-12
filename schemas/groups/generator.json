@@ -1,20 +1,111 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.0.0/schemas/groups/propulsion.json#",
-  "title": "propulsion",
-  "description": "An engine, named by a unique name within this vessel",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/generator.json#",
+  "title": "generator",
+  "description": "A generator, named by a unique name within this vessel",
+  "definitions": {
+    "dcQualities": {
+      "type": "object",
+      "title": "DC Qualities",
+      "description": "DC common qualities",
+      "properties": {
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS device is associated with"
+        },
+        "voltage": {
+          "type": "object",
+          "description": "Voltage measured at or as close as possible to the device",
+          "units": "V",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "ripple": {
+                "description": "DC Ripple voltage",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+              }
+            }
+          }]
+        }
+      }
+    },
+    "acQualities": {
+      "type": "object",
+      "title": "AC Qualities",
+      "description": "AC equipment common qualities",
+      "properties": {
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS device is associated with"
+        },
+        "lineNeutralVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phase and neutral",
+          "units": "V"
+        },
+        "lineLineVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phases",
+          "units": "V"
+        },
+        "current": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS current",
+          "units": "A"
+        },
+        "frequency": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "AC frequency.",
+          "units": "Hz"
+        },
+        "reactivePower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Reactive power",
+          "units": "W"
+        },
+        "powerFactor": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Power factor",
+          "unit": "ratio"
+        },
+        "powerFactorLagging": {
+          "description": "Lead/lag status.",
+          "example": "leading",
+          "type": "string",
+          "enum": [
+            "leading",
+            "lagging",
+            "error",
+            "not available"
+          ]
+        },
+        "realPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Real power.",
+          "units": "W"
+        },
+        "apparentPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Apparent power.",
+          "units": "W"
+        }
+      }
+    }
+  },
   "patternProperties": {
     "(^[A-Za-z0-9]+$)": {
-      "description": "This regex pattern is used for validation of the identifier for the propulsion unit",
+      "description": "This regex pattern is used for validation of the identifier for the generator",
       "properties": {
         "label": {
           "type": "string",
-          "description": "Human readable label for the propulsion unit"
+          "description": "Human readable label for the generator"
         },
         "state": {
           "type": "object",
-          "description": "The current state of the engine",
+          "description": "The current state of the generator",
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
@@ -39,7 +130,7 @@
           "units": "Hz"
         },
         "temperature": {
-          "description": "Engine temperature",
+          "description": "Generator temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
@@ -93,88 +184,6 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
-        "transmission": {
-          "type": "object",
-          "description": "The transmission (gear box) of the named engine",
-	        "properties": {
-            "gear": {
-              "type": "object",
-              "description": "Currently selected gear the engine is in i.e. Forward, Reverse, etc.",
-              "allOf": [
-                {
-                  "$ref": "../definitions.json#/definitions/commonValueFields"
-                },
-                {
-	              "properties": {
-                    "value": {
-                      "enum": [
-                        "Forward",
-                        "Neutral",
-                        "Reverse",
-                        "Fault"
-                      ]
-                    }
-                  }
-                }
-              ]
-            },
-            "gearRatio": {
-              "description": "Gear ratio, engine rotations per propeller shaft rotation",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "ratio"
-            },
-            "oilTemperature": {
-              "description": "Oil temperature",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "K"
-            },
-            "oilPressure": {
-              "description": "Oil pressure",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "Pa"
-            }
-          }
-        },
-        "drive": {
-          "type": "object",
-          "description": "Data about the engine's drive.",
-		      "properties": {
-            "type": {
-              "description": "The type of drive the boat has i.e Outboard, shaft, jet, etc.",
-			        "enum": [
-                "saildrive",
-                "shaft",
-                "outboard",
-                "jet",
-                "pod",
-                "other"
-              ]
-            },
-            "trimState": {
-              "description": "Trim/tilt state, 0<=ratio<=1, 1 is 100% up",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "ratio"
-            },
-            "thrustAngle": {
-              "description": "Current thrust angle for steerable drives, +ve is thrust to Starboard",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "rad"
-            },
-            "propeller": {
-              "description": "Data about the drive's propeller (pitch and slip)",
-			        "pitch": {
-                "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "m"
-              },
-              "slip": {
-                "description": "Propeller slip, the ratio of 'lost' distance (1 - (actual distance travelled/propeller pitch distance)). 0<=ratio<=1, 0 is 0% slip (ideal), 1 is 100% slip",
-                "$ref": "../definitions.json#/definitions/numberValue",
-                "units": "ratio"
-              }
-            }
-          }
-        },
         "fuel": {
           "type": "object",
           "description": "Data about the engine's Fuel Supply",
@@ -184,8 +193,6 @@
               "enum": [
                 "diesel",
                 "petrol",
-                "electric",
-                "coal/wood",
                 "other"
               ]
             },
@@ -218,21 +225,6 @@
               "description": "vacuum measured at the fuel filter - an indication of the state of the fuel filter. The higher the vacuum, the more clogged the filter.",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "Pa"
-            },
-            "currentUsed": {
-              "description": "Amperes used since last reset. Resetting is at user discretion",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
-            "current": {
-              "description": "Current rate  of consumption of amperes",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
-            "voltage": {
-              "description": "Voltage being supplied to motor",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V"
             }
           }
         },
@@ -240,6 +232,12 @@
           "description": "Exhaust temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
+        },
+        "dc": {
+          "$ref": "#/definitions/dcQualities"
+        },
+        "ac": {
+          "$ref": "#/definitions/acQualities"
         }
       }
     }
