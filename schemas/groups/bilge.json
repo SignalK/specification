@@ -46,7 +46,7 @@
                         }
                     ]
                 },
-                "counter": {
+                "runCount": {
                     "description": "Number of times the pump has turned on since last reset, or in the last X hours. ",
                     "$ref": "../definitions.json#/definitions/numberValue",
                     "units": "count"
@@ -81,8 +81,8 @@
                 ]
             }
         },
-        "currentLevel": {
-            "description": "Level of fluid in the bilge: 0-100%",
+        "fluidLevel": {
+            "description": "Level of fluid in the bilge: 1 = 100%",
             "$ref": "../definitions.json#/definitions/numberValue",
             "units": "ratio"
         }
