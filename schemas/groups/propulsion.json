@@ -215,7 +215,7 @@
               "units": "m3/s"
             },
             "vacuum": {
-              "description": "vacuum measured at the fuel filter - an indication of the state of the fuel filter. The higher the vacuum, the more clogged the filter.",
+              "description": "Vacuum measured at the fuel filter - an indication of the state of the fuel filter. The higher the vacuum, the more clogged the filter.",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "Pa"
             },
