@@ -96,7 +96,7 @@
         "transmission": {
           "type": "object",
           "description": "The transmission (gear box) of the named engine",
-	  "properties": {
+	        "properties": {
             "gear": {
               "type": "object",
               "description": "Currently selected gear the engine is in i.e. Forward, Reverse, etc.",
@@ -105,7 +105,7 @@
                   "$ref": "../definitions.json#/definitions/commonValueFields"
                 },
                 {
-	          "properties": {
+	              "properties": {
                     "value": {
                       "enum": [
                         "Forward",
@@ -213,6 +213,21 @@
               "description": "Average fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
+            },
+            "vacuum": {
+              "description": "vacuum measured at the fuel filter - an indication of the state of the fuel filter. The higher the vacuum, the more clogged the filter.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "Pa"
+            },
+            "current": {
+              "description": "Amperes being drawn by the motor",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "A"
+            },
+            "voltage": {
+              "description": "Voltage being supplied to motor",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "V"
             }
           }
         },
