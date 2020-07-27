@@ -213,21 +213,6 @@
               "description": "Average fuel rate of consumption",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m3/s"
-            },
-            "vacuum": {
-              "description": "Vacuum measured at the fuel filter - an indication of the state of the fuel filter. The higher the vacuum, the more clogged the filter.",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "Pa"
-            },
-            "current": {
-              "description": "Amperes being drawn by the motor",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "A"
-            },
-            "voltage": {
-              "description": "Voltage being supplied to motor",
-              "$ref": "../definitions.json#/definitions/numberValue",
-              "units": "V"
             }
           }
         },
