@@ -267,6 +267,12 @@
           "quantity": "Viscosity",
           "quantityDisplay": "\u03bc",
           "description": "Viscosity in pascal seconds"
+        },
+        "count": {
+          "display": "",
+          "quantity": "Count",
+          "quantityDisplay": "",
+          "description": "Count, as an integer"
         }
       }
     },
