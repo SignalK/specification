@@ -43,6 +43,24 @@
           "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
 
+        },
+        "vacuum": {
+          "value": 0.77,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+
+        },
+        "current": {
+          "value": 223,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+
+        },
+        "voltage": {
+          "value": 48.2,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+
         }
       },
       "state": {
