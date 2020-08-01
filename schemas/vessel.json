@@ -207,6 +207,10 @@
         "abandon": {
           "description": "Abandon ship",
           "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "bilge": {
+          "description": "Bilge is too full",
+          "$ref": "groups/notifications.json#/definitions/notification"
         }
       },
       "patternProperties": {
@@ -257,6 +261,12 @@
     "performance": {
       "description": "Performance Sailing data including VMG, Polar Speed, tack angle, etc.",
       "$ref": "groups/performance.json#"
+    },
+    "bilge": {
+      "type": "object",
+      "title": "bilge",
+      "description": "Bilge data, each bilge indentified by a unique name, e.g., Forward",
+      "$ref": "groups/bilge.json#"
     }
   }
 }
