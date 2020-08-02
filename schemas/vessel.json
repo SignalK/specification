@@ -257,6 +257,12 @@
     "performance": {
       "description": "Performance Sailing data including VMG, Polar Speed, tack angle, etc.",
       "$ref": "groups/performance.json#"
+    },
+    "generator": {
+      "type": "object",
+      "title": "generator",
+      "description": "Generator data, each generator identified by a unique name",
+      "$ref": "groups/generator.json#"
     }
   }
 }
