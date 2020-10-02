@@ -183,66 +183,95 @@ function addValues(context, contextPath, source, timestamp, pathValues) {
   }
 }
 
+/**
+ * Adds a value to the context.
+ *
+ * @param {Object} context
+ * @param {string} contextPath ex: vessels.urn:mrn:imo:mmsi:200000000
+ * @param {Object} source description of where the data came from ex: {"label":"aLabel","type":"NMEA2000","pgn":130312,"src":"41","instance":"5"}
+ * @param {string} timestamp time of the data point (in ISO format)
+ * @param {Object} pathValue the path and value ex: {"path":"environment.inside.engineRoom.temperature","value":70}
+ */
 function addValue(context, contextPath, source, timestamp, pathValue) {
+  // guardian for no path or value
   if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
     console.error("Illegal value in delta:" + JSON.stringify(pathValue));
     return;
   }
-  var valueLeaf;
-  if(pathValue.path.length === 0) {
+  // if the added path is the root, just do a merge with the context and we're done
+  if (pathValue.path.length === 0) {
     _.merge(context, pathValue.value)
     return
-  } else {
-    const splitPath = pathValue.path.split('.');
-    valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
-        if (!previous[pathPart]) {
-          previous[pathPart] = {};
-        }
-        if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
-          let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
-          if (meta ) {
-            //ignore properties from keyswithmetadata.json
-            meta = JSON.parse(JSON.stringify(meta))
-            delete meta.properties
-
-            _.assign(meta, previous[pathPart].meta)
-            previous[pathPart].meta = meta            
-          }
-      }
-      return previous[pathPart];
-    }, context);
   }
 
-  if(valueLeaf.values) { //multiple values already
-    var sourceId = getId(source);
-    if(!valueLeaf.values[sourceId]) {
+  const splitPath = pathValue.path.split('.');
+  // traverse down the context to find the object that this path references,
+  // possibly creating elements as we go
+  let valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    // if required, create a new nested object for this path component
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+
+    // if we're at the last path component and we don't have a value yet, then
+    // determine if we need to add the meta key to describe the data type for
+    // this path
+    if (i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined') {
+      let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
+      if (meta) {
+        //ignore properties from keyswithmetadata.json
+        meta = JSON.parse(JSON.stringify(meta))
+        delete meta.properties
+
+        _.assign(meta, previous[pathPart].meta)
+        previous[pathPart].meta = meta
+      }
+    }
+
+    // return the object as we traverse downwards
+    return previous[pathPart];
+  }, context);
+
+  // if there are already multiple values, then add the new value as a nested
+  // element indexed by the source (see doc/data_model_multiple_values.html)
+  if (valueLeaf.values) {
+    const sourceId = getId(source);
+
+    // add the new child node, if this is the first time we've observed this
+    // value from this source
+    if (!valueLeaf.values[sourceId]) {
       valueLeaf.values[sourceId] = {};
     }
+
+    // do the assignment
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
-  } else if(typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
-    // first multiple value
-
-    var sourceId = valueLeaf['$source'];
-    var tmp = {};
+  }
+  // special case for when we've got an existing source and this is the first
+  // time we've seen this path from a new source
+  else if(typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
+    // first move the existing value to a nested element inside values
+    let sourceId = valueLeaf['$source'];
+    let tmp = {};
     copyLeafValueToLeaf(valueLeaf, tmp);
     valueLeaf.values = {};
     valueLeaf.values[sourceId] = tmp;
     valueLeaf.values[sourceId].timestamp = valueLeaf.timestamp;
 
+    // second, add the new value
     sourceId = getId(source);
     valueLeaf.values[sourceId] = {};
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
   }
+
+  // do the final assignment into the context
   assignValueToLeaf(pathValue.value, valueLeaf);
-  if(pathValue.path.length != 0) {
-    valueLeaf['$source'] = getId(source);
-    valueLeaf.timestamp = timestamp;
-    setMessage(valueLeaf, source);
-  }
+  valueLeaf['$source'] = getId(source);
+  valueLeaf.timestamp = timestamp;
+  setMessage(valueLeaf, source);
 }
 
 function copyLeafValueToLeaf(fromLeaf, toLeaf) {
