@@ -49,7 +49,7 @@ FullSignalK.prototype.retrieve = function() {
 
 FullSignalK.prototype.addDelta = function(delta) {
   this.emit('delta', delta);
-  var context = findContext(this.root, delta.context);
+  var context = findContextAndUpdateIdentity(this.root, delta.context);
   this.addUpdates(context, delta.context, delta.updates);
   this.updateLastModified(delta.context);
 };
@@ -76,17 +76,41 @@ FullSignalK.prototype.deleteContext = function(contextKey) {
   }
 }
 
-function findContext(root, contextPath) {
-  var context = _.get(root, contextPath);
+/**
+ * Both returns the context for a contextPath and update the context with the
+ * appropriate key.
+ *
+ * contextPath is something like vessels.urn:mrn:imo:mmsi:276810000 or
+ * vessels.foo.  Signalk tracks multiple vessels, each with their own context.
+ * This method returns the context for the vessel.  It additionally adds either
+ * the mmsi or url to the context to allow for easier access.
+ *
+ * For example:
+ * contextPath=vessels.urn:mrn:imo:mmsi:276810000
+ * before context={}
+ * after context={"mmsi":"276810000"}
+ *
+ * @param {Object} root the signalk store
+ * @param {string} contextPath the path to the desired vessel
+ * @return {Object} the context for the desired vessel from the signalk store
+ */
+function findContextAndUpdateIdentity(root, contextPath) {
+  // get the context and create an empty context if it doesn't exist
+  let context = _.get(root, contextPath);
   if(!context) {
     context = {};
     _.set(root, contextPath, context);
   }
-  var identity = contextPath.split('.')[1];
+
+  // contextPath is something like "vessels.foo" or "vessels.urn:mrn:..."
+  // if we have a full context path, add its contents to the context, so that
+  // we can more easily access the mmsi or url
+  const identity = contextPath.split('.')[1];
   if(!identity) {
     return undefined;
   }
   signalkSchema.fillIdentityField(context, identity);
+
   return context;
 }
 
