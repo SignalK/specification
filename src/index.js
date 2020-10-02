@@ -262,8 +262,7 @@ module.exports.deltaToFull = function(delta) {
 }
 
 function fillIdentity(full) {
-  let identity
-  for (identity in full.vessels) {
+  for (let identity in full.vessels) {
     fillIdentityField(full.vessels[identity], identity);
     //fill arbitrarily the last id as self, used in tests
     full.self = identity
