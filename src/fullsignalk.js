@@ -98,6 +98,7 @@ FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
 }
 
 FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
+  // first, update the sources in the full context
   if (typeof update.source != 'undefined') {
     this.updateSource(context, update.source, update.timestamp);
   } else if(typeof update['$source'] != 'undefined') {
@@ -105,37 +106,60 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
+
+  // second, update the values
   addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
 }
 
+/**
+ * Update the $source in the context.
+ *
+ * $source is a pointer to the sources field in the context.  See doc/data_model.html
+ *
+ * @param {Object} context
+ * @param {string} dollarSource a path directive pointing the real source
+ * @param {string} timestamp
+ */
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
   const parts = dollarSource.split('.')
+  // descend into the sources element of the context, creating elements as needed
   parts.reduce((cursor, part) => {
     if(typeof cursor[part] === 'undefined') {
       return cursor[part] = {}
     }
     return cursor[part]
   }, this.sources)
+
+  // Uh, shouldn't something be done with the result of the reduce?  What if
+  // the pointed to value isn't found?
 }
 
+/**
+ * Update the source in the context.
+ *
+ * This is the top level source element in the context, not a source embedded in the tree
+ *
+ * @param {Object} context
+ * @param {string} dollarSource a path directive pointing the real source
+ * @param {string} timestamp
+ */
 FullSignalK.prototype.updateSource = function(context, source, timestamp) {
+  // create the source, if this is the first time we've seen it
   if(!this.sources[source.label]) {
     this.sources[source.label] = {};
     this.sources[source.label].label = source.label;
     this.sources[source.label].type = source.type;
   }
 
+  // handle various different source types
   if(source.type === 'NMEA2000' || source.src) {
     handleNmea2000Source(this.sources[source.label], source, timestamp);
-    return
-  }
-
-  if(source.type === 'NMEA0183' || source.sentence) {
+  } else if(source.type === 'NMEA0183' || source.sentence) {
     handleNmea0183Source(this.sources[source.label], source, timestamp);
     return
+  } else {
+    handleOtherSource(this.sources[source.label], source, timestamp);
   }
-
-  handleOtherSource(this.sources[source.label], source, timestamp);
 }
 
 function handleNmea2000Source(labelSource, source, timestamp) {
