@@ -91,10 +91,10 @@ function findContext(root, contextPath) {
 }
 
 FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
-  var len = updates.length;
-  for (var i = 0; i < len; ++i) {
-    this.addUpdate(context, contextPath, updates[i]);
-  }
+  let that = this;
+  updates.forEach(function(update) {
+    that.addUpdate(context, contextPath, update);
+  });
 }
 
 FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
@@ -177,10 +177,9 @@ function handleOtherSource(sourceLeaf, source, timestamp) {
 }
 
 function addValues(context, contextPath, source, timestamp, pathValues) {
-  var len = pathValues.length;
-  for (var i = 0; i < len; ++i) {
-    addValue(context, contextPath, source, timestamp, pathValues[i]);
-  }
+  pathValues.forEach(function(pathValue) {
+    addValue(context, contextPath, source, timestamp, pathValue);
+  });
 }
 
 /**
