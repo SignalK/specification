@@ -115,10 +115,7 @@ function findContextAndUpdateIdentity(root, contextPath) {
 }
 
 FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
-  let that = this;
-  updates.forEach(function(update) {
-    that.addUpdate(context, contextPath, update);
-  });
+  updates.forEach(update => this.addUpdate(context, contextPath, update));
 }
 
 FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
@@ -225,9 +222,7 @@ function handleOtherSource(sourceLeaf, source, timestamp) {
 }
 
 function addValues(context, contextPath, source, timestamp, pathValues) {
-  pathValues.forEach(function(pathValue) {
-    addValue(context, contextPath, source, timestamp, pathValue);
-  });
+  pathValues.forEach(pathValue => addValue(context, contextPath, source, timestamp, pathValue));
 }
 
 /**
