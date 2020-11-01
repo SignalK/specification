@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/notifications.json#",
+  "title": "notifications",
+  "definitions": {
+    "notification": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "object",
+              "required": [
+                "method",
+                "state",
+                "message"
+              ],
+              "properties": {
+                "method": {
+                  "description": "Method to use to raise notifications",
+                  "type": "array",
+                  "items": {
+                    "$ref": "../definitions.json#/definitions/alarmMethodEnum"
+                  }
+                },
+                "state": {
+                  "description": "Current notification state",
+                  "$ref": "../definitions.json#/definitions/alarmState"
+                },
+                "message": {
+                  "description": "Message to display or speak",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "notificationBranch": {
+      "type": "object",
+      "patternProperties": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+          "description": "This regex pattern is used for validation of the path of the alarm",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/notificationBranch",
+              "example": "engine"
+            },
+            {
+              "$ref": "#/definitions/notification"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

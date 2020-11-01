@@ -1,0 +1,141 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/steering.json#",
+  "description": "Schema describing the steering child-object of a vessel.",
+  "title": "steering",
+  "properties": {
+    "rudderAngle": {
+      "description": "Current rudder angle, +ve is rudder to Starboard",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "rudderAngleTarget": {
+      "description": "The angle the rudder should move to, +ve is rudder to Starboard",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+
+    "autopilot": {
+      "type": "object",
+      "title": "autopilot",
+      "description": "Autopilot data",
+      "properties": {
+        "state": {
+          "type": "object",
+          "description": "Autopilot state",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "auto",
+                    "standby",
+                    "alarm",
+                    "noDrift",
+                    "wind",
+                    "depthContour",
+                    "route",
+                    "directControl"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+
+        "mode": {
+          "type": "object",
+          "description": "Operational mode",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "powersave",
+                    "normal",
+                    "accurate"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "target": {
+          "type": "object",
+          "title": "target",
+          "description": "Autopilot target",
+          "properties": {
+            "windAngleApparent": {
+              "description": "Target angle to steer, relative to Apparent wind +port -starboard",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
+            "headingTrue": {
+              "description": "Target heading for autopilot, relative to North",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
+            "headingMagnetic": {
+              "description": "Target heading for autopilot, relative to Magnetic North",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            }
+
+          }
+        },
+
+
+        "deadZone": {
+          "description": "Dead zone to ignore for rudder corrections",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+
+        "backlash": {
+          "description": "Slack in the rudder drive mechanism",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+
+        "gain": {
+          "description": "Auto-pilot gain, higher number equals more rudder movement for a given turn",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+
+        "maxDriveCurrent": {
+          "description": "Maximum current to use to drive servo",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "A"
+        },
+
+        "maxDriveRate": {
+          "description": "Maximum rudder rotation speed",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad/s"
+        },
+
+        "portLock": {
+          "description": "Position of servo on port lock",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+
+        "starboardLock": {
+          "description": "Position of servo on starboard lock",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        }
+      }
+    }
+  }
+}
