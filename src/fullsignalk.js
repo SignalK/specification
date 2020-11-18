@@ -105,7 +105,12 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-  addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  if ( update.values ) {
+    addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  }
+  if ( update.meta ) {
+    addMetas(context, contextPath, update.source || update['$source'], update.timestamp, update.meta);
+  }
 }
 
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
@@ -198,17 +203,15 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
         if (!previous[pathPart]) {
           previous[pathPart] = {};
         }
-        if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
+        if ( i === splitPath.length-1) {
           let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
-          if (meta ) {
+          if ( meta ) {
             //ignore properties from keyswithmetadata.json
             meta = JSON.parse(JSON.stringify(meta))
             delete meta.properties
-
-            _.assign(meta, previous[pathPart].meta)
-            previous[pathPart].meta = meta            
+            previous[pathPart].meta = _.merge(previous[pathPart].meta || {}, meta);
           }
-      }
+        }
       return previous[pathPart];
     }, context);
   }
@@ -265,6 +268,32 @@ function setMessage(leaf, source) {
     leaf.sentence = source.sentence;
     delete leaf.pgn;
   }
+}
+
+function addMetas(context, contextPath, source, timestamp, metas) {
+  var len = metas.length;
+  for (var i = 0; i < len; ++i) {
+    addMeta(context, contextPath, source, timestamp, metas[i]);
+  }
+}
+
+function addMeta(context, contextPath, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
+  var valueLeaf;
+
+  const splitPath = pathValue.path.split('.');
+  
+  valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+    return previous[pathPart];
+  }, context);
+
+  valueLeaf.meta = _.merge(valueLeaf.meta || {}, pathValue.value)
 }
 
 
