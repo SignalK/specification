@@ -346,7 +346,22 @@ module.exports.getMetadata = function (path) {
   const result = metadataByRegex.find(entry =>
     entry.regexp.test('/' + path.replace(/\./g, '/'))
   )
-  return result ? result.metadata : undefined
+
+  let meta = result ? result.metadata : undefined
+  const parts = path.split('.')
+  const key = `/${parts[0]}/*/` + parts.slice(2).join('/')
+  if ( !module.exports.metadata[key] ) {
+    meta = result ? JSON.parse(JSON.stringify(result.metadata)) : {}
+    module.exports.metadata[key] = meta
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
+  
+  return meta
 }
 
 module.exports.addMetaData = function(context, path, meta) {
