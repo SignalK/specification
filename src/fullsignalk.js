@@ -203,13 +203,11 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
         if (!previous[pathPart]) {
           previous[pathPart] = {};
         }
-        if ( i === splitPath.length-1) {
+      if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
           let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
-          if ( meta ) {
-            //ignore properties from keyswithmetadata.json
-            meta = JSON.parse(JSON.stringify(meta))
-            delete meta.properties
-            previous[pathPart].meta = _.merge(previous[pathPart].meta || {}, meta);
+          if (meta) {
+            _.assign(meta, previous[pathPart].meta)
+            previous[pathPart].meta = meta
           }
         }
       return previous[pathPart];
@@ -282,18 +280,7 @@ function addMeta(context, contextPath, source, timestamp, pathValue) {
     console.error("Illegal value in delta:" + JSON.stringify(pathValue));
     return;
   }
-  var valueLeaf;
-
-  const splitPath = pathValue.path.split('.');
-  
-  valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
-    if (!previous[pathPart]) {
-      previous[pathPart] = {};
-    }
-    return previous[pathPart];
-  }, context);
-
-  valueLeaf.meta = _.merge(valueLeaf.meta || {}, pathValue.value)
+  signalkSchema.addMetaData(contextPath, pathValue.path, pathValue.value)
 }
 
 

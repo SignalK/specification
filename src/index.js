@@ -349,6 +349,31 @@ module.exports.getMetadata = function (path) {
   return result ? result.metadata : undefined
 }
 
+module.exports.addMetaData = function(context, path, meta) {
+  const root = context.split('.')[0]
+  const key = `/${root}/*/${path.replace(/\./g, '/')}`
+  let existing = module.exports.metadata[key]
+  if ( existing ) {
+    _.merge(existing, meta)
+  } else {
+    let regexMeta = module.exports.getMetadata(context + '.' + path)
+    if ( regexMeta ) {
+      let newMeta = JSON.parse(JSON.stringify(regexMeta))
+      _.merge(newMeta, meta)
+      meta = newMeta
+    }
+       
+    module.exports.metadata[key] = meta
+    
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
+}
+
 module.exports.getAISShipTypeName = function(id) {
   const the_enum = subSchemas['design'].properties.aisShipType.allOf[1].properties.value.allOf[1].enum;
   //const the_enum = module.exports.getMetadata('vessels.foo.design.aisShipType').enum
