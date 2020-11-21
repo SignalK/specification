@@ -269,10 +269,7 @@ function setMessage(leaf, source) {
 }
 
 function addMetas(context, contextPath, source, timestamp, metas) {
-  var len = metas.length;
-  for (var i = 0; i < len; ++i) {
-    addMeta(context, contextPath, source, timestamp, metas[i]);
-  }
+  metas.forEach(metaPathValue => addMeta(context, contextPath, source, timestamp, metaPathValue))
 }
 
 function addMeta(context, contextPath, source, timestamp, pathValue) {
