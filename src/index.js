@@ -347,6 +347,14 @@ module.exports.getMetadata = function (path) {
     entry.regexp.test('/' + path.replace(/\./g, '/'))
   )
 
+  return result && Object.keys(result.metadata).length > 0  ? result.metadata : undefined
+}
+
+module.exports.internalGetMetadata = function (path) {
+  const result = metadataByRegex.find(entry =>
+    entry.regexp.test('/' + path.replace(/\./g, '/'))
+  )
+
   let meta = result ? result.metadata : undefined
   const parts = path.split('.')
   const key = `/${parts[0]}/*/` + parts.slice(2).join('/')

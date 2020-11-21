@@ -204,7 +204,7 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
           previous[pathPart] = {};
         }
       if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
-          let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
+          let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
           if (meta) {
             _.assign(meta, previous[pathPart].meta)
             previous[pathPart].meta = meta
