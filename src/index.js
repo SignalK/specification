@@ -346,7 +346,55 @@ module.exports.getMetadata = function (path) {
   const result = metadataByRegex.find(entry =>
     entry.regexp.test('/' + path.replace(/\./g, '/'))
   )
-  return result ? result.metadata : undefined
+
+  return result && Object.keys(result.metadata).length > 0  ? result.metadata : undefined
+}
+
+module.exports.internalGetMetadata = function (path) {
+  const result = metadataByRegex.find(entry =>
+    entry.regexp.test('/' + path.replace(/\./g, '/'))
+  )
+
+  let meta = result ? result.metadata : undefined
+  const parts = path.split('.')
+  const key = `/${parts[0]}/*/` + parts.slice(2).join('/')
+  if ( !module.exports.metadata[key] ) {
+    meta = result ? JSON.parse(JSON.stringify(result.metadata)) : {}
+    module.exports.metadata[key] = meta
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
+  
+  return meta
+}
+
+module.exports.addMetaData = function(context, path, meta) {
+  const root = context.split('.')[0]
+  const key = `/${root}/*/${path.replace(/\./g, '/')}`
+  let existing = module.exports.metadata[key]
+  if ( existing ) {
+    _.merge(existing, meta)
+  } else {
+    let regexMeta = module.exports.getMetadata(context + '.' + path)
+    if ( regexMeta ) {
+      let newMeta = JSON.parse(JSON.stringify(regexMeta))
+      _.merge(newMeta, meta)
+      meta = newMeta
+    }
+       
+    module.exports.metadata[key] = meta
+    
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
 }
 
 module.exports.getAISShipTypeName = function(id) {
