@@ -46,7 +46,7 @@ the server supports a `signalk-tcp` stream over TCP at on port 8367.
 A server may return relative URIs that the client must resolve against the base of the original request.
 
 A server MAY return information about itself in the `server` property. The id and version scheme is not defined as part
-of the specification and there is no registry for id values. If providfed, the `id` and `version` MUST be the same values
+of the specification and there is no registry for id values. If provided, the `id` and `version` MUST be the same values
 as `swname` and `swvers` within the [DNS-SD advertisement](connection.md) (if implemented), and also the `id` MUST
 provide the same value as `name` within the [Websocket hello message](streaming_api.md) (if implemented).
 

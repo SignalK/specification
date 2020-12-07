@@ -127,9 +127,16 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
-
+  
   // second, update the values
-  addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  if ( update.values ) {
+    addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
+  }
+  
+  // third, update metadata
+  if ( update.meta ) {
+    addMetas(context, contextPath, update.source || update['$source'], update.timestamp, update.meta);
+  }
 }
 
 /**
@@ -259,12 +266,9 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
     // determine if we need to add the meta key to describe the data type for
     // this path
     if (i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined') {
-      let meta = signalkSchema.getMetadata(contextPath + '.' + pathValue.path)
+      let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
       if (meta) {
         //ignore properties from keyswithmetadata.json
-        meta = JSON.parse(JSON.stringify(meta))
-        delete meta.properties
-
         _.assign(meta, previous[pathPart].meta)
         previous[pathPart].meta = meta
       }
@@ -336,6 +340,18 @@ function setMessage(leaf, source) {
     leaf.sentence = source.sentence;
     delete leaf.pgn;
   }
+}
+
+function addMetas(context, contextPath, source, timestamp, metas) {
+  metas.forEach(metaPathValue => addMeta(context, contextPath, source, timestamp, metaPathValue))
+}
+
+function addMeta(context, contextPath, source, timestamp, pathValue) {
+  if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
+    console.error("Illegal value in delta:" + JSON.stringify(pathValue));
+    return;
+  }
+  signalkSchema.addMetaData(contextPath, pathValue.path, pathValue.value)
 }
 
 
