@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.0.0/schemas/groups/winches.json#",
+  "description": "Schema describing the winches child-object of a Vessel.",
+  "title": "Winch Properties",
+  "type": "object",
+  "definitions": {
+    "identity": {
+      "title": "Winch id",
+      "description": "Common ID items shared by winch items",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Unique ID of installation (winch, windlass, capstan and so on)",
+          "type": "string"
+        },
+        "location": {
+          "description": "Location of installation on vessel",
+          "type": "string"
+        },
+        "dateInstalled": {
+          "description": "Date device was installed",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "manufacturer": {
+          "properties": {
+            "name": {
+              "description": "Manufacturer's name",
+              "type": "string"
+            },
+            "model": {
+              "description": "Model or part number",
+              "type": "string"
+            },
+            "URL": {
+              "description": "Web referance / URL",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "winchProperties": {
+      "title": "Winch properties",
+      "description": "Properties common to all winch types",
+      "type": "object",
+      "properties": {
+        "state": {
+          "description": "Current operating state of the winch",
+          "type": "string",
+          "enum": [ "deploying", "retrieving", "stopped" ]
+        },
+        "speed": {
+          "description": "Winch current speed in range 1..n",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "inService": {
+          "description": "Whether or not the winch is available for use",
+          "type": "string",
+          "enum": [ "no", "yes" ]
+        },
+        "lastOperation": {
+          "description": "What the winch did most recently - updated every time winch stops/changes speed",
+          "type": "object",
+          "properties": {
+            "direction": {
+              "description": "Direction of the most recent winch operation",
+              "type": "string",
+              "enum": [ "in", "out" ]
+            },
+            "speed": {
+              "description": "Speed of the most recent winch operation",
+              "units": "m/s",
+              "$ref": "../definitions.json#/definitions/numberValue"
+            },
+            "duration": {
+              "description": "Duration of the most recent winch operation",
+              "units": "s",
+              "$ref": "../definitions.json#/definitions/numberValue"
+            }
+          }
+        },
+        "meta": {
+          "description": "Winch installation static properties",
+          "type": "object",
+          "properties": {
+            "availableSpeeds": {
+              "type": "array",
+              "description": "Speeds supported by this windlass",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "Identifier for this speed definition, 1...",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                  },
+                  "rate": {
+                    "description": "Handling velocity at this speed",
+                    "units": "m/s",
+                    "$ref": "../definitions.json#/definitions/numberValue"
+                  }
+                }
+              }
+            },
+            "powerType": {
+              "description": "Power source for this winch",
+              "type": "string",
+              "enum": [ "electrical", "hydraulic", "manual" ]
+            },
+            "spoolDimensions": {
+              "description": "Size of winch spool",
+              "type": "object",
+              "properties": {
+                "diameter": {
+                  "description": "Diameter of winch spool",
+                  "units": "m",
+                  "$ref": "../definitions.json#/definitions/numberValue"
+                },
+                "length": {
+                  "description": "Usable length of winch spool",
+                  "units": "m",
+                  "$ref": "../definitions.json#/definitions/numberValue"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "windcapProperties": {
+      "title": "Properties specific to a windlass or capstan",
+      "description": "Properties which characterise a windlass or capstan, over and above a winch",
+      "type": "object",
+      "properties": {
+        "deploymentState": {
+          "description": "Windlass/capstan deployment state",
+          "type": "string",
+          "enum": [ "docked", "nearlyDocked", "deployed", "fullyDeployed" ]
+        },
+        "rodeType": {
+          "description": "Currently detected rode type",
+          "type": "string",
+          "enum": [ "rope", "chain" ]
+        },
+        "rodeCounter": {
+          "description": "Rode counter value in metres",
+          "units": "m",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "lineSpeed": {
+          "description": "Rode deployment speed",
+          "units": "m/s",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        }
+      }
+    }
+  },
+  "properties": { 
+    "windlasses": {
+      "description": "Data about the vessel's windlasses",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "title": "Windlass keyed by instance id",
+          "description": "Windlasses, one or many, within the vessel",
+          "type": "object",
+          "allOf": [
+            { "$ref": "#/definitions/identity" },
+            { "$ref": "#/definitions/winchProperties" },
+            { "$ref": "#/definitions/windcapProperties" }
+          ],
+          "properties": {
+          } 
+        }
+      }
+    },
+    "capstans": {
+      "description": "Data about the vessel's capstans",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Capstan keyed by instance id",
+          "description": "Capstan, one or many, within the vessel",
+          "allOf": [
+            { "$ref": "#/definitions/identity" },
+            { "$ref": "#/definitions/winchProperties" },
+            { "$ref": "#/definitions/windcapProperties" }
+          ],
+          "properties": {
+          }
+        }
+      }
+    },
+    "patternProperties": {
+      "(^[A-Za-z0-9]+$)": {
+        "title": "Winch keyed by instance id",
+        "description": "Winch, one or many, within the vessel",
+        "type": "object",
+        "allOf": [
+          { "$ref": "#/definitions/identity" },
+          { "$ref": "#/definitions/winchProperties" }
+        ]
+      }
+    }
+  }
+}
+
