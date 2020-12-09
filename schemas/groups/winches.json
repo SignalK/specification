@@ -45,13 +45,18 @@
       "description": "Properties common to all winch types",
       "type": "object",
       "properties": {
+	"type": {
+	  "description": "The type of winch installation",
+	  "type": "string",
+	  "enum": [ "capstan", "generic", "hoist", "windlass" ]
+	},
         "state": {
           "description": "Current operating state of the winch",
           "type": "string",
           "enum": [ "deploying", "retrieving", "stopped" ]
         },
         "speed": {
-          "description": "Winch current speed in range 1..n",
+          "description": "Winch current speed in range 1..n (1 is slowest)",
           "$ref": "../definitions.json#/definitions/numberValue"
         },
         "inService": {
@@ -66,7 +71,7 @@
             "direction": {
               "description": "Direction of the most recent winch operation",
               "type": "string",
-              "enum": [ "in", "out" ]
+              "enum": [ "deploy", "retrieve" ]
             },
             "speed": {
               "description": "Speed of the most recent winch operation",
@@ -127,7 +132,7 @@
         }
       }
     },
-    "windcapProperties": {
+    "wincapProperties": {
       "title": "Properties specific to a windlass or capstan",
       "description": "Properties which characterise a windlass or capstan, over and above a winch",
       "type": "object",
@@ -156,40 +161,6 @@
     }
   },
   "properties": { 
-    "windlasses": {
-      "description": "Data about the vessel's windlasses",
-      "patternProperties": {
-        "(^[A-Za-z0-9]+$)": {
-          "title": "Windlass keyed by instance id",
-          "description": "Windlasses, one or many, within the vessel",
-          "type": "object",
-          "allOf": [
-            { "$ref": "#/definitions/identity" },
-            { "$ref": "#/definitions/winchProperties" },
-            { "$ref": "#/definitions/windcapProperties" }
-          ],
-          "properties": {
-          } 
-        }
-      }
-    },
-    "capstans": {
-      "description": "Data about the vessel's capstans",
-      "patternProperties": {
-        "(^[A-Za-z0-9]+$)": {
-          "type": "object",
-          "title": "Capstan keyed by instance id",
-          "description": "Capstan, one or many, within the vessel",
-          "allOf": [
-            { "$ref": "#/definitions/identity" },
-            { "$ref": "#/definitions/winchProperties" },
-            { "$ref": "#/definitions/windcapProperties" }
-          ],
-          "properties": {
-          }
-        }
-      }
-    },
     "patternProperties": {
       "(^[A-Za-z0-9]+$)": {
         "title": "Winch keyed by instance id",
@@ -198,7 +169,17 @@
         "allOf": [
           { "$ref": "#/definitions/identity" },
           { "$ref": "#/definitions/winchProperties" }
-        ]
+        ],
+	"oneOf": [
+	  {
+            "type": { "const": "capstan" },
+	    "$ref": "#/definitions/wincapProperties"
+	  },
+	  {
+            "type": { "const": "windlass" },
+	    "$ref": "#/definitions/wincapProperties"
+	  }
+	]
       }
     }
   }
