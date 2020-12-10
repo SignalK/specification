@@ -287,7 +287,6 @@ function addMeta(context, contextPath, source, timestamp, pathValue) {
     if ( i === splitPath.length-1 && typeof previous[pathPart].meta === 'undefined' ) {
       let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
       if (meta) {
-        _.assign(meta, previous[pathPart].meta)
         previous[pathPart].meta = meta
       }
     }
