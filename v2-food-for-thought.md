@@ -23,3 +23,20 @@ Move the essentially arbitrary fluid type name out of the path and into meta inf
 
 Where keys/paths are intended for use by specific devices (e.g. autopilot -> steering.autopilot) the spec should provide clear guidance on how it is intended this path is used. Preferably with example use cases which include sequence diagrams.
 
+#### Rethink Full data model and object valued paths
+
+The origin of Full data model is that we wanted a "place for everything" and a "single structure to hold it all". Some paths, like attitude, hold values that are objects. Some paths, mostly static data, like mmsi, are treated differently so that there is no source and timestamp information.
+
+This poses multiple problems
+- "one path for everything": the proverbial example of this is the engine alternator, that is part of the engine/propulsion system and the electrical system. This has resulted in endless discussions on where something should be. The root cause for this dilemma is the "single hierarchical view of everything"
+- multiple values are clunky: the way a value can be retrieved is different if there is one or many sources for the path
+- including timestamp and source values always makes the structure unwieldy
+- "what is a value" problem: it is hard to decipher what is a value when looking at the full representation, as a path can be a prefix to lower structures and a path to a value and a path holding an object valued path at the same time
+- including meta always makes the structure needlessly verbose and there is no method to exclude meta when retrieving the latest values
+
+One way forward could be to create specific APIs for the different use cases like
+- what paths have values?
+- latest, priorities value for a path
+- all values for a path
+- associate subsystems with pathvalues and retrieve all paths that have values for a subsystem, like "all electrical values"; retrieve the subsystems available
+- retrieve values by instance: instead of encoding the instance in the path add a separate field for it and instance lists & retrieve values by instance APIs
