@@ -44,9 +44,9 @@
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
     "JSONStream": "^0.7.4",
-    "debug": "^2.2.0",
-    "json-schema-ref-parser": "^3.1.2",
-    "lodash": "^4.17.11",
+    "debug": "^4.3.1",
+    "json-schema-ref-parser": "^9.0.7",
+    "lodash": "^4.17.21",
     "tv4": "^1.2.7",
     "tv4-formats": "^3.0.3"
   },
