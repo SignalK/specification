@@ -1,7 +1,7 @@
   {
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://signalk.org/specification/1.5.0/schemas/aton.json#",
+    "id": "https://signalk.org/specification/1.5.1/schemas/aton.json#",
     "description": "An object describing an individual aid to navigation. It should be an object in aton, named using MMSI or a UUID",
     "title": "aid to navigation",
     "anyOf": [
