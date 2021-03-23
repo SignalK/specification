@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.0.0/schemas/messages/subscribe.json#",
+  "id": "https://signalk.org/specification/1.5.0/schemas/messages/subscribe.json#",
   "title": "SignalK SUBSCRIBE message schema",
   "type": "object",
   "description": "A message to allow a client to subscribe for data updates from a signalk server",

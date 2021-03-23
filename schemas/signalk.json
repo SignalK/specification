@@ -89,7 +89,7 @@
       "$ref": "groups/resources.json#"
     },
     "version": {
-      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.0.0.",
+      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.5.0.",
       "$ref": "definitions.json#/definitions/version"
     }
   }
