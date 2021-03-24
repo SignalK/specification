@@ -28,8 +28,8 @@
           "units": "ratio",
           "$ref": "../definitions.json#/definitions/numberValue"
         },
-        "dewPoint": {
-          "description": "Dewpoint in zone",
+        "dewPointTemperature": {
+          "description": "Dewpoint temperature in zone",
           "units": "K",
           "$ref": "../definitions.json#/definitions/numberValue"
         },
