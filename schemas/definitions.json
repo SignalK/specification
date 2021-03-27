@@ -572,6 +572,38 @@
           "example": ["stopped", "started", "unusable"]
         },
 
+        "properties": {
+          "type": "object",
+          "title": "Properties for object valued properties",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "units": {
+                  "type": "string"
+                },
+                "example": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "object"
+                  ]
+                }
+              }
+            }
+          }
+        },
+
         "gaugeType": {
           "type": "string",
           "title": "gaugeType schema.",
