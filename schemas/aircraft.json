@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.5.1/schemas/aircraft.json#",
+  "id": "https://signalk.org/specification/1.6.0/schemas/aircraft.json#",
   "description": "An object describing an individual aircraft. It should be an object in aircraft, named using MMSI or a UUID",
   "title": "aircraft",
   "anyOf": [
