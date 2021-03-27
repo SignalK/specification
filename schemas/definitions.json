@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.5.0/schemas/definitions.json#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/definitions.json#",
   "title": "definitions",
   "description": "Reusable definitions of core object types",
   "definitions": {
@@ -82,7 +82,7 @@
       "type": "string",
       "description": "Version of the Signal K schema/APIs used by the root object.",
       "pattern": "^[0-9]{1,3}[.][0-9]{1,2}[.][0-9]{1,2}($|-[a-zA-Z0-9]+$)",
-      "example": "1.0.0"
+      "example": "1.5.0"
     },
     "units": {
       "type": "string",

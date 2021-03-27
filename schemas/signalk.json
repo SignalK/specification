@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.5.0/schemas/signalk.json#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/signalk.json#",
   "title": "SignalK",
   "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
   "required": [
@@ -89,7 +89,7 @@
       "$ref": "groups/resources.json#"
     },
     "version": {
-      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.0.0.",
+      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.5.0.",
       "$ref": "definitions.json#/definitions/version"
     }
   }
