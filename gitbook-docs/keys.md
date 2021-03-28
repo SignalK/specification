@@ -885,13 +885,13 @@ Apparent Wind Angle (AWA), negative to port
 
 
 ## environment.wind.angleTrueGround
-Ground Wind Angle (GWA) based on speed over ground (SOG), negative to port
+Ground Wind Angle (GWA) based on vessel's speed over ground (SOG), negative to port
 
 **Units:**rad
 
 
 ## environment.wind.angleTrueWater
-True Wind Angle (TWA) based on speed through water (STW), negative to port
+True Wind Angle (TWA) based on vessel's speed through water (STW), negative to port
 
 **Units:**rad
 
@@ -903,14 +903,14 @@ The angle the wind needs to shift to raise an alarm
 
 
 ## environment.wind.directionMagnetic
-Wind direction based on speed through water (STW), relative to magnetic north
+Wind direction over water, relative to magnetic north
 
 
 **Units:**rad
 
 
 ## environment.wind.directionTrue
-True Wind Direction (TWD) based on speed through water (STW), relative to true north
+True Wind Direction over water (TWD), relative to true north
 
 **Units:**rad
 
@@ -922,13 +922,13 @@ Apparent Wind Speed (AWS)
 
 
 ## environment.wind.speedOverGround
-Ground Wind Speed (GWS), calculated from apparent wind speed (AWS) and speed over ground (SOG)
+Ground Wind Speed (GWS), calculated from speedApparent (AWS) and vessel's speed over ground (SOG)
 
 **Units:**m/s
 
 
 ## environment.wind.speedTrue
-True Wind Speed (TWS) over water, calculated from apparent wind speed (AWS) and speed through water (STW)
+True Wind Speed over water (TWS), calculated from speedApparent (AWS) and vessel's speed through water (STW)
 
 **Units:**m/s
 
