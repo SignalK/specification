@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.0.0/schemas/hello.json#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/hello.json#",
   "title": "SignalK Websockets Hello message schema",
   "description": "Schema for defining the hello message passed from the server to a client following succesful websocket connection",
   "required": [
@@ -10,7 +10,7 @@
   ],
   "properties": {
     "version": {
-      "description": "Version of the schema and APIs that this data is using in canonical format i.e. 1.0.0.",
+      "description": "Version of the schema and APIs that this data is using in canonical format i.e. 1.5.0.",
       "$ref": "definitions.json#/definitions/version"
     },
     "name": {

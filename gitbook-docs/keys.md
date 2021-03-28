@@ -89,6 +89,8 @@ The type of keel.
 * kanting
 * lifting
 * daggerboard
+* bilge
+* triple
 
 
 ## design.length.hull

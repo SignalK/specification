@@ -39,23 +39,23 @@ var FullSignalK = require('./fullsignalk');
 function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('../schemas/vessel.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/vessel.json', vesselSchema);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/vessel.json', vesselSchema);
   var aircraftSchema = require('../schemas/aircraft.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/aircraft.json', aircraftSchema);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/aircraft.json', aircraftSchema);
   var atonSchema = require('../schemas/aton.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/aton.json', atonSchema);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/aton.json', atonSchema);
   var sarSchema = require('../schemas/sar.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/sar.json', sarSchema);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/sar.json', sarSchema);
   var definitions = require('../schemas/definitions.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/definitions.json', definitions);
 
   for (var schema in subSchemas) {
-    tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/groups/' + schema + '.json', subSchemas[schema]);
+    tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/groups/' + schema + '.json', subSchemas[schema]);
   }
 
   // HACK! two different IDs should not point to the same schema
   var externalGeometry = require('../schemas/external/geojson/geometry.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/external/geojson/geometry.json', externalGeometry);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
   tv4.addFormat(require('tv4-formats'))
@@ -79,7 +79,7 @@ function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
   var deltaSchema = require('../schemas/delta.json');
   var definitions = require('../schemas/definitions.json');
-  tv4.addSchema('https://signalk.org/specification/1.0.0/schemas/definitions.json', definitions);
+  tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/definitions.json', definitions);
 
   if (ignoreContext) {
     delta.context = 'ignored the context, so place a placeholder there';
@@ -346,7 +346,55 @@ module.exports.getMetadata = function (path) {
   const result = metadataByRegex.find(entry =>
     entry.regexp.test('/' + path.replace(/\./g, '/'))
   )
-  return result ? result.metadata : undefined
+
+  return result && Object.keys(result.metadata).length > 0  ? result.metadata : undefined
+}
+
+module.exports.internalGetMetadata = function (path) {
+  const result = metadataByRegex.find(entry =>
+    entry.regexp.test('/' + path.replace(/\./g, '/'))
+  )
+
+  let meta = result ? result.metadata : undefined
+  const parts = path.split('.')
+  const key = `/${parts[0]}/*/` + parts.slice(2).join('/')
+  if ( !module.exports.metadata[key] ) {
+    meta = result ? JSON.parse(JSON.stringify(result.metadata)) : {}
+    module.exports.metadata[key] = meta
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
+  
+  return meta
+}
+
+module.exports.addMetaData = function(context, path, meta) {
+  const root = context.split('.')[0]
+  const key = `/${root}/*/${path.replace(/\./g, '/')}`
+  let existing = module.exports.metadata[key]
+  if ( existing ) {
+    _.merge(existing, meta)
+  } else {
+    let regexMeta = module.exports.getMetadata(context + '.' + path)
+    if ( regexMeta ) {
+      let newMeta = JSON.parse(JSON.stringify(regexMeta))
+      _.merge(newMeta, meta)
+      meta = newMeta
+    }
+       
+    module.exports.metadata[key] = meta
+    
+    const regexpKey =
+          '^' + key.replace(/\*/g, '.*').replace(/RegExp/g, '.*') + '$'
+    metadataByRegex.unshift({
+      regexp: new RegExp(regexpKey),
+      metadata: meta
+    })
+  }
 }
 
 module.exports.getAISShipTypeName = function(id) {

@@ -1,6 +1,6 @@
 {
   "name": "@signalk/signalk-schema",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "description": "SignalK specification schema as an npm module with tests",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prepublish": "npm run js:dist && npm run docs:keys",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
-    "schema:version": "cross-var replace-in-file /https:\\/\\/signalk.org\\/specification\\/[\\w\\.]+\\/schemas\\//g https://signalk.org/specification/$npm_package_version/schemas/ ./**/*.j* --ignore=./package.json,./node_modules/** --isRegex --verbose",
+    "schema:version": "cross-var replace-in-file /https:\\\\/\\\\/signalk.org\\\\/specification\\\\/[\\\\w\\\\.]+\\\\/schemas\\\\//g https://signalk.org/specification/$npm_package_version/schemas/ './**/*.j*' --ignore=./package.json,./node_modules/** --isRegex --verbose",
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:changelog": "github-changes -f gitbook-docs/changelog.md -o signalk -r specification -a --only-pulls --use-commit-body --data=pulls",
     "docs:prep": "gitbook install gitbook-docs && cross-var replace-in-file /_version_/g $npm_package_version ./gitbook-docs/* --isRegex --verbose && mdprepare gitbook-docs/*.md",
@@ -44,9 +44,9 @@
   "homepage": "https://github.com/SignalK/specification",
   "dependencies": {
     "JSONStream": "^0.7.4",
-    "debug": "^2.2.0",
-    "json-schema-ref-parser": "^3.1.2",
-    "lodash": "^4.17.11",
+    "debug": "^4.3.1",
+    "json-schema-ref-parser": "^9.0.7",
+    "lodash": "^4.17.21",
     "tv4": "^1.2.7",
     "tv4-formats": "^3.0.3"
   },

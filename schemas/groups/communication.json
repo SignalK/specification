@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.0.0/schemas/groups/communication.json#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/groups/communication.json#",
   "description": "Schema describing the communication child-object of a Vessel.",
   "title": "communication",
   "properties": {
