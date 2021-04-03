@@ -81,7 +81,7 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
-        "humidity": {
+        "relativeHumidity": {
           "description": "Current outside air relative humidity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
