@@ -1,6 +1,6 @@
 # URLs and Ports
 
-While Signal K is a transport-agnistic protocol, there are certain conventions that have been established for use on
+While Signal K is a transport-agnostic protocol, there are certain conventions that have been established for use on
 the Web and by clients and servers using HTTP and WebSockets.
 
 ## Ports
