@@ -1,0 +1,89 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "generator": {
+    "label": "Northern Lights 16kw",
+    "acOutput": {
+        "lineNeutralVoltage": {
+          "value": 121.3,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "current": {
+          "value": 88,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        }
+    },
+    "fuel": {
+        "type": "diesel",
+        "used": {
+          "value": 12.5,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "rate": {
+          "value": 0.6,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        }
+    },
+    "state": {
+        "value": "started",
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "revolutions": {
+        "value": 30.1,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar",
+        "meta": {
+          "description": "Engine revolutions (x60 for RPM)",
+          "units": "Hz",
+          "displayName": "Tachometer",
+          "shortName": "RPM",
+          "warnMethod": ["visual"],
+          "alarmMethod": ["sound"],
+          "zones": [{
+            "upper": 30.5,
+            "state": "warn",
+            "message": "Generator RPM too fast"
+          }, 
+          {
+            "lower": 29.5,
+            "state": "alarm",
+            "message": "Generator RPM too slow"
+          }]
+        }
+    },
+    "oilPressure": {
+        "value": 110,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "oilTemperature": {
+        "value": 345,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "coolantTemperature": {
+        "value": 355,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "exhaustTemperature": {
+        "value": 420,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "runTime": {
+        "value": 3102234,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    },
+    "alternatorVoltage": {
+        "value": 14.1,
+        "timestamp": "2014-08-15T19:00:15.402Z",
+        "$source": "foo.bar"
+    }
+  }
+}
