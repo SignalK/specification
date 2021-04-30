@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://signalk.org/specification/1.0.0/schemas/groups/bilge.json#",
+    "description": "A bilge, named by a unique identifier",
+    "title": "bilge",
+    "properties": {
+        "pump": {
+            "type": "object",
+            "title": "pump",
+            "description": "The specific pump of the named bilge, e.g., main, auxiliary, emergency",
+            "properties": {
+                "power": {
+                    "type": "object",
+                    "description": "Current state of electric power available to this pump: ON or OFF",
+                    "allOf": [
+                        {
+                            "$ref": "../definitions.json#/definitions/commonValueFields"
+                        },
+                        {
+                            "properties": {
+                                "value": {
+                                    "enum": [
+                                        "ON",
+                                        "OFF"
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "state": {
+                    "type": "object",
+                    "description": "Current state of this pump: ON or OFF",
+                    "allOf": [
+                        {
+                            "$ref": "../definitions.json#/definitions/commonValueFields"
+                        },
+                        {
+                            "properties": {
+                                "value": {
+                                    "enum": [
+                                        "ON",
+                                        "OFF"
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                "runCount": {
+                    "description": "Number of times the pump has turned on since last reset, or in the last X hours. ",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "count"
+                },
+                "runTime": {
+                    "description": "The total amount of time the pump has run since the last reset, or in the previous X hours.",
+                    "$ref": "../definitions.json#/definitions/numberValue",
+                    "units": "s"
+                }
+            }
+        },
+        "alarmPower": {
+            "description": "The state of the electrical power available to the alarm circuit. Normal is ON, but if a fuse is blown or a circuit breaker is off or tripped, this would indicate OFF.",
+            "state": {
+                "type": "object",
+                "description": "The current state of electric power available to the alarm circuit",
+                "allOf": [
+                    {
+                        "$ref": "../definitions.json#/definitions/commonValueFields"
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "enum": [
+                                    "ON",
+                                    "OFF"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "fluidLevel": {
+            "description": "Level of fluid in the bilge: 1.0 = 100%",
+            "$ref": "../definitions.json#/definitions/numberValue",
+            "units": "ratio"
+        }
+    }
+}

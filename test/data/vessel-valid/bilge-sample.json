@@ -1,0 +1,37 @@
+{
+  "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "bilge": {
+    "alarmPower": {
+      "value": "ON",
+      "$source": "foo.bar",
+      "timestamp": "2014-08-15T19:00:15.402Z"
+      },
+    "fluidLevel": {
+      "value": 0.13,
+      "$source": "foo.bar",
+      "timestamp": "2014-08-15T19:00:15.402Z"
+      },
+    "pump": {
+      "power": {
+        "value" : "ON",
+        "$source": "foo.bar",
+        "timestamp": "2014-08-15T19:00:15.402Z"
+      },
+      "state": {
+        "value": "OFF",
+        "$source": "foo.bar",
+        "timestamp": "2014-08-15T19:00:15.402Z"
+      },
+      "runCount":{
+        "value": 26,
+        "$source": "foo.bar",
+        "timestamp": "2014-08-15T19:00:15.402Z"
+      },
+      "runTime": {
+        "value": 134,
+        "$source": "foo.bar",
+        "timestamp": "2014-08-15T19:00:15.402Z"
+      }
+    }
+  }
+}
