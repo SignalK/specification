@@ -329,6 +329,44 @@
         }
       }
     },
+    "lightning": {
+      "title": "lightning",
+      "type": "object",
+      "description": "Thunderstorms and lightnings related data.",
+      "properties": {
+        "eventType": {
+          "enum": [
+            "lightning",
+            "disturber",
+            "noiseDetected",
+            "noiseGone"
+          ]
+        },
+        "distance": {
+          "description": "Distance to strike",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "distanceToFront": {
+          "description": "Distance to front",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "energyScale": {
+          "description": "Energy for scale (not measured in particular units)",
+          "type": "number"
+        },
+        "totalDetected": {
+          "description": "Total count detected recently",
+          "type": "number",
+          "default": 0
+        },
+        "detectionPeriod": {
+          "description": "Time period in minutes for total recently detected counter",
+          "type": "number"
+        }
+      }
+    },
     "time": {
       "type": "object",
       "description": "A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)",
