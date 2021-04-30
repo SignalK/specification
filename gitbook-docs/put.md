@@ -1,11 +1,12 @@
 # PUT Requests
 
-PUT requests are sent to a server to request a change to a value. For example, a client would use PUT to switch the
-anchor light on or off, change the heading of the autopilot, or set position of the anchor.
+PUT requests are sent to a server to request an action to be taken. For example, a client would use PUT to switch the anchor light on or off, change the heading of the autopilot, or change the current input on a stereo.
+
+Note that this is very different than updating the current state of something. Use a delta update message to report on somethings current value. For example. to report on the current wind speed from a sensor. See [Delta Format](data_model.md)
 
 See [Request/Response](request_response.md) for more details on request/response in Signal K.
 
-## Making a Request to Change a Value
+## Making a Request To Take an Action
 
 To change a value, a PUT request should be sent via HTTP or using a Signal K __put__ delta.
 
@@ -23,7 +24,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 
 ### Via a Delta
 
-[>]: # (mdpInsert ```json fsnip ../data/put-valid/delta-put-array.json)
+[>]: # (mdpInsert ```json fsnip ../test/data/put-valid/delta-put-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
@@ -42,7 +43,7 @@ The `context` key is optional, and defaults to `vessels.self`, which is the usua
 The above PUT request (v1) uses an array to allow multiple keys in a single PUT. This is deprecated and strongly discouraged as it causes complex problems 
 with the request/response semantics in cases of partial failures.  An alternative format has been added to the v1 specification where the  PUT request is:
 
-[>]: # (mdpInsert ```json fsnip ../data/put-valid/delta-put-no-array.json)
+[>]: # (mdpInsert ```json fsnip ../test/data/put-valid/delta-put-no-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
