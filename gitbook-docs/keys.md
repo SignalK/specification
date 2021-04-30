@@ -879,19 +879,19 @@ Current water temperature
 
 
 ## environment.wind.angleApparent
-Apparent wind angle, negative to port
+Apparent Wind Angle (AWA), negative to port
 
 **Units:**rad
 
 
 ## environment.wind.angleTrueGround
-True wind angle based on speed over ground, negative to port
+Ground Wind Angle (GWA) based on vessel's speed over ground (SOG), negative to port
 
 **Units:**rad
 
 
 ## environment.wind.angleTrueWater
-True wind angle based on speed through water, negative to port
+True Wind Angle (TWA) based on vessel's speed through water (STW), negative to port
 
 **Units:**rad
 
@@ -903,31 +903,32 @@ The angle the wind needs to shift to raise an alarm
 
 
 ## environment.wind.directionMagnetic
-The wind direction relative to magnetic north
+Wind direction over water, relative to magnetic north
+
 
 **Units:**rad
 
 
 ## environment.wind.directionTrue
-The wind direction relative to true north
+True Wind Direction over water (TWD), relative to true north
 
 **Units:**rad
 
 
 ## environment.wind.speedApparent
-Apparent wind speed
+Apparent Wind Speed (AWS)
 
 **Units:**m/s
 
 
 ## environment.wind.speedOverGround
-Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)
+Ground Wind Speed (GWS), calculated from speedApparent (AWS) and vessel's speed over ground (SOG)
 
 **Units:**m/s
 
 
 ## environment.wind.speedTrue
-Wind speed over water (as calculated from speedApparent and vessel's speed through water)
+True Wind Speed over water (TWS), calculated from speedApparent (AWS) and vessel's speed through water (STW)
 
 **Units:**m/s
 
