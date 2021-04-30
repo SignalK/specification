@@ -49,7 +49,7 @@ FullSignalK.prototype.retrieve = function() {
 
 FullSignalK.prototype.addDelta = function(delta) {
   this.emit('delta', delta);
-  var context = findContext(this.root, delta.context);
+  var context = findContextAndUpdateIdentity(this.root, delta.context);
   this.addUpdates(context, delta.context, delta.updates);
   this.updateLastModified(delta.context);
 };
@@ -76,28 +76,50 @@ FullSignalK.prototype.deleteContext = function(contextKey) {
   }
 }
 
-function findContext(root, contextPath) {
-  var context = _.get(root, contextPath);
+/**
+ * Both returns the context for a contextPath and update the context with the
+ * appropriate key.
+ *
+ * contextPath is something like vessels.urn:mrn:imo:mmsi:276810000 or
+ * vessels.foo.  Signalk tracks multiple vessels, each with their own context.
+ * This method returns the context for the vessel.  It additionally adds either
+ * the mmsi or url to the context to allow for easier access.
+ *
+ * For example:
+ * contextPath=vessels.urn:mrn:imo:mmsi:276810000
+ * before context={}
+ * after context={"mmsi":"276810000"}
+ *
+ * @param {Object} root the signalk store
+ * @param {string} contextPath the path to the desired vessel
+ * @return {Object} the context for the desired vessel from the signalk store
+ */
+function findContextAndUpdateIdentity(root, contextPath) {
+  // get the context and create an empty context if it doesn't exist
+  let context = _.get(root, contextPath);
   if(!context) {
     context = {};
     _.set(root, contextPath, context);
   }
-  var identity = contextPath.split('.')[1];
+
+  // contextPath is something like "vessels.foo" or "vessels.urn:mrn:..."
+  // if we have a full context path, add its contents to the context, so that
+  // we can more easily access the mmsi or url
+  const identity = contextPath.split('.')[1];
   if(!identity) {
     return undefined;
   }
   signalkSchema.fillIdentityField(context, identity);
+
   return context;
 }
 
 FullSignalK.prototype.addUpdates = function(context, contextPath, updates) {
-  var len = updates.length;
-  for (var i = 0; i < len; ++i) {
-    this.addUpdate(context, contextPath, updates[i]);
-  }
+  updates.forEach(update => this.addUpdate(context, contextPath, update));
 }
 
 FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
+  // first, update the sources in the full context
   if (typeof update.source != 'undefined') {
     this.updateSource(context, update.source, update.timestamp);
   } else if(typeof update['$source'] != 'undefined') {
@@ -105,42 +127,67 @@ FullSignalK.prototype.addUpdate = function(context, contextPath, update) {
   } else {
     console.error("No source in delta update:" + JSON.stringify(update));
   }
+  
+  // second, update the values
   if ( update.values ) {
     addValues(context, contextPath, update.source || update['$source'], update.timestamp, update.values);
   }
+  
+  // third, update metadata
   if ( update.meta ) {
     addMetas(context, contextPath, update.source || update['$source'], update.timestamp, update.meta);
   }
 }
 
+/**
+ * Update the $source in the context.
+ *
+ * $source is a pointer to the sources field in the context.  See doc/data_model.html
+ *
+ * @param {Object} context
+ * @param {string} dollarSource a path directive pointing the real source
+ * @param {string} timestamp
+ */
 FullSignalK.prototype.updateDollarSource = function(context, dollarSource, timestamp) {
   const parts = dollarSource.split('.')
+  // descend into the sources element of the context, creating elements as needed
   parts.reduce((cursor, part) => {
     if(typeof cursor[part] === 'undefined') {
       return cursor[part] = {}
     }
     return cursor[part]
   }, this.sources)
+
+  // Uh, shouldn't something be done with the result of the reduce?  What if
+  // the pointed to value isn't found?
 }
 
+/**
+ * Update the source in the context.
+ *
+ * This is the top level source element in the context, not a source embedded in the tree
+ *
+ * @param {Object} context
+ * @param {string} dollarSource a path directive pointing the real source
+ * @param {string} timestamp
+ */
 FullSignalK.prototype.updateSource = function(context, source, timestamp) {
+  // create the source, if this is the first time we've seen it
   if(!this.sources[source.label]) {
     this.sources[source.label] = {};
     this.sources[source.label].label = source.label;
     this.sources[source.label].type = source.type;
   }
 
+  // handle various different source types
   if(source.type === 'NMEA2000' || source.src) {
     handleNmea2000Source(this.sources[source.label], source, timestamp);
-    return
-  }
-
-  if(source.type === 'NMEA0183' || source.sentence) {
+  } else if(source.type === 'NMEA0183' || source.sentence) {
     handleNmea0183Source(this.sources[source.label], source, timestamp);
     return
+  } else {
+    handleOtherSource(this.sources[source.label], source, timestamp);
   }
-
-  handleOtherSource(this.sources[source.label], source, timestamp);
 }
 
 function handleNmea2000Source(labelSource, source, timestamp) {
@@ -182,68 +229,95 @@ function handleOtherSource(sourceLeaf, source, timestamp) {
 }
 
 function addValues(context, contextPath, source, timestamp, pathValues) {
-  var len = pathValues.length;
-  for (var i = 0; i < len; ++i) {
-    addValue(context, contextPath, source, timestamp, pathValues[i]);
-  }
+  pathValues.forEach(pathValue => addValue(context, contextPath, source, timestamp, pathValue));
 }
 
+/**
+ * Adds a value to the context.
+ *
+ * @param {Object} context
+ * @param {string} contextPath ex: vessels.urn:mrn:imo:mmsi:200000000
+ * @param {Object} source description of where the data came from ex: {"label":"aLabel","type":"NMEA2000","pgn":130312,"src":"41","instance":"5"}
+ * @param {string} timestamp time of the data point (in ISO format)
+ * @param {Object} pathValue the path and value ex: {"path":"environment.inside.engineRoom.temperature","value":70}
+ */
 function addValue(context, contextPath, source, timestamp, pathValue) {
+  // guardian for no path or value
   if (_.isUndefined(pathValue.path) || _.isUndefined(pathValue.value)) {
     console.error("Illegal value in delta:" + JSON.stringify(pathValue));
     return;
   }
-  var valueLeaf;
-  if(pathValue.path.length === 0) {
+  // if the added path is the root, just do a merge with the context and we're done
+  if (pathValue.path.length === 0) {
     _.merge(context, pathValue.value)
     return
-  } else {
-    const splitPath = pathValue.path.split('.');
-    valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
-        if (!previous[pathPart]) {
-          previous[pathPart] = {};
-        }
-      if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
-          let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
-          if (meta) {
-            _.assign(meta, previous[pathPart].meta)
-            previous[pathPart].meta = meta
-          }
-        }
-      return previous[pathPart];
-    }, context);
   }
 
-  if(valueLeaf.values) { //multiple values already
-    var sourceId = getId(source);
-    if(!valueLeaf.values[sourceId]) {
+  const splitPath = pathValue.path.split('.');
+  // traverse down the context to find the object that this path references,
+  // possibly creating elements as we go
+  let valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    // if required, create a new nested object for this path component
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+
+    // if we're at the last path component and we don't have a value yet, then
+    // determine if we need to add the meta key to describe the data type for
+    // this path
+    if (i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined') {
+      let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
+      if (meta) {
+        //ignore properties from keyswithmetadata.json
+        _.assign(meta, previous[pathPart].meta)
+        previous[pathPart].meta = meta
+      }
+    }
+
+    // return the object as we traverse downwards
+    return previous[pathPart];
+  }, context);
+
+  // if there are already multiple values, then add the new value as a nested
+  // element indexed by the source (see doc/data_model_multiple_values.html)
+  if (valueLeaf.values) {
+    const sourceId = getId(source);
+
+    // add the new child node, if this is the first time we've observed this
+    // value from this source
+    if (!valueLeaf.values[sourceId]) {
       valueLeaf.values[sourceId] = {};
     }
+
+    // do the assignment
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
-  } else if(typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
-    // first multiple value
-
-    var sourceId = valueLeaf['$source'];
-    var tmp = {};
+  }
+  // special case for when we've got an existing source and this is the first
+  // time we've seen this path from a new source
+  else if(typeof valueLeaf.value != "undefined" && valueLeaf['$source'] != getId(source)) {
+    // first move the existing value to a nested element inside values
+    let sourceId = valueLeaf['$source'];
+    let tmp = {};
     copyLeafValueToLeaf(valueLeaf, tmp);
     valueLeaf.values = {};
     valueLeaf.values[sourceId] = tmp;
     valueLeaf.values[sourceId].timestamp = valueLeaf.timestamp;
 
+    // second, add the new value
     sourceId = getId(source);
     valueLeaf.values[sourceId] = {};
     assignValueToLeaf(pathValue.value, valueLeaf.values[sourceId]);
     valueLeaf.values[sourceId].timestamp = timestamp;
     setMessage(valueLeaf.values[sourceId], source);
   }
+
+  // do the final assignment into the context
   assignValueToLeaf(pathValue.value, valueLeaf);
-  if(pathValue.path.length != 0) {
-    valueLeaf['$source'] = getId(source);
-    valueLeaf.timestamp = timestamp;
-    setMessage(valueLeaf, source);
-  }
+  valueLeaf['$source'] = getId(source);
+  valueLeaf.timestamp = timestamp;
+  setMessage(valueLeaf, source);
 }
 
 function copyLeafValueToLeaf(fromLeaf, toLeaf) {

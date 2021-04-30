@@ -262,18 +262,17 @@ module.exports.deltaToFull = function(delta) {
 }
 
 function fillIdentity(full) {
-  let identity
-  for (identity in full.vessels) {
+  for (let identity in full.vessels) {
     fillIdentityField(full.vessels[identity], identity);
     //fill arbitrarily the last id as self, used in tests
     full.self = identity
   }
 }
 
-var mmsiPrefixLenght = 'urn:mrn:imo:mmsi:'.length;
+const mmsiPrefixLength = 'urn:mrn:imo:mmsi:'.length;
 function fillIdentityField(vesselData, identity) {
   if (identity.indexOf('urn:mrn:imo') === 0) {
-    vesselData.mmsi = identity.substring(mmsiPrefixLenght, identity.length)
+    vesselData.mmsi = identity.substring(mmsiPrefixLength, identity.length)
   } else if (identity.indexOf('urn:mrn:signalk') === 0) {
     vesselData.uuid = identity
   } else {
