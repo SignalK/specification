@@ -82,48 +82,6 @@
             }
 
           }
-        },
-
-
-        "deadZone": {
-          "description": "Dead zone to ignore for rudder corrections",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
-        },
-
-        "backlash": {
-          "description": "Slack in the rudder drive mechanism",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
-        },
-
-        "gain": {
-          "description": "Auto-pilot gain, higher number equals more rudder movement for a given turn",
-          "$ref": "../definitions.json#/definitions/numberValue"
-        },
-
-        "maxDriveCurrent": {
-          "description": "Maximum current to use to drive servo",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "A"
-        },
-
-        "maxDriveRate": {
-          "description": "Maximum rudder rotation speed",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad/s"
-        },
-
-        "portLock": {
-          "description": "Position of servo on port lock",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
-        },
-
-        "starboardLock": {
-          "description": "Position of servo on starboard lock",
-          "$ref": "../definitions.json#/definitions/numberValue",
-          "units": "rad"
         }
       }
     }
