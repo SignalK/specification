@@ -24,7 +24,7 @@
       "properties": {
         "state": {
           "type": "object",
-          "description": "Autopilot state",
+          "description": "Autopilot state, status and any error flags",
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
@@ -32,17 +32,7 @@
             {
               "properties": {
                 "value": {
-                  "type": "string",
-                  "enum": [
-                    "auto",
-                    "standby",
-                    "alarm",
-                    "noDrift",
-                    "wind",
-                    "depthContour",
-                    "route",
-                    "directControl"
-                  ]
+                  "type": "string"
                 }
               }
             }
@@ -60,11 +50,6 @@
               "properties": {
                 "value": {
                   "type": "string",
-                  "enum": [
-                    "powersave",
-                    "normal",
-                    "accurate"
-                  ]
                 }
               }
             }
@@ -77,6 +62,11 @@
           "properties": {
             "windAngleApparent": {
               "description": "Target angle to steer, relative to Apparent wind +port -starboard",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
+            "windAngleTrue": {
+              "description": "Target angle to steer, relative to true wind +port -starboard",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
