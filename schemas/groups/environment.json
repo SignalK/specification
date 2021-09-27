@@ -29,6 +29,11 @@
           "$ref": "../definitions.json#/definitions/numberValue"
         },
         "dewPoint": {
+          "description": "DEPRECATED: use dewPointTemperature",
+          "units": "K",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "dewPointTemperature": {
           "description": "Dewpoint in zone",
           "units": "K",
           "$ref": "../definitions.json#/definitions/numberValue"
@@ -82,6 +87,11 @@
           "units": "Pa"
         },
         "humidity": {
+          "description": "DEPRECATED: use relativeHumidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "relativeHumidity": {
           "description": "Current outside air relative humidity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
