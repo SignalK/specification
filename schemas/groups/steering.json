@@ -80,6 +80,11 @@
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
+            "windAngleTrue": {
+              "description": "Target angle to steer, relative to true wind +port -starboard",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            },
             "headingTrue": {
               "description": "Target heading for autopilot, relative to North",
               "$ref": "../definitions.json#/definitions/numberValue",
