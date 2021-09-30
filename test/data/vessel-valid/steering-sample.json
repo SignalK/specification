@@ -24,21 +24,25 @@
       },
       "target": {
         "windAngleApparent": {
-          "value": 0.02,
+          "value": 1.0472,
           "$source": "foo.bar",
           "timestamp": "2014-08-15T19:00:15.402Z"
-          },
+        },
+        "windAngleTrue": {
+          "value": 1.39626,
+          "$source": "foo.bar",
+          "timestamp": "2014-08-15T19:00:15.402Z"
+        },
         "headingTrue": {
           "value": 0.02,
           "$source": "foo.bar",
           "timestamp": "2014-08-15T19:00:15.402Z"
-          },
+        },
         "headingMagnetic": {
           "value": 0.02,
           "$source": "foo.bar",
           "timestamp": "2014-08-15T19:00:15.402Z"
-          }
-
+        }
       },
       "deadZone":{
         "value": 0.02,
