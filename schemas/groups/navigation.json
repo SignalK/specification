@@ -94,6 +94,11 @@
                 "position": {
                   "description": "The position of nextPoint in two dimensions",
                   "$ref": "../definitions.json#/definitions/position"
+                },
+                "arrivalCircle": {
+                  "description": "The radius in meters of a circle centered around nextPoint position, when entered will signal arrival at destination",
+                  "units": "m",
+                  "$ref": "../definitions.json#/definitions/numberValue"
                 }
               }
             }
