@@ -94,6 +94,10 @@
                 "position": {
                   "description": "The position of nextPoint in two dimensions",
                   "$ref": "../definitions.json#/definitions/position"
+                },
+                "estimatedTimeOfArrival": {
+                  "$ref": "../definitions.json#/definitions/datetimeValue",
+                  "description": "The estimated time of arrival at nextPoint position"
                 }
               }
             }
