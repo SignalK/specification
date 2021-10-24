@@ -1,0 +1,401 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "version": "0.0.1",
+        "title": "Signal K Course API"
+    },
+
+    "tags": [
+        {
+            "name": "activeRoute",
+            "description": "Route operations"
+        },
+        {
+            "name": "destination",
+            "description": "Destination operations"
+        }
+    ],
+
+    "components": { },
+    
+    "paths": {
+
+        "/vessels/self/navigation/course/": {
+            "get": {
+                "tags": ["course"],
+                "summary": "Get course information",
+                "responses": {
+                    "default": {
+                        "description": "Course data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "activeRoute": {
+                                            "type": "object",
+                                            "properties": {
+                                                "href": {
+                                                    "type": "string",
+                                                    "example": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdb69"
+                                                },
+                                                "startTime": {
+                                                    "type": "string",
+                                                    "example": "2021-10-23T05:17:20.065Z"
+                                                },
+                                                "pointIndex": {
+                                                    "type": "number",
+                                                    "format": "int64",
+                                                    "example": 2
+                                                }
+                                            }
+                                        },
+                                        "nextPoint": {
+                                            "type": "object",
+                                            "properties": {
+                                                "href": {
+                                                    "type": "string",
+                                                    "example": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "RoutePoint"
+                                                },
+                                                "position": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "latitude": {
+                                                            "type": "number",
+                                                            "format": "float"
+                                                        },
+                                                        "longitude": {
+                                                            "type": "number",
+                                                            "format": "float"
+                                                        }
+                                                    },
+                                                    "example": {"latitude":-29.5,"longitude":137.5}
+                                                }
+                                            }
+                                        },
+                                        "previousPoint": {
+                                            "type": "object",
+                                            "properties": {
+                                                "href": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "Location"
+                                                },
+                                                "position": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "latitude": {
+                                                            "type": "number",
+                                                            "format": "float"
+                                                        },
+                                                        "longitude": {
+                                                            "type": "number",
+                                                            "format": "float"
+                                                        }
+                                                    },
+                                                    "example": {"longitude":29.821001582434413,"latitude":70.7014589462524}
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/vessels/self/navigation/course/destination/": {
+            "put": {
+                "tags": ["destination"],
+                "summary": "Set destination",
+                "description": "Set destination path from supplied details",
+                "requestBody": {
+                    "description": "Destination details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "position": {              
+                                                "type": "object",
+                                                "description": "Destination position",
+                                                "required": [
+                                                    "latitude",
+                                                    "longitude"
+                                                ],
+                                                "properties": {
+                                                    "latitude": {
+                                                        "type": "number",
+                                                        "format": "float"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number",
+                                                        "format": "float"
+                                                    }
+                                                },
+                                                "example": {"latitude":-29.5,"longitude":137.5}
+                                            },
+                                            "href": {
+                                                "type": "string",
+                                                "description": "A reference (URL) to an object (under /resources) this point is related to",
+                                                "example": "/resources/waypoints/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "description": "Type of point",
+                                                "example": "POI"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["destination"],
+                "summary": "Set destination",
+                "description": "Set destination path from supplied details",
+                "requestBody": {
+                    "description": "Destination details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "position": {              
+                                                "type": "object",
+                                                "description": "Destination position",
+                                                "required": [
+                                                    "latitude",
+                                                    "longitude"
+                                                ],
+                                                "properties": {
+                                                    "latitude": {
+                                                        "type": "number",
+                                                        "format": "float"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number",
+                                                        "format": "float"
+                                                    }
+                                                },
+                                                "example": {"latitude":-29.5,"longitude":137.5}
+                                            },
+                                            "href": {
+                                                "type": "string",
+                                                "description": "A reference (URL) to an object (under /resources) this point is related to",
+                                                "example": "/resources/waypoints/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "description": "Type of point",
+                                                "example": "POI"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["destination"],
+                "summary": "Clear destination",
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
+            }
+        },
+
+        "/vessels/self/navigation/course/activeRoute/": {
+            "put": {
+                "tags": ["activeRoute"],
+                "summary": "Set active route",
+                "description": "Sets activeRoute path and sets nextPoint to first point in the route",
+                "requestBody": {
+                    "description": "Active route details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "description": "Path to route resource",
+                                                "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                            },
+                                            "pointIndex": {              
+                                                "type": "number",
+                                                "format": "int64",
+                                                "description": "Zero based index of route point to use as destination",
+                                                "default": 0,
+                                                "minimum": 0,
+                                                "example": 2
+                                            },
+                                            "reverse": {              
+                                                "type": "boolean",
+                                                "default": false,
+                                                "description": "If true performs operations on route points in reverse order",
+                                                "example": 2
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["activeRoute"],
+                "summary": "Set active route",
+                "description": "Sets activeRoute path and sets nextPoint to first point in the route",
+                "requestBody": {
+                    "description": "Active route details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "description": "Path to route resource",
+                                                "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                            },
+                                            "pointIndex": {              
+                                                "type": "number",
+                                                "format": "int64",
+                                                "description": "Zero based index of route point to use as destination",
+                                                "default": 0,
+                                                "minimum": 0,
+                                                "example": 2
+                                            },
+                                            "reverse": {              
+                                                "type": "boolean",
+                                                "default": false,
+                                                "description": "If true performs operations on route points in reverse order",
+                                                "example": 2
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["activeRoute"],
+                "summary": "Clear active route",
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
+            }
+        },
+
+        "/vessels/self/navigation/course/activeRoute/nextPoint": {
+            "post": {
+                "tags": ["activeRoute/nextPoint"],
+                "summary": "Set point in route as destination",
+                "description": "Sets the specified point in the route as destination", 
+                "requestBody": {
+                    "description": "Next point details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "pointIndex": {
+                                                "type": "number",
+                                                "description": "Index of point in route to use as destination",
+                                                "minimum": 0,
+                                                "example": 2
+                                            },
+                                            "increment": {
+                                                "type": "number",
+                                                "description": "increment (1) / decrement (-1) index of point in route to use as destination",
+                                                "enum": [-1,1],
+                                                "example": 2
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["activeRoute/nextPoint"],
+                "summary": "Set point in route as destination",
+                "description": "Sets the specified point in the route as destination", 
+                "requestBody": {
+                    "description": "Next point details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "pointIndex": {
+                                                "type": "number",
+                                                "description": "Index of point in route to use as destination",
+                                                "minimum": 0,
+                                                "example": 2
+                                            },
+                                            "increment": {
+                                                "type": "number",
+                                                "description": "increment (1) / decrement (-1) index of point in route to use as destination",
+                                                "enum": [-1,1],
+                                                "example": 2
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                
+    }
+
+}
+    
+
+
+
+  

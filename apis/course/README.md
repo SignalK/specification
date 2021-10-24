@@ -189,7 +189,7 @@ To facilitate a "Activate Route" operation:
 where:
 - `href`: The path to the target route in `/resources/routes/`.
 - `pointIndex` (optional): Zero based index of the point within the route to use as the initial destination (defaults to 0 if not supplied or if value is larger than index of last point in the route).
-- `reverse` (optional): If `true` performs operations on route points in reverse (defaults to false).
+- `reverse` (optional): If `true` performs operations on route points in reverse order (defaults to false).
 
 This will result in the following path values:
 ```JSON
