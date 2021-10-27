@@ -274,7 +274,7 @@ This will result in the following path values:
 __e. Query current course details.__
 
 ---
-To facilitate a "Previous / Next point" operation:
+To facilitate a "get current course" operation:
 - The client will make a `GET` request to the `/navigation/course` path and a response of the following format, detailing the course values, will be returned.
 
 Example:
@@ -322,4 +322,77 @@ Maintianing quality data in these paths enables operation of other navigation eq
 by providing a source of data that can be trusted for use in calculating navigation information for steering a course.
 
 The paths within the Signal K schema pertaining to other navigation operations will be maintained by the relevant equipment or Signal K API .
+
+---
+
+## Signal K stream Deltas.
+
+The use of the API endpoints outlined above will trigger delta messages to be sent for related Signal K paths (in-scope paths) where:
+- Values have changed
+- Periodically for all paths that have a current value.
+
+The absence of a delta for a specific Signal K path indicates that the path has never had a value assigned to it. 
+
+Where a delta value is `null`, this indicates that a previous value is no longer valid (i.e. there is a provider for this path but there is no current value).
+
+_Delta messages for in-scope paths:_
+```JSON
+[
+    {
+        "path": "navigation.courseGreatCircle.activeRoute.href",
+        "value": reference to route resource,
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.activeRoute.startTime",
+        "value": Time at which route was activated (as per Signal K schema),
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.nextPoint.position",
+        "value": {
+            "latitude": number,
+            "longitude": number
+        },
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.nextPoint.value.href",
+        "value": reference to waypoint resource,
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.nextPoint.value.type",
+        "value": string,
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.previousPoint.position",
+        "value": {
+            "latitude": number,
+            "longitude": number
+        },
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.previousPoint.value.href",
+        "value": reference to waypoint resource,
+        "context": "vessels.self",
+        "source": source of value
+    },
+    {
+        "path": "navigation.courseGreatCircle.previousPoint.value.type",
+        "value": string,
+        "context": "vessels.self",
+        "source": source of value
+    }
+]
+```
+
 
