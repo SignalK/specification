@@ -125,6 +125,7 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
@@ -161,7 +162,8 @@
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }
                                 }
                             }
@@ -180,6 +182,7 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
@@ -216,7 +219,8 @@
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }
                                 }
                             }
@@ -235,13 +239,15 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
-                                        "enum": [null]
+                                        "default": null
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }  
                                 }
                             }
@@ -263,6 +269,7 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
@@ -289,7 +296,8 @@
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     } 
                                 }
                             }
@@ -308,6 +316,7 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
@@ -334,7 +343,8 @@
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     } 
                                 }
                             }
@@ -353,13 +363,15 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
-                                        "enum": [null]
+                                        "default": null
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }  
                                 }
                             }
@@ -372,35 +384,32 @@
         "/vessels/self/navigation/course/activeRoute/nextPoint": {
             "post": {
                 "tags": ["activeRoute/nextPoint"],
-                "summary": "Set point in route as destination",
-                "description": "Sets the specified point in the route as destination", 
+                "summary": "Increment / decrement point in route as destination",
+                "description": "Increment / decrement point in the route as destination", 
                 "requestBody": {
-                    "description": "Next point details",
+                    "description": "Increment / decrement",
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
+                                        "required": ["increment"],
                                         "properties": {
-                                            "pointIndex": {
-                                                "type": "number",
-                                                "description": "Index of point in route to use as destination",
-                                                "minimum": 0,
-                                                "example": 2
-                                            },
                                             "increment": {
                                                 "type": "number",
                                                 "description": "increment (1) / decrement (-1) index of point in route to use as destination",
                                                 "enum": [-1,1],
-                                                "example": 2
+                                                "example": -1
                                             }
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }
                                 }
                             }
@@ -410,15 +419,54 @@
             },
             "put": {
                 "tags": ["activeRoute/nextPoint"],
-                "summary": "Set point in route as destination",
-                "description": "Sets the specified point in the route as destination", 
+                "summary": "Increment / decrement point in route as destination",
+                "description": "Increment / decrement point in the route as destination", 
                 "requestBody": {
-                    "description": "Next point details",
+                    "description": "Increment / decrement",
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "required": ["increment"],
+                                        "properties": {
+                                            "increment": {
+                                                "type": "number",
+                                                "description": "increment (1) / decrement (-1) index of point in route to use as destination",
+                                                "enum": [-1,1],
+                                                "example": -1
+                                            }
+                                        }
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/vessels/self/navigation/course/activeRoute/setPoint": {
+            "post": {
+                "tags": ["activeRoute/setPoint"],
+                "summary": "Set point in route as destination",
+                "description": "Sets the specified point in the route as destination", 
+                "requestBody": {
+                    "description": "Next point index",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "object",
@@ -428,17 +476,46 @@
                                                 "description": "Index of point in route to use as destination",
                                                 "minimum": 0,
                                                 "example": 2
-                                            },
-                                            "increment": {
+                                            }
+                                        }
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["activeRoute/setPoint"],
+                "summary": "Set point in route as destination",
+                "description": "Sets the specified point in the route as destination", 
+                "requestBody": {
+                    "description": "Next point index",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "pointIndex": {
                                                 "type": "number",
-                                                "description": "increment (1) / decrement (-1) index of point in route to use as destination",
-                                                "enum": [-1,1],
+                                                "description": "Index of point in route to use as destination",
+                                                "minimum": 0,
                                                 "example": 2
                                             }
                                         }
                                     },
                                     "source": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "freeboard-sk"
                                     }
                                 }
                             }

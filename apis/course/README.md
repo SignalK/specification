@@ -230,10 +230,10 @@ This will result in the following path values:
 __d. Select point in the active Route as destination.__
 
 ---
-To facilitate a "Previous / Next point" operation:
+To facilitate a "go to point in route" operation:
 - The client will `PUT` or `POST` the following to the `/navigation/course/activeRoute/nextPoint` path:
 
-Option 1:
+_Example:_
 ```JSON
 {
     "value": {
@@ -245,7 +245,39 @@ Option 1:
 where:
 - `pointIndex`: Zero based index of the point within the route to use as the initial destination (if value is larger than index of last point in the route then destination is not changed).
 
-Option 2:
+This will result in the following path values:
+```JSON
+{
+    "activeRoute": {
+        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
+        "startTime": Time at which route was activated (as per Signal K schema)
+    },
+    "nextPoint": {
+        "href": null,
+        "type": "RoutePoint",
+        "position": {
+            "latitude": latitude of previous point in route,
+            "longitude": longitude of previous point in route
+        }
+    },
+    "previousPoint": {
+        "href": null,
+        "type": null,
+        "position": {
+            "latitude": latitude of vessel at time of destination being set,
+            "longitude": longitude of vessel at time of destination being set
+        }
+    }
+}
+```
+
+__e. Increment / decrement point in the active Route as destination.__
+
+---
+To facilitate a "Previous / Next point" operation:
+- The client will `PUT` or `POST` the following to the `/navigation/course/activeRoute/nextPoint` path:
+
+_Example:__
 ```JSON
 {
     "value": {
@@ -283,7 +315,7 @@ This will result in the following path values:
 }
 ```
 
-__e. Query current course details.__
+__f. Query current course details.__
 
 ---
 To facilitate a "get current course" operation:
