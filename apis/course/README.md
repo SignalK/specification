@@ -71,7 +71,8 @@ To facilitate a "navigate to here" operation:
     "value": {
         "position": {"latitude": -28.5,"longitude":138.5}, 
         "type": "Location"
-    }
+    },
+    "source": Source making the change.
 }
 ```
 where:
@@ -113,7 +114,8 @@ To facilitate a "navigate to selected waypoint" operation:
 {
     "value": {
         "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab" 
-    }
+    },
+    "source": Source making the change.
 }
 ```
 where:
@@ -152,6 +154,13 @@ To facilitate a "navigate to selected waypoint" operation the client will send a
 -  `/navigation/course/destination`
 -  `/navigation/course/activeRoute`
 
+```JSON
+{
+    "value": null,
+    "source": Source making the change.
+}
+```
+
 This will result in the following path values:
 ```JSON
 {
@@ -183,7 +192,8 @@ To facilitate a "Activate Route" operation:
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
         "pointIndex": 1,
         "reverse": false
-    }
+    },
+    "source": Source making the change.
 }
 ```
 where:
@@ -228,7 +238,8 @@ Option 1:
 {
     "value": {
         "pointIndex": 3
-    }
+    },
+    "source": Source making the change.
 }
 ```
 where:
@@ -239,7 +250,8 @@ Option 2:
 {
     "value": {
         "increment": -1
-    }
+    },
+    "source": Source making the change.
 }
 ```
 where:

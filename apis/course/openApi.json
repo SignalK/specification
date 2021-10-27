@@ -159,6 +159,9 @@
                                                 "example": "POI"
                                             }
                                         }
+                                    },
+                                    "source": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -211,6 +214,9 @@
                                                 "example": "POI"
                                             }
                                         }
+                                    },
+                                    "source": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -221,7 +227,27 @@
             "delete": {
                 "tags": ["destination"],
                 "summary": "Clear destination",
-                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null",
+                "requestBody": {
+                    "description": "Delete payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "enum": [null]
+                                    },
+                                    "source": {
+                                        "type": "string"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
 
@@ -261,7 +287,10 @@
                                                 "example": 2
                                             }
                                         }
-                                    }
+                                    },
+                                    "source": {
+                                        "type": "string"
+                                    } 
                                 }
                             }
                         }
@@ -303,7 +332,10 @@
                                                 "example": 2
                                             }
                                         }
-                                    }
+                                    },
+                                    "source": {
+                                        "type": "string"
+                                    } 
                                 }
                             }
                         }
@@ -313,7 +345,27 @@
             "delete": {
                 "tags": ["activeRoute"],
                 "summary": "Clear active route",
-                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null",
+                "requestBody": {
+                    "description": "Delete payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "enum": [null]
+                                    },
+                                    "source": {
+                                        "type": "string"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
 
@@ -346,8 +398,10 @@
                                                 "example": 2
                                             }
                                         }
+                                    },
+                                    "source": {
+                                        "type": "string"
                                     }
-                                    
                                 }
                             }
                         }
@@ -382,6 +436,9 @@
                                                 "example": 2
                                             }
                                         }
+                                    },
+                                    "source": {
+                                        "type": "string"
                                     }
                                 }
                             }
