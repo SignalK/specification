@@ -190,7 +190,7 @@ To facilitate a "Activate Route" operation:
 {
     "value": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "pointIndex": 1,
+        "pointIndex": 0,
         "reverse": false
     },
     "source": Source making the change.
@@ -220,8 +220,8 @@ This will result in the following path values:
         "href": null,
         "type": null,
         "position": {
-            "latitude": latitude of vessel at time of destination being set,
-            "longitude": longitude of vessel at time of destination being set
+            "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
+            "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
         }
     }
 }
@@ -264,8 +264,8 @@ This will result in the following path values:
         "href": null,
         "type": null,
         "position": {
-            "latitude": latitude of vessel at time of destination being set,
-            "longitude": longitude of vessel at time of destination being set
+            "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
+            "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
         }
     }
 }
@@ -308,14 +308,54 @@ This will result in the following path values:
         "href": null,
         "type": null,
         "position": {
-            "latitude": latitude of vessel at time of destination being set,
-            "longitude": longitude of vessel at time of destination being set
+            "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
+            "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
         }
     }
 }
 ```
 
-__f. Query current course details.__
+__f. Restart course calculations.__
+
+---
+To facilitate a `restart` of course calculations from the current vessel location":
+- The client will `PUT` or `POST` the following to the `/navigation/course/restart` path:
+
+_Example:__
+```JSON
+{
+    "value": null,
+    "source": Source making the change.
+}
+```
+
+This will result in the following path values:
+```JSON
+{
+    "activeRoute": {
+        "href": unchanged,
+        "startTime": unchanged
+    },
+    "nextPoint": {
+        "href": unchanged,
+        "type": unchanged,
+        "position": {
+            "latitude": unchanged,
+            "longitude": unchanged
+        }
+    },
+    "previousPoint": {
+        "href": null,
+        "type": null,
+        "position": {
+            "latitude": latitude of vessel,
+            "longitude": longitude of vessel
+        }
+    }
+}
+```
+
+__g. Query current course details.__
 
 ---
 To facilitate a "get current course" operation:
@@ -327,7 +367,8 @@ Example:
     "activeRoute": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
         "startTime": "2021-10-23T05:17:20.065Z",
-        "pointIndex": 2
+        "pointIndex": 2,
+        "reverse": false
     },
     "nextPoint": {
         "href": null,
@@ -350,9 +391,18 @@ Example:
 
 ### Use of `previousPoint`.
 ---
-To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute is __always__ set to the location of the vessel each time the destination position is set / changed.
+To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute is set as follows:
+- __Set position as destination__: Set to the location of the vessel.
+- __Set waypoint as destination__: Set to the location of the vessel.
+- __Activate a route__: 
 
-It is set to `null` when the destination has been cleared.
+    1. If `pointIndex` is `0` (point at start of the route) then `previousPoint.position` is set to location of the vessel. 
+
+    2. If `pointIndex` is not `0` then `previousPoint.position` is set to the position of the point at `pointIndex-1`.
+
+- __Restart__: Set to the location of the vessel.
+
+- __Clear/Cancel destination__: Set to `null`.
 
 ---
 

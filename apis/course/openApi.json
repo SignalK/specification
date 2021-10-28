@@ -257,6 +257,63 @@
             }
         },
 
+        "/vessels/self/navigation/course/reset": {
+            "put": {
+                "tags": ["course"],
+                "summary": "Restart course calculations",
+                "description": "Sets previousPoint value to current vessel location",
+                "requestBody": {
+                    "description": "Restart payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "default": null
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["course"],
+                "summary": "Restart course calculations",
+                "description": "Sets previousPoint value to current vessel location",
+                "requestBody": {
+                    "description": "Restart payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "default": null
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
         "/vessels/self/navigation/course/activeRoute/": {
             "put": {
                 "tags": ["activeRoute"],
