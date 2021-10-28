@@ -70,7 +70,8 @@ To facilitate a "navigate to here" operation:
 {
     "value": {
         "position": {"latitude": -28.5,"longitude":138.5}, 
-        "type": "Location"
+        "type": "Location",
+        "arrivalCircle": 500
     },
     "source": Source making the change.
 }
@@ -78,13 +79,15 @@ To facilitate a "navigate to here" operation:
 where:
 - `position`:  The destination lat, lon (as per Signal K schema)
 - `type` (optional): A string describing the destination (as per Signal K schema).
+- `arrivalCircle`: radius of circle centered at destination indicating arrival.
 
 This will result in the following path values:
 ```JSON
 {
     "activeRoute": {
         "href": null,
-        "startTime": null
+        "startTime": null,
+        "pointIndex": null
     },
     "nextPoint": {
         "href": null,
@@ -92,7 +95,8 @@ This will result in the following path values:
         "position": {
             "latitude": -28.5,
             "longitude":138.5
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -113,20 +117,23 @@ To facilitate a "navigate to selected waypoint" operation:
 ```JSON
 {
     "value": {
-        "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab" 
+        "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
+        "arrivalCircle": 500
     },
     "source": Source making the change.
 }
 ```
 where:
 - `href`: The path to the target waypoint in `/resources/waypoints/`.
+- `arrivalCircle`: radius of circle centered at destination indicating arrival.
 
 This will result in the following path values:
 ```JSON
 {
     "activeRoute": {
         "href": null,
-        "startTime": null
+        "startTime": null,
+        "pointIndex": null
     },
     "nextPoint": {
         "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
@@ -134,7 +141,8 @@ This will result in the following path values:
         "position": {
             "latitude": latitude of waypoint,
             "longitude": longitude of waypoint
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -166,12 +174,14 @@ This will result in the following path values:
 {
     "activeRoute": {
         "href": null,
-        "startTime": null
+        "startTime": null,
+        "pointIndex": null
     },
     "nextPoint": {
         "href": null,
         "type": null,
-        "position": null
+        "position": null,
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -191,7 +201,8 @@ To facilitate a "Activate Route" operation:
     "value": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
         "pointIndex": 0,
-        "reverse": false
+        "reverse": false,
+        "arrivalCircle": 500
     },
     "source": Source making the change.
 }
@@ -200,13 +211,15 @@ where:
 - `href`: The path to the target route in `/resources/routes/`.
 - `pointIndex` (optional): Zero based index of the point within the route to use as the initial destination (defaults to 0 if not supplied or if value is larger than index of last point in the route).
 - `reverse` (optional): If `true` performs operations on route points in reverse order (defaults to false).
+- `arrivalCircle`: radius of circle centered at destination indicating arrival.
 
 This will result in the following path values:
 ```JSON
 {
     "activeRoute": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema)
+        "startTime": Time at which route was activated (as per Signal K schema),
+        "pointIndex": defaults to 0
     },
     "nextPoint": {
         "href": null,
@@ -214,7 +227,8 @@ This will result in the following path values:
         "position": {
             "latitude": latitude of second point in route,
             "longitude": longitude of second point in route
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -250,7 +264,8 @@ This will result in the following path values:
 {
     "activeRoute": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema)
+        "startTime": Time at which route was activated (as per Signal K schema),
+        "pointIndex": index of route point used as destination
     },
     "nextPoint": {
         "href": null,
@@ -258,7 +273,8 @@ This will result in the following path values:
         "position": {
             "latitude": latitude of previous point in route,
             "longitude": longitude of previous point in route
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -294,7 +310,8 @@ This will result in the following path values:
 {
     "activeRoute": {
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema)
+        "startTime": Time at which route was activated (as per Signal K schema),
+        "pointIndex": index of route point used as destination
     },
     "nextPoint": {
         "href": null,
@@ -302,7 +319,8 @@ This will result in the following path values:
         "position": {
             "latitude": latitude of previous point in route,
             "longitude": longitude of previous point in route
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -334,7 +352,8 @@ This will result in the following path values:
 {
     "activeRoute": {
         "href": unchanged,
-        "startTime": unchanged
+        "startTime": unchanged,
+        "pointIndex": unchanged
     },
     "nextPoint": {
         "href": unchanged,
@@ -342,7 +361,8 @@ This will result in the following path values:
         "position": {
             "latitude": unchanged,
             "longitude": unchanged
-        }
+        },
+        "arrivalCircle": radius in meters
     },
     "previousPoint": {
         "href": null,
@@ -355,7 +375,51 @@ This will result in the following path values:
 }
 ```
 
-__g. Query current course details.__
+__g. Set arrival circle.__
+
+---
+To facilitate the setting of the radius of a circle centered at destination indicating arrival.
+- The client will `PUT` or `POST` the following to the `/navigation/course/arrivalCircle` path:
+
+_Example:__
+```JSON
+{
+    "value": {
+        "radius": 500
+    },
+    "source": Source making the change.
+}
+```
+
+This will result in the following path values:
+```JSON
+{
+    "activeRoute": {
+        "href": unchanged,
+        "startTime": unchanged,
+        "pointIndex": unchanged
+    },
+    "nextPoint": {
+        "href": unchanged,
+        "type": unchanged,
+        "position": {
+            "latitude": unchanged,
+            "longitude": unchanged
+        },
+        "arrivalCircle": radius in meters
+    },
+    "previousPoint": {
+        "href": null,
+        "type": null,
+        "position": {
+            "latitude": latitude of vessel,
+            "longitude": longitude of vessel
+        }
+    }
+}
+```
+
+__h. Query current course details.__
 
 ---
 To facilitate a "get current course" operation:
@@ -368,7 +432,8 @@ Example:
         "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
         "startTime": "2021-10-23T05:17:20.065Z",
         "pointIndex": 2,
-        "reverse": false
+        "reverse": false,
+        "pointIndex": 2
     },
     "nextPoint": {
         "href": null,

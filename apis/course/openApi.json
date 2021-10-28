@@ -158,6 +158,11 @@
                                                 "type": "string",
                                                 "description": "Type of point",
                                                 "example": "POI"
+                                            },
+                                            "arrivalCircle": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
                                             }
                                         }
                                     },
@@ -215,6 +220,11 @@
                                                 "type": "string",
                                                 "description": "Type of point",
                                                 "example": "POI"
+                                            },
+                                            "arrivalCircle": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
                                             }
                                         }
                                     },
@@ -314,6 +324,75 @@
             }
         },
 
+        "/vessels/self/navigation/course/arrivalCircle": {
+            "put": {
+                "tags": ["course"],
+                "summary": "Set arrival circle radius (m)",
+                "description": "Sets an arrival circle radius (in meters)",
+                "requestBody": {
+                    "description": "Arrival circle payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "radius": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
+                                            }
+                                        }
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["course"],
+                "summary": "Set arrival circle radius (m)",
+                "description": "Sets an arrival circle radius (in meters)",
+                "requestBody": {
+                    "description": "Arrival circle payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": ["value"],
+                                "properties": {
+                                    "value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "radius": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
+                                            }
+                                        }
+                                    },
+                                    "source": {
+                                        "type": "string",
+                                        "example": "freeboard-sk"
+                                    }  
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
         "/vessels/self/navigation/course/activeRoute/": {
             "put": {
                 "tags": ["activeRoute"],
@@ -349,6 +428,11 @@
                                                 "default": false,
                                                 "description": "If true performs operations on route points in reverse order",
                                                 "example": 2
+                                            },
+                                            "arrivalCircle": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
                                             }
                                         }
                                     },
@@ -396,6 +480,11 @@
                                                 "default": false,
                                                 "description": "If true performs operations on route points in reverse order",
                                                 "example": 2
+                                            },
+                                            "arrivalCircle": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": 500
                                             }
                                         }
                                     },
