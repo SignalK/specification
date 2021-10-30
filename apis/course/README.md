@@ -5,9 +5,11 @@
 Define an API for Signal K client applications to be able to set a destination or navigate a route that provides the following methods:
 
 - Set a position (lat, lon) as a destination
-- Select a waypoint (from `/resources/waypoints`) as a destination
-- Activate a route (from `/resources/routes`)
+- Reference a waypoint from `/resources/waypoints` as a destination
+- Activate a route by supplying a reference from `/resources/routes`
+- Specify to follow route points in reverse order
 - Select the point within the route to be the current destination
+- Increment / decrement the point in the route to be the current destination.
 - Clear / cancel the course
 - Query the current course details.
 
@@ -20,52 +22,82 @@ Currently Signal K makes available paths to store navigation data but it is larg
 
 This is can cause interoperability issues and inconsistency in application (e.g. calculations in `signalk-derived-data` plugin will use a mixture of paths `navigation.courseGreatCircle` and `navigation.courseRhumbline`) so depending on an individual implementation results may vary.
 
+Defining and implementing an API will provide reliability in how the values in these paths are populated ensuring confidence in the source data used in course calculations. 
+
 ---
 
-### 1. Signal K Paths in Scope:
+### __1. Signal K Paths in Scope:__
 
-The following paths are relative to `/signalk/v1/api/vessels/self`.
+_Note: All paths outlined below are relative to `/signalk/v1/api/vessels/self`._
 
 The Signal K specification contains a `navigation.course` schema definition which is applied to both the `navigation/courseGreatCircle` and `navigation/courseRhumbline` paths.
 
-The following attributes in both these paths are in scope for management by this API.
+The following properties under both these paths are in scope for management by this API:
 
 ```
-activeRoute/href
-activeRoute/startTime
+activeRoute.href
+activeRoute.startTime
+
+nextPoint.value.href
+nextPoint.value.type
+nextPoint.position
+
+previousPoint.value.href
+previousPoint.value.type
+previousPoint.position
 ```
 
-```
-nextPoint/value/href
-nextPoint/value/type
-nextPoint/position
-```
+This API will provide endpoints under the path `navigation/course` in order to set a course as well as query the current course information.
 
-```
-previousPoint/value/href
-previousPoint/value/type
-previousPoint/position
-```
+### 1.1 Enabling other navigation equipment (e.g. autopilot) operation.
+---
+By clearly defining and managing the use of specific `course` paths within the Signal K schema, this will ensure consistency in the values they contain and engender confidence in their use.
 
-Additionally it will provide a path to query the current course information.
+Maintianing quality data in these paths enables the reliable operation of other navigation equipment such as:
+- Course computers
+- Auto-pilots
 
-```
-navigation/course
-```
+by providing a trusted source of data for use in calculating navigation information for steering a course.
+
+The paths within the Signal K schema pertaining to other navigation operations will be maintained by the relevant equipment or Signal K API.
 
 ---
 
-### 2. How In Scope paths are used:
+### __2.API Operation:__
 
-While the intended use of the `in scope` Signal K paths are defined in the specification, the use of these paths in practise determines the success of an implementation.
+While the intended use of the `in scope` Signal K paths are defined in the specification, the actual use of these paths in practise determines the success of an implementation.
 
-_Following is the proposed operation of the course API for each of the proposed methods:_
+### 2.1 Use of `previousPoint`.
+---
+To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute will be set as follows:
+- __When a position (lat, lon) is supplied as a destination__: Set the value of `previousPoint.position` to the location of the vessel.
+- __When a reference to a waypoint resource is supplied as a destination__: Set the value of `previousPoint.position` to the location of the vessel.
+- __When a reference to a route resource is is supplied__: 
 
-__a. Set a position (lat, lon) as a destination.__
+    1. If the supplied route `pointIndex` is `0` (point at start of the route) then set the value of `previousPoint.position` to the location of the vessel. 
+
+    2. If the supplied route `pointIndex` is not `0` then set the value of`previousPoint.position` to that of the preceding point in the route.
+
+- __When a "Course Restart" is requested__: Set the value of `previousPoint.position` to the location of the vessel.
+
+- __When a destination or active route is "Cancelled"__: then set the value of`previousPoint.position` to `null`.
 
 ---
-To facilitate a "navigate to here" operation:
-- The client will `PUT` or `POST` the following to the `/navigation/course/destination` path:
+
+### __3.API Methods:__
+
+The following endpoints under the path `navigation/course` make up the Course API.
+
+
+### 3.1 Set a position (lat, lon) as a destination
+---
+__Use case:__ Provide _"navigate to here"_ operation.
+
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/destination`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -79,24 +111,23 @@ To facilitate a "navigate to here" operation:
 where:
 - `position`:  The destination lat, lon (as per Signal K schema)
 - `type` (optional): A string describing the destination (as per Signal K schema).
-- `arrivalCircle`: radius of circle centered at destination indicating arrival.
+- `arrivalCircle`(optional): Radius of circle centered at destination indicating arrival.
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
         "href": null,
-        "startTime": null,
-        "pointIndex": null
+        "startTime": null
     },
     "nextPoint": {
         "href": null,
-        "type": "Location",
+        "type": null if type not supplied,
         "position": {
-            "latitude": -28.5,
-            "longitude":138.5
+            "latitude": supplied latitude,
+            "longitude": supplied longitude
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged if value not suplied
     },
     "previousPoint": {
         "href": null,
@@ -109,11 +140,15 @@ This will result in the following path values:
 }
 ```
 
-__b. Set a Waypoint as a destination.__
-
+### 3.2 Set a Waypoint as a destination
 ---
-To facilitate a "navigate to selected waypoint" operation:
-- The client will `PUT` or `POST` the following to the `/navigation/course/destination` path:
+__Use case:__ Provide _"navigate to selected waypoint resource"_ operation.
+
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/destination`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -125,24 +160,23 @@ To facilitate a "navigate to selected waypoint" operation:
 ```
 where:
 - `href`: The path to the target waypoint in `/resources/waypoints/`.
-- `arrivalCircle`: radius of circle centered at destination indicating arrival.
+- `arrivalCircle` (optional): Radius of circle centered at destination indicating arrival.
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
         "href": null,
-        "startTime": null,
-        "pointIndex": null
+        "startTime": null
     },
     "nextPoint": {
-        "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "type": "Waypoint",
+        "href": supplied href,
+        "type": null if type not supplied,
         "position": {
-            "latitude": latitude of waypoint,
-            "longitude": longitude of waypoint
+            "latitude": latitude of referenced waypoint,
+            "longitude": longitude of referenced waypoint
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged if value not supplied
     },
     "previousPoint": {
         "href": null,
@@ -155,12 +189,15 @@ This will result in the following path values:
 }
 ```
 
-__c. Clear / Cancel a destination or Activated Route.__
-
+### 3.3 Clear / Cancel a destination or Activated Route.
 ---
-To facilitate a "navigate to selected waypoint" operation the client will send a `DELETE` request to either of the the following paths:
--  `/navigation/course/destination`
--  `/navigation/course/activeRoute`
+__Use case:__ Provide _"stop navigating to destination"_ or _"deactivate as route"_ operation.
+
+__Action:__ `DELETE`
+
+__Path:__ `/navigation/course/destination` or `/navigation/course/activeRoute`
+
+__Request body:__
 
 ```JSON
 {
@@ -169,19 +206,18 @@ To facilitate a "navigate to selected waypoint" operation the client will send a
 }
 ```
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
         "href": null,
-        "startTime": null,
-        "pointIndex": null
+        "startTime": null
     },
     "nextPoint": {
         "href": null,
         "type": null,
         "position": null,
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged
     },
     "previousPoint": {
         "href": null,
@@ -191,11 +227,16 @@ This will result in the following path values:
 }
 ```
 
-__d. Activate a Route to follow.__
-
+### 3.4 Activate a Route to follow.
 ---
-To facilitate a "Activate Route" operation:
-- The client will `PUT` or `POST` the following to the `/navigation/course/activeRoute` path:
+
+__Use case:__ Provide _"activate / follow a route"_ operation.
+
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/activeRoute`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -211,43 +252,44 @@ where:
 - `href`: The path to the target route in `/resources/routes/`.
 - `pointIndex` (optional): Zero based index of the point within the route to use as the initial destination (defaults to 0 if not supplied or if value is larger than index of last point in the route).
 - `reverse` (optional): If `true` performs operations on route points in reverse order (defaults to false).
-- `arrivalCircle`: radius of circle centered at destination indicating arrival.
+- `arrivalCircle` (optional): Radius of circle centered at destination indicating arrival.
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema),
-        "pointIndex": defaults to 0
+        "href": supplied href,
+        "startTime": Time at which route was activated (as per Signal K schema)
     },
     "nextPoint": {
         "href": null,
-        "type": "RoutePoint",
+        "type": null if value not supplied,
         "position": {
-            "latitude": latitude of second point in route,
-            "longitude": longitude of second point in route
+            "latitude": latitude of route point at supplied index,
+            "longitude": longitude of route point at supplied index
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged if value not supplied
     },
     "previousPoint": {
         "href": null,
         "type": null,
         "position": {
-            "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
-            "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
+            "latitude": latitude of: vessel if supplied pointIndex=0 or point at poiintIndex-1,
+            "longitude": longitude of: vessel if supplied pointIndex=0 or point at poiintIndex-1
         }
     }
 }
 ```
 
-__d. Select point in the active Route as destination.__
-
+### 3.5 Select point in the active Route as destination.
 ---
-To facilitate a "go to point in route" operation:
-- The client will `PUT` or `POST` the following to the `/navigation/course/activeRoute/nextPoint` path:
+__Use case:__ Provide _"go to point in route"_ operation.
 
-_Example:_
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/activeRoute/setPoint`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -259,41 +301,42 @@ _Example:_
 where:
 - `pointIndex`: Zero based index of the point within the route to use as the initial destination (if value is larger than index of last point in the route then destination is not changed).
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema),
-        "pointIndex": index of route point used as destination
+        "href": unchanged,
+        "startTime": unchanged
     },
     "nextPoint": {
-        "href": null,
-        "type": "RoutePoint",
+        "href": unchanged,
+        "type": unchanged,
         "position": {
-            "latitude": latitude of previous point in route,
-            "longitude": longitude of previous point in route
+            "latitude": latitude of route point at supplied index,
+            "longitude": longitude of route point at supplied index
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged
     },
     "previousPoint": {
-        "href": null,
-        "type": null,
+        "href": unchanged,
+        "type": unchanged,
         "position": {
-            "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
-            "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
+            "latitude": latitude of: vessel if pointIndex=0 or route point at poiintIndex-1,
+            "longitude": longitude of: vessel if pointIndex=0 or route point at poiintIndex-1
         }
     }
 }
 ```
 
-__e. Increment / decrement point in the active Route as destination.__
-
+### 3.6 Increment / decrement point in the active Route as destination.
 ---
-To facilitate a "Previous / Next point" operation:
-- The client will `PUT` or `POST` the following to the `/navigation/course/activeRoute/nextPoint` path:
+__Use case:__ Provide _"previous / next point"_ operation.
 
-_Example:__
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/activeRoute/nextPoint`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -305,26 +348,25 @@ _Example:__
 where:
 - `increment`: Is either `1` (next point) or `-1` (previous point).
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "startTime": Time at which route was activated (as per Signal K schema),
-        "pointIndex": index of route point used as destination
+        "href": unchanged,
+        "startTime": unchanged
     },
     "nextPoint": {
-        "href": null,
-        "type": "RoutePoint",
+        "href": unchanged,
+        "type": unchanged,
         "position": {
-            "latitude": latitude of previous point in route,
-            "longitude": longitude of previous point in route
+            "latitude": latitude of previous (if -1 supplied) or next (if 1 supplied) route point,
+            "longitude": longitude of previous (if -1 supplied) or next (if 1 supplied) route point
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged
     },
     "previousPoint": {
-        "href": null,
-        "type": null,
+        "href": unchanged,
+        "type": unchanged,
         "position": {
             "latitude": latitude of: vessel (if pointIndex=0) or point at poiintIndex-1,
             "longitude": longitude of: vessel (if pointIndex=0) or point at poiintIndex-1
@@ -333,27 +375,27 @@ This will result in the following path values:
 }
 ```
 
-__f. Restart course calculations.__
-
+### 3.7 Restart course calculations.
 ---
-To facilitate a `restart` of course calculations from the current vessel location":
-- The client will `PUT` or `POST` the following to the `/navigation/course/restart` path:
+__Use case:__ Provide _"restart XTE"_ operation.
 
-_Example:__
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/activeRoute/restart`
+
+__Request body:__
 ```JSON
 {
     "value": null,
     "source": Source making the change.
 }
 ```
-
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
         "href": unchanged,
-        "startTime": unchanged,
-        "pointIndex": unchanged
+        "startTime": unchanged
     },
     "nextPoint": {
         "href": unchanged,
@@ -362,11 +404,11 @@ This will result in the following path values:
             "latitude": unchanged,
             "longitude": unchanged
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": unchanged 
     },
     "previousPoint": {
-        "href": null,
-        "type": null,
+        "href": unchanged,
+        "type": unchanged,
         "position": {
             "latitude": latitude of vessel,
             "longitude": longitude of vessel
@@ -375,13 +417,15 @@ This will result in the following path values:
 }
 ```
 
-__g. Set arrival circle.__
-
+### 3.8 Set arrival circle.
 ---
-To facilitate the setting of the radius of a circle centered at destination indicating arrival.
-- The client will `PUT` or `POST` the following to the `/navigation/course/arrivalCircle` path:
+__Use case:__ Provide ability to set the radius of a circle centered at destination indicating arrival.
 
-_Example:__
+__Action:__ `PUT`
+
+__Path:__ `/navigation/course/arrivalCircle`
+
+__Request body:__
 ```JSON
 {
     "value": {
@@ -390,14 +434,15 @@ _Example:__
     "source": Source making the change.
 }
 ```
+where:
+- `radius`: Is the radius of the circle in meters.
 
-This will result in the following path values:
+This will result in the following Signal K path values being set:
 ```JSON
 {
     "activeRoute": {
         "href": unchanged,
-        "startTime": unchanged,
-        "pointIndex": unchanged
+        "startTime": unchanged
     },
     "nextPoint": {
         "href": unchanged,
@@ -406,26 +451,28 @@ This will result in the following path values:
             "latitude": unchanged,
             "longitude": unchanged
         },
-        "arrivalCircle": radius in meters
+        "arrivalCircle": supplied value
     },
     "previousPoint": {
-        "href": null,
-        "type": null,
+        "href": unchanged,
+        "type": unchanged,
         "position": {
-            "latitude": latitude of vessel,
-            "longitude": longitude of vessel
+            "latitude": unchanged,
+            "longitude": unchanged
         }
     }
 }
 ```
 
-__h. Query current course details.__
-
+### 3.9 Query current course details.
 ---
-To facilitate a "get current course" operation:
-- The client will make a `GET` request to the `/navigation/course` path and a response of the following format, detailing the course values, will be returned.
+__Use case:__ Provide "get current course", "get course details" operation.
 
-Example:
+__Action:__ `GET`
+
+__Path:__ `/navigation/course`
+
+__Response:__ JSON formatted object containing the current course details as per the following example:
 ```JSON
 {
     "activeRoute": {
@@ -454,47 +501,19 @@ Example:
 }
 ```
 
-### Use of `previousPoint`.
----
-To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute is set as follows:
-- __Set position as destination__: Set to the location of the vessel.
-- __Set waypoint as destination__: Set to the location of the vessel.
-- __Activate a route__: 
-
-    1. If `pointIndex` is `0` (point at start of the route) then `previousPoint.position` is set to location of the vessel. 
-
-    2. If `pointIndex` is not `0` then `previousPoint.position` is set to the position of the point at `pointIndex-1`.
-
-- __Restart__: Set to the location of the vessel.
-
-- __Clear/Cancel destination__: Set to `null`.
-
 ---
 
-## Enabling other navigation equipment (e.g. autopilot) operation.
+### __4. Signal K Stream Deltas__
 
-This API seeks to define and manage the use of specific `course` paths within the Signal K schema to provide consistency and confidence in the values they contain.
-
-Maintianing quality data in these paths enables operation of other navigation equipment such as:
-- Course computers
-- Auto-pilots
-by providing a source of data that can be trusted for use in calculating navigation information for steering a course.
-
-The paths within the Signal K schema pertaining to other navigation operations will be maintained by the relevant equipment or Signal K API .
-
----
-
-## Signal K stream Deltas.
-
-The use of the API endpoints outlined above will trigger delta messages to be sent for related Signal K paths (in-scope paths) where:
+The implementation of the Course API requires that the relevant delta messages are sent for the in-scope Signal K paths when:
 - Values have changed
-- Periodically for all paths that have a current value.
+- Periodically e.g. every 30 seconds).
 
 The absence of a delta for a specific Signal K path indicates that the path has never had a value assigned to it. 
 
-Where a delta value is `null`, this indicates that a previous value is no longer valid (i.e. there is a provider for this path but there is no current value).
+Where a delta value is `null`, this indicates that a previous value is no longer valid (i.e. there is a provider for this path but there is no current value available).
 
-_Delta messages for in-scope paths:_
+Delta messages for in-scope paths are as follows:
 ```JSON
 [
     {
