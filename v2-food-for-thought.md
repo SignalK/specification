@@ -40,3 +40,55 @@ One way forward could be to create specific APIs for the different use cases lik
 - all values for a path
 - associate subsystems with pathvalues and retrieve all paths that have values for a subsystem, like "all electrical values"; retrieve the subsystems available
 - retrieve values by instance: instead of encoding the instance in the path add a separate field for it and instance lists & retrieve values by instance APIs
+
+#### Resources
+
+Resources in the current version have basic information to define standard resource types but the specification is silent on how the `./resources` path can be used for non-standard resource types or even specifically collections of resources that would constitue a layer for visualisation on a map that would too dynamic to be considered a suitable map tiles source e.g. GRIB data, etc.
+
+Create a ResourceCollection schema that would allow the definition of a collection of features and the style to apply to them for display.
+
+e.g. In line with the current resource definitions align to GeoJSON...
+```
+{ 
+  features: {
+    type: "FeatureCollection",
+    features: [ // array of GeoJSON features 
+        { 
+            type: "Point",
+            geometry: { .. },
+            properties: {
+                style: {
+                    fill: // CSS color definition,
+                    stroke: // CSS color definition,
+                    width: 5px,
+                    icon: {
+                        src: // path to icon,
+                        size: [ x,y ],
+                        anchor: [x,y ]
+                    }
+                }
+            }
+        },
+        { 
+            type: "LineString",
+            geometry: { .. },
+            properties: {
+                styleref: "style1"
+            }
+        }        
+    ]
+  },
+  styles: [
+    { 
+        id: "style1",
+        style: {
+            fill: // CSS color definition,
+            stroke: // CSS color definition,
+            width: 2px,
+            dash: [2,4,2,4]
+        }
+    },
+    {..}
+  }]
+} 
+```
