@@ -79,6 +79,11 @@
                 "latitude": 49.287333333333336,
                 "longitude": -123.1595
               }
+            },
+            "arrivalCircle": {
+              "value": 120,
+              "timestamp": "2017-01-25T00:23:05.230Z",
+              "$source": "a.suitable.path"
             }
           },
           "previousPoint": {
@@ -159,6 +164,11 @@
                 "latitude": 49.287333333333336,
                 "longitude": -123.1595
               },
+              "timestamp": "2017-01-25T00:23:05.230Z",
+              "$source": "a.suitable.path"
+            },
+            "arrivalCircle": {
+              "value": 120,
               "timestamp": "2017-01-25T00:23:05.230Z",
               "$source": "a.suitable.path"
             }
