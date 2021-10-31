@@ -6,7 +6,7 @@ By default a Signal K server will provide a new WebSocket client with a delta st
 updates are received from sources. E.g. `/signalk/v1/stream` will provide the following delta stream, every time the
 log value changes.
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-subscription_protocol.json)
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-subscription_protocol.json)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
@@ -45,7 +45,7 @@ First you will want to unsubscribe from the current default (or you may have alr
 `ws://hostname/signalk/v1/stream?subscribe=none`). To unsubscribe all create an `unsubscribe` message with wildcards
 and send the message over the WebSocket connection:
 
-[>]: # (mdpInsert ```json fsnip ../samples/unsubscribe/docs-subscription_protocol.json --prettify 2 20)
+[>]: # (mdpInsert ```json fsnip ../../samples/unsubscribe/docs-subscription_protocol.json --prettify 2 20)
 ```json
 {
   "context": "*",
@@ -57,7 +57,7 @@ and send the message over the WebSocket connection:
 [<]: #
 To subscribe to the required criteria send a suitable subscribe message:
 
-[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol1.json --prettify)
+[>]: # (mdpInsert ```json fsnip ../../samples/subscribe/docs-subscription_protocol1.json --prettify)
 ```json
 {
   "context": "vessels.self",
@@ -132,7 +132,7 @@ wants those items for the self vessel.
 
 This can be achieved by a default WebSocket connection `/signalk/v1/stream?subcribe=none`, then sending a JSON message:
 
-[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol2.json --prettify)
+[>]: # (mdpInsert ```json fsnip ../../samples/subscribe/docs-subscription_protocol2.json --prettify)
 ```json
 {
   "context": "vessels.self",
@@ -150,7 +150,7 @@ subscription method.
 
 ### Map display with all known vessel positions & directions, served over 3G cellular connection
 
-[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol3.json --prettify)
+[>]: # (mdpInsert ```json fsnip ../../samples/subscribe/docs-subscription_protocol3.json --prettify)
 ```json
 {
   "context": "vessels.*",
@@ -174,7 +174,7 @@ vessels, sent every 2 minutes (120 seconds) even if no data has been updated.
 
 ### Position of a certain vessel, immediately it changes, but once per minute at most
 
-[>]: # (mdpInsert ```json fsnip ../samples/subscribe/docs-subscription_protocol4.json --prettify)
+[>]: # (mdpInsert ```json fsnip ../../samples/subscribe/docs-subscription_protocol4.json --prettify)
 ```json
 {
   "context": "vessels.230029970",

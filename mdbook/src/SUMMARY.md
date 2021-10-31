@@ -1,7 +1,7 @@
 # Signal K Specification
 
 * [Signal K Specification](README.md)
-* Getting Started
+* [Getting Started]()
   * [Using SK](start_using.md)
   * [Developing with SK](start_developing.md)
 * [Data Model]()

@@ -47,7 +47,7 @@ it is referenced by the `$source` property.
 The first source of a particular data point becomes the default source for that data and a normal Signal K object is
 created.
 
-[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_multiple_values.json --delKeys sources values)
+[>]: # (mdpInsert ```json fsnip ../../samples/full/docs-data_model_multiple_values.json --delKeys sources values)
 ```json
 {
   "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
@@ -72,7 +72,7 @@ It has come from device `sources.ttyUSB0.GP`, where further details can be found
 If another value with different source arrives, the Signal K server will add the `values` attribute with values from
 both the first and second sources. The initial source‘s data will continue to populate the `value` property in the key.
 
-[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_multiple_values.json)
+[>]: # (mdpInsert ```json fsnip ../../samples/full/docs-data_model_multiple_values.json)
 ```json
 {
   "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
@@ -127,7 +127,7 @@ both the first and second sources. The initial source‘s data will continue to 
 When a client subscribes to `navigation.courseOverGroundTrue`, they receive _all_ the values held. The update message
 does not include the `values` path, the case above looks like:
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model_multiple_values.json)
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model_multiple_values.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",

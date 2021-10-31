@@ -344,8 +344,8 @@ class Parser {
       })
 
       fs.writeFileSync(path.join(__dirname, '../src/keyswithmetadata.json'), JSON.stringify(keysWithMeta, null, 2))
-      fs.writeFileSync(path.join(__dirname, '../gitbook-docs/vesselsBranch.md'), vesselsDoc)
-      fs.writeFileSync(path.join(__dirname, '../gitbook-docs/otherBranches.md'), othersDoc)
+      fs.writeFileSync(path.join(__dirname, '../mdbook/src/vesselsBranch.md'), vesselsDoc)
+      fs.writeFileSync(path.join(__dirname, '../mdbook/src/otherBranches.md'), othersDoc)
     })
 
     /*
@@ -590,5 +590,5 @@ class Parser {
 new Parser({
   definitions: './schemas/definitions.json',
   entry: './schemas/signalk.json',
-  output: './gitbook-docs/keys'
+  output: './mdbook/src/keys'
 })

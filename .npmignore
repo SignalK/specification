@@ -39,4 +39,4 @@ thumbs.db
 .vscode
 
 #Gitbook source files, original and generated
-gitbook-docs
+mdbook

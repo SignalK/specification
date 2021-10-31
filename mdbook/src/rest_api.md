@@ -11,7 +11,7 @@ A Signal K server implementing the HTTP API may support http/2.
 Making a `GET` request to `/signalk` returns a JSON object which specifies the available Signal K endpoints and some
 information about the server. Also see [versioning](versioning.md) for details about `version` strings.
 
-[>]: # (mdpInsert ```json fsnip ../samples/discovery/docs-rest_api.json)
+[>]: # (mdpInsert ```json fsnip ../../samples/discovery/docs-rest_api.json)
 ```json
 {
   "endpoints": {
