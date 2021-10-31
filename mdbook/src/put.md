@@ -24,7 +24,7 @@ PUT http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 
 ### Via a Delta
 
-[>]: # (mdpInsert ```json fsnip ../test/data/put-valid/delta-put-array.json)
+[>]: # (mdpInsert ```json fsnip ../../test/data/put-valid/delta-put-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
@@ -43,7 +43,7 @@ The `context` key is optional, and defaults to `vessels.self`, which is the usua
 The above PUT request (v1) uses an array to allow multiple keys in a single PUT. This is deprecated and strongly discouraged as it causes complex problems 
 with the request/response semantics in cases of partial failures.  An alternative format has been added to the v1 specification where the  PUT request is:
 
-[>]: # (mdpInsert ```json fsnip ../test/data/put-valid/delta-put-no-array.json)
+[>]: # (mdpInsert ```json fsnip ../../test/data/put-valid/delta-put-no-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",

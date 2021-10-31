@@ -10,7 +10,7 @@ transmitted as UTF-8 JSON.
 The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
 Signal K node, which in the case of a Signal K server could be many hundreds of data points.
 
-[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model.json)
+[>]: # (mdpInsert ```json fsnip ../../samples/full/docs-data_model.json)
 ```json
 {
   "version": "1.0.0",
@@ -150,7 +150,7 @@ Signal K deltas as independent packets of data, much the same way as it would ha
 
 An example delta message is presented below.
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --delKeys $..updates[2] --delKeys $..updates[1])
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model.json --delKeys $..updates[2] --delKeys $..updates[1])
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
@@ -180,7 +180,7 @@ An example delta message is presented below.
 [<]: #
 The top level of a delta message contains an `updates` property and an optional `context` property.
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --ellipsify updates)
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model.json --ellipsify updates)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
@@ -199,7 +199,7 @@ a vessel directly under `vessels`. The delimiter in the context path is `.` (per
 The `updates` property holds a JSON array of update objects, each of which may have a  `source` property, a `timestamp`
 property and an array of `values` containing one or more value objects.
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --snip $..updates[1])
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model.json --snip $..updates[1])
 ```json
 {
   "source": {
@@ -243,7 +243,7 @@ the delta stream, for example when received in AIS transmission. In this case th
 full model, starting from the vessel's root, with just the relevant parts, and the path must be empty, indicating that
 the value should be merged to the full model mounted where the delta‘s context property points:
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model.json --delKeys $..updates[1] --delKeys $..updates[0] --ellipsify source --prettify 2 20)
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model.json --delKeys $..updates[1] --delKeys $..updates[0] --ellipsify source --prettify 2 20)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",

@@ -24,7 +24,7 @@ See [Subscription Protocol](subscription_protocol.md) for more details.
 
 Upon connection the server MUST send a 'hello' JSON message, for example:
 
-[>]: # (mdpInsert ```json cat ../samples/hello/docs-hello.json)
+[>]: # (mdpInsert ```json cat ../../samples/hello/docs-hello.json)
 ```json
 {
     "name": "foobar marine server",
@@ -65,7 +65,7 @@ The playback api is located at `/signalk/v1/playback`. An example url for histor
 
 The hello message for a history playback stream MUST NOT contain the `timestamp` property and MUST include the properties `startTime` and `playbackRate`. The delta stream format for history playback is the normal streaming format. Timestamps indicate the time data was originally captured.
 
-[>]: # (mdpInsert ```json cat ../samples/hello/docs-hello-playback.json)
+[>]: # (mdpInsert ```json cat ../../samples/hello/docs-hello-playback.json)
 ```json
 {
     "name": "foobar marine server",

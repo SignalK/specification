@@ -32,7 +32,7 @@ The alarm is : `vessels.self.notifications.navigation.anchor.currentRadius`
 
 The alarm object is
 
-[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip currentRadius --ellipsify timestamp "'$..['\$source']'")
+[>]: # (mdpInsert ``` fsnip ../../samples/full/docs-notifications.json --snip currentRadius --ellipsify timestamp "'$..['\$source']'")
 ```
 {
   "value": {
@@ -65,7 +65,7 @@ In the case of an emergency, create a unique key: The alarm is : `vessels.[uuid]
 
 The alarm object is
 
-[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip mob --ellipsify $ ~value)
+[>]: # (mdpInsert ``` fsnip ../../samples/full/docs-notifications.json --snip mob --ellipsify $ ~value)
 ```
 {
   "value": {
@@ -85,7 +85,7 @@ eg In the case of an alert, create a unique key by generating a path: The alarm 
 
 The alarm object is
 
-[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --snip gnss --ellipsify $ ~value)
+[>]: # (mdpInsert ``` fsnip ../../samples/full/docs-notifications.json --snip gnss --ellipsify $ ~value)
 ```
 {
   "value": {
@@ -113,7 +113,7 @@ Some alarms are especially important, eg MOB. This is a list of keys for special
 
 An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:
 
-[>]: # (mdpInsert ``` fsnip ../samples/delta/docs-notifications.json --delKeys $.updates[1] --ellipsify source)
+[>]: # (mdpInsert ``` fsnip ../../samples/delta/docs-notifications.json --delKeys $.updates[1] --ellipsify source)
 ```
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
@@ -138,7 +138,7 @@ An example to send an MOB alarm from an N2K source, the gateway would convert an
 [<]: #
 The resulting full signalk tree would be:
 
-[>]: # (mdpInsert ``` fsnip ../samples/full/docs-notifications.json --ellipsify $ ~vessels --delKeys navigation --ellipsify uuid "'$..['\$source']'")
+[>]: # (mdpInsert ``` fsnip ../../samples/full/docs-notifications.json --ellipsify $ ~vessels --delKeys navigation --ellipsify uuid "'$..['\$source']'")
 ```
 {
   "vessels": {
@@ -163,7 +163,7 @@ The resulting full signalk tree would be:
 [<]: #
 To clear the alarm condition, send:
 
-[>]: # (mdpInsert ``` fsnip ../samples/delta/docs-notifications.json --delKeys $.updates[0] --ellipsify source)
+[>]: # (mdpInsert ``` fsnip ../../samples/delta/docs-notifications.json --delKeys $.updates[0] --ellipsify source)
 ```
 {
   "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",

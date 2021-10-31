@@ -17,7 +17,7 @@ saves time and prevents costly or even disastrous mistakes from occurring due to
 
 The `meta` object exists at the same level as `value` and `$source` in each key in the Signal K data model.
 
-[>]: # (mdpInsert ```json fsnip ../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
+[>]: # (mdpInsert ```json fsnip ../../samples/full/docs-data_model_metadata.json --snip meta --prettify 2 85)
 ```json
 {
   "displayName": "Port Tachometer",

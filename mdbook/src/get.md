@@ -17,7 +17,7 @@ GET http://localhost:3000/signalk/v1/api/vessels/self/steering/autopilot/target/
 
 ### Via a Delta
 
-[>]: # (mdpInsert ```json fsnip ../data/get-valid/delta-get-array.json)
+[>]: # (mdpInsert ```json fsnip ../../test/data/get-valid/delta-get-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
@@ -35,7 +35,7 @@ The `context` key is optional, and defaults to `vessels.self`, which is the usua
 The above GET request (v1) uses an array to allow multiple keys in a single GET. This is deprecated and strongly discouraged as it cannot work via http.  
 An alternative format has been added to the v1 specification where the  GET request is:
 
-[>]: # (mdpInsert ```json fsnip ../data/get-valid/delta-get-no-array.json)
+[>]: # (mdpInsert ```json fsnip ../../test/data/get-valid/delta-get-no-array.json)
 ```json
 {
   "context": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
