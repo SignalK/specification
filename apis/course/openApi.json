@@ -275,7 +275,7 @@
             }
         },
 
-        "/vessels/self/navigation/course/activeRoute/": {
+        "/vessels/self/navigation/course/activeRoute": {
             "put": {
                 "tags": ["course/activeRoute"],
                 "summary": "Set active route",
