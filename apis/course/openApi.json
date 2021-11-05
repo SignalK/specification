@@ -395,7 +395,7 @@
             }
         },
 
-        "/vessels/self/navigation/course/activeRoute/setPoint": {
+        "/vessels/self/navigation/course/activeRoute/pointIndex": {
             "put": {
                 "tags": ["course/activeRoute"],
                 "summary": "Set point in route as destination",
@@ -410,15 +410,10 @@
                                 "required": ["value"],
                                 "properties": {
                                     "value": {
-                                        "type": "object",
-                                        "properties": {
-                                            "pointIndex": {
-                                                "type": "number",
-                                                "description": "Index of point in route to use as destination",
-                                                "minimum": 0,
-                                                "example": 2
-                                            }
-                                        }
+                                        "type": "number",
+                                        "description": "Index of point in route to use as destination",
+                                        "minimum": 0,
+                                        "example": 2
                                     },
                                     "source": {
                                         "type": "string",

@@ -287,19 +287,17 @@ __Use case:__ Provide _"go to point in route"_ operation.
 
 __Action:__ `PUT`
 
-__Path:__ `/navigation/course/activeRoute/setPoint`
+__Path:__ `/navigation/course/activeRoute/pointIndex`
 
 __Request body:__
 ```JSON
 {
-    "value": {
-        "pointIndex": 3
-    },
+    "value": 3,
     "source": Source making the change.
 }
 ```
 where:
-- `pointIndex`: Zero based index of the point within the route to use as the initial destination (if value is larger than index of last point in the route then destination is not changed).
+- `value`: Zero based index of the point within the route to use as the initial destination (if value is larger than index of last point in the route then destination is not changed).
 
 This will result in the following Signal K path values being set:
 ```JSON
