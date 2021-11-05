@@ -2,27 +2,35 @@
 
 ## Description:
 
-Define an API for Signal K client applications to be able to set a destination or navigate a route that provides the following methods:
+Define an API for Signal K client applications that provides methods to  set a destination or navigate a route.
 
-- Set a position (lat, lon) as a destination
-- Reference a waypoint from `/resources/waypoints` as a destination
-- Activate a route by supplying a reference from `/resources/routes`
-- Specify to follow route points in reverse order
-- Select the point within the route to be the current destination
-- Increment / decrement the point in the route to be the current destination.
-- Clear / cancel the course
-- Query the current course details.
+These methods manage the setting of values in the relevant Signal K paths under both `navigation.courseGreatCircle` and `navigation.courseRhumbline` to enable a course computer to generate additional navigation information (XTE, DTG, etc) as well as facilitate display on a chart plotter.
 
-The methods described above will set values in the relevant Signal K paths under both `navigation.courseGreatCircle` and `navigation.courseRhumbline` to enable a course computer to generate additional navigation information (XTE, DTG, etc) as well as facilitate display on a chart plotter.
+The API will facilitate operations such as:
+- Setting a position (lat, lon) as a destination
+- Referencing a waypoint from `/resources/waypoints` as a destination
+- Activating a route by supplying a reference to an entry under `/resources/routes`
+- Specify to follow route points in reverse order, etc.
+
 
 ---
 
-### Why an API:
+### Motivation:
 Currently Signal K makes available paths to store navigation data but it is largely left up to implementors of client applications to determine how they are used.
 
 This is can cause interoperability issues and inconsistency in application (e.g. calculations in `signalk-derived-data` plugin will use a mixture of paths `navigation.courseGreatCircle` and `navigation.courseRhumbline`) so depending on an individual implementation results may vary.
 
 Defining and implementing an API will provide reliability in how the values in these paths are populated ensuring confidence in the source data used in course calculations. 
+
+By clearly defining and managing the use of specific `course` paths within the Signal K schema, this will ensure consistency in the values they contain and engender confidence in their use.
+
+Maintaining quality data in these paths enables the reliable operation of other navigation equipment such as:
+- Course computers
+- Auto-pilots
+
+by providing a trusted source of data for use in calculating navigation information for steering a course.
+
+The paths within the Signal K schema pertaining to other navigation operations will be maintained by the relevant equipment or Signal K API.
 
 ---
 
@@ -49,17 +57,6 @@ previousPoint.position
 
 This API will provide endpoints under the path `navigation/course` in order to set a course as well as query the current course information.
 
-### 1.1 Enabling other navigation equipment (e.g. autopilot) operation.
----
-By clearly defining and managing the use of specific `course` paths within the Signal K schema, this will ensure consistency in the values they contain and engender confidence in their use.
-
-Maintianing quality data in these paths enables the reliable operation of other navigation equipment such as:
-- Course computers
-- Auto-pilots
-
-by providing a trusted source of data for use in calculating navigation information for steering a course.
-
-The paths within the Signal K schema pertaining to other navigation operations will be maintained by the relevant equipment or Signal K API.
 
 ---
 
@@ -69,7 +66,7 @@ While the intended use of the `in scope` Signal K paths are defined in the speci
 
 ### 2.1 Use of `previousPoint`.
 ---
-To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute will be set as follows:
+To facilitate course calculations such as XTE where the source position is required, the `previousPoint.position` attribute will be set (at the time the destination is set) as follows:
 - __When a position (lat, lon) is supplied as a destination__: Set the value of `previousPoint.position` to the location of the vessel.
 - __When a reference to a waypoint resource is supplied as a destination__: Set the value of `previousPoint.position` to the location of the vessel.
 - __When a reference to a route resource is is supplied__: 
