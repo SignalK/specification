@@ -4,19 +4,6 @@
         "version": "0.0.1",
         "title": "Signal K Course API"
     },
-
-    "tags": [
-        {
-            "name": "activeRoute",
-            "description": "Route operations"
-        },
-        {
-            "name": "destination",
-            "description": "Destination operations"
-        }
-    ],
-
-    "components": { },
     
     "paths": {
 
@@ -254,14 +241,9 @@
                                 "required": ["value"],
                                 "properties": {
                                     "value": {
-                                        "type": "object",
-                                        "properties": {
-                                            "radius": {
-                                                "type": "number",
-                                                "format": "float",
-                                                "example": 500
-                                            }
-                                        }
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 500
                                     },
                                     "source": {
                                         "type": "string",
@@ -372,16 +354,10 @@
                                 "required": ["value"],
                                 "properties": {
                                     "value": {
-                                        "type": "object",
-                                        "required": ["increment"],
-                                        "properties": {
-                                            "increment": {
-                                                "type": "number",
-                                                "description": "increment (1) / decrement (-1) index of point in route to use as destination",
-                                                "enum": [-1,1],
-                                                "example": -1
-                                            }
-                                        }
+                                        "type": "number",
+                                        "description": "increment (1) / decrement (-1) index of point in route to use as destination",
+                                        "enum": [-1,1],
+                                        "example": -1
                                     },
                                     "source": {
                                         "type": "string",
