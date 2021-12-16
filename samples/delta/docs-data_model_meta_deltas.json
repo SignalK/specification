@@ -1,0 +1,25 @@
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "timestamp": "2014-08-15T19:02:31.507Z",
+      "meta": [
+        {
+          "path": "environment.wind.speedApparent",
+          "value": {
+            "units": "m/s",
+            "description": "Apparent wind speed",
+            "displayName": "Apparent Wind Speed",
+            "shortName": "AWS",
+            "zones": [{
+              "upper": 15.4333,
+              "state": "warn",
+              "message": "high wind speed"
+            }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

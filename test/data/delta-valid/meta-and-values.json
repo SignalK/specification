@@ -1,0 +1,29 @@
+{
+  "context": "vessels.urn:mrn:imo:mmsi:234567890",
+  "updates": [
+    {
+      "source": {
+        "label": "N2000-01",
+        "type": "NMEA2000",
+        "src": "017",
+        "pgn": 127488
+      },
+      "timestamp": "2013-10-08T15:47:28.263Z",
+      "meta": [
+        {
+          "path": "propulsion.0.revolutions",
+          "value": {
+            "description": "Engine revolutions (x60 for RPM)",
+            "units": "Hz"
+          }
+        }
+      ],
+      "values": [
+        {
+          "path": "propulsion.0.revolutions",
+          "value": 11
+        }
+      ]
+    }
+  ]
+}
