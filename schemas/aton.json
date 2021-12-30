@@ -193,6 +193,15 @@
           }
         ]
       },
+      "virtual": {
+        "$ref": "./definitions.json#/definitions/booleanValue",
+        "description": "Virtual AtoN flag"
+      },
+  
+      "offPosition": {
+        "$ref": "./definitions.json#/definitions/booleanValue",
+        "description": "Off position flag"
+      },
       "name": {
         "type": "string",
         "description": "The aton name",
