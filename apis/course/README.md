@@ -4,10 +4,9 @@ The Course API provides methods to facilitate setting a destination and navigati
 
 These methods manage the setting of values in the relevant Signal K paths under both `navigation.courseGreatCircle` and `navigation.courseRhumbline` to enable the generation of additional navigation information (XTE, DTG, etc) by a course computer as well as facilitate display on a chart plotter.
 
-The API will facilitate operations such as setting a position (lat, lon) as a destination, referencing a waypoint from `/resources/waypoints` as a destination, activating a route by supplying a reference to an entry under `/resources/routes`, etc.
+The API will facilitate operations such as: setting a position (lat, lon) as a destination, referencing a waypoint from `/resources/waypoints` as a destination, activating a route by supplying a reference to an entry under `/resources/routes`, etc.
 
 In this way a known, consistant method is used to maintain quality data in these paths enabling the reliable operation of other navigation equipment such as `course computers` and `auto-pilots`.
-
 
 
 ## Expected implementation behaviour
@@ -99,9 +98,11 @@ This method of implementation means the client application does not have to mana
 
 ## API Operations:
 
-The Course API will enable the following operations by providing endpoints under the path `navigation/course`:
+The Course API will enable the following operations by providing endpoints under the path `..../navigation/course`:
 
 _Note: API details can be found in the OpenApi document_
+
+_In the following examples the value `<self>` has been substituted for the full Signal K API path `http://hostname:port/signalk/v1/api/vessels/self` for conciseness._
 
 ---
 ### 1. Set destination by providing a position (lat, lon) or reference to a waypoint resource
@@ -109,14 +110,12 @@ _Note: API details can be found in the OpenApi document_
 
 _Example: Set destination position_
 ```JSON
-PUT /navigation/course/destination {
-    "value": {
-        "position": {"latitude": -28.5,"longitude":138.5} 
-    }
+HTTP PUT '<self>/navigation/course/destination' {
+    "position": {"latitude": -28.5,"longitude":138.5} 
 }
 ```
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position": {
         "latitude": -28.5,
@@ -133,15 +132,13 @@ Resulting Signal K paths would be:
 
 _Example: Set referenced waypoint position as destination_
 ```JSON
-PUT /navigation/course/destination {
-    "value": {
-        "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab"
-    }
+HTTP PUT '<self>/navigation/course/destination' {
+    "href": "/resources/waypoints/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab"
 }
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position": {
         "latitude": referenced waypoint latitude,
@@ -161,13 +158,11 @@ Resulting Signal K paths would be:
 
 _Example: Clear destination_
 ```JSON
-PUT /navigation/course/destination {
-    "value": null
-}
+HTTP DELETE '<self>/navigation/course/destination'
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position":null
 },
@@ -179,13 +174,11 @@ Resulting Signal K paths would be:
 
 _Example: Clear active route_
 ```JSON
-PUT /navigation/course/activeRoute {
-    "value": null
-}
+HTTP DELETE '<self>/navigation/course/activeRoute'
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position":null
 },
@@ -203,14 +196,12 @@ Resulting Signal K paths would be:
 
 _Example: Activate a route_
 ```JSON
-PUT /navigation/course/activeRoute {
-    "value": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab"
-    }
+HTTP PUT '<self>/navigation/course/activeRoute' {
+    "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab"
 }
 ```
 Resulting Signal K paths would be:
-```
+```JSON
 "activeRoute": {
     "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
     "startTime": 2021-11-08T01:39:55.296Z
@@ -231,16 +222,14 @@ Resulting Signal K paths would be:
 
 _Example: Activate a route (consisting of 8 points) in reverse mode_
 ```JSON
-PUT /navigation/course/activeRoute {
-    "value": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "reverse": true
-    }
+HTTP PUT '<self>/navigation/course/activeRoute' {
+    "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
+    "reverse": true
 }
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "activeRoute": {
     "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
     "startTime": 2021-11-08T01:39:55.296Z
@@ -261,15 +250,13 @@ Resulting Signal K paths would be:
 
 _Example: Activate a route and set destination to third point in route_
 ```JSON
-PUT /navigation/course/activeRoute {
-    "value": {
-        "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
-        "pointIndex": 2
-    }
+HTTP PUT '<self>/navigation/course/activeRoute' {
+    "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
+    "pointIndex": 2
 }
 ```
 Resulting Signal K paths would be:
-```
+```JSON
 "activeRoute": {
     "href": "/resources/routes/urn:mrn:signalk:uuid:0d95e282-3e1f-4521-8c30-8288addbdbab",
     "startTime": 2021-11-08T01:39:55.296Z
@@ -292,14 +279,14 @@ Resulting Signal K paths would be:
 
 _Example: Set the 4th point in the journey as destination_
 ```JSON
-PUT /navigation/course/activeRoute/pointIndex {
+HTTP PUT '<self>/navigation/course/activeRoute/pointIndex' {
     "value": 3
 }
 ```
 where `value` is the zero-based index of the point within the journey to use as the initial destination (see `Use of pointIndex` above).
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position": {
         "latitude": latitude of route point at pointIndex 3,
@@ -319,13 +306,13 @@ Resulting Signal K paths would be:
 
 _Example: Set the next point in the route as destination_
 ```JSON
-PUT /navigation/course/activeRoute/nextPoint {
+HTTP PUT '<self>/navigation/course/activeRoute/nextPoint' {
     "value": 1
 }
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position": {
         "latitude": latitude of route point at pointIndex +1,
@@ -342,13 +329,13 @@ Resulting Signal K paths would be:
 
 _Example: Set the previous point in the route as destination_
 ```JSON
-PUT /navigation/course/activeRoute/nextPoint {
+HTTP PUT '<self>/navigation/course/activeRoute/nextPoint' {
     "value": -1
 }
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "position": {
         "latitude": latitude of route point at pointIndex -1,
@@ -368,12 +355,10 @@ Resulting Signal K paths would be:
 
 _Example:_
 ```JSON
-PUT /navigation/course/activeRoute/restart {
-    "value": null
-}
+HTTP PUT '<self>/navigation/course/activeRoute/restart'
 ```
 Resulting Signal K paths would be:
-```
+```JSON
 "previousPoint": {
     "position": {
         "latitude": latitude of vessel at time of destination being set,
@@ -387,13 +372,13 @@ Resulting Signal K paths would be:
 
 _Example: Set arrival circle to 500m_
 ```JSON
-PUT /navigation/course/arrivalCircle {
+HTTP PUT '<self>/navigation/course/arrivalCircle' {
     "value": 500
 }
 ```
 
 Resulting Signal K paths would be:
-```
+```JSON
 "nextPoint": {
     "arrivaleCircle": 500
 }
@@ -403,7 +388,7 @@ Resulting Signal K paths would be:
 ### 8. Query current course details.
 
 ```JSON
-GET /navigation/course 
+HTTP GET '<self>/navigation/course'
 ```
 
 _Example Response:_

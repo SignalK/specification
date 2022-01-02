@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "version": "0.0.1",
+        "version": "1.0.0",
         "title": "Signal K Course API"
     },
     
@@ -108,33 +108,11 @@
             "put": {
                 "tags": ["course"],
                 "summary": "Restart course calculations",
-                "description": "Sets previousPoint value to current vessel location",
-                "requestBody": {
-                    "description": "Restart payload",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": ["value"],
-                                "properties": {
-                                    "value": {
-                                        "type": "object",
-                                        "default": null
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
-                                    }  
-                                }
-                            }
-                        }
-                    }
-                }
+                "description": "Sets previousPoint value to current vessel location"
             }
         },
 
-        "/vessels/self/navigation/course/destination/": {
+        "/vessels/self/navigation/course/destination": {
             "put": {
                 "tags": ["course/destination"],
                 "summary": "Set destination",
@@ -146,50 +124,40 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "required": ["value"],
                                 "properties": {
-                                    "value": {
+                                    "position": {              
                                         "type": "object",
+                                        "description": "Destination position",
+                                        "required": [
+                                            "latitude",
+                                            "longitude"
+                                        ],
                                         "properties": {
-                                            "position": {              
-                                                "type": "object",
-                                                "description": "Destination position",
-                                                "required": [
-                                                    "latitude",
-                                                    "longitude"
-                                                ],
-                                                "properties": {
-                                                    "latitude": {
-                                                        "type": "number",
-                                                        "format": "float"
-                                                    },
-                                                    "longitude": {
-                                                        "type": "number",
-                                                        "format": "float"
-                                                    }
-                                                },
-                                                "example": {"latitude":-29.5,"longitude":137.5}
-                                            },
-                                            "href": {
-                                                "type": "string",
-                                                "description": "A reference (URL) to an object (under /resources) this point is related to",
-                                                "example": "/resources/waypoints/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
-                                            },
-                                            "type": {
-                                                "type": "string",
-                                                "description": "Type of point",
-                                                "example": "POI"
-                                            },
-                                            "arrivalCircle": {
+                                            "latitude": {
                                                 "type": "number",
-                                                "format": "float",
-                                                "example": 500
+                                                "format": "float"
+                                            },
+                                            "longitude": {
+                                                "type": "number",
+                                                "format": "float"
                                             }
-                                        }
+                                        },
+                                        "example": {"latitude":-29.5,"longitude":137.5}
                                     },
-                                    "source": {
+                                    "href": {
                                         "type": "string",
-                                        "example": "freeboard-sk"
+                                        "description": "A reference (URL) to an object (under /resources) this point is related to",
+                                        "example": "/resources/waypoints/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "Type of point",
+                                        "example": "POI"
+                                    },
+                                    "arrivalCircle": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 500
                                     }
                                 }
                             }
@@ -200,29 +168,7 @@
             "delete": {
                 "tags": ["course/destination"],
                 "summary": "Clear destination",
-                "description": "Sets activeRoute, nextPoint & previousPoint values to null",
-                "requestBody": {
-                    "description": "Delete payload",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": ["value"],
-                                "properties": {
-                                    "value": {
-                                        "type": "object",
-                                        "default": null
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
-                                    }  
-                                }
-                            }
-                        }
-                    }
-                }
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
             }
         },
 
@@ -244,11 +190,7 @@
                                         "type": "number",
                                         "format": "float",
                                         "example": 500
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
-                                    }  
+                                    } 
                                 }
                             }
                         }
@@ -269,41 +211,31 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "required": ["value"],
                                 "properties": {
-                                    "value": {
-                                        "type": "object",
-                                        "properties": {
-                                            "href": {
-                                                "type": "string",
-                                                "description": "Path to route resource",
-                                                "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
-                                            },
-                                            "pointIndex": {              
-                                                "type": "number",
-                                                "format": "int64",
-                                                "description": "Zero based index of route point to use as destination",
-                                                "default": 0,
-                                                "minimum": 0,
-                                                "example": 2
-                                            },
-                                            "reverse": {              
-                                                "type": "boolean",
-                                                "default": false,
-                                                "description": "If true performs operations on route points in reverse order",
-                                                "example": 2
-                                            },
-                                            "arrivalCircle": {
-                                                "type": "number",
-                                                "format": "float",
-                                                "example": 500
-                                            }
-                                        }
-                                    },
-                                    "source": {
+                                    "href": {
                                         "type": "string",
-                                        "example": "freeboard-sk"
-                                    } 
+                                        "description": "Path to route resource",
+                                        "example": "/resources/routes/urn:mrn:signalk:uuid:3dd34dcc-36bf-4d61-ba80-233799b25672"
+                                    },
+                                    "pointIndex": {              
+                                        "type": "number",
+                                        "format": "int64",
+                                        "description": "Zero based index of route point to use as destination",
+                                        "default": 0,
+                                        "minimum": 0,
+                                        "example": 2
+                                    },
+                                    "reverse": {              
+                                        "type": "boolean",
+                                        "default": false,
+                                        "description": "If true performs operations on route points in reverse order",
+                                        "example": 2
+                                    },
+                                    "arrivalCircle": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 500
+                                    }
                                 }
                             }
                         }
@@ -313,29 +245,7 @@
             "delete": {
                 "tags": ["course/activeRoute"],
                 "summary": "Clear active route",
-                "description": "Sets activeRoute, nextPoint & previousPoint values to null",
-                "requestBody": {
-                    "description": "Delete payload",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": ["value"],
-                                "properties": {
-                                    "value": {
-                                        "type": "object",
-                                        "default": null
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
-                                    }  
-                                }
-                            }
-                        }
-                    }
-                }
+                "description": "Sets activeRoute, nextPoint & previousPoint values to null"
             }
         },
 
@@ -358,10 +268,6 @@
                                         "description": "increment (1) / decrement (-1) index of point in route to use as destination",
                                         "enum": [-1,1],
                                         "example": -1
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
                                     }
                                 }
                             }
@@ -390,10 +296,6 @@
                                         "description": "Index of point in route to use as destination",
                                         "minimum": 0,
                                         "example": 2
-                                    },
-                                    "source": {
-                                        "type": "string",
-                                        "example": "freeboard-sk"
                                     }
                                 }
                             }
