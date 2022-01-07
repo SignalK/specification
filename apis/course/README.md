@@ -368,7 +368,18 @@ Resulting Signal K paths would be:
 ```
 
 ---
-### 7. Set arrival circle.
+### 7. Refresh data after route points have been modified.
+
+If the active route has been edited to add, remove or move points then calling this method will ensure that `pointIndex` and `pointTotal` are updated to reflect the position of the current destination within the route and the new number of points in the route.
+
+_Example:_
+```JSON
+HTTP PUT '<self>/navigation/course/activeRoute/refresh'
+```
+
+
+---
+### 8. Set arrival circle.
 
 _Example: Set arrival circle to 500m_
 ```JSON
@@ -385,7 +396,7 @@ Resulting Signal K paths would be:
 ```
 
 ---
-### 8. Query current course details.
+### 9. Query current course details.
 
 ```JSON
 HTTP GET '<self>/navigation/course'
