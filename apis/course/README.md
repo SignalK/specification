@@ -377,9 +377,39 @@ _Example:_
 HTTP PUT '<self>/navigation/course/activeRoute/refresh'
 ```
 
+---
+
+### 8. Reverse route direction.
+
+Reverse the direction in which to follow the route. You can either:
+- Reverse the direction from the current destination point
+
+OR
+
+- Reverse the direction and specify the `pointIndex` to use as the current destination.
+
+_Example: Reverse direction setting the destination to the location at the 3rd point from the end._
+```JSON
+HTTP PUT '<self>/navigation/course/activeRoute/reverse' {
+    "pointIndex": 2
+}
+```
+
+Resulting Signal K paths would be:
+```JSON
+"activeRoute": {
+    "pointIndex": Index of point relative to the direction,
+    "reverse": Opposite of previous value (e.g. previous value = false, new value = true)
+}
+```
+
+_Example: Reverse direction keeping the current destination._
+```JSON
+HTTP PUT '<self>/navigation/course/activeRoute/reverse'
+```
 
 ---
-### 8. Set arrival circle.
+### 9. Set arrival circle.
 
 _Example: Set arrival circle to 500m_
 ```JSON
@@ -396,7 +426,7 @@ Resulting Signal K paths would be:
 ```
 
 ---
-### 9. Query current course details.
+### 10. Query current course details.
 
 ```JSON
 HTTP GET '<self>/navigation/course'
