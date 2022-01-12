@@ -59,7 +59,7 @@
     "gitbook-cli": "^2.3.0",
     "github-changes": "^1.0.4",
     "infuse.js": "^2.0.2",
-    "markdown-it": "^8.0.0",
+    "markdown-it": "^12.3.2",
     "mdprepare": "^0.9.3",
     "mocha": "^2.1.0",
     "mz": "^2.4.0",
