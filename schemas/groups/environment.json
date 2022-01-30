@@ -293,17 +293,17 @@
       "description": "Wind data.",
       "properties": {
         "angleApparent": {
-          "description": "Apparent wind angle, negative to port",
+          "description": "Apparent Wind Angle (AWA), negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
         "angleTrueGround": {
-          "description": "True wind angle based on speed over ground, negative to port",
+          "description": "Ground Wind Angle (GWA) based on vessel's speed over ground (SOG), negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
         "angleTrueWater": {
-          "description": "True wind angle based on speed through water, negative to port",
+          "description": "True Wind Angle (TWA) based on vessel's speed through water (STW), negative to port",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
@@ -313,27 +313,27 @@
           "units": "rad"
         },
         "directionTrue": {
-          "description": "The wind direction relative to true north",
+          "description": "True Wind Direction over water (TWD), relative to true north",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
         "directionMagnetic": {
-          "description": "The wind direction relative to magnetic north",
+          "description": "Wind direction over water, relative to magnetic north",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "rad"
         },
         "speedTrue": {
-          "description": "Wind speed over water (as calculated from speedApparent and vessel's speed through water)",
+          "description": "True Wind Speed over water (TWS), calculated from speedApparent (AWS) and vessel's speed through water (STW)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
         "speedOverGround": {
-          "description": "Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)",
+          "description": "Ground Wind Speed (GWS), calculated from speedApparent (AWS) and vessel's speed over ground (SOG)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         },
         "speedApparent": {
-          "description": "Apparent wind speed",
+          "description": "Apparent Wind Speed (AWS)",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
         }
