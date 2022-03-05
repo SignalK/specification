@@ -10,6 +10,12 @@ There are now (2020-11-14) no real plans as to when and how the next version sho
 
 # Stuff
 
+#### From a single data model to APIs with functionality
+
+V1 was mostly about a single, hierarchical data model. In the end the hierarchy does not provide that much value, other than grouping the data for humans. The problem is that a single hierarchy is not expressive enough and we end up in endless discussions about should the engine alternator be part of the propulsion or the electrical system.
+
+While the v1 data model is ok for the well known, generic marine data just a data model documented as JSON schema is not expressive enough to document well known operations. [OpenAPI](https://swagger.io/specification/) provides a system for describing http apis combining operation semantics with schemas for data. Work is under way embracing OpenAPI for describing v2 APIs. We are also moving from a single data & interaction model to a more modular APIs that allows more flexibility and fitting the API to the task.
+
 #### Generic paths
 
 There are some items in the v1 data model where the app / user needs the data without knowing the exact details. The most prominent example is courseGreatCircle/courseRhumbline where the app does not normally care which method the autopilot feature is using, just what the value is.
