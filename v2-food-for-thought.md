@@ -23,6 +23,12 @@ Move the essentially arbitrary fluid type name out of the path and into meta inf
 
 Where keys/paths are intended for use by specific devices (e.g. autopilot -> steering.autopilot) the spec should provide clear guidance on how it is intended this path is used. Preferably with example use cases which include sequence diagrams.
 
+#### Interdependent paths
+
+The current SK data model is naive in assuming that all the different paths are independent. This is clearly not the case for GNSS data, where the fix quality, satellites in view and position and speed are all tied together. One might want to filter position data on fix quality for example. So we need a way to present several updates together. 
+
+One way to do that would be to mandate that they are sent in one delta or that the latest data from related paths is always include. We should also make them accessible together via http, for example by allowing one to retrieve the complete logical update as delta.
+
 #### Rethink Full data model and object valued paths
 
 The origin of Full data model is that we wanted a "place for everything" and a "single structure to hold it all". Some paths, like attitude, hold values that are objects. Some paths, mostly static data, like mmsi, are treated differently so that there is no source and timestamp information.
