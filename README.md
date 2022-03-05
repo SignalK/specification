@@ -23,6 +23,9 @@ Find out more at [signalk.org](http://signalk.org). Then join the mailinglist
 by sending an email to signalk+subscribe@googlegroups.com or follow the
 discussion via the Signal K Google Groups forum.
 
+Version 2
+--------
+We have started [gathering thoughts as well as actual work on version 2](https://github.com/SignalK/specification/blob/master/v2-food-for-thought.md).
 
 Usage
 -----
