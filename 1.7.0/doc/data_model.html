@@ -359,7 +359,33 @@ the value should be merged to the full model mounted where the delta‘s context
 <h2 id="delta-format-for-metadata"><a class="header" href="#delta-format-for-metadata">Delta Format For Metadata</a></h2>
 <p>Metadata can also be updated via a delta within the <code>meta</code> key.</p>
 <p>Since meta data is not often updated it is only sent when there has been a change. See <a href="subscription_protocol.html">Subscription Protocol</a> for details.</p>
-<pre><code class="language-json"></code></pre>
+<pre><code class="language-json">{
+  &quot;context&quot;: &quot;vessels.urn:mrn:imo:mmsi:234567890&quot;,
+  &quot;updates&quot;: [
+    {
+      &quot;timestamp&quot;: &quot;2014-08-15T19:02:31.507Z&quot;,
+      &quot;meta&quot;: [
+        {
+          &quot;path&quot;: &quot;environment.wind.speedApparent&quot;,
+          &quot;value&quot;: {
+            &quot;units&quot;: &quot;m/s&quot;,
+            &quot;description&quot;: &quot;Apparent wind speed&quot;,
+            &quot;displayName&quot;: &quot;Apparent Wind Speed&quot;,
+            &quot;shortName&quot;: &quot;AWS&quot;,
+            &quot;zones&quot;: [
+              {
+                &quot;upper&quot;: 15.4333,
+                &quot;state&quot;: &quot;warn&quot;,
+                &quot;message&quot;: &quot;high wind speed&quot;
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
 <h2 id="data-quality"><a class="header" href="#data-quality">Data Quality</a></h2>
 <p>Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset
 due to misalignment of a masthead unit on the mast, but there is no <em>guarantee</em> that data is accurate, or within
