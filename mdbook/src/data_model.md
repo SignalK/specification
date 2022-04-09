@@ -270,7 +270,7 @@ Metadata can also be updated via a delta within the `meta` key.
 
 Since meta data is not often updated it is only sent when there has been a change. See [Subscription Protocol](subscription_protocol.md) for details.
 
-[>]: # (mdpInsert ```json fsnip ../samples/delta/docs-data_model_meta_deltas.json --prettify 2 20)
+[>]: # (mdpInsert ```json fsnip ../../samples/delta/docs-data_model_meta_deltas.json --prettify 2 20)
 ```json
 {
   "context": "vessels.urn:mrn:imo:mmsi:234567890",
