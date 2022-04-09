@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Full and Delta Models</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Signal K Specification</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Getting Started</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="start_using.html"><strong aria-hidden="true">2.1.</strong> Using SK</a></li><li class="chapter-item expanded "><a href="start_developing.html"><strong aria-hidden="true">2.2.</strong> Developing with SK</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Data Model</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_model.html" class="active"><strong aria-hidden="true">3.1.</strong> Full and Delta Models</a></li><li class="chapter-item expanded "><a href="data_model_multiple_values.html"><strong aria-hidden="true">3.2.</strong> Multiple Values</a></li><li class="chapter-item expanded "><a href="data_model_metadata.html"><strong aria-hidden="true">3.3.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="sources.html"><strong aria-hidden="true">3.4.</strong> Sources</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> API</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="urls_ports.html"><strong aria-hidden="true">4.1.</strong> URLs and Ports</a></li><li class="chapter-item expanded "><a href="rest_api.html"><strong aria-hidden="true">4.2.</strong> REST API</a></li><li class="chapter-item expanded "><a href="streaming_api.html"><strong aria-hidden="true">4.3.</strong> Streaming API</a></li><li class="chapter-item expanded "><a href="subscription_protocol.html"><strong aria-hidden="true">4.4.</strong> Subscription Protocol</a></li><li class="chapter-item expanded "><a href="connection.html"><strong aria-hidden="true">4.5.</strong> Discovery &amp; Connection Establishment</a></li><li class="chapter-item expanded "><a href="notifications.html"><strong aria-hidden="true">4.6.</strong> Notifications</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">4.7.</strong> Security</a></li><li class="chapter-item expanded "><a href="request_response.html"><strong aria-hidden="true">4.8.</strong> Request/Response</a></li><li class="chapter-item expanded "><a href="put.html"><strong aria-hidden="true">4.9.</strong> PUT Requests</a></li></ol></li><li class="chapter-item expanded "><a href="how_to_help.html"><strong aria-hidden="true">5.</strong> How Can I Help?</a></li><li class="chapter-item expanded "><a href="vesselsBranch.html"><strong aria-hidden="true">6.</strong> Appendix A: Keys Reference (Vessel)</a></li><li class="chapter-item expanded "><a href="otherBranches.html"><strong aria-hidden="true">7.</strong> Appendix B: Keys Reference (Others)</a></li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">8.</strong> Appendix C: Changelog</a></li><li class="chapter-item expanded "><a href="versioning.html"><strong aria-hidden="true">9.</strong> Appendix D: Versioning</a></li><li class="chapter-item expanded "><a href="access_requests.html"><strong aria-hidden="true">10.</strong> Appendix E: Access Requests</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="signal-k-data-model"><a class="header" href="#signal-k-data-model">Signal K Data Model</a></h1>
+<h2 id="formats"><a class="header" href="#formats">Formats</a></h2>
+<p>Signal K defines two data formats—full and delta—for representing and transmitting data. All Signal K data is
+transmitted as UTF-8 JSON.</p>
+<h2 id="full-format"><a class="header" href="#full-format">Full Format</a></h2>
+<p>The full format is conceptually the simplest representation of data in Signal K. It contains all of the data from a
+Signal K node, which in the case of a Signal K server could be many hundreds of data points.</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;self&quot;: &quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;,
+  &quot;vessels&quot;: {
+    &quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;: {
+      &quot;navigation&quot;: {
+        &quot;speedOverGround&quot;: {
+          &quot;value&quot;: 4.32693662,
+          &quot;$source&quot;: &quot;ttyUSB0.GP&quot;,
+          &quot;sentence&quot;: &quot;RMC&quot;,
+          &quot;timestamp&quot;: &quot;2017-05-16T05:15:50.007Z&quot;
+        },
+        &quot;position&quot;: {
+          &quot;value&quot;: {
+            &quot;altitude&quot;: 0.0,
+            &quot;latitude&quot;: 37.81479,
+            &quot;longitude&quot;: -122.44880152
+          },
+          &quot;$source&quot;: &quot;ttyUSB0.GP&quot;,
+          &quot;sentence&quot;: &quot;RMC&quot;,
+          &quot;timestamp&quot;: &quot;2017-05-16T05:15:50.007Z&quot;
+        },
+        &quot;headingMagnetic&quot;: {
+          &quot;value&quot;: 5.55014702,
+          &quot;$source&quot;: &quot;ttyUSB0.II&quot;,
+          &quot;sentence&quot;: &quot;HDM&quot;,
+          &quot;timestamp&quot;: &quot;2017-05-16T05:15:54.006Z&quot;
+        }
+      },
+      &quot;name&quot;: &quot;Motu&quot;,
+      &quot;uuid&quot;: &quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;
+    }
+  },
+  &quot;sources&quot;: {
+    &quot;ttyUSB0&quot;: {
+      &quot;label&quot;: &quot;ttyUSB0&quot;,
+      &quot;type&quot;: &quot;NMEA0183&quot;,
+      &quot;GP&quot;: {
+        &quot;talker&quot;: &quot;GP&quot;,
+        &quot;sentences&quot;: {
+          &quot;RMC&quot;: &quot;2017-04-03T06:14:04.451Z&quot;
+        }
+      },
+      &quot;II&quot;: {
+        &quot;talker&quot;: &quot;II&quot;,
+        &quot;sentences&quot;: {
+          &quot;HDM&quot;: &quot;2017-05-16T05:15:54.006Z&quot;
+        }
+      }
+    }
+  }
+}
+
+</code></pre>
+<p>There are several top level attributes or keys which are always present and others which are optional. The <code>version</code>
+key specifies which version of the Signal K specification is being used and must always present in a full Signal K
+model. Also always present in the full model is the <code>self</code> key. The value of <code>self</code> is the key within the <code>vessels</code>
+object which is the local boat. Effectively, it is a pointer into the <code>vessels</code> object.</p>
+<p>Below the <code>vessels</code> object is a list of vessels, identified by their MMSI number or a generated unique ID. There may be
+many vessels if data has been received from AIS or other sources. The format for each vessel’s data uses the same
+standard Signal K structure but may not have the same content; likely you will not have as much data about other
+vessels as you have about your own.</p>
+<p>At the same level as <code>vessels</code> is <code>sources</code>. This contains a list of sources the data was obtained from. Each data
+object within a <code>vessel</code> may have a <code>$source</code> key which point to a source within <code>sources</code>. Several data objects may
+reference the same <code>source</code> since a single NMEA sentence or PGN may map to multiple keys in Signal K.</p>
+<p>Alternatively the source data may be embedded directly in place of the <code>$source</code> by using the <code>source</code> key:</p>
+<pre><code class="language-json">{
+  &quot;vessels&quot;: {
+    &quot;urn:mrn:signalk:uuid:705f5f1a-efaf-44aa-9cb8-a0fd6305567c&quot;: {
+      &quot;navigation&quot;: {
+        &quot;position&quot;: {
+          &quot;value&quot;: {
+            &quot;altitude&quot;: 0.0,
+            &quot;latitude&quot;: 37.81479,
+            &quot;longitude&quot;: -122.44880152
+          },
+          &quot;source&quot;: {
+            &quot;label&quot;: &quot;ttyUSB0&quot;,
+            &quot;type&quot;: &quot;NMEA0183&quot;,
+            &quot;talker&quot;: &quot;GP&quot;,
+            &quot;sentence&quot;: &quot;PRMC&quot;
+          },
+          &quot;timestamp&quot;: &quot;2017-05-16T05:15:50.007Z&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>For more information on sources, see the <a href="sources.html">sources</a> section.</p>
+<p>Data objects in Signal K are organized hierarchically, for example data related to navigation such as position, speed
+through water and heading are all organized under a <code>navigation</code> sub-topic within the <code>vessel</code> object. Each data object
+has a <code>value</code> property which holds the actual value for that specific key. The <code>value</code> property may contain a number, a
+string or another object. Signal K keys that are object valued are object valued because the values don‘t have much
+semantic meaning individually. For example position – latitude doesn‘t have much meaning without an associated
+longitude. Therefore, these (and altitude) are grouped together in a single <code>navigation.position</code> key.</p>
+<p>The values are always SI units, and always the same units for the same key. Therefore, <code>speedOverGround</code> is always
+meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
+specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
+in <a href="vesselsBranch.html">Keys Reference in Appendix A</a>. The units are also always specified in the values’
+<a href="data_model_metadata.html">metadata</a> which is available via the <a href="rest_api.html">REST API</a> in the <code>meta.units</code> property.
+Besides the <code>units</code> property, <code>meta</code> provides a lot of other useful information for consumers of the data.</p>
+<p>Finally, each data object also has a <code>timestamp</code> property which represents the time that the value was measured.
+Timestamps are in ISO 8601 format – specifically the <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> extension format,
+which is slightly more strict than the ISO specification.  For instance, it requires four digit years and specifies
+that <code>T</code> is used as a separator between the data and time portions of the timestamp.</p>
+<p>The ordering of keys is also not important, they can occur in any order. In fact, if you are designing a device which
+consumes Signal K data, it is important to remember that the JSON standard does not guarantee the order of properties
+in an object. You MUST NOT rely on the data you receive to always be in the same order within a Signal K message.</p>
+<p>The full format is most useful for getting the initial state of a Signal K system, for example when a display device
+first connects to the network or for refreshing a device‘s state when it loses a network connection.</p>
+<p>However sending the full data model is wasteful of both bandwidth and CPU, especially when there is a large amount of
+available data, or the consuming device is only interested in a small portion of it. In the majority of cases, it is
+preferable to only exchange small, specific portions of the data.</p>
+<h2 id="delta-format"><a class="header" href="#delta-format">Delta Format</a></h2>
+<p>By far, the most commonly produced Signal K format is the delta format. Conceptually, the delta is an update to an
+existing Signal K data model. A device consuming deltas could either build up a view of the Signal K full tree by
+consuming and combining deltas or it could request from a Signal K server the current full tree model and apply deltas
+to that as they are received. It is also entirely possible for a device to remain essentially stateless and treat
+Signal K deltas as independent packets of data, much the same way as it would handle NMEA sentences or PGNs.</p>
+<p>An example delta message is presented below.</p>
+<pre><code class="language-json">{
+  &quot;context&quot;: &quot;vessels.urn:mrn:imo:mmsi:234567890&quot;,
+  &quot;updates&quot;: [
+    {
+      &quot;source&quot;: {
+        &quot;label&quot;: &quot;N2000-01&quot;,
+        &quot;type&quot;: &quot;NMEA2000&quot;,
+        &quot;src&quot;: &quot;017&quot;,
+        &quot;pgn&quot;: 127488
+      },
+      &quot;timestamp&quot;: &quot;2010-01-07T07:18:44Z&quot;,
+      &quot;values&quot;: [
+        {
+          &quot;path&quot;: &quot;propulsion.0.revolutions&quot;,
+          &quot;value&quot;: 16.341667
+        },
+        {
+          &quot;path&quot;: &quot;propulsion.0.boostPressure&quot;,
+          &quot;value&quot;: 45500
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>The top level of a delta message contains an <code>updates</code> property and an optional <code>context</code> property.</p>
+<pre><code class="language-json">{
+  &quot;context&quot;: &quot;vessels.urn:mrn:imo:mmsi:234567890&quot;,
+  &quot;updates&quot;: [...]
+}
+</code></pre>
+<p>The optional <code>context</code> property roots the updates to a particular location in the Signal K tree. If <code>context</code> is
+missing it is assumed that the data is related to the <code>self</code> context. The <code>self</code> context is the <code>vessel</code> object which
+the <code>self</code> property of the full model points to.</p>
+<p>Context is a path from the root of the full tree to the <em>container object</em>, which for vessel related data must refer to
+a vessel directly under <code>vessels</code>. The delimiter in the context path is <code>.</code> (period). In this case the context is
+<code>vessels.urn:mrn:imo:mmsi:234567890</code>. All subsequent data is relative to that location.</p>
+<p>The <code>updates</code> property holds a JSON array of update objects, each of which may have a  <code>source</code> property, a <code>timestamp</code>
+property and an array of <code>values</code> containing one or more value objects.</p>
+<pre><code class="language-json">{
+  &quot;source&quot;: {
+    &quot;label&quot;: &quot;N2000-01&quot;,
+    &quot;type&quot;: &quot;NMEA2000&quot;,
+    &quot;src&quot;: &quot;115&quot;,
+    &quot;pgn&quot;: 128267
+  },
+  &quot;timestamp&quot;: &quot;2014-08-15T16:00:00.081Z&quot;,
+  &quot;values&quot;: [
+    {
+      &quot;path&quot;: &quot;navigation.courseOverGroundTrue&quot;,
+      &quot;value&quot;: 2.971
+    },
+    {
+      &quot;path&quot;: &quot;navigation.speedOverGround&quot;,
+      &quot;value&quot;: 3.85
+    }
+  ]
+}
+</code></pre>
+<p>An <code>update</code> has a single <code>source</code> value and it applies to each of the <code>values</code> items. In cases where data can only
+come from a single source, such as an NMEA 0183 talker connected to a serial port, then the source may be omitted.
+However, if the delta is being passed on by a Signal K server or multiplexer then <code>source</code> must be filled in by the
+server so that downstream consumers can discern where the update comes from.</p>
+<p>In cases where a Signal K producer does not have access to a real time clock or GPS time then <code>timestamp</code> should be
+omitted. Elements in the Signal K processing chain-such as a server receiving data from a producer-should fill in
+timestamp if it is missing in the incoming delta message.</p>
+<p>Each <code>value</code> item is then simply a pair of <code>path</code> and <code>value</code>. The <code>path</code> must be a <em>leaf path</em>: it must be a path to
+a leaf the of the full model.  A leaf is where the actual value of the Signal K property is and where <code>timestamp</code>,
+<code>$source</code> and <code>values</code> properties are in the full model. The value is often a scalar-a single numeric value, as in the
+example above-but it can also be an object. For example a <code>navigation.position</code> value would be an object like
+<code>{&quot;latitude&quot;: -41.2936935424, &quot;longitude&quot;: 173.2470855712}</code>.</p>
+<p>There are some static properties in the full model that lack the support for multiple values and metadata such as
+source and timestamp. An example is a vessel‘s name, directly under the vessel‘s root. This static data may appear in
+the delta stream, for example when received in AIS transmission. In this case the value should be the subtree of the
+full model, starting from the vessel's root, with just the relevant parts, and the path must be empty, indicating that
+the value should be merged to the full model mounted where the delta‘s context property points:</p>
+<pre><code class="language-json">{
+  &quot;context&quot;: &quot;vessels.urn:mrn:imo:mmsi:234567890&quot;,
+  &quot;updates&quot;: [
+    {
+      &quot;source&quot;: {...},
+      &quot;timestamp&quot;: &quot;2014-08-15T19:02:31.507Z&quot;,
+      &quot;values&quot;: [
+        {
+          &quot;path&quot;: &quot;&quot;,
+          &quot;value&quot;: {
+            &quot;name&quot;: &quot;WRANGO&quot;
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="delta-format-for-metadata"><a class="header" href="#delta-format-for-metadata">Delta Format For Metadata</a></h2>
+<p>Metadata can also be updated via a delta within the <code>meta</code> key.</p>
+<p>Since meta data is not often updated it is only sent when there has been a change. See <a href="subscription_protocol.html">Subscription Protocol</a> for details.</p>
+<pre><code class="language-json"></code></pre>
+<h2 id="data-quality"><a class="header" href="#data-quality">Data Quality</a></h2>
+<p>Data transmitted in Signal K format is assumed to be corrected for known sensor inaccuracies such as wind angle offset
+due to misalignment of a masthead unit on the mast, but there is no <em>guarantee</em> that data is accurate, or within
+certain bounds. Different sources will have different data quality and normal vigilance is always required.</p>
+<h2 id="missing-or-invalid-data"><a class="header" href="#missing-or-invalid-data">Missing or Invalid Data</a></h2>
+<p>A sensor or gateway/server may want to send a message indicating known invalid data or the fact that the sensor is
+functioning but can not provide data, for example when a depth sensor has no bottom fix. In this case the value must be
+JSON <code>null</code> in the delta message and the server must return the value as a JSON <code>null</code> in the REST API.</p>
+<h2 id="message-integrity"><a class="header" href="#message-integrity">Message Integrity</a></h2>
+<p>Many messaging systems specify checksums or other forms of message integrity checking. Signal K assumes a reliable
+transport will guarantee a valid message. This is true of TCP/IP and some other transports but not always the case. For
+other transports (e.g. RS-232 serial) a specific extended data format will apply, which is suited to that transport.
+Hence at the message level no checksum or other tests need to be made.</p>
+<h2 id="encodingdecoding"><a class="header" href="#encodingdecoding">Encoding/Decoding</a></h2>
+<p>The JSON message format is supported across most programming environments and can be handled with any convenient
+library.</p>
+<p>On micro-controllers with limited RAM it may be necessary to read and write Signal K data using a streaming process
+rather than reading the entire message into RAM before processing. There is an implementation of Signal K JSON
+streaming on an Arduino Mega (4K RAM) in the related
+<a href="https://github.com/rob42/FreeboardMega/tree/signal_k_dev/lib/SignalK">Freeboard project</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="start_developing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="data_model_multiple_values.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="start_developing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="data_model_multiple_values.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

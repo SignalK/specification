@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Security</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Signal K Specification</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Getting Started</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="start_using.html"><strong aria-hidden="true">2.1.</strong> Using SK</a></li><li class="chapter-item expanded "><a href="start_developing.html"><strong aria-hidden="true">2.2.</strong> Developing with SK</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Data Model</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_model.html"><strong aria-hidden="true">3.1.</strong> Full and Delta Models</a></li><li class="chapter-item expanded "><a href="data_model_multiple_values.html"><strong aria-hidden="true">3.2.</strong> Multiple Values</a></li><li class="chapter-item expanded "><a href="data_model_metadata.html"><strong aria-hidden="true">3.3.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="sources.html"><strong aria-hidden="true">3.4.</strong> Sources</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> API</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="urls_ports.html"><strong aria-hidden="true">4.1.</strong> URLs and Ports</a></li><li class="chapter-item expanded "><a href="rest_api.html"><strong aria-hidden="true">4.2.</strong> REST API</a></li><li class="chapter-item expanded "><a href="streaming_api.html"><strong aria-hidden="true">4.3.</strong> Streaming API</a></li><li class="chapter-item expanded "><a href="subscription_protocol.html"><strong aria-hidden="true">4.4.</strong> Subscription Protocol</a></li><li class="chapter-item expanded "><a href="connection.html"><strong aria-hidden="true">4.5.</strong> Discovery &amp; Connection Establishment</a></li><li class="chapter-item expanded "><a href="notifications.html"><strong aria-hidden="true">4.6.</strong> Notifications</a></li><li class="chapter-item expanded "><a href="security.html" class="active"><strong aria-hidden="true">4.7.</strong> Security</a></li><li class="chapter-item expanded "><a href="request_response.html"><strong aria-hidden="true">4.8.</strong> Request/Response</a></li><li class="chapter-item expanded "><a href="put.html"><strong aria-hidden="true">4.9.</strong> PUT Requests</a></li></ol></li><li class="chapter-item expanded "><a href="how_to_help.html"><strong aria-hidden="true">5.</strong> How Can I Help?</a></li><li class="chapter-item expanded "><a href="vesselsBranch.html"><strong aria-hidden="true">6.</strong> Appendix A: Keys Reference (Vessel)</a></li><li class="chapter-item expanded "><a href="otherBranches.html"><strong aria-hidden="true">7.</strong> Appendix B: Keys Reference (Others)</a></li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">8.</strong> Appendix C: Changelog</a></li><li class="chapter-item expanded "><a href="versioning.html"><strong aria-hidden="true">9.</strong> Appendix D: Versioning</a></li><li class="chapter-item expanded "><a href="access_requests.html"><strong aria-hidden="true">10.</strong> Appendix E: Access Requests</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="security"><a class="header" href="#security">Security</a></h1>
+<h2 id="communications-security"><a class="header" href="#communications-security">Communications Security</a></h2>
+<p>For privacy and data integrity REST and WebSockets communications should be secured with Transport Layer Security
+(TLS). All communications over unsecure protocols like HTTP and WebSockets without TLS must be considered insecure even
+with authentication and access control mechanisms in place.</p>
+<h2 id="authentication"><a class="header" href="#authentication">Authentication</a></h2>
+<p>Authentication for Signal K connections is based on a token carried in the message, or in a cookie or tokens carried in the HTTP
+<code>Authorization</code> header for a HTTP request. The tokens can be of any type.</p>
+<p><strong>Note</strong>: a Signal K server should never simply echo or redistribute a message received without removing or replacing the token. 
+That would result in A's token being sent to B, which allows the B to impersonate A.</p>
+<p>There are 3  authentication actions:</p>
+<ul>
+<li>authenticate - login and obtain a token</li>
+<li>logout - invalidate a token</li>
+<li>validate - validate a token with auto-renewal if valid. </li>
+</ul>
+<p>All 3 actions can be done via HTTP requests or by sending Signal K messages for non HTTP clients</p>
+<h3 id="authentication-via-http"><a class="header" href="#authentication-via-http">Authentication via HTTP</a></h3>
+<p>A device or a web client can authenticate with a Signal K server by providing a username and password via a standard
+HTTP POST request to <code>/signalk/«version»/auth/login</code>.</p>
+<p>The <code>«version»</code> field is the endpoint version identifier chosen by the client from those offered by the server. See the
+<a href="rest_api.html">REST API</a> documentation for the structure of these identifiers.</p>
+<p>The client may send the login request with a <code>Content-Type</code> of <code>application/json</code> with the properties <code>username</code> and
+<code>password</code> in the body OR with a <code>Content-Type</code> of <code>application/x-www-form-urlencoded</code> with the <code>username</code> and
+<code>password</code> fields.</p>
+<pre><code class="language-json">{
+  &quot;username&quot;: &quot;me@somecompany.com&quot;,
+  &quot;password&quot;: &quot;my password&quot;
+}
+</code></pre>
+<p>In response to a valid login, the server shall respond with a 200 (OK) status, set an HTTP session cookie and include
+the token expiry in seconds and the token value in the body of the response. The response <code>Content-Type</code> must be <code>application/json</code>.</p>
+<pre><code class="language-json">{
+  &quot;timeToLive&quot;: 86400,
+  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOiIxMjM0LTQ1NjUz&quot;
+}
+</code></pre>
+<p>In response to invalid login information the server must return HTTP error code 401 (Unauthorized).</p>
+<p>If the server does not implement this authentication mechanism it must return HTTP error code 501 (Not Implemented).</p>
+<h3 id="authentication-via-websockets-tcp-and-similar-transports"><a class="header" href="#authentication-via-websockets-tcp-and-similar-transports">Authentication via WebSockets, TCP, and Similar Transports</a></h3>
+<p>The client should send a the following message </p>
+<pre><code class="language-json">{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;login&quot;: {
+    &quot;username&quot;: &quot;john_doe&quot;,
+    &quot;password&quot;: &quot;password&quot;
+  }
+}
+</code></pre>
+<p>If the login is successful, the server will send a response like the following:</p>
+<pre><code class="language-json">{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 200,
+  &quot;login&quot;: {
+  	&quot;timeToLive&quot;: 86400,
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8&quot;
+  }
+}
+</code></pre>
+<p>If the login fails, the server will send a response like the following:</p>
+<pre><code class="language-json">{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 401
+}
+</code></pre>
+<p>The <code>result</code> codes are the same as normally used in HTTP.</p>
+<h3 id="providing-authorization-to-the-server-in-subsequent-requests"><a class="header" href="#providing-authorization-to-the-server-in-subsequent-requests">Providing Authorization to the Server in Subsequent Requests</a></h3>
+<h4 id="web-based-clients"><a class="header" href="#web-based-clients">Web Based Clients</a></h4>
+<p>Web based clients should be sure to include the cookie or <code>Authorization</code> HTTP header obtained from the authentication response in all subsequent requests.</p>
+<h4 id="websockets-clients"><a class="header" href="#websockets-clients">WebSockets Clients</a></h4>
+<p>Clients can include the authentication cookie with the initial request.</p>
+<p>Clients can include the <code>Authorization</code> HTTP header with the initial connect request. The format of the header should
+be <code>Bearer {token}</code>, for example <code>Authorization: Bearer eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8</code></p>
+<h4 id="other-clients"><a class="header" href="#other-clients">Other Clients</a></h4>
+<p>Clients using other kinds of protocols must include the <code>token</code> in the Signal K messages they send.</p>
+<pre><code class="language-json">{
+  &quot;context&quot;: &quot;*&quot;,
+  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8&quot;
+  &quot;unsubscribe&quot;: [
+    {
+      &quot;path&quot;: &quot;*&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="token-validation"><a class="header" href="#token-validation">Token Validation</a></h3>
+<p>Tokens may have a short expiry time and need to be renewed periodically, or a token's current validity may be unknown. </p>
+<h4 id="http-clients"><a class="header" href="#http-clients">HTTP Clients</a></h4>
+<p>To validate a token, a web based client should send an HTTP POST request to <code>/signalk/«version»/auth/validate</code> with the token in the cookie, or in the header.
+If the token is valid, a new token is created with new expiry time, and a new cookie or header set in the response. This effectively renews a token.</p>
+<p>The reply message will be returned in any case.</p>
+<h4 id="other-clients-1"><a class="header" href="#other-clients-1">Other Clients</a></h4>
+<p>Clients using other kinds of protocols can send the following message.</p>
+<pre><code class="language-json">{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;validate&quot;: {
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8&quot;
+  }
+}
+</code></pre>
+<h4 id="reply-messages"><a class="header" href="#reply-messages">Reply Messages</a></h4>
+<p>Any validation request results in one of the following messages</p>
+<p>On success:</p>
+<pre><code>{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 200,
+  &quot;validate&quot;: {
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8&quot;
+  }
+}
+</code></pre>
+<p>On error (<code>result</code> could be any HTTP code):</p>
+<pre><code>{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 401
+}
+</code></pre>
+<h3 id="logout"><a class="header" href="#logout">Logout</a></h3>
+<h4 id="http-clients-1"><a class="header" href="#http-clients-1">HTTP Clients</a></h4>
+<p>To logout, an http based client should send an HTTP PUT request to <code>/signalk/«version»/auth/logout</code> with the token in the cookie or in the HTTP header.</p>
+<h4 id="other-clients-2"><a class="header" href="#other-clients-2">Other Clients</a></h4>
+<p>Clients using other kinds of protocols should send the following message.</p>
+<pre><code class="language-json">{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;logout&quot;: {
+    &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsI...ibtv41fOnJObT4RdOyZ_UI9is8&quot;
+  }
+}
+</code></pre>
+<h4 id="reply-messages-1"><a class="header" href="#reply-messages-1">Reply Messages</a></h4>
+<p>In both cases the reply will be</p>
+<p>On success:</p>
+<pre><code>{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 200
+}
+</code></pre>
+<p>On error (<code>result</code> could be any HTTP code):</p>
+<pre><code>{
+  &quot;requestId&quot;: &quot;1234-45653-343454&quot;,
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;result&quot;: 401
+}
+</code></pre>
+<h2 id="device-access"><a class="header" href="#device-access">Device Access</a></h2>
+<p>Devices which don’t have any user interaction such as sensors with no input mechanisms should acquire a token using
+the <a href="access_requests.html">Access Requests</a> mechanism.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="notifications.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="request_response.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="notifications.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="request_response.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

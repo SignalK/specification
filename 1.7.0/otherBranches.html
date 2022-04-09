@@ -1,0 +1,2297 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Appendix B: Keys Reference (Others)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Signal K Specification</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Getting Started</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="start_using.html"><strong aria-hidden="true">2.1.</strong> Using SK</a></li><li class="chapter-item expanded "><a href="start_developing.html"><strong aria-hidden="true">2.2.</strong> Developing with SK</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Data Model</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_model.html"><strong aria-hidden="true">3.1.</strong> Full and Delta Models</a></li><li class="chapter-item expanded "><a href="data_model_multiple_values.html"><strong aria-hidden="true">3.2.</strong> Multiple Values</a></li><li class="chapter-item expanded "><a href="data_model_metadata.html"><strong aria-hidden="true">3.3.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="sources.html"><strong aria-hidden="true">3.4.</strong> Sources</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> API</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="urls_ports.html"><strong aria-hidden="true">4.1.</strong> URLs and Ports</a></li><li class="chapter-item expanded "><a href="rest_api.html"><strong aria-hidden="true">4.2.</strong> REST API</a></li><li class="chapter-item expanded "><a href="streaming_api.html"><strong aria-hidden="true">4.3.</strong> Streaming API</a></li><li class="chapter-item expanded "><a href="subscription_protocol.html"><strong aria-hidden="true">4.4.</strong> Subscription Protocol</a></li><li class="chapter-item expanded "><a href="connection.html"><strong aria-hidden="true">4.5.</strong> Discovery &amp; Connection Establishment</a></li><li class="chapter-item expanded "><a href="notifications.html"><strong aria-hidden="true">4.6.</strong> Notifications</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">4.7.</strong> Security</a></li><li class="chapter-item expanded "><a href="request_response.html"><strong aria-hidden="true">4.8.</strong> Request/Response</a></li><li class="chapter-item expanded "><a href="put.html"><strong aria-hidden="true">4.9.</strong> PUT Requests</a></li></ol></li><li class="chapter-item expanded "><a href="how_to_help.html"><strong aria-hidden="true">5.</strong> How Can I Help?</a></li><li class="chapter-item expanded "><a href="vesselsBranch.html"><strong aria-hidden="true">6.</strong> Appendix A: Keys Reference (Vessel)</a></li><li class="chapter-item expanded "><a href="otherBranches.html" class="active"><strong aria-hidden="true">7.</strong> Appendix B: Keys Reference (Others)</a></li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">8.</strong> Appendix C: Changelog</a></li><li class="chapter-item expanded "><a href="versioning.html"><strong aria-hidden="true">9.</strong> Appendix D: Versioning</a></li><li class="chapter-item expanded "><a href="access_requests.html"><strong aria-hidden="true">10.</strong> Appendix E: Access Requests</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4 id="self"><a class="header" href="#self">/self</a></h4>
+<p><strong>Description:</strong> This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.</p>
+<hr />
+<h4 id="aircraft"><a class="header" href="#aircraft">/aircraft</a></h4>
+<p><strong>Description:</strong> A wrapper object for aircraft, primarily intended for SAR aircraft in relation to marine search and rescue. For clarity about seaplanes etc, if it CAN fly, its an aircraft.</p>
+<hr />
+<h4 id="aircraftregexp"><a class="header" href="#aircraftregexp">/aircraft/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> aircraft</p>
+<p><strong>Description:</strong> This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aircraft. Examples: urn:mrn:imo:mmsi:111099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d</p>
+<hr />
+<h4 id="aircraftregexpurl"><a class="header" href="#aircraftregexpurl">/aircraft/&lt;RegExp&gt;/url</a></h4>
+<p><strong>Description:</strong> URL based identity of the aircraft, if available.</p>
+<hr />
+<h4 id="aircraftregexpmmsi"><a class="header" href="#aircraftregexpmmsi">/aircraft/&lt;RegExp&gt;/mmsi</a></h4>
+<p><strong>Description:</strong> MMSI number of the aircraft, if available.</p>
+<hr />
+<h4 id="aircraftregexpuuid"><a class="header" href="#aircraftregexpuuid">/aircraft/&lt;RegExp&gt;/uuid</a></h4>
+<p><strong>Description:</strong> A unique Signal K flavoured maritime resource identifier, assigned by the server.</p>
+<hr />
+<h4 id="aircraftregexpflag"><a class="header" href="#aircraftregexpflag">/aircraft/&lt;RegExp&gt;/flag</a></h4>
+<p><strong>Description:</strong> The country of aircraft registration, or flag state of the aircraft</p>
+<hr />
+<h4 id="aircraftregexpbase"><a class="header" href="#aircraftregexpbase">/aircraft/&lt;RegExp&gt;/base</a></h4>
+<p><strong>Description:</strong> The home base of the aircraft</p>
+<hr />
+<h4 id="aircraftregexpregistrations"><a class="header" href="#aircraftregexpregistrations">/aircraft/&lt;RegExp&gt;/registrations</a></h4>
+<p><strong>Description:</strong> The various registrations of the aircraft.</p>
+<hr />
+<h4 id="aircraftregexpregistrationsimo"><a class="header" href="#aircraftregexpregistrationsimo">/aircraft/&lt;RegExp&gt;/registrations/imo</a></h4>
+<p><strong>Description:</strong> The IMO number of the aircraft.</p>
+<hr />
+<h4 id="aircraftregexpregistrationsnational"><a class="header" href="#aircraftregexpregistrationsnational">/aircraft/&lt;RegExp&gt;/registrations/national</a></h4>
+<p><strong>Description:</strong> The national registration number of the aircraft.</p>
+<hr />
+<h4 id="aircraftregexpregistrationsnationalregexp"><a class="header" href="#aircraftregexpregistrationsnationalregexp">/aircraft/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validating the identifier for the registration</p>
+<hr />
+<h4 id="aircraftregexpregistrationsnationalregexpcountry"><a class="header" href="#aircraftregexpregistrationsnationalregexpcountry">/aircraft/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/country</a></h4>
+<p><strong>Description:</strong> The ISO 3166-2 country code.</p>
+<hr />
+<h4 id="aircraftregexpregistrationsnationalregexpregistration"><a class="header" href="#aircraftregexpregistrationsnationalregexpregistration">/aircraft/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/registration</a></h4>
+<p><strong>Description:</strong> The registration code</p>
+<hr />
+<h4 id="aircraftregexpregistrationsnationalregexpdescription"><a class="header" href="#aircraftregexpregistrationsnationalregexpdescription">/aircraft/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> The registration description</p>
+<hr />
+<h4 id="aircraftregexpregistrationsother"><a class="header" href="#aircraftregexpregistrationsother">/aircraft/&lt;RegExp&gt;/registrations/other</a></h4>
+<p><strong>Description:</strong> Other registration or permits for the aircraft.</p>
+<hr />
+<h4 id="aircraftregexpregistrationsotherregexp"><a class="header" href="#aircraftregexpregistrationsotherregexp">/aircraft/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validating the identifier for the registration</p>
+<hr />
+<h4 id="aircraftregexpregistrationsotherregexpregistration"><a class="header" href="#aircraftregexpregistrationsotherregexpregistration">/aircraft/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;/registration</a></h4>
+<p><strong>Description:</strong> The registration code</p>
+<hr />
+<h4 id="aircraftregexpregistrationsotherregexpdescription"><a class="header" href="#aircraftregexpregistrationsotherregexpdescription">/aircraft/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> The registration description</p>
+<hr />
+<h4 id="aircraftregexpcommunication"><a class="header" href="#aircraftregexpcommunication">/aircraft/&lt;RegExp&gt;/communication</a></h4>
+<p><strong>Title:</strong> communication</p>
+<p><strong>Description:</strong> Communication data including Radio, Telephone, E-Mail, etc.</p>
+<hr />
+<h4 id="aircraftregexpcommunicationcallsignvhf"><a class="header" href="#aircraftregexpcommunicationcallsignvhf">/aircraft/&lt;RegExp&gt;/communication/callsignVhf</a></h4>
+<p><strong>Description:</strong> Callsign for VHF communication</p>
+<hr />
+<h4 id="aircraftregexpcommunicationcallsignhf"><a class="header" href="#aircraftregexpcommunicationcallsignhf">/aircraft/&lt;RegExp&gt;/communication/callsignHf</a></h4>
+<p><strong>Description:</strong> Callsign for HF communication</p>
+<hr />
+<h4 id="aircraftregexpcommunicationphonenumber"><a class="header" href="#aircraftregexpcommunicationphonenumber">/aircraft/&lt;RegExp&gt;/communication/phoneNumber</a></h4>
+<p><strong>Description:</strong> Phone number of skipper</p>
+<hr />
+<h4 id="aircraftregexpcommunicationemailhf"><a class="header" href="#aircraftregexpcommunicationemailhf">/aircraft/&lt;RegExp&gt;/communication/emailHf</a></h4>
+<p><strong>Description:</strong> Email address to be used for HF email (Winmail, Airmail, Sailmail)</p>
+<hr />
+<h4 id="aircraftregexpcommunicationemail"><a class="header" href="#aircraftregexpcommunicationemail">/aircraft/&lt;RegExp&gt;/communication/email</a></h4>
+<p><strong>Description:</strong> Regular email for the skipper</p>
+<hr />
+<h4 id="aircraftregexpcommunicationsatphonenumber"><a class="header" href="#aircraftregexpcommunicationsatphonenumber">/aircraft/&lt;RegExp&gt;/communication/satPhoneNumber</a></h4>
+<p><strong>Description:</strong> Satellite phone number for vessel.</p>
+<hr />
+<h4 id="aircraftregexpcommunicationskippername"><a class="header" href="#aircraftregexpcommunicationskippername">/aircraft/&lt;RegExp&gt;/communication/skipperName</a></h4>
+<p><strong>Description:</strong> Full name of the skipper of the vessel.</p>
+<hr />
+<h4 id="aircraftregexpcommunicationcrewnames"><a class="header" href="#aircraftregexpcommunicationcrewnames">/aircraft/&lt;RegExp&gt;/communication/crewNames</a></h4>
+<p><strong>Description:</strong> Array with the names of the crew</p>
+<hr />
+<h4 id="aircraftregexpenvironment"><a class="header" href="#aircraftregexpenvironment">/aircraft/&lt;RegExp&gt;/environment</a></h4>
+<p><strong>Title:</strong> environment</p>
+<p><strong>Description:</strong> Environmental data measured locally including Depth, Wind, Temp, etc.</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutside"><a class="header" href="#aircraftregexpenvironmentoutside">/aircraft/&lt;RegExp&gt;/environment/outside</a></h4>
+<p><strong>Description:</strong> Environmental conditions outside of the vessel's hull</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsidetemperature"><a class="header" href="#aircraftregexpenvironmentoutsidetemperature">/aircraft/&lt;RegExp&gt;/environment/outside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside air temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsidedewpointtemperature"><a class="header" href="#aircraftregexpenvironmentoutsidedewpointtemperature">/aircraft/&lt;RegExp&gt;/environment/outside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside dew point temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsideapparentwindchilltemperature"><a class="header" href="#aircraftregexpenvironmentoutsideapparentwindchilltemperature">/aircraft/&lt;RegExp&gt;/environment/outside/apparentWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside apparent wind chill temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsidetheoreticalwindchilltemperature"><a class="header" href="#aircraftregexpenvironmentoutsidetheoreticalwindchilltemperature">/aircraft/&lt;RegExp&gt;/environment/outside/theoreticalWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside theoretical wind chill temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsideheatindextemperature"><a class="header" href="#aircraftregexpenvironmentoutsideheatindextemperature">/aircraft/&lt;RegExp&gt;/environment/outside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside heat index temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsidepressure"><a class="header" href="#aircraftregexpenvironmentoutsidepressure">/aircraft/&lt;RegExp&gt;/environment/outside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Current outside air ambient pressure</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsidehumidity"><a class="header" href="#aircraftregexpenvironmentoutsidehumidity">/aircraft/&lt;RegExp&gt;/environment/outside/humidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> DEPRECATED: use relativeHumidity</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsiderelativehumidity"><a class="header" href="#aircraftregexpenvironmentoutsiderelativehumidity">/aircraft/&lt;RegExp&gt;/environment/outside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Current outside air relative humidity</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsideairdensity"><a class="header" href="#aircraftregexpenvironmentoutsideairdensity">/aircraft/&lt;RegExp&gt;/environment/outside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Current outside air density</p>
+<hr />
+<h4 id="aircraftregexpenvironmentoutsideilluminance"><a class="header" href="#aircraftregexpenvironmentoutsideilluminance">/aircraft/&lt;RegExp&gt;/environment/outside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Current outside ambient light flux.</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinside"><a class="header" href="#aircraftregexpenvironmentinside">/aircraft/&lt;RegExp&gt;/environment/inside</a></h4>
+<p><strong>Description:</strong> Environmental conditions inside the vessel's hull</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidetemperature"><a class="header" href="#aircraftregexpenvironmentinsidetemperature">/aircraft/&lt;RegExp&gt;/environment/inside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsideheatindextemperature"><a class="header" href="#aircraftregexpenvironmentinsideheatindextemperature">/aircraft/&lt;RegExp&gt;/environment/inside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidepressure"><a class="header" href="#aircraftregexpenvironmentinsidepressure">/aircraft/&lt;RegExp&gt;/environment/inside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsiderelativehumidity"><a class="header" href="#aircraftregexpenvironmentinsiderelativehumidity">/aircraft/&lt;RegExp&gt;/environment/inside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidedewpoint"><a class="header" href="#aircraftregexpenvironmentinsidedewpoint">/aircraft/&lt;RegExp&gt;/environment/inside/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidedewpointtemperature"><a class="header" href="#aircraftregexpenvironmentinsidedewpointtemperature">/aircraft/&lt;RegExp&gt;/environment/inside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsideairdensity"><a class="header" href="#aircraftregexpenvironmentinsideairdensity">/aircraft/&lt;RegExp&gt;/environment/inside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsideilluminance"><a class="header" href="#aircraftregexpenvironmentinsideilluminance">/aircraft/&lt;RegExp&gt;/environment/inside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the identifier for the environmental zone, eg. engineRoom, mainCabin, refrigerator</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9temperature"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9temperature">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9heatindextemperature"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9heatindextemperature">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9pressure"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9pressure">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9relativehumidity"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9relativehumidity">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9dewpoint"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9dewpoint">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9dewpointtemperature"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9dewpointtemperature">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9airdensity"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9airdensity">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentinsidea-za-z0-9illuminance"><a class="header" href="#aircraftregexpenvironmentinsidea-za-z0-9illuminance">/aircraft/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwater"><a class="header" href="#aircraftregexpenvironmentwater">/aircraft/&lt;RegExp&gt;/environment/water</a></h4>
+<p><strong>Description:</strong> Environmental conditions of the water that the vessel is sailing in</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwatertemperature"><a class="header" href="#aircraftregexpenvironmentwatertemperature">/aircraft/&lt;RegExp&gt;/environment/water/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current water temperature</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwatersalinity"><a class="header" href="#aircraftregexpenvironmentwatersalinity">/aircraft/&lt;RegExp&gt;/environment/water/salinity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Water salinity</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepth"><a class="header" href="#aircraftregexpenvironmentdepth">/aircraft/&lt;RegExp&gt;/environment/depth</a></h4>
+<p><strong>Title:</strong> depth</p>
+<p><strong>Description:</strong> Depth related data</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepthbelowkeel"><a class="header" href="#aircraftregexpenvironmentdepthbelowkeel">/aircraft/&lt;RegExp&gt;/environment/depth/belowKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below keel</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepthbelowtransducer"><a class="header" href="#aircraftregexpenvironmentdepthbelowtransducer">/aircraft/&lt;RegExp&gt;/environment/depth/belowTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below Transducer</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepthbelowsurface"><a class="header" href="#aircraftregexpenvironmentdepthbelowsurface">/aircraft/&lt;RegExp&gt;/environment/depth/belowSurface</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from surface</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepthtransducertokeel"><a class="header" href="#aircraftregexpenvironmentdepthtransducertokeel">/aircraft/&lt;RegExp&gt;/environment/depth/transducerToKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from the transducer to the bottom of the keel</p>
+<hr />
+<h4 id="aircraftregexpenvironmentdepthsurfacetotransducer"><a class="header" href="#aircraftregexpenvironmentdepthsurfacetotransducer">/aircraft/&lt;RegExp&gt;/environment/depth/surfaceToTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth transducer is below the water surface</p>
+<hr />
+<h4 id="aircraftregexpenvironmentcurrent"><a class="header" href="#aircraftregexpenvironmentcurrent">/aircraft/&lt;RegExp&gt;/environment/current</a></h4>
+<p><strong>Title:</strong> current</p>
+<p><strong>Description:</strong> Direction and strength of current affecting the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>drift (m/s)</li>
+<li>setTrue (rad)</li>
+<li>setMagnetic (rad)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpenvironmenttide"><a class="header" href="#aircraftregexpenvironmenttide">/aircraft/&lt;RegExp&gt;/environment/tide</a></h4>
+<p><strong>Title:</strong> tide</p>
+<p><strong>Description:</strong> Tide data</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttideheighthigh"><a class="header" href="#aircraftregexpenvironmenttideheighthigh">/aircraft/&lt;RegExp&gt;/environment/tide/heightHigh</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttideheightnow"><a class="header" href="#aircraftregexpenvironmenttideheightnow">/aircraft/&lt;RegExp&gt;/environment/tide/heightNow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttideheightlow"><a class="header" href="#aircraftregexpenvironmenttideheightlow">/aircraft/&lt;RegExp&gt;/environment/tide/heightLow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttidetimelow"><a class="header" href="#aircraftregexpenvironmenttidetimelow">/aircraft/&lt;RegExp&gt;/environment/tide/timeLow</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttidetimehigh"><a class="header" href="#aircraftregexpenvironmenttidetimehigh">/aircraft/&lt;RegExp&gt;/environment/tide/timeHigh</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="aircraftregexpenvironmentheave"><a class="header" href="#aircraftregexpenvironmentheave">/aircraft/&lt;RegExp&gt;/environment/heave</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Vertical movement of the vessel due to waves</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwind"><a class="header" href="#aircraftregexpenvironmentwind">/aircraft/&lt;RegExp&gt;/environment/wind</a></h4>
+<p><strong>Title:</strong> wind</p>
+<p><strong>Description:</strong> Wind data.</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindangleapparent"><a class="header" href="#aircraftregexpenvironmentwindangleapparent">/aircraft/&lt;RegExp&gt;/environment/wind/angleApparent</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Apparent wind angle, negative to port</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindangletrueground"><a class="header" href="#aircraftregexpenvironmentwindangletrueground">/aircraft/&lt;RegExp&gt;/environment/wind/angleTrueGround</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed over ground, negative to port</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindangletruewater"><a class="header" href="#aircraftregexpenvironmentwindangletruewater">/aircraft/&lt;RegExp&gt;/environment/wind/angleTrueWater</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed through water, negative to port</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwinddirectionchangealarm"><a class="header" href="#aircraftregexpenvironmentwinddirectionchangealarm">/aircraft/&lt;RegExp&gt;/environment/wind/directionChangeAlarm</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The angle the wind needs to shift to raise an alarm</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwinddirectiontrue"><a class="header" href="#aircraftregexpenvironmentwinddirectiontrue">/aircraft/&lt;RegExp&gt;/environment/wind/directionTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to true north</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwinddirectionmagnetic"><a class="header" href="#aircraftregexpenvironmentwinddirectionmagnetic">/aircraft/&lt;RegExp&gt;/environment/wind/directionMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to magnetic north</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindspeedtrue"><a class="header" href="#aircraftregexpenvironmentwindspeedtrue">/aircraft/&lt;RegExp&gt;/environment/wind/speedTrue</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over water (as calculated from speedApparent and vessel's speed through water)</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindspeedoverground"><a class="header" href="#aircraftregexpenvironmentwindspeedoverground">/aircraft/&lt;RegExp&gt;/environment/wind/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)</p>
+<hr />
+<h4 id="aircraftregexpenvironmentwindspeedapparent"><a class="header" href="#aircraftregexpenvironmentwindspeedapparent">/aircraft/&lt;RegExp&gt;/environment/wind/speedApparent</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Apparent wind speed</p>
+<hr />
+<h4 id="aircraftregexpenvironmenttime"><a class="header" href="#aircraftregexpenvironmenttime">/aircraft/&lt;RegExp&gt;/environment/time</a></h4>
+<p><strong>Description:</strong> A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)</p>
+<hr />
+<h4 id="aircraftregexpenvironmentmode"><a class="header" href="#aircraftregexpenvironmentmode">/aircraft/&lt;RegExp&gt;/environment/mode</a></h4>
+<p><strong>Description:</strong> Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.</p>
+<hr />
+<h4 id="aircraftregexpnavigation"><a class="header" href="#aircraftregexpnavigation">/aircraft/&lt;RegExp&gt;/navigation</a></h4>
+<p><strong>Title:</strong> navigation</p>
+<p><strong>Description:</strong> Navigation data including Position, Course to next WP information, etc.</p>
+<hr />
+<h4 id="aircraftregexpnavigationlights"><a class="header" href="#aircraftregexpnavigationlights">/aircraft/&lt;RegExp&gt;/navigation/lights</a></h4>
+<p><strong>Title:</strong> Navigation lights</p>
+<p><strong>Description:</strong> Current state of the vessels navigation lights</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourseovergroundmagnetic"><a class="header" href="#aircraftregexpnavigationcourseovergroundmagnetic">/aircraft/&lt;RegExp&gt;/navigation/courseOverGroundMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (magnetic)</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourseovergroundtrue"><a class="header" href="#aircraftregexpnavigationcourseovergroundtrue">/aircraft/&lt;RegExp&gt;/navigation/courseOverGroundTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (true)</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumbline"><a class="header" href="#aircraftregexpnavigationcourserhumbline">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Rhumbline</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinecrosstrackerror"><a class="header" href="#aircraftregexpnavigationcourserhumblinecrosstrackerror">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinebearingtracktrue"><a class="header" href="#aircraftregexpnavigationcourserhumblinebearingtracktrue">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinebearingtrackmagnetic"><a class="header" href="#aircraftregexpnavigationcourserhumblinebearingtrackmagnetic">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblineactiveroute"><a class="header" href="#aircraftregexpnavigationcourserhumblineactiveroute">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblineactiveroutehref"><a class="header" href="#aircraftregexpnavigationcourserhumblineactiveroutehref">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival"><a class="header" href="#aircraftregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblineactiveroutestarttime"><a class="header" href="#aircraftregexpnavigationcourserhumblineactiveroutestarttime">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinenextpoint"><a class="header" href="#aircraftregexpnavigationcourserhumblinenextpoint">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinepreviouspoint"><a class="header" href="#aircraftregexpnavigationcourserhumblinepreviouspoint">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinepreviouspointdistance"><a class="header" href="#aircraftregexpnavigationcourserhumblinepreviouspointdistance">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="aircraftregexpnavigationcourserhumblinepreviouspointposition"><a class="header" href="#aircraftregexpnavigationcourserhumblinepreviouspointposition">/aircraft/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcircle"><a class="header" href="#aircraftregexpnavigationcoursegreatcircle">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Great Circle</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclecrosstrackerror"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclecrosstrackerror">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclebearingtracktrue"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclebearingtracktrue">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclebearingtrackmagnetic"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclebearingtrackmagnetic">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcircleactiveroute"><a class="header" href="#aircraftregexpnavigationcoursegreatcircleactiveroute">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcircleactiveroutehref"><a class="header" href="#aircraftregexpnavigationcoursegreatcircleactiveroutehref">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival"><a class="header" href="#aircraftregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcircleactiveroutestarttime"><a class="header" href="#aircraftregexpnavigationcoursegreatcircleactiveroutestarttime">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclenextpoint"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclenextpoint">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclepreviouspoint"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclepreviouspoint">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclepreviouspointdistance"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclepreviouspointdistance">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="aircraftregexpnavigationcoursegreatcirclepreviouspointposition"><a class="header" href="#aircraftregexpnavigationcoursegreatcirclepreviouspointposition">/aircraft/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationclosestapproach"><a class="header" href="#aircraftregexpnavigationclosestapproach">/aircraft/&lt;RegExp&gt;/navigation/closestApproach</a></h4>
+<p><strong>Description:</strong> Calculated values for other vessels, e.g. from AIS</p>
+<p>Object value with properties</p>
+<ul>
+<li>distance (m)</li>
+<li>timeTo (s)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationracing"><a class="header" href="#aircraftregexpnavigationracing">/aircraft/&lt;RegExp&gt;/navigation/racing</a></h4>
+<p><strong>Description:</strong> Specific navigational data related to yacht racing.</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingstartlinestb"><a class="header" href="#aircraftregexpnavigationracingstartlinestb">/aircraft/&lt;RegExp&gt;/navigation/racing/startLineStb</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of starboard start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationracingstartlineport"><a class="header" href="#aircraftregexpnavigationracingstartlineport">/aircraft/&lt;RegExp&gt;/navigation/racing/startLinePort</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of port start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationracingdistancestartline"><a class="header" href="#aircraftregexpnavigationracingdistancestartline">/aircraft/&lt;RegExp&gt;/navigation/racing/distanceStartline</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the start line</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingtimetostart"><a class="header" href="#aircraftregexpnavigationracingtimetostart">/aircraft/&lt;RegExp&gt;/navigation/racing/timeToStart</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time left before start</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingtimeportdown"><a class="header" href="#aircraftregexpnavigationracingtimeportdown">/aircraft/&lt;RegExp&gt;/navigation/racing/timePortDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning downwind</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingtimeportup"><a class="header" href="#aircraftregexpnavigationracingtimeportup">/aircraft/&lt;RegExp&gt;/navigation/racing/timePortUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning upwind</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingtimestbddown"><a class="header" href="#aircraftregexpnavigationracingtimestbddown">/aircraft/&lt;RegExp&gt;/navigation/racing/timeStbdDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning downwind</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingtimestbdup"><a class="header" href="#aircraftregexpnavigationracingtimestbdup">/aircraft/&lt;RegExp&gt;/navigation/racing/timeStbdUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning upwind</p>
+<hr />
+<h4 id="aircraftregexpnavigationracinglayline"><a class="header" href="#aircraftregexpnavigationracinglayline">/aircraft/&lt;RegExp&gt;/navigation/racing/layline</a></h4>
+<p><strong>Description:</strong> The layline crossing the current course</p>
+<hr />
+<h4 id="aircraftregexpnavigationracinglaylinedistance"><a class="header" href="#aircraftregexpnavigationracinglaylinedistance">/aircraft/&lt;RegExp&gt;/navigation/racing/layline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="aircraftregexpnavigationracinglaylinetime"><a class="header" href="#aircraftregexpnavigationracinglaylinetime">/aircraft/&lt;RegExp&gt;/navigation/racing/layline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingoppositelayline"><a class="header" href="#aircraftregexpnavigationracingoppositelayline">/aircraft/&lt;RegExp&gt;/navigation/racing/oppositeLayline</a></h4>
+<p><strong>Description:</strong> The layline parallell to current course</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingoppositelaylinedistance"><a class="header" href="#aircraftregexpnavigationracingoppositelaylinedistance">/aircraft/&lt;RegExp&gt;/navigation/racing/oppositeLayline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="aircraftregexpnavigationracingoppositelaylinetime"><a class="header" href="#aircraftregexpnavigationracingoppositelaylinetime">/aircraft/&lt;RegExp&gt;/navigation/racing/oppositeLayline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="aircraftregexpnavigationmagneticvariation"><a class="header" href="#aircraftregexpnavigationmagneticvariation">/aircraft/&lt;RegExp&gt;/navigation/magneticVariation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The magnetic variation (declination) at the current position that must be added to the magnetic heading to derive the true heading. Easterly variations are positive and Westerly variations are negative (in Radians).</p>
+<hr />
+<h4 id="aircraftregexpnavigationmagneticvariationageofservice"><a class="header" href="#aircraftregexpnavigationmagneticvariationageofservice">/aircraft/&lt;RegExp&gt;/navigation/magneticVariationAgeOfService</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Seconds since the 1st Jan 1970 that the variation calculation was made</p>
+<hr />
+<h4 id="aircraftregexpnavigationdestination"><a class="header" href="#aircraftregexpnavigationdestination">/aircraft/&lt;RegExp&gt;/navigation/destination</a></h4>
+<p><strong>Title:</strong> destination</p>
+<p><strong>Description:</strong> The intended destination of this trip</p>
+<hr />
+<h4 id="aircraftregexpnavigationdestinationcommonname"><a class="header" href="#aircraftregexpnavigationdestinationcommonname">/aircraft/&lt;RegExp&gt;/navigation/destination/commonName</a></h4>
+<p><strong>Description:</strong> Common name of the Destination, eg 'Fiji', also used in ais messages</p>
+<hr />
+<h4 id="aircraftregexpnavigationdestinationeta"><a class="header" href="#aircraftregexpnavigationdestinationeta">/aircraft/&lt;RegExp&gt;/navigation/destination/eta</a></h4>
+<p><strong>Description:</strong> Expected time of arrival at destination waypoint</p>
+<hr />
+<h4 id="aircraftregexpnavigationdestinationwaypoint"><a class="header" href="#aircraftregexpnavigationdestinationwaypoint">/aircraft/&lt;RegExp&gt;/navigation/destination/waypoint</a></h4>
+<p><strong>Description:</strong> UUID of destination waypoint</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnss"><a class="header" href="#aircraftregexpnavigationgnss">/aircraft/&lt;RegExp&gt;/navigation/gnss</a></h4>
+<p><strong>Title:</strong> gnss</p>
+<p><strong>Description:</strong> Global satellite navigation meta information</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnsstype"><a class="header" href="#aircraftregexpnavigationgnsstype">/aircraft/&lt;RegExp&gt;/navigation/gnss/type</a></h4>
+<p><strong>Description:</strong> Fix type</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssmethodquality"><a class="header" href="#aircraftregexpnavigationgnssmethodquality">/aircraft/&lt;RegExp&gt;/navigation/gnss/methodQuality</a></h4>
+<p><strong>Description:</strong> Quality of the satellite fix</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssintegrity"><a class="header" href="#aircraftregexpnavigationgnssintegrity">/aircraft/&lt;RegExp&gt;/navigation/gnss/integrity</a></h4>
+<p><strong>Description:</strong> Integrity of the satellite fix</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnsssatellites"><a class="header" href="#aircraftregexpnavigationgnsssatellites">/aircraft/&lt;RegExp&gt;/navigation/gnss/satellites</a></h4>
+<p><strong>Description:</strong> Number of satellites</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssantennaaltitude"><a class="header" href="#aircraftregexpnavigationgnssantennaaltitude">/aircraft/&lt;RegExp&gt;/navigation/gnss/antennaAltitude</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Altitude of antenna</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnsshorizontaldilution"><a class="header" href="#aircraftregexpnavigationgnsshorizontaldilution">/aircraft/&lt;RegExp&gt;/navigation/gnss/horizontalDilution</a></h4>
+<p><strong>Description:</strong> Horizontal Dilution of Precision</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnsspositiondilution"><a class="header" href="#aircraftregexpnavigationgnsspositiondilution">/aircraft/&lt;RegExp&gt;/navigation/gnss/positionDilution</a></h4>
+<p><strong>Description:</strong> Positional Dilution of Precision</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssgeoidalseparation"><a class="header" href="#aircraftregexpnavigationgnssgeoidalseparation">/aircraft/&lt;RegExp&gt;/navigation/gnss/geoidalSeparation</a></h4>
+<p><strong>Description:</strong> Difference between WGS84 earth ellipsoid and mean sea level</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssdifferentialage"><a class="header" href="#aircraftregexpnavigationgnssdifferentialage">/aircraft/&lt;RegExp&gt;/navigation/gnss/differentialAge</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Age of DGPS data</p>
+<hr />
+<h4 id="aircraftregexpnavigationgnssdifferentialreference"><a class="header" href="#aircraftregexpnavigationgnssdifferentialreference">/aircraft/&lt;RegExp&gt;/navigation/gnss/differentialReference</a></h4>
+<p><strong>Description:</strong> ID of DGPS base station</p>
+<hr />
+<h4 id="aircraftregexpnavigationheadingmagnetic"><a class="header" href="#aircraftregexpnavigationheadingmagnetic">/aircraft/&lt;RegExp&gt;/navigation/headingMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading of the vessel, equals 'headingCompass adjusted for magneticDeviation'</p>
+<hr />
+<h4 id="aircraftregexpnavigationmagneticdeviation"><a class="header" href="#aircraftregexpnavigationmagneticdeviation">/aircraft/&lt;RegExp&gt;/navigation/magneticDeviation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Magnetic deviation of the compass at the current headingCompass</p>
+<hr />
+<h4 id="aircraftregexpnavigationheadingcompass"><a class="header" href="#aircraftregexpnavigationheadingcompass">/aircraft/&lt;RegExp&gt;/navigation/headingCompass</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading received from the compass. This is not adjusted for magneticDeviation of the compass</p>
+<hr />
+<h4 id="aircraftregexpnavigationheadingtrue"><a class="header" href="#aircraftregexpnavigationheadingtrue">/aircraft/&lt;RegExp&gt;/navigation/headingTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The current true north heading of the vessel, equals 'headingMagnetic adjusted for magneticVariation'</p>
+<hr />
+<h4 id="aircraftregexpnavigationposition"><a class="header" href="#aircraftregexpnavigationposition">/aircraft/&lt;RegExp&gt;/navigation/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of the vessel in 2 or 3 dimensions (WGS84 datum)</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationattitude"><a class="header" href="#aircraftregexpnavigationattitude">/aircraft/&lt;RegExp&gt;/navigation/attitude</a></h4>
+<p><strong>Title:</strong> Attitude</p>
+<p><strong>Description:</strong> Vessel attitude: roll, pitch and yaw</p>
+<p>Object value with properties</p>
+<ul>
+<li>roll (rad)</li>
+<li>pitch (rad)</li>
+<li>yaw (rad)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationmaneuver"><a class="header" href="#aircraftregexpnavigationmaneuver">/aircraft/&lt;RegExp&gt;/navigation/maneuver</a></h4>
+<p><strong>Description:</strong> Special maneuver such as regional passing arrangement. (from ais)</p>
+<hr />
+<h4 id="aircraftregexpnavigationrateofturn"><a class="header" href="#aircraftregexpnavigationrateofturn">/aircraft/&lt;RegExp&gt;/navigation/rateOfTurn</a></h4>
+<p><strong>Units:</strong> rad/s (Radian per second)</p>
+<p><strong>Description:</strong> Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications</p>
+<hr />
+<h4 id="aircraftregexpnavigationspeedoverground"><a class="header" href="#aircraftregexpnavigationspeedoverground">/aircraft/&lt;RegExp&gt;/navigation/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed over ground. If converting from AIS 'HIGH' value, set to 102.2 (Ais max value) and add warning in notifications</p>
+<hr />
+<h4 id="aircraftregexpnavigationspeedthroughwater"><a class="header" href="#aircraftregexpnavigationspeedthroughwater">/aircraft/&lt;RegExp&gt;/navigation/speedThroughWater</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed through the water</p>
+<hr />
+<h4 id="aircraftregexpnavigationspeedthroughwatertransverse"><a class="header" href="#aircraftregexpnavigationspeedthroughwatertransverse">/aircraft/&lt;RegExp&gt;/navigation/speedThroughWaterTransverse</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Transverse speed through the water (Leeway)</p>
+<hr />
+<h4 id="aircraftregexpnavigationspeedthroughwaterlongitudinal"><a class="header" href="#aircraftregexpnavigationspeedthroughwaterlongitudinal">/aircraft/&lt;RegExp&gt;/navigation/speedThroughWaterLongitudinal</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Longitudinal speed through the water</p>
+<hr />
+<h4 id="aircraftregexpnavigationleewayangle"><a class="header" href="#aircraftregexpnavigationleewayangle">/aircraft/&lt;RegExp&gt;/navigation/leewayAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Leeway Angle derived from the longitudinal and transverse speeds through the water</p>
+<hr />
+<h4 id="aircraftregexpnavigationlog"><a class="header" href="#aircraftregexpnavigationlog">/aircraft/&lt;RegExp&gt;/navigation/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled</p>
+<hr />
+<h4 id="aircraftregexpnavigationtrip"><a class="header" href="#aircraftregexpnavigationtrip">/aircraft/&lt;RegExp&gt;/navigation/trip</a></h4>
+<p><strong>Description:</strong> Trip data</p>
+<hr />
+<h4 id="aircraftregexpnavigationtriplog"><a class="header" href="#aircraftregexpnavigationtriplog">/aircraft/&lt;RegExp&gt;/navigation/trip/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled on this trip / since trip reset</p>
+<hr />
+<h4 id="aircraftregexpnavigationtriplastreset"><a class="header" href="#aircraftregexpnavigationtriplastreset">/aircraft/&lt;RegExp&gt;/navigation/trip/lastReset</a></h4>
+<p><strong>Description:</strong> Trip log reset time</p>
+<hr />
+<h4 id="aircraftregexpnavigationstate"><a class="header" href="#aircraftregexpnavigationstate">/aircraft/&lt;RegExp&gt;/navigation/state</a></h4>
+<p><strong>Title:</strong> state</p>
+<p><strong>Description:</strong> Current navigational state of the vessel</p>
+<hr />
+<h4 id="aircraftregexpnavigationanchor"><a class="header" href="#aircraftregexpnavigationanchor">/aircraft/&lt;RegExp&gt;/navigation/anchor</a></h4>
+<p><strong>Title:</strong> anchor</p>
+<p><strong>Description:</strong> The anchor data, for anchor watch etc</p>
+<hr />
+<h4 id="aircraftregexpnavigationanchormaxradius"><a class="header" href="#aircraftregexpnavigationanchormaxradius">/aircraft/&lt;RegExp&gt;/navigation/anchor/maxRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Radius of anchor alarm boundary. The distance from anchor to the center of the boat</p>
+<hr />
+<h4 id="aircraftregexpnavigationanchorcurrentradius"><a class="header" href="#aircraftregexpnavigationanchorcurrentradius">/aircraft/&lt;RegExp&gt;/navigation/anchor/currentRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Current distance to anchor</p>
+<hr />
+<h4 id="aircraftregexpnavigationanchorposition"><a class="header" href="#aircraftregexpnavigationanchorposition">/aircraft/&lt;RegExp&gt;/navigation/anchor/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The actual anchor position of the vessel in 3 dimensions, probably an estimate at best</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpnavigationdatetime"><a class="header" href="#aircraftregexpnavigationdatetime">/aircraft/&lt;RegExp&gt;/navigation/datetime</a></h4>
+<p><strong>Description:</strong> Time and Date from the GNSS Positioning System</p>
+<hr />
+<h4 id="aircraftregexpnotifications"><a class="header" href="#aircraftregexpnotifications">/aircraft/&lt;RegExp&gt;/notifications</a></h4>
+<p><strong>Title:</strong> notifications</p>
+<p><strong>Description:</strong> Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure</p>
+<hr />
+<h4 id="aircraftregexpnotificationsregexp"><a class="header" href="#aircraftregexpnotificationsregexp">/aircraft/&lt;RegExp&gt;/notifications/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the path of the alarm</p>
+<hr />
+<h4 id="aircraftregexpdesign"><a class="header" href="#aircraftregexpdesign">/aircraft/&lt;RegExp&gt;/design</a></h4>
+<p><strong>Title:</strong> design</p>
+<p><strong>Description:</strong> Design/dimensional data of this aircraft</p>
+<hr />
+<h4 id="aircraftregexpdesigndisplacement"><a class="header" href="#aircraftregexpdesigndisplacement">/aircraft/&lt;RegExp&gt;/design/displacement</a></h4>
+<p><strong>Units:</strong> kg (Kilogram)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpdesignaisshiptype"><a class="header" href="#aircraftregexpdesignaisshiptype">/aircraft/&lt;RegExp&gt;/design/aisShipType</a></h4>
+<p><strong>Description:</strong> The ais ship type see http://www.bosunsmate.org/ais/message5.php</p>
+<p>Object value with properties</p>
+<ul>
+<li>id</li>
+<li>name</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpdesigndraft"><a class="header" href="#aircraftregexpdesigndraft">/aircraft/&lt;RegExp&gt;/design/draft</a></h4>
+<p><strong>Title:</strong> draft</p>
+<p><strong>Description:</strong> The draft of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>minimum (m)</li>
+<li>maximum (m)</li>
+<li>current (m)</li>
+<li>canoe (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpdesignlength"><a class="header" href="#aircraftregexpdesignlength">/aircraft/&lt;RegExp&gt;/design/length</a></h4>
+<p><strong>Title:</strong> length</p>
+<p><strong>Description:</strong> The various lengths of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>overall (m)</li>
+<li>hull (m)</li>
+<li>waterline (m)</li>
+</ul>
+<hr />
+<h4 id="aircraftregexpdesignkeel"><a class="header" href="#aircraftregexpdesignkeel">/aircraft/&lt;RegExp&gt;/design/keel</a></h4>
+<p><strong>Title:</strong> keel</p>
+<p><strong>Description:</strong> Information about the vessel's keel</p>
+<hr />
+<h4 id="aircraftregexpdesignkeelangle"><a class="header" href="#aircraftregexpdesignkeelangle">/aircraft/&lt;RegExp&gt;/design/keel/angle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpdesignkeellift"><a class="header" href="#aircraftregexpdesignkeellift">/aircraft/&lt;RegExp&gt;/design/keel/lift</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpdesignbeam"><a class="header" href="#aircraftregexpdesignbeam">/aircraft/&lt;RegExp&gt;/design/beam</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpdesignairheight"><a class="header" href="#aircraftregexpdesignairheight">/aircraft/&lt;RegExp&gt;/design/airHeight</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpdesignrigging"><a class="header" href="#aircraftregexpdesignrigging">/aircraft/&lt;RegExp&gt;/design/rigging</a></h4>
+<p><strong>Title:</strong> rigging</p>
+<p><strong>Description:</strong> Information about the vessel's rigging</p>
+<hr />
+<h4 id="aircraftregexpsensors"><a class="header" href="#aircraftregexpsensors">/aircraft/&lt;RegExp&gt;/sensors</a></h4>
+<p><strong>Title:</strong> sensors</p>
+<p><strong>Description:</strong> Sensors, their state, and data.</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexp"><a class="header" href="#aircraftregexpsensorsregexp">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> sensor</p>
+<p><strong>Description:</strong> This regex pattern is used for validation UUID identifier for the sensor</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpname"><a class="header" href="#aircraftregexpsensorsregexpname">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The common name of the sensor</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpsensortype"><a class="header" href="#aircraftregexpsensorsregexpsensortype">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorType</a></h4>
+<p><strong>Description:</strong> The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpsensordata"><a class="header" href="#aircraftregexpsensorsregexpsensordata">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorData</a></h4>
+<p><strong>Description:</strong> The data of the sensor data. FIXME - need to ref the definitions of sensor types</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpfrombow"><a class="header" href="#aircraftregexpsensorsregexpfrombow">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromBow</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpfromcenter"><a class="header" href="#aircraftregexpsensorsregexpfromcenter">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromCenter</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="aircraftregexpsensorsregexpclass"><a class="header" href="#aircraftregexpsensorsregexpclass">/aircraft/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/class</a></h4>
+<p><strong>Description:</strong> AIS transponder class in sensors.ais.class, A or B</p>
+<hr />
+<h4 id="aton"><a class="header" href="#aton">/aton</a></h4>
+<p><strong>Description:</strong> A wrapper object for Aids to Navigation (aton's)</p>
+<hr />
+<h4 id="atonregexp"><a class="header" href="#atonregexp">/aton/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> aid to navigation</p>
+<p><strong>Description:</strong> This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aid to navigation. Examples: urn:mrn:imo:mmsi:991099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d</p>
+<hr />
+<h4 id="atonregexpurl"><a class="header" href="#atonregexpurl">/aton/&lt;RegExp&gt;/url</a></h4>
+<p><strong>Description:</strong> URL based identity of the aid to navigation, if available.</p>
+<hr />
+<h4 id="atonregexpmmsi"><a class="header" href="#atonregexpmmsi">/aton/&lt;RegExp&gt;/mmsi</a></h4>
+<p><strong>Description:</strong> MMSI number of the aid to navigation, if available.</p>
+<hr />
+<h4 id="atonregexpuuid"><a class="header" href="#atonregexpuuid">/aton/&lt;RegExp&gt;/uuid</a></h4>
+<p><strong>Description:</strong> A unique Signal K flavoured maritime resource identifier, assigned by the server.</p>
+<hr />
+<h4 id="atonregexpatontype"><a class="header" href="#atonregexpatontype">/aton/&lt;RegExp&gt;/atonType</a></h4>
+<p><strong>Description:</strong> The aton type</p>
+<p>Object value with properties</p>
+<ul>
+<li>id</li>
+<li>name</li>
+</ul>
+<hr />
+<h4 id="atonregexpname"><a class="header" href="#atonregexpname">/aton/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The aton name</p>
+<hr />
+<h4 id="atonregexpcommunication"><a class="header" href="#atonregexpcommunication">/aton/&lt;RegExp&gt;/communication</a></h4>
+<p><strong>Title:</strong> communication</p>
+<p><strong>Description:</strong> Communication data including Radio, Telephone, E-Mail, etc.</p>
+<hr />
+<h4 id="atonregexpcommunicationcallsignvhf"><a class="header" href="#atonregexpcommunicationcallsignvhf">/aton/&lt;RegExp&gt;/communication/callsignVhf</a></h4>
+<p><strong>Description:</strong> Callsign for VHF communication</p>
+<hr />
+<h4 id="atonregexpcommunicationcallsignhf"><a class="header" href="#atonregexpcommunicationcallsignhf">/aton/&lt;RegExp&gt;/communication/callsignHf</a></h4>
+<p><strong>Description:</strong> Callsign for HF communication</p>
+<hr />
+<h4 id="atonregexpcommunicationphonenumber"><a class="header" href="#atonregexpcommunicationphonenumber">/aton/&lt;RegExp&gt;/communication/phoneNumber</a></h4>
+<p><strong>Description:</strong> Phone number of skipper</p>
+<hr />
+<h4 id="atonregexpcommunicationemailhf"><a class="header" href="#atonregexpcommunicationemailhf">/aton/&lt;RegExp&gt;/communication/emailHf</a></h4>
+<p><strong>Description:</strong> Email address to be used for HF email (Winmail, Airmail, Sailmail)</p>
+<hr />
+<h4 id="atonregexpcommunicationemail"><a class="header" href="#atonregexpcommunicationemail">/aton/&lt;RegExp&gt;/communication/email</a></h4>
+<p><strong>Description:</strong> Regular email for the skipper</p>
+<hr />
+<h4 id="atonregexpcommunicationsatphonenumber"><a class="header" href="#atonregexpcommunicationsatphonenumber">/aton/&lt;RegExp&gt;/communication/satPhoneNumber</a></h4>
+<p><strong>Description:</strong> Satellite phone number for vessel.</p>
+<hr />
+<h4 id="atonregexpcommunicationskippername"><a class="header" href="#atonregexpcommunicationskippername">/aton/&lt;RegExp&gt;/communication/skipperName</a></h4>
+<p><strong>Description:</strong> Full name of the skipper of the vessel.</p>
+<hr />
+<h4 id="atonregexpcommunicationcrewnames"><a class="header" href="#atonregexpcommunicationcrewnames">/aton/&lt;RegExp&gt;/communication/crewNames</a></h4>
+<p><strong>Description:</strong> Array with the names of the crew</p>
+<hr />
+<h4 id="atonregexpenvironment"><a class="header" href="#atonregexpenvironment">/aton/&lt;RegExp&gt;/environment</a></h4>
+<p><strong>Title:</strong> environment</p>
+<p><strong>Description:</strong> Environmental data measured locally including Depth, Wind, Temp, etc.</p>
+<hr />
+<h4 id="atonregexpenvironmentoutside"><a class="header" href="#atonregexpenvironmentoutside">/aton/&lt;RegExp&gt;/environment/outside</a></h4>
+<p><strong>Description:</strong> Environmental conditions outside of the vessel's hull</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsidetemperature"><a class="header" href="#atonregexpenvironmentoutsidetemperature">/aton/&lt;RegExp&gt;/environment/outside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside air temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsidedewpointtemperature"><a class="header" href="#atonregexpenvironmentoutsidedewpointtemperature">/aton/&lt;RegExp&gt;/environment/outside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside dew point temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsideapparentwindchilltemperature"><a class="header" href="#atonregexpenvironmentoutsideapparentwindchilltemperature">/aton/&lt;RegExp&gt;/environment/outside/apparentWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside apparent wind chill temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsidetheoreticalwindchilltemperature"><a class="header" href="#atonregexpenvironmentoutsidetheoreticalwindchilltemperature">/aton/&lt;RegExp&gt;/environment/outside/theoreticalWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside theoretical wind chill temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsideheatindextemperature"><a class="header" href="#atonregexpenvironmentoutsideheatindextemperature">/aton/&lt;RegExp&gt;/environment/outside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside heat index temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsidepressure"><a class="header" href="#atonregexpenvironmentoutsidepressure">/aton/&lt;RegExp&gt;/environment/outside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Current outside air ambient pressure</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsidehumidity"><a class="header" href="#atonregexpenvironmentoutsidehumidity">/aton/&lt;RegExp&gt;/environment/outside/humidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> DEPRECATED: use relativeHumidity</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsiderelativehumidity"><a class="header" href="#atonregexpenvironmentoutsiderelativehumidity">/aton/&lt;RegExp&gt;/environment/outside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Current outside air relative humidity</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsideairdensity"><a class="header" href="#atonregexpenvironmentoutsideairdensity">/aton/&lt;RegExp&gt;/environment/outside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Current outside air density</p>
+<hr />
+<h4 id="atonregexpenvironmentoutsideilluminance"><a class="header" href="#atonregexpenvironmentoutsideilluminance">/aton/&lt;RegExp&gt;/environment/outside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Current outside ambient light flux.</p>
+<hr />
+<h4 id="atonregexpenvironmentinside"><a class="header" href="#atonregexpenvironmentinside">/aton/&lt;RegExp&gt;/environment/inside</a></h4>
+<p><strong>Description:</strong> Environmental conditions inside the vessel's hull</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidetemperature"><a class="header" href="#atonregexpenvironmentinsidetemperature">/aton/&lt;RegExp&gt;/environment/inside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentinsideheatindextemperature"><a class="header" href="#atonregexpenvironmentinsideheatindextemperature">/aton/&lt;RegExp&gt;/environment/inside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidepressure"><a class="header" href="#atonregexpenvironmentinsidepressure">/aton/&lt;RegExp&gt;/environment/inside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsiderelativehumidity"><a class="header" href="#atonregexpenvironmentinsiderelativehumidity">/aton/&lt;RegExp&gt;/environment/inside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidedewpoint"><a class="header" href="#atonregexpenvironmentinsidedewpoint">/aton/&lt;RegExp&gt;/environment/inside/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidedewpointtemperature"><a class="header" href="#atonregexpenvironmentinsidedewpointtemperature">/aton/&lt;RegExp&gt;/environment/inside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsideairdensity"><a class="header" href="#atonregexpenvironmentinsideairdensity">/aton/&lt;RegExp&gt;/environment/inside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsideilluminance"><a class="header" href="#atonregexpenvironmentinsideilluminance">/aton/&lt;RegExp&gt;/environment/inside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the identifier for the environmental zone, eg. engineRoom, mainCabin, refrigerator</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9temperature"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9temperature">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9heatindextemperature"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9heatindextemperature">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9pressure"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9pressure">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9relativehumidity"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9relativehumidity">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9dewpoint"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9dewpoint">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9dewpointtemperature"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9dewpointtemperature">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9airdensity"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9airdensity">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentinsidea-za-z0-9illuminance"><a class="header" href="#atonregexpenvironmentinsidea-za-z0-9illuminance">/aton/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="atonregexpenvironmentwater"><a class="header" href="#atonregexpenvironmentwater">/aton/&lt;RegExp&gt;/environment/water</a></h4>
+<p><strong>Description:</strong> Environmental conditions of the water that the vessel is sailing in</p>
+<hr />
+<h4 id="atonregexpenvironmentwatertemperature"><a class="header" href="#atonregexpenvironmentwatertemperature">/aton/&lt;RegExp&gt;/environment/water/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current water temperature</p>
+<hr />
+<h4 id="atonregexpenvironmentwatersalinity"><a class="header" href="#atonregexpenvironmentwatersalinity">/aton/&lt;RegExp&gt;/environment/water/salinity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Water salinity</p>
+<hr />
+<h4 id="atonregexpenvironmentdepth"><a class="header" href="#atonregexpenvironmentdepth">/aton/&lt;RegExp&gt;/environment/depth</a></h4>
+<p><strong>Title:</strong> depth</p>
+<p><strong>Description:</strong> Depth related data</p>
+<hr />
+<h4 id="atonregexpenvironmentdepthbelowkeel"><a class="header" href="#atonregexpenvironmentdepthbelowkeel">/aton/&lt;RegExp&gt;/environment/depth/belowKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below keel</p>
+<hr />
+<h4 id="atonregexpenvironmentdepthbelowtransducer"><a class="header" href="#atonregexpenvironmentdepthbelowtransducer">/aton/&lt;RegExp&gt;/environment/depth/belowTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below Transducer</p>
+<hr />
+<h4 id="atonregexpenvironmentdepthbelowsurface"><a class="header" href="#atonregexpenvironmentdepthbelowsurface">/aton/&lt;RegExp&gt;/environment/depth/belowSurface</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from surface</p>
+<hr />
+<h4 id="atonregexpenvironmentdepthtransducertokeel"><a class="header" href="#atonregexpenvironmentdepthtransducertokeel">/aton/&lt;RegExp&gt;/environment/depth/transducerToKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from the transducer to the bottom of the keel</p>
+<hr />
+<h4 id="atonregexpenvironmentdepthsurfacetotransducer"><a class="header" href="#atonregexpenvironmentdepthsurfacetotransducer">/aton/&lt;RegExp&gt;/environment/depth/surfaceToTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth transducer is below the water surface</p>
+<hr />
+<h4 id="atonregexpenvironmentcurrent"><a class="header" href="#atonregexpenvironmentcurrent">/aton/&lt;RegExp&gt;/environment/current</a></h4>
+<p><strong>Title:</strong> current</p>
+<p><strong>Description:</strong> Direction and strength of current affecting the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>drift (m/s)</li>
+<li>setTrue (rad)</li>
+<li>setMagnetic (rad)</li>
+</ul>
+<hr />
+<h4 id="atonregexpenvironmenttide"><a class="header" href="#atonregexpenvironmenttide">/aton/&lt;RegExp&gt;/environment/tide</a></h4>
+<p><strong>Title:</strong> tide</p>
+<p><strong>Description:</strong> Tide data</p>
+<hr />
+<h4 id="atonregexpenvironmenttideheighthigh"><a class="header" href="#atonregexpenvironmenttideheighthigh">/aton/&lt;RegExp&gt;/environment/tide/heightHigh</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="atonregexpenvironmenttideheightnow"><a class="header" href="#atonregexpenvironmenttideheightnow">/aton/&lt;RegExp&gt;/environment/tide/heightNow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="atonregexpenvironmenttideheightlow"><a class="header" href="#atonregexpenvironmenttideheightlow">/aton/&lt;RegExp&gt;/environment/tide/heightLow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="atonregexpenvironmenttidetimelow"><a class="header" href="#atonregexpenvironmenttidetimelow">/aton/&lt;RegExp&gt;/environment/tide/timeLow</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="atonregexpenvironmenttidetimehigh"><a class="header" href="#atonregexpenvironmenttidetimehigh">/aton/&lt;RegExp&gt;/environment/tide/timeHigh</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="atonregexpenvironmentheave"><a class="header" href="#atonregexpenvironmentheave">/aton/&lt;RegExp&gt;/environment/heave</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Vertical movement of the vessel due to waves</p>
+<hr />
+<h4 id="atonregexpenvironmentwind"><a class="header" href="#atonregexpenvironmentwind">/aton/&lt;RegExp&gt;/environment/wind</a></h4>
+<p><strong>Title:</strong> wind</p>
+<p><strong>Description:</strong> Wind data.</p>
+<hr />
+<h4 id="atonregexpenvironmentwindangleapparent"><a class="header" href="#atonregexpenvironmentwindangleapparent">/aton/&lt;RegExp&gt;/environment/wind/angleApparent</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Apparent wind angle, negative to port</p>
+<hr />
+<h4 id="atonregexpenvironmentwindangletrueground"><a class="header" href="#atonregexpenvironmentwindangletrueground">/aton/&lt;RegExp&gt;/environment/wind/angleTrueGround</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed over ground, negative to port</p>
+<hr />
+<h4 id="atonregexpenvironmentwindangletruewater"><a class="header" href="#atonregexpenvironmentwindangletruewater">/aton/&lt;RegExp&gt;/environment/wind/angleTrueWater</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed through water, negative to port</p>
+<hr />
+<h4 id="atonregexpenvironmentwinddirectionchangealarm"><a class="header" href="#atonregexpenvironmentwinddirectionchangealarm">/aton/&lt;RegExp&gt;/environment/wind/directionChangeAlarm</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The angle the wind needs to shift to raise an alarm</p>
+<hr />
+<h4 id="atonregexpenvironmentwinddirectiontrue"><a class="header" href="#atonregexpenvironmentwinddirectiontrue">/aton/&lt;RegExp&gt;/environment/wind/directionTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to true north</p>
+<hr />
+<h4 id="atonregexpenvironmentwinddirectionmagnetic"><a class="header" href="#atonregexpenvironmentwinddirectionmagnetic">/aton/&lt;RegExp&gt;/environment/wind/directionMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to magnetic north</p>
+<hr />
+<h4 id="atonregexpenvironmentwindspeedtrue"><a class="header" href="#atonregexpenvironmentwindspeedtrue">/aton/&lt;RegExp&gt;/environment/wind/speedTrue</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over water (as calculated from speedApparent and vessel's speed through water)</p>
+<hr />
+<h4 id="atonregexpenvironmentwindspeedoverground"><a class="header" href="#atonregexpenvironmentwindspeedoverground">/aton/&lt;RegExp&gt;/environment/wind/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)</p>
+<hr />
+<h4 id="atonregexpenvironmentwindspeedapparent"><a class="header" href="#atonregexpenvironmentwindspeedapparent">/aton/&lt;RegExp&gt;/environment/wind/speedApparent</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Apparent wind speed</p>
+<hr />
+<h4 id="atonregexpenvironmenttime"><a class="header" href="#atonregexpenvironmenttime">/aton/&lt;RegExp&gt;/environment/time</a></h4>
+<p><strong>Description:</strong> A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)</p>
+<hr />
+<h4 id="atonregexpenvironmentmode"><a class="header" href="#atonregexpenvironmentmode">/aton/&lt;RegExp&gt;/environment/mode</a></h4>
+<p><strong>Description:</strong> Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.</p>
+<hr />
+<h4 id="atonregexpnavigation"><a class="header" href="#atonregexpnavigation">/aton/&lt;RegExp&gt;/navigation</a></h4>
+<p><strong>Title:</strong> navigation</p>
+<p><strong>Description:</strong> Navigation data including Position, Course to next WP information, etc.</p>
+<hr />
+<h4 id="atonregexpnavigationlights"><a class="header" href="#atonregexpnavigationlights">/aton/&lt;RegExp&gt;/navigation/lights</a></h4>
+<p><strong>Title:</strong> Navigation lights</p>
+<p><strong>Description:</strong> Current state of the vessels navigation lights</p>
+<hr />
+<h4 id="atonregexpnavigationcourseovergroundmagnetic"><a class="header" href="#atonregexpnavigationcourseovergroundmagnetic">/aton/&lt;RegExp&gt;/navigation/courseOverGroundMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (magnetic)</p>
+<hr />
+<h4 id="atonregexpnavigationcourseovergroundtrue"><a class="header" href="#atonregexpnavigationcourseovergroundtrue">/aton/&lt;RegExp&gt;/navigation/courseOverGroundTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (true)</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumbline"><a class="header" href="#atonregexpnavigationcourserhumbline">/aton/&lt;RegExp&gt;/navigation/courseRhumbline</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Rhumbline</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinecrosstrackerror"><a class="header" href="#atonregexpnavigationcourserhumblinecrosstrackerror">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinebearingtracktrue"><a class="header" href="#atonregexpnavigationcourserhumblinebearingtracktrue">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinebearingtrackmagnetic"><a class="header" href="#atonregexpnavigationcourserhumblinebearingtrackmagnetic">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblineactiveroute"><a class="header" href="#atonregexpnavigationcourserhumblineactiveroute">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblineactiveroutehref"><a class="header" href="#atonregexpnavigationcourserhumblineactiveroutehref">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival"><a class="header" href="#atonregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblineactiveroutestarttime"><a class="header" href="#atonregexpnavigationcourserhumblineactiveroutestarttime">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinenextpoint"><a class="header" href="#atonregexpnavigationcourserhumblinenextpoint">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinepreviouspoint"><a class="header" href="#atonregexpnavigationcourserhumblinepreviouspoint">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinepreviouspointdistance"><a class="header" href="#atonregexpnavigationcourserhumblinepreviouspointdistance">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="atonregexpnavigationcourserhumblinepreviouspointposition"><a class="header" href="#atonregexpnavigationcourserhumblinepreviouspointposition">/aton/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcircle"><a class="header" href="#atonregexpnavigationcoursegreatcircle">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Great Circle</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclecrosstrackerror"><a class="header" href="#atonregexpnavigationcoursegreatcirclecrosstrackerror">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclebearingtracktrue"><a class="header" href="#atonregexpnavigationcoursegreatcirclebearingtracktrue">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclebearingtrackmagnetic"><a class="header" href="#atonregexpnavigationcoursegreatcirclebearingtrackmagnetic">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcircleactiveroute"><a class="header" href="#atonregexpnavigationcoursegreatcircleactiveroute">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcircleactiveroutehref"><a class="header" href="#atonregexpnavigationcoursegreatcircleactiveroutehref">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival"><a class="header" href="#atonregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcircleactiveroutestarttime"><a class="header" href="#atonregexpnavigationcoursegreatcircleactiveroutestarttime">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclenextpoint"><a class="header" href="#atonregexpnavigationcoursegreatcirclenextpoint">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclepreviouspoint"><a class="header" href="#atonregexpnavigationcoursegreatcirclepreviouspoint">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclepreviouspointdistance"><a class="header" href="#atonregexpnavigationcoursegreatcirclepreviouspointdistance">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="atonregexpnavigationcoursegreatcirclepreviouspointposition"><a class="header" href="#atonregexpnavigationcoursegreatcirclepreviouspointposition">/aton/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationclosestapproach"><a class="header" href="#atonregexpnavigationclosestapproach">/aton/&lt;RegExp&gt;/navigation/closestApproach</a></h4>
+<p><strong>Description:</strong> Calculated values for other vessels, e.g. from AIS</p>
+<p>Object value with properties</p>
+<ul>
+<li>distance (m)</li>
+<li>timeTo (s)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationracing"><a class="header" href="#atonregexpnavigationracing">/aton/&lt;RegExp&gt;/navigation/racing</a></h4>
+<p><strong>Description:</strong> Specific navigational data related to yacht racing.</p>
+<hr />
+<h4 id="atonregexpnavigationracingstartlinestb"><a class="header" href="#atonregexpnavigationracingstartlinestb">/aton/&lt;RegExp&gt;/navigation/racing/startLineStb</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of starboard start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationracingstartlineport"><a class="header" href="#atonregexpnavigationracingstartlineport">/aton/&lt;RegExp&gt;/navigation/racing/startLinePort</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of port start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationracingdistancestartline"><a class="header" href="#atonregexpnavigationracingdistancestartline">/aton/&lt;RegExp&gt;/navigation/racing/distanceStartline</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the start line</p>
+<hr />
+<h4 id="atonregexpnavigationracingtimetostart"><a class="header" href="#atonregexpnavigationracingtimetostart">/aton/&lt;RegExp&gt;/navigation/racing/timeToStart</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time left before start</p>
+<hr />
+<h4 id="atonregexpnavigationracingtimeportdown"><a class="header" href="#atonregexpnavigationracingtimeportdown">/aton/&lt;RegExp&gt;/navigation/racing/timePortDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning downwind</p>
+<hr />
+<h4 id="atonregexpnavigationracingtimeportup"><a class="header" href="#atonregexpnavigationracingtimeportup">/aton/&lt;RegExp&gt;/navigation/racing/timePortUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning upwind</p>
+<hr />
+<h4 id="atonregexpnavigationracingtimestbddown"><a class="header" href="#atonregexpnavigationracingtimestbddown">/aton/&lt;RegExp&gt;/navigation/racing/timeStbdDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning downwind</p>
+<hr />
+<h4 id="atonregexpnavigationracingtimestbdup"><a class="header" href="#atonregexpnavigationracingtimestbdup">/aton/&lt;RegExp&gt;/navigation/racing/timeStbdUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning upwind</p>
+<hr />
+<h4 id="atonregexpnavigationracinglayline"><a class="header" href="#atonregexpnavigationracinglayline">/aton/&lt;RegExp&gt;/navigation/racing/layline</a></h4>
+<p><strong>Description:</strong> The layline crossing the current course</p>
+<hr />
+<h4 id="atonregexpnavigationracinglaylinedistance"><a class="header" href="#atonregexpnavigationracinglaylinedistance">/aton/&lt;RegExp&gt;/navigation/racing/layline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="atonregexpnavigationracinglaylinetime"><a class="header" href="#atonregexpnavigationracinglaylinetime">/aton/&lt;RegExp&gt;/navigation/racing/layline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="atonregexpnavigationracingoppositelayline"><a class="header" href="#atonregexpnavigationracingoppositelayline">/aton/&lt;RegExp&gt;/navigation/racing/oppositeLayline</a></h4>
+<p><strong>Description:</strong> The layline parallell to current course</p>
+<hr />
+<h4 id="atonregexpnavigationracingoppositelaylinedistance"><a class="header" href="#atonregexpnavigationracingoppositelaylinedistance">/aton/&lt;RegExp&gt;/navigation/racing/oppositeLayline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="atonregexpnavigationracingoppositelaylinetime"><a class="header" href="#atonregexpnavigationracingoppositelaylinetime">/aton/&lt;RegExp&gt;/navigation/racing/oppositeLayline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="atonregexpnavigationmagneticvariation"><a class="header" href="#atonregexpnavigationmagneticvariation">/aton/&lt;RegExp&gt;/navigation/magneticVariation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The magnetic variation (declination) at the current position that must be added to the magnetic heading to derive the true heading. Easterly variations are positive and Westerly variations are negative (in Radians).</p>
+<hr />
+<h4 id="atonregexpnavigationmagneticvariationageofservice"><a class="header" href="#atonregexpnavigationmagneticvariationageofservice">/aton/&lt;RegExp&gt;/navigation/magneticVariationAgeOfService</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Seconds since the 1st Jan 1970 that the variation calculation was made</p>
+<hr />
+<h4 id="atonregexpnavigationdestination"><a class="header" href="#atonregexpnavigationdestination">/aton/&lt;RegExp&gt;/navigation/destination</a></h4>
+<p><strong>Title:</strong> destination</p>
+<p><strong>Description:</strong> The intended destination of this trip</p>
+<hr />
+<h4 id="atonregexpnavigationdestinationcommonname"><a class="header" href="#atonregexpnavigationdestinationcommonname">/aton/&lt;RegExp&gt;/navigation/destination/commonName</a></h4>
+<p><strong>Description:</strong> Common name of the Destination, eg 'Fiji', also used in ais messages</p>
+<hr />
+<h4 id="atonregexpnavigationdestinationeta"><a class="header" href="#atonregexpnavigationdestinationeta">/aton/&lt;RegExp&gt;/navigation/destination/eta</a></h4>
+<p><strong>Description:</strong> Expected time of arrival at destination waypoint</p>
+<hr />
+<h4 id="atonregexpnavigationdestinationwaypoint"><a class="header" href="#atonregexpnavigationdestinationwaypoint">/aton/&lt;RegExp&gt;/navigation/destination/waypoint</a></h4>
+<p><strong>Description:</strong> UUID of destination waypoint</p>
+<hr />
+<h4 id="atonregexpnavigationgnss"><a class="header" href="#atonregexpnavigationgnss">/aton/&lt;RegExp&gt;/navigation/gnss</a></h4>
+<p><strong>Title:</strong> gnss</p>
+<p><strong>Description:</strong> Global satellite navigation meta information</p>
+<hr />
+<h4 id="atonregexpnavigationgnsstype"><a class="header" href="#atonregexpnavigationgnsstype">/aton/&lt;RegExp&gt;/navigation/gnss/type</a></h4>
+<p><strong>Description:</strong> Fix type</p>
+<hr />
+<h4 id="atonregexpnavigationgnssmethodquality"><a class="header" href="#atonregexpnavigationgnssmethodquality">/aton/&lt;RegExp&gt;/navigation/gnss/methodQuality</a></h4>
+<p><strong>Description:</strong> Quality of the satellite fix</p>
+<hr />
+<h4 id="atonregexpnavigationgnssintegrity"><a class="header" href="#atonregexpnavigationgnssintegrity">/aton/&lt;RegExp&gt;/navigation/gnss/integrity</a></h4>
+<p><strong>Description:</strong> Integrity of the satellite fix</p>
+<hr />
+<h4 id="atonregexpnavigationgnsssatellites"><a class="header" href="#atonregexpnavigationgnsssatellites">/aton/&lt;RegExp&gt;/navigation/gnss/satellites</a></h4>
+<p><strong>Description:</strong> Number of satellites</p>
+<hr />
+<h4 id="atonregexpnavigationgnssantennaaltitude"><a class="header" href="#atonregexpnavigationgnssantennaaltitude">/aton/&lt;RegExp&gt;/navigation/gnss/antennaAltitude</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Altitude of antenna</p>
+<hr />
+<h4 id="atonregexpnavigationgnsshorizontaldilution"><a class="header" href="#atonregexpnavigationgnsshorizontaldilution">/aton/&lt;RegExp&gt;/navigation/gnss/horizontalDilution</a></h4>
+<p><strong>Description:</strong> Horizontal Dilution of Precision</p>
+<hr />
+<h4 id="atonregexpnavigationgnsspositiondilution"><a class="header" href="#atonregexpnavigationgnsspositiondilution">/aton/&lt;RegExp&gt;/navigation/gnss/positionDilution</a></h4>
+<p><strong>Description:</strong> Positional Dilution of Precision</p>
+<hr />
+<h4 id="atonregexpnavigationgnssgeoidalseparation"><a class="header" href="#atonregexpnavigationgnssgeoidalseparation">/aton/&lt;RegExp&gt;/navigation/gnss/geoidalSeparation</a></h4>
+<p><strong>Description:</strong> Difference between WGS84 earth ellipsoid and mean sea level</p>
+<hr />
+<h4 id="atonregexpnavigationgnssdifferentialage"><a class="header" href="#atonregexpnavigationgnssdifferentialage">/aton/&lt;RegExp&gt;/navigation/gnss/differentialAge</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Age of DGPS data</p>
+<hr />
+<h4 id="atonregexpnavigationgnssdifferentialreference"><a class="header" href="#atonregexpnavigationgnssdifferentialreference">/aton/&lt;RegExp&gt;/navigation/gnss/differentialReference</a></h4>
+<p><strong>Description:</strong> ID of DGPS base station</p>
+<hr />
+<h4 id="atonregexpnavigationheadingmagnetic"><a class="header" href="#atonregexpnavigationheadingmagnetic">/aton/&lt;RegExp&gt;/navigation/headingMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading of the vessel, equals 'headingCompass adjusted for magneticDeviation'</p>
+<hr />
+<h4 id="atonregexpnavigationmagneticdeviation"><a class="header" href="#atonregexpnavigationmagneticdeviation">/aton/&lt;RegExp&gt;/navigation/magneticDeviation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Magnetic deviation of the compass at the current headingCompass</p>
+<hr />
+<h4 id="atonregexpnavigationheadingcompass"><a class="header" href="#atonregexpnavigationheadingcompass">/aton/&lt;RegExp&gt;/navigation/headingCompass</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading received from the compass. This is not adjusted for magneticDeviation of the compass</p>
+<hr />
+<h4 id="atonregexpnavigationheadingtrue"><a class="header" href="#atonregexpnavigationheadingtrue">/aton/&lt;RegExp&gt;/navigation/headingTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The current true north heading of the vessel, equals 'headingMagnetic adjusted for magneticVariation'</p>
+<hr />
+<h4 id="atonregexpnavigationposition"><a class="header" href="#atonregexpnavigationposition">/aton/&lt;RegExp&gt;/navigation/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of the vessel in 2 or 3 dimensions (WGS84 datum)</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationattitude"><a class="header" href="#atonregexpnavigationattitude">/aton/&lt;RegExp&gt;/navigation/attitude</a></h4>
+<p><strong>Title:</strong> Attitude</p>
+<p><strong>Description:</strong> Vessel attitude: roll, pitch and yaw</p>
+<p>Object value with properties</p>
+<ul>
+<li>roll (rad)</li>
+<li>pitch (rad)</li>
+<li>yaw (rad)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationmaneuver"><a class="header" href="#atonregexpnavigationmaneuver">/aton/&lt;RegExp&gt;/navigation/maneuver</a></h4>
+<p><strong>Description:</strong> Special maneuver such as regional passing arrangement. (from ais)</p>
+<hr />
+<h4 id="atonregexpnavigationrateofturn"><a class="header" href="#atonregexpnavigationrateofturn">/aton/&lt;RegExp&gt;/navigation/rateOfTurn</a></h4>
+<p><strong>Units:</strong> rad/s (Radian per second)</p>
+<p><strong>Description:</strong> Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications</p>
+<hr />
+<h4 id="atonregexpnavigationspeedoverground"><a class="header" href="#atonregexpnavigationspeedoverground">/aton/&lt;RegExp&gt;/navigation/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed over ground. If converting from AIS 'HIGH' value, set to 102.2 (Ais max value) and add warning in notifications</p>
+<hr />
+<h4 id="atonregexpnavigationspeedthroughwater"><a class="header" href="#atonregexpnavigationspeedthroughwater">/aton/&lt;RegExp&gt;/navigation/speedThroughWater</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed through the water</p>
+<hr />
+<h4 id="atonregexpnavigationspeedthroughwatertransverse"><a class="header" href="#atonregexpnavigationspeedthroughwatertransverse">/aton/&lt;RegExp&gt;/navigation/speedThroughWaterTransverse</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Transverse speed through the water (Leeway)</p>
+<hr />
+<h4 id="atonregexpnavigationspeedthroughwaterlongitudinal"><a class="header" href="#atonregexpnavigationspeedthroughwaterlongitudinal">/aton/&lt;RegExp&gt;/navigation/speedThroughWaterLongitudinal</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Longitudinal speed through the water</p>
+<hr />
+<h4 id="atonregexpnavigationleewayangle"><a class="header" href="#atonregexpnavigationleewayangle">/aton/&lt;RegExp&gt;/navigation/leewayAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Leeway Angle derived from the longitudinal and transverse speeds through the water</p>
+<hr />
+<h4 id="atonregexpnavigationlog"><a class="header" href="#atonregexpnavigationlog">/aton/&lt;RegExp&gt;/navigation/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled</p>
+<hr />
+<h4 id="atonregexpnavigationtrip"><a class="header" href="#atonregexpnavigationtrip">/aton/&lt;RegExp&gt;/navigation/trip</a></h4>
+<p><strong>Description:</strong> Trip data</p>
+<hr />
+<h4 id="atonregexpnavigationtriplog"><a class="header" href="#atonregexpnavigationtriplog">/aton/&lt;RegExp&gt;/navigation/trip/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled on this trip / since trip reset</p>
+<hr />
+<h4 id="atonregexpnavigationtriplastreset"><a class="header" href="#atonregexpnavigationtriplastreset">/aton/&lt;RegExp&gt;/navigation/trip/lastReset</a></h4>
+<p><strong>Description:</strong> Trip log reset time</p>
+<hr />
+<h4 id="atonregexpnavigationstate"><a class="header" href="#atonregexpnavigationstate">/aton/&lt;RegExp&gt;/navigation/state</a></h4>
+<p><strong>Title:</strong> state</p>
+<p><strong>Description:</strong> Current navigational state of the vessel</p>
+<hr />
+<h4 id="atonregexpnavigationanchor"><a class="header" href="#atonregexpnavigationanchor">/aton/&lt;RegExp&gt;/navigation/anchor</a></h4>
+<p><strong>Title:</strong> anchor</p>
+<p><strong>Description:</strong> The anchor data, for anchor watch etc</p>
+<hr />
+<h4 id="atonregexpnavigationanchormaxradius"><a class="header" href="#atonregexpnavigationanchormaxradius">/aton/&lt;RegExp&gt;/navigation/anchor/maxRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Radius of anchor alarm boundary. The distance from anchor to the center of the boat</p>
+<hr />
+<h4 id="atonregexpnavigationanchorcurrentradius"><a class="header" href="#atonregexpnavigationanchorcurrentradius">/aton/&lt;RegExp&gt;/navigation/anchor/currentRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Current distance to anchor</p>
+<hr />
+<h4 id="atonregexpnavigationanchorposition"><a class="header" href="#atonregexpnavigationanchorposition">/aton/&lt;RegExp&gt;/navigation/anchor/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The actual anchor position of the vessel in 3 dimensions, probably an estimate at best</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpnavigationdatetime"><a class="header" href="#atonregexpnavigationdatetime">/aton/&lt;RegExp&gt;/navigation/datetime</a></h4>
+<p><strong>Description:</strong> Time and Date from the GNSS Positioning System</p>
+<hr />
+<h4 id="atonregexpnotifications"><a class="header" href="#atonregexpnotifications">/aton/&lt;RegExp&gt;/notifications</a></h4>
+<p><strong>Title:</strong> notifications</p>
+<p><strong>Description:</strong> Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure</p>
+<hr />
+<h4 id="atonregexpnotificationsregexp"><a class="header" href="#atonregexpnotificationsregexp">/aton/&lt;RegExp&gt;/notifications/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the path of the alarm</p>
+<hr />
+<h4 id="atonregexpdesign"><a class="header" href="#atonregexpdesign">/aton/&lt;RegExp&gt;/design</a></h4>
+<p><strong>Title:</strong> design</p>
+<p><strong>Description:</strong> Design/dimensional data of this </p>
+<hr />
+<h4 id="atonregexpdesigndisplacement"><a class="header" href="#atonregexpdesigndisplacement">/aton/&lt;RegExp&gt;/design/displacement</a></h4>
+<p><strong>Units:</strong> kg (Kilogram)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpdesignaisshiptype"><a class="header" href="#atonregexpdesignaisshiptype">/aton/&lt;RegExp&gt;/design/aisShipType</a></h4>
+<p><strong>Description:</strong> The ais ship type see http://www.bosunsmate.org/ais/message5.php</p>
+<p>Object value with properties</p>
+<ul>
+<li>id</li>
+<li>name</li>
+</ul>
+<hr />
+<h4 id="atonregexpdesigndraft"><a class="header" href="#atonregexpdesigndraft">/aton/&lt;RegExp&gt;/design/draft</a></h4>
+<p><strong>Title:</strong> draft</p>
+<p><strong>Description:</strong> The draft of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>minimum (m)</li>
+<li>maximum (m)</li>
+<li>current (m)</li>
+<li>canoe (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpdesignlength"><a class="header" href="#atonregexpdesignlength">/aton/&lt;RegExp&gt;/design/length</a></h4>
+<p><strong>Title:</strong> length</p>
+<p><strong>Description:</strong> The various lengths of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>overall (m)</li>
+<li>hull (m)</li>
+<li>waterline (m)</li>
+</ul>
+<hr />
+<h4 id="atonregexpdesignkeel"><a class="header" href="#atonregexpdesignkeel">/aton/&lt;RegExp&gt;/design/keel</a></h4>
+<p><strong>Title:</strong> keel</p>
+<p><strong>Description:</strong> Information about the vessel's keel</p>
+<hr />
+<h4 id="atonregexpdesignkeelangle"><a class="header" href="#atonregexpdesignkeelangle">/aton/&lt;RegExp&gt;/design/keel/angle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpdesignkeellift"><a class="header" href="#atonregexpdesignkeellift">/aton/&lt;RegExp&gt;/design/keel/lift</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpdesignbeam"><a class="header" href="#atonregexpdesignbeam">/aton/&lt;RegExp&gt;/design/beam</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpdesignairheight"><a class="header" href="#atonregexpdesignairheight">/aton/&lt;RegExp&gt;/design/airHeight</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpdesignrigging"><a class="header" href="#atonregexpdesignrigging">/aton/&lt;RegExp&gt;/design/rigging</a></h4>
+<p><strong>Title:</strong> rigging</p>
+<p><strong>Description:</strong> Information about the vessel's rigging</p>
+<hr />
+<h4 id="atonregexpsensors"><a class="header" href="#atonregexpsensors">/aton/&lt;RegExp&gt;/sensors</a></h4>
+<p><strong>Title:</strong> sensors</p>
+<p><strong>Description:</strong> Sensors, their state, and data.</p>
+<hr />
+<h4 id="atonregexpsensorsregexp"><a class="header" href="#atonregexpsensorsregexp">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> sensor</p>
+<p><strong>Description:</strong> This regex pattern is used for validation UUID identifier for the sensor</p>
+<hr />
+<h4 id="atonregexpsensorsregexpname"><a class="header" href="#atonregexpsensorsregexpname">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The common name of the sensor</p>
+<hr />
+<h4 id="atonregexpsensorsregexpsensortype"><a class="header" href="#atonregexpsensorsregexpsensortype">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorType</a></h4>
+<p><strong>Description:</strong> The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types</p>
+<hr />
+<h4 id="atonregexpsensorsregexpsensordata"><a class="header" href="#atonregexpsensorsregexpsensordata">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorData</a></h4>
+<p><strong>Description:</strong> The data of the sensor data. FIXME - need to ref the definitions of sensor types</p>
+<hr />
+<h4 id="atonregexpsensorsregexpfrombow"><a class="header" href="#atonregexpsensorsregexpfrombow">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromBow</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpsensorsregexpfromcenter"><a class="header" href="#atonregexpsensorsregexpfromcenter">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromCenter</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="atonregexpsensorsregexpclass"><a class="header" href="#atonregexpsensorsregexpclass">/aton/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/class</a></h4>
+<p><strong>Description:</strong> AIS transponder class in sensors.ais.class, A or B</p>
+<hr />
+<h4 id="sar"><a class="header" href="#sar">/sar</a></h4>
+<p><strong>Description:</strong> A wrapper object for Search And Rescue (SAR) MMSI's usied in transponders. MOB, EPIRBS etc</p>
+<hr />
+<h4 id="sarregexp"><a class="header" href="#sarregexp">/sar/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Search and rescue beacons</p>
+<p><strong>Description:</strong> This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aid to navigation. Examples: urn:mrn:imo:mmsi:972099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d</p>
+<hr />
+<h4 id="sarregexpurl"><a class="header" href="#sarregexpurl">/sar/&lt;RegExp&gt;/url</a></h4>
+<p><strong>Description:</strong> URL based identity of the aid to navigation, if available.</p>
+<hr />
+<h4 id="sarregexpmmsi"><a class="header" href="#sarregexpmmsi">/sar/&lt;RegExp&gt;/mmsi</a></h4>
+<p><strong>Description:</strong> MMSI number of the aid to navigation, if available.</p>
+<hr />
+<h4 id="sarregexpuuid"><a class="header" href="#sarregexpuuid">/sar/&lt;RegExp&gt;/uuid</a></h4>
+<p><strong>Description:</strong> A unique Signal K flavoured maritime resource identifier, assigned by the server.</p>
+<hr />
+<h4 id="sarregexpcommunication"><a class="header" href="#sarregexpcommunication">/sar/&lt;RegExp&gt;/communication</a></h4>
+<p><strong>Title:</strong> communication</p>
+<p><strong>Description:</strong> Communication data including Radio, Telephone, E-Mail, etc.</p>
+<hr />
+<h4 id="sarregexpcommunicationcallsignvhf"><a class="header" href="#sarregexpcommunicationcallsignvhf">/sar/&lt;RegExp&gt;/communication/callsignVhf</a></h4>
+<p><strong>Description:</strong> Callsign for VHF communication</p>
+<hr />
+<h4 id="sarregexpcommunicationcallsignhf"><a class="header" href="#sarregexpcommunicationcallsignhf">/sar/&lt;RegExp&gt;/communication/callsignHf</a></h4>
+<p><strong>Description:</strong> Callsign for HF communication</p>
+<hr />
+<h4 id="sarregexpcommunicationphonenumber"><a class="header" href="#sarregexpcommunicationphonenumber">/sar/&lt;RegExp&gt;/communication/phoneNumber</a></h4>
+<p><strong>Description:</strong> Phone number of skipper</p>
+<hr />
+<h4 id="sarregexpcommunicationemailhf"><a class="header" href="#sarregexpcommunicationemailhf">/sar/&lt;RegExp&gt;/communication/emailHf</a></h4>
+<p><strong>Description:</strong> Email address to be used for HF email (Winmail, Airmail, Sailmail)</p>
+<hr />
+<h4 id="sarregexpcommunicationemail"><a class="header" href="#sarregexpcommunicationemail">/sar/&lt;RegExp&gt;/communication/email</a></h4>
+<p><strong>Description:</strong> Regular email for the skipper</p>
+<hr />
+<h4 id="sarregexpcommunicationsatphonenumber"><a class="header" href="#sarregexpcommunicationsatphonenumber">/sar/&lt;RegExp&gt;/communication/satPhoneNumber</a></h4>
+<p><strong>Description:</strong> Satellite phone number for vessel.</p>
+<hr />
+<h4 id="sarregexpcommunicationskippername"><a class="header" href="#sarregexpcommunicationskippername">/sar/&lt;RegExp&gt;/communication/skipperName</a></h4>
+<p><strong>Description:</strong> Full name of the skipper of the vessel.</p>
+<hr />
+<h4 id="sarregexpcommunicationcrewnames"><a class="header" href="#sarregexpcommunicationcrewnames">/sar/&lt;RegExp&gt;/communication/crewNames</a></h4>
+<p><strong>Description:</strong> Array with the names of the crew</p>
+<hr />
+<h4 id="sarregexpnavigation"><a class="header" href="#sarregexpnavigation">/sar/&lt;RegExp&gt;/navigation</a></h4>
+<p><strong>Title:</strong> navigation</p>
+<p><strong>Description:</strong> Navigation data including Position, Course to next WP information, etc.</p>
+<hr />
+<h4 id="sarregexpnavigationlights"><a class="header" href="#sarregexpnavigationlights">/sar/&lt;RegExp&gt;/navigation/lights</a></h4>
+<p><strong>Title:</strong> Navigation lights</p>
+<p><strong>Description:</strong> Current state of the vessels navigation lights</p>
+<hr />
+<h4 id="sarregexpnavigationcourseovergroundmagnetic"><a class="header" href="#sarregexpnavigationcourseovergroundmagnetic">/sar/&lt;RegExp&gt;/navigation/courseOverGroundMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (magnetic)</p>
+<hr />
+<h4 id="sarregexpnavigationcourseovergroundtrue"><a class="header" href="#sarregexpnavigationcourseovergroundtrue">/sar/&lt;RegExp&gt;/navigation/courseOverGroundTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (true)</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumbline"><a class="header" href="#sarregexpnavigationcourserhumbline">/sar/&lt;RegExp&gt;/navigation/courseRhumbline</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Rhumbline</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinecrosstrackerror"><a class="header" href="#sarregexpnavigationcourserhumblinecrosstrackerror">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinebearingtracktrue"><a class="header" href="#sarregexpnavigationcourserhumblinebearingtracktrue">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinebearingtrackmagnetic"><a class="header" href="#sarregexpnavigationcourserhumblinebearingtrackmagnetic">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblineactiveroute"><a class="header" href="#sarregexpnavigationcourserhumblineactiveroute">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblineactiveroutehref"><a class="header" href="#sarregexpnavigationcourserhumblineactiveroutehref">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival"><a class="header" href="#sarregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblineactiveroutestarttime"><a class="header" href="#sarregexpnavigationcourserhumblineactiveroutestarttime">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinenextpoint"><a class="header" href="#sarregexpnavigationcourserhumblinenextpoint">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinepreviouspoint"><a class="header" href="#sarregexpnavigationcourserhumblinepreviouspoint">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinepreviouspointdistance"><a class="header" href="#sarregexpnavigationcourserhumblinepreviouspointdistance">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="sarregexpnavigationcourserhumblinepreviouspointposition"><a class="header" href="#sarregexpnavigationcourserhumblinepreviouspointposition">/sar/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcircle"><a class="header" href="#sarregexpnavigationcoursegreatcircle">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Great Circle</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclecrosstrackerror"><a class="header" href="#sarregexpnavigationcoursegreatcirclecrosstrackerror">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclebearingtracktrue"><a class="header" href="#sarregexpnavigationcoursegreatcirclebearingtracktrue">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclebearingtrackmagnetic"><a class="header" href="#sarregexpnavigationcoursegreatcirclebearingtrackmagnetic">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcircleactiveroute"><a class="header" href="#sarregexpnavigationcoursegreatcircleactiveroute">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcircleactiveroutehref"><a class="header" href="#sarregexpnavigationcoursegreatcircleactiveroutehref">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival"><a class="header" href="#sarregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcircleactiveroutestarttime"><a class="header" href="#sarregexpnavigationcoursegreatcircleactiveroutestarttime">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclenextpoint"><a class="header" href="#sarregexpnavigationcoursegreatcirclenextpoint">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclepreviouspoint"><a class="header" href="#sarregexpnavigationcoursegreatcirclepreviouspoint">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclepreviouspointdistance"><a class="header" href="#sarregexpnavigationcoursegreatcirclepreviouspointdistance">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="sarregexpnavigationcoursegreatcirclepreviouspointposition"><a class="header" href="#sarregexpnavigationcoursegreatcirclepreviouspointposition">/sar/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationclosestapproach"><a class="header" href="#sarregexpnavigationclosestapproach">/sar/&lt;RegExp&gt;/navigation/closestApproach</a></h4>
+<p><strong>Description:</strong> Calculated values for other vessels, e.g. from AIS</p>
+<p>Object value with properties</p>
+<ul>
+<li>distance (m)</li>
+<li>timeTo (s)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationracing"><a class="header" href="#sarregexpnavigationracing">/sar/&lt;RegExp&gt;/navigation/racing</a></h4>
+<p><strong>Description:</strong> Specific navigational data related to yacht racing.</p>
+<hr />
+<h4 id="sarregexpnavigationracingstartlinestb"><a class="header" href="#sarregexpnavigationracingstartlinestb">/sar/&lt;RegExp&gt;/navigation/racing/startLineStb</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of starboard start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationracingstartlineport"><a class="header" href="#sarregexpnavigationracingstartlineport">/sar/&lt;RegExp&gt;/navigation/racing/startLinePort</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of port start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationracingdistancestartline"><a class="header" href="#sarregexpnavigationracingdistancestartline">/sar/&lt;RegExp&gt;/navigation/racing/distanceStartline</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the start line</p>
+<hr />
+<h4 id="sarregexpnavigationracingtimetostart"><a class="header" href="#sarregexpnavigationracingtimetostart">/sar/&lt;RegExp&gt;/navigation/racing/timeToStart</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time left before start</p>
+<hr />
+<h4 id="sarregexpnavigationracingtimeportdown"><a class="header" href="#sarregexpnavigationracingtimeportdown">/sar/&lt;RegExp&gt;/navigation/racing/timePortDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning downwind</p>
+<hr />
+<h4 id="sarregexpnavigationracingtimeportup"><a class="header" href="#sarregexpnavigationracingtimeportup">/sar/&lt;RegExp&gt;/navigation/racing/timePortUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning upwind</p>
+<hr />
+<h4 id="sarregexpnavigationracingtimestbddown"><a class="header" href="#sarregexpnavigationracingtimestbddown">/sar/&lt;RegExp&gt;/navigation/racing/timeStbdDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning downwind</p>
+<hr />
+<h4 id="sarregexpnavigationracingtimestbdup"><a class="header" href="#sarregexpnavigationracingtimestbdup">/sar/&lt;RegExp&gt;/navigation/racing/timeStbdUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning upwind</p>
+<hr />
+<h4 id="sarregexpnavigationracinglayline"><a class="header" href="#sarregexpnavigationracinglayline">/sar/&lt;RegExp&gt;/navigation/racing/layline</a></h4>
+<p><strong>Description:</strong> The layline crossing the current course</p>
+<hr />
+<h4 id="sarregexpnavigationracinglaylinedistance"><a class="header" href="#sarregexpnavigationracinglaylinedistance">/sar/&lt;RegExp&gt;/navigation/racing/layline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="sarregexpnavigationracinglaylinetime"><a class="header" href="#sarregexpnavigationracinglaylinetime">/sar/&lt;RegExp&gt;/navigation/racing/layline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="sarregexpnavigationracingoppositelayline"><a class="header" href="#sarregexpnavigationracingoppositelayline">/sar/&lt;RegExp&gt;/navigation/racing/oppositeLayline</a></h4>
+<p><strong>Description:</strong> The layline parallell to current course</p>
+<hr />
+<h4 id="sarregexpnavigationracingoppositelaylinedistance"><a class="header" href="#sarregexpnavigationracingoppositelaylinedistance">/sar/&lt;RegExp&gt;/navigation/racing/oppositeLayline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="sarregexpnavigationracingoppositelaylinetime"><a class="header" href="#sarregexpnavigationracingoppositelaylinetime">/sar/&lt;RegExp&gt;/navigation/racing/oppositeLayline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="sarregexpnavigationmagneticvariation"><a class="header" href="#sarregexpnavigationmagneticvariation">/sar/&lt;RegExp&gt;/navigation/magneticVariation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The magnetic variation (declination) at the current position that must be added to the magnetic heading to derive the true heading. Easterly variations are positive and Westerly variations are negative (in Radians).</p>
+<hr />
+<h4 id="sarregexpnavigationmagneticvariationageofservice"><a class="header" href="#sarregexpnavigationmagneticvariationageofservice">/sar/&lt;RegExp&gt;/navigation/magneticVariationAgeOfService</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Seconds since the 1st Jan 1970 that the variation calculation was made</p>
+<hr />
+<h4 id="sarregexpnavigationdestination"><a class="header" href="#sarregexpnavigationdestination">/sar/&lt;RegExp&gt;/navigation/destination</a></h4>
+<p><strong>Title:</strong> destination</p>
+<p><strong>Description:</strong> The intended destination of this trip</p>
+<hr />
+<h4 id="sarregexpnavigationdestinationcommonname"><a class="header" href="#sarregexpnavigationdestinationcommonname">/sar/&lt;RegExp&gt;/navigation/destination/commonName</a></h4>
+<p><strong>Description:</strong> Common name of the Destination, eg 'Fiji', also used in ais messages</p>
+<hr />
+<h4 id="sarregexpnavigationdestinationeta"><a class="header" href="#sarregexpnavigationdestinationeta">/sar/&lt;RegExp&gt;/navigation/destination/eta</a></h4>
+<p><strong>Description:</strong> Expected time of arrival at destination waypoint</p>
+<hr />
+<h4 id="sarregexpnavigationdestinationwaypoint"><a class="header" href="#sarregexpnavigationdestinationwaypoint">/sar/&lt;RegExp&gt;/navigation/destination/waypoint</a></h4>
+<p><strong>Description:</strong> UUID of destination waypoint</p>
+<hr />
+<h4 id="sarregexpnavigationgnss"><a class="header" href="#sarregexpnavigationgnss">/sar/&lt;RegExp&gt;/navigation/gnss</a></h4>
+<p><strong>Title:</strong> gnss</p>
+<p><strong>Description:</strong> Global satellite navigation meta information</p>
+<hr />
+<h4 id="sarregexpnavigationgnsstype"><a class="header" href="#sarregexpnavigationgnsstype">/sar/&lt;RegExp&gt;/navigation/gnss/type</a></h4>
+<p><strong>Description:</strong> Fix type</p>
+<hr />
+<h4 id="sarregexpnavigationgnssmethodquality"><a class="header" href="#sarregexpnavigationgnssmethodquality">/sar/&lt;RegExp&gt;/navigation/gnss/methodQuality</a></h4>
+<p><strong>Description:</strong> Quality of the satellite fix</p>
+<hr />
+<h4 id="sarregexpnavigationgnssintegrity"><a class="header" href="#sarregexpnavigationgnssintegrity">/sar/&lt;RegExp&gt;/navigation/gnss/integrity</a></h4>
+<p><strong>Description:</strong> Integrity of the satellite fix</p>
+<hr />
+<h4 id="sarregexpnavigationgnsssatellites"><a class="header" href="#sarregexpnavigationgnsssatellites">/sar/&lt;RegExp&gt;/navigation/gnss/satellites</a></h4>
+<p><strong>Description:</strong> Number of satellites</p>
+<hr />
+<h4 id="sarregexpnavigationgnssantennaaltitude"><a class="header" href="#sarregexpnavigationgnssantennaaltitude">/sar/&lt;RegExp&gt;/navigation/gnss/antennaAltitude</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Altitude of antenna</p>
+<hr />
+<h4 id="sarregexpnavigationgnsshorizontaldilution"><a class="header" href="#sarregexpnavigationgnsshorizontaldilution">/sar/&lt;RegExp&gt;/navigation/gnss/horizontalDilution</a></h4>
+<p><strong>Description:</strong> Horizontal Dilution of Precision</p>
+<hr />
+<h4 id="sarregexpnavigationgnsspositiondilution"><a class="header" href="#sarregexpnavigationgnsspositiondilution">/sar/&lt;RegExp&gt;/navigation/gnss/positionDilution</a></h4>
+<p><strong>Description:</strong> Positional Dilution of Precision</p>
+<hr />
+<h4 id="sarregexpnavigationgnssgeoidalseparation"><a class="header" href="#sarregexpnavigationgnssgeoidalseparation">/sar/&lt;RegExp&gt;/navigation/gnss/geoidalSeparation</a></h4>
+<p><strong>Description:</strong> Difference between WGS84 earth ellipsoid and mean sea level</p>
+<hr />
+<h4 id="sarregexpnavigationgnssdifferentialage"><a class="header" href="#sarregexpnavigationgnssdifferentialage">/sar/&lt;RegExp&gt;/navigation/gnss/differentialAge</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Age of DGPS data</p>
+<hr />
+<h4 id="sarregexpnavigationgnssdifferentialreference"><a class="header" href="#sarregexpnavigationgnssdifferentialreference">/sar/&lt;RegExp&gt;/navigation/gnss/differentialReference</a></h4>
+<p><strong>Description:</strong> ID of DGPS base station</p>
+<hr />
+<h4 id="sarregexpnavigationheadingmagnetic"><a class="header" href="#sarregexpnavigationheadingmagnetic">/sar/&lt;RegExp&gt;/navigation/headingMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading of the vessel, equals 'headingCompass adjusted for magneticDeviation'</p>
+<hr />
+<h4 id="sarregexpnavigationmagneticdeviation"><a class="header" href="#sarregexpnavigationmagneticdeviation">/sar/&lt;RegExp&gt;/navigation/magneticDeviation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Magnetic deviation of the compass at the current headingCompass</p>
+<hr />
+<h4 id="sarregexpnavigationheadingcompass"><a class="header" href="#sarregexpnavigationheadingcompass">/sar/&lt;RegExp&gt;/navigation/headingCompass</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading received from the compass. This is not adjusted for magneticDeviation of the compass</p>
+<hr />
+<h4 id="sarregexpnavigationheadingtrue"><a class="header" href="#sarregexpnavigationheadingtrue">/sar/&lt;RegExp&gt;/navigation/headingTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The current true north heading of the vessel, equals 'headingMagnetic adjusted for magneticVariation'</p>
+<hr />
+<h4 id="sarregexpnavigationposition"><a class="header" href="#sarregexpnavigationposition">/sar/&lt;RegExp&gt;/navigation/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of the vessel in 2 or 3 dimensions (WGS84 datum)</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationattitude"><a class="header" href="#sarregexpnavigationattitude">/sar/&lt;RegExp&gt;/navigation/attitude</a></h4>
+<p><strong>Title:</strong> Attitude</p>
+<p><strong>Description:</strong> Vessel attitude: roll, pitch and yaw</p>
+<p>Object value with properties</p>
+<ul>
+<li>roll (rad)</li>
+<li>pitch (rad)</li>
+<li>yaw (rad)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationmaneuver"><a class="header" href="#sarregexpnavigationmaneuver">/sar/&lt;RegExp&gt;/navigation/maneuver</a></h4>
+<p><strong>Description:</strong> Special maneuver such as regional passing arrangement. (from ais)</p>
+<hr />
+<h4 id="sarregexpnavigationrateofturn"><a class="header" href="#sarregexpnavigationrateofturn">/sar/&lt;RegExp&gt;/navigation/rateOfTurn</a></h4>
+<p><strong>Units:</strong> rad/s (Radian per second)</p>
+<p><strong>Description:</strong> Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications</p>
+<hr />
+<h4 id="sarregexpnavigationspeedoverground"><a class="header" href="#sarregexpnavigationspeedoverground">/sar/&lt;RegExp&gt;/navigation/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed over ground. If converting from AIS 'HIGH' value, set to 102.2 (Ais max value) and add warning in notifications</p>
+<hr />
+<h4 id="sarregexpnavigationspeedthroughwater"><a class="header" href="#sarregexpnavigationspeedthroughwater">/sar/&lt;RegExp&gt;/navigation/speedThroughWater</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed through the water</p>
+<hr />
+<h4 id="sarregexpnavigationspeedthroughwatertransverse"><a class="header" href="#sarregexpnavigationspeedthroughwatertransverse">/sar/&lt;RegExp&gt;/navigation/speedThroughWaterTransverse</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Transverse speed through the water (Leeway)</p>
+<hr />
+<h4 id="sarregexpnavigationspeedthroughwaterlongitudinal"><a class="header" href="#sarregexpnavigationspeedthroughwaterlongitudinal">/sar/&lt;RegExp&gt;/navigation/speedThroughWaterLongitudinal</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Longitudinal speed through the water</p>
+<hr />
+<h4 id="sarregexpnavigationleewayangle"><a class="header" href="#sarregexpnavigationleewayangle">/sar/&lt;RegExp&gt;/navigation/leewayAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Leeway Angle derived from the longitudinal and transverse speeds through the water</p>
+<hr />
+<h4 id="sarregexpnavigationlog"><a class="header" href="#sarregexpnavigationlog">/sar/&lt;RegExp&gt;/navigation/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled</p>
+<hr />
+<h4 id="sarregexpnavigationtrip"><a class="header" href="#sarregexpnavigationtrip">/sar/&lt;RegExp&gt;/navigation/trip</a></h4>
+<p><strong>Description:</strong> Trip data</p>
+<hr />
+<h4 id="sarregexpnavigationtriplog"><a class="header" href="#sarregexpnavigationtriplog">/sar/&lt;RegExp&gt;/navigation/trip/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled on this trip / since trip reset</p>
+<hr />
+<h4 id="sarregexpnavigationtriplastreset"><a class="header" href="#sarregexpnavigationtriplastreset">/sar/&lt;RegExp&gt;/navigation/trip/lastReset</a></h4>
+<p><strong>Description:</strong> Trip log reset time</p>
+<hr />
+<h4 id="sarregexpnavigationstate"><a class="header" href="#sarregexpnavigationstate">/sar/&lt;RegExp&gt;/navigation/state</a></h4>
+<p><strong>Title:</strong> state</p>
+<p><strong>Description:</strong> Current navigational state of the vessel</p>
+<hr />
+<h4 id="sarregexpnavigationanchor"><a class="header" href="#sarregexpnavigationanchor">/sar/&lt;RegExp&gt;/navigation/anchor</a></h4>
+<p><strong>Title:</strong> anchor</p>
+<p><strong>Description:</strong> The anchor data, for anchor watch etc</p>
+<hr />
+<h4 id="sarregexpnavigationanchormaxradius"><a class="header" href="#sarregexpnavigationanchormaxradius">/sar/&lt;RegExp&gt;/navigation/anchor/maxRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Radius of anchor alarm boundary. The distance from anchor to the center of the boat</p>
+<hr />
+<h4 id="sarregexpnavigationanchorcurrentradius"><a class="header" href="#sarregexpnavigationanchorcurrentradius">/sar/&lt;RegExp&gt;/navigation/anchor/currentRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Current distance to anchor</p>
+<hr />
+<h4 id="sarregexpnavigationanchorposition"><a class="header" href="#sarregexpnavigationanchorposition">/sar/&lt;RegExp&gt;/navigation/anchor/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The actual anchor position of the vessel in 3 dimensions, probably an estimate at best</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="sarregexpnavigationdatetime"><a class="header" href="#sarregexpnavigationdatetime">/sar/&lt;RegExp&gt;/navigation/datetime</a></h4>
+<p><strong>Description:</strong> Time and Date from the GNSS Positioning System</p>
+<hr />
+<h4 id="sarregexpnotifications"><a class="header" href="#sarregexpnotifications">/sar/&lt;RegExp&gt;/notifications</a></h4>
+<p><strong>Title:</strong> notifications</p>
+<p><strong>Description:</strong> Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure</p>
+<hr />
+<h4 id="sarregexpnotificationsmob"><a class="header" href="#sarregexpnotificationsmob">/sar/&lt;RegExp&gt;/notifications/mob</a></h4>
+<p><strong>Description:</strong> Man overboard</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsfire"><a class="header" href="#sarregexpnotificationsfire">/sar/&lt;RegExp&gt;/notifications/fire</a></h4>
+<p><strong>Description:</strong> Fire onboard</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationssinking"><a class="header" href="#sarregexpnotificationssinking">/sar/&lt;RegExp&gt;/notifications/sinking</a></h4>
+<p><strong>Description:</strong> Vessel is sinking</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsflooding"><a class="header" href="#sarregexpnotificationsflooding">/sar/&lt;RegExp&gt;/notifications/flooding</a></h4>
+<p><strong>Description:</strong> Vessel is flooding</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationscollision"><a class="header" href="#sarregexpnotificationscollision">/sar/&lt;RegExp&gt;/notifications/collision</a></h4>
+<p><strong>Description:</strong> In collision with another vessel or object</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsgrounding"><a class="header" href="#sarregexpnotificationsgrounding">/sar/&lt;RegExp&gt;/notifications/grounding</a></h4>
+<p><strong>Description:</strong> Vessel grounding</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationslisting"><a class="header" href="#sarregexpnotificationslisting">/sar/&lt;RegExp&gt;/notifications/listing</a></h4>
+<p><strong>Description:</strong> Vessel is listing</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsadrift"><a class="header" href="#sarregexpnotificationsadrift">/sar/&lt;RegExp&gt;/notifications/adrift</a></h4>
+<p><strong>Description:</strong> Vessel is adrift</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationspiracy"><a class="header" href="#sarregexpnotificationspiracy">/sar/&lt;RegExp&gt;/notifications/piracy</a></h4>
+<p><strong>Description:</strong> Under attack or danger from pirates</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsabandon"><a class="header" href="#sarregexpnotificationsabandon">/sar/&lt;RegExp&gt;/notifications/abandon</a></h4>
+<p><strong>Description:</strong> Abandon ship</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="sarregexpnotificationsregexp"><a class="header" href="#sarregexpnotificationsregexp">/sar/&lt;RegExp&gt;/notifications/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the path of the alarm</p>
+<hr />
+<h4 id="resources"><a class="header" href="#resources">/resources</a></h4>
+<p><strong>Title:</strong> resources</p>
+<p><strong>Description:</strong> Resources to aid in navigation and operation of the vessel including waypoints, routes, notes, etc.</p>
+<hr />
+<h4 id="resourcescharts"><a class="header" href="#resourcescharts">/resources/charts</a></h4>
+<p><strong>Title:</strong> chart</p>
+<p><strong>Description:</strong> A holder for charts, each named with their chart code</p>
+<hr />
+<h4 id="resourceschartsregexp"><a class="header" href="#resourceschartsregexp">/resources/charts/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> A chart</p>
+<hr />
+<h4 id="resourcesroutes"><a class="header" href="#resourcesroutes">/resources/routes</a></h4>
+<p><strong>Title:</strong> route</p>
+<p><strong>Description:</strong> A holder for routes, each named with a UUID</p>
+<hr />
+<h4 id="resourcesroutesregexp"><a class="header" href="#resourcesroutesregexp">/resources/routes/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> A route, named with a UUID</p>
+<hr />
+<h4 id="resourcesnotes"><a class="header" href="#resourcesnotes">/resources/notes</a></h4>
+<p><strong>Title:</strong> notes</p>
+<p><strong>Description:</strong> A holder for notes about regions, each named with a UUID. Notes might include navigation or cruising info, images, or anything</p>
+<hr />
+<h4 id="resourcesnotesregexp"><a class="header" href="#resourcesnotesregexp">/resources/notes/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> A note about a region, named with a UUID. Notes might include navigation or cruising info, images, or anything</p>
+<hr />
+<h4 id="resourcesnotesregexpposition"><a class="header" href="#resourcesnotesregexpposition">/resources/notes/&lt;RegExp&gt;/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position related to note. Alternative to region or geohash</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="resourcesregions"><a class="header" href="#resourcesregions">/resources/regions</a></h4>
+<p><strong>Title:</strong> region</p>
+<p><strong>Description:</strong> A holder for regions, each named with UUID</p>
+<hr />
+<h4 id="resourcesregionsregexp"><a class="header" href="#resourcesregionsregexp">/resources/regions/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> A region of interest, each named with a UUID</p>
+<hr />
+<h4 id="resourceswaypoints"><a class="header" href="#resourceswaypoints">/resources/waypoints</a></h4>
+<p><strong>Title:</strong> waypoints</p>
+<p><strong>Description:</strong> A holder for waypoints, each named with a UUID</p>
+<hr />
+<h4 id="resourceswaypointsregexp"><a class="header" href="#resourceswaypointsregexp">/resources/waypoints/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> A waypoint, named with a UUID</p>
+<hr />
+<h4 id="resourceswaypointsregexpposition"><a class="header" href="#resourceswaypointsregexpposition">/resources/waypoints/&lt;RegExp&gt;/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position in 3 dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="resourceswaypointsregexpfeature"><a class="header" href="#resourceswaypointsregexpfeature">/resources/waypoints/&lt;RegExp&gt;/feature</a></h4>
+<p><strong>Title:</strong> Feature</p>
+<p><strong>Description:</strong> A Geo JSON feature object</p>
+<hr />
+<h4 id="resourceswaypointsregexpfeaturetype"><a class="header" href="#resourceswaypointsregexpfeaturetype">/resources/waypoints/&lt;RegExp&gt;/feature/type</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>Feature</li>
+</ul>
+<hr />
+<h4 id="resourceswaypointsregexpfeaturegeometry"><a class="header" href="#resourceswaypointsregexpfeaturegeometry">/resources/waypoints/&lt;RegExp&gt;/feature/geometry</a></h4>
+<p><strong>Title:</strong> Point</p>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="resourceswaypointsregexpfeaturegeometrytype"><a class="header" href="#resourceswaypointsregexpfeaturegeometrytype">/resources/waypoints/&lt;RegExp&gt;/feature/geometry/type</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>Point</li>
+</ul>
+<hr />
+<h4 id="resourceswaypointsregexpfeaturegeometrycoordinates"><a class="header" href="#resourceswaypointsregexpfeaturegeometrycoordinates">/resources/waypoints/&lt;RegExp&gt;/feature/geometry/coordinates</a></h4>
+<p><strong>Description:</strong> A single position, in x,y order (Lon, Lat)</p>
+<hr />
+<h4 id="resourceswaypointsregexpfeatureproperties"><a class="header" href="#resourceswaypointsregexpfeatureproperties">/resources/waypoints/&lt;RegExp&gt;/feature/properties</a></h4>
+<p><strong>Description:</strong> Additional data of any type</p>
+<hr />
+<h4 id="resourceswaypointsregexpfeatureid"><a class="header" href="#resourceswaypointsregexpfeatureid">/resources/waypoints/&lt;RegExp&gt;/feature/id</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="version"><a class="header" href="#version">/version</a></h4>
+<p><strong>Description:</strong> Version of the schema and APIs that this data is using in Canonical format i.e. V1.5.0.</p>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="vesselsBranch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="changelog.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="vesselsBranch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="changelog.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

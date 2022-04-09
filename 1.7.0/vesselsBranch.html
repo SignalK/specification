@@ -1,0 +1,2395 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Appendix A: Keys Reference (Vessel)</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Signal K Specification</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Getting Started</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="start_using.html"><strong aria-hidden="true">2.1.</strong> Using SK</a></li><li class="chapter-item expanded "><a href="start_developing.html"><strong aria-hidden="true">2.2.</strong> Developing with SK</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Data Model</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="data_model.html"><strong aria-hidden="true">3.1.</strong> Full and Delta Models</a></li><li class="chapter-item expanded "><a href="data_model_multiple_values.html"><strong aria-hidden="true">3.2.</strong> Multiple Values</a></li><li class="chapter-item expanded "><a href="data_model_metadata.html"><strong aria-hidden="true">3.3.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="sources.html"><strong aria-hidden="true">3.4.</strong> Sources</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> API</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="urls_ports.html"><strong aria-hidden="true">4.1.</strong> URLs and Ports</a></li><li class="chapter-item expanded "><a href="rest_api.html"><strong aria-hidden="true">4.2.</strong> REST API</a></li><li class="chapter-item expanded "><a href="streaming_api.html"><strong aria-hidden="true">4.3.</strong> Streaming API</a></li><li class="chapter-item expanded "><a href="subscription_protocol.html"><strong aria-hidden="true">4.4.</strong> Subscription Protocol</a></li><li class="chapter-item expanded "><a href="connection.html"><strong aria-hidden="true">4.5.</strong> Discovery &amp; Connection Establishment</a></li><li class="chapter-item expanded "><a href="notifications.html"><strong aria-hidden="true">4.6.</strong> Notifications</a></li><li class="chapter-item expanded "><a href="security.html"><strong aria-hidden="true">4.7.</strong> Security</a></li><li class="chapter-item expanded "><a href="request_response.html"><strong aria-hidden="true">4.8.</strong> Request/Response</a></li><li class="chapter-item expanded "><a href="put.html"><strong aria-hidden="true">4.9.</strong> PUT Requests</a></li></ol></li><li class="chapter-item expanded "><a href="how_to_help.html"><strong aria-hidden="true">5.</strong> How Can I Help?</a></li><li class="chapter-item expanded "><a href="vesselsBranch.html" class="active"><strong aria-hidden="true">6.</strong> Appendix A: Keys Reference (Vessel)</a></li><li class="chapter-item expanded "><a href="otherBranches.html"><strong aria-hidden="true">7.</strong> Appendix B: Keys Reference (Others)</a></li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">8.</strong> Appendix C: Changelog</a></li><li class="chapter-item expanded "><a href="versioning.html"><strong aria-hidden="true">9.</strong> Appendix D: Versioning</a></li><li class="chapter-item expanded "><a href="access_requests.html"><strong aria-hidden="true">10.</strong> Appendix E: Access Requests</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h4 id="vessels"><a class="header" href="#vessels">/vessels</a></h4>
+<p><strong>Description:</strong> A wrapper object for vessel objects, each describing vessels in range, including this vessel.</p>
+<hr />
+<h4 id="vesselsregexp"><a class="header" href="#vesselsregexp">/vessels/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> vessel</p>
+<p><strong>Description:</strong> This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the vessel. Examples: urn:mrn:imo:mmsi:230099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d</p>
+<hr />
+<h4 id="vesselsregexpurl"><a class="header" href="#vesselsregexpurl">/vessels/&lt;RegExp&gt;/url</a></h4>
+<p><strong>Description:</strong> URL based identity of the vessel, if available.</p>
+<hr />
+<h4 id="vesselsregexpmmsi"><a class="header" href="#vesselsregexpmmsi">/vessels/&lt;RegExp&gt;/mmsi</a></h4>
+<p><strong>Description:</strong> MMSI number of the vessel, if available.</p>
+<hr />
+<h4 id="vesselsregexpmothershipmmsi"><a class="header" href="#vesselsregexpmothershipmmsi">/vessels/&lt;RegExp&gt;/mothershipMmsi</a></h4>
+<p><strong>Description:</strong> MMSI number of the mothership of this vessel, if available.</p>
+<hr />
+<h4 id="vesselsregexpuuid"><a class="header" href="#vesselsregexpuuid">/vessels/&lt;RegExp&gt;/uuid</a></h4>
+<p><strong>Description:</strong> A unique Signal K flavoured maritime resource identifier, assigned by the server.</p>
+<hr />
+<h4 id="vesselsregexpname"><a class="header" href="#vesselsregexpname">/vessels/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The common name of the vessel</p>
+<hr />
+<h4 id="vesselsregexpflag"><a class="header" href="#vesselsregexpflag">/vessels/&lt;RegExp&gt;/flag</a></h4>
+<p><strong>Description:</strong> The country of ship registration, or flag state of the vessel</p>
+<hr />
+<h4 id="vesselsregexpport"><a class="header" href="#vesselsregexpport">/vessels/&lt;RegExp&gt;/port</a></h4>
+<p><strong>Description:</strong> The home port of the vessel</p>
+<hr />
+<h4 id="vesselsregexpregistrations"><a class="header" href="#vesselsregexpregistrations">/vessels/&lt;RegExp&gt;/registrations</a></h4>
+<p><strong>Description:</strong> The various registrations of the vessel.</p>
+<hr />
+<h4 id="vesselsregexpregistrationsimo"><a class="header" href="#vesselsregexpregistrationsimo">/vessels/&lt;RegExp&gt;/registrations/imo</a></h4>
+<p><strong>Description:</strong> The IMO number of the vessel.</p>
+<hr />
+<h4 id="vesselsregexpregistrationsnational"><a class="header" href="#vesselsregexpregistrationsnational">/vessels/&lt;RegExp&gt;/registrations/national</a></h4>
+<p><strong>Description:</strong> The national registration number of the vessel.</p>
+<hr />
+<h4 id="vesselsregexpregistrationsnationalregexp"><a class="header" href="#vesselsregexpregistrationsnationalregexp">/vessels/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validating the identifier for the registration</p>
+<hr />
+<h4 id="vesselsregexpregistrationsnationalregexpcountry"><a class="header" href="#vesselsregexpregistrationsnationalregexpcountry">/vessels/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/country</a></h4>
+<p><strong>Description:</strong> The ISO 3166-2 country code.</p>
+<hr />
+<h4 id="vesselsregexpregistrationsnationalregexpregistration"><a class="header" href="#vesselsregexpregistrationsnationalregexpregistration">/vessels/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/registration</a></h4>
+<p><strong>Description:</strong> The registration code</p>
+<hr />
+<h4 id="vesselsregexpregistrationsnationalregexpdescription"><a class="header" href="#vesselsregexpregistrationsnationalregexpdescription">/vessels/&lt;RegExp&gt;/registrations/national/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> The registration description</p>
+<hr />
+<h4 id="vesselsregexpregistrationslocal"><a class="header" href="#vesselsregexpregistrationslocal">/vessels/&lt;RegExp&gt;/registrations/local</a></h4>
+<p><strong>Description:</strong> A local or state registration number of the vessel.</p>
+<hr />
+<h4 id="vesselsregexpregistrationslocalregexp"><a class="header" href="#vesselsregexpregistrationslocalregexp">/vessels/&lt;RegExp&gt;/registrations/local/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validating the identifier for the registration</p>
+<hr />
+<h4 id="vesselsregexpregistrationslocalregexpregistration"><a class="header" href="#vesselsregexpregistrationslocalregexpregistration">/vessels/&lt;RegExp&gt;/registrations/local/&lt;RegExp&gt;/registration</a></h4>
+<p><strong>Description:</strong> The registration code</p>
+<hr />
+<h4 id="vesselsregexpregistrationslocalregexpdescription"><a class="header" href="#vesselsregexpregistrationslocalregexpdescription">/vessels/&lt;RegExp&gt;/registrations/local/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> The registration description</p>
+<hr />
+<h4 id="vesselsregexpregistrationsother"><a class="header" href="#vesselsregexpregistrationsother">/vessels/&lt;RegExp&gt;/registrations/other</a></h4>
+<p><strong>Description:</strong> Other registration or permits for the vessel.</p>
+<hr />
+<h4 id="vesselsregexpregistrationsotherregexp"><a class="header" href="#vesselsregexpregistrationsotherregexp">/vessels/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validating the identifier for the registration</p>
+<hr />
+<h4 id="vesselsregexpregistrationsotherregexpregistration"><a class="header" href="#vesselsregexpregistrationsotherregexpregistration">/vessels/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;/registration</a></h4>
+<p><strong>Description:</strong> The registration code</p>
+<hr />
+<h4 id="vesselsregexpregistrationsotherregexpdescription"><a class="header" href="#vesselsregexpregistrationsotherregexpdescription">/vessels/&lt;RegExp&gt;/registrations/other/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> The registration description</p>
+<hr />
+<h4 id="vesselsregexpcommunication"><a class="header" href="#vesselsregexpcommunication">/vessels/&lt;RegExp&gt;/communication</a></h4>
+<p><strong>Title:</strong> communication</p>
+<p><strong>Description:</strong> Communication data including Radio, Telephone, E-Mail, etc.</p>
+<hr />
+<h4 id="vesselsregexpcommunicationcallsignvhf"><a class="header" href="#vesselsregexpcommunicationcallsignvhf">/vessels/&lt;RegExp&gt;/communication/callsignVhf</a></h4>
+<p><strong>Description:</strong> Callsign for VHF communication</p>
+<hr />
+<h4 id="vesselsregexpcommunicationcallsignhf"><a class="header" href="#vesselsregexpcommunicationcallsignhf">/vessels/&lt;RegExp&gt;/communication/callsignHf</a></h4>
+<p><strong>Description:</strong> Callsign for HF communication</p>
+<hr />
+<h4 id="vesselsregexpcommunicationphonenumber"><a class="header" href="#vesselsregexpcommunicationphonenumber">/vessels/&lt;RegExp&gt;/communication/phoneNumber</a></h4>
+<p><strong>Description:</strong> Phone number of skipper</p>
+<hr />
+<h4 id="vesselsregexpcommunicationemailhf"><a class="header" href="#vesselsregexpcommunicationemailhf">/vessels/&lt;RegExp&gt;/communication/emailHf</a></h4>
+<p><strong>Description:</strong> Email address to be used for HF email (Winmail, Airmail, Sailmail)</p>
+<hr />
+<h4 id="vesselsregexpcommunicationemail"><a class="header" href="#vesselsregexpcommunicationemail">/vessels/&lt;RegExp&gt;/communication/email</a></h4>
+<p><strong>Description:</strong> Regular email for the skipper</p>
+<hr />
+<h4 id="vesselsregexpcommunicationsatphonenumber"><a class="header" href="#vesselsregexpcommunicationsatphonenumber">/vessels/&lt;RegExp&gt;/communication/satPhoneNumber</a></h4>
+<p><strong>Description:</strong> Satellite phone number for vessel.</p>
+<hr />
+<h4 id="vesselsregexpcommunicationskippername"><a class="header" href="#vesselsregexpcommunicationskippername">/vessels/&lt;RegExp&gt;/communication/skipperName</a></h4>
+<p><strong>Description:</strong> Full name of the skipper of the vessel.</p>
+<hr />
+<h4 id="vesselsregexpcommunicationcrewnames"><a class="header" href="#vesselsregexpcommunicationcrewnames">/vessels/&lt;RegExp&gt;/communication/crewNames</a></h4>
+<p><strong>Description:</strong> Array with the names of the crew</p>
+<hr />
+<h4 id="vesselsregexpenvironment"><a class="header" href="#vesselsregexpenvironment">/vessels/&lt;RegExp&gt;/environment</a></h4>
+<p><strong>Title:</strong> environment</p>
+<p><strong>Description:</strong> Environmental data measured locally including Depth, Wind, Temp, etc.</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutside"><a class="header" href="#vesselsregexpenvironmentoutside">/vessels/&lt;RegExp&gt;/environment/outside</a></h4>
+<p><strong>Description:</strong> Environmental conditions outside of the vessel's hull</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsidetemperature"><a class="header" href="#vesselsregexpenvironmentoutsidetemperature">/vessels/&lt;RegExp&gt;/environment/outside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside air temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsidedewpointtemperature"><a class="header" href="#vesselsregexpenvironmentoutsidedewpointtemperature">/vessels/&lt;RegExp&gt;/environment/outside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside dew point temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsideapparentwindchilltemperature"><a class="header" href="#vesselsregexpenvironmentoutsideapparentwindchilltemperature">/vessels/&lt;RegExp&gt;/environment/outside/apparentWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside apparent wind chill temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsidetheoreticalwindchilltemperature"><a class="header" href="#vesselsregexpenvironmentoutsidetheoreticalwindchilltemperature">/vessels/&lt;RegExp&gt;/environment/outside/theoreticalWindChillTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside theoretical wind chill temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsideheatindextemperature"><a class="header" href="#vesselsregexpenvironmentoutsideheatindextemperature">/vessels/&lt;RegExp&gt;/environment/outside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current outside heat index temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsidepressure"><a class="header" href="#vesselsregexpenvironmentoutsidepressure">/vessels/&lt;RegExp&gt;/environment/outside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Current outside air ambient pressure</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsidehumidity"><a class="header" href="#vesselsregexpenvironmentoutsidehumidity">/vessels/&lt;RegExp&gt;/environment/outside/humidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> DEPRECATED: use relativeHumidity</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsiderelativehumidity"><a class="header" href="#vesselsregexpenvironmentoutsiderelativehumidity">/vessels/&lt;RegExp&gt;/environment/outside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Current outside air relative humidity</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsideairdensity"><a class="header" href="#vesselsregexpenvironmentoutsideairdensity">/vessels/&lt;RegExp&gt;/environment/outside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Current outside air density</p>
+<hr />
+<h4 id="vesselsregexpenvironmentoutsideilluminance"><a class="header" href="#vesselsregexpenvironmentoutsideilluminance">/vessels/&lt;RegExp&gt;/environment/outside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Current outside ambient light flux.</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinside"><a class="header" href="#vesselsregexpenvironmentinside">/vessels/&lt;RegExp&gt;/environment/inside</a></h4>
+<p><strong>Description:</strong> Environmental conditions inside the vessel's hull</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidetemperature"><a class="header" href="#vesselsregexpenvironmentinsidetemperature">/vessels/&lt;RegExp&gt;/environment/inside/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsideheatindextemperature"><a class="header" href="#vesselsregexpenvironmentinsideheatindextemperature">/vessels/&lt;RegExp&gt;/environment/inside/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidepressure"><a class="header" href="#vesselsregexpenvironmentinsidepressure">/vessels/&lt;RegExp&gt;/environment/inside/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsiderelativehumidity"><a class="header" href="#vesselsregexpenvironmentinsiderelativehumidity">/vessels/&lt;RegExp&gt;/environment/inside/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidedewpoint"><a class="header" href="#vesselsregexpenvironmentinsidedewpoint">/vessels/&lt;RegExp&gt;/environment/inside/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidedewpointtemperature"><a class="header" href="#vesselsregexpenvironmentinsidedewpointtemperature">/vessels/&lt;RegExp&gt;/environment/inside/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsideairdensity"><a class="header" href="#vesselsregexpenvironmentinsideairdensity">/vessels/&lt;RegExp&gt;/environment/inside/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsideilluminance"><a class="header" href="#vesselsregexpenvironmentinsideilluminance">/vessels/&lt;RegExp&gt;/environment/inside/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the identifier for the environmental zone, eg. engineRoom, mainCabin, refrigerator</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9temperature"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9temperature">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9heatindextemperature"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9heatindextemperature">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/heatIndexTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current heat index temperature in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9pressure"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9pressure">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Pressure in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9relativehumidity"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9relativehumidity">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/relativeHumidity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Relative humidity in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9dewpoint"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9dewpoint">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPoint</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> DEPRECATED: use dewPointTemperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9dewpointtemperature"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9dewpointtemperature">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/dewPointTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Dewpoint in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9airdensity"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9airdensity">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/airDensity</a></h4>
+<p><strong>Units:</strong> kg/m3 (undefined)</p>
+<p><strong>Description:</strong> Air density in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentinsidea-za-z0-9illuminance"><a class="header" href="#vesselsregexpenvironmentinsidea-za-z0-9illuminance">/vessels/&lt;RegExp&gt;/environment/inside/[A-Za-z0-9]+/illuminance</a></h4>
+<p><strong>Units:</strong> Lux (undefined)</p>
+<p><strong>Description:</strong> Illuminance in zone</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwater"><a class="header" href="#vesselsregexpenvironmentwater">/vessels/&lt;RegExp&gt;/environment/water</a></h4>
+<p><strong>Description:</strong> Environmental conditions of the water that the vessel is sailing in</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwatertemperature"><a class="header" href="#vesselsregexpenvironmentwatertemperature">/vessels/&lt;RegExp&gt;/environment/water/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Current water temperature</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwatersalinity"><a class="header" href="#vesselsregexpenvironmentwatersalinity">/vessels/&lt;RegExp&gt;/environment/water/salinity</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Water salinity</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepth"><a class="header" href="#vesselsregexpenvironmentdepth">/vessels/&lt;RegExp&gt;/environment/depth</a></h4>
+<p><strong>Title:</strong> depth</p>
+<p><strong>Description:</strong> Depth related data</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepthbelowkeel"><a class="header" href="#vesselsregexpenvironmentdepthbelowkeel">/vessels/&lt;RegExp&gt;/environment/depth/belowKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below keel</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepthbelowtransducer"><a class="header" href="#vesselsregexpenvironmentdepthbelowtransducer">/vessels/&lt;RegExp&gt;/environment/depth/belowTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth below Transducer</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepthbelowsurface"><a class="header" href="#vesselsregexpenvironmentdepthbelowsurface">/vessels/&lt;RegExp&gt;/environment/depth/belowSurface</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from surface</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepthtransducertokeel"><a class="header" href="#vesselsregexpenvironmentdepthtransducertokeel">/vessels/&lt;RegExp&gt;/environment/depth/transducerToKeel</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth from the transducer to the bottom of the keel</p>
+<hr />
+<h4 id="vesselsregexpenvironmentdepthsurfacetotransducer"><a class="header" href="#vesselsregexpenvironmentdepthsurfacetotransducer">/vessels/&lt;RegExp&gt;/environment/depth/surfaceToTransducer</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Depth transducer is below the water surface</p>
+<hr />
+<h4 id="vesselsregexpenvironmentcurrent"><a class="header" href="#vesselsregexpenvironmentcurrent">/vessels/&lt;RegExp&gt;/environment/current</a></h4>
+<p><strong>Title:</strong> current</p>
+<p><strong>Description:</strong> Direction and strength of current affecting the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>drift (m/s)</li>
+<li>setTrue (rad)</li>
+<li>setMagnetic (rad)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpenvironmenttide"><a class="header" href="#vesselsregexpenvironmenttide">/vessels/&lt;RegExp&gt;/environment/tide</a></h4>
+<p><strong>Title:</strong> tide</p>
+<p><strong>Description:</strong> Tide data</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttideheighthigh"><a class="header" href="#vesselsregexpenvironmenttideheighthigh">/vessels/&lt;RegExp&gt;/environment/tide/heightHigh</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttideheightnow"><a class="header" href="#vesselsregexpenvironmenttideheightnow">/vessels/&lt;RegExp&gt;/environment/tide/heightNow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttideheightlow"><a class="header" href="#vesselsregexpenvironmenttideheightlow">/vessels/&lt;RegExp&gt;/environment/tide/heightLow</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttidetimelow"><a class="header" href="#vesselsregexpenvironmenttidetimelow">/vessels/&lt;RegExp&gt;/environment/tide/timeLow</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttidetimehigh"><a class="header" href="#vesselsregexpenvironmenttidetimehigh">/vessels/&lt;RegExp&gt;/environment/tide/timeHigh</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpenvironmentheave"><a class="header" href="#vesselsregexpenvironmentheave">/vessels/&lt;RegExp&gt;/environment/heave</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Vertical movement of the vessel due to waves</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwind"><a class="header" href="#vesselsregexpenvironmentwind">/vessels/&lt;RegExp&gt;/environment/wind</a></h4>
+<p><strong>Title:</strong> wind</p>
+<p><strong>Description:</strong> Wind data.</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindangleapparent"><a class="header" href="#vesselsregexpenvironmentwindangleapparent">/vessels/&lt;RegExp&gt;/environment/wind/angleApparent</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Apparent wind angle, negative to port</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindangletrueground"><a class="header" href="#vesselsregexpenvironmentwindangletrueground">/vessels/&lt;RegExp&gt;/environment/wind/angleTrueGround</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed over ground, negative to port</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindangletruewater"><a class="header" href="#vesselsregexpenvironmentwindangletruewater">/vessels/&lt;RegExp&gt;/environment/wind/angleTrueWater</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> True wind angle based on speed through water, negative to port</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwinddirectionchangealarm"><a class="header" href="#vesselsregexpenvironmentwinddirectionchangealarm">/vessels/&lt;RegExp&gt;/environment/wind/directionChangeAlarm</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The angle the wind needs to shift to raise an alarm</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwinddirectiontrue"><a class="header" href="#vesselsregexpenvironmentwinddirectiontrue">/vessels/&lt;RegExp&gt;/environment/wind/directionTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to true north</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwinddirectionmagnetic"><a class="header" href="#vesselsregexpenvironmentwinddirectionmagnetic">/vessels/&lt;RegExp&gt;/environment/wind/directionMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The wind direction relative to magnetic north</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindspeedtrue"><a class="header" href="#vesselsregexpenvironmentwindspeedtrue">/vessels/&lt;RegExp&gt;/environment/wind/speedTrue</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over water (as calculated from speedApparent and vessel's speed through water)</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindspeedoverground"><a class="header" href="#vesselsregexpenvironmentwindspeedoverground">/vessels/&lt;RegExp&gt;/environment/wind/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)</p>
+<hr />
+<h4 id="vesselsregexpenvironmentwindspeedapparent"><a class="header" href="#vesselsregexpenvironmentwindspeedapparent">/vessels/&lt;RegExp&gt;/environment/wind/speedApparent</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Apparent wind speed</p>
+<hr />
+<h4 id="vesselsregexpenvironmenttime"><a class="header" href="#vesselsregexpenvironmenttime">/vessels/&lt;RegExp&gt;/environment/time</a></h4>
+<p><strong>Description:</strong> A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)</p>
+<hr />
+<h4 id="vesselsregexpenvironmentmode"><a class="header" href="#vesselsregexpenvironmentmode">/vessels/&lt;RegExp&gt;/environment/mode</a></h4>
+<p><strong>Description:</strong> Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.</p>
+<hr />
+<h4 id="vesselsregexpnavigation"><a class="header" href="#vesselsregexpnavigation">/vessels/&lt;RegExp&gt;/navigation</a></h4>
+<p><strong>Title:</strong> navigation</p>
+<p><strong>Description:</strong> Navigation data including Position, Course to next WP information, etc.</p>
+<hr />
+<h4 id="vesselsregexpnavigationlights"><a class="header" href="#vesselsregexpnavigationlights">/vessels/&lt;RegExp&gt;/navigation/lights</a></h4>
+<p><strong>Title:</strong> Navigation lights</p>
+<p><strong>Description:</strong> Current state of the vessels navigation lights</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourseovergroundmagnetic"><a class="header" href="#vesselsregexpnavigationcourseovergroundmagnetic">/vessels/&lt;RegExp&gt;/navigation/courseOverGroundMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (magnetic)</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourseovergroundtrue"><a class="header" href="#vesselsregexpnavigationcourseovergroundtrue">/vessels/&lt;RegExp&gt;/navigation/courseOverGroundTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Course over ground (true)</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumbline"><a class="header" href="#vesselsregexpnavigationcourserhumbline">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Rhumbline</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinecrosstrackerror"><a class="header" href="#vesselsregexpnavigationcourserhumblinecrosstrackerror">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinebearingtracktrue"><a class="header" href="#vesselsregexpnavigationcourserhumblinebearingtracktrue">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinebearingtrackmagnetic"><a class="header" href="#vesselsregexpnavigationcourserhumblinebearingtrackmagnetic">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblineactiveroute"><a class="header" href="#vesselsregexpnavigationcourserhumblineactiveroute">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblineactiveroutehref"><a class="header" href="#vesselsregexpnavigationcourserhumblineactiveroutehref">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival"><a class="header" href="#vesselsregexpnavigationcourserhumblineactiverouteestimatedtimeofarrival">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblineactiveroutestarttime"><a class="header" href="#vesselsregexpnavigationcourserhumblineactiveroutestarttime">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinenextpoint"><a class="header" href="#vesselsregexpnavigationcourserhumblinenextpoint">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinepreviouspoint"><a class="header" href="#vesselsregexpnavigationcourserhumblinepreviouspoint">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinepreviouspointdistance"><a class="header" href="#vesselsregexpnavigationcourserhumblinepreviouspointdistance">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="vesselsregexpnavigationcourserhumblinepreviouspointposition"><a class="header" href="#vesselsregexpnavigationcourserhumblinepreviouspointposition">/vessels/&lt;RegExp&gt;/navigation/courseRhumbline/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcircle"><a class="header" href="#vesselsregexpnavigationcoursegreatcircle">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle</a></h4>
+<p><strong>Title:</strong> Course</p>
+<p><strong>Description:</strong> Course information computed with Great Circle</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclecrosstrackerror"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclecrosstrackerror">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/crossTrackError</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance from the vessel's present position to the closest point on a line (track) between previousPoint and nextPoint. A negative number indicates that the vessel is currently to the left of this line (and thus must steer right to compensate), a positive number means the vessel is to the right of the line (steer left to compensate).</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclebearingtracktrue"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclebearingtracktrue">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to true north.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclebearingtrackmagnetic"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclebearingtrackmagnetic">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/bearingTrackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The bearing of a line between previousPoint and nextPoint, relative to magnetic north.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcircleactiveroute"><a class="header" href="#vesselsregexpnavigationcoursegreatcircleactiveroute">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute</a></h4>
+<p><strong>Description:</strong> Data required if sailing to an active route, defined in resources.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcircleactiveroutehref"><a class="header" href="#vesselsregexpnavigationcoursegreatcircleactiveroutehref">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/href</a></h4>
+<p><strong>Description:</strong> A reference (URL) to the presently active route, in resources.</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival"><a class="header" href="#vesselsregexpnavigationcoursegreatcircleactiverouteestimatedtimeofarrival">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/estimatedTimeOfArrival</a></h4>
+<p><strong>Description:</strong> The estimated time of arrival at the end of the current route</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcircleactiveroutestarttime"><a class="header" href="#vesselsregexpnavigationcoursegreatcircleactiveroutestarttime">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/activeRoute/startTime</a></h4>
+<p><strong>Description:</strong> The time this route was activated</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclenextpoint"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclenextpoint">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/nextPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating towards</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclepreviouspoint"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclepreviouspoint">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint</a></h4>
+<p><strong>Description:</strong> The point on earth the vessel's presently navigating from</p>
+<p>Object value with properties</p>
+<ul>
+<li>type</li>
+<li>href</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclepreviouspointdistance"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclepreviouspointdistance">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The distance in meters between previousPoint and the vessel's present position</p>
+<hr />
+<h4 id="vesselsregexpnavigationcoursegreatcirclepreviouspointposition"><a class="header" href="#vesselsregexpnavigationcoursegreatcirclepreviouspointposition">/vessels/&lt;RegExp&gt;/navigation/courseGreatCircle/previousPoint/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of lastPoint in two dimensions</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationclosestapproach"><a class="header" href="#vesselsregexpnavigationclosestapproach">/vessels/&lt;RegExp&gt;/navigation/closestApproach</a></h4>
+<p><strong>Description:</strong> Calculated values for other vessels, e.g. from AIS</p>
+<p>Object value with properties</p>
+<ul>
+<li>distance (m)</li>
+<li>timeTo (s)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationracing"><a class="header" href="#vesselsregexpnavigationracing">/vessels/&lt;RegExp&gt;/navigation/racing</a></h4>
+<p><strong>Description:</strong> Specific navigational data related to yacht racing.</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingstartlinestb"><a class="header" href="#vesselsregexpnavigationracingstartlinestb">/vessels/&lt;RegExp&gt;/navigation/racing/startLineStb</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of starboard start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationracingstartlineport"><a class="header" href="#vesselsregexpnavigationracingstartlineport">/vessels/&lt;RegExp&gt;/navigation/racing/startLinePort</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> Position of port start mark</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationracingdistancestartline"><a class="header" href="#vesselsregexpnavigationracingdistancestartline">/vessels/&lt;RegExp&gt;/navigation/racing/distanceStartline</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the start line</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingtimetostart"><a class="header" href="#vesselsregexpnavigationracingtimetostart">/vessels/&lt;RegExp&gt;/navigation/racing/timeToStart</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time left before start</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingtimeportdown"><a class="header" href="#vesselsregexpnavigationracingtimeportdown">/vessels/&lt;RegExp&gt;/navigation/racing/timePortDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning downwind</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingtimeportup"><a class="header" href="#vesselsregexpnavigationracingtimeportup">/vessels/&lt;RegExp&gt;/navigation/racing/timePortUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on port, turning upwind</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingtimestbddown"><a class="header" href="#vesselsregexpnavigationracingtimestbddown">/vessels/&lt;RegExp&gt;/navigation/racing/timeStbdDown</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning downwind</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingtimestbdup"><a class="header" href="#vesselsregexpnavigationracingtimestbdup">/vessels/&lt;RegExp&gt;/navigation/racing/timeStbdUp</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Time to arrive at the start line on starboard, turning upwind</p>
+<hr />
+<h4 id="vesselsregexpnavigationracinglayline"><a class="header" href="#vesselsregexpnavigationracinglayline">/vessels/&lt;RegExp&gt;/navigation/racing/layline</a></h4>
+<p><strong>Description:</strong> The layline crossing the current course</p>
+<hr />
+<h4 id="vesselsregexpnavigationracinglaylinedistance"><a class="header" href="#vesselsregexpnavigationracinglaylinedistance">/vessels/&lt;RegExp&gt;/navigation/racing/layline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="vesselsregexpnavigationracinglaylinetime"><a class="header" href="#vesselsregexpnavigationracinglaylinetime">/vessels/&lt;RegExp&gt;/navigation/racing/layline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingoppositelayline"><a class="header" href="#vesselsregexpnavigationracingoppositelayline">/vessels/&lt;RegExp&gt;/navigation/racing/oppositeLayline</a></h4>
+<p><strong>Description:</strong> The layline parallell to current course</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingoppositelaylinedistance"><a class="header" href="#vesselsregexpnavigationracingoppositelaylinedistance">/vessels/&lt;RegExp&gt;/navigation/racing/oppositeLayline/distance</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> The current distance to the layline</p>
+<hr />
+<h4 id="vesselsregexpnavigationracingoppositelaylinetime"><a class="header" href="#vesselsregexpnavigationracingoppositelaylinetime">/vessels/&lt;RegExp&gt;/navigation/racing/oppositeLayline/time</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> The time to the layline at current speed and heading</p>
+<hr />
+<h4 id="vesselsregexpnavigationmagneticvariation"><a class="header" href="#vesselsregexpnavigationmagneticvariation">/vessels/&lt;RegExp&gt;/navigation/magneticVariation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The magnetic variation (declination) at the current position that must be added to the magnetic heading to derive the true heading. Easterly variations are positive and Westerly variations are negative (in Radians).</p>
+<hr />
+<h4 id="vesselsregexpnavigationmagneticvariationageofservice"><a class="header" href="#vesselsregexpnavigationmagneticvariationageofservice">/vessels/&lt;RegExp&gt;/navigation/magneticVariationAgeOfService</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Seconds since the 1st Jan 1970 that the variation calculation was made</p>
+<hr />
+<h4 id="vesselsregexpnavigationdestination"><a class="header" href="#vesselsregexpnavigationdestination">/vessels/&lt;RegExp&gt;/navigation/destination</a></h4>
+<p><strong>Title:</strong> destination</p>
+<p><strong>Description:</strong> The intended destination of this trip</p>
+<hr />
+<h4 id="vesselsregexpnavigationdestinationcommonname"><a class="header" href="#vesselsregexpnavigationdestinationcommonname">/vessels/&lt;RegExp&gt;/navigation/destination/commonName</a></h4>
+<p><strong>Description:</strong> Common name of the Destination, eg 'Fiji', also used in ais messages</p>
+<hr />
+<h4 id="vesselsregexpnavigationdestinationeta"><a class="header" href="#vesselsregexpnavigationdestinationeta">/vessels/&lt;RegExp&gt;/navigation/destination/eta</a></h4>
+<p><strong>Description:</strong> Expected time of arrival at destination waypoint</p>
+<hr />
+<h4 id="vesselsregexpnavigationdestinationwaypoint"><a class="header" href="#vesselsregexpnavigationdestinationwaypoint">/vessels/&lt;RegExp&gt;/navigation/destination/waypoint</a></h4>
+<p><strong>Description:</strong> UUID of destination waypoint</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnss"><a class="header" href="#vesselsregexpnavigationgnss">/vessels/&lt;RegExp&gt;/navigation/gnss</a></h4>
+<p><strong>Title:</strong> gnss</p>
+<p><strong>Description:</strong> Global satellite navigation meta information</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnsstype"><a class="header" href="#vesselsregexpnavigationgnsstype">/vessels/&lt;RegExp&gt;/navigation/gnss/type</a></h4>
+<p><strong>Description:</strong> Fix type</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssmethodquality"><a class="header" href="#vesselsregexpnavigationgnssmethodquality">/vessels/&lt;RegExp&gt;/navigation/gnss/methodQuality</a></h4>
+<p><strong>Description:</strong> Quality of the satellite fix</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssintegrity"><a class="header" href="#vesselsregexpnavigationgnssintegrity">/vessels/&lt;RegExp&gt;/navigation/gnss/integrity</a></h4>
+<p><strong>Description:</strong> Integrity of the satellite fix</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnsssatellites"><a class="header" href="#vesselsregexpnavigationgnsssatellites">/vessels/&lt;RegExp&gt;/navigation/gnss/satellites</a></h4>
+<p><strong>Description:</strong> Number of satellites</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssantennaaltitude"><a class="header" href="#vesselsregexpnavigationgnssantennaaltitude">/vessels/&lt;RegExp&gt;/navigation/gnss/antennaAltitude</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Altitude of antenna</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnsshorizontaldilution"><a class="header" href="#vesselsregexpnavigationgnsshorizontaldilution">/vessels/&lt;RegExp&gt;/navigation/gnss/horizontalDilution</a></h4>
+<p><strong>Description:</strong> Horizontal Dilution of Precision</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnsspositiondilution"><a class="header" href="#vesselsregexpnavigationgnsspositiondilution">/vessels/&lt;RegExp&gt;/navigation/gnss/positionDilution</a></h4>
+<p><strong>Description:</strong> Positional Dilution of Precision</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssgeoidalseparation"><a class="header" href="#vesselsregexpnavigationgnssgeoidalseparation">/vessels/&lt;RegExp&gt;/navigation/gnss/geoidalSeparation</a></h4>
+<p><strong>Description:</strong> Difference between WGS84 earth ellipsoid and mean sea level</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssdifferentialage"><a class="header" href="#vesselsregexpnavigationgnssdifferentialage">/vessels/&lt;RegExp&gt;/navigation/gnss/differentialAge</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Age of DGPS data</p>
+<hr />
+<h4 id="vesselsregexpnavigationgnssdifferentialreference"><a class="header" href="#vesselsregexpnavigationgnssdifferentialreference">/vessels/&lt;RegExp&gt;/navigation/gnss/differentialReference</a></h4>
+<p><strong>Description:</strong> ID of DGPS base station</p>
+<hr />
+<h4 id="vesselsregexpnavigationheadingmagnetic"><a class="header" href="#vesselsregexpnavigationheadingmagnetic">/vessels/&lt;RegExp&gt;/navigation/headingMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading of the vessel, equals 'headingCompass adjusted for magneticDeviation'</p>
+<hr />
+<h4 id="vesselsregexpnavigationmagneticdeviation"><a class="header" href="#vesselsregexpnavigationmagneticdeviation">/vessels/&lt;RegExp&gt;/navigation/magneticDeviation</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Magnetic deviation of the compass at the current headingCompass</p>
+<hr />
+<h4 id="vesselsregexpnavigationheadingcompass"><a class="header" href="#vesselsregexpnavigationheadingcompass">/vessels/&lt;RegExp&gt;/navigation/headingCompass</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current magnetic heading received from the compass. This is not adjusted for magneticDeviation of the compass</p>
+<hr />
+<h4 id="vesselsregexpnavigationheadingtrue"><a class="header" href="#vesselsregexpnavigationheadingtrue">/vessels/&lt;RegExp&gt;/navigation/headingTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> The current true north heading of the vessel, equals 'headingMagnetic adjusted for magneticVariation'</p>
+<hr />
+<h4 id="vesselsregexpnavigationposition"><a class="header" href="#vesselsregexpnavigationposition">/vessels/&lt;RegExp&gt;/navigation/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The position of the vessel in 2 or 3 dimensions (WGS84 datum)</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationattitude"><a class="header" href="#vesselsregexpnavigationattitude">/vessels/&lt;RegExp&gt;/navigation/attitude</a></h4>
+<p><strong>Title:</strong> Attitude</p>
+<p><strong>Description:</strong> Vessel attitude: roll, pitch and yaw</p>
+<p>Object value with properties</p>
+<ul>
+<li>roll (rad)</li>
+<li>pitch (rad)</li>
+<li>yaw (rad)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationmaneuver"><a class="header" href="#vesselsregexpnavigationmaneuver">/vessels/&lt;RegExp&gt;/navigation/maneuver</a></h4>
+<p><strong>Description:</strong> Special maneuver such as regional passing arrangement. (from ais)</p>
+<hr />
+<h4 id="vesselsregexpnavigationrateofturn"><a class="header" href="#vesselsregexpnavigationrateofturn">/vessels/&lt;RegExp&gt;/navigation/rateOfTurn</a></h4>
+<p><strong>Units:</strong> rad/s (Radian per second)</p>
+<p><strong>Description:</strong> Rate of turn (+ve is change to starboard). If the value is AIS RIGHT or LEFT, set to +-0.0206 rads and add warning in notifications</p>
+<hr />
+<h4 id="vesselsregexpnavigationspeedoverground"><a class="header" href="#vesselsregexpnavigationspeedoverground">/vessels/&lt;RegExp&gt;/navigation/speedOverGround</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed over ground. If converting from AIS 'HIGH' value, set to 102.2 (Ais max value) and add warning in notifications</p>
+<hr />
+<h4 id="vesselsregexpnavigationspeedthroughwater"><a class="header" href="#vesselsregexpnavigationspeedthroughwater">/vessels/&lt;RegExp&gt;/navigation/speedThroughWater</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Vessel speed through the water</p>
+<hr />
+<h4 id="vesselsregexpnavigationspeedthroughwatertransverse"><a class="header" href="#vesselsregexpnavigationspeedthroughwatertransverse">/vessels/&lt;RegExp&gt;/navigation/speedThroughWaterTransverse</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Transverse speed through the water (Leeway)</p>
+<hr />
+<h4 id="vesselsregexpnavigationspeedthroughwaterlongitudinal"><a class="header" href="#vesselsregexpnavigationspeedthroughwaterlongitudinal">/vessels/&lt;RegExp&gt;/navigation/speedThroughWaterLongitudinal</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Longitudinal speed through the water</p>
+<hr />
+<h4 id="vesselsregexpnavigationleewayangle"><a class="header" href="#vesselsregexpnavigationleewayangle">/vessels/&lt;RegExp&gt;/navigation/leewayAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Leeway Angle derived from the longitudinal and transverse speeds through the water</p>
+<hr />
+<h4 id="vesselsregexpnavigationlog"><a class="header" href="#vesselsregexpnavigationlog">/vessels/&lt;RegExp&gt;/navigation/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled</p>
+<hr />
+<h4 id="vesselsregexpnavigationtrip"><a class="header" href="#vesselsregexpnavigationtrip">/vessels/&lt;RegExp&gt;/navigation/trip</a></h4>
+<p><strong>Description:</strong> Trip data</p>
+<hr />
+<h4 id="vesselsregexpnavigationtriplog"><a class="header" href="#vesselsregexpnavigationtriplog">/vessels/&lt;RegExp&gt;/navigation/trip/log</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Total distance traveled on this trip / since trip reset</p>
+<hr />
+<h4 id="vesselsregexpnavigationtriplastreset"><a class="header" href="#vesselsregexpnavigationtriplastreset">/vessels/&lt;RegExp&gt;/navigation/trip/lastReset</a></h4>
+<p><strong>Description:</strong> Trip log reset time</p>
+<hr />
+<h4 id="vesselsregexpnavigationstate"><a class="header" href="#vesselsregexpnavigationstate">/vessels/&lt;RegExp&gt;/navigation/state</a></h4>
+<p><strong>Title:</strong> state</p>
+<p><strong>Description:</strong> Current navigational state of the vessel</p>
+<hr />
+<h4 id="vesselsregexpnavigationanchor"><a class="header" href="#vesselsregexpnavigationanchor">/vessels/&lt;RegExp&gt;/navigation/anchor</a></h4>
+<p><strong>Title:</strong> anchor</p>
+<p><strong>Description:</strong> The anchor data, for anchor watch etc</p>
+<hr />
+<h4 id="vesselsregexpnavigationanchormaxradius"><a class="header" href="#vesselsregexpnavigationanchormaxradius">/vessels/&lt;RegExp&gt;/navigation/anchor/maxRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Radius of anchor alarm boundary. The distance from anchor to the center of the boat</p>
+<hr />
+<h4 id="vesselsregexpnavigationanchorcurrentradius"><a class="header" href="#vesselsregexpnavigationanchorcurrentradius">/vessels/&lt;RegExp&gt;/navigation/anchor/currentRadius</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Current distance to anchor</p>
+<hr />
+<h4 id="vesselsregexpnavigationanchorposition"><a class="header" href="#vesselsregexpnavigationanchorposition">/vessels/&lt;RegExp&gt;/navigation/anchor/position</a></h4>
+<p><strong>Title:</strong> position</p>
+<p><strong>Description:</strong> The actual anchor position of the vessel in 3 dimensions, probably an estimate at best</p>
+<p>Object value with properties</p>
+<ul>
+<li>longitude (deg)</li>
+<li>latitude (deg)</li>
+<li>altitude (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnavigationdatetime"><a class="header" href="#vesselsregexpnavigationdatetime">/vessels/&lt;RegExp&gt;/navigation/datetime</a></h4>
+<p><strong>Description:</strong> Time and Date from the GNSS Positioning System</p>
+<hr />
+<h4 id="vesselsregexppropulsion"><a class="header" href="#vesselsregexppropulsion">/vessels/&lt;RegExp&gt;/propulsion</a></h4>
+<p><strong>Title:</strong> propulsion</p>
+<p><strong>Description:</strong> Engine data, each engine identified by a unique name i.e. Port_Engine</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexp"><a class="header" href="#vesselsregexppropulsionregexp">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the identifier for the propulsion unit</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexplabel"><a class="header" href="#vesselsregexppropulsionregexplabel">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/label</a></h4>
+<p><strong>Description:</strong> Human readable label for the propulsion unit</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpstate"><a class="header" href="#vesselsregexppropulsionregexpstate">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/state</a></h4>
+<p><strong>Description:</strong> The current state of the engine</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexprevolutions"><a class="header" href="#vesselsregexppropulsionregexprevolutions">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/revolutions</a></h4>
+<p><strong>Units:</strong> Hz (Hertz)</p>
+<p><strong>Description:</strong> Engine revolutions (x60 for RPM)</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptemperature"><a class="header" href="#vesselsregexppropulsionregexptemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Engine temperature</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpoiltemperature"><a class="header" href="#vesselsregexppropulsionregexpoiltemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/oilTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Oil temperature</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpoilpressure"><a class="header" href="#vesselsregexppropulsionregexpoilpressure">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/oilPressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Oil pressure</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpalternatorvoltage"><a class="header" href="#vesselsregexppropulsionregexpalternatorvoltage">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/alternatorVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Alternator voltage</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpruntime"><a class="header" href="#vesselsregexppropulsionregexpruntime">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/runTime</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Total running time for engine (Engine Hours in seconds)</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpcoolanttemperature"><a class="header" href="#vesselsregexppropulsionregexpcoolanttemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/coolantTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Coolant temperature</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpcoolantpressure"><a class="header" href="#vesselsregexppropulsionregexpcoolantpressure">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/coolantPressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Coolant pressure</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpboostpressure"><a class="header" href="#vesselsregexppropulsionregexpboostpressure">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/boostPressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Engine boost (turbo, supercharger) pressure</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpintakemanifoldtemperature"><a class="header" href="#vesselsregexppropulsionregexpintakemanifoldtemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/intakeManifoldTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Intake manifold temperature</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpengineload"><a class="header" href="#vesselsregexppropulsionregexpengineload">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/engineLoad</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Engine load ratio, 0&lt;=ratio&lt;=1, 1 is 100%</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpenginetorque"><a class="header" href="#vesselsregexppropulsionregexpenginetorque">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/engineTorque</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Engine torque ratio, 0&lt;=ratio&lt;=1, 1 is 100%</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptransmission"><a class="header" href="#vesselsregexppropulsionregexptransmission">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/transmission</a></h4>
+<p><strong>Description:</strong> The transmission (gear box) of the named engine</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptransmissiongear"><a class="header" href="#vesselsregexppropulsionregexptransmissiongear">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/transmission/gear</a></h4>
+<p><strong>Description:</strong> Currently selected gear the engine is in i.e. Forward, Reverse, etc.</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptransmissiongearratio"><a class="header" href="#vesselsregexppropulsionregexptransmissiongearratio">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/transmission/gearRatio</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Gear ratio, engine rotations per propeller shaft rotation</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptransmissionoiltemperature"><a class="header" href="#vesselsregexppropulsionregexptransmissionoiltemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/transmission/oilTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Oil temperature</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexptransmissionoilpressure"><a class="header" href="#vesselsregexppropulsionregexptransmissionoilpressure">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/transmission/oilPressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Oil pressure</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpdrive"><a class="header" href="#vesselsregexppropulsionregexpdrive">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/drive</a></h4>
+<p><strong>Description:</strong> Data about the engine's drive.</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpdrivetype"><a class="header" href="#vesselsregexppropulsionregexpdrivetype">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/drive/type</a></h4>
+<p><strong>Description:</strong> The type of drive the boat has i.e Outboard, shaft, jet, etc.</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>saildrive</li>
+<li>shaft</li>
+<li>outboard</li>
+<li>jet</li>
+<li>pod</li>
+<li>other</li>
+</ul>
+<hr />
+<h4 id="vesselsregexppropulsionregexpdrivetrimstate"><a class="header" href="#vesselsregexppropulsionregexpdrivetrimstate">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/drive/trimState</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Trim/tilt state, 0&lt;=ratio&lt;=1, 1 is 100% up</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpdrivethrustangle"><a class="header" href="#vesselsregexppropulsionregexpdrivethrustangle">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/drive/thrustAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Current thrust angle for steerable drives, +ve is thrust to Starboard</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpdrivepropeller"><a class="header" href="#vesselsregexppropulsionregexpdrivepropeller">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/drive/propeller</a></h4>
+<p><strong>Description:</strong> Data about the drive's propeller (pitch and slip)</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfuel"><a class="header" href="#vesselsregexppropulsionregexpfuel">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel</a></h4>
+<p><strong>Description:</strong> Data about the engine's Fuel Supply</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfueltype"><a class="header" href="#vesselsregexppropulsionregexpfueltype">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/type</a></h4>
+<p><strong>Description:</strong> Fuel type</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>diesel</li>
+<li>petrol</li>
+<li>electric</li>
+<li>coal/wood</li>
+<li>other</li>
+</ul>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfuelused"><a class="header" href="#vesselsregexppropulsionregexpfuelused">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/used</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Used fuel since last reset. Resetting is at user discretion</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfuelpressure"><a class="header" href="#vesselsregexppropulsionregexpfuelpressure">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Fuel pressure</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfuelrate"><a class="header" href="#vesselsregexppropulsionregexpfuelrate">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/rate</a></h4>
+<p><strong>Units:</strong> m3/s (Cubic meter per second)</p>
+<p><strong>Description:</strong> Fuel rate  of consumption</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfueleconomyrate"><a class="header" href="#vesselsregexppropulsionregexpfueleconomyrate">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/economyRate</a></h4>
+<p><strong>Units:</strong> m3/s (Cubic meter per second)</p>
+<p><strong>Description:</strong> Economy fuel rate of consumption</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpfuelaveragerate"><a class="header" href="#vesselsregexppropulsionregexpfuelaveragerate">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/fuel/averageRate</a></h4>
+<p><strong>Units:</strong> m3/s (Cubic meter per second)</p>
+<p><strong>Description:</strong> Average fuel rate of consumption</p>
+<hr />
+<h4 id="vesselsregexppropulsionregexpexhausttemperature"><a class="header" href="#vesselsregexppropulsionregexpexhausttemperature">/vessels/&lt;RegExp&gt;/propulsion/&lt;RegExp&gt;/exhaustTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Exhaust temperature</p>
+<hr />
+<h4 id="vesselsregexpelectrical"><a class="header" href="#vesselsregexpelectrical">/vessels/&lt;RegExp&gt;/electrical</a></h4>
+<p><strong>Title:</strong> electrical</p>
+<p><strong>Description:</strong> Electrical data, each electrical device indentified by a unique name i.e. Battery_1</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteries"><a class="header" href="#vesselsregexpelectricalbatteries">/vessels/&lt;RegExp&gt;/electrical/batteries</a></h4>
+<p><strong>Description:</strong> Data about the vessel's batteries</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexp"><a class="header" href="#vesselsregexpelectricalbatteriesregexp">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Battery keyed by instance id</p>
+<p><strong>Description:</strong> Batteries, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpname"><a class="header" href="#vesselsregexpelectricalbatteriesregexpname">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexplocation"><a class="header" href="#vesselsregexpelectricalbatteriesregexplocation">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalbatteriesregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalbatteriesregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalbatteriesregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalbatteriesregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalbatteriesregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpassociatedbus"><a class="header" href="#vesselsregexpelectricalbatteriesregexpassociatedbus">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpvoltage"><a class="header" href="#vesselsregexpelectricalbatteriesregexpvoltage">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/voltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Voltage measured at or as close as possible to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpvoltageripple"><a class="header" href="#vesselsregexpelectricalbatteriesregexpvoltageripple">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/voltage/ripple</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcurrent"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcurrent">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Current flowing out (+ve) or in (-ve) to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexptemperature"><a class="header" href="#vesselsregexpelectricalbatteriesregexptemperature">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Title:</strong> temperature</p>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature measured within or on the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpchemistry"><a class="header" href="#vesselsregexpelectricalbatteriesregexpchemistry">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/chemistry</a></h4>
+<p><strong>Description:</strong> Type of battery FLA, LiFePO4, etc.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacity"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacity">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Title:</strong> capacity</p>
+<p><strong>Description:</strong> Data about the battery's capacity</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitynominal"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitynominal">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/nominal</a></h4>
+<p><strong>Units:</strong> J (Joule)</p>
+<p><strong>Description:</strong> The capacity of battery as specified by the manufacturer</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacityactual"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacityactual">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/actual</a></h4>
+<p><strong>Units:</strong> J (Joule)</p>
+<p><strong>Description:</strong> The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacityremaining"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacityremaining">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/remaining</a></h4>
+<p><strong>Units:</strong> J (Joule)</p>
+<p><strong>Description:</strong> Capacity remaining in battery</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitydischargelimit"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitydischargelimit">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/dischargeLimit</a></h4>
+<p><strong>Units:</strong> J (Joule)</p>
+<p><strong>Description:</strong> Minimum capacity to be left in the battery while discharging</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitystateofcharge"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitystateofcharge">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/stateOfCharge</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitystateofhealth"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitystateofhealth">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/stateOfHealth</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitydischargesincefull"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitydischargesincefull">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/dischargeSinceFull</a></h4>
+<p><strong>Units:</strong> C (Coulomb)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexpcapacitytimeremaining"><a class="header" href="#vesselsregexpelectricalbatteriesregexpcapacitytimeremaining">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/capacity/timeRemaining</a></h4>
+<p><strong>Units:</strong> s (Second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexplifetimedischarge"><a class="header" href="#vesselsregexpelectricalbatteriesregexplifetimedischarge">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/lifetimeDischarge</a></h4>
+<p><strong>Units:</strong> C (Coulomb)</p>
+<p><strong>Description:</strong> Cumulative charge discharged from battery over operational lifetime of battery</p>
+<hr />
+<h4 id="vesselsregexpelectricalbatteriesregexplifetimerecharge"><a class="header" href="#vesselsregexpelectricalbatteriesregexplifetimerecharge">/vessels/&lt;RegExp&gt;/electrical/batteries/&lt;RegExp&gt;/lifetimeRecharge</a></h4>
+<p><strong>Units:</strong> C (Coulomb)</p>
+<p><strong>Description:</strong> Cumulative charge recharged into battery over operational lifetime of battery</p>
+<hr />
+<h4 id="vesselsregexpelectricalinverters"><a class="header" href="#vesselsregexpelectricalinverters">/vessels/&lt;RegExp&gt;/electrical/inverters</a></h4>
+<p><strong>Description:</strong> Data about the Inverter that has both DC and AC qualities</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexp"><a class="header" href="#vesselsregexpelectricalinvertersregexp">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Inverter</p>
+<p><strong>Description:</strong> DC to AC inverter, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpname"><a class="header" href="#vesselsregexpelectricalinvertersregexpname">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexplocation"><a class="header" href="#vesselsregexpelectricalinvertersregexplocation">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalinvertersregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalinvertersregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalinvertersregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalinvertersregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalinvertersregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdc"><a class="header" href="#vesselsregexpelectricalinvertersregexpdc">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc</a></h4>
+<p><strong>Title:</strong> DC Qualities</p>
+<p><strong>Description:</strong> DC common qualities</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdcassociatedbus"><a class="header" href="#vesselsregexpelectricalinvertersregexpdcassociatedbus">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdcvoltage"><a class="header" href="#vesselsregexpelectricalinvertersregexpdcvoltage">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc/voltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Voltage measured at or as close as possible to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdcvoltageripple"><a class="header" href="#vesselsregexpelectricalinvertersregexpdcvoltageripple">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc/voltage/ripple</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdccurrent"><a class="header" href="#vesselsregexpelectricalinvertersregexpdccurrent">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Current flowing out (+ve) or in (-ve) to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpdctemperature"><a class="header" href="#vesselsregexpelectricalinvertersregexpdctemperature">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/dc/temperature</a></h4>
+<p><strong>Title:</strong> temperature</p>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature measured within or on the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpac"><a class="header" href="#vesselsregexpelectricalinvertersregexpac">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac</a></h4>
+<p><strong>Title:</strong> AC Qualities</p>
+<p><strong>Description:</strong> AC equipment common qualities</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacassociatedbus"><a class="header" href="#vesselsregexpelectricalinvertersregexpacassociatedbus">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpaclineneutralvoltage"><a class="header" href="#vesselsregexpelectricalinvertersregexpaclineneutralvoltage">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/lineNeutralVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpaclinelinevoltage"><a class="header" href="#vesselsregexpelectricalinvertersregexpaclinelinevoltage">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/lineLineVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpaccurrent"><a class="header" href="#vesselsregexpelectricalinvertersregexpaccurrent">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacfrequency"><a class="header" href="#vesselsregexpelectricalinvertersregexpacfrequency">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/frequency</a></h4>
+<p><strong>Units:</strong> Hz (Hertz)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacreactivepower"><a class="header" href="#vesselsregexpelectricalinvertersregexpacreactivepower">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/reactivePower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacpowerfactor"><a class="header" href="#vesselsregexpelectricalinvertersregexpacpowerfactor">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/powerFactor</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacpowerfactorlagging"><a class="header" href="#vesselsregexpelectricalinvertersregexpacpowerfactorlagging">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/powerFactorLagging</a></h4>
+<p><strong>Description:</strong> Lead/lag status.</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>leading</li>
+<li>lagging</li>
+<li>error</li>
+<li>not available</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacrealpower"><a class="header" href="#vesselsregexpelectricalinvertersregexpacrealpower">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/realPower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpacapparentpower"><a class="header" href="#vesselsregexpelectricalinvertersregexpacapparentpower">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/ac/apparentPower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalinvertersregexpinvertermode"><a class="header" href="#vesselsregexpelectricalinvertersregexpinvertermode">/vessels/&lt;RegExp&gt;/electrical/inverters/&lt;RegExp&gt;/inverterMode</a></h4>
+<p><strong>Description:</strong> Mode of inverter</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargers"><a class="header" href="#vesselsregexpelectricalchargers">/vessels/&lt;RegExp&gt;/electrical/chargers</a></h4>
+<p><strong>Description:</strong> Data about AC sourced battery charger</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexp"><a class="header" href="#vesselsregexpelectricalchargersregexp">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Charger</p>
+<p><strong>Description:</strong> Battery charger</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpname"><a class="header" href="#vesselsregexpelectricalchargersregexpname">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexplocation"><a class="header" href="#vesselsregexpelectricalchargersregexplocation">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalchargersregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalchargersregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalchargersregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalchargersregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalchargersregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpassociatedbus"><a class="header" href="#vesselsregexpelectricalchargersregexpassociatedbus">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpvoltage"><a class="header" href="#vesselsregexpelectricalchargersregexpvoltage">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/voltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Voltage measured at or as close as possible to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpvoltageripple"><a class="header" href="#vesselsregexpelectricalchargersregexpvoltageripple">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/voltage/ripple</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpcurrent"><a class="header" href="#vesselsregexpelectricalchargersregexpcurrent">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Current flowing out (+ve) or in (-ve) to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexptemperature"><a class="header" href="#vesselsregexpelectricalchargersregexptemperature">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Title:</strong> temperature</p>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature measured within or on the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpchargingalgorithm"><a class="header" href="#vesselsregexpelectricalchargersregexpchargingalgorithm">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/chargingAlgorithm</a></h4>
+<p><strong>Description:</strong> Algorithm being used by the charger</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpchargerrole"><a class="header" href="#vesselsregexpelectricalchargersregexpchargerrole">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/chargerRole</a></h4>
+<p><strong>Description:</strong> How is charging source configured?  Standalone, or in sync with another charger?</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpchargingmode"><a class="header" href="#vesselsregexpelectricalchargersregexpchargingmode">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/chargingMode</a></h4>
+<p><strong>Description:</strong> Charging mode i.e. float, overcharge, etc.</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpsetpointvoltage"><a class="header" href="#vesselsregexpelectricalchargersregexpsetpointvoltage">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/setpointVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalchargersregexpsetpointcurrent"><a class="header" href="#vesselsregexpelectricalchargersregexpsetpointcurrent">/vessels/&lt;RegExp&gt;/electrical/chargers/&lt;RegExp&gt;/setpointCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternators"><a class="header" href="#vesselsregexpelectricalalternators">/vessels/&lt;RegExp&gt;/electrical/alternators</a></h4>
+<p><strong>Description:</strong> Data about an Alternator charging device</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexp"><a class="header" href="#vesselsregexpelectricalalternatorsregexp">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Alternator</p>
+<p><strong>Description:</strong> Mechanically driven alternator, includes dynamos</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpname"><a class="header" href="#vesselsregexpelectricalalternatorsregexpname">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexplocation"><a class="header" href="#vesselsregexpelectricalalternatorsregexplocation">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalalternatorsregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalalternatorsregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalalternatorsregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalalternatorsregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalalternatorsregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpassociatedbus"><a class="header" href="#vesselsregexpelectricalalternatorsregexpassociatedbus">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpvoltage"><a class="header" href="#vesselsregexpelectricalalternatorsregexpvoltage">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/voltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Voltage measured at or as close as possible to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpvoltageripple"><a class="header" href="#vesselsregexpelectricalalternatorsregexpvoltageripple">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/voltage/ripple</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpcurrent"><a class="header" href="#vesselsregexpelectricalalternatorsregexpcurrent">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Current flowing out (+ve) or in (-ve) to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexptemperature"><a class="header" href="#vesselsregexpelectricalalternatorsregexptemperature">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Title:</strong> temperature</p>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature measured within or on the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpchargingalgorithm"><a class="header" href="#vesselsregexpelectricalalternatorsregexpchargingalgorithm">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/chargingAlgorithm</a></h4>
+<p><strong>Description:</strong> Algorithm being used by the charger</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpchargerrole"><a class="header" href="#vesselsregexpelectricalalternatorsregexpchargerrole">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/chargerRole</a></h4>
+<p><strong>Description:</strong> How is charging source configured?  Standalone, or in sync with another charger?</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpchargingmode"><a class="header" href="#vesselsregexpelectricalalternatorsregexpchargingmode">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/chargingMode</a></h4>
+<p><strong>Description:</strong> Charging mode i.e. float, overcharge, etc.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpsetpointvoltage"><a class="header" href="#vesselsregexpelectricalalternatorsregexpsetpointvoltage">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/setpointVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpsetpointcurrent"><a class="header" href="#vesselsregexpelectricalalternatorsregexpsetpointcurrent">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/setpointCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexprevolutions"><a class="header" href="#vesselsregexpelectricalalternatorsregexprevolutions">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/revolutions</a></h4>
+<p><strong>Units:</strong> Hz (Hertz)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexppulleyratio"><a class="header" href="#vesselsregexpelectricalalternatorsregexppulleyratio">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/pulleyRatio</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpfielddrive"><a class="header" href="#vesselsregexpelectricalalternatorsregexpfielddrive">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/fieldDrive</a></h4>
+<p><strong>Units:</strong> % (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalalternatorsregexpregulatortemperature"><a class="header" href="#vesselsregexpelectricalalternatorsregexpregulatortemperature">/vessels/&lt;RegExp&gt;/electrical/alternators/&lt;RegExp&gt;/regulatorTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolar"><a class="header" href="#vesselsregexpelectricalsolar">/vessels/&lt;RegExp&gt;/electrical/solar</a></h4>
+<p><strong>Description:</strong> Data about Solar charging device(s)</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexp"><a class="header" href="#vesselsregexpelectricalsolarregexp">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> Solar</p>
+<p><strong>Description:</strong> Photovoltaic charging devices</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpname"><a class="header" href="#vesselsregexpelectricalsolarregexpname">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexplocation"><a class="header" href="#vesselsregexpelectricalsolarregexplocation">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalsolarregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalsolarregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalsolarregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalsolarregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalsolarregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpassociatedbus"><a class="header" href="#vesselsregexpelectricalsolarregexpassociatedbus">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpvoltage"><a class="header" href="#vesselsregexpelectricalsolarregexpvoltage">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/voltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Voltage measured at or as close as possible to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpvoltageripple"><a class="header" href="#vesselsregexpelectricalsolarregexpvoltageripple">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/voltage/ripple</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpcurrent"><a class="header" href="#vesselsregexpelectricalsolarregexpcurrent">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Current flowing out (+ve) or in (-ve) to the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexptemperature"><a class="header" href="#vesselsregexpelectricalsolarregexptemperature">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Title:</strong> temperature</p>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Temperature measured within or on the device</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpchargingalgorithm"><a class="header" href="#vesselsregexpelectricalsolarregexpchargingalgorithm">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/chargingAlgorithm</a></h4>
+<p><strong>Description:</strong> Algorithm being used by the charger</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpchargerrole"><a class="header" href="#vesselsregexpelectricalsolarregexpchargerrole">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/chargerRole</a></h4>
+<p><strong>Description:</strong> How is charging source configured?  Standalone, or in sync with another charger?</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpchargingmode"><a class="header" href="#vesselsregexpelectricalsolarregexpchargingmode">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/chargingMode</a></h4>
+<p><strong>Description:</strong> Charging mode i.e. float, overcharge, etc.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpsetpointvoltage"><a class="header" href="#vesselsregexpelectricalsolarregexpsetpointvoltage">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/setpointVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpsetpointcurrent"><a class="header" href="#vesselsregexpelectricalsolarregexpsetpointcurrent">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/setpointCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpcontrollermode"><a class="header" href="#vesselsregexpelectricalsolarregexpcontrollermode">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/controllerMode</a></h4>
+<p><strong>Description:</strong> The current state of the engine</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexppanelvoltage"><a class="header" href="#vesselsregexpelectricalsolarregexppanelvoltage">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/panelVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexppanelcurrent"><a class="header" href="#vesselsregexpelectricalsolarregexppanelcurrent">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/panelCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexppaneltemperature"><a class="header" href="#vesselsregexpelectricalsolarregexppaneltemperature">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/panelTemperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexpload"><a class="header" href="#vesselsregexpelectricalsolarregexpload">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/load</a></h4>
+<p><strong>Description:</strong> State of load port on controller (if applicable)</p>
+<hr />
+<h4 id="vesselsregexpelectricalsolarregexploadcurrent"><a class="header" href="#vesselsregexpelectricalsolarregexploadcurrent">/vessels/&lt;RegExp&gt;/electrical/solar/&lt;RegExp&gt;/loadCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalac"><a class="header" href="#vesselsregexpelectricalac">/vessels/&lt;RegExp&gt;/electrical/ac</a></h4>
+<p><strong>Description:</strong> AC buses</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexp"><a class="header" href="#vesselsregexpelectricalacregexp">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> AC Bus keyed by instance id</p>
+<p><strong>Description:</strong> AC Bus, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpname"><a class="header" href="#vesselsregexpelectricalacregexpname">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexplocation"><a class="header" href="#vesselsregexpelectricalacregexplocation">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/location</a></h4>
+<p><strong>Description:</strong> Installed location of device on vessel</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpdateinstalled"><a class="header" href="#vesselsregexpelectricalacregexpdateinstalled">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/dateInstalled</a></h4>
+<p><strong>Units:</strong> RFC 3339 (UTC) (undefined)</p>
+<p><strong>Description:</strong> RFC 3339 (UTC only without local offset) string representing date and time.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpmanufacturer"><a class="header" href="#vesselsregexpelectricalacregexpmanufacturer">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/manufacturer</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpmanufacturername"><a class="header" href="#vesselsregexpelectricalacregexpmanufacturername">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/manufacturer/name</a></h4>
+<p><strong>Description:</strong> Manufacturer's name</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpmanufacturermodel"><a class="header" href="#vesselsregexpelectricalacregexpmanufacturermodel">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/manufacturer/model</a></h4>
+<p><strong>Description:</strong> Model or part number</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpmanufacturerurl"><a class="header" href="#vesselsregexpelectricalacregexpmanufacturerurl">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/manufacturer/URL</a></h4>
+<p><strong>Description:</strong> Web referance / URL</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphase"><a class="header" href="#vesselsregexpelectricalacregexpphase">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase</a></h4>
+<p><strong>Description:</strong> Single or A,B or C in 3 Phase systems </p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-c"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-c">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])</a></h4>
+<p><strong>Title:</strong> AC Qualities</p>
+<p><strong>Description:</strong> AC equipment common qualities</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-cassociatedbus"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-cassociatedbus">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/associatedBus</a></h4>
+<p><strong>Description:</strong> Name of BUS device is associated with</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-clineneutralvoltage"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-clineneutralvoltage">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/lineNeutralVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-clinelinevoltage"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-clinelinevoltage">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/lineLineVoltage</a></h4>
+<p><strong>Units:</strong> V (Volt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-ccurrent"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-ccurrent">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/current</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-cfrequency"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-cfrequency">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/frequency</a></h4>
+<p><strong>Units:</strong> Hz (Hertz)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-creactivepower"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-creactivepower">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/reactivePower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-cpowerfactor"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-cpowerfactor">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/powerFactor</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-cpowerfactorlagging"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-cpowerfactorlagging">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/powerFactorLagging</a></h4>
+<p><strong>Description:</strong> Lead/lag status.</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>leading</li>
+<li>lagging</li>
+<li>error</li>
+<li>not available</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-crealpower"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-crealpower">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/realPower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpelectricalacregexpphasesinglea-capparentpower"><a class="header" href="#vesselsregexpelectricalacregexpphasesinglea-capparentpower">/vessels/&lt;RegExp&gt;/electrical/ac/&lt;RegExp&gt;/phase/(single)|([A-C])/apparentPower</a></h4>
+<p><strong>Units:</strong> W (Watt)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpnotifications"><a class="header" href="#vesselsregexpnotifications">/vessels/&lt;RegExp&gt;/notifications</a></h4>
+<p><strong>Title:</strong> notifications</p>
+<p><strong>Description:</strong> Notifications currently raised. Major categories have well-defined names, but the tree can be extended by any hierarchical structure</p>
+<hr />
+<h4 id="vesselsregexpnotificationsmob"><a class="header" href="#vesselsregexpnotificationsmob">/vessels/&lt;RegExp&gt;/notifications/mob</a></h4>
+<p><strong>Description:</strong> Man overboard</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsfire"><a class="header" href="#vesselsregexpnotificationsfire">/vessels/&lt;RegExp&gt;/notifications/fire</a></h4>
+<p><strong>Description:</strong> Fire onboard</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationssinking"><a class="header" href="#vesselsregexpnotificationssinking">/vessels/&lt;RegExp&gt;/notifications/sinking</a></h4>
+<p><strong>Description:</strong> Vessel is sinking</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsflooding"><a class="header" href="#vesselsregexpnotificationsflooding">/vessels/&lt;RegExp&gt;/notifications/flooding</a></h4>
+<p><strong>Description:</strong> Vessel is flooding</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationscollision"><a class="header" href="#vesselsregexpnotificationscollision">/vessels/&lt;RegExp&gt;/notifications/collision</a></h4>
+<p><strong>Description:</strong> In collision with another vessel or object</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsgrounding"><a class="header" href="#vesselsregexpnotificationsgrounding">/vessels/&lt;RegExp&gt;/notifications/grounding</a></h4>
+<p><strong>Description:</strong> Vessel grounding</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationslisting"><a class="header" href="#vesselsregexpnotificationslisting">/vessels/&lt;RegExp&gt;/notifications/listing</a></h4>
+<p><strong>Description:</strong> Vessel is listing</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsadrift"><a class="header" href="#vesselsregexpnotificationsadrift">/vessels/&lt;RegExp&gt;/notifications/adrift</a></h4>
+<p><strong>Description:</strong> Vessel is adrift</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationspiracy"><a class="header" href="#vesselsregexpnotificationspiracy">/vessels/&lt;RegExp&gt;/notifications/piracy</a></h4>
+<p><strong>Description:</strong> Under attack or danger from pirates</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsabandon"><a class="header" href="#vesselsregexpnotificationsabandon">/vessels/&lt;RegExp&gt;/notifications/abandon</a></h4>
+<p><strong>Description:</strong> Abandon ship</p>
+<p>Object value with properties</p>
+<ul>
+<li>method</li>
+<li>state</li>
+<li>message</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpnotificationsregexp"><a class="header" href="#vesselsregexpnotificationsregexp">/vessels/&lt;RegExp&gt;/notifications/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> This regex pattern is used for validation of the path of the alarm</p>
+<hr />
+<h4 id="vesselsregexpsteering"><a class="header" href="#vesselsregexpsteering">/vessels/&lt;RegExp&gt;/steering</a></h4>
+<p><strong>Title:</strong> steering</p>
+<p><strong>Description:</strong> Vessel steering data for steering controls (not Autopilot 'Nav Data')</p>
+<hr />
+<h4 id="vesselsregexpsteeringrudderangle"><a class="header" href="#vesselsregexpsteeringrudderangle">/vessels/&lt;RegExp&gt;/steering/rudderAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringrudderangletarget"><a class="header" href="#vesselsregexpsteeringrudderangletarget">/vessels/&lt;RegExp&gt;/steering/rudderAngleTarget</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilot"><a class="header" href="#vesselsregexpsteeringautopilot">/vessels/&lt;RegExp&gt;/steering/autopilot</a></h4>
+<p><strong>Title:</strong> autopilot</p>
+<p><strong>Description:</strong> Autopilot data</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotstate"><a class="header" href="#vesselsregexpsteeringautopilotstate">/vessels/&lt;RegExp&gt;/steering/autopilot/state</a></h4>
+<p><strong>Description:</strong> Autopilot state</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotmode"><a class="header" href="#vesselsregexpsteeringautopilotmode">/vessels/&lt;RegExp&gt;/steering/autopilot/mode</a></h4>
+<p><strong>Description:</strong> Operational mode</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilottarget"><a class="header" href="#vesselsregexpsteeringautopilottarget">/vessels/&lt;RegExp&gt;/steering/autopilot/target</a></h4>
+<p><strong>Title:</strong> target</p>
+<p><strong>Description:</strong> Autopilot target</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilottargetwindangleapparent"><a class="header" href="#vesselsregexpsteeringautopilottargetwindangleapparent">/vessels/&lt;RegExp&gt;/steering/autopilot/target/windAngleApparent</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilottargetwindangletrue"><a class="header" href="#vesselsregexpsteeringautopilottargetwindangletrue">/vessels/&lt;RegExp&gt;/steering/autopilot/target/windAngleTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilottargetheadingtrue"><a class="header" href="#vesselsregexpsteeringautopilottargetheadingtrue">/vessels/&lt;RegExp&gt;/steering/autopilot/target/headingTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilottargetheadingmagnetic"><a class="header" href="#vesselsregexpsteeringautopilottargetheadingmagnetic">/vessels/&lt;RegExp&gt;/steering/autopilot/target/headingMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotdeadzone"><a class="header" href="#vesselsregexpsteeringautopilotdeadzone">/vessels/&lt;RegExp&gt;/steering/autopilot/deadZone</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotbacklash"><a class="header" href="#vesselsregexpsteeringautopilotbacklash">/vessels/&lt;RegExp&gt;/steering/autopilot/backlash</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotgain"><a class="header" href="#vesselsregexpsteeringautopilotgain">/vessels/&lt;RegExp&gt;/steering/autopilot/gain</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotmaxdrivecurrent"><a class="header" href="#vesselsregexpsteeringautopilotmaxdrivecurrent">/vessels/&lt;RegExp&gt;/steering/autopilot/maxDriveCurrent</a></h4>
+<p><strong>Units:</strong> A (Ampere)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotmaxdriverate"><a class="header" href="#vesselsregexpsteeringautopilotmaxdriverate">/vessels/&lt;RegExp&gt;/steering/autopilot/maxDriveRate</a></h4>
+<p><strong>Units:</strong> rad/s (Radian per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotportlock"><a class="header" href="#vesselsregexpsteeringautopilotportlock">/vessels/&lt;RegExp&gt;/steering/autopilot/portLock</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsteeringautopilotstarboardlock"><a class="header" href="#vesselsregexpsteeringautopilotstarboardlock">/vessels/&lt;RegExp&gt;/steering/autopilot/starboardLock</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanks"><a class="header" href="#vesselsregexptanks">/vessels/&lt;RegExp&gt;/tanks</a></h4>
+<p><strong>Title:</strong> tanks</p>
+<p><strong>Description:</strong> Tank data, each tank indentified by a unique name i.e. FreshWater_2</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwater"><a class="header" href="#vesselsregexptanksfreshwater">/vessels/&lt;RegExp&gt;/tanks/freshWater</a></h4>
+<p><strong>Description:</strong> Fresh water tank (drinking)</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexp"><a class="header" href="#vesselsregexptanksfreshwaterregexp">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpname"><a class="header" href="#vesselsregexptanksfreshwaterregexpname">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexptype"><a class="header" href="#vesselsregexptanksfreshwaterregexptype">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpcapacity"><a class="header" href="#vesselsregexptanksfreshwaterregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpcurrentlevel"><a class="header" href="#vesselsregexptanksfreshwaterregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpcurrentvolume"><a class="header" href="#vesselsregexptanksfreshwaterregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexppressure"><a class="header" href="#vesselsregexptanksfreshwaterregexppressure">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexptemperature"><a class="header" href="#vesselsregexptanksfreshwaterregexptemperature">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpviscosity"><a class="header" href="#vesselsregexptanksfreshwaterregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfreshwaterregexpextinguishant"><a class="header" href="#vesselsregexptanksfreshwaterregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/freshWater/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptankswastewater"><a class="header" href="#vesselsregexptankswastewater">/vessels/&lt;RegExp&gt;/tanks/wasteWater</a></h4>
+<p><strong>Description:</strong> Waste water tank (grey water)</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexp"><a class="header" href="#vesselsregexptankswastewaterregexp">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpname"><a class="header" href="#vesselsregexptankswastewaterregexpname">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexptype"><a class="header" href="#vesselsregexptankswastewaterregexptype">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpcapacity"><a class="header" href="#vesselsregexptankswastewaterregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpcurrentlevel"><a class="header" href="#vesselsregexptankswastewaterregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpcurrentvolume"><a class="header" href="#vesselsregexptankswastewaterregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexppressure"><a class="header" href="#vesselsregexptankswastewaterregexppressure">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexptemperature"><a class="header" href="#vesselsregexptankswastewaterregexptemperature">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpviscosity"><a class="header" href="#vesselsregexptankswastewaterregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankswastewaterregexpextinguishant"><a class="header" href="#vesselsregexptankswastewaterregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/wasteWater/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptanksblackwater"><a class="header" href="#vesselsregexptanksblackwater">/vessels/&lt;RegExp&gt;/tanks/blackWater</a></h4>
+<p><strong>Description:</strong> Black water tank (sewage)</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexp"><a class="header" href="#vesselsregexptanksblackwaterregexp">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpname"><a class="header" href="#vesselsregexptanksblackwaterregexpname">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexptype"><a class="header" href="#vesselsregexptanksblackwaterregexptype">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpcapacity"><a class="header" href="#vesselsregexptanksblackwaterregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpcurrentlevel"><a class="header" href="#vesselsregexptanksblackwaterregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpcurrentvolume"><a class="header" href="#vesselsregexptanksblackwaterregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexppressure"><a class="header" href="#vesselsregexptanksblackwaterregexppressure">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexptemperature"><a class="header" href="#vesselsregexptanksblackwaterregexptemperature">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpviscosity"><a class="header" href="#vesselsregexptanksblackwaterregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksblackwaterregexpextinguishant"><a class="header" href="#vesselsregexptanksblackwaterregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/blackWater/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptanksfuel"><a class="header" href="#vesselsregexptanksfuel">/vessels/&lt;RegExp&gt;/tanks/fuel</a></h4>
+<p><strong>Description:</strong> Fuel tank (petrol or diesel)</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexp"><a class="header" href="#vesselsregexptanksfuelregexp">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpname"><a class="header" href="#vesselsregexptanksfuelregexpname">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexptype"><a class="header" href="#vesselsregexptanksfuelregexptype">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpcapacity"><a class="header" href="#vesselsregexptanksfuelregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpcurrentlevel"><a class="header" href="#vesselsregexptanksfuelregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpcurrentvolume"><a class="header" href="#vesselsregexptanksfuelregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexppressure"><a class="header" href="#vesselsregexptanksfuelregexppressure">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexptemperature"><a class="header" href="#vesselsregexptanksfuelregexptemperature">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpviscosity"><a class="header" href="#vesselsregexptanksfuelregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksfuelregexpextinguishant"><a class="header" href="#vesselsregexptanksfuelregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/fuel/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptankslubrication"><a class="header" href="#vesselsregexptankslubrication">/vessels/&lt;RegExp&gt;/tanks/lubrication</a></h4>
+<p><strong>Description:</strong> Lubrication tank (oil or grease)</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexp"><a class="header" href="#vesselsregexptankslubricationregexp">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpname"><a class="header" href="#vesselsregexptankslubricationregexpname">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexptype"><a class="header" href="#vesselsregexptankslubricationregexptype">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpcapacity"><a class="header" href="#vesselsregexptankslubricationregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpcurrentlevel"><a class="header" href="#vesselsregexptankslubricationregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpcurrentvolume"><a class="header" href="#vesselsregexptankslubricationregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexppressure"><a class="header" href="#vesselsregexptankslubricationregexppressure">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexptemperature"><a class="header" href="#vesselsregexptankslubricationregexptemperature">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpviscosity"><a class="header" href="#vesselsregexptankslubricationregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslubricationregexpextinguishant"><a class="header" href="#vesselsregexptankslubricationregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/lubrication/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptankslivewell"><a class="header" href="#vesselsregexptankslivewell">/vessels/&lt;RegExp&gt;/tanks/liveWell</a></h4>
+<p><strong>Description:</strong> Live tank (fish)</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexp"><a class="header" href="#vesselsregexptankslivewellregexp">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpname"><a class="header" href="#vesselsregexptankslivewellregexpname">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexptype"><a class="header" href="#vesselsregexptankslivewellregexptype">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpcapacity"><a class="header" href="#vesselsregexptankslivewellregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpcurrentlevel"><a class="header" href="#vesselsregexptankslivewellregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpcurrentvolume"><a class="header" href="#vesselsregexptankslivewellregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexppressure"><a class="header" href="#vesselsregexptankslivewellregexppressure">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexptemperature"><a class="header" href="#vesselsregexptankslivewellregexptemperature">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpviscosity"><a class="header" href="#vesselsregexptankslivewellregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptankslivewellregexpextinguishant"><a class="header" href="#vesselsregexptankslivewellregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/liveWell/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwell"><a class="header" href="#vesselsregexptanksbaitwell">/vessels/&lt;RegExp&gt;/tanks/baitWell</a></h4>
+<p><strong>Description:</strong> Bait tank</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexp"><a class="header" href="#vesselsregexptanksbaitwellregexp">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpname"><a class="header" href="#vesselsregexptanksbaitwellregexpname">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexptype"><a class="header" href="#vesselsregexptanksbaitwellregexptype">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpcapacity"><a class="header" href="#vesselsregexptanksbaitwellregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpcurrentlevel"><a class="header" href="#vesselsregexptanksbaitwellregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpcurrentvolume"><a class="header" href="#vesselsregexptanksbaitwellregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexppressure"><a class="header" href="#vesselsregexptanksbaitwellregexppressure">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexptemperature"><a class="header" href="#vesselsregexptanksbaitwellregexptemperature">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpviscosity"><a class="header" href="#vesselsregexptanksbaitwellregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksbaitwellregexpextinguishant"><a class="header" href="#vesselsregexptanksbaitwellregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/baitWell/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptanksgas"><a class="header" href="#vesselsregexptanksgas">/vessels/&lt;RegExp&gt;/tanks/gas</a></h4>
+<p><strong>Description:</strong> Lpg/propane and other gases</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexp"><a class="header" href="#vesselsregexptanksgasregexp">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexpname"><a class="header" href="#vesselsregexptanksgasregexpname">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexptype"><a class="header" href="#vesselsregexptanksgasregexptype">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksgasregexpcapacity"><a class="header" href="#vesselsregexptanksgasregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexpcurrentlevel"><a class="header" href="#vesselsregexptanksgasregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexpcurrentvolume"><a class="header" href="#vesselsregexptanksgasregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexppressure"><a class="header" href="#vesselsregexptanksgasregexppressure">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexptemperature"><a class="header" href="#vesselsregexptanksgasregexptemperature">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexpviscosity"><a class="header" href="#vesselsregexptanksgasregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksgasregexpextinguishant"><a class="header" href="#vesselsregexptanksgasregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/gas/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexptanksballast"><a class="header" href="#vesselsregexptanksballast">/vessels/&lt;RegExp&gt;/tanks/ballast</a></h4>
+<p><strong>Description:</strong> Ballast tanks</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexp"><a class="header" href="#vesselsregexptanksballastregexp">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> Tank, one or many, within the vessel</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexpname"><a class="header" href="#vesselsregexptanksballastregexpname">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The name of the tank. Useful if multiple tanks of a certain type are on board</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexptype"><a class="header" href="#vesselsregexptanksballastregexptype">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/type</a></h4>
+<p><strong>Description:</strong> The type of tank</p>
+<p><strong>Enum values:</strong></p>
+<ul>
+<li>petrol</li>
+<li>fresh water</li>
+<li>greywater</li>
+<li>blackwater</li>
+<li>holding</li>
+<li>lpg</li>
+<li>diesel</li>
+<li>liveWell</li>
+<li>baitWell</li>
+<li>ballast</li>
+<li>rum</li>
+</ul>
+<hr />
+<h4 id="vesselsregexptanksballastregexpcapacity"><a class="header" href="#vesselsregexptanksballastregexpcapacity">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/capacity</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexpcurrentlevel"><a class="header" href="#vesselsregexptanksballastregexpcurrentlevel">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/currentLevel</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexpcurrentvolume"><a class="header" href="#vesselsregexptanksballastregexpcurrentvolume">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/currentVolume</a></h4>
+<p><strong>Units:</strong> m3 (Cubic meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexppressure"><a class="header" href="#vesselsregexptanksballastregexppressure">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/pressure</a></h4>
+<p><strong>Units:</strong> Pa (Pascal)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexptemperature"><a class="header" href="#vesselsregexptanksballastregexptemperature">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/temperature</a></h4>
+<p><strong>Units:</strong> K (Kelvin)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexpviscosity"><a class="header" href="#vesselsregexptanksballastregexpviscosity">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/viscosity</a></h4>
+<p><strong>Units:</strong> Pa/s (undefined)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexptanksballastregexpextinguishant"><a class="header" href="#vesselsregexptanksballastregexpextinguishant">/vessels/&lt;RegExp&gt;/tanks/ballast/&lt;RegExp&gt;/extinguishant</a></h4>
+<p><strong>Description:</strong> The preferred extinguishant to douse a fire in this tank</p>
+<hr />
+<h4 id="vesselsregexpdesign"><a class="header" href="#vesselsregexpdesign">/vessels/&lt;RegExp&gt;/design</a></h4>
+<p><strong>Title:</strong> design</p>
+<p><strong>Description:</strong> Design/dimensional data of this vessel</p>
+<hr />
+<h4 id="vesselsregexpdesigndisplacement"><a class="header" href="#vesselsregexpdesigndisplacement">/vessels/&lt;RegExp&gt;/design/displacement</a></h4>
+<p><strong>Units:</strong> kg (Kilogram)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpdesignaisshiptype"><a class="header" href="#vesselsregexpdesignaisshiptype">/vessels/&lt;RegExp&gt;/design/aisShipType</a></h4>
+<p><strong>Description:</strong> The ais ship type see http://www.bosunsmate.org/ais/message5.php</p>
+<p>Object value with properties</p>
+<ul>
+<li>id</li>
+<li>name</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpdesigndraft"><a class="header" href="#vesselsregexpdesigndraft">/vessels/&lt;RegExp&gt;/design/draft</a></h4>
+<p><strong>Title:</strong> draft</p>
+<p><strong>Description:</strong> The draft of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>minimum (m)</li>
+<li>maximum (m)</li>
+<li>current (m)</li>
+<li>canoe (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpdesignlength"><a class="header" href="#vesselsregexpdesignlength">/vessels/&lt;RegExp&gt;/design/length</a></h4>
+<p><strong>Title:</strong> length</p>
+<p><strong>Description:</strong> The various lengths of the vessel</p>
+<p>Object value with properties</p>
+<ul>
+<li>overall (m)</li>
+<li>hull (m)</li>
+<li>waterline (m)</li>
+</ul>
+<hr />
+<h4 id="vesselsregexpdesignkeel"><a class="header" href="#vesselsregexpdesignkeel">/vessels/&lt;RegExp&gt;/design/keel</a></h4>
+<p><strong>Title:</strong> keel</p>
+<p><strong>Description:</strong> Information about the vessel's keel</p>
+<hr />
+<h4 id="vesselsregexpdesignkeelangle"><a class="header" href="#vesselsregexpdesignkeelangle">/vessels/&lt;RegExp&gt;/design/keel/angle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpdesignkeellift"><a class="header" href="#vesselsregexpdesignkeellift">/vessels/&lt;RegExp&gt;/design/keel/lift</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpdesignbeam"><a class="header" href="#vesselsregexpdesignbeam">/vessels/&lt;RegExp&gt;/design/beam</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpdesignairheight"><a class="header" href="#vesselsregexpdesignairheight">/vessels/&lt;RegExp&gt;/design/airHeight</a></h4>
+<p><strong>Units:</strong> m (Meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpdesignrigging"><a class="header" href="#vesselsregexpdesignrigging">/vessels/&lt;RegExp&gt;/design/rigging</a></h4>
+<p><strong>Title:</strong> rigging</p>
+<p><strong>Description:</strong> Information about the vessel's rigging</p>
+<hr />
+<h4 id="vesselsregexpsails"><a class="header" href="#vesselsregexpsails">/vessels/&lt;RegExp&gt;/sails</a></h4>
+<p><strong>Title:</strong> sails</p>
+<p><strong>Description:</strong> Sails data</p>
+<hr />
+<h4 id="vesselsregexpsailsinventory"><a class="header" href="#vesselsregexpsailsinventory">/vessels/&lt;RegExp&gt;/sails/inventory</a></h4>
+<p><strong>Description:</strong> An object containing a description of each sail available to the vessel crew</p>
+<hr />
+<h4 id="vesselsregexpsailsinventoryregexp"><a class="header" href="#vesselsregexpsailsinventoryregexp">/vessels/&lt;RegExp&gt;/sails/inventory/&lt;RegExp&gt;</a></h4>
+<p><strong>Description:</strong> 'sail' data type.</p>
+<hr />
+<h4 id="vesselsregexpsailsarea"><a class="header" href="#vesselsregexpsailsarea">/vessels/&lt;RegExp&gt;/sails/area</a></h4>
+<p><strong>Description:</strong> An object containing information about the vessels' sails.</p>
+<hr />
+<h4 id="vesselsregexpsailsareatotal"><a class="header" href="#vesselsregexpsailsareatotal">/vessels/&lt;RegExp&gt;/sails/area/total</a></h4>
+<p><strong>Units:</strong> m2 (Square meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsailsareaactive"><a class="header" href="#vesselsregexpsailsareaactive">/vessels/&lt;RegExp&gt;/sails/area/active</a></h4>
+<p><strong>Units:</strong> m2 (Square meter)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsensors"><a class="header" href="#vesselsregexpsensors">/vessels/&lt;RegExp&gt;/sensors</a></h4>
+<p><strong>Title:</strong> sensors</p>
+<p><strong>Description:</strong> Sensors, their state, and data.</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexp"><a class="header" href="#vesselsregexpsensorsregexp">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> sensor</p>
+<p><strong>Description:</strong> This regex pattern is used for validation UUID identifier for the sensor</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpname"><a class="header" href="#vesselsregexpsensorsregexpname">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> The common name of the sensor</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpsensortype"><a class="header" href="#vesselsregexpsensorsregexpsensortype">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorType</a></h4>
+<p><strong>Description:</strong> The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpsensordata"><a class="header" href="#vesselsregexpsensorsregexpsensordata">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/sensorData</a></h4>
+<p><strong>Description:</strong> The data of the sensor data. FIXME - need to ref the definitions of sensor types</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpfrombow"><a class="header" href="#vesselsregexpsensorsregexpfrombow">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromBow</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpfromcenter"><a class="header" href="#vesselsregexpsensorsregexpfromcenter">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/fromCenter</a></h4>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpsensorsregexpclass"><a class="header" href="#vesselsregexpsensorsregexpclass">/vessels/&lt;RegExp&gt;/sensors/&lt;RegExp&gt;/class</a></h4>
+<p><strong>Description:</strong> AIS transponder class in sensors.ais.class, A or B</p>
+<hr />
+<h4 id="vesselsregexpperformance"><a class="header" href="#vesselsregexpperformance">/vessels/&lt;RegExp&gt;/performance</a></h4>
+<p><strong>Title:</strong> performance</p>
+<p><strong>Description:</strong> Performance Sailing data including VMG, Polar Speed, tack angle, etc.</p>
+<hr />
+<h4 id="vesselsregexpperformancepolars"><a class="header" href="#vesselsregexpperformancepolars">/vessels/&lt;RegExp&gt;/performance/polars</a></h4>
+<p><strong>Description:</strong> Polar objects</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarsregexp"><a class="header" href="#vesselsregexpperformancepolarsregexp">/vessels/&lt;RegExp&gt;/performance/polars/&lt;RegExp&gt;</a></h4>
+<p><strong>Title:</strong> polar</p>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarsregexpid"><a class="header" href="#vesselsregexpperformancepolarsregexpid">/vessels/&lt;RegExp&gt;/performance/polars/&lt;RegExp&gt;/id</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarsregexpname"><a class="header" href="#vesselsregexpperformancepolarsregexpname">/vessels/&lt;RegExp&gt;/performance/polars/&lt;RegExp&gt;/name</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarsregexpdescription"><a class="header" href="#vesselsregexpperformancepolarsregexpdescription">/vessels/&lt;RegExp&gt;/performance/polars/&lt;RegExp&gt;/description</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarsregexpwinddata"><a class="header" href="#vesselsregexpperformancepolarsregexpwinddata">/vessels/&lt;RegExp&gt;/performance/polars/&lt;RegExp&gt;/windData</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolar"><a class="header" href="#vesselsregexpperformanceactivepolar">/vessels/&lt;RegExp&gt;/performance/activePolar</a></h4>
+<p><strong>Description:</strong> The UUID of the active polar table</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolardata"><a class="header" href="#vesselsregexpperformanceactivepolardata">/vessels/&lt;RegExp&gt;/performance/activePolarData</a></h4>
+<p><strong>Title:</strong> polar</p>
+<p><strong>Description:</strong> The 'polar' object belonging to the selected 'activePolar'</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolardataid"><a class="header" href="#vesselsregexpperformanceactivepolardataid">/vessels/&lt;RegExp&gt;/performance/activePolarData/id</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolardataname"><a class="header" href="#vesselsregexpperformanceactivepolardataname">/vessels/&lt;RegExp&gt;/performance/activePolarData/name</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolardatadescription"><a class="header" href="#vesselsregexpperformanceactivepolardatadescription">/vessels/&lt;RegExp&gt;/performance/activePolarData/description</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformanceactivepolardatawinddata"><a class="header" href="#vesselsregexpperformanceactivepolardatawinddata">/vessels/&lt;RegExp&gt;/performance/activePolarData/windData</a></h4>
+<p><strong>Description:</strong> [missing]</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarspeed"><a class="header" href="#vesselsregexpperformancepolarspeed">/vessels/&lt;RegExp&gt;/performance/polarSpeed</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancepolarspeedratio"><a class="header" href="#vesselsregexpperformancepolarspeedratio">/vessels/&lt;RegExp&gt;/performance/polarSpeedRatio</a></h4>
+<p><strong>Units:</strong> ratio (Ratio)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancevelocitymadegood"><a class="header" href="#vesselsregexpperformancevelocitymadegood">/vessels/&lt;RegExp&gt;/performance/velocityMadeGood</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancevelocitymadegoodtowaypoint"><a class="header" href="#vesselsregexpperformancevelocitymadegoodtowaypoint">/vessels/&lt;RegExp&gt;/performance/velocityMadeGoodToWaypoint</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancebeatangle"><a class="header" href="#vesselsregexpperformancebeatangle">/vessels/&lt;RegExp&gt;/performance/beatAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancebeatanglevelocitymadegood"><a class="header" href="#vesselsregexpperformancebeatanglevelocitymadegood">/vessels/&lt;RegExp&gt;/performance/beatAngleVelocityMadeGood</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancebeatangletargetspeed"><a class="header" href="#vesselsregexpperformancebeatangletargetspeed">/vessels/&lt;RegExp&gt;/performance/beatAngleTargetSpeed</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancegybeangle"><a class="header" href="#vesselsregexpperformancegybeangle">/vessels/&lt;RegExp&gt;/performance/gybeAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancegybeanglevelocitymadegood"><a class="header" href="#vesselsregexpperformancegybeanglevelocitymadegood">/vessels/&lt;RegExp&gt;/performance/gybeAngleVelocityMadeGood</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancegybeangletargetspeed"><a class="header" href="#vesselsregexpperformancegybeangletargetspeed">/vessels/&lt;RegExp&gt;/performance/gybeAngleTargetSpeed</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancetargetangle"><a class="header" href="#vesselsregexpperformancetargetangle">/vessels/&lt;RegExp&gt;/performance/targetAngle</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancetargetspeed"><a class="header" href="#vesselsregexpperformancetargetspeed">/vessels/&lt;RegExp&gt;/performance/targetSpeed</a></h4>
+<p><strong>Units:</strong> m/s (Meters per second)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformanceleeway"><a class="header" href="#vesselsregexpperformanceleeway">/vessels/&lt;RegExp&gt;/performance/leeway</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancetackmagnetic"><a class="header" href="#vesselsregexpperformancetackmagnetic">/vessels/&lt;RegExp&gt;/performance/tackMagnetic</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+<h4 id="vesselsregexpperformancetacktrue"><a class="header" href="#vesselsregexpperformancetacktrue">/vessels/&lt;RegExp&gt;/performance/tackTrue</a></h4>
+<p><strong>Units:</strong> rad (Radian)</p>
+<p><strong>Description:</strong> Data should be of type number.</p>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="how_to_help.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="otherBranches.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="how_to_help.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="otherBranches.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
