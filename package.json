@@ -9,7 +9,7 @@
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
     "schema:version": "cross-var replace-in-file /https:\\\\/\\\\/signalk.org\\\\/specification\\\\/[\\\\w\\\\.]+\\\\/schemas\\\\//g https://signalk.org/specification/$npm_package_version/schemas/ './**/*.j*' --ignore=./package.json,./node_modules/** --isRegex --verbose",
-    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
+    "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir -p $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:prep": "cross-var replace-in-file /_version_/g $npm_package_version ./mdbook/src/* --isRegex --verbose && mdprepare mdbook/src/*.md",
     "docs:keys": "node scripts/processSchemaFiles.js",
     "docs:html": "cross-var docker-compose -f mdbook/docker-compose.yml run mdbook build -d $npm_package_version/doc",
