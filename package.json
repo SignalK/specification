@@ -12,7 +12,7 @@
     "schema:publish": "git checkout gh-pages && git checkout master -- schemas && cross-var mkdir $npm_package_version && cross-var git add  $npm_package_version  && cross-var git mv schemas/ $npm_package_version/ && git commit -m \"Schemas from master\" && git push",
     "docs:prep": "cross-var replace-in-file /_version_/g $npm_package_version ./mdbook/src/* --isRegex --verbose && mdprepare mdbook/src/*.md",
     "docs:keys": "node scripts/processSchemaFiles.js",
-    "docs:html": "cross-var docker-compose -f mdbook/docker-compose.yml run mdbook build -d $npm_package_version",
+    "docs:html": "cross-var docker-compose -f mdbook/docker-compose.yml run mdbook build -d $npm_package_version/doc",
     "docs:serve": "docker-compose -f mdbook/docker-compose.yml up",
     "docs:all": "npm run docs:prep && npm run docs:keys && npm run docs:html",
     "docs:publish-local-gh-pages": "npm run docs:all && mv mdbook/$npm_package_version . && cross-var git add $npm_package_version && git stash && git checkout gh-pages && git pull && cross-var git checkout stash -- $npm_package_version && git add master && cross-var git commit --allow-empty -m $npm_package_version"
