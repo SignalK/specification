@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://signalk.org/specification/1.5.1/schemas/messages/get.json#",
+    "title": "SignalK GET message schema",
+    "description": "Schema for getting values of parts of a SignalK data model, for example the state of the anchor watch",
+    "required": [
+      "requestId","context","get"
+    ],
+    "properties": {
+        "requestId": {
+          "type": "string",
+          "pattern": "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
+        },
+        "context": {
+	      "type": "string",
+	      "description": "The context path of the get, eg. the top level path plus object identifier.",
+	      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+	    },
+        "get": {
+        "oneOf":[{
+	      "type": "array",
+	      "description": "DEPRECATED: Prefer GET format with no array. A transport agnostic equivalent to a REST GET request. GET requests use 'request/response' semantics.",
+	      "items": {
+	        "type": "object",
+	        "properties": {
+	          "path": {
+	            "type": "string",
+	            "description": "The path to get."
+	          }
+	        },
+	        "required": [
+	          "path"
+	         ]
+	      }
+  	  },
+  	  {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The path to set. A transport agnostic equivalent to a REST GET request. GET requests use 'request/response' semantics."
+          }
+        },
+        "required": [
+          "path"
+         ]
+       }
+     ]      
+   }
+  }
+}
+
+  

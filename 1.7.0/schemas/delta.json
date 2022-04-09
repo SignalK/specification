@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/delta.json#",
+  "title": "SignalK Delta message schema",
+  "description": "Schema for defining updates and subscriptions to parts of a SignalK data model, for example for communicating updates of data",
+  "required": [
+    "updates"
+  ],
+  "properties": {
+    "context": {
+      "type": "string",
+      "description": "The context path of the updates, eg. the top level path plus object identifier.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+    },
+    "updates": {
+      "type": "array",
+      "description": "The updates",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "required": ["values"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "values": {}},
+            "additionalProperties": false
+          },
+          {
+            "required": ["meta"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "meta": {}},
+            "additionalProperties": false
+          },
+          {
+            "required": ["values", "meta"],
+            "properties": {"$source":{}, "source": {}, "timestamp": {}, "values": {}, "meta": {}},
+            "additionalProperties": false
+          }
+        ],
+        "not": {
+          "allOf": [{
+            "required": ["source"]
+          }, {
+            "required": ["$source"]
+          }]
+        },
+
+        "properties": {
+          "$source": {
+            "$ref": "./definitions.json#/definitions/sourceRef"
+          },
+          "source": {
+            "$ref": "./definitions.json#/definitions/source"
+          },
+          "timestamp": {
+            "$ref": "./definitions.json#/definitions/timestamp"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "value"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "object",
+                    "boolean",
+                    "null"
+                  ],
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "meta": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "value"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The local path to the data value",
+                  "example": "navigation.courseOverGroundMagnetic"
+                },
+                "value": {
+                  "$ref": "./definitions.json#/definitions/meta"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

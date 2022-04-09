@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://signalk.org/specification/1.5.1/schemas/messages/put.json#",
+    "title": "SignalK PUT message schema",
+    "description": "Schema for request/response updates to parts of a SignalK data model, for example turning on anchor watch",
+    "required": [
+      "requestId","put"
+    ],
+    "properties": {
+        "requestId": {
+          "type": "string",
+          "pattern": "[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}"
+        },
+        "context": {
+	      "type": "string",
+	      "description": "The context path of the put, eg. the top level path plus object identifier. Optional, defaults to 'vessels.self'",
+	      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+	    },
+        "put": {
+        "oneOf":[{
+	      "type": "array",
+	      "description": "DEPRECATED: Prefer PUT format with no array. A transport agnostic equivalent to a REST PUT request. PUT requests use 'request/response' semantics, if no acknowlegement is required use the UPDATES message.",
+	      "items": {
+	        "type": "object",
+	        "properties": {
+	          "path": {
+	            "type": "string",
+	            "description": "The path to set."
+	          },
+	          "value": {
+	            "type": [
+	              "string",
+	              "number",
+	              "object",
+	              "boolean",
+	              "null"
+	            ],
+	            "description": "The value to set at the path"
+	          }
+	        },
+	        "required": [
+	          "path",
+	          "value"
+	         ]
+	      }
+  	  },
+  	  {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The path to set. A transport agnostic equivalent to a REST PUT request. PUT requests use 'request/response' semantics, if no acknowlegement is required use the UPDATES message."
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "object",
+              "boolean",
+              "null"
+            ],
+            "description": "The value to set at the path"
+          }
+        },
+        "required": [
+          "path",
+          "value"
+         ]
+       }
+     ]      
+   }
+  }
+}
+
+  

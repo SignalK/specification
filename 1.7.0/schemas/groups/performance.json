@@ -1,0 +1,249 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/groups/performance.json#",
+  "description": "Schema describing the performance child-object of a Vessel.",
+  "title": "performance",
+  "properties": {
+    "polars": {
+      "type": "object",
+      "description": "Polar objects",
+      "$ref": "#/definitions/polarUuid"
+    },
+    "activePolar": {
+      "type": "string",
+      "description": "The UUID of the active polar table"
+    },
+    "activePolarData": {
+      "type": "object",
+      "description": "The 'polar' object belonging to the selected 'activePolar'",
+      "$ref": "#/definitions/polar"
+    },
+    "polarSpeed": {
+      "description": "The current polar speed based on current polar diagram, WindSpeedTrue and angleTrueWater.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "polarSpeedRatio": {
+      "description": "The ratio of current speed through water to the polar speed.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "ratio"
+    },
+    "velocityMadeGood": {
+      "description": "The current velocity made good derived from the speed through water and appearant wind angle. A positive value is heading upwind, negative downwind.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "velocityMadeGoodToWaypoint": {
+      "description": "The current velocity made good to the next waypoint derived from the speedOverGround, courseOverGround.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "beatAngle": {
+      "description": "The true wind beat angle for the best velocity made good based on current current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "beatAngleVelocityMadeGood": {
+      "description": "The velocity made good for the beat angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "beatAngleTargetSpeed": {
+      "description": "The target speed for the beat angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "gybeAngle": {
+      "description": "The true wind gybe angle for the best velocity made good downwind based on current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "gybeAngleVelocityMadeGood": {
+      "description": "The velocity made good for the gybe angle",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "gybeAngleTargetSpeed": {
+      "description": "The target speed for the gybe angle.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "targetAngle": {
+      "description": "The true wind gybe or beat angle for the best velocity made good downwind or upwind based on current polar diagram and WindSpeedTrue.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "targetSpeed": {
+      "description": "The target speed for the beat angle or gybe angle, which ever is applicable.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m/s"
+    },
+    "leeway": {
+      "description": "Current leeway",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "tackMagnetic": {
+      "description": "Magnetic heading on opposite tack.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    },
+    "tackTrue": {
+      "description": "True heading on opposite tack.",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "rad"
+    }
+  },
+  "definitions": {
+    "polarUuid": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$": {
+          "title": "polar",
+          "type": "object",
+          "$ref": "#/definitions/polar"
+        }
+      }
+    },
+    "polar": {
+      "title": "polar",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "windData"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
+        },
+        "windData": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "trueWindSpeed",
+              "angleData"
+            ],
+            "properties": {
+              "trueWindSpeed": {
+                "description": "The true wind speed for the polar values",
+                "type": "number",
+                "units": "m/s"
+              },
+              "optimalBeats": {
+                "description": "Optimal beating values, angle and boat speed. One element if symmetrical, two if not",
+                "type": "array",
+                "maxItems": 2,
+                "additionalProperties": false,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "required": [
+                    "angle",
+                    "speed"
+                  ],
+                  "additionalProperties": false,
+                  "items": [
+                    {
+                      "name": "angle",
+                      "description": "The true wind angle for the best upwind velocity made good",
+                      "type": "number",
+                      "units": "rad"
+                    },
+                    {
+                      "name": "speed",
+                      "description": "The optimal beating speed",
+                      "type": "number",
+                      "units": "m/s"
+                    }
+                  ]
+                }
+              },
+              "optimalGybes": {
+                "description": "Optimal gybe values, angle and boat speed. One element if symmetrical, two if not",
+                "type": "array",
+                "maxItems": 2,
+                "additionalProperties": false,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "required": [
+                    "angle",
+                    "speed"
+                  ],
+                  "additionalProperties": false,
+                  "items": [
+                    {
+                      "name": "angle",
+                      "description": "The true wind angle for the best downwind velocity made good",
+                      "type": "number",
+                      "units": "rad"
+                    },
+                    {
+                      "name": "speed",
+                      "description": "The optimal gybe speed",
+                      "type": "number",
+                      "units": "m/s"
+                    }
+                  ]
+                }
+              },
+              "angleData": {
+                "description": "The polar table for the specific wind speed, comprising of wind angles and boat speeds",
+                "type": "array",
+                "additionalProperties": false,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "required": [
+                    "angle",
+                    "speed"
+                  ],
+                  "additionalProperties": false,
+                  "items": [
+                    {
+                      "name": "angle",
+                      "description": "The true wind angle for the best upwind velocity made good",
+                      "type": "number",
+                      "units": "rad"
+                    },
+                    {
+                      "name": "speed",
+                      "description": "The optimal beating speed",
+                      "type": "number",
+                      "units": "m/s"
+                    },
+                    {
+                      "name": "vmg",
+                      "description": "Velocity made good calculated for the wind angle and boat speed combination",
+                      "type": "number",
+                      "units": "m/s"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
