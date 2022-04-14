@@ -74,7 +74,7 @@ When a server fails read, or process the request (eg a server error), it will re
   "statusCode": 500
 }
 ```
-###COMPLETED
+### COMPLETED
 
 When processing is done, but it was not successful:
 
@@ -95,7 +95,7 @@ When processing completed successfully:
   "statusCode": 200
 }
 ```
-###Query a Request
+### Query a Request
 
 The state of a request can also be found by sending the following:
 
