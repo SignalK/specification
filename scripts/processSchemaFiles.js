@@ -22,7 +22,7 @@ const fs = require('mz/fs')
 const path = require('path')
 const rimraf = require('rimraf')
 const markdown = new (require('markdown-it'))()
-const RefParser = require('json-schema-ref-parser')
+const RefParser = require('@apidevtools/json-schema-ref-parser')
 
 
 const units = {
