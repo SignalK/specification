@@ -1,7 +1,7 @@
 var assert = require('chai').assert
 
 var signalk = require('../');
-var RefParser = require('json-schema-ref-parser');
+var RefParser = require('@apidevtools/json-schema-ref-parser');
 var path = require('path');
 
 describe('Schema references', function() {
