@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel src --out-dir dist --copy-files && mocha",
-    "prepublish": "npm run js:dist && npm run docs:keys",
+    "prepublish": "npm run docs:keys && npm run js:dist",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
     "schema:version": "cross-var replace-in-file /https:\\\\/\\\\/signalk.org\\\\/specification\\\\/[\\\\w\\\\.]+\\\\/schemas\\\\//g https://signalk.org/specification/$npm_package_version/schemas/ './**/*.j*' --ignore=./package.json,./node_modules/** --isRegex --verbose",
