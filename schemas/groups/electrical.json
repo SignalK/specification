@@ -106,7 +106,7 @@
 
         "current": {
           "type": "object",
-          "description": "Current flowing out (+ve) or in (-ve) to the device",
+          "description": "Current flowing out (+ve) or in (-ve) to the device. Reversed for batteries (+ve = charging).",
           "units": "A",
           "allOf": [{
             "$ref": "../definitions.json#/definitions/numberValue"
