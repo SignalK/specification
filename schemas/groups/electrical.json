@@ -502,9 +502,9 @@
           }
         }
       }
-    },    
+    },
     "chargers": {
-      "description": "Data about AC sourced battery charger",
+      "description": "Data about an AC/DC sourced battery charger",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
