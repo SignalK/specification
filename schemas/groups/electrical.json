@@ -607,6 +607,11 @@
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "A"
             },
+            "panelPower": {
+                "description": "Power being supplied from Solar Panels to controller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "W"
+            },
             "panelTemperature": {
                 "description": "Temperature of panels",
                 "$ref": "../definitions.json#/definitions/numberValue",
