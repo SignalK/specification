@@ -502,9 +502,9 @@
           }
         }
       }
-    },    
+    },
     "chargers": {
-      "description": "Data about AC sourced battery charger",
+      "description": "Data about an AC/DC sourced battery charger",
       "patternProperties": {
         "(^[A-Za-z0-9]+$)": {
           "type": "object",
@@ -517,6 +517,38 @@
           },{
             "$ref": "#/definitions/chargerQualities"
           }]
+        }
+      }
+    },
+    "converters": {
+      "description": "Data about a voltage step up/down DC-DC converter",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Charger",
+          "description": "DC-DC converter",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          },{
+            "$ref": "#/definitions/dcQualities"
+          }],
+          "properties": {
+            "inputVoltage": {
+                "description": "Voltage being supplied to the converter",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+            },
+            "inputCurrent": {
+                "description": "Amperage being supplied to the converter",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+            },
+            "inputPower": {
+                "description": "Power being supplied to the converter",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "W"
+            }
+          }
         }
       }
     },
