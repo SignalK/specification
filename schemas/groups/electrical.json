@@ -144,6 +144,15 @@
           }]
         },
 
+        "power": {
+          "type": "object",
+          "description": "Power flowing out (+ve) or in (-ve) to the device",
+          "units": "W",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }]
+        },
+
         "temperature": {
           "type": "object",
           "description": "Temperature measured within or on the device",
