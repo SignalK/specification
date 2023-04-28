@@ -414,6 +414,45 @@
       }
     },
 
+    "booleanValue": {
+      "type": "object",
+      "description": "Data should be of type boolean.",
+      "allOf": [{
+        "$ref": "#/definitions/commonValueFields"
+      }, {
+        "properties": {
+          "value": {
+            "type": "boolean"
+          },
+          "values": {
+            "type": "object",
+            "patternProperties": {
+              ".*": {
+                "$ref": "#/definitions/valuesBooleanValue"
+              }
+            }
+          }
+        }
+      }]
+    },
+
+    "valuesBooleanValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "boolean"
+        },
+        "timestamp": {
+          "$ref": "#/definitions/timestamp"
+        },
+        "pgn": {
+          "type": "number"
+        },
+        "sentence": {
+          "type": "string"
+        }
+      }
+    },
 
     "datetimeValue": {
       "type": "object",
