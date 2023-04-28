@@ -291,6 +291,20 @@ function addMeta(context, contextPath, source, timestamp, pathValue) {
     return;
   }
   signalkSchema.addMetaData(contextPath, pathValue.path, pathValue.value)
+
+  const splitPath = pathValue.path.split('.');
+  const valueLeaf = splitPath.reduce(function(previous, pathPart, i) {
+    if (!previous[pathPart]) {
+      previous[pathPart] = {};
+    }
+    if ( i === splitPath.length-1 && typeof previous[pathPart].meta === 'undefined' ) {
+      let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
+      if (meta) {
+        previous[pathPart].meta = meta
+      }
+    }
+      return previous[pathPart];
+  }, context);
 }
 
 
