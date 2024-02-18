@@ -98,7 +98,11 @@
                 "estimatedTimeOfArrival": {
                   "$ref": "../definitions.json#/definitions/datetimeValue",
                   "description": "The estimated time of arrival at nextPoint position"
-                }
+                },
+                "ID": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "The waypoint ID"
+                }                
               }
             }
           ]
@@ -133,7 +137,11 @@
                 "position": {
                   "description": "The position of lastPoint in two dimensions",
                   "$ref": "../definitions.json#/definitions/position"
-                }
+                },
+                "ID": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "The waypoint ID"
+                }  
               }
             }
           ]
