@@ -47,6 +47,8 @@
     "tv4-formats": "^3.0.3"
   },
   "devDependencies": {
+    "ajv": "^8.12.0",
+    "ajv-draft-04": "^1.0.0",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^1.9.2",
