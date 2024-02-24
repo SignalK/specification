@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "babel src --out-dir dist --copy-files && mocha",
+    "testWithAjv": "babel src --out-dir dist --copy-files && USE_AJV=1 mocha",
     "prepublish": "npm run docs:keys && npm run js:dist",
     "js:watch": "babel --watch src --out-dir dist --copy-files",
     "js:dist": "babel src --out-dir dist --copy-files",
