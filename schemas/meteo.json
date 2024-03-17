@@ -35,6 +35,15 @@
       "$ref": "definitions.json#/definitions/uuid",
       "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
     },
+    "name": {
+      "type": "string",
+      "description": "The common name of the weather station.",
+      "example": "Motu"
+    },
+    "navigation": {
+      "description": "Navigation data including Position, Course to next WP information, etc.",
+      "$ref": "groups/navigation.json#"
+    },
     "environment": {
       "description": "Environment data.",
       "$ref": "groups/environment.json#"
