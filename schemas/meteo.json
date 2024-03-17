@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/meteo.json#",
+  "description": "An object describing a weather station. It should be an object in meteo, named using MMSI or a UUID",
+  "title": "Weather Stations",
+  "anyOf": [
+    {
+      "required": [
+        "mmsi"
+      ]
+    },
+    {
+      "required": [
+        "url"
+      ]
+    },
+    {
+      "required": [
+        "uuid"
+      ]
+    }
+  ],
+  "properties": {
+    "url": {
+      "description": "URL based identity of the weather station, if available.",
+      "$ref": "definitions.json#/definitions/url"
+    },
+    "mmsi": {
+      "description": "MMSI number of the weather station, if available.",
+      "$ref": "definitions.json#/definitions/sarMmsi"
+    },
+    "uuid": {
+      "description": "A unique Signal K flavoured maritime resource identifier, assigned by the server.",
+      "$ref": "definitions.json#/definitions/uuid",
+      "example": "urn:mrn:signalk:uuid:b7590868-1d62-47d9-989c-32321b349fb9"
+    },
+    "environment": {
+      "description": "Environment data.",
+      "$ref": "groups/environment.json#"
+    }
+  }
+}
