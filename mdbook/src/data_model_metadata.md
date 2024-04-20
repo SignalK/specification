@@ -102,7 +102,7 @@ method properties, all Signal K consumers can react the same way to a given stat
 The possible states in ascending order of severity are:
 
 | State/Zone | Description |
-|------------|--------|--------|
+|------------|--------|
 | nominal    | this is a special type of normal state/zone (see below)        |
 | normal     | the normal operating range for the value in question (default)            |
 | alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
