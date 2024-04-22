@@ -44,22 +44,22 @@ In the example `meta` object above, a definition is provided for an analog RPM g
 few different options for the consumer to use to display the name of the measurement and explicitly calls out the unit
 of measure.
 
-###`description`
+### description
 
 This is the description for the Signal K path and must always be the same as the description property within the Signal K
 Schema for that path.
 
-###`displayName`
+### displayName
 
 This is used on or near any display or gauge which shows the data. Units can change and are presented separately, therefore no
 indication of units should be included in displayName. eg. "Port"
 
-###`longName` `shortName`
+### longName shortName
 
 These are human readable names for the particular instance of this value. Presented to users to identify the value. The short
 version may be used by consumers where space is at a premium. As with displayName units should not be included.
 
-###`timeout`
+### timeout
 
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
@@ -88,12 +88,12 @@ The `alertMethod`, `warnMethod`, `alarmMethod` and
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
 
-###`alertMethod`, etc
+### alertMethod, etc
 The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
 abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
 array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.
 
-###`zones`
+### zones
 The last property in the `meta` object is the `zones` array. This provides a series of hints to the consumer which can
 be used to properly set a range on a display gauge and also color sectors of a gauge to indicate normal or dangerous
 operating conditions. It also tells the consumer which state the data is in for a given range. Combined with the alert
@@ -102,7 +102,7 @@ method properties, all Signal K consumers can react the same way to a given stat
 The possible states in ascending order of severity are:
 
 | State/Zone | Description |
-|------------|--------|--------|
+|------------|--------|
 | nominal    | this is a special type of normal state/zone (see below)        |
 | normal     | the normal operating range for the value in question (default)            |
 | alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
