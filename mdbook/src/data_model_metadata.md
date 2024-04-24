@@ -27,16 +27,16 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
+  "zones": [
+      {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
+      {"lower": 4, "upper": 60, "state": "normal"},
+      {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
+      {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
+    ]
   "alertMethod": ["visual"],
   "warnMethod": ["visual"],
   "alarmMethod": ["sound", "visual"],
-  "emergencyMethod": ["sound", "visual"],
-  "zones": [
-    {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
-    {"lower": 4, "upper": 60, "state": "normal"},
-    {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
-    {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
-  ]
+  "emergencyMethod": ["sound", "visual"]
 }
 ```
 [<]: #
