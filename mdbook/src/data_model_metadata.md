@@ -1,4 +1,4 @@
-# Metadata
+o# Metadata
 
 A key part of Signal K is the ability for data consumers such as apps or MFDs to automatically configure themselves
 based on settings retrieved from the server. The metadata component of Signal K facilitates this through an optional
