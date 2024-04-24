@@ -130,12 +130,14 @@ An engine RPM path can indicate the engine's redline segment, say one zone lower
 information consumers can opt to draw a red marker over this segment on it's gauge and sound an alarm when the RPM enters this zone.
 
 ```json
+  ...
   "zones": [
       {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
       {"lower": 4, "upper": 60, "state": "normal"},
       {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
       {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
     ]
+  ...
 ```
 
 you can have a refrigeration temperature sensor with one low and one high critical state configured with `"state": "alarm"`, or if zones are on different parts of the scale but a different `message` is required.
