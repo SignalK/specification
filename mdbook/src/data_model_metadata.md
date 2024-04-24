@@ -102,7 +102,7 @@ As the path's values transitions between zones, notifications are dispatched to 
 
 The `lower` and `upper` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. Even when outside the `displayScale` range, they still trigger notifications. Both `upper` and `lower` values are considered inclusive.
 
-In cases where zones overlap, the zones with the highest `state` severity takes precedence, affecting both notifications and gauge/display rendering. Any range not explicitly within a zone is considered `normal` by default. Therefore, zones with a `normal` state have no effect - do not alter displays or generate audio prompts.
+In cases where zones overlap, the zones with the highest `state` severity takes precedence, affecting both notifications and gauge/display rendering. Any range not explicitly within a zone is considered `normal` by default. Therefore, zones with a `normal` state have no effect - they should not alter displays or generate audio prompts. they are meant to indicate the value is leaving a noteworthy state.
 
 Zones can technically have from zero to an infinite number of zone segments. Then same state can be present in multiple segments ie. you have have a low and high temperature `"state": "alarm"`. In pactice, less is more. Too many zone will  constanly fireup gauges and notifications like a chrismat tree.
  
