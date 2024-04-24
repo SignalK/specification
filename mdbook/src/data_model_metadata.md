@@ -100,7 +100,7 @@ The items within the `zones` array define segments of value states, with each `s
 
 As the path's values transitions between zones, notifications are dispatched to inform consumers about the value's state. For detailed information on Notifications, refer to [Alarm Handling](notifications.md). While notifications/messaging is a separate topic, it's essential to note that all value-related notifications are defined within zones. Therefore, a zone's state determines the severity of the notifications—whether they are normal, noteworthy, or alarming.
 
-The `upper` and `lower` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. Even when outside the `displayScale` range, they still trigger notifications. Both `upper` and `lower` values are considered inclusive.
+The `lower` and `upper` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. Even when outside the `displayScale` range, they still trigger notifications. Both `upper` and `lower` values are considered inclusive.
 
 In cases where zones overlap, the zones with the highest `state` severity takes precedence, affecting both notifications and gauge/display rendering. Any range not explicitly within a zone is considered `normal` by default. Therefore, zones with a `normal` state have no effect - do not alter displays or generate audio prompts.
 
