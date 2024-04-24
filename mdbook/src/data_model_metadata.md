@@ -69,7 +69,9 @@ values. The `lower` and `upper` indicate the extent of the scale to be shown. So
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
 scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
-0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear. In using these scales the type defines the
+0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear.
+
+In using these scales the type defines the
 function which is applied to all values in order to calculate % scale deflection of the pointer/needle/plot:
 
 | Type        | Formula for % deflection             |
