@@ -65,7 +65,9 @@ The `timeout` property tells the consumer how long it should consider the value 
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
 The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
-values. The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
+values.
+
+The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
 scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
