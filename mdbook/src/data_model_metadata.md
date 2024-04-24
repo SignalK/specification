@@ -33,8 +33,10 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
       {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
       {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
     ]
+  "normalMethod": [],
+  "nominalMethod": ["visual"],
   "alertMethod": ["visual"],
-  "warnMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
   "alarmMethod": ["sound", "visual"],
   "emergencyMethod": ["sound", "visual"]
 }
@@ -91,9 +93,8 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 
 Note that on a logarithmic scale neither L nor U can be zero. 
 
-### alertMethod, etc
-Methods are normalMethod, nominal `alertMethod`, `warnMethod`, `alarmMethod` and
-`` properties tell the consumer how it should respond to an abnormal data condition. Presently the
+### normalMethod, nominalMethod, alertMethod, warnMethod, alarmMethod
+Methods are properties tell the consumer how it should respond to an abnormal data condition. Presently the
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
 
