@@ -64,6 +64,8 @@ version may be used by consumers where space is at a premium. As with displayNam
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
+### displayScale
+
 The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
 values.
 
