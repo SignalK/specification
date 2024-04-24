@@ -93,50 +93,46 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 
 Note that on a logarithmic scale neither L nor U can be zero. 
 
-### normalMethod, nominalMethod, alertMethod, warnMethod, alarmMethod
-Methods are properties that suggests to the consumer how it should act upon notification reception. Presently the
-values for these properties are `sound` and `visual` and the method is specified as an array containing one, both or none [] of
-these options. It is up to the consumer to decide how to convey these notifications.
-
-The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
-abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
-array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.
-
 ### zones
-The last property in the `meta` object is the `zones` array. This provides a series of hints to the consumer which can
-be used to properly set a range on a display gauge and also color sectors of a gauge to indicate normal or dangerous
-operating conditions. It also tells the consumer which state the data is in for a given range. Combined with the alert
-method properties, all Signal K consumers can react the same way to a given state.
+Zones serve a dual purpose by defining data operating conditions and associated notification prompts. They provide audio and visual cues for each state, guiding consumers on how to present gauge data and notify end users effectively. Zones are invaluable for configuring various display scale setups.
 
-The possible states in ascending order of severity are:
+The items within the `zones` array define segments of data states, with each `state` representing the severity of the given condition. When zones are specified for a path, any data not part of a defined zone defaults to the `normal` state, managed automatically by the Signal K server. Zones use other states to provide insights to consumers about the data's state relative to its scale range. For example, zones for an engine RPM path can indicate the engine's redline segment.
 
-| State/Zone | Description |
+As data transitions between zones, notifications are dispatched to inform consumers about the data's state. For detailed information on Notifications, refer to [Alarm Handling](notifications.md). While notifications/messaging is a separate topic, it's essential to note that all data-related notifications are defined within zones. Therefore, a zone's state determines the severity of the notifications—whether they are normal, noteworthy, or alarming.
+
+The `upper` and `lower` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. Even when outside the `displayScale` range, they still trigger notifications. Both `upper` and `lower` values are considered inclusive.
+
+In cases where zones overlap, the zones with the highest `state` severity takes precedence, affecting both notifications and gauge/display rendering. Any range not explicitly within a zone is considered `normal` by default. Therefore, zones with a `normal` state have no effect - do not alter displays or generate audio prompts.
+
+Zones can technically have from zero to an infinite number of zone segments. Then same state can be present in multiple segments ie. you have have a low and high temperature `"state": "alarm"`. In pactice, less is more. Too many zone will  constanly fireup gauges and notifications like a chrismat tree.
+ 
+The possible `states` in ascending order of severity are:
+
+| State | Description |
 |------------|--------|
-| nominal    | this is a special type of normal state/zone (see below)        |
-| normal     | the normal operating range for the value in question (default)            |
-| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
+| normal     | The normal operating range for the value in question (default - auto managed) |
+| nominal    | The recommended optimal operation condition (see below) |
+| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information |
 | warn       | Indicates a condition that requires immediate attention but not immediate action |
 | alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
-| emergency  | the value indicates a life-threatening condition |
+| emergency  | The value indicates a life-threatening condition |
 
 `nominal`: A example use of this is for engine monitoring eg. coolant temperature where there is a normal (no warnings)
 (green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at
-all (typically remains vertical or horizontal). This is really useful if you have many gauges (multiple motors with multiple
+all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
 sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
 be relevant if the gauge/display design permits it.
-
-The `upper` and `lower` values in the zones do not need to be contiguous, they don't have to both be present in a zone, nor do
-they need to be within the bounds of the `upper` and `lower` specified in `displayScale`. When they are outside of the
-`displayScale` range they will still give rise to alerts. Both `upper` and `lower` values are considered to be inclusive.
-
-If zones overlap each other the state/zone with the highest severity will take precedence. This is true for both alerts and
-gauge/display rendering. Any part of the range which is not explicitly within a zone is considered to be `normal` (the default).
-As such, zones with a state of `normal` have no effect and their removal would result in no changes to either displays or alerts.
 
 There can be multiple zones with the same `state`, for example if a different message is required, or if they are on different parts of the scale.
 
 Signal K servers will use the `zone` information to monitor any data which has a `meta` object and
 raise a generic alarm event. See the section on [Alarm Handling](notifications.md) for more.
+
+### normalMethod, nominalMethod, alertMethod, warnMethod, alarmMethod, emergencyMethod
+Methods are meta properties that suggests to consumers how they should convey notification message upon reception. Presently the
+values for these properties are `sound` and `visual` and the method is specified as an array containing one, both or none `[]` of
+these options. A method with value `[]` suggests the notification message should neither have a visual, nor an audio representation. It
+is up to the consumer to interpret how to applies those to their usecase and choose how to best convey these notifications.
 
 ## Implicit Metadata
 
