@@ -94,9 +94,9 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 Note that on a logarithmic scale neither L nor U can be zero. 
 
 ### normalMethod, nominalMethod, alertMethod, warnMethod, alarmMethod
-Methods are properties tell the consumer how it should respond to an abnormal data condition. Presently the
-values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
-these options. It is up to the consumer to decide how to convey these alerts.
+Methods are properties that suggests to the consumer how it should act upon notification reception. Presently the
+values for these properties are `sound` and `visual` and the method is specified as an array containing one, both or none [] of
+these options. It is up to the consumer to decide how to convey these notifications.
 
 The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
 abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
