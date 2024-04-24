@@ -94,7 +94,7 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 Note that on a logarithmic scale neither L nor U can be zero. 
 
 ### zones
-Zones serve a dual purpose by defining value operating conditions and associated notification prompts. They provide audio and visual cues for each state, guiding consumers on how to present gauge values and notify end users effectively. Zones are invaluable for configuring various display scale setups.
+Zones serve a dual purpose by defining value operating conditions and associated notification prompts. They provide audio and visual cues for each state, guiding consumers on how to present gauge values status and notify end users effectively. Zones are invaluable for configuring various display scale setups.
 
 The items within the `zones` array define segments of value states, with each `state` representing the severity of the given condition. When zones are specified for a path, any data not part of a defined zone defaults to the `normal` state, managed automatically by the Signal K server. Zones use other states to provide insights to consumers about the data's state relative to its scale range. For example, zones for an engine RPM path can indicate the engine's redline segment.
 
