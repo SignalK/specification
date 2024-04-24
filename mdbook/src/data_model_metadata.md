@@ -71,7 +71,9 @@ values.
 
 The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
-scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
+scale eg. depth, windspeed.
+
+`type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
 0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear.
 
@@ -89,12 +91,12 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 
 Note that on a logarithmic scale neither L nor U can be zero. 
 
-The `alertMethod`, `warnMethod`, `alarmMethod` and
-`emergencyMethod` properties tell the consumer how it should respond to an abnormal data condition. Presently the
+### alertMethod, etc
+Methods are normalMethod, nominal `alertMethod`, `warnMethod`, `alarmMethod` and
+`` properties tell the consumer how it should respond to an abnormal data condition. Presently the
 values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
 these options. It is up to the consumer to decide how to convey these alerts.
 
-### alertMethod, etc
 The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
 abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
 array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.
