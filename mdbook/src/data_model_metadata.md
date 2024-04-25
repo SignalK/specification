@@ -96,11 +96,11 @@ Note that on a logarithmic scale neither L nor U can be zero.
 ### zones
 Zones define value operating conditions and associated notification prompts. They help in presenting display scales and notifying end users effectively.
 
-Each item in the `zones` array represents a segment (a zone) of value states. The `state` of each item indicates the severity of the segment. Any value not part of a zone range defaults to the `normal` state.
+Each item in the `zones` array represents a segment (a zone) of value states. The `state` of each item indicates the severity of the zone. Any value not part of a zone range defaults to the `normal` state.
 
 As values transition between zones, notifications are dispatched to inform about the value's state. All value-related notifications are defined within zones, and a zone's state determines the severity of the notifications.
 
-If defined, Signal K servers use the `zones` information in each path `meta` object to monitor the value and raise value state notifications.
+If defined, Signal K servers use the `zones` array information in each path `meta` object to monitor the value and raise value state notifications. If the `meta.zones` array does not contains items or is undefined, no value-related notifications will be sent. In short, without `meta.zones` array stated configuration in place, value-related notifications are disabled.
 
 The `lower` and `upper` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. They still trigger notifications even when outside the `displayScale` range.
 
