@@ -126,6 +126,7 @@ The possible `state` values in ascending order of severity are:
 | emergency  | The value indicates a life-threatening condition |
 
 Examples:
+
 An engine RPM path can indicate the engine's redline segment from 3200 to 3500 rpm at the alarm severity. With this
 information consumers can opt to draw a red marker over this segment on it's gauge and sound an alarm when the RPM enters this zone.
 
@@ -135,12 +136,12 @@ information consumers can opt to draw a red marker over this segment on it's gau
     ]
 ```
 
-A refrigeration temperature sensor with duplicate state severity but with different messages.
+A refrigeration temperature sensor with duplicate state severity and different messages.
 
 ```json
   "zones": [
-      {"upper": -2, "state": "warm", "message": "Freezing temperature reached"},
-      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy usage"},
+      {"upper": -2, "state": "warn", "message": "Freezing temperature reached"},
+      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy expenditure"},
       {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
       {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
     ]
@@ -164,7 +165,7 @@ be relevant if the gauge/display design permits it.
 
 These properties guide consumers on handling `zones` notifications, each corresponding to a different severity level. They are arrays that may include `sound`, `visual`, or both. An empty array `[]` signifies no visual or audio notification. The automatically generated `normalMethod` notification always has `[]`.
 
-A `alertMethod` would typically use
+Typically, an `alertMethod` would be configured as:
 ```json
   "alertMethod": ["visual"]
 ```
