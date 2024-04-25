@@ -102,7 +102,7 @@ As values transition between zones, notifications are dispatched to inform about
 
 The `lower` and `upper` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. They still trigger notifications even when outside the `displayScale` range.
 
-In cases where zones overlap, the zone with the highest `state` severity takes precedence. Any range not explicitly within a zone is considered `normal` by default.
+In cases where zones overlap, the zone with the highest `state` severity takes precedence. Any range not explicitly within a zone will dispatch a notification with state `normal`.
 
 Zones can technically have from zero to an infinite number of zone segments. The same `state` can be present in multiple segments.
 
