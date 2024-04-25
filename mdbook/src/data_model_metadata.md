@@ -106,7 +106,7 @@ In cases where zones overlap, the zone with the highest `state` severity takes p
 
 Zones can technically have from zero to an infinite number of zone segments. The same `state` can be present in multiple segments.
 
-`message`is the message that will be included in the notification when the value enters the zone. The message should be concise and short ie. a few words. The message may end up on a gauges with limited space.
+Property `message` represent the informationnal text that will be included in the notification. The message should be concise ie. a few words. The message may end up on a gauges with limited space.
 
 Zones should be configured with care. In practice, less is more.
 
