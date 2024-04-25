@@ -108,7 +108,7 @@ In cases where zones overlap, the zone with the highest `state` severity takes p
 
 Zones can technically have from zero to an infinite number of zone segments. The same `state` can be present in multiple segments.
 
-`message`is the message that will be included in the notification when the value enters the zone.
+`message`is the message that will be included in the notification when the value enters the zone. The message should be concise and short ie. a few words. The message may end up on a gauges with limited space.
 
 Zones should be configured with care. In practice, less is more.
 
@@ -118,7 +118,7 @@ The possible `state` values in ascending order of severity are:
 
 | State | Description |
 |------------|--------|
-| normal     | The normal operating range for the value in question (default - auto managed) |
+| normal     | Server generated - The normal operating range for the value in question (default) |
 | nominal    | The recommended optimal operation condition (see below) |
 | alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information |
 | warn       | Indicates a condition that requires immediate attention but not immediate action |
@@ -126,33 +126,49 @@ The possible `state` values in ascending order of severity are:
 | emergency  | The value indicates a life-threatening condition |
 
 Examples:
-An engine RPM path can indicate the engine's redline segment, say one zone lower 3200 to 3500 rpm using the '"state": "alarm"' severity. With this
+An engine RPM path can indicate the engine's redline segment from 3200 to 3500 rpm at the alarm severity. With this
 information consumers can opt to draw a red marker over this segment on it's gauge and sound an alarm when the RPM enters this zone.
 
 ```json
-  ...
   "zones": [
-      {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
-      {"lower": 4, "upper": 60, "state": "normal"},
-      {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
-      {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
+      {"lower": 3200, "upper": 3500, "state": "alarm", "message": "Risk of engine damage"}
     ]
-  ...
 ```
 
-you can have a refrigeration temperature sensor with one low and one high critical state configured with `"state": "alarm"`, or if zones are on different parts of the scale but a different `message` is required.
+A refrigeration temperature sensor with duplicate state severity but with different messages.
 
-An example of using `nominale` is for engine monitoring eg. coolant temperature where there is a normal (no warnings)
-(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at
-all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
+```json
+  "zones": [
+      {"upper": -2, "state": "warm", "message": "Freezing temperature reached"},
+      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy usage"},
+      {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
+      {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
+    ]
+```
+
+For engine monitoring eg. coolant temperature where there is a 'normal' (no warnings)
+(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
 sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
 be relevant if the gauge/display design permits it.
 
-### normalMethod, nominalMethod, alertMethod, warnMethod, alarmMethod, emergencyMethod
-Methods are meta properties that suggests to consumers how they should convey notification message upon reception. Presently the
-values for these properties are `sound` and `visual` and the method is specified as an array containing one, both or none `[]` of
-these options. A method with value `[]` suggests the notification message should neither have a visual, nor an audio representation. It
-is up to the consumer to interpret how to applies those to their usecase and choose how to best convey these notifications.
+```json
+  "zones": [
+      {"upper": 60, "state": "alert", "message": "Cold or Startup Temperature"},
+      {"lower": 70, "upper": 80, "state": "nominal", "message": "Temperature Nominal"},
+      {"lower": 85, "upper": 95, "state": "warn", "message": "High Temperature"},
+      {"lower": 95, "state": "alarm", "message": "Engine Overheat"}
+    ]
+```
+
+### nominalMethod, alertMethod, warnMethod, alarmMethod, emergencyMethod
+
+These properties guide consumers on handling `zones` notifications, each corresponding to a different severity level. They are arrays that may include `sound`, `visual`, or both. An empty array `[]` signifies no visual or audio notification. The automatically generated `normalMethod` notification always has `[]`.
+
+A `alertMethod` would typically use
+```json
+  "alertMethod": ["visual"]
+```
+Consumers have the flexibility to interpret and apply these methods, enabling them to effectively communicate notifications based on their specific use cases.
 
 ## Implicit Metadata
 
