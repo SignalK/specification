@@ -1,4 +1,4 @@
-# Notification Handling
+# Notifications
 
 Signal K handles notifications through a multi-stage process, treating all notifications uniformly. Notifications originate from two sources:
 
@@ -24,6 +24,20 @@ A flexible model is required to define various informative and alarming severiti
 * Notifications raised are monitored by a notification process on the server, which takes appropriate action, such as sounding alarms or displaying messages.
 * Clients interested in alarms can subscribe to the `vessels.self.notifications...` tree in the usual way and be informed of notifications in the same way as normal Signal K keys.
 * When a notification is cleared, a delta should be sent to subscribers indicating the notification has returned to its normal state.
+
+## Severity and Presentation Definition
+
+* Every notification must include a `state` property to specify its severity level.
+* Every notification must include a `method` array property to determine if the notification should result in an audio, visual, both, or no presentation.
+
+| State | Description |
+|------------|--------|
+| normal     | Server generated - The normal value (default) |
+| nominal    | All systems OK |
+| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information |
+| warn       | Indicates a condition that requires immediate attention but not immediate action |
+| alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
+| emergency  | The value indicates a life-threatening condition |
 
 ## Example
 
