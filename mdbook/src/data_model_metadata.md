@@ -94,7 +94,7 @@ Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and
 Note that on a logarithmic scale neither L nor U can be zero.
 
 ### zones
-Zones define value operating conditions and associated notification prompts. They help in presenting display scales and notifying end users effectively.
+Zones define operating conditions and associated severity. They help in presenting display scales and informing end users effectively.
 
 Each item in the `zones` array represents a segment (a zone) of value states. The `state` of each item indicates the severity of the zone. Any value not part of a zone range defaults to the `normal` state.
 
@@ -112,7 +112,7 @@ Zones should be configured with care. In practice, less is more.
 
 For detailed information on Notifications, refer to [Notifications](notifications.md).
 
-The possible `state` values in ascending order of severity are:
+#### The possible `state` values in ascending order of severity
 
 | State | Description |
 |------------|--------|
@@ -123,45 +123,13 @@ The possible `state` values in ascending order of severity are:
 | alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
 | emergency  | The value indicates a life-threatening condition |
 
-Examples:
-
-An engine RPM path can indicate the engine's redline segment from 3200 to 3500 rpm at the alarm severity. With this
-information consumers can opt to draw a red marker over this segment on it's gauge and sound an alarm when the RPM enters this zone.
-
-```json
-  "zones": [
-      {"lower": 3200, "upper": 3500, "state": "alarm", "message": "Risk of engine damage"}
-    ]
-```
-
-A refrigeration temperature sensor with duplicate state severity and different messages.
-
-```json
-  "zones": [
-      {"upper": -2, "state": "warn", "message": "Freezing temperature reached"},
-      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy expenditure"},
-      {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
-      {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
-    ]
-```
-
-For engine monitoring eg. coolant temperature where there is a 'normal' (no warnings)
-(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
-sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
-be relevant if the gauge/display design permits it.
-
-```json
-  "zones": [
-      {"upper": 60, "state": "alert", "message": "Cold or Startup Temperature"},
-      {"lower": 70, "upper": 80, "state": "nominal", "message": "Temperature Nominal"},
-      {"lower": 85, "upper": 95, "state": "warn", "message": "High Temperature"},
-      {"lower": 95, "state": "alarm", "message": "Engine Overheat"}
-    ]
-```
-
 ### nominalMethod, alertMethod, warnMethod, alarmMethod, emergencyMethod
 
-These properties guide consumers on handling `zones` notifications, each corresponding to a different severity level. They are arrays that may include `sound`, `visual`, or both. An empty array `[]` signifies no visual or audio notification. The automatically generated `normalMethod` notification always has `[]`.
+Methods properties define what kind of prompts consumers should render when receiving a notification.
+
+Methods are arrays that accepts string items of values `sound` and `visual`. The array lenght should be no more then 2. It can contain either or both values, or be empty. An empty array `[]` signifies no visual and no audio prompts are to be enacted by consumers. The automatically generated `normalMethod` notifications is always `[]`.
+
+Each method name prefixes matches zones severity levels. When a value enters a zone, that zone will trigger a notification. The notification message will include the zone's `state` value, and the corresponding severity prefixed method array.  
 
 Typically, an `alertMethod` would be configured as:
 ```json
@@ -201,3 +169,40 @@ While not strictly part of the Signal K specification, metadata configuration co
 provided by manufacturers of production boats or by component suppliers such as engine or refrigerator manufacturers.
 Also, any device which implements Signal K should provide a baseline metadata configuration. As this standard becomes
 more widespread, less individual configuration will need to be performed.
+
+## Examples
+
+An engine RPM path's redline segment, from 3200 to 3500 rpm, triggering a visual and sound prompt: With this
+configuration, consumers can opt to draw a red marker over a gauge segment, flash a light on the gauge and sound an alarm when the RPM enters this zone.
+
+```json
+  "zones": [
+      {"lower": 3200, "upper": 3500, "state": "alarm", "message": "Risk of engine damage"}
+    ]
+```
+
+A refrigeration temperature sensor with duplicate state severity containing different messages: With this
+configuration, consumers can opt to draw a multiple markers on a gauge, flash a light on the gauge and sound an alarm when the RPM enters this zone.
+
+```json
+  "zones": [
+      {"upper": -2, "state": "warn", "message": "Freezing temperature reached"},
+      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy expenditure"},
+      {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
+      {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
+    ]
+```
+
+For engine monitoring eg. coolant temperature where there is a 'normal' (no warnings)
+(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
+sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
+be relevant if the gauge/display design permits it.
+
+```json
+  "zones": [
+      {"upper": 60, "state": "alert", "message": "Cold or Startup Temperature"},
+      {"lower": 70, "upper": 80, "state": "nominal", "message": "Temperature Nominal"},
+      {"lower": 85, "upper": 95, "state": "warn", "message": "High Temperature"},
+      {"lower": 95, "state": "alarm", "message": "Engine Overheat"}
+    ]
+```
