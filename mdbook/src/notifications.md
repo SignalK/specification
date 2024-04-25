@@ -11,7 +11,7 @@ A flexible model is required to define various informative and alarming severiti
 
 * The definition of an "alarming" notification is defined by the notification's state severity.
 * The lowest state severity is considered normal - not alarming.
-* Notification states are defined as zone segments (array items) in the meta object attached to any Signal K path. See [[Metadata for Data Values]].
+* Notification states are defined as zone segments (array items) in the meta object attached to any Signal K path. See [Metadata](data_model_metadata.md).
 * If `meta.zones` contains at least one item, the server deternies the value's state and sends a notification.
 * When a value doesn't fall within any `meta.zones`, the server raises a default notification indicating a normal value state.
 * If the value transitions to or enters a zone, the server raises the defined notification.
