@@ -1,4 +1,4 @@
-o# Metadata
+# Metadata
 
 A key part of Signal K is the ability for data consumers such as apps or MFDs to automatically configure themselves
 based on settings retrieved from the server. The metadata component of Signal K facilitates this through an optional
@@ -173,14 +173,12 @@ Consumers have the flexibility to interpret and apply these methods, enabling th
 
 ## Implicit Metadata
 
-All keys in the Signal K specification must have a `description`, and where the key is a numeric value it must have
-`units`.
+All keys in the Signal K specification must have a `description`, and where the key is a numeric value it must have `units`.
 
 If a client requests the `meta` property for a valid Signal K key via the HTTP REST interface, the server must return
 the `description` and, if applicable, `units`, even if no value has ever been generated for that key.
 
-If a key has values determined by an enum, the server should include the enum in the meta. NB. in future versions
-it is likely that this will become a mandatory requirement for the server.
+If a key has values determined by an enum, the server should include the enum in the meta. NB. in future versions it is likely that this will become a mandatory requirement for the server.
 
 ```javascript
 // GET /signalk/v1/api/vessels/self/environment/depth/belowKeel/meta
@@ -198,23 +196,6 @@ See [keyswithmetadata.json](https://github.com/SignalK/specification/blob/_versi
 Signal K does not provide a default set of metadata, it is up to the owner or their installer to configure their Signal
 K environment appropriately for their vessel. However, by centralizing this configuration they will only need to do it
 one time and any future consumers will automatically use this configuration.
-
-## Alarm Management
-
-An alarm watch is set by setting the `meta.zones` array appropriately. A background process on the server checks for
-alarm conditions on any attribute with a `meta.zones` array. If the keys value is within a zone the server sets an
-alarm key similar to `vessels.self.notifications.[original_key_suffix]`, e.g. an alarm set on
-`vessels.self.navigation.courseOverGroundTrue` will become
-`vessels.self.notifications.navigation.courseOverGroundTrue`.
-
-The object found at this key should contain the following:
-
-```json
-{
-  "message": "any text",
-  "state": "[normal|alert|warn|alarm|emergency]"
-}
-```
 
 ## Other Benefits
 
