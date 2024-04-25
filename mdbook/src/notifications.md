@@ -9,6 +9,8 @@ A flexible model is required to define various informative and alarming severiti
 
 ## Notification Process
 
+* The definition of an "alarming" notification is defined by the notification's state severity.
+* The lowest state severity is considered normal - not alarming.
 * Notification states are defined as zone segments (array items) in the meta object attached to any Signal K path. See [[Metadata for Data Values]].
 * If `meta.zones` contains at least one item, the server sends a notification to qualify the value, even if the value doesn't fall within a defined `meta.zones` item.
 * When a value doesn't fall within any `meta.zones`, the server raises a default notification indicating a normal value state.
@@ -28,7 +30,7 @@ A flexible model is required to define various informative and alarming severiti
 ## Severity and Presentation Definition
 
 * Every notification must include a `state` property to specify its severity level.
-* Every notification must include a `method` array property to determine if the notification should result in an audio, visual, both, or no presentation.
+* Every notification must include a `method` array property to determine if the notification should result in a sound, visual, both, or no presentation.
 
 | State | Description |
 |------------|--------|
@@ -38,6 +40,10 @@ A flexible model is required to define various informative and alarming severiti
 | warn       | Indicates a condition that requires immediate attention but not immediate action |
 | alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
 | emergency  | The value indicates a life-threatening condition |
+
+## Resolving and silencing notifications
+* To silence a notification, resend the original notification, less method array sound item value. This will preserve the notification but remove sound.
+* To resolve a notification, send to the path with a state equal normal. Alarming notifications are difined by there state severity, not by their existance.
 
 ## Example
 
@@ -113,6 +119,7 @@ The notification object is
 }
 ```
 [<]: #
+
 ### Well Known Names
 
 Some notifications are especially important, eg MOB. This is a list of keys for special notifications.
@@ -152,6 +159,7 @@ An example to send an MOB notification alarm from an N2K source, the gateway wou
 }
 ```
 [<]: #
+
 The resulting full Signal K tree would be:
 
 [>]: # (mdpInsert ``` fsnip ../../samples/full/docs-notifications.json --ellipsify $ ~vessels --delKeys navigation --ellipsify uuid "'$..['\$source']'")
