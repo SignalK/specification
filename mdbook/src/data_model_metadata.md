@@ -127,9 +127,9 @@ For detailed information on Notifications, refer to [Notifications](notification
 
 Methods properties define what kind of prompts consumers should render when receiving a notification.
 
-Methods are arrays that accepts string items of values `sound` and `visual`. The array lenght should be no more then 2. It can contain either or both values, or be empty. An empty array `[]` signifies no visual and no audio prompts are to be enacted by consumers. The automatically generated `normalMethod` notifications is always `[]`.
+Methods are arrays that accepts string items of values `sound` and `visual`. The array lenght should be 2 or less. It can contain either or both values, or be empty. An empty array `[]` signifies that no visual and no audio prompts should be enacted by consumers.
 
-Each method name prefixes matches zones severity levels. When a value enters a zone, that zone will trigger a notification. The notification message will include the zone's `state` value, and the corresponding severity prefixed method array.  
+Each method property name is prefixe to match zone state severities. For exemple, a notification message for zone with `"state": "warn"` will include `warnMethod` values. 
 
 Typically, an `alertMethod` would be configured as:
 ```json
@@ -182,7 +182,7 @@ configuration, consumers can opt to draw a red marker over a gauge segment, flas
 ```
 
 A refrigeration temperature sensor with duplicate state severity containing different messages: With this
-configuration, consumers can opt to draw a multiple markers on a gauge, flash a light on the gauge and sound an alarm when the RPM enters this zone.
+configuration, consumers can opt to draw a multiple markers on the gauge, maybe flash a light on the gauge and sound an alarm when the RPM enters this zone.
 
 ```json
   "zones": [
