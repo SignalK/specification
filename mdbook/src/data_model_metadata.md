@@ -112,7 +112,7 @@ Zones can technically have from zero to an infinite number of zone segments. The
 
 Zones should be configured with care. In practice, less is more.
 
-For detailed information on Notifications, refer to [Alarm Handling](notifications.md).
+For detailed information on Notifications, refer to [Notifications](notifications.md).
 
 The possible `state` values in ascending order of severity are:
 
