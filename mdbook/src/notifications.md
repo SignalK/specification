@@ -29,8 +29,8 @@ A flexible model is required to define various informative and alarming severiti
 
 ## Severity and Presentation Definition
 
-* Every notification must include a `state` property to specify its severity level.
-* Every notification must include a `method` array property to determine if the notification should result in a sound, visual, both, or no presentation.
+* Notification must include a `state` property to specify its severity level.
+* Notification must include a `method` array property to determine if the notification should result in a sound, visual, both, or no presentation.
 
 | State | Description |
 |------------|--------|
