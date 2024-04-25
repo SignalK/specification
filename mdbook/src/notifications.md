@@ -42,8 +42,8 @@ A flexible model is required to define various informative and alarming severiti
 | emergency  | The value indicates a life-threatening condition |
 
 ## Resolving and silencing notifications
-* To silence a notification, resend the original notification, less method array sound item value. This will preserve the notification but remove sound.
-* To resolve a notification, send to the path with a state equal normal. Alarming notifications are difined by there state severity, not by their existance.
+* To silence a notification, the serve or clients, send delta notification replica without the `sound` item the method array.
+* To resolve a notification, the serve or clients, send delta notification replica with a state value of `normal`. Alarming notifications are difined by there state severity, not by their existance.
 
 ## Example
 
