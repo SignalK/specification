@@ -96,7 +96,7 @@ Note that on a logarithmic scale neither L nor U can be zero.
 ### zones
 Zones define value operating conditions and associated notification prompts. They help in presenting display scales and notifying end users effectively.
 
-Each item in the `zones` array represents a segment of value states. The `state` of each item indicates the severity of the segment. Any data not part of a zone range defaults to the `normal` state.
+Each item in the `zones` array represents a segment (a zone) of value states. The `state` of each item indicates the severity of the segment. Any value not part of a zone range defaults to the `normal` state.
 
 As values transition between zones, notifications are dispatched to inform about the value's state. All value-related notifications are defined within zones, and a zone's state determines the severity of the notifications.
 
