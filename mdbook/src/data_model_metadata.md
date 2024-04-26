@@ -27,16 +27,18 @@ The `meta` object exists at the same level as `value` and `$source` in each key 
   "units": "Hz",
   "timeout": 1,
   "displayScale": {"lower": 0, "upper": 75, "type": "linear"},
-  "alertMethod": ["visual"],
-  "warnMethod": ["visual"],
-  "alarmMethod": ["sound", "visual"],
-  "emergencyMethod": ["sound", "visual"],
   "zones": [
-    {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
-    {"lower": 4, "upper": 60, "state": "normal"},
-    {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
-    {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
-  ]
+      {"upper": 4, "state": "alarm", "message": "Stopped or very slow"},
+      {"lower": 4, "upper": 60, "state": "normal"},
+      {"lower": 60, "upper": 65, "state": "warn", "message": "Approaching maximum"},
+      {"lower": 65, "state": "alarm", "message": "Exceeding maximum"}
+    ]
+  "normalMethod": [],
+  "nominalMethod": ["visual"],
+  "alertMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
+  "alarmMethod": ["sound", "visual"],
+  "emergencyMethod": ["sound", "visual"]
 }
 ```
 [<]: #
@@ -64,12 +66,20 @@ version may be used by consumers where space is at a premium. As with displayNam
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
+### displayScale
+
 The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
-values. The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
+values.
+
+The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
-scale eg. depth, windspeed. `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
+scale eg. depth, wind speed.
+
+`type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
-0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear. In using these scales the type defines the
+0.5 is equivalent to `squareroot` and a power of 1 is equivalent to linear.
+
+In using these scales the type defines the
 function which is applied to all values in order to calculate % scale deflection of the pointer/needle/plot:
 
 | Type        | Formula for % deflection             |
@@ -81,64 +91,60 @@ function which is applied to all values in order to calculate % scale deflection
 
 Where: V = value, L = lower bound of the gauge, U = upper bound of the gauge and P = power
 
-Note that on a logarithmic scale neither L nor U can be zero. 
-
-The `alertMethod`, `warnMethod`, `alarmMethod` and
-`emergencyMethod` properties tell the consumer how it should respond to an abnormal data condition. Presently the
-values for these properties are `sound` and `visual` and the method is specified as an array containing one or both of
-these options. It is up to the consumer to decide how to convey these alerts.
-
-### alertMethod, etc
-The `alertMethod`, `warnMethod`, `alarmMethod` and `emergencyMethod` properties tell the consumer how it should respond to an
-abnormal data condition. Presently the values for these properties are `sound` and `visual` and the method is specified as an
-array containing one or both of these options. It is up to the consumer to decide how to convey these alerts.
+Note that on a logarithmic scale neither L nor U can be zero.
 
 ### zones
-The last property in the `meta` object is the `zones` array. This provides a series of hints to the consumer which can
-be used to properly set a range on a display gauge and also color sectors of a gauge to indicate normal or dangerous
-operating conditions. It also tells the consumer which state the data is in for a given range. Combined with the alert
-method properties, all Signal K consumers can react the same way to a given state.
+Zones define operating conditions and associated severity. They help in presenting display scales and informing end users effectively.
 
-The possible states in ascending order of severity are:
+Each item in the `zones` array represents a segment (a zone) of value states. The `state` of each item indicates the severity of the zone. Any value not part of a zone range defaults to the `normal` state.
 
-| State/Zone | Description |
+As values transition between zones, notifications are dispatched to inform about the value's state. All value-related notifications are defined within zones, and a zone's state determines the severity of the notifications. If the `meta.zones` array does not contains items or is undefined, value-related notifications are disabled (including `normal` state notifications).
+
+The `lower` and `upper` values in zones need not be contiguous or both present within a zone, nor do they have to fall within the upper and lower bounds specified in `displayScale`. They still trigger notifications even when outside the `displayScale` range.
+
+In cases where zones overlap, the zone with the highest `state` severity takes precedence. Any range not explicitly within a zone will dispatch a notification with state `normal`.
+
+Zones can technically have from zero to an infinite number of zone segments. The same `state` can be present in multiple segments.
+
+Property `message` represent the informational text that will be included in the notification. The message should be concise ie. a few words. The message may end up on a gauges with limited space.
+
+Zones should be configured with care. In practice, less is more.
+
+For detailed information on Notifications, refer to [Notifications](notifications.md).
+
+#### The possible `state` values in ascending order of severity
+
+| State | Description |
 |------------|--------|
-| nominal    | this is a special type of normal state/zone (see below)        |
-| normal     | the normal operating range for the value in question (default)            |
-| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information for routine action purposes |
+| normal     | Server generated - The normal operating range for the value in question (default) |
+| nominal    | The recommended optimal operation condition (see below) |
+| alert      | Indicates a safe or normal condition which is brought to the operators attention to impart information |
 | warn       | Indicates a condition that requires immediate attention but not immediate action |
 | alarm      | Indicates a condition which is outside the specified acceptable range. Immediate action is required to prevent loss of life or equipment damage |
-| emergency  | the value indicates a life-threatening condition |
+| emergency  | The value indicates a life-threatening condition |
 
-`nominal`: A example use of this is for engine monitoring eg. coolant temperature where there is a normal (no warnings)
-(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at
-all (typically remains vertical or horizontal). This is really useful if you have many gauges (multiple motors with multiple
-sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
-be relevant if the gauge/display design permits it.
+### nominalMethod, alertMethod, warnMethod, alarmMethod, emergencyMethod
 
-The `upper` and `lower` values in the zones do not need to be contiguous, they don't have to both be present in a zone, nor do
-they need to be within the bounds of the `upper` and `lower` specified in `displayScale`. When they are outside of the
-`displayScale` range they will still give rise to alerts. Both `upper` and `lower` values are considered to be inclusive.
+Methods properties define what kind of prompts consumers should render when receiving a notification.
 
-If zones overlap each other the state/zone with the highest severity will take precedence. This is true for both alerts and
-gauge/display rendering. Any part of the range which is not explicitly within a zone is considered to be `normal` (the default).
-As such, zones with a state of `normal` have no effect and their removal would result in no changes to either displays or alerts.
+Methods are arrays that accepts string items of values `sound` and `visual`. The array length should be 2 or less. It can contain either or both values, or be empty. An empty array `[]` signifies that no visual and no audio prompts should be enacted by consumers.
 
-There can be multiple zones with the same `state`, for example if a different message is required, or if they are on different parts of the scale.
+Each method property name is prefix to match zone state severities. For example, a notification message for zone with `"state": "warn"` will include `warnMethod` values.
 
-Signal K servers will use the `zone` information to monitor any data which has a `meta` object and
-raise a generic alarm event. See the section on [Alarm Handling](notifications.md) for more.
+Typically, an `alertMethod` would be configured as:
+```json
+  "alertMethod": ["visual"]
+```
+Consumers have the flexibility to interpret and apply these methods, enabling them to effectively communicate notifications based on their specific use cases.
 
 ## Implicit Metadata
 
-All keys in the Signal K specification must have a `description`, and where the key is a numeric value it must have
-`units`.
+All keys in the Signal K specification must have a `description`, and where the key is a numeric value it must have `units`.
 
 If a client requests the `meta` property for a valid Signal K key via the HTTP REST interface, the server must return
 the `description` and, if applicable, `units`, even if no value has ever been generated for that key.
 
-If a key has values determined by an enum, the server should include the enum in the meta. NB. in future versions
-it is likely that this will become a mandatory requirement for the server.
+If a key has values determined by an enum, the server should include the enum in the meta. NB. in future versions it is likely that this will become a mandatory requirement for the server.
 
 ```javascript
 // GET /signalk/v1/api/vessels/self/environment/depth/belowKeel/meta
@@ -157,26 +163,60 @@ Signal K does not provide a default set of metadata, it is up to the owner or th
 K environment appropriately for their vessel. However, by centralizing this configuration they will only need to do it
 one time and any future consumers will automatically use this configuration.
 
-## Alarm Management
-
-An alarm watch is set by setting the `meta.zones` array appropriately. A background process on the server checks for
-alarm conditions on any attribute with a `meta.zones` array. If the keys value is within a zone the server sets an
-alarm key similar to `vessels.self.notifications.[original_key_suffix]`, e.g. an alarm set on
-`vessels.self.navigation.courseOverGroundTrue` will become
-`vessels.self.notifications.navigation.courseOverGroundTrue`.
-
-The object found at this key should contain the following:
-
-```json
-{
-  "message": "any text",
-  "state": "[normal|alert|warn|alarm|emergency]"
-}
-```
-
 ## Other Benefits
 
 While not strictly part of the Signal K specification, metadata configuration could be shared between boats or even
 provided by manufacturers of production boats or by component suppliers such as engine or refrigerator manufacturers.
 Also, any device which implements Signal K should provide a baseline metadata configuration. As this standard becomes
 more widespread, less individual configuration will need to be performed.
+
+## Examples
+
+An engine RPM path's redline segment, from 3200 to 3500 rpm, triggering a visual and sound prompt: With this
+configuration, consumers can opt to draw a red marker over a gauge segment, flash a light on the gauge and sound an alarm when the RPM enters this zone.
+
+```json
+  "zones": [
+      {"lower": 3200, "upper": 3500, "state": "alarm", "message": "Risk of engine damage"}
+    ],
+  ...
+  "alarmMethod": ["sound", "visual"],
+  ...
+```
+
+A refrigeration temperature sensor with duplicate state severity containing different messages: With this
+configuration, consumers can opt to draw a multiple markers on the gauge, light up a visual indicator on the gauge and sound an alarm when the RPM enters this zone.
+
+```json
+  "zones": [
+      {"upper": -2, "state": "warn", "message": "Freezing temperature reached"},
+      {"lower": -2, "upper": 1, "state": "alert", "message": "Excessive energy expenditure"},
+      {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
+      {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
+    ]
+  ...
+  "alertMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
+  "alarmMethod": ["sound", "visual"],
+  ...
+
+```
+
+For engine monitoring eg. coolant temperature where there is a 'normal' (no warnings)
+(green) zone between say 70C and 110C, but when the temperature is between 80C and 90C (`nominal`) the needle doesn't move at all (typically remains vertical or horizontal) indicating typical or desired range. This is really useful if you have many gauges (multiple motors with multiple
+sensors) where it is very easy to spot that every needle is pointing in exactly the same direction. Use of nominal will only
+be relevant if the gauge/display design permits it.
+
+```json
+  "zones": [
+      {"upper": 60, "state": "alert", "message": "Cold or Startup Temperature"},
+      {"lower": 70, "upper": 80, "state": "nominal", "message": "Temperature Nominal"},
+      {"lower": 85, "upper": 95, "state": "warn", "message": "High Temperature"},
+      {"lower": 95, "state": "alarm", "message": "Engine Overheat"}
+    ],
+  "nominalMethod": ["visual"],
+  "alertMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
+  "alarmMethod": ["sound", "visual"],
+  ...
+```
