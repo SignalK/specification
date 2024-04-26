@@ -73,7 +73,7 @@ values.
 
 The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
-scale eg. depth, windspeed.
+scale eg. depth, wind speed.
 
 `type` has possible values of `linear` (default), `logarithmic`, `squareroot` or `power`. When
 `"type": "power"` is specified an additional property `power` must be present to define the power. Note that a power of
@@ -106,7 +106,7 @@ In cases where zones overlap, the zone with the highest `state` severity takes p
 
 Zones can technically have from zero to an infinite number of zone segments. The same `state` can be present in multiple segments.
 
-Property `message` represent the informationnal text that will be included in the notification. The message should be concise ie. a few words. The message may end up on a gauges with limited space.
+Property `message` represent the informational text that will be included in the notification. The message should be concise ie. a few words. The message may end up on a gauges with limited space.
 
 Zones should be configured with care. In practice, less is more.
 
@@ -127,9 +127,9 @@ For detailed information on Notifications, refer to [Notifications](notification
 
 Methods properties define what kind of prompts consumers should render when receiving a notification.
 
-Methods are arrays that accepts string items of values `sound` and `visual`. The array lenght should be 2 or less. It can contain either or both values, or be empty. An empty array `[]` signifies that no visual and no audio prompts should be enacted by consumers.
+Methods are arrays that accepts string items of values `sound` and `visual`. The array length should be 2 or less. It can contain either or both values, or be empty. An empty array `[]` signifies that no visual and no audio prompts should be enacted by consumers.
 
-Each method property name is prefixe to match zone state severities. For exemple, a notification message for zone with `"state": "warn"` will include `warnMethod` values. 
+Each method property name is prefix to match zone state severities. For example, a notification message for zone with `"state": "warn"` will include `warnMethod` values.
 
 Typically, an `alertMethod` would be configured as:
 ```json
