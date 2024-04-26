@@ -178,11 +178,14 @@ configuration, consumers can opt to draw a red marker over a gauge segment, flas
 ```json
   "zones": [
       {"lower": 3200, "upper": 3500, "state": "alarm", "message": "Risk of engine damage"}
-    ]
+    ],
+  ...
+  "alarmMethod": ["sound", "visual"],
+  ...
 ```
 
 A refrigeration temperature sensor with duplicate state severity containing different messages: With this
-configuration, consumers can opt to draw a multiple markers on the gauge, maybe flash a light on the gauge and sound an alarm when the RPM enters this zone.
+configuration, consumers can opt to draw a multiple markers on the gauge, light up a visual indicator on the gauge and sound an alarm when the RPM enters this zone.
 
 ```json
   "zones": [
@@ -191,6 +194,12 @@ configuration, consumers can opt to draw a multiple markers on the gauge, maybe 
       {"lower": 5, "upper": 8, "state": "warn", "message": "Perishable storage at risk"},
       {"lower": 8, "state": "alarm", "message": "Risk of bacterial growth and food spoilage"}
     ]
+  ...
+  "alertMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
+  "alarmMethod": ["sound", "visual"],
+  ...
+
 ```
 
 For engine monitoring eg. coolant temperature where there is a 'normal' (no warnings)
@@ -204,5 +213,10 @@ be relevant if the gauge/display design permits it.
       {"lower": 70, "upper": 80, "state": "nominal", "message": "Temperature Nominal"},
       {"lower": 85, "upper": 95, "state": "warn", "message": "High Temperature"},
       {"lower": 95, "state": "alarm", "message": "Engine Overheat"}
-    ]
+    ],
+  "nominalMethod": ["visual"],
+  "alertMethod": ["visual"],
+  "warnMethod": ["sound", "visual"],
+  "alarmMethod": ["sound", "visual"],
+  ...
 ```
