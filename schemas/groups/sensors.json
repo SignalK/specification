@@ -32,8 +32,8 @@
 
     "class": {
       "$ref": "../definitions.json#/definitions/stringValue",
-      "pattern_": "^[AB]\\Z",
-      "description": "AIS transponder class in sensors.ais.class, A or B"
+      "pattern_": "^[AB]$|^ATON$|^SAR$|^BASE$",
+      "description": "AIS transponder class in sensors.ais.class"
     }
   }
 }
