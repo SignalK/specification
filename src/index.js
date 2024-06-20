@@ -18,35 +18,67 @@
 var _ = require('lodash');
 var FullSignalK = require('./fullsignalk');
 
-  var subSchemas = {
-    'notifications': require('../schemas/groups/notifications.json'),
-    'communication': require('../schemas/groups/communication.json'),
-    'design': require('../schemas/groups/design.json'),
-    'navigation': require('../schemas/groups/navigation.json'),
-    'electrical': require('../schemas/groups/electrical.json'),
-    'environment': require('../schemas/groups/environment.json'),
-    'performance': require('../schemas/groups/performance.json'),
-    'propulsion': require('../schemas/groups/propulsion.json'),
-    'resources': require('../schemas/groups/resources.json'),
-    'sails': require('../schemas/groups/sails.json'),
-    'sensors': require('../schemas/groups/sensors.json'),
-    'sources': require('../schemas/groups/sources.json'),
-    'steering': require('../schemas/groups/steering.json'),
-    'tanks': require('../schemas/groups/tanks.json')
-  };
+var subSchemas = {
+  'notifications': require('../schemas/groups/notifications.json'),
+  'communication': require('../schemas/groups/communication.json'),
+  'design': require('../schemas/groups/design.json'),
+  'navigation': require('../schemas/groups/navigation.json'),
+  'electrical': require('../schemas/groups/electrical.json'),
+  'environment': require('../schemas/groups/environment.json'),
+  'performance': require('../schemas/groups/performance.json'),
+  'propulsion': require('../schemas/groups/propulsion.json'),
+  'resources': require('../schemas/groups/resources.json'),
+  'sails': require('../schemas/groups/sails.json'),
+  'sensors': require('../schemas/groups/sensors.json'),
+  'sources': require('../schemas/groups/sources.json'),
+  'steering': require('../schemas/groups/steering.json'),
+  'tanks': require('../schemas/groups/tanks.json')
+};
 
+const Ajv = require('ajv-draft-04')
+const addAjvFormats = require('ajv-formats')
+const tv4Formats = require('tv4-formats');
+const fs = require('fs')
+const path = require('path')
+
+var vesselSchema = require('../schemas/vessel.json');
+var aircraftSchema = require('../schemas/aircraft.json');
+var atonSchema = require('../schemas/aton.json');
+var sarSchema = require('../schemas/sar.json');
+var definitions = require('../schemas/definitions.json');
+var externalGeometry = require('../schemas/external/geojson/geometry.json');
+
+function getAjv() {
+	var ajv = new Ajv({strict: false})
+	ajv.addSchema(vesselSchema, 'https://signalk.org/specification/1.5.1/schemas/vessel.json');
+	ajv.addSchema(aircraftSchema, 'https://signalk.org/specification/1.5.1/schemas/aircraft.json')
+	ajv.addSchema(atonSchema, 'https://signalk.org/specification/1.5.1/schemas/aton.json');
+	ajv.addSchema(sarSchema, 'https://signalk.org/specification/1.5.1/schemas/sar.json');
+	ajv.addSchema(definitions, 'https://signalk.org/specification/1.5.1/schemas/definitions.json');
+	for (var schema in subSchemas) {
+    if(schema == 'sources') {
+    }
+	  ajv.addSchema(subSchemas[schema], 'https://signalk.org/specification/1.5.1/schemas/groups/' + schema + '.json')
+	}
+	ajv.addSchema(externalGeometry, 'https://signalk.org/specification/1.5.1/schemas/external/geojson/geometry.json');
+  addAjvFormats(ajv)
+
+
+  console.log("################")
+  console.log(Object.keys(ajv.schemas))
+  console.log("################")
+
+
+	return ajv;
+}
 
 function getTv4() {
   var tv4 = require('tv4');
   var vesselSchema = require('../schemas/vessel.json');
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/vessel.json', vesselSchema);
-  var aircraftSchema = require('../schemas/aircraft.json');
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/aircraft.json', aircraftSchema);
-  var atonSchema = require('../schemas/aton.json');
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/aton.json', atonSchema);
-  var sarSchema = require('../schemas/sar.json');
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/sar.json', sarSchema);
-  var definitions = require('../schemas/definitions.json');
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/definitions.json', definitions);
 
   for (var schema in subSchemas) {
@@ -58,23 +90,40 @@ function getTv4() {
   tv4.addSchema('https://signalk.org/specification/1.5.1/schemas/external/geojson/geometry.json', externalGeometry);
   tv4.addSchema('http://json-schema.org/geojson/geometry.json', externalGeometry);
 
-  tv4.addFormat(require('tv4-formats'))
+  tv4.addFormat(tv4Formats)
 
   return tv4;
 }
 
+/*
+  USE_AJV
+  */
 function validateFull(tree) {
   var signalkSchema = require('../schemas/signalk.json');
 
-  var tv4 = getTv4();
-  var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
-  var result = tv4.validateResult(tree, signalkSchema, true, true);
-  //Hack: validateMultiple marks anyOf last match incorrectly as not valid with banUnknownProperties
-  //https://github.com/geraintluff/tv4/issues/128
-  valid.valid = result.valid;
-  return valid;
+  if(process.env.USE_AJV) {
+    var ajv = getAjv();
+    const validate = ajv.compile(signalkSchema)
+    const valid = validate(tree)
+    return {
+      valid: valid,
+      errors: validate.errors
+    };
+
+  } else {
+    var tv4 = getTv4();
+    var valid = getTv4().validateMultiple(tree, signalkSchema, true, true);
+    var result = tv4.validateResult(tree, signalkSchema, true, true);
+    //Hack: validateMultiple marks anyOf last match incorrectly as not valid with banUnknownProperties
+    //https://github.com/geraintluff/tv4/issues/128
+    valid.valid = result.valid;
+    return valid;
+  }
 }
 
+/*
+  USE_AJV
+*/
 function validateDelta(delta, ignoreContext) {
   var tv4 = require('tv4');
   var deltaSchema = require('../schemas/delta.json');
@@ -88,6 +137,9 @@ function validateDelta(delta, ignoreContext) {
   return valid;
 }
 
+/*
+  USE_AJV
+*/
 function validateWithSchema(msg, schemaName) {
   var tv4 = require('tv4');
   var schema = require('../schemas/' + schemaName);
@@ -100,18 +152,30 @@ function chaiAsPromised(chai, utils) {
 
   var Assertion = chai.Assertion
 
+  /*
+    Wrangle AJV errors to same format?
+  */
   function checkValidFullSignalK () {
     var result = validateFull(this._obj);
-
-    var message = result.errors.reduce(function(msgBuilder, error) {
-      msgBuilder += error.dataPath + ":" + error.message + "\n";
-      return msgBuilder;
-    }, {});
-    this.assert(
-      result.valid
-      , message
-      , 'expected #{this} to not be valid SignalK'
-      );
+    if(process.env.USE_AJV) {
+      var message = "googoogaagaa"; 
+      if(result.valid === false) {
+        console.log('heres the problem')
+        console.log(JSON.stringify(this._obj, null, '  '));
+      }
+      message = JSON.stringify(result.errors, null, 2);
+      this.assert(result.valid, message, 'expected #{this} to not be valid SignalK')
+    } else {
+      var message = result.errors.reduce(function(msgBuilder, error) {
+        msgBuilder += error.dataPath + ":" + error.message + "\n";
+        return msgBuilder;
+      }, {});
+      this.assert(
+        result.valid
+        , message
+        , 'expected #{this} to not be valid SignalK'
+        );
+    }
   }
   Assertion.addProperty('validSignalK', checkValidFullSignalK);
   Assertion.addProperty('validFullSignalK', checkValidFullSignalK);
@@ -315,6 +379,7 @@ module.exports.fillIdentity = fillIdentity;
 module.exports.validateDelta = validateDelta;
 module.exports.chaiModule = chaiAsPromised;
 module.exports.getTv4 = getTv4;
+module.exports.getAjv = getAjv;
 module.exports.subSchemas = subSchemas;
 module.exports.units = require('../schemas/definitions').definitions.units;
 module.exports.metadata = require('./keyswithmetadata.json');
