@@ -274,7 +274,7 @@
           "quantityDisplay": "Byte",
           "description": "Digital quantity. 1 byte = 8 bits."
         },
-        "bps": {
+        "b/s": {
           "display": "bps",
           "quantity": "Data Transfer Rate",
           "quantityDisplay": "bit/s",
