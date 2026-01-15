@@ -47,7 +47,7 @@ const units = {
   "ratio": "Ratio",
   "s": "Second",
   "B": "Byte",
-  "bps": "bit per second"
+  "b/s": "Bits per second"
 }
 
 class Parser {
