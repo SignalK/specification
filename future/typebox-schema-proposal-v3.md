@@ -1,118 +1,109 @@
-# Proposal: Server as Single Source of Truth for Signal K Schemas
+# Proposal: Evolving Signal K Schema Management with TypeBox
 
 ## Executive Summary
 
-This proposal addresses the current state of Signal K schema management and suggests consolidating all schema definitions into the server repository using TypeBox. The goal is to eliminate the dormant specification repository, unify validation and documentation, and provide machine-readable specifications for both REST and WebSocket protocols.
+This proposal suggests an incremental evolution of Signal K's schema management, building on existing packages and infrastructure. The goal is to consolidate documentation, reduce maintenance burden, and improve the developer experience — while preserving Signal K's dynamic data model.
 
-The key insight: the server already *is* the de facto specification. This proposal makes that explicit.
+The approach: evolve what exists, don't replace it wholesale.
 
-This work aligns with and supports the broader migration from v1 (full model) to v2 (granular APIs).
-
-## Current State Analysis
+## Current State
 
 ### What We Have Today
 
+Signal K has several interconnected pieces for schema and type management:
+
 1. **Specification Repo** (`github.com/SignalK/specification`)
-   - JSON Schema files defining the v1 full data model
+   - JSON Schema files defining the data model
    - Protocol specification (delta messages, subscriptions, etc.) in prose
    - Well-known paths and units
-   - Largely dormant — JSON Schema is tedious to maintain
+   - Published in HTML format at https://signalk.org/specification/latest/doc/ with print-to-PDF support
 
-2. **Server OpenAPI** (hand-written JSON files)
+2. **`@signalk/signalk-schema` Package**
+   - Machine-readable specification (JSON Schema + `keyswithmetadata.json`)
+   - Validation utilities used by nmea0183 and n2k converters' tests
+   - Source of metadata for the server
+   - Derived from the specification repo
+
+3. **`@signalk/server-api` Package**
+   - TypeScript types for server APIs and Signal K domain objects (Deltas, etc.)
+   - Used in server core, plugins, and clients
+   - Actively maintained and widely used
+
+4. **Server OpenAPI** (hand-written JSON files)
    - REST API documentation for v2 granular APIs
    - Swagger UI at `/admin/openapi`
-   - Schemas duplicated between spec repo and server
 
-3. **WebSocket Protocol**
-   - Documented only in prose
-   - No machine-readable specification
-   - No interactive documentation (unlike REST with Swagger UI)
+5. **Server Documentation**
+   - Added another home for documentation alongside the specification
+   - Creates some overlap and confusion about where to find things
 
-4. **Protocol Specification**
-   - Largely still relevant conceptual documentation
-   - Currently lives in specification repo
-   - Needs a proper home
+### What's Working
 
-5. **`@signalk/server-api` Package**
-   - TypeScript types for server APIs
-   - Used by clients for type safety
-   - Manually maintained, can drift from actual server behavior
+- `@signalk/server-api` provides useful TypeScript types used across the ecosystem
+- `@signalk/signalk-schema` provides validation for converters
+- v2 granular APIs are well-documented with OpenAPI/Swagger
+- The specification supports comprehensive documentation including print-to-PDF
 
 ### Pain Points
 
-- JSON Schema is "not user friendly if all you want is add a few well known paths & units"
-- Specification repo "looks abandoned because it largely is"
-- v1 full model schema should be deprecated as part of v2 migration
-- Protocol documentation is prose-only, hard for other implementations to consume
-- Multiple sources of truth that drift out of sync
-- No runtime validation tied to documentation
-- Clients lack efficient delta validation mechanisms
-- `@signalk/server-api` types are manually maintained, separate from actual schemas
+- Documentation is spread across multiple locations, making it hard to find the right information
+- OpenAPI docs, TypeScript types, and written documentation are separate, requiring manual maintenance
+- Specification documentation promotes the full model, but real-world usage is centered on deltas — this can mislead new users
+- Protocol documentation is prose-only, with no support for spec-based integration
+- JSON Schema is not user-friendly for adding well-known paths and units
+- There is no comprehensive client-side library with a type-supported API to make consuming Signal K data easy
+
+### What Must Be Preserved
+
+Signal K's dynamic data model is a core strength:
+
+- The system passes arbitrary data not defined in well-known paths
+- Plugins and clients can inject metadata for custom paths
+- v1 schema and HTTP API remain relevant for simple path-value updates where no v2 API exists
+- This flexibility must not be compromised
 
 ## Proposed Direction
 
-### Core Strategic Shift
+### Guiding Principles
 
-**Current state**: Specification repo pretends to be the authority, but it's dormant. Server is the de facto specification.
-
-**Proposed state**: Make this explicit. The server *is* the specification. TypeBox schemas in the server are the source of truth, everything else is generated.
+1. **Evolve, don't replace** — Build on existing packages rather than creating new ones
+2. **Incremental adoption** — Changes can be made gradually without breaking existing code
+3. **Dynamic-first** — Custom and well-known paths use the same mechanisms
+4. **Consolidate documentation** — One place to find things, embedded in server and published at demo.signalk.org
 
 ### What This Proposal IS
 
-- Consolidating all schema definitions into the server repository
-- Using TypeBox for schema definitions with automatic generation of JSON Schema, OpenAPI, and AsyncAPI
-- Providing machine-readable WebSocket protocol documentation via AsyncAPI
-- Giving the protocol specification a proper home in the server repository
-- Supporting the v1 → v2 migration by defining v2 APIs in TypeBox
-- Enabling client-side TypeScript types and runtime validation from the same source
-- Archiving the specification repository
+- Introducing TypeBox as the schema definition layer, integrated into existing packages
+- Publishing all protocol and API documentation in a centralized fashion via the Admin UI and demo.signalk.org
+- Adding AsyncAPI documentation for the WebSocket protocol
+- Making it easier to maintain well-known paths and units
+- Improving the developer experience for client-side consumption
 
 ### What This Proposal is NOT
 
-- A rewrite of Signal K protocol semantics
-- A breaking change to existing APIs
-- Documentation of third-party plugin paths (plugins self-document)
-- Replacing Swagger UI (we keep it, just feed it generated OpenAPI)
+- A wholesale replacement of existing packages
+- Deprecation of v1 schema or the full model HTTP API
+- A breaking change to the dynamic data model
+- Type-per-path (see "Type Design" section below)
 
-## Alignment with v2 Migration
+## Why TypeBox
 
-This proposal directly supports the ongoing migration from v1 to v2:
+### The Problem with JSON Schema Maintenance
 
-| v1 Approach | v2 Approach | This Proposal |
-|-------------|-------------|---------------|
-| Full model schema | Granular API schemas | TypeBox defines v2 API schemas |
-| Monolithic JSON Schema | Per-endpoint validation | TypeBox per-endpoint with composition |
-| Hand-maintained | Generated | Single source generates all artifacts |
+JSON Schema is powerful but tedious to maintain by hand. Adding a new well-known path requires editing verbose JSON files, and there's no IDE support or type inference.
 
-The v1 full model JSON Schema would be explicitly deprecated. New development focuses on v2 granular APIs defined in TypeBox.
+### TypeBox Advantages
 
-## Why TypeBox over Zod
+TypeBox schemas ARE JSON Schema — they produce it natively, not through conversion. This means:
 
-We evaluated both Zod and TypeBox for this use case. TypeBox is the better fit for Signal K's specific needs.
-
-### Philosophy Difference
-
-**Zod** was designed as a TypeScript-first validation library. JSON Schema output is an afterthought, handled by community packages.
-
-**TypeBox** was designed specifically to produce JSON Schema as native output. The schema *is* the source of truth, and TypeScript types are derived from it.
-
-### JSON Schema Fidelity
-
-This is the critical dimension for generating accurate specifications and supporting other implementations.
-
-| Feature | TypeBox | Zod + converters |
-|---------|---------|------------------|
-| JSON Schema output | Native (schemas ARE JSON Schema) | Requires conversion |
-| `$ref` references | Native | Requires configuration |
-| `patternProperties` | Native | Not supported |
-| `if`/`then`/`else` | Native | Not supported |
-| Draft 2020-12 support | Full | Limited |
-
-**Signal K implication**: The `patternProperties` gap is significant. Signal K paths like `electrical.batteries.*.voltage` map naturally to JSON Schema's `patternProperties`, which TypeBox supports and Zod doesn't.
+- Write schemas in TypeScript with full IDE support
+- Get JSON Schema output automatically
+- Runtime validation with excellent performance
+- TypeScript types via `Static<typeof Schema>`
 
 ### Performance
 
-TypeBox is significantly faster for both compilation and validation:
+TypeBox is significantly faster than alternatives:
 
 | Operation | TypeBox | Zod | Ratio |
 |-----------|---------|-----|-------|
@@ -122,570 +113,298 @@ TypeBox is significantly faster for both compilation and validation:
 
 *Benchmarks from [moltar/typescript-runtime-type-benchmarks](https://github.com/moltar/typescript-runtime-type-benchmarks)*
 
-**Signal K implication**: For high-frequency delta validation (hundreds of NMEA 2000 messages per second), this headroom matters. TypeBox's native compiler generates validation rules that can be compiled once at client startup and reused efficiently.
+### JSON Schema Feature Support
 
-### Cross-Language and WASM Support
+TypeBox supports features that alternatives lack:
 
-Signal K's future includes WASM plugins and potentially other language bindings. TypeBox's native JSON Schema output means:
+| Feature | TypeBox | Zod |
+|---------|---------|-----|
+| `patternProperties` | Native | Not supported |
+| `$ref` references | Native | Requires configuration |
+| `if`/`then`/`else` | Native | Not supported |
 
-- WASM modules can consume JSON Schema directly
-- Any future language bindings get first-class schema support
-- Round-trip fidelity is guaranteed
-- No conversion step that could introduce subtle differences
-
-### Client-Side Reuse
-
-TypeBox schemas can be directly consumed by client applications:
-
-- TypeScript types via `Static<typeof Schema>` — IDE autocomplete and type checking
-- Runtime validation via TypeBox compiler — validate incoming deltas
-- Form validation — Angular, React form libraries can use TypeBox
-- Same schemas on server and client — single source of truth extends to clients
-
-This is a significant advantage over Zod for Signal K's use case.
+The `patternProperties` support is particularly relevant for Signal K's path patterns like `electrical.batteries.*.voltage`.
 
 ### AsyncAPI Compatibility
 
-AsyncAPI uses JSON Schema for message payloads. TypeBox schemas can be used directly without conversion, simplifying the toolchain for WebSocket protocol documentation.
+AsyncAPI (for documenting WebSocket protocols) uses JSON Schema for message definitions. TypeBox schemas work directly — no conversion step needed.
 
-### Summary Comparison
+## Type Design: Value Categories, Not Type-Per-Path
 
-| Dimension | Zod | TypeBox | Signal K Winner |
-|-----------|-----|---------|-----------------|
-| JSON Schema fidelity | Good (converted) | Excellent (native) | **TypeBox** |
-| JSON Schema features | Partial | Full | **TypeBox** |
-| Validation performance | Good | Excellent | **TypeBox** |
-| Pattern properties | Not supported | Native | **TypeBox** |
-| AsyncAPI compatibility | Needs conversion | Native | **TypeBox** |
-| WASM/cross-language | Good | Excellent | **TypeBox** |
-| Client-side reuse | Good | Excellent | **TypeBox** |
-| Ecosystem size | Large | Medium | Zod |
-| Error messages | Excellent | Good | Zod |
+### The Wrong Approach
 
-For Signal K's specific needs — WASM support, pattern-based paths, AsyncAPI integration, client-side validation — TypeBox is the clear choice.
-
-## Architecture
-
-### What Lives in the Server
-
-```
-signalk-server/
-├── src/schemas/                    # TypeBox — THE source of truth
-│   ├── paths/                      # Well-known paths + units
-│   │   ├── navigation.ts
-│   │   ├── environment.ts
-│   │   ├── electrical.ts
-│   │   └── propulsion.ts
-│   ├── protocol/                   # WebSocket protocol messages
-│   │   ├── delta.ts
-│   │   ├── subscription.ts
-│   │   └── hello.ts
-│   ├── api/                        # REST API request/response (v2)
-│   │   ├── course.ts
-│   │   └── resources.ts
-│   ├── units.ts                    # Unit registry
-│   └── lookup.ts                   # Path lookup utilities
-├── docs/
-│   └── protocol/                   # Protocol conceptual documentation
-│       ├── overview.md             # What is Signal K, data model concepts
-│       ├── deltas.md               # Delta semantics, when/why
-│       ├── subscriptions.md        # Subscription behavior, policies
-│       ├── discovery.md            # Server discovery, mDNS
-│       └── security.md             # Authentication, authorization
-├── generated/                      # Build output
-│   ├── openapi.yaml                # REST API spec
-│   ├── asyncapi.yaml               # WebSocket protocol spec
-│   └── json-schema/                # For WASM/other implementations
-│       ├── delta.json
-│       ├── paths.json
-│       └── units.json
-└── scripts/
-    └── generate-specs.ts           # Build script
-```
-
-### Protocol Specification Home
-
-The protocol specification — the conceptual "why" and "how" documentation — moves to `signalk-server/docs/protocol/`. This includes:
-
-- **Overview**: What Signal K is, data model concepts, design philosophy
-- **Deltas**: Delta message semantics, update behavior, sources
-- **Subscriptions**: Subscription policies, periods, filtering
-- **Discovery**: mDNS, server discovery endpoints
-- **Security**: Authentication, authorization, access control
-
-This prose documentation complements the machine-readable AsyncAPI spec. AsyncAPI defines the message *formats*; the prose explains the *behavior*.
-
-### What Gets Generated
-
-From the TypeBox source schemas, the build step generates:
-
-| Output | Purpose | Consumers |
-|--------|---------|-----------|
-| OpenAPI spec | REST API documentation | Swagger UI (existing) |
-| AsyncAPI spec | WebSocket protocol documentation | AsyncAPI UI (new) |
-| JSON Schema files | Schema interchange format | WASM, other implementations |
-| paths.json | Well-known paths registry | Tooling, UI components |
-| units.json | Unit definitions and conversions | Display formatting |
-
-### Single Source of Truth Flow
-
-```
-TypeBox Schema (source)
-    ├── TypeScript types (compile-time) → Server + Clients
-    ├── Runtime validation (server)
-    ├── Runtime validation (clients via @signalk/schemas)
-    ├── OpenAPI docs for REST APIs → Swagger UI (existing)
-    ├── AsyncAPI docs for WebSocket → AsyncAPI UI (new)
-    ├── JSON Schema for WASM/other implementations
-    └── paths.json, units.json for tooling
-```
-
-When you change a TypeBox schema, everything updates automatically. No more manual synchronization.
-
-## Client-Side Usage
-
-A key benefit of TypeBox is that clients can consume the same schemas for type safety and runtime validation.
-
-### Path Lookup and Discriminator
-
-When a client receives a delta, it needs to find the correct schema for validation. The `path` field in delta values serves as the natural discriminator — no protocol changes needed.
-
-The schema package exports lookup utilities:
+Creating a type for every well-known path doesn't add value:
 
 ```typescript
-// Exact path lookup (O(1))
-export const pathSchemas = {
-  "navigation.speedOverGround": SpeedOverGroundSchema,
-  "navigation.position": PositionSchema,
-  "navigation.courseOverGroundTrue": CourseOverGroundTrueSchema,
-  "environment.wind.speedApparent": WindSpeedApparentSchema,
-  // ...
-}
+// ❌ Not useful — what does this give us over `number`?
+type SpeedOverGround = number
+type DepthBelowSurface = number
 
-// Pattern-based lookup (for wildcards like electrical.batteries.*.voltage)
-export const pathPatterns = [
-  { 
-    pattern: /^electrical\.batteries\.[^.]+\.voltage$/,
-    schema: BatteryVoltageSchema 
-  },
-  { 
-    pattern: /^electrical\.batteries\.[^.]+\.current$/,
-    schema: BatteryCurrentSchema 
-  },
-  // ...
-]
+// ❌ Naming collisions
+type Current = number  // Electrical? Ocean?
 
-// Convenience function
-export function getSchemaForPath(path: string): TSchema | undefined {
-  return pathSchemas[path] 
-    ?? pathPatterns.find(p => p.pattern.test(path))?.schema
+// ❌ Doesn't help with dynamic/custom paths
+type MyPluginCustomValue = ???
+```
+
+This approach also doesn't help with common tasks like "render all timestamp values the same way" — you'd have to enumerate every timestamp path.
+
+### The Right Approach: Value Categories
+
+Instead, define types for *categories of values*:
+
+```typescript
+// Value category types
+type NumericValue = number
+type TimestampValue = string  // ISO 8601
+type PositionValue = { latitude: number; longitude: number; altitude?: number }
+type AttitudeValue = { roll: number; pitch: number; yaw: number }
+type StringValue = string
+type BooleanValue = boolean
+
+// Metadata describes what category a path belongs to
+interface PathMetadata {
+  description: string
+  valueType: 'numeric' | 'timestamp' | 'position' | 'attitude' | 'string' | 'boolean'
+  units?: string
+  displayUnits?: string[]
 }
 ```
 
-### Client Validation Patterns
+### Why This Works
 
-Clients can choose their validation strategy based on performance needs:
+**For well-known paths**: Metadata is predefined and shipped with the schema package.
 
-**Compile once at startup** (recommended for known paths):
+**For dynamic/custom paths**: Plugins inject metadata at runtime using the same structure. Custom paths are first-class citizens, not afterthoughts.
 
-```typescript
-import { getSchemaForPath } from '@signalk/schemas'
-import { TypeCompiler } from '@sinclair/typebox/compiler'
-
-// At app startup, compile validators for paths you care about
-const validators = {
-  sog: TypeCompiler.Compile(getSchemaForPath('navigation.speedOverGround')!),
-  position: TypeCompiler.Compile(getSchemaForPath('navigation.position')!),
-}
-
-// On delta received — very fast validation
-if (validators.sog.Check(delta.value)) {
-  // value is valid
-}
-```
-
-**Dynamic lookup** (flexible, slightly slower):
+**For client code**: Generic handling becomes easy:
 
 ```typescript
-import { getSchemaForPath } from '@signalk/schemas'
-import { TypeCompiler } from '@sinclair/typebox/compiler'
-
-// Cache compiled validators as paths are encountered
-const validatorCache = new Map()
-
-function validateDeltaValue(path: string, value: unknown): boolean {
-  let validator = validatorCache.get(path)
-  if (!validator) {
-    const schema = getSchemaForPath(path)
-    if (!schema) return true // Unknown path, skip validation
-    validator = TypeCompiler.Compile(schema)
-    validatorCache.set(path, validator)
-  }
-  return validator.Check(value)
-}
-```
-
-### TypeScript Types for Clients
-
-Clients get full TypeScript support:
-
-```typescript
-import { 
-  type Position, 
-  type SpeedOverGround,
-  type Delta 
-} from '@signalk/schemas'
-
-// IDE autocomplete, type checking
-function handlePosition(pos: Position) {
-  console.log(pos.latitude, pos.longitude)  // typed as number
-}
-
-// Type-safe delta handling
-function processDelta(delta: Delta) {
-  for (const update of delta.updates) {
-    for (const { path, value } of update.values) {
-      if (path === 'navigation.position') {
-        handlePosition(value as Position)
-      }
-    }
+// Render all timestamps consistently, regardless of path
+function renderValue(path: string, value: unknown, metadata: PathMetadata) {
+  switch (metadata.valueType) {
+    case 'timestamp':
+      return formatTimestamp(value as string)
+    case 'numeric':
+      return formatNumber(value as number, metadata.units, metadata.displayUnits)
+    case 'position':
+      return formatPosition(value as PositionValue)
+    // ...
   }
 }
 ```
 
-### Form Validation
+### Building on What Exists
 
-TypeBox integrates with form libraries:
+This is not a new invention — it's a formalization of what `keyswithmetadata.json` already does. That file already contains path descriptions, units, and type information. The proposal:
 
-```typescript
-// Angular reactive forms
-import { getSchemaForPath } from '@signalk/schemas'
-import { TypeCompiler } from '@sinclair/typebox/compiler'
+1. Expresses the same metadata structure in TypeBox (easier to maintain, IDE support)
+2. Generates `keyswithmetadata.json` from TypeBox (backwards compatible)
+3. Adds TypeScript types for the value categories (better client DX)
+4. Keeps the same mental model that contributors already understand
 
-const positionValidator = TypeCompiler.Compile(getSchemaForPath('navigation.position')!)
+Existing code consuming `keyswithmetadata.json` continues working unchanged. New code gets TypeScript support on top.
 
-// Custom validator
-function signalkValidator(path: string) {
-  const validator = TypeCompiler.Compile(getSchemaForPath(path)!)
-  return (control: AbstractControl) => {
-    return validator.Check(control.value) ? null : { signalk: true }
-  }
-}
-```
+## Evolving Existing Packages
 
-## OpenAPI and AsyncAPI: Complementary, Not Competing
+### `@signalk/signalk-schema`
 
-These serve different purposes and both are needed:
+Current role: Machine-readable spec, validation utilities, metadata source.
 
-| Spec | Protocol | Purpose | UI |
-|------|----------|---------|-----|
-| **OpenAPI** | REST APIs | Documents v2 granular HTTP endpoints | Swagger UI (keep existing) |
-| **AsyncAPI** | WebSocket | Documents streaming protocol (deltas, subscriptions) | AsyncAPI UI (add new) |
+Evolution:
+- Add TypeBox schema definitions alongside existing JSON Schema
+- Generate JSON Schema from TypeBox (replaces hand-maintained JSON)
+- Keep `keyswithmetadata.json` format, generate it from TypeBox
+- Validation utilities can use TypeBox's compiled validators
+- Existing consumers continue working — JSON Schema output is unchanged
 
-In the admin interface, you'd have two navigation items:
-- **REST API** → Swagger UI (OpenAPI) — existing, unchanged
-- **WebSocket API** → AsyncAPI UI — new addition
+### `@signalk/server-api`
 
-Both are generated from TypeBox schemas, ensuring consistency.
+Current role: TypeScript types for server APIs and domain objects.
 
-### Why AsyncAPI Matters
+Evolution:
+- Import value-category types from `signalk-schema`
+- Delta, Update, Source types enhanced with TypeBox (better inference)
+- API request/response types generated from TypeBox schemas
+- Existing code continues working — types remain compatible
 
-Signal K's WebSocket streaming protocol — arguably the *core* of Signal K — has no formal machine-readable documentation today. It's only described in prose.
-
-AsyncAPI provides:
-- Machine-readable protocol specification
-- Interactive documentation (like Swagger UI, but for WebSockets)
-- Code generation for clients
-- Message validation
-
-AsyncAPI is mature (v3.0) and used by Slack, Salesforce, SAP, and others. It is well established in the IoT world, making it a natural fit for Signal K.
-
-## What Gets Eliminated
-
-| Eliminated | Replaced By |
-|------------|-------------|
-| Specification repository | Archived with redirect |
-| Hand-written JSON Schema | Generated from TypeBox |
-| Hand-written OpenAPI JSON | Generated from TypeBox |
-| Prose-only WebSocket docs | AsyncAPI (machine-readable) + prose in server repo |
-| Scattered validation code | Unified TypeBox validation |
-| Multiple sources of truth | Single source in server |
-| v1 full model schema | Deprecated, v2 schemas in TypeBox |
-| `@signalk/server-api` types | `@signalk/schemas` (types + validation) |
-
-## Package Publishing
-
-The `@signalk/schemas` package is published **from the server repo** — no separate repository. This maintains the single source of truth principle.
-
-### Package Contents
-
-The package serves two audiences:
-
-| Audience | Consumes |
-|----------|----------|
-| TypeScript/JavaScript clients | TypeBox schemas directly (types + validation) |
-| WASM / other languages | Generated JSON Schema files |
+### Relationship
 
 ```
-@signalk/schemas/
-├── dist/                       # Compiled TypeScript → JavaScript
-│   ├── paths/
-│   │   ├── navigation.js
-│   │   ├── environment.js
-│   │   └── index.js
-│   ├── protocol/
-│   │   ├── delta.js
-│   │   └── index.js
-│   ├── api/
-│   │   └── index.js
-│   ├── lookup.js               # Path lookup utilities
-│   └── index.js
-├── types/                      # TypeScript declarations
-│   └── *.d.ts
-├── json-schema/                # Generated JSON Schema
-│   ├── delta.json
-│   ├── paths.json
-│   └── units.json
-├── openapi.json                # Generated OpenAPI spec
-├── asyncapi.json               # Generated AsyncAPI spec
-└── package.json
+@signalk/signalk-schema (source of truth)
+├── TypeBox schemas for value categories
+├── TypeBox schemas for protocol messages (Delta, etc.)
+├── Path metadata registry
+├── Generated: JSON Schema files
+├── Generated: keyswithmetadata.json
+└── Validation utilities (TypeBox-powered)
+
+@signalk/server-api (consumer + extensions)
+├── Re-exports core types from signalk-schema
+├── Server-specific API types
+└── Plugin development types
 ```
 
-### Relationship to `@signalk/server-api`
+## AsyncAPI for WebSocket Protocol
 
-The existing `@signalk/server-api` package provides manually-maintained TypeScript types. With `@signalk/schemas`:
+### Why This Matters
 
-- Types are generated from TypeBox (`Static<typeof Schema>`)
-- Types are guaranteed to match actual validation
-- Runtime validation is available, not just compile-time types
+Signal K's WebSocket protocol is documented only in prose. There's no machine-readable specification, no interactive documentation (like Swagger UI provides for REST), and no support for spec-based integration.
 
-**Migration path**: `@signalk/server-api` will be deprecated. During transition, it can re-export from `@signalk/schemas` for backwards compatibility.
+### What AsyncAPI Provides
 
-### Publishing Workflow
+AsyncAPI is the OpenAPI equivalent for event-driven APIs. It's mature (v3.0) and well-established in the IoT world.
 
-The server release workflow publishes both packages from the same repository:
+| Capability | Today | With AsyncAPI |
+|------------|-------|---------------|
+| Protocol documentation | Prose only | Interactive, machine-readable |
+| Message schemas | Implicit | Explicit, validated |
+| Client code generation | Manual | Possible from spec |
+| Integration support | Read the docs | Spec-based tooling |
 
-1. `signalk-server` — the server itself
-2. `@signalk/schemas` — schemas for clients and other implementations
+### Complementary to OpenAPI
 
-Schema version stays in sync with server version automatically.
+Both are needed:
 
-## What Other Implementations Consume
+| Spec | Protocol | Documents |
+|------|----------|-----------|
+| OpenAPI | REST | v2 granular HTTP APIs |
+| AsyncAPI | WebSocket | Streaming protocol (deltas, subscriptions) |
 
-WASM plugins and any other Signal K implementations would consume:
+Both would be generated from the same TypeBox schemas, ensuring consistency.
 
-- **`@signalk/schemas` npm package** — TypeBox schemas (JS/TS) or JSON Schema files
-- **JSON Schema files** — Fetched from running server or package
-- **AsyncAPI document** — Machine-readable protocol specification
-- **paths.json / units.json** — Simple JSON for tooling
+### Admin UI Integration
 
-This is *better* than today. Currently other implementations parse prose documentation. With this approach they get machine-readable specs with guaranteed accuracy.
+Add a navigation item alongside the existing OpenAPI/Swagger:
+- **REST API** → Swagger UI (existing)
+- **WebSocket API** → AsyncAPI UI (new)
 
-## Scope Boundaries
+## Documentation Consolidation
 
-### In Scope
+### Current Problem
 
-- Core well-known paths (navigation, environment, electrical, propulsion, etc.)
-- Protocol message formats (delta, subscription, hello)
-- REST API contracts (v2 APIs)
-- Unit definitions and conversions
-- Protocol conceptual documentation
-- Path lookup utilities for client-side validation
-
-### Out of Scope
-
-- Third-party plugin path documentation (plugins self-document)
-- v1 full model schema (deprecated)
-- Full client SDK (future opportunity, see below)
-
-## Documentation Hosting
-
-### Current Infrastructure
-
-- **demo.signalk.org** — Runs latest Docker container, always current
-- **Current documentation** — Auto-published from repository
+Documentation is spread across:
+- Specification repo (published at signalk.org/specification)
+- Server repo docs
+- OpenAPI in Admin UI
+- README files in various packages
 
 ### Proposed Approach
 
-Generated specs are served from demo.signalk.org, which already runs the latest server:
+Consolidate into the server, published via demo.signalk.org:
 
-| Route | Content | Notes |
-|-------|---------|-------|
-| `/admin/openapi` | Swagger UI for REST APIs | Existing, now fed by generated spec |
-| `/admin/asyncapi` | AsyncAPI UI for WebSocket | New addition |
-| `/signalk/v2/api/specs/openapi.json` | Raw OpenAPI spec | For tooling |
-| `/signalk/v2/api/specs/asyncapi.json` | Raw AsyncAPI spec | For tooling |
-| `/signalk/v2/api/specs/paths.json` | Path registry | For tooling |
+| Content | Location | Published At |
+|---------|----------|--------------|
+| REST API docs | Generated OpenAPI | `/admin/openapi` |
+| WebSocket docs | Generated AsyncAPI | `/admin/asyncapi` |
+| Path reference | Generated from metadata | `/admin/paths` or similar |
+| Protocol concepts | Markdown in server repo | Linked from Admin UI |
 
-Since demo.signalk.org auto-updates with new Docker releases, documentation stays current automatically. No separate publishing step needed.
-
-External links (signalk.org/specification) redirect to demo.signalk.org.
+The specification repo's HTML documentation could redirect to the consolidated location, or continue as a snapshot for versioned releases.
 
 ## Implementation Stages
 
-### Stage 1: Add TypeBox Alongside Existing (Low Risk)
+### Stage 1: TypeBox in `signalk-schema` (Proof of Concept)
 
-- Add TypeBox schemas to server for one API module (e.g., Course API)
-- Generate OpenAPI from TypeBox
-- Verify output matches existing hand-written OpenAPI
-- No external changes — proof of concept only
+- Add TypeBox definitions for core value categories
+- Add TypeBox definitions for Delta, Update, Source
+- Generate JSON Schema from TypeBox
+- Verify output matches existing schemas
+- Existing consumers unaffected
 
-### Stage 2: Expand and Switch
+### Stage 2: Path Metadata Enhancement
 
-- Convert remaining v2 API modules to TypeBox
-- Add path registry and protocol schemas
-- Add path lookup utilities
-- Switch Swagger UI to use generated OpenAPI
-- Remove hand-written OpenAPI JSON files
+- Define path metadata structure in TypeBox
+- Migrate well-known paths to TypeBox + metadata
+- Generate `keyswithmetadata.json` from TypeBox
+- Maintain backwards compatibility
 
-### Stage 3: AsyncAPI Integration
+### Stage 3: Server OpenAPI Migration
+
+- Convert hand-written OpenAPI JSON to TypeBox
+- Generate OpenAPI from TypeBox schemas
+- Swagger UI continues working, now fed by generated spec
+- Remove hand-maintained JSON files
+
+### Stage 4: AsyncAPI Addition
 
 - Create AsyncAPI document for WebSocket protocol
-- Add AsyncAPI UI to admin interface
-- Move protocol prose documentation to server repo (`docs/protocol/`)
+- Add AsyncAPI UI to Admin interface
+- Document delta, subscription, hello messages
 
-### Stage 4: Package Publishing
+### Stage 5: Documentation Consolidation
 
-- Set up `@signalk/schemas` package publishing from server repo
-- Publish first version of schema package
-- Deprecate `@signalk/server-api` with notice pointing to `@signalk/schemas`
-- Update signalk.org links to point to demo.signalk.org
-- Explicitly deprecate v1 full model schema
-
-### Stage 5: Archive Specification Repository
-
-- Add prominent deprecation notice to specification repo README
-- Point all documentation links to server repo / demo.signalk.org
-- Set repo to archived/read-only on GitHub
-- Redirect any remaining signalk.org/specification URLs
+- Consolidate protocol documentation in server
+- Update links from specification repo
+- Publish via demo.signalk.org
 
 ### Effort Estimate
 
 | Stage | Scope | Effort | Risk |
 |-------|-------|--------|------|
-| Stage 1 | One API module proof-of-concept | Small | Low |
-| Stage 2 | All v2 API modules + path registry | Medium | Low |
-| Stage 3 | AsyncAPI + protocol docs migration | Medium | Low |
-| Stage 4 | Package publishing + deprecations | Small | Low |
-| Stage 5 | Archive specification repo | Small | Low |
+| Stage 1 | TypeBox proof of concept | Small | Low |
+| Stage 2 | Path metadata migration | Medium | Low |
+| Stage 3 | OpenAPI generation | Medium | Low |
+| Stage 4 | AsyncAPI addition | Medium | Low |
+| Stage 5 | Documentation consolidation | Small | Low |
 
-All stages can be done incrementally with no breaking changes.
-
-## Future Opportunities
-
-This proposal enables future work that is out of scope for now:
-
-### Client SDK
-
-With TypeBox schemas published, a type-safe client SDK becomes possible:
-
-```typescript
-// Future @signalk/client (not part of this proposal)
-import { SignalKClient } from '@signalk/client'
-
-const client = new SignalKClient('ws://localhost:3000/signalk/v1/stream')
-
-// Type-safe, validated subscriptions
-client.subscribe('navigation.speedOverGround', (value) => {
-  // value is typed as number, already validated
-  console.log(`Speed: ${value} m/s`)
-})
-
-// v2 API with full types
-const destination = await client.api.course.getDestination()
-// destination is typed, request/response validated
-```
-
-### Plugin Schema Registration
-
-Plugins could register their custom paths with TypeBox schemas:
-
-```typescript
-// In a plugin
-export const pluginPaths = {
-  'environment.sunlight.intensity': Type.Number({ minimum: 0 })
-}
-```
-
-The server could aggregate these for a complete runtime schema registry.
-
-### Code Generation
-
-AsyncAPI and OpenAPI specs enable code generation for clients in any language, further reducing the barrier to Signal K adoption.
+All stages are incremental. Each provides value independently.
 
 ## Benefits Summary
 
 | Benefit | Who It Helps |
 |---------|--------------|
 | Easier path/unit additions | Maintainers |
-| Runtime validation | Server reliability |
-| Auto-generated REST docs | Plugin developers |
-| Auto-generated WebSocket docs | Client developers |
-| TypeScript types | TypeScript users |
-| Client-side validation | Client developers |
-| JSON Schema for WASM/other languages | Future implementations |
-| Protocol spec has a home | Documentation consumers |
-| Single source of truth | Everyone |
-| Supports v2 migration | Strategic alignment |
-| Deprecates `@signalk/server-api` complexity | Maintainers |
+| IDE support for schema editing | Contributors |
+| Generated OpenAPI (less maintenance) | Maintainers |
+| AsyncAPI for WebSocket protocol | Client developers |
+| Consolidated documentation | Everyone |
+| Value-category types | Client developers |
+| Dynamic paths as first-class | Plugin developers |
+| Preserved backwards compatibility | Existing users |
 
 ## What Doesn't Change
 
 - Signal K protocol semantics
-- Existing REST API contracts
-- WebSocket delta format
-- Plugin API compatibility
-- Swagger UI (stays, fed by generated OpenAPI)
+- Dynamic data model (custom paths work as before)
+- v1 schema and full model HTTP API (remain for simple values)
+- Existing package APIs (evolve, don't break)
+- `@signalk/server-api` role in ecosystem
 
-## Open Questions for Maintainers
+## Open Questions
 
-### Schema Versioning
+### Metadata Registry Location
 
-Should schemas be versioned independently of server releases?
+Should path metadata live in `signalk-schema` or a separate registry?
 
-| Option | Pros | Cons |
-|--------|------|------|
-| Tied to server version | Simple, clear | Schema change = server release |
-| Independent semver | Flexibility | Complexity, coordination |
-
-**Recommendation**: Tie to server version initially. Revisit if pain emerges.
-
-### Governance
-
-Who approves path additions? 
-
-**Recommendation**: Same PR process as other server changes. Path additions are documentation, not code — lower bar than API changes.
+**Recommendation**: Keep in `signalk-schema` alongside the value-category schemas. Single package for "what is Signal K data."
 
 ### AsyncAPI UI Choice
 
-Which AsyncAPI visualization tool?
+| Option | Pros | Cons |
+|--------|------|------|
+| AsyncAPI Studio | Full-featured | Heavier |
+| AsyncAPI React component | Lightweight | Fewer features |
+
+**Recommendation**: Start with React component for consistency with Admin UI.
+
+### Schema Versioning
 
 | Option | Pros | Cons |
 |--------|------|------|
-| AsyncAPI Studio | Full-featured, official | Heavier |
-| AsyncAPI React component | Lightweight, embeddable | Less features |
+| Tied to package version | Simple | Schema change = release |
+| Independent semver | Flexible | Coordination overhead |
 
-**Recommendation**: Start with AsyncAPI React component for consistency with existing admin UI.
-
-### Pre-compiled Validators
-
-Should `@signalk/schemas` ship pre-compiled validators for common paths?
-
-| Option | Pros | Cons |
-|--------|------|------|
-| Compile on demand only | Smaller package, flexible | Startup cost for clients |
-| Ship pre-compiled | Zero startup cost | Larger package |
-| Both (optional import) | Best of both | Slight complexity |
-
-**Recommendation**: Start with compile-on-demand. Add pre-compiled as optional import if there's demand.
+**Recommendation**: Tie to package version. Schema changes are releases.
 
 ## References
 
 - TypeBox: https://github.com/sinclairzx81/typebox
 - AsyncAPI: https://www.asyncapi.com/
 - TypeBox benchmarks: https://github.com/moltar/typescript-runtime-type-benchmarks
-- Current server OpenAPI: `signalk-server/src/api/*/openApi.json`
-- Current specification repo: `github.com/SignalK/specification`
+- Current specification: https://signalk.org/specification/latest/doc/
+- `@signalk/signalk-schema`: https://www.npmjs.com/package/@signalk/signalk-schema
+- `@signalk/server-api`: https://www.npmjs.com/package/@signalk/server-api
 - demo.signalk.org: https://demo.signalk.org
 
 ---
