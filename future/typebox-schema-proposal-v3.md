@@ -129,7 +129,21 @@ The `patternProperties` support is particularly relevant for Signal K's path pat
 
 AsyncAPI (for documenting WebSocket protocols) uses JSON Schema for message definitions. TypeBox schemas work directly — no conversion step needed.
 
-## Type Design: Value Categories, Not Type-Per-Path
+## Type Design: TypeBox for Objects, Metadata for Primitives
+
+### The Real Problem
+
+As David put it: "What kind of object does this path send? Once I know, is it valid?"
+
+For primitives, clients can already use `typeof`:
+
+- `typeof value === 'number'` ✓
+- `typeof value === 'string'` ✓
+- `typeof value === 'boolean'` ✓
+
+Primitives don't need TypeBox types — metadata with units and description is enough.
+
+**Objects are the main issue.** What does a Position contain? What fields are in an AIS target? What's the structure of a Notification? That's where TypeBox adds real value.
 
 ### The Wrong Approach
 
@@ -147,63 +161,80 @@ type Current = number  // Electrical? Ocean?
 type MyPluginCustomValue = ???
 ```
 
-This approach also doesn't help with common tasks like "render all timestamp values the same way" — you'd have to enumerate every timestamp path.
+### The Right Approach: TypeBox for Objects Only
 
-### The Right Approach: Value Categories
-
-Instead, define types for _categories of values_:
+Focus TypeBox on object schemas where it provides real value:
 
 ```typescript
-// Value category types
-type NumericValue = number;
-type TimestampValue = string; // ISO 8601
-type PositionValue = { latitude: number; longitude: number; altitude?: number };
-type AttitudeValue = { roll: number; pitch: number; yaw: number };
-type StringValue = string;
-type BooleanValue = boolean;
+// ✅ TypeBox for objects — defines shape, enables validation
+const PositionSchema = Type.Object({
+  latitude: Type.Number({ minimum: -90, maximum: 90 }),
+  longitude: Type.Number({ minimum: -180, maximum: 180 }),
+  altitude: Type.Optional(Type.Number()),
+});
 
-// Metadata describes what category a path belongs to
+const AttitudeSchema = Type.Object({
+  roll: Type.Number(),
+  pitch: Type.Number(),
+  yaw: Type.Optional(Type.Number()),
+});
+
+const NotificationSchema = Type.Object({
+  state: Type.Union([Type.Literal("nominal"), Type.Literal("alert"), Type.Literal("alarm"), Type.Literal("emergency")]),
+  method: Type.Array(Type.String()),
+  message: Type.String(),
+});
+
+// AIS target, complex nested object
+const AISTargetSchema = Type.Object({
+  mmsi: Type.String(),
+  name: Type.Optional(Type.String()),
+  position: PositionSchema,
+  sog: Type.Optional(Type.Number()),
+  cog: Type.Optional(Type.Number()),
+  // ... etc
+});
+```
+
+Primitives use metadata only:
+
+```typescript
+// Metadata for primitives — no TypeBox type needed
 interface PathMetadata {
   description: string;
-  valueType: "numeric" | "timestamp" | "position" | "attitude" | "string" | "boolean";
-  units?: string;
-  displayUnits?: string[];
+  valueType: "number" | "string" | "boolean" | "object";
+  units?: string; // for numbers
+  displayUnits?: string[]; // for unit conversion
+  schema?: TSchema; // TypeBox schema, only for objects
 }
 ```
 
-### Why This Works
+### What This Gives Clients
 
-**For well-known paths**: Metadata is predefined and shipped with the schema package.
+| Value Type | Client Gets                                             |
+| ---------- | ------------------------------------------------------- |
+| number     | `typeof` check + units/displayUnits from metadata       |
+| string     | `typeof` check + description from metadata              |
+| boolean    | `typeof` check                                          |
+| **object** | **TypeBox schema: shape, validation, TypeScript types** |
 
-**For dynamic/custom paths**: Plugins inject metadata at runtime using the same structure. Custom paths are first-class citizens, not afterthoughts.
+For objects, clients can:
 
-**For client code**: Generic handling becomes easy:
-
-```typescript
-// Render all timestamps consistently, regardless of path
-function renderValue(path: string, value: unknown, metadata: PathMetadata) {
-  switch (metadata.valueType) {
-    case "timestamp":
-      return formatTimestamp(value as string);
-    case "numeric":
-      return formatNumber(value as number, metadata.units, metadata.displayUnits);
-    case "position":
-      return formatPosition(value as PositionValue);
-    // ...
-  }
-}
-```
+- Know exactly what fields to expect
+- Validate incoming data against the schema
+- Get TypeScript autocomplete for object properties
+- Understand the structure from the type definition
 
 ### Building on What Exists
 
 This is not a new invention — it's a formalization of what `keyswithmetadata.json` already does. That file already contains path descriptions, units, and type information. The proposal:
 
-1. Expresses the same metadata structure in TypeBox (easier to maintain, IDE support)
-2. Generates `keyswithmetadata.json` from TypeBox (backwards compatible)
-3. Adds TypeScript types for the value categories (better client DX)
+1. Adds TypeBox schemas for object types (Position, Attitude, Notification, AIS, etc.)
+2. Links object paths to their TypeBox schema in metadata
+3. Generates `keyswithmetadata.json` from the metadata registry (backwards compatible)
 4. Keeps the same mental model that contributors already understand
 
-Existing code consuming `keyswithmetadata.json` continues working unchanged. New code gets TypeScript support on top.
+Existing code consuming `keyswithmetadata.json` continues working unchanged. New code gets TypeScript support and object validation on top.
 
 ## Evolving Existing Packages
 
