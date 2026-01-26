@@ -225,6 +225,28 @@ For objects, clients can:
 - Get TypeScript autocomplete for object properties
 - Understand the structure from the type definition
 
+### Bidirectional Discovery
+
+Binding paths to types via metadata enables querying both ways:
+
+| Query        | Example                                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| Path → Type  | "What does `navigation.position` emit?" → Position                                                     |
+| Type → Paths | "Give me all paths that emit Position objects" → `navigation.position`, `navigation.destination`, etc. |
+
+This helps clients discover relevant paths: "show me all AIS target paths" or "find all notification paths."
+
+### Units: No Overlap
+
+Units live in different places depending on value type:
+
+| Value Type | Where Units Live                                   |
+| ---------- | -------------------------------------------------- |
+| Primitive  | Path metadata (`units: "m/s"`)                     |
+| Object     | On individual properties within the TypeBox schema |
+
+For example, `navigation.speedOverGround` is a primitive — units in path metadata. `navigation.position` is an object — latitude and longitude properties have their own definitions in the schema. No conflict.
+
 ### Building on What Exists
 
 This is not a new invention — it's a formalization of what `keyswithmetadata.json` already does. That file already contains path descriptions, units, and type information. The proposal:
