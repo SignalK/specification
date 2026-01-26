@@ -105,23 +105,23 @@ TypeBox schemas ARE JSON Schema — they produce it natively, not through conver
 
 TypeBox is significantly faster than alternatives:
 
-| Operation | TypeBox | Zod | Ratio |
-|-----------|---------|-----|-------|
-| Schema compilation | ~0.3ms | ~2.1ms | 7× faster |
-| Object validation | ~0.02ms | ~0.15ms | 7-8× faster |
-| Array (1000 items) | ~1.2ms | ~12ms | 10× faster |
+| Operation          | TypeBox | Zod     | Ratio       |
+| ------------------ | ------- | ------- | ----------- |
+| Schema compilation | ~0.3ms  | ~2.1ms  | 7× faster   |
+| Object validation  | ~0.02ms | ~0.15ms | 7-8× faster |
+| Array (1000 items) | ~1.2ms  | ~12ms   | 10× faster  |
 
-*Benchmarks from [moltar/typescript-runtime-type-benchmarks](https://github.com/moltar/typescript-runtime-type-benchmarks)*
+_Benchmarks from [moltar/typescript-runtime-type-benchmarks](https://github.com/moltar/typescript-runtime-type-benchmarks)_
 
 ### JSON Schema Feature Support
 
 TypeBox supports features that alternatives lack:
 
-| Feature | TypeBox | Zod |
-|---------|---------|-----|
-| `patternProperties` | Native | Not supported |
-| `$ref` references | Native | Requires configuration |
-| `if`/`then`/`else` | Native | Not supported |
+| Feature             | TypeBox | Zod                    |
+| ------------------- | ------- | ---------------------- |
+| `patternProperties` | Native  | Not supported          |
+| `$ref` references   | Native  | Requires configuration |
+| `if`/`then`/`else`  | Native  | Not supported          |
 
 The `patternProperties` support is particularly relevant for Signal K's path patterns like `electrical.batteries.*.voltage`.
 
@@ -151,23 +151,23 @@ This approach also doesn't help with common tasks like "render all timestamp val
 
 ### The Right Approach: Value Categories
 
-Instead, define types for *categories of values*:
+Instead, define types for _categories of values_:
 
 ```typescript
 // Value category types
-type NumericValue = number
-type TimestampValue = string  // ISO 8601
-type PositionValue = { latitude: number; longitude: number; altitude?: number }
-type AttitudeValue = { roll: number; pitch: number; yaw: number }
-type StringValue = string
-type BooleanValue = boolean
+type NumericValue = number;
+type TimestampValue = string; // ISO 8601
+type PositionValue = { latitude: number; longitude: number; altitude?: number };
+type AttitudeValue = { roll: number; pitch: number; yaw: number };
+type StringValue = string;
+type BooleanValue = boolean;
 
 // Metadata describes what category a path belongs to
 interface PathMetadata {
-  description: string
-  valueType: 'numeric' | 'timestamp' | 'position' | 'attitude' | 'string' | 'boolean'
-  units?: string
-  displayUnits?: string[]
+  description: string;
+  valueType: "numeric" | "timestamp" | "position" | "attitude" | "string" | "boolean";
+  units?: string;
+  displayUnits?: string[];
 }
 ```
 
@@ -183,12 +183,12 @@ interface PathMetadata {
 // Render all timestamps consistently, regardless of path
 function renderValue(path: string, value: unknown, metadata: PathMetadata) {
   switch (metadata.valueType) {
-    case 'timestamp':
-      return formatTimestamp(value as string)
-    case 'numeric':
-      return formatNumber(value as number, metadata.units, metadata.displayUnits)
-    case 'position':
-      return formatPosition(value as PositionValue)
+    case "timestamp":
+      return formatTimestamp(value as string);
+    case "numeric":
+      return formatNumber(value as number, metadata.units, metadata.displayUnits);
+    case "position":
+      return formatPosition(value as PositionValue);
     // ...
   }
 }
@@ -212,6 +212,7 @@ Existing code consuming `keyswithmetadata.json` continues working unchanged. New
 Current role: Machine-readable spec, validation utilities, metadata source.
 
 Evolution:
+
 - Add TypeBox schema definitions alongside existing JSON Schema
 - Generate JSON Schema from TypeBox (replaces hand-maintained JSON)
 - Keep `keyswithmetadata.json` format, generate it from TypeBox
@@ -223,6 +224,7 @@ Evolution:
 Current role: TypeScript types for server APIs and domain objects.
 
 Evolution:
+
 - Import value-category types from `signalk-schema`
 - Delta, Update, Source types enhanced with TypeBox (better inference)
 - API request/response types generated from TypeBox schemas
@@ -255,20 +257,20 @@ Signal K's WebSocket protocol is documented only in prose. There's no machine-re
 
 AsyncAPI is the OpenAPI equivalent for event-driven APIs. It's mature (v3.0) and well-established in the IoT world.
 
-| Capability | Today | With AsyncAPI |
-|------------|-------|---------------|
-| Protocol documentation | Prose only | Interactive, machine-readable |
-| Message schemas | Implicit | Explicit, validated |
-| Client code generation | Manual | Possible from spec |
-| Integration support | Read the docs | Spec-based tooling |
+| Capability             | Today         | With AsyncAPI                 |
+| ---------------------- | ------------- | ----------------------------- |
+| Protocol documentation | Prose only    | Interactive, machine-readable |
+| Message schemas        | Implicit      | Explicit, validated           |
+| Client code generation | Manual        | Possible from spec            |
+| Integration support    | Read the docs | Spec-based tooling            |
 
 ### Complementary to OpenAPI
 
 Both are needed:
 
-| Spec | Protocol | Documents |
-|------|----------|-----------|
-| OpenAPI | REST | v2 granular HTTP APIs |
+| Spec     | Protocol  | Documents                                  |
+| -------- | --------- | ------------------------------------------ |
+| OpenAPI  | REST      | v2 granular HTTP APIs                      |
 | AsyncAPI | WebSocket | Streaming protocol (deltas, subscriptions) |
 
 Both would be generated from the same TypeBox schemas, ensuring consistency.
@@ -276,6 +278,7 @@ Both would be generated from the same TypeBox schemas, ensuring consistency.
 ### Admin UI Integration
 
 Add a navigation item alongside the existing OpenAPI/Swagger:
+
 - **REST API** → Swagger UI (existing)
 - **WebSocket API** → AsyncAPI UI (new)
 
@@ -284,6 +287,7 @@ Add a navigation item alongside the existing OpenAPI/Swagger:
 ### Current Problem
 
 Documentation is spread across:
+
 - Specification repo (published at signalk.org/specification)
 - Server repo docs
 - OpenAPI in Admin UI
@@ -293,12 +297,12 @@ Documentation is spread across:
 
 Consolidate into the server, published via demo.signalk.org:
 
-| Content | Location | Published At |
-|---------|----------|--------------|
-| REST API docs | Generated OpenAPI | `/admin/openapi` |
-| WebSocket docs | Generated AsyncAPI | `/admin/asyncapi` |
-| Path reference | Generated from metadata | `/admin/paths` or similar |
-| Protocol concepts | Markdown in server repo | Linked from Admin UI |
+| Content           | Location                | Published At              |
+| ----------------- | ----------------------- | ------------------------- |
+| REST API docs     | Generated OpenAPI       | `/admin/openapi`          |
+| WebSocket docs    | Generated AsyncAPI      | `/admin/asyncapi`         |
+| Path reference    | Generated from metadata | `/admin/paths` or similar |
+| Protocol concepts | Markdown in server repo | Linked from Admin UI      |
 
 The specification repo's HTML documentation could redirect to the consolidated location, or continue as a snapshot for versioned releases.
 
@@ -340,28 +344,28 @@ The specification repo's HTML documentation could redirect to the consolidated l
 
 ### Effort Estimate
 
-| Stage | Scope | Effort | Risk |
-|-------|-------|--------|------|
-| Stage 1 | TypeBox proof of concept | Small | Low |
-| Stage 2 | Path metadata migration | Medium | Low |
-| Stage 3 | OpenAPI generation | Medium | Low |
-| Stage 4 | AsyncAPI addition | Medium | Low |
-| Stage 5 | Documentation consolidation | Small | Low |
+| Stage   | Scope                       | Effort | Risk |
+| ------- | --------------------------- | ------ | ---- |
+| Stage 1 | TypeBox proof of concept    | Small  | Low  |
+| Stage 2 | Path metadata migration     | Medium | Low  |
+| Stage 3 | OpenAPI generation          | Medium | Low  |
+| Stage 4 | AsyncAPI addition           | Medium | Low  |
+| Stage 5 | Documentation consolidation | Small  | Low  |
 
 All stages are incremental. Each provides value independently.
 
 ## Benefits Summary
 
-| Benefit | Who It Helps |
-|---------|--------------|
-| Easier path/unit additions | Maintainers |
-| IDE support for schema editing | Contributors |
-| Generated OpenAPI (less maintenance) | Maintainers |
-| AsyncAPI for WebSocket protocol | Client developers |
-| Consolidated documentation | Everyone |
-| Value-category types | Client developers |
-| Dynamic paths as first-class | Plugin developers |
-| Preserved backwards compatibility | Existing users |
+| Benefit                              | Who It Helps      |
+| ------------------------------------ | ----------------- |
+| Easier path/unit additions           | Maintainers       |
+| IDE support for schema editing       | Contributors      |
+| Generated OpenAPI (less maintenance) | Maintainers       |
+| AsyncAPI for WebSocket protocol      | Client developers |
+| Consolidated documentation           | Everyone          |
+| Value-category types                 | Client developers |
+| Dynamic paths as first-class         | Plugin developers |
+| Preserved backwards compatibility    | Existing users    |
 
 ## What Doesn't Change
 
@@ -381,19 +385,19 @@ Should path metadata live in `signalk-schema` or a separate registry?
 
 ### AsyncAPI UI Choice
 
-| Option | Pros | Cons |
-|--------|------|------|
-| AsyncAPI Studio | Full-featured | Heavier |
-| AsyncAPI React component | Lightweight | Fewer features |
+| Option                   | Pros          | Cons           |
+| ------------------------ | ------------- | -------------- |
+| AsyncAPI Studio          | Full-featured | Heavier        |
+| AsyncAPI React component | Lightweight   | Fewer features |
 
 **Recommendation**: Start with React component for consistency with Admin UI.
 
 ### Schema Versioning
 
-| Option | Pros | Cons |
-|--------|------|------|
-| Tied to package version | Simple | Schema change = release |
-| Independent semver | Flexible | Coordination overhead |
+| Option                  | Pros     | Cons                    |
+| ----------------------- | -------- | ----------------------- |
+| Tied to package version | Simple   | Schema change = release |
+| Independent semver      | Flexible | Coordination overhead   |
 
 **Recommendation**: Tie to package version. Schema changes are releases.
 
@@ -409,5 +413,5 @@ Should path metadata live in `signalk-schema` or a separate registry?
 
 ---
 
-*Prepared for Signal K maintainer discussion*
-*January 2025*
+_Prepared for Signal K maintainer discussion_
+_January 2025_
