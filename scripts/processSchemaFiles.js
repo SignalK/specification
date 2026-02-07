@@ -45,7 +45,9 @@ const units = {
   "rad": "Radian",
   "rad/s": "Radian per second",
   "ratio": "Ratio",
-  "s": "Second"
+  "s": "Second",
+  "B": "Byte",
+  "b/s": "Bits per second"
 }
 
 class Parser {

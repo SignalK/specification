@@ -267,6 +267,18 @@
           "quantity": "Viscosity",
           "quantityDisplay": "\u03bc",
           "description": "Viscosity in pascal seconds"
+        },
+        "B": {
+          "display": "B",
+          "quantity": "Digital Storage Capacity",
+          "quantityDisplay": "Byte",
+          "description": "Digital quantity. 1 byte = 8 bits."
+        },
+        "b/s": {
+          "display": "bps",
+          "quantity": "Data Transfer Rate",
+          "quantityDisplay": "bit/s",
+          "description": "Telecommunication bandwidth, measured in bits per second."
         }
       }
     },
