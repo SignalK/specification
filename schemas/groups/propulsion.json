@@ -96,7 +96,7 @@
         "transmission": {
           "type": "object",
           "description": "The transmission (gear box) of the named engine",
-	  "properties": {
+    "properties": {
             "gear": {
               "type": "object",
               "description": "Currently selected gear the engine is in i.e. Forward, Reverse, etc.",
@@ -105,7 +105,7 @@
                   "$ref": "../definitions.json#/definitions/commonValueFields"
                 },
                 {
-	          "properties": {
+            "properties": {
                     "value": {
                       "enum": [
                         "Forward",
@@ -138,10 +138,10 @@
         "drive": {
           "type": "object",
           "description": "Data about the engine's drive.",
-		      "properties": {
+          "properties": {
             "type": {
               "description": "The type of drive the boat has i.e Outboard, shaft, jet, etc.",
-			        "enum": [
+              "enum": [
                 "saildrive",
                 "shaft",
                 "outboard",
@@ -162,7 +162,7 @@
             },
             "propeller": {
               "description": "Data about the drive's propeller (pitch and slip)",
-			        "pitch": {
+              "pitch": {
                 "description": "Current pitch of propeller, the distance the propeller would advance during one revolution of the propeller without slip",
                 "$ref": "../definitions.json#/definitions/numberValue",
                 "units": "m"
@@ -178,7 +178,7 @@
         "fuel": {
           "type": "object",
           "description": "Data about the engine's Fuel Supply",
-		      "properties": {
+          "properties": {
             "type": {
               "description": "Fuel type",
               "enum": [
@@ -220,7 +220,29 @@
           "description": "Exhaust temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
-        }
+        },
+        "shaft": {
+          "type": "object",
+          "description": "Data about the vessel shaft",
+          "properties": {
+            "revolutions": {
+              "description": "Revolutions per second (Positive value for forward propulsion)",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "Hz"
+            }
+          }
+        },
+        "remoteControl": {
+          "type": "object",
+          "description": "Data for remote control (throttle lever/azimuth lever)",
+          "properties": {
+            "throttlePosition": {
+              "description": "Throttle Position, -1<=ratio<=1, 1 is 100%",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ratio"
+            }
+          }
+        }        
       }
     }
   }
