@@ -87,10 +87,25 @@
         "abandon": {
           "description": "Abandon ship",
           "$ref": "groups/notifications.json#/definitions/notification"
+        },
+        "distress": {
+          "type": "object",
+          "description": "Distress notifications received via DSC (category 12) from other vessels",
+          "$ref": "groups/notifications.json#/definitions/dscBranch"
+        },
+        "urgency": {
+          "type": "object",
+          "description": "Urgency notifications received via DSC (category 10) from other vessels",
+          "$ref": "groups/notifications.json#/definitions/dscBranch"
+        },
+        "safety": {
+          "type": "object",
+          "description": "Safety notifications received via DSC (category 08) from other vessels",
+          "$ref": "groups/notifications.json#/definitions/dscBranch"
         }
       },
       "patternProperties": {
-        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$|^distress$|^urgency$|^safety$)[A-Za-z0-9-])+$)": {
           "description": "This regex pattern is used for validation of the path of the alarm",
           "oneOf": [
             {

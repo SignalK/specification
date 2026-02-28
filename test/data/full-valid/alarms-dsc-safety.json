@@ -1,0 +1,24 @@
+{
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "notifications": {
+        "safety": {
+          "navigationWarning": {
+            "value": {
+              "message": "Safety: Navigational warning from MMSI 002111240",
+              "state": "warn",
+              "method": [
+                "visual"
+              ]
+            },
+            "timestamp": "2024-01-15T14:30:00Z",
+            "$source": "nmea0183.DSC"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}
