@@ -1,0 +1,25 @@
+{
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "notifications": {
+        "urgency": {
+          "medicalAssistance": {
+            "value": {
+              "message": "Urgency: Medical assistance required, MMSI 211457160",
+              "state": "alarm",
+              "method": [
+                "visual",
+                "sound"
+              ]
+            },
+            "timestamp": "2024-01-15T14:30:00Z",
+            "$source": "nmea0183.DSC"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

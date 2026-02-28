@@ -111,6 +111,63 @@ Some alarms are especially important, eg MOB. This is a list of keys for special
  * `..notifications.piracy.*`
  * `..notifications.abandon.*`
 
+These well-known names are reserved for **own-vessel** alarm conditions (e.g. an onboard fire sensor triggering
+`notifications.fire`).
+
+### DSC Notification Branches
+
+For externally received Digital Selective Calling (DSC) alerts, the following well-known branches separate received
+distress/urgency/safety calls from own-vessel alarms:
+
+ * `..notifications.distress.*` — Distress alerts received via DSC (category 12), state: `emergency`
+ * `..notifications.urgency.*` — Urgency alerts received via DSC (category 10), state: `alarm`
+ * `..notifications.safety.*` — Safety alerts received via DSC (category 08), state: `warn`
+
+Distress sub-paths correspond to the ITU nature-of-distress codes:
+
+ * `..notifications.distress.fire` — Fire/Explosion (code 00)
+ * `..notifications.distress.flooding` — Flooding (code 01)
+ * `..notifications.distress.collision` — Collision (code 02)
+ * `..notifications.distress.grounding` — Grounding (code 03)
+ * `..notifications.distress.listing` — Listing/Capsizing (code 04)
+ * `..notifications.distress.sinking` — Sinking (code 05)
+ * `..notifications.distress.adrift` — Adrift (code 06)
+ * `..notifications.distress.undesignated` — Undesignated (code 07)
+ * `..notifications.distress.abandon` — Abandon ship (code 08)
+ * `..notifications.distress.piracy` — Piracy/Armed attack (code 09)
+ * `..notifications.distress.mob` — Man overboard (code 10)
+ * `..notifications.distress.epirb` — EPIRB emission (code 12)
+
+This separation ensures that `notifications.fire` means "fire on this vessel" while
+`notifications.distress.fire` means "DSC distress received: fire reported on another vessel".
+
+An example DSC distress notification delta:
+
+```
+{
+  "context": "vessels.urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "updates": [{
+    "source": {
+      "label": "nmea0183",
+      "type": "NMEA0183",
+      "talker": "",
+      "sentence": "DSC"
+    },
+    "timestamp": "2024-01-15T14:30:00Z",
+    "values": [{
+      "path": "notifications.distress.fire",
+      "value": {
+        "message": "Distress: Fire/Explosion from MMSI 211457160 at 54.3000N, 10.5000E",
+        "state": "emergency",
+        "method": ["visual", "sound"]
+      }
+    }]
+  }]
+}
+```
+
+Routine DSC calls (category 00) do not generate notifications.
+
 An example to send an MOB alarm from an N2K source, the gateway would convert and send something like:
 
 [>]: # (mdpInsert ``` fsnip ../../samples/delta/docs-notifications.json --delKeys $.updates[1] --ellipsify source)

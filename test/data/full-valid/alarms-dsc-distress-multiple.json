@@ -1,0 +1,49 @@
+{
+  "self": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+  "vessels": {
+    "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d": {
+      "uuid": "urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+      "notifications": {
+        "distress": {
+          "fire": {
+            "value": {
+              "message": "Distress: Fire/Explosion from MMSI 211457160 at 54.3000N, 10.5000E",
+              "state": "emergency",
+              "method": [
+                "visual",
+                "sound"
+              ]
+            },
+            "timestamp": "2024-01-15T14:30:00Z",
+            "$source": "nmea0183.DSC"
+          },
+          "mob": {
+            "value": {
+              "message": "Distress: Man overboard from MMSI 305123456 at 53.5500N, 9.9800E",
+              "state": "emergency",
+              "method": [
+                "visual",
+                "sound"
+              ]
+            },
+            "timestamp": "2024-01-15T14:35:00Z",
+            "$source": "nmea0183.DSC"
+          },
+          "sinking": {
+            "value": {
+              "message": "Distress: Sinking from MMSI 244123456 at 54.1000N, 10.2000E",
+              "state": "emergency",
+              "method": [
+                "visual",
+                "sound"
+              ]
+            },
+            "timestamp": "2024-01-15T14:40:00Z",
+            "$source": "nmea0183.DSC"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0.0"
+}

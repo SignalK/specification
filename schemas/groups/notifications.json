@@ -43,12 +43,80 @@
     "notificationBranch": {
       "type": "object",
       "patternProperties": {
-        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$)[A-Za-z0-9-])+$)": {
+        "(^((?!^mob$|^fire$|^sinking$|^flooding$|^collision$|^grounding$|^listing$|^adrift$|^piracy$|^abandon$|^distress$|^urgency$|^safety$)[A-Za-z0-9-])+$)": {
           "description": "This regex pattern is used for validation of the path of the alarm",
           "oneOf": [
             {
               "$ref": "#/definitions/notificationBranch",
               "example": "engine"
+            },
+            {
+              "$ref": "#/definitions/notification"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "dscBranch": {
+      "type": "object",
+      "description": "A branch for DSC notification sub-paths. Allows nature-of-distress names (fire, mob, etc.) that are reserved at the top notification level.",
+      "properties": {
+        "mob": {
+          "description": "Man overboard",
+          "$ref": "#/definitions/notification"
+        },
+        "fire": {
+          "description": "Fire/Explosion",
+          "$ref": "#/definitions/notification"
+        },
+        "sinking": {
+          "description": "Sinking",
+          "$ref": "#/definitions/notification"
+        },
+        "flooding": {
+          "description": "Flooding",
+          "$ref": "#/definitions/notification"
+        },
+        "collision": {
+          "description": "Collision",
+          "$ref": "#/definitions/notification"
+        },
+        "grounding": {
+          "description": "Grounding",
+          "$ref": "#/definitions/notification"
+        },
+        "listing": {
+          "description": "Listing/Capsizing",
+          "$ref": "#/definitions/notification"
+        },
+        "adrift": {
+          "description": "Adrift",
+          "$ref": "#/definitions/notification"
+        },
+        "piracy": {
+          "description": "Piracy/Armed attack",
+          "$ref": "#/definitions/notification"
+        },
+        "abandon": {
+          "description": "Abandon ship",
+          "$ref": "#/definitions/notification"
+        },
+        "undesignated": {
+          "description": "Undesignated distress",
+          "$ref": "#/definitions/notification"
+        },
+        "epirb": {
+          "description": "EPIRB emission",
+          "$ref": "#/definitions/notification"
+        }
+      },
+      "patternProperties": {
+        "(^[A-Za-z0-9-]+$)": {
+          "description": "Additional DSC notification sub-paths",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/notificationBranch"
             },
             {
               "$ref": "#/definitions/notification"
