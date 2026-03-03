@@ -95,6 +95,54 @@
       }
     }
   },
+  "aton": {
+    "urn:mrn:imo:mmsi:993672315": {
+      "mmsi": "993672315",
+      "name": "SW                  @",
+      "navigation": {
+        "position": {
+          "value": {
+            "longitude": -76.3847132,
+            "latitude": 38.99384
+          },
+          "$source": ".43",
+          "timestamp": "2017-03-14T19:02:40.451Z",
+          "pgn": 129041
+        }
+      },
+      "atonType": {
+        "value": {
+          "id": 13,
+          "name": "Beacon, Port Hand"
+        },
+        "$source": ".43",
+        "timestamp": "2017-03-14T19:02:40.451Z",
+        "pgn": 129041
+      },
+      "virtual": {
+        "value": true,
+        "$source": ".43",
+        "timestamp": "2017-03-14T19:02:40.451Z",
+        "pgn": 129041
+      },
+      "offPosition": {
+        "value": false,
+        "$source": ".43",
+        "timestamp": "2017-03-14T19:02:40.451Z",
+        "pgn": 129041
+      },
+      "sensors": {
+        "ais": {
+          "class": {
+            "value": "ATON",
+            "$source": ".43",
+            "timestamp": "2017-03-14T19:02:40.451Z",
+            "pgn": 129041
+          }
+        }
+      }
+    }
+  },
   "self": "urn:mrn:imo:mmsi:246326000",
   "version": "0.1.0",
   "sources": {
