@@ -1,0 +1,69 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/hello.json#",
+  "title": "SignalK Websockets Hello message schema",
+  "description": "Schema for defining the hello message passed from the server to a client following succesful websocket connection",
+  "required": [
+    "version",
+    "roles"
+  ],
+  "properties": {
+    "version": {
+      "description": "Version of the schema and APIs that this data is using in canonical format i.e. 1.5.0.",
+      "$ref": "definitions.json#/definitions/version"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the Signal K server software",
+      "example": "iKommunicate"
+    },
+    "timestamp": {
+      "$ref": "./definitions.json#/definitions/timestamp"
+    },
+    "startTime": {
+      "$ref": "./definitions.json#/definitions/timestamp",
+      "description": "Starttime for history playback connections"
+    },
+    "playbackRate": {
+      "type": "number",
+      "description": "Playback rate for history playback connections: 1 is real time, 2 is two times and 0.5 half the real time rate"
+    },
+    "self": {
+      "type": "string",
+      "description": "This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5",
+      "oneOf": [
+        {
+          "pattern": "^vessels.(urn:mrn:(imo:mmsi:[2-7][0-9]{8}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+        },
+        {
+          "pattern": "^aircraft.(urn:mrn:(imo:mmsi:1[0-9]{8}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+        },
+        {
+          "pattern": "^aton.(urn:mrn:(imo:mmsi:99[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+        },
+        {
+          "pattern": "^sar.(urn:mrn:(imo:mmsi:97[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$"
+        }
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "description": "The designated roles of the server",
+      "oneOf": [
+        {
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [{"enum": ["master"]}, {"enum": ["main", "aux"]}]
+        },
+        {
+          "minItems": 1,
+          "maxItems": 1,
+          "items": [{"enum": ["slave"]}]
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,96 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/signalk.json#",
+  "title": "SignalK",
+  "description": "Root schema of Signal K. Contains the list of vessels plus a reference to the local boat (also contained in the vessels list).",
+  "required": [
+    "version",
+    "self"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "vessels"
+      ]
+    },
+    {
+      "required": [
+        "aircraft"
+      ]
+    },
+    {
+      "required": [
+        "aton"
+      ]
+    },
+    {
+      "required": [
+        "sar"
+      ]
+    }
+  ],
+  "properties": {
+    "self": {
+      "type": "string",
+      "description": "This holds the context (prefix + UUID, MMSI or URL in dot notation) of the server's self object.",
+      "example": "vessels.urn:mrn:signalk:uuid:6b0e776f-811a-4b35-980e-b93405371bc5"
+    },
+    "vessels": {
+      "type": "object",
+      "description": "A wrapper object for vessel objects, each describing vessels in range, including this vessel.",
+      "patternProperties": {
+        "(^urn:mrn:(imo:mmsi:[2-7][0-9]{8}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$": {
+          "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the vessel. Examples: urn:mrn:imo:mmsi:230099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+          "$ref": "vessel.json#"
+        }
+      },
+      "additionalProperties": false
+    },
+    "aircraft": {
+      "type": "object",
+      "description": "A wrapper object for aircraft, primarily intended for SAR aircraft in relation to marine search and rescue. For clarity about seaplanes etc, if it CAN fly, its an aircraft.",
+      "patternProperties": {
+        "(^urn:mrn:(imo:mmsi:1[0-9]{8}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$": {
+          "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aircraft. Examples: urn:mrn:imo:mmsi:111099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+          "$ref": "aircraft.json#"
+        }
+      },
+      "additionalProperties": false
+    },
+    "aton": {
+      "type": "object",
+      "description": "A wrapper object for Aids to Navigation (aton's)",
+      "patternProperties": {
+        "(^urn:mrn:(imo:mmsi:99[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$": {
+          "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aid to navigation. Examples: urn:mrn:imo:mmsi:991099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+          "$ref": "aton.json#"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sar": {
+      "type": "object",
+      "description": "A wrapper object for Search And Rescue (SAR) MMSI's usied in transponders. MOB, EPIRBS etc",
+      "patternProperties": {
+        "(^urn:mrn:(imo:mmsi:97[0-9]{7}$|signalk:uuid:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$))|^(http(s?):.*|mailto:.*|tel:(\\+?)[0-9]{4,})$": {
+          "description": "This regex pattern is used for validation of an MMSI or Signal K UUID identifier for the aid to navigation. Examples: urn:mrn:imo:mmsi:972099999 urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d",
+          "$ref": "sar.json#"
+        }
+      },
+      "additionalProperties": false
+    },    
+    "sources": {
+      "description": "Metadata about the data sources; physical interface, address, protocol, etc.",
+      "$ref": "groups/sources.json#"
+    },
+    "resources": {
+      "description": "Resources to aid in navigation and operation of the vessel including waypoints, routes, notes, etc.",
+      "$ref": "groups/resources.json#"
+    },
+    "version": {
+      "description": "Version of the schema and APIs that this data is using in Canonical format i.e. V1.5.0.",
+      "$ref": "definitions.json#/definitions/version"
+    }
+  }
+}

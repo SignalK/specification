@@ -1,0 +1,688 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/groups/electrical.json#",
+  "description": "Schema describing the electrical child-object of a Vessel.",
+  "title": "Electrical Properties",
+  "type": "object",
+  "definitions": {
+    "identity": {
+      "type": "object",
+      "title": "Electrical ID",
+      "description": " Common ID items shared by electrical items",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Unique ID of device (houseBattery, alternator, Generator, solar1, inverter, charger, combiner, etc.)"
+        },
+
+        "location": {
+          "type": "string",
+          "description": "Installed location of device on vessel"
+        },
+        "dateInstalled": {
+          "$ref": "../definitions.json#/definitions/timestamp",
+          "description": "Date device was installed"
+        },
+
+        "manufacturer": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Manufacturer's name"
+            },
+            "model": {
+              "type": "string",
+              "description": "Model or part number"
+            },
+            "URL": {
+              "type": "string",
+              "description": "Web referance / URL"
+            }
+          }
+        }
+      }
+    },
+
+    "dcQualities": {
+      "type": "object",
+      "title": "DC Qualities",
+      "description": "DC common qualities",
+      "properties": {
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS device is associated with"
+        },
+
+        "voltage": {
+          "type": "object",
+          "description": "Voltage measured at or as close as possible to the device",
+          "units": "V",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "ripple": {
+                "description": "DC Ripple voltage",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "nominal": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Designed 'voltage' of device (12v, 24v, 32v, 36v, 42v, 48v, 144v, etc.)"
+                  },
+
+                  "warnUpper": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Upper operational voltage limit"
+                  },
+
+                  "warnLower": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Lower operational voltage limit"
+                  },
+
+                  "faultUpper": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Upper fault voltage limit - device may disable/disconnect"
+                  },
+
+                  "faultLower": {
+                    "type": "number",
+                    "units": "V",
+                    "description": "Lower fault voltage limit - device may disable/disconnect"
+                  }
+                }
+              }
+            }
+          }]
+        },
+
+        "current": {
+          "type": "object",
+          "description": "Current flowing out (+ve) or in (-ve) to the device. Reversed for batteries (+ve = charging).",
+          "units": "A",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "warnUpper": {
+                    "type": "number",
+                    "description": "Upper operational current limit",
+                    "units": "A"
+                  },
+
+                  "warnLower": {
+                    "type": "number",
+                    "description": "Lower operational current limit",
+                    "units": "A"
+                  },
+
+                  "faultUpper": {
+                    "type": "number",
+                    "description": "Upper fault current limit - device may disable/disconnect",
+                    "units": "A"
+                  },
+
+                  "faultLower": {
+                    "type": "number",
+                    "description": "Lower fault current limit - device may disable/disconnect",
+                    "units": "A"
+                  }
+                }
+              }
+            }
+          }]
+        },
+
+        "temperature": {
+          "type": "object",
+          "description": "Temperature measured within or on the device",
+          "units": "K",
+          "title": "temperature",
+          "allOf": [{
+            "$ref": "../definitions.json#/definitions/numberValue"
+          }, {
+            "properties": {
+              "warnUpper": {
+                "type": "number",
+                "description": "Upper operational temperature limit",
+                "units": "K"
+              },
+
+              "warnLower": {
+                "type": "number",
+                "description": "Lower operational temperature limit",
+                "units": "K"
+              },
+
+              "faultUpper": {
+                "type": "number",
+                "description": "Upper fault temperature limit - device may disable/disconnect",
+                "units": "K"
+              },
+
+              "faultLower": {
+                "type": "number",
+                "description": "Lower fault temperature limit - device may disable/disconnect",
+                "units": "K"
+              }
+            }
+          }]
+        }
+      }
+    },
+
+    "acQualities": {
+      "type": "object",
+      "title": "AC Qualities",
+      "description": "AC equipment common qualities",
+      "properties": {
+        "associatedBus": {
+          "type": "string",
+          "description": "Name of BUS device is associated with"
+        },
+        "lineNeutralVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phase and neutral",
+          "units": "V"
+        },
+        "lineLineVoltage": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS voltage measured between phases",
+          "units": "V"
+        },
+        "current": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "RMS current",
+          "units": "A"
+        },
+        "frequency": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "AC frequency.",
+          "units": "Hz"
+        },
+        "reactivePower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Reactive power",
+          "units": "W"
+        },
+        "powerFactor": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Power factor",
+          "unit": "ratio"
+        },
+        "powerFactorLagging": {
+          "description": "Lead/lag status.",
+          "example": "leading",
+          "type": "string",
+          "enum": [
+            "leading",
+            "lagging",
+            "error",
+            "not available"
+          ]
+        },
+        "realPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Real power.",
+          "units": "W"
+        },
+        "apparentPower": {
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "description": "Apparent power.",
+          "units": "W"
+        }
+      }
+    },
+  
+    "chargerQualities": {
+      "type": "object",
+      "title": "Charger Qualities",
+      "description": "Common charger qualities",
+      "properties": {
+        "chargingAlgorithm": {
+          "type": "object",
+          "description": "Algorithm being used by the charger",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "trickle",
+                    "two stage",
+                    "three stage",
+                    "four stage",       
+                    "constant current",
+                    "constant voltage",
+                    "custom profile"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "chargerRole": {
+          "type": "object",
+          "description": "How is charging source configured?  Standalone, or in sync with another charger?",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "standalone",
+                    "master",
+                    "slave",
+                    "standby"
+                   ]
+                }
+              }
+            }
+          ]
+        },
+        "chargingMode": {
+          "type": "object",
+          "description": "Charging mode i.e. float, overcharge, etc.",
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            },
+            {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "enum": [
+                    "bulk",
+                    "acceptance",
+                    "overcharge",
+                    "float",
+                    "equalize",
+                    "unknown",
+                    "other"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+       "setpointVoltage": {
+          "description": "Target regulation voltage",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "V"
+       }, 
+       "setpointCurrent": {
+          "description": "Target current limit",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "A"
+      }
+    }
+  }
+  },
+  
+  
+  "properties": { 
+    "batteries": {
+      "description": "Data about the vessel's batteries",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Battery keyed by instance id",
+          "description": "Batteries, one or many, within the vessel",
+          "allOf": [{
+              "$ref": "#/definitions/identity"
+               },{
+              "$ref": "#/definitions/dcQualities"
+              }],
+           "properties": { 
+            "chemistry": {
+              "type": "string",
+              "description": "Type of battery FLA, LiFePO4, etc."
+            },
+            "temperature": {
+              "type": "object",
+              "title": "temperature",
+              "description": "Additional / unique temperatures associated with a battery",
+              "properties": {
+                "limitDischargeLower": {
+                  "type": "number",
+                  "description": "Operational minimum temperature limit for battery discharge",
+                  "units": "K"
+                },
+
+                "limitDischargeUpper": {
+                  "type": "number",
+                  "description": "Operational maximum temperature limit for battery discharge",
+                  "units": "K"
+                },
+
+                "limitRechargeLower": {
+                  "type": "number",
+                  "description": "Operational minimum temperature limit for battery recharging",
+                  "units": "K"
+                },
+
+                "limitRechargeUpper": {
+                  "type": "number",
+                  "description": "Operational maximum temperature limit for battery recharging",
+                  "units": "K"
+                }
+              }
+            },
+
+            "capacity": {
+              "type": "object",
+              "description": "Data about the battery's capacity",
+              "title": "capacity",
+              "properties": {
+                "nominal": {
+                  "type": "number",
+                  "description": "The capacity of battery as specified by the manufacturer",
+                  "units": "J"
+                },
+
+                "actual": {
+                  "type": "number",
+                  "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
+                  "units": "J"
+                },
+
+                "remaining": {
+                  "type": "number",
+                  "description": "Capacity remaining in battery",
+                  "units": "J"
+                },
+
+                "dischargeLimit": {
+                  "type": "number",
+                  "description": "Minimum capacity to be left in the battery while discharging",
+                  "units": "J"
+                },
+
+                "stateOfCharge": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "State of charge, 1 = 100%",
+                  "units": "ratio"
+                },
+
+                "stateOfHealth": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "State of Health, 1 = 100%",
+                  "units": "ratio"
+                },
+
+                "dischargeSinceFull": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "Cumulative discharge since battery was last full",
+                  "units": "C"
+                },
+
+                "timeRemaining": {
+                  "$ref": "../definitions.json#/definitions/numberValue",
+                  "description": "Time to discharge to discharge limit at current rate",
+                  "units": "s"
+                }
+              }
+            },
+
+
+            "lifetimeDischarge": {
+              "type": "number",
+              "description": "Cumulative charge discharged from battery over operational lifetime of battery",
+              "units": "C"
+            },
+
+            "lifetimeRecharge": {
+                "type": "number",
+                "description": "Cumulative charge recharged into battery over operational lifetime of battery",
+                "units": "C"
+            }
+          }
+        }
+      }  
+     },
+    "inverters": {
+      "description": "Data about the Inverter that has both DC and AC qualities",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Inverter",
+          "description": "DC to AC inverter, one or many, within the vessel",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+            }],   
+          "properties": {   
+            "dc": {
+              "$ref": "#/definitions/dcQualities"
+            },
+            "ac": {
+              "$ref": "#/definitions/acQualities"
+            },
+            "inverterMode": {
+              "type": "object",
+              "description": "Mode of inverter",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "enum": [
+                      "idle",
+                      "inverting",
+                      "disabled",
+                      "standby",
+                      "faulted",
+                      "unknown",
+                      "other"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },    
+    "chargers": {
+      "description": "Data about AC sourced battery charger",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Charger",
+          "description": "Battery charger",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          },{
+            "$ref": "#/definitions/dcQualities"
+          },{
+            "$ref": "#/definitions/chargerQualities"
+          }]
+        }
+      }
+    },
+    "alternators": {
+      "description": "Data about an Alternator charging device",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Alternator",
+          "description": "Mechanically driven alternator, includes dynamos",
+            "allOf": [{
+                "$ref": "#/definitions/identity"
+              },{
+                "$ref": "#/definitions/dcQualities"
+              },{
+                "$ref": "#/definitions/chargerQualities"
+              }],
+            "properties": {  
+              "revolutions": {
+                "description": "Alternator revolutions per second (x60 for RPM)",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "Hz"
+              },
+              "pulleyRatio": {
+                "description": "Mechanical pulley ratio of driving source (Used to back calculate engine RPMs)",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "ratio"
+              },
+              "fieldDrive": {
+                "description": "% (0..100) of field voltage applied",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "%"
+              },
+              "regulatorTemperature": {
+                "description": "Current temperature of critical regulator components",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+              }
+            }
+         }
+      }
+    },
+    "solar": {
+      "description": "Data about Solar charging device(s)",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "Solar",
+          "description": "Photovoltaic charging devices",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          },{
+            "$ref": "#/definitions/dcQualities"
+          },{
+            "$ref": "#/definitions/chargerQualities"
+          }],
+          "properties": { 
+            "controllerMode": {
+              "type": "object",
+              "description": "The current state of the engine",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "enum": [
+                         "off",
+                         "idle",
+                         "direct",
+                         "PWM",
+                         "MPPT"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "panelVoltage": {
+                "description": "Voltage being supplied from Solar Panels to controller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "V"
+            },
+            "panelCurrent": {
+                "description": "Amperage being supplied from Solar Panels to controller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+            },
+            "panelPower": {
+                "description": "Power being supplied from Solar Panels to controller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "W"
+            },
+            "panelTemperature": {
+                "description": "Temperature of panels",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "K"
+            },
+            "yieldToday": {
+                "description": "Total energy generated by Solar Panels today",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "J"
+            },
+            "load": {
+              "type": "object",
+              "description": "State of load port on controller (if applicable)",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "enum": [
+                        "enabled",
+                        "disabled"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },        
+            "loadCurrent": {
+                "description": "Amperage being supplied to load directly connected to controller",
+                "$ref": "../definitions.json#/definitions/numberValue",
+                "units": "A"
+            }
+          }
+        }
+      }
+    },
+
+
+  
+    
+    
+    
+    
+    
+    "ac": {
+      "description": "AC buses",
+      "patternProperties": {
+        "(^[A-Za-z0-9]+$)": {
+          "type": "object",
+          "title": "AC Bus keyed by instance id",
+          "description": "AC Bus, one or many, within the vessel",
+          "allOf": [{
+            "$ref": "#/definitions/identity"
+          }],
+          "properties": {
+            "phase": {
+              "type": "object",
+              "description": "Single or A,B or C in 3 Phase systems ",
+              "patternProperties": {
+                "(single)|([A-C])": {
+                  "$ref": "#/definitions/acQualities"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

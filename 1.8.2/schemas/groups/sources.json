@@ -1,0 +1,142 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/groups/sources.json#",
+  "title": "sources",
+  "description": "Metadata about the sources, eg. buses and connected sensors",
+  "patternProperties": {
+    ".*": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "anyOf": [
+            {
+              "properties": {
+                "ais": {
+                  "description": "AIS data",
+                  "type": "object",
+                  "properties": {
+                    "aisType": {
+                      "type": "number",
+                      "multipleOf": 1,
+                      "minimum": 1,
+                      "maximum": 27,
+                      "description": "AIS Message Type",
+                      "example": "15"
+                    }
+                  }
+                },
+                "talker": {
+                  "description": "NMEA 0183 talker id, the GP in $GPRMC..",
+                  "type": "string"
+                },
+                "sentences": {
+                  "description": "NMEA 0183 sentences",
+                  "type": "object",
+                  "patternProperties": {
+                    "^[A-Z][A-Z][A-Z]$": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    }
+                  }
+                },
+                "n2k": {
+                  "type": "object",
+                  "properties": {
+                    "src": {
+                      "description": "NMEA 2000 bus",
+                      "type": "string"
+                    },
+                    "pgns": {
+                      "type": "object",
+                      "description": "NMEA 2000 pgn number",
+                      "patternProperties": {
+                        "[0-9]*": {
+                          "$ref": "../definitions.json#/definitions/timestamp"
+                        }
+                      }
+                    },
+                    "manufacturerId": {
+                      "type": "number",
+                      "description": "Manufacturer numeric NMEA 2000 id"
+                    },
+                    "manufacturerName": {
+                      "description": "Manufacturer of the source device",
+                      "type": "string",
+                      "example": "Digital Yacht"
+                    },
+                    "uniqueId": {
+                      "type": "number",
+                      "description": "Unique id of the source device"
+                    },
+                    "deviceFunction": {
+                      "type": "number",
+                      "description": "NMEA 2000 Device Function code"
+                    },
+                    "deviceClass": {
+                      "type": "number",
+                      "description": "NMEA 2000 Device Class code"
+                    },
+                    "productID": {
+                      "description": "Manufactures assigned NMEA2000 Product ID",
+                      "type": "number"
+                    },
+                    "productName": {
+                      "description": "Product Name or Model Number",
+                      "type": "string"
+                    },
+                    "softwareVersion": {
+                      "description": "Version of the device's Software/Firmware",
+                      "type": "string"
+                    },
+                    "hardwareVersion": {
+                      "description": "Version of the device's Hardware",
+                      "type": "string"
+                    },
+                    "serialNumber": {
+                      "description": "Device's Serial Number",
+                      "type": "string"
+                    },
+                    "installationNote1": {
+                      "description": "Product Installation Note 1 i.e. 'Wired on Navigation Switch/Circuit'",
+                      "type": "string",
+                      "example": "Wired on Navigation Switch/Circuit"
+                    },
+                    "installationNote2": {
+                      "description": "Product Installation Note 2 i.e. 'Located under forward bunk'",
+                      "type": "string",
+                      "example": "Located under forward bunk"
+                    },
+                    "manufacturerInfo": {
+                      "description": "Manufacturer's Info i.e. 'http://digitalyachtamerica.com Tel:+44 1179 554474'",
+                      "type": "string",
+                      "example": "http://digitalyachtamerica.com Tel:+44 1179 554474"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "patternProperties": {
+                ".*": {
+                  "properties": {}
+                }
+              }
+            }
+          ]
+        }
+      },
+      "properties": {
+        "label": {
+          "description": "Sources unique name e.g. [type-bus].[id], N2000-01.034",
+          "type": "string",
+          "example": "N2000-01.034"
+        },
+        "type": {
+          "description": "Type of interface i.e. signalk, NMEA0183 or NMEA2000",
+          "type": "string",
+          "example": "NMEA0183"
+        }
+      }
+    }
+  }
+}

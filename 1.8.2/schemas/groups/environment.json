@@ -1,0 +1,401 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://signalk.org/specification/1.5.1/schemas/groups/environment.json#",
+  "description": "Schema describing the environmental child-object of a Vessel.",
+  "title": "environment",
+  "definitions": {
+    "zoneObject": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "heatIndexTemperature": {
+          "description": "Current heat index temperature in zone",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "pressure": {
+          "description": "Pressure in zone",
+          "units": "Pa",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "relativeHumidity": {
+          "description": "Relative humidity in zone",
+          "units": "ratio",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "dewPoint": {
+          "description": "DEPRECATED: use dewPointTemperature",
+          "units": "K",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "dewPointTemperature": {
+          "description": "Dewpoint in zone",
+          "units": "K",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "airDensity": {
+          "description": "Air density in zone",
+          "units": "kg/m3",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "illuminance": {
+          "description": "Illuminance in zone",
+          "units": "Lux",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        }
+      }
+    }
+  },
+  "properties": {
+    "outside": {
+      "description": "Environmental conditions outside of the vessel's hull",
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "Current outside air temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "dewPointTemperature": {
+          "description": "Current outside dew point temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "apparentWindChillTemperature": {
+          "description": "Current outside apparent wind chill temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "theoreticalWindChillTemperature": {
+          "description": "Current outside theoretical wind chill temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "heatIndexTemperature": {
+          "description": "Current outside heat index temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "pressure": {
+          "description": "Current outside air ambient pressure",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Pa"
+        },
+        "humidity": {
+          "description": "DEPRECATED: use relativeHumidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "relativeHumidity": {
+          "description": "Current outside air relative humidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "airDensity": {
+          "description": "Current outside air density",
+          "units": "kg/m3",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "illuminance": {
+          "description": "Current outside ambient light flux.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "Lux"
+        }
+      }
+    },
+    "inside": {
+      "type": "object",
+      "description": "Environmental conditions inside the vessel's hull",
+      "allOf": [
+        {
+          "patternProperties": {
+            "[A-Za-z0-9]+": {
+              "description": "This regex pattern is used for validation of the identifier for the environmental zone, eg. engineRoom, mainCabin, refrigerator",
+              "$ref": "#/definitions/zoneObject"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/zoneObject"
+        }
+      ]
+    },
+    "water": {
+      "type": "object",
+      "description": "Environmental conditions of the water that the vessel is sailing in",
+      "properties": {
+        "temperature": {
+          "description": "Current water temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
+        "salinity": {
+          "description": "Water salinity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        }
+      }
+    },
+    "depth": {
+      "title": "depth",
+      "type": "object",
+      "description": "Depth related data",
+      "properties": {
+        "belowKeel": {
+          "description": "Depth below keel",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "belowTransducer": {
+          "description": "Depth below Transducer",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "belowSurface": {
+          "description": "Depth from surface",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "transducerToKeel": {
+          "description": "Depth from the transducer to the bottom of the keel",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "surfaceToTransducer": {
+          "description": "Depth transducer is below the water surface",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        }
+      }
+    },
+    "current": {
+      "type": "object",
+      "title": "current",
+      "description": "Direction and strength of current affecting the vessel",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "object",
+              "properties": {
+                "drift": {
+                  "type": "number",
+                  "description": "The speed component of the water current vector",
+                  "example": 3.12,
+                  "units": "m/s"
+                },
+                "setTrue": {
+                  "type": "number",
+                  "description": "The direction component of the water current vector referenced to true (geographic) north",
+                  "example": 123.45,
+                  "units": "rad"
+                },
+                "setMagnetic": {
+                  "type": "number",
+                  "description": "The direction component of the water current vector referenced to magnetic north",
+                  "example": 131.22,
+                  "units": "rad"
+                }
+              }
+            },
+            "values": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "$ref": "../definitions.json#/definitions/timestamp"
+                    },
+                    "pgn": {
+                      "type": "number"
+                    },
+                    "sentence": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "object",
+                      "properties": {
+                        "drift": {
+                          "type": "number",
+                          "description": "The speed component of the water current vector",
+                          "example": 3.12,
+                          "units": "m/s"
+                        },
+                        "setTrue": {
+                          "type": "number",
+                          "description": "The direction component of the water current vector referenced to true (geographic) north",
+                          "example": 123.45,
+                          "units": "rad"
+                        },
+                        "setMagnetic": {
+                          "type": "number",
+                          "description": "The direction component of the water current vector referenced to magnetic north",
+                          "example": 131.22,
+                          "units": "rad"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "tide": {
+      "type": "object",
+      "title": "tide",
+      "description": "Tide data",
+      "properties": {
+        "heightHigh": {
+          "description": "Next high tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "heightNow": {
+          "description": "The current tide height  relative to lowest astronomical tide (LAT/Chart Datum)",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "heightLow": {
+          "description": "The next low tide height relative to lowest astronomical tide (LAT/Chart Datum)",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "timeLow": {
+          "description": "Time of the next low tide in UTC",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "timeHigh": {
+          "description": "Time of next high tide in UTC",
+          "$ref": "../definitions.json#/definitions/timestamp"
+        }
+      }
+    },
+    "heave": {
+      "description": "Vertical movement of the vessel due to waves",
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "units": "m"
+    },
+    "wind": {
+      "type": "object",
+      "title": "wind",
+      "description": "Wind data.",
+      "properties": {
+        "angleApparent": {
+          "description": "Apparent wind angle, negative to port",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "angleTrueGround": {
+          "description": "True wind angle based on speed over ground, negative to port",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "angleTrueWater": {
+          "description": "True wind angle based on speed through water, negative to port",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "directionChangeAlarm": {
+          "description": "The angle the wind needs to shift to raise an alarm",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "directionTrue": {
+          "description": "The wind direction relative to true north",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "directionMagnetic": {
+          "description": "The wind direction relative to magnetic north",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
+        },
+        "speedTrue": {
+          "description": "Wind speed over water (as calculated from speedApparent and vessel's speed through water)",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m/s"
+        },
+        "speedOverGround": {
+          "description": "Wind speed over ground (as calculated from speedApparent and vessel's speed over ground)",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m/s"
+        },
+        "speedApparent": {
+          "description": "Apparent wind speed",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m/s"
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "description": "A time reference for the vessel. All clocks on the vessel dispaying local time should use the timezone offset here. If a timezoneRegion is supplied the timezone must also be supplied. If timezoneRegion is supplied that should be displayed by UIs in preference to simply timezone. ie 12:05 (Europe/London) should be displayed in preference to 12:05 (UTC+01:00)",
+      "properties": {
+        "millis": {
+          "type": "number",
+          "title": "Epoch time",
+          "example": 1449648657735,
+          "description": "Milliseconds since the UNIX epoch (1970-01-01 00:00:00)"
+        },
+        "timezoneOffset": {
+          "type": "number",
+          "title": "Timezone offset",
+          "example": -400,
+          "maximum": 1300,
+          "minimum": -1300,
+          "description": "Onboard timezone offset from UTC in hours and minutes (-)hhmm. +ve means east of Greenwich. For use by UIs",
+          "default": 0
+        },
+        "timezoneRegion": {
+          "type": "string",
+          "title": "IANA Timezone national region",
+          "example": "Europe/Zurich",
+          "description": "Onboard timezone offset as listed in the IANA timezone database (tz database)",
+          "pattern": "^[a-zA-Z0-9\/+-]+$"
+        },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
+        }
+      },
+      "dependencies": {
+        "timezoneRegion": [
+          "timezoneOffset"
+        ]
+      }
+    },
+    "mode": {
+      "type": "object",
+      "description": "Mode of the vessel based on the current conditions. Can be combined with navigation.state to control vessel signals eg switch to night mode for instrumentation and lights, or make sound signals for fog.",
+      "properties": {
+        "value": {
+          "enum": [
+            "day",
+            "night",
+            "restricted visibility"
+          ]
+        },
+        "timestamp": {
+          "$ref": "../definitions.json#/definitions/timestamp"
+        },
+        "source": {
+          "$ref": "../definitions.json#/definitions/source"
+        }
+      }
+    }
+  }
+}
