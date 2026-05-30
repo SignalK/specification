@@ -499,7 +499,7 @@
       "units": "rad"
     },
     "position": {
-      "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum)",
+      "description": "The position of the vessel in 2 or 3 dimensions (WGS84 datum). When a server has GPS antenna offsets configured (sensors.<id>.fromBow / fromCenter linked to a $source via sensors.<id>.sourceRef) and vessel heading is available, the published value is the position at the Common Coordinate Reference Point (CCRP). The CCRP is defined as the center of the vessel on the longitudinal centerline: body coordinates (design.length.value.overall / 2, 0) measured from the bow. The corresponding update may carry a meta.gpsOffsetCorrection entry containing sensorId, fromBow, fromCenter, lengthOverall, headingTrue, and the raw (uncorrected) antenna position, so consumers - notably history-recording plugins - can preserve both values. The delta's $source continues to identify the antenna that produced the underlying measurement.",
       "$ref": "../definitions.json#/definitions/position"
     },
     "attitude": {

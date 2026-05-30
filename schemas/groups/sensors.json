@@ -20,14 +20,20 @@
       "description": "The data of the sensor data. FIXME - need to ref the definitions of sensor types"
     },
 
+    "sourceRef": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9-_.]*$",
+      "description": "Signal K source identifier ($source) of the device this sensor instance represents. Lets a server associate physical sensor metadata (e.g. antenna offsets) with the data stream the sensor produces, including when multiple sensors of the same class are present (e.g. multiple GPS antennas)."
+    },
+
     "fromBow": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The distance from the bow to the sensor location"
+      "description": "The distance from the bow to the sensor location along the longitudinal axis of the vessel (toward the stern)."
     },
 
     "fromCenter": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The distance from the centerline to the sensor location, -ve to starboard, +ve to port"
+      "description": "The perpendicular distance from the longitudinal centerline of the vessel to the sensor location, -ve to starboard, +ve to port."
     },
 
     "class": {

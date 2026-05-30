@@ -117,6 +117,41 @@ string or another object. Signal K keys that are object valued are object valued
 semantic meaning individually. For example position – latitude doesn‘t have much meaning without an associated
 longitude. Therefore, these (and altitude) are grouped together in a single `navigation.position` key.
 
+### Antenna offsets and lever-arm correction
+
+GPS antennas are rarely mounted at the vessel's reference point, and a vessel may have more than one antenna with different
+offsets. To keep `navigation.position` consistent across antennas, Signal K servers may apply a server-side lever-arm
+correction so the published position represents the **Common Coordinate Reference Point (CCRP)** rather than the raw antenna
+position. The CCRP is defined as the center of the vessel on the longitudinal centerline: body coordinates
+`(design.length.value.overall / 2, 0)` measured from the bow.
+
+Each antenna's mounting offset is described via `sensors.<id>.fromBow` and `sensors.<id>.fromCenter` (perpendicular distance
+from the longitudinal centerline; positive to port, negative to starboard). The sensor instance is linked to its data stream
+via `sensors.<id>.sourceRef`, which equals the `$source` value the device's measurements arrive with. When the server has
+both the antenna offset and a current heading (`navigation.headingTrue`, or `navigation.headingMagnetic + magneticVariation`),
+the corrected position is published on `navigation.position` and the update carries a `meta.gpsOffsetCorrection` entry of
+the form:
+
+```json
+{
+  "sensorId": "gps1",
+  "fromBow": 5.2,
+  "fromCenter": 1.1,
+  "lengthOverall": 12.5,
+  "headingTrue": 1.5708,
+  "rawValue": { "latitude": 60.12339, "longitude": 24.5678 }
+}
+```
+
+History-recording consumers should persist this meta entry alongside the corrected `value`, so the raw per-antenna
+measurement remains recoverable. Consumers of `navigation.position` should **not** re-apply offsets — `sensors.<id>.fromBow`
+and `fromCenter` are descriptive metadata about geometry, not values to be subtracted client-side. Per-antenna source
+identity is preserved on each delta's `$source` so source-filtered subscriptions still see which antenna fed the corrected
+fix.
+
+When heading is unavailable, or when no antenna offset is configured, the server publishes the antenna position as-is and
+omits the `meta.gpsOffsetCorrection` entry.
+
 The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
 meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
 specific for a key, and defined in the data schema. A simplified version of the JSON schema with the units is available
