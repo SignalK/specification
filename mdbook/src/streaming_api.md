@@ -15,6 +15,10 @@ messages in the WebSocket stream.
 
 A server may send the latest values it has cached when a client connects via WebSocket. A client can control this behavior with query parameter `sendCachedValues`. `false` will suppress sending the values and `true` force it. With no `sendCachedValues` parameter the server should send them.
 
+A server MAY accept a `sourcePolicy` query parameter (`preferred` or `all`) that sets the default source-selection
+policy for the connection's bootstrap snapshot and for subscribe messages that do not carry their own
+`sourcePolicy`. See [Source selection](subscription_protocol.md#source-selection) for the semantics.
+
 If a server does not support some streaming options listed in here it must respond with HTTP status code `501 Not
 Implemented`.
 

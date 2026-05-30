@@ -32,6 +32,28 @@
       "example": "signalk.3202a939-1681-4a74-ad4b-3a90212e4f33.vessels.motu.navigation"
     },
 
+    "sourcePolicy": {
+      "id": "sourcePolicy",
+      "type": "string",
+      "enum": ["preferred", "all"],
+      "title": "Source policy.",
+      "description": "Selects which sources are delivered for each subscribed path. 'preferred' (default) delivers a single value per path, resolved through the server's source-priority cascade. 'all' delivers every source unranked and bypasses priority resolution. Applies to every row in this subscribe message and to the bootstrap snapshot replayed when the subscription is established.",
+      "name": "sourcePolicy",
+      "default": "preferred"
+    },
+
+    "excludeSources": {
+      "id": "excludeSources",
+      "type": "array",
+      "title": "Exclude sources.",
+      "description": "Optional list of `$source` refs to drop from the priority cascade's candidate set. The subscription still delivers a single priority-resolved value per path, computed over the remaining sources with the configured fallback timeouts honoured. Has effect only when sourcePolicy is 'preferred'; ignored under sourcePolicy='all'. The typical use case is a derived-data plugin that publishes on the same path it consumes and wants the priority cascade across the upstream sources without seeing its own output.",
+      "name": "excludeSources",
+      "items": {
+        "type": "string",
+        "example": "myDerivedPlugin"
+      }
+    },
+
     "subscribe": {
       "id": "subscribe",
       "type": "array",
@@ -79,7 +101,7 @@
               "name": "policy",
               "default": "ideal"
             },
-            
+
             "minPeriod": {
               "id": "minPeriod",
               "type": "integer",
