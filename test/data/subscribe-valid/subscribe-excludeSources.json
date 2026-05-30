@@ -1,0 +1,8 @@
+{
+  "context": "vessels.self",
+  "sourcePolicy": "preferred",
+  "excludeSources": ["myDerivedPlugin", "actisense.115"],
+  "subscribe": [{
+    "path": "environment.wind.speedTrue"
+  }]
+}

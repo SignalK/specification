@@ -1,0 +1,10 @@
+{
+  "context": "vessels.self",
+  "sourcePolicy": "preferred",
+  "excludeSources": ["myDerivedPlugin"],
+  "subscribe": [
+    {
+      "path": "environment.wind.speedTrue"
+    }
+  ]
+}
