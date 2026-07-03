@@ -119,7 +119,7 @@ longitude. Therefore, these (and altitude) are grouped together in a single `nav
 
 ### Antenna offsets and lever-arm correction
 
-GPS antennas are rarely mounted at the vessel's reference point, and a vessel may have more than one antenna with different
+GNSS antennas are rarely mounted at the vessel's reference point, and a vessel may have more than one antenna with different
 offsets. To keep `navigation.position` consistent across antennas, Signal K servers may apply a server-side lever-arm
 correction so the published position represents the **Common Coordinate Reference Point (CCRP)** rather than the raw antenna
 position. The CCRP is defined as the center of the vessel on the longitudinal centerline: body coordinates
@@ -127,14 +127,14 @@ position. The CCRP is defined as the center of the vessel on the longitudinal ce
 
 Each antenna's mounting offset is described via `sensors.<id>.fromBow` and `sensors.<id>.fromCenter` (perpendicular distance
 from the longitudinal centerline; positive to port, negative to starboard). The sensor instance is linked to its data stream
-via `sensors.<id>.sourceRef`, which equals the `$source` value the device's measurements arrive with. When the server has
+via `sensors.<id>.$source`, which equals the `$source` value the device's measurements arrive with. When the server has
 both the antenna offset and a current heading (`navigation.headingTrue`, or `navigation.headingMagnetic + magneticVariation`),
-the corrected position is published on `navigation.position` and the update carries a `meta.gpsOffsetCorrection` entry of
+the corrected position is published on `navigation.position` and the update carries a `meta.gnssOffsetCorrection` entry of
 the form:
 
 ```json
 {
-  "sensorId": "gps1",
+  "$sensor": "gnss1",
   "fromBow": 5.2,
   "fromCenter": 1.1,
   "lengthOverall": 12.5,
@@ -150,7 +150,7 @@ identity is preserved on each delta's `$source` so source-filtered subscriptions
 fix.
 
 When heading is unavailable, or when no antenna offset is configured, the server publishes the antenna position as-is and
-omits the `meta.gpsOffsetCorrection` entry.
+omits the `meta.gnssOffsetCorrection` entry.
 
 The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
 meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
