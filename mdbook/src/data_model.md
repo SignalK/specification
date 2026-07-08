@@ -120,37 +120,32 @@ longitude. Therefore, these (and altitude) are grouped together in a single `nav
 ### Antenna offsets and lever-arm correction
 
 GNSS antennas are rarely mounted at the vessel's reference point, and a vessel may have more than one antenna with different
-offsets. To keep `navigation.position` consistent across antennas, Signal K servers may apply a server-side lever-arm
-correction so the published position represents the **Common Coordinate Reference Point (CCRP)** rather than the raw antenna
+offsets. To keep `navigation.position` consistent across antennas, a Signal K server may apply a server-side lever-arm
+correction so a published position represents the **Common Coordinate Reference Point (CCRP)** rather than the raw antenna
 position. The CCRP is defined as the center of the vessel on the longitudinal centerline: body coordinates
 `(design.length.value.overall / 2, 0)` measured from the bow.
 
 Each antenna's mounting offset is described via `sensors.<id>.fromBow` and `sensors.<id>.fromCenter` (perpendicular distance
 from the longitudinal centerline; positive to port, negative to starboard). The sensor instance is linked to its data stream
-via `sensors.<id>.$source`, which equals the `$source` value the device's measurements arrive with. When the server has
-both the antenna offset and a current heading (`navigation.headingTrue`, or `navigation.headingMagnetic + magneticVariation`),
-the corrected position is published on `navigation.position` and the update carries a `meta.gnssOffsetCorrection` entry of
-the form:
+via `sensors.<id>.$source`, which equals the `$source` value the device's measurements arrive with. These are descriptive
+metadata about geometry; consumers of `navigation.position` should **not** re-apply them client-side.
 
-```json
-{
-  "$sensor": "gnss1",
-  "fromBow": 5.2,
-  "fromCenter": 1.1,
-  "lengthOverall": 12.5,
-  "headingTrue": 1.5708,
-  "rawValue": { "latitude": 60.12339, "longitude": 24.5678 }
-}
-```
+Lever-arm correction is a server option and is not part of the wire format — it changes only which position value(s) appear
+on `navigation.position`. A server that offers it applies configured offsets in one of two ways:
 
-History-recording consumers should persist this meta entry alongside the corrected `value`, so the raw per-antenna
-measurement remains recoverable. Consumers of `navigation.position` should **not** re-apply offsets — `sensors.<id>.fromBow`
-and `fromCenter` are descriptive metadata about geometry, not values to be subtracted client-side. Per-antenna source
-identity is preserved on each delta's `$source` so source-filtered subscriptions still see which antenna fed the corrected
-fix.
+- **Replace** — a `navigation.position` update whose `$source` matches a configured antenna is published at the CCRP instead
+  of at the antenna. The delta's `$source` is unchanged, so source-filtered subscriptions still see which antenna produced
+  the fix. No additional fields are added to the update: position deltas are high volume, so the correction is not flagged
+  in-band.
+- **Both** — the antenna's own position passes through unchanged and the corrected position is additionally published as a
+  separate source on `navigation.position` under `$source` `<id>.ccrp`. The two positions then coexist as distinct sources
+  and consumers select between them via source priorities; the raw per-antenna measurement remains available as its own
+  source.
 
-When heading is unavailable, or when no antenna offset is configured, the server publishes the antenna position as-is and
-omits the `meta.gnssOffsetCorrection` entry.
+Correction requires both a configured antenna offset and a current heading (`navigation.headingTrue`, or
+`navigation.headingMagnetic + magneticVariation`). When heading is unavailable the server publishes the antenna position
+as-is and, while a correction mode is active, raises a `notifications.navigation.gnss.headingUnavailable` notification so the
+condition is visible; the notification is cleared when heading returns.
 
 The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
 meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are
