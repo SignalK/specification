@@ -62,9 +62,9 @@ it as: the engine sends *SPN* inside *J1939 PGN*; the gateway writes it into
 | 237 | Software Identification | 127498 | — |
 | 234 | Vehicle Identification Number | 127498 | — |
 | 523 | Transmission Current Gear | 127493 | `propulsion.<id>.transmission.gear` |
-| 123 | Transmission Clutch Pressure | 127493 | `propulsion.<id>.transmission.oilPressure` |
-| 127 | Transmission Oil Pressure | 127493 | `propulsion.<id>.transmission.oilPressure` |
-| 177 | Transmission Oil Temperature | 127493 | `propulsion.<id>.transmission.oilTemperature` |
+| 123 | Transmission Clutch 1 Pressure | 127493 | `propulsion.<id>.transmission.oilPressure` |
+| 127 | Transmission 1 Oil Pressure | 127493 | `propulsion.<id>.transmission.oilPressure` |
+| 177 | Transmission 1 Oil Temperature 1 | 127493 | `propulsion.<id>.transmission.oilTemperature` |
 
 Two groups of SPNs collapse onto a single NMEA 2000 field: 167, 168 and 158 all
 land in `alternatorVoltage`, and 123 and 127 both land in the transmission
@@ -98,6 +98,13 @@ conversion artefact, not a real increment. Consumers computing rates from
 Percent torque (SPN 513) is transmitted with a −125 % offset, so the raw byte
 must be biased before use. A value that looks like 125 % load on an idling
 engine is this offset being missed.
+
+Transmission gear (SPN 523) carries the same −125 offset, which works out
+conveniently: after biasing, the value *is* the gear number, with reverse gears
+negative and 0 meaning neutral. Miss the offset and every gear reads as roughly
+125. J1939 also transmits the selected and current *range* as two-character
+ASCII (`D`, `N`, `R`) alongside the numeric gear, which is often the more
+useful field on a marine transmission with no multi-speed gearbox.
 
 ## Engine alarms
 
