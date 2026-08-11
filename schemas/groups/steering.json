@@ -76,12 +76,12 @@
           "description": "Autopilot target",
           "properties": {
             "windAngleApparent": {
-              "description": "Target angle to steer, relative to Apparent wind +port -starboard",
+              "description": "Target angle to steer, relative to Apparent wind, +ve to starboard, -ve to port",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
             "windAngleTrue": {
-              "description": "Target angle to steer, relative to true wind +port -starboard",
+              "description": "Target angle to steer, relative to true wind, +ve to starboard, -ve to port",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
