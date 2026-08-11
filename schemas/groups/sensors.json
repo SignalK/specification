@@ -33,7 +33,7 @@
 
     "fromCenter": {
       "$ref": "../definitions.json#/definitions/numberValue",
-      "description": "The perpendicular distance from the longitudinal centerline of the vessel to the sensor location, -ve to starboard, +ve to port."
+      "description": "The perpendicular distance from the longitudinal centerline of the vessel to the sensor location, +ve to starboard, -ve to port."
     },
 
     "class": {

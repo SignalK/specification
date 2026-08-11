@@ -125,10 +125,15 @@ correction so a published position represents the **Common Coordinate Reference 
 position. The CCRP is defined as the center of the vessel on the longitudinal centerline: body coordinates
 `(design.length.value.overall / 2, 0)` measured from the bow.
 
-Each antenna's mounting offset is described via `sensors.<id>.fromBow` and `sensors.<id>.fromCenter` (perpendicular distance
-from the longitudinal centerline; positive to port, negative to starboard). The sensor instance is linked to its data stream
-via `sensors.<id>.$source`, which equals the `$source` value the device's measurements arrive with. These are descriptive
-metadata about geometry; consumers of `navigation.position` should **not** re-apply them client-side.
+Offsets are expressed in a right-handed vessel body frame: **x forward** (toward the bow) and **y to starboard**. This is the
+same handedness as `navigation.attitude.yaw` and `navigation.rateOfTurn`, both of which are positive to starboard, so an
+offset and a heading can be combined without a sign correction.
+
+Each antenna's mounting offset is described via `sensors.<id>.fromBow` (distance aft of the bow along the longitudinal axis)
+and `sensors.<id>.fromCenter` (perpendicular distance from the longitudinal centerline; positive to starboard, negative to
+port). The sensor instance is linked to its data stream via `sensors.<id>.$source`, which equals the `$source` value the
+device's measurements arrive with. These are descriptive metadata about geometry; consumers of `navigation.position` should
+**not** re-apply them client-side.
 
 Lever-arm correction is a server option and is not part of the wire format — it changes only which position value(s) appear
 on `navigation.position`. A server that offers it applies configured offsets in one of two ways:
