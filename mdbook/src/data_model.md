@@ -136,7 +136,7 @@ device's measurements arrive with. These are descriptive metadata about geometry
 **not** re-apply them client-side.
 
 Lever-arm correction is a server option and is not part of the wire format — it changes only which position value(s) appear
-on `navigation.position`. A server that offers it applies configured offsets in one of two ways:
+on `navigation.position`. A server with correction enabled applies configured offsets in one of two ways:
 
 - **Replace** — a `navigation.position` update whose `$source` matches a configured antenna is published at the CCRP instead
   of at the antenna. The delta's `$source` is unchanged, so source-filtered subscriptions still see which antenna produced
