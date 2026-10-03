@@ -176,13 +176,13 @@ Real power.
 ## electrical.batteries.*.capacity.actual
 The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.
 
-**Units:**J
+**Units:**C
 
 
 ## electrical.batteries.*.capacity.dischargeLimit
 Minimum capacity to be left in the battery while discharging
 
-**Units:**J
+**Units:**C
 
 
 ## electrical.batteries.*.capacity.dischargeSinceFull
@@ -194,13 +194,13 @@ Cumulative discharge since battery was last full
 ## electrical.batteries.*.capacity.nominal
 The capacity of battery as specified by the manufacturer
 
-**Units:**J
+**Units:**C
 
 
 ## electrical.batteries.*.capacity.remaining
 Capacity remaining in battery
 
-**Units:**J
+**Units:**C
 
 
 ## electrical.batteries.*.capacity.stateOfCharge

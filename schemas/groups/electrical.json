@@ -394,25 +394,25 @@
                 "nominal": {
                   "type": "number",
                   "description": "The capacity of battery as specified by the manufacturer",
-                  "units": "J"
+                  "units": "C"
                 },
 
                 "actual": {
                   "type": "number",
                   "description": "The measured capacity of battery. This may change over time and will likely deviate from the nominal capacity.",
-                  "units": "J"
+                  "units": "C"
                 },
 
                 "remaining": {
                   "type": "number",
                   "description": "Capacity remaining in battery",
-                  "units": "J"
+                  "units": "C"
                 },
 
                 "dischargeLimit": {
                   "type": "number",
                   "description": "Minimum capacity to be left in the battery while discharging",
-                  "units": "J"
+                  "units": "C"
                 },
 
                 "stateOfCharge": {
