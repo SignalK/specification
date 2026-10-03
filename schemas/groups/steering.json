@@ -1,7 +1,7 @@
 {
   "type": "object",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://signalk.org/specification/1.8.2/schemas/groups/steering.json#",
+  "id": "https://signalk.org/specification/1.8.4/schemas/groups/steering.json#",
   "description": "Schema describing the steering child-object of a vessel.",
   "title": "steering",
   "properties": {
@@ -76,12 +76,12 @@
           "description": "Autopilot target",
           "properties": {
             "windAngleApparent": {
-              "description": "Target angle to steer, relative to Apparent wind +port -starboard",
+              "description": "Target angle to steer, relative to Apparent wind, +ve to starboard, -ve to port",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },
             "windAngleTrue": {
-              "description": "Target angle to steer, relative to true wind +port -starboard",
+              "description": "Target angle to steer, relative to true wind, +ve to starboard, -ve to port",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "rad"
             },

@@ -53,7 +53,7 @@
         "ais": {
           "fromBow": {
             "meta": {
-              "description": "The distance from the bow to the sensor location"
+              "description": "The distance from the bow to the sensor location along the longitudinal axis of the vessel (toward the stern)."
             },
             "value": 256,
             "$source": "DUMMY_LABEL.AI",
@@ -62,9 +62,9 @@
           },
           "fromCenter": {
             "meta": {
-              "description": "The distance from the centerline to the sensor location, -ve to starboard, +ve to port"
+              "description": "The perpendicular distance from the longitudinal centerline of the vessel to the sensor location, +ve to starboard, -ve to port."
             },
-            "value": -27.5,
+            "value": 27.5,
             "$source": "DUMMY_LABEL.AI",
             "timestamp": "2020-02-08T09:48:58.219Z",
             "sentence": "VDM"
