@@ -42,7 +42,6 @@
           "value": 1100,
           "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
-
         }
       },
       "state": {
@@ -59,29 +58,37 @@
           "units": "Hz",
           "displayName": "Tachometer",
           "shortName": "RPM",
-          "warnMethod": ["visual"],
-          "alarmMethod": ["sound"],
-          "zones": [{
-            "upper": 8,
-            "state": "warn",
-            "message": "Engine stopped or rpm very slow!"
-          }, {
-            "lower": 50,
-            "upper": 58.33333333333,
-            "state": "warn",
-            "message": "Engine near maximum rpm!"
-          }, {
-            "lower": 58.33333333333,
-            "upper": 66.66666666666667,
-            "state": "alarm",
-            "message": "Engine exceeds maximum rpm!"
-          }, {
-            "lower": 66.66666666666667,
-            "state": "alarm",
-            "message": "Engine exceeds maximum rpm!"
-          }]
+          "warnMethod": [
+            "visual"
+          ],
+          "alarmMethod": [
+            "sound"
+          ],
+          "zones": [
+            {
+              "upper": 8,
+              "state": "warn",
+              "message": "Engine stopped or rpm very slow!"
+            },
+            {
+              "lower": 50,
+              "upper": 58.33333333333,
+              "state": "warn",
+              "message": "Engine near maximum rpm!"
+            },
+            {
+              "lower": 58.33333333333,
+              "upper": 66.66666666666667,
+              "state": "alarm",
+              "message": "Engine exceeds maximum rpm!"
+            },
+            {
+              "lower": 66.66666666666667,
+              "state": "alarm",
+              "message": "Engine exceeds maximum rpm!"
+            }
+          ]
         }
-
       },
       "oilPressure": {
         "value": 110,
@@ -102,13 +109,11 @@
         "value": 200,
         "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
-
       },
       "engineTorque": {
         "value": 200,
         "timestamp": "2014-08-15T19:00:15.402Z",
         "$source": "foo.bar"
-
       },
       "oilTemperature": {
         "value": 345,
@@ -153,6 +158,39 @@
         },
         "oilTemperature": {
           "value": 310,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        }
+      },
+      "diagnostics": {
+        "malfunctionLamp": {
+          "value": false,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "redStopLamp": {
+          "value": true,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "amberWarningLamp": {
+          "value": false,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "protectLamp": {
+          "value": false,
+          "timestamp": "2014-08-15T19:00:15.402Z",
+          "$source": "foo.bar"
+        },
+        "activeCodes": {
+          "value": [
+            {
+              "spn": 100,
+              "fmi": 1,
+              "occurrenceCount": 3
+            }
+          ],
           "timestamp": "2014-08-15T19:00:15.402Z",
           "$source": "foo.bar"
         }

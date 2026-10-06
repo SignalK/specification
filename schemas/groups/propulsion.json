@@ -220,6 +220,109 @@
           "description": "Exhaust temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
+        },
+        "diagnostics": {
+          "type": "object",
+          "description": "Diagnostics reported by the engine controller: fault lamp states and active diagnostic trouble codes (e.g. J1939 DM1)",
+          "properties": {
+            "malfunctionLamp": {
+              "type": "object",
+              "description": "Malfunction indicator lamp (emissions-related fault). True when the lamp is commanded on, steady or flashing",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "redStopLamp": {
+              "type": "object",
+              "description": "Red stop lamp (fault severe enough to stop the engine). True when the lamp is commanded on, steady or flashing",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "amberWarningLamp": {
+              "type": "object",
+              "description": "Amber warning lamp (fault that does not require an immediate stop). True when the lamp is commanded on, steady or flashing",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "protectLamp": {
+              "type": "object",
+              "description": "Protect lamp (problem with an engine system, e.g. high coolant temperature). True when the lamp is commanded on, steady or flashing",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "activeCodes": {
+              "type": "object",
+              "description": "Active diagnostic trouble codes. Each entry identifies the faulting parameter (SPN), the failure mode (FMI) and how often it has occurred",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "spn": {
+                            "type": "number",
+                            "description": "Suspect Parameter Number identifying the faulting parameter"
+                          },
+                          "fmi": {
+                            "type": "number",
+                            "description": "Failure Mode Identifier describing how the parameter failed"
+                          },
+                          "occurrenceCount": {
+                            "type": "number",
+                            "description": "How many times this fault has occurred"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       }
     }
