@@ -162,12 +162,12 @@
           "units": "m"
         },
         "transducerToKeel": {
-          "description": "Depth from the transducer to the bottom of the keel",
+          "description": "Depth from the transducer to the bottom of the keel, as a positive distance. An NMEA 2000 PGN 128267 or NMEA 0183 DPT offset is negative in this case and is published with its sign inverted.",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         },
         "surfaceToTransducer": {
-          "description": "Depth transducer is below the water surface",
+          "description": "Depth transducer is below the water surface, as a positive distance",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m"
         }

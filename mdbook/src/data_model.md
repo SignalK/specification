@@ -141,7 +141,8 @@ on `navigation.position`. A server with correction enabled applies configured of
 - **Replace** — a `navigation.position` update whose `$source` matches a configured antenna is published at the CCRP instead
   of at the antenna. The delta's `$source` is unchanged, so source-filtered subscriptions still see which antenna produced
   the fix. No additional fields are added to the update: position deltas are high volume, so the correction is not flagged
-  in-band.
+  in-band. A consumer that needs the raw antenna position, for example together with the antenna offsets, cannot recover
+  it from a replaced update and needs the server to run without correction or in Both mode.
 - **Both** — the antenna's own position passes through unchanged and the corrected position is additionally published as a
   separate source on `navigation.position` under `$source` `<id>.ccrp`. The two positions then coexist as distinct sources
   and consumers select between them via source priorities; the raw per-antenna measurement remains available as its own
@@ -151,6 +152,41 @@ Correction requires both a configured antenna offset and a current heading (`nav
 `navigation.headingMagnetic + magneticVariation`). When heading is unavailable the server publishes the antenna position
 as-is and, while a correction mode is active, raises a `notifications.navigation.gnss.headingUnavailable` notification so the
 condition is visible; the notification is cleared when heading returns.
+
+### Sensor height and depth transducers
+
+`sensors.<id>.fromWaterline` completes the body frame with a vertical axis, **z down**: it is the distance of the sensor
+from the design waterline, positive below it and negative above it. A depth transducer therefore has a positive
+`fromWaterline` and a GNSS antenna a negative one. `sensors.<id>.sensorType` names the kind of sensor: `gnss` for a GNSS
+antenna and `depth` for a depth transducer.
+
+A vessel may have several depth transducers, each described by its own `sensors.<id>` with `sensorType` `depth` and linked
+to the data it produces via `sensors.<id>.$source`. A value on `environment.depth.*` whose `$source` is linked to a depth
+sensor was measured at that sensor's position. Offsets apply per source, not per path, so two transducers reporting
+`environment.depth.belowTransducer` are corrected independently. A server never rewrites the raw value a transducer reports.
+
+`environment.depth.transducerToKeel` and `environment.depth.surfaceToTransducer` are positive distances. NMEA 2000
+(PGN 128267) and NMEA 0183 (DPT) carry a single signed offset instead: positive is the distance from the transducer to the
+waterline and is published as `surfaceToTransducer`; negative is the distance from the transducer to the keel and is
+published as `transducerToKeel` with its sign inverted.
+
+A server may derive depths per transducer and publish them as a separate source `<$source>.derived`, named after the
+transducer's own `$source`, next to the untouched raw source, in the same way as `<id>.ccrp` for GNSS. Naming it after the
+source means a transducer needs no configured sensor to get derived depths from the offset it reports. Consumers choose
+between the sources with source priorities.
+
+- `environment.depth.belowSurface` is `belowTransducer` plus the transducer's depth below the waterline.
+- `environment.depth.belowKeel` is `environment.depth.belowSurface` minus the vessel's draft (`design.draft.value.current`,
+  else `design.draft.value.maximum`).
+
+The transducer's depth below the waterline is taken, in this order, from a current `surfaceToTransducer` reported by the
+same source, from the vessel's draft minus a current `transducerToKeel` reported by the same source, or from the
+configured `sensors.<id>.fromWaterline`. When none is available, or an input it needs is missing or stale, the server
+publishes no derived depth for that transducer rather than assuming an offset of 0. A server does not derive a path the
+same source already reports: a transducer that sends `belowKeel` has applied its own keel offset.
+
+A derived value follows its input: it carries the timestamp of the raw value it was computed from, and when the raw value
+goes `null` or times out, the derived value does too.
 
 The values are always SI units, and always the same units for the same key. Therefore, `speedOverGround` is always
 meters per second, never knots, km/hr, or miles/hr. This means you never have to send units with data, the units are

@@ -12,7 +12,7 @@
 
     "sensorType": {
       "type": "string",
-      "description": "The datamodel definition of the sensor data. FIXME - need to create a definitions lib of sensor datamodel types"
+      "description": "The kind of sensor. Defined values are 'gnss' (a GNSS antenna) and 'depth' (a depth transducer); other values may be used for other kinds of sensor."
     },
 
     "sensorData": {
@@ -34,6 +34,12 @@
     "fromCenter": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "The perpendicular distance from the longitudinal centerline of the vessel to the sensor location, +ve to starboard, -ve to port."
+    },
+
+    "fromWaterline": {
+      "$ref": "../definitions.json#/definitions/numberValue",
+      "description": "The vertical distance from the design waterline to the sensor location, +ve down (below the waterline), -ve up. A depth transducer is positive, a GNSS antenna negative.",
+      "units": "m"
     },
 
     "class": {
