@@ -1,0 +1,96 @@
+{
+  "vessels": {
+    "urn:mrn:imo:mmsi:230099999": {
+      "mmsi": "230099999",
+      "design": {
+        "draft": {
+          "timestamp": "2026-10-13T18:00:00Z",
+          "$source": "defaults",
+          "value": { "maximum": 1.7 }
+        }
+      },
+      "environment": {
+        "depth": {
+          "belowTransducer": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "n2k.35",
+            "value": 12.93
+          },
+          "transducerToKeel": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "n2k.35",
+            "value": 1
+          },
+          "belowKeel": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "n2k.35",
+            "value": 11.93
+          }
+        }
+      },
+      "sensors": {
+        "gnss1": {
+          "sensorType": "gnss",
+          "$source": "n2k.0",
+          "fromBow": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 19
+          },
+          "fromCenter": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": -4
+          },
+          "fromWaterline": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": -2.5
+          }
+        },
+        "depthMain": {
+          "name": "DST810",
+          "sensorType": "depth",
+          "$source": "n2k.35",
+          "fromBow": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 6.5
+          },
+          "fromCenter": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 0.3
+          },
+          "fromWaterline": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 0.7
+          }
+        },
+        "depthForward": {
+          "name": "Forward-looking sonar",
+          "sensorType": "depth",
+          "$source": "nmea0183.DPT",
+          "fromBow": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 3
+          },
+          "fromCenter": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 0
+          },
+          "fromWaterline": {
+            "timestamp": "2026-10-13T18:00:00Z",
+            "$source": "defaults",
+            "value": 0.5
+          }
+        }
+      }
+    }
+  },
+  "self": "vessels.urn:mrn:imo:mmsi:230099999",
+  "version": "1.0.0"
+}
