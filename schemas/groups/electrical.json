@@ -299,7 +299,7 @@
         },
         "chargingMode": {
           "type": "object",
-          "description": "Charging mode i.e. float, overcharge, etc.",
+          "description": "Charging mode: bulk, acceptance (absorption), overcharge, float, equalize, unknown or other.",
           "allOf": [
             {
               "$ref": "../definitions.json#/definitions/commonValueFields"
