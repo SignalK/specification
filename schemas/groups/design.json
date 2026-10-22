@@ -541,6 +541,28 @@
       "description": "Beam length",
       "units": "m"
     },
+    "hullType": {
+      "type": "object",
+      "title": "hullType",
+      "description": "The hull form of the vessel: one hull (monohull), two side by side (catamaran) or three (trimaran). It says nothing about how the vessel is driven: whether it sails is given by rigging and aisShipType.",
+      "allOf": [
+        {
+          "$ref": "../definitions.json#/definitions/commonValueFields"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "string",
+              "enum": [
+                "monohull",
+                "catamaran",
+                "trimaran"
+              ]
+            }
+          }
+        }
+      ]
+    },
     "airHeight": {
       "$ref": "../definitions.json#/definitions/numberValue",
       "description": "Total height of the vessel",
