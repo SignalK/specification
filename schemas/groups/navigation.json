@@ -309,13 +309,13 @@
         "layline": {
           "type": "object",
           "description": "The layline crossing the current course",
-          "properties":{
-            "distance":{
+          "properties": {
+            "distance": {
               "description": "The current distance to the layline",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m"
             },
-            "time":{
+            "time": {
               "description": "The time to the layline at current speed and heading",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "s"
@@ -325,13 +325,13 @@
         "oppositeLayline": {
           "type": "object",
           "description": "The layline parallell to current course",
-          "properties":{
-            "distance":{
+          "properties": {
+            "distance": {
               "description": "The current distance to the layline",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "m"
             },
-            "time":{
+            "time": {
               "description": "The time to the layline at current speed and heading",
               "$ref": "../definitions.json#/definitions/numberValue",
               "units": "s"
@@ -437,18 +437,52 @@
           "properties": {
             "value": {
               "type": "string",
-              "enum": [
-                "no Integrity checking",
-                "Safe",
-                "Caution",
-                "Unsafe"
-              ]
+              "enum": ["no Integrity checking", "Safe", "Caution", "Unsafe"]
             }
           }
         },
         "satellites": {
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Number of satellites"
+        },
+        "satellite": {
+          "description": "The list of satellites in view of the GPS receiver, identified by their PRN code",
+          "patternProperties": {
+            "(^[A-Za-z0-9]+$)": {
+              "type": "object",
+              "title": "A satellite in view of the GPS receiver",
+              "description": "Satellites, zero or many, in view by the GPS receiver",
+              "properties": {
+                "elevation": {
+                  "type": "object",
+                  "title": "Satellite elevation angle",
+                  "description": "Satellite elevation angle in radians",
+                  "allOf": [{ "$ref": "../definitions.json#/definitions/numberValue" }],
+                  "unit": "rad"
+                },
+                "pseudoRandonNoiseCode": {
+                  "type": "object",
+                  "title": "Satellite pseudo random noise (PRN) code",
+                  "description": "Satellite pseudo random noise (PRN) code, unique to each satellite",
+                  "allOf": [{ "$ref": "../definitions.json#/definitions/numberValue" }]
+                },
+                "azimuth": {
+                  "type": "object",
+                  "title": "Satellite azimuth",
+                  "description": "Satellite azimuth; angle from true north in radians",
+                  "allOf": [{ "$ref": "../definitions.json#/definitions/numberValue" }],
+                  "unit": "rad"
+                },
+                "signalToNoiseRatio": {
+                  "type": "object",
+                  "title": "Satellite signal-to-noise ratio",
+                  "description": "Satellite signal-to-noise ratio in dB",
+                  "allOf": [{ "$ref": "../definitions.json#/definitions/numberValue" }],
+                  "unit": "dB"
+                }
+              }
+            }
+          }
         },
         "antennaAltitude": {
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -587,11 +621,7 @@
       "properties": {
         "value": {
           "type": "string",
-          "enum": [
-            "Not available",
-            "No special maneuver",
-            "Special maneuver"
-          ]
+          "enum": ["Not available", "No special maneuver", "Special maneuver"]
         }
       }
     },
@@ -741,16 +771,7 @@
             },
             "gnssTimeSource": {
               "description": "Source of GNSS Date and Time",
-              "enum": [
-                "GPS",
-                "GLONASS",
-                "Galileo",
-                "Beidou",
-                "IRNSS",
-                "Radio Signal",
-                "Internet",
-                "Local clock"
-              ]
+              "enum": ["GPS", "GLONASS", "Galileo", "Beidou", "IRNSS", "Radio Signal", "Internet", "Local clock"]
             }
           }
         }
