@@ -724,6 +724,15 @@
           "example": 2
         },
 
+        "updateContract": {
+          "type": "string",
+          "enum": ["periodic", "event"],
+          "default": "periodic",
+          "title": "Update Contract",
+          "description": "How this path is expected to update. 'periodic' means regular updates are expected and silence indicates a failure, so a timeout applies. 'event' means the value is emitted only when it changes, so silence means unchanged and no timeout applies. Defaults to 'periodic' when absent.",
+          "example": "event"
+        },
+
         "alertMethod": {
           "type": "array",
           "title": "Alert Method",
