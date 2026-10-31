@@ -1,0 +1,7 @@
+{
+  "context": "vessels.self",
+  "sourcePolicy": "all",
+  "subscribe": [{
+    "path": "navigation.speedThroughWater"
+  }]
+}

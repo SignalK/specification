@@ -101,6 +101,55 @@ duplication as it prefers on a per connection basis. At the same time it is good
 connections necessary, for instance one WebSocket connection shared between an instrument panel with many gauges,
 rather then one WebSocket connection per gauge.
 
+## Source selection
+
+A subscribed path commonly has more than one source publishing values (see
+[Multiple Values for a Key](data_model_multiple_values.md)). The subscribe message has two top-level fields that let
+the client control which of those sources are delivered:
+
+* `sourcePolicy=[preferred|all]`. Default: `preferred`.
+ * `preferred` delivers a single value per path, resolved through the server's source-priority cascade. If the
+   server has no priority configuration for a path the first source seen wins and is held until it goes silent past
+   its fallback timeout.
+ * `all` delivers every source unranked. Useful for source comparison, diagnostics and clients that maintain their
+   own per-source state.
+ The setting applies to every row in the subscribe message and to the bootstrap snapshot the server replays when
+ the subscription is established.
+* `excludeSources=[sourceRef, ...]`. Optional list of `$source` refs to drop from the priority cascade's candidate
+ set. The subscription still delivers a single priority-resolved value per path; the cascade just runs without the
+ excluded sources, with the configured fallback timeouts honoured. Has effect only when `sourcePolicy` is
+ `preferred`; ignored under `sourcePolicy=all`, which already bypasses priority resolution.
+
+The canonical use case for `excludeSources` is a derived-data plugin that publishes on the same path it consumes.
+With the user's source-priority ranking placing the plugin's output above the upstream sources, downstream
+consumers get the improved value, but the plugin itself cannot subscribe with `sourcePolicy=preferred` without
+seeing its own output. `excludeSources` removes the plugin's own `$source` ref(s) from the cascade so the plugin
+sees the user-configured ranking applied across the remaining (upstream) sources only.
+
+[>]: # (mdpInsert ```json fsnip ../../samples/subscribe/docs-subscription_protocol-excludeSources.json --prettify)
+```json
+{
+  "context": "vessels.self",
+  "sourcePolicy": "preferred",
+  "excludeSources": ["myDerivedPlugin"],
+  "subscribe": [
+    {
+      "path": "environment.wind.speedTrue"
+    }
+  ]
+}
+```
+[<]: #
+
+With a configured ranking of `myDerivedPlugin > sourceB > sourceA`, the subscription above receives `sourceB`
+while `sourceB` is publishing, falls back to `sourceA` once `sourceB` goes silent past its fallback timeout,
+returns to `sourceB` when it resumes, and never receives `myDerivedPlugin` even though it ranks highest.
+
+> Plugin-API implementations MAY offer a shorthand for excluding the plugin's own `$source` ref(s) without the
+> plugin having to know its own id (the Node server exposes this as `excludeSelf: true` on the in-process subscribe
+> API). The shorthand is plugin-API only: WebSocket and TCP clients have no plugin identity for the server to
+> resolve against and MUST use the explicit `excludeSources` form.
+
 ## Meta data
 Meta is updated via the `meta` section within the delta message. As meta changes infrequently it is only sent when it has changed.
 
