@@ -218,4 +218,48 @@ describe('FullSignalK', function() {
     const full = fullSignalK.retrieve()
     full.should.be.validSignalK
   })
+
+  describe('a path without metadata', () => {
+    const notification = 'notifications.propulsion.port.checkEngine'
+    const update = {
+      source: { label: '', type: 'NMEA2000', pgn: 127489, src: '17' },
+      timestamp: '2017-04-15T15:50:48.664Z'
+    }
+    const value = {
+      path: notification,
+      value: { state: 'alarm', method: ['visual'], message: 'Check Engine' }
+    }
+    const delta = (context, u) => ({ context, updates: [{ ...update, ...u }] })
+    const checkEngine = (full, id) =>
+      full.vessels[id].notifications.propulsion.port.checkEngine
+
+    it('gets no meta and stays valid', () => {
+      const id = 'urn:mrn:imo:mmsi:276810001'
+      const fullSignalK = new FullSignalK(id, null, {})
+      fullSignalK.addDelta(delta('vessels.' + id, { values: [value] }))
+
+      const full = fullSignalK.retrieve()
+      checkEngine(full, id).should.not.have.property('meta')
+      full.should.be.validSignalK
+    })
+
+    it('gets the meta of a delta that comes after its value', () => {
+      const id = 'urn:mrn:imo:mmsi:276810002'
+      const path = 'notifications.propulsion.port.lowOilPressure'
+      const fullSignalK = new FullSignalK(id, null, {})
+      const context = 'vessels.' + id
+      fullSignalK.addDelta(
+        delta(context, { values: [{ ...value, path }] })
+      )
+      fullSignalK.addDelta(
+        delta(context, {
+          meta: [{ path, value: { description: 'Low oil pressure' } }]
+        })
+      )
+
+      const leaf = fullSignalK.retrieve().vessels[id].notifications.propulsion.port.lowOilPressure
+      leaf.meta.description.should.equal('Low oil pressure')
+      fullSignalK.retrieve().should.be.validSignalK
+    })
+  })
 })
