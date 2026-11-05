@@ -218,7 +218,8 @@ function addValue(context, contextPath, source, timestamp, pathValue) {
         }
       if ( i === splitPath.length-1 && typeof previous[pathPart].value === 'undefined' ) {
           let meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
-          if (meta) {
+          // A path without metadata gets no meta: an empty one is not valid
+          if (meta && Object.keys(meta).length > 0) {
             _.assign(meta, previous[pathPart].meta)
             previous[pathPart].meta = meta
           }
@@ -291,6 +292,11 @@ function addMeta(context, contextPath, source, timestamp, pathValue) {
     return;
   }
   signalkSchema.addMetaData(contextPath, pathValue.path, pathValue.value)
+  // The path may already have its value, and then got no meta when written
+  const leaf = _.get(context, pathValue.path)
+  if (leaf && !leaf.meta) {
+    leaf.meta = signalkSchema.internalGetMetadata(contextPath + '.' + pathValue.path)
+  }
 }
 
 
