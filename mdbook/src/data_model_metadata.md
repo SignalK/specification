@@ -64,6 +64,14 @@ version may be used by consumers where space is at a premium. As with displayNam
 The `timeout` property tells the consumer how long it should consider the value valid. This value is specified
 in seconds, so for a high speed GPS sensor it may 0.1 or even 0.05.
 
+### updateContract
+
+The `updateContract` property tells the consumer how the path is expected to update, which determines whether a
+`timeout` is meaningful at all. `periodic` (the default when the property is absent) means regular updates are
+expected, so silence beyond the timeout indicates a failure. `event` means the value is emitted only when it
+changes, so silence means unchanged and no timeout applies — an anchor position or an active course does not
+become invalid just because it has not been restated.
+
 The `displayScale` object provides information regarding the recommended type and extent of the scale used for displaying
 values. The `lower` and `upper` indicate the extent of the scale to be shown. Some values are better shown on a non linear
 scale, for example logarithmic for luminosity, depth, signal strength, etc. whilst others may be better on a squareroot
