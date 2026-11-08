@@ -66,6 +66,11 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "K"
         },
+        "feelsLikeTemperature": {
+          "description": "Current outside feels like temperature",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "K"
+        },
         "apparentWindChillTemperature": {
           "description": "Current outside apparent wind chill temperature",
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -86,6 +91,15 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Pa"
         },
+        "pressureTendency": {
+          "description": "Integer value indicating barometric pressure value tendency e.g. 0 = steady, etc.",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "pressureTendencyType": {
+          "description": "Description for the value of pressureTendency e.g. steady, increasing, decreasing.",
+          "type": "string",
+          "enum": ["steady", "increasing", "decreasing"]
+        },
         "humidity": {
           "description": "DEPRECATED: use relativeHumidity",
           "$ref": "../definitions.json#/definitions/numberValue",
@@ -93,6 +107,11 @@
         },
         "relativeHumidity": {
           "description": "Current outside air relative humidity",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "absoluteHumidity": {
+          "description": "Current outside air absolute humidity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
         },
@@ -105,8 +124,49 @@
           "description": "Current outside ambient light flux.",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "Lux"
+        },
+        "uvIndex" : {
+          "description": "Level of UV radiation. 1 UVI = 25mW/sqm.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "UVI"
+        },
+        "cloudCover" : {
+          "description": "Level of cloud clover.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "ratio"
+        },
+        "horizontalVisibility" : {
+          "description": "Visibility distance at ground level.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "horizontalVisibilityOverRange" : {
+          "description": "True if visibilty distance is greater than the range of the measuring equipment.",
+          "type": "boolean"
+        }
+          
+          
+        
+      }
+    },
+    "date" : {
+      "description": "Date and time of the observation.",
+      "$ref": "../definitions.json#/definitions/datetimeValue"
+    },
+    "sun": {
+      "type": "object",
+      "description": "Times of sun related events.",
+      "properties": {
+        "sunrise" : {
+          "description": "Time at which sun rises at location.",
+          "$ref": "../definitions.json#/definitions/datetimeValue"
+        },
+        "sunset" : {
+          "description": "Time at which sun sets at location.",
+          "$ref": "../definitions.json#/definitions/datetimeValue"
         }
       }
+      
     },
     "inside": {
       "type": "object",
@@ -138,6 +198,62 @@
           "description": "Water salinity",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "ratio"
+        },
+        "level": {
+          "description": "Water level.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m"
+        },
+        "levelTendency": {
+          "description": "Integer value indicating water level tendency e.g. 0 = steady, etc",
+          "$ref": "../definitions.json#/definitions/numberValue"
+        },
+        "levelTendencyType": {
+          "description": "Description for the value of levelTendency e.g. steady, increasing, decreasing.",
+          "type": "string",
+          "enum": ["steady", "increasing", "decreasing"]
+        },
+        "waves": {
+          "type": "object",
+          "description": "Wave conditions of the water that the vessel is sailing in",
+          "properties": {
+            "significantHeight": {
+              "description": "Estimated height of significant waves.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m"
+            },
+            "period": {
+              "description": "Estimated wave period.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ms"
+            },
+            "directon": {
+              "description": "Estimated wave direction.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            }
+          }
+        },
+        "swell": {
+          "type": "object",
+          "description": "Swell conditions of the water that the vessel is sailing in",
+          "properties": {
+            "significantHeight": {
+              "description": "Estimated height of swell.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "m"
+            },
+            "period": {
+              "description": "Estimated swell period.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "ms"
+            },
+            "directon": {
+              "description": "Estimated swell direction.",
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "units": "rad"
+            }
+          }
         }
       }
     },
@@ -336,6 +452,21 @@
           "description": "Apparent wind speed",
           "$ref": "../definitions.json#/definitions/numberValue",
           "units": "m/s"
+        },
+        "averageSpeed": {
+          "description": "Average wind speed.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m/s"
+        },
+        "gust": {
+          "description": "Maximum wind gust.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "m/s"
+        },
+        "gustDirectionTrue": {
+          "description": "Maximum wind gust direction relative to true north.",
+          "$ref": "../definitions.json#/definitions/numberValue",
+          "units": "rad"
         }
       }
     },
