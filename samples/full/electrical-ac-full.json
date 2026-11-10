@@ -106,6 +106,18 @@
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01",
                   "value": 10500
+                },
+                "breaker": {
+                  "ratedCurrent": {
+                    "value": 16,
+                    "timestamp": "2014-04-10T08:33:53Z",
+                    "$source": "sources.ac_monitor_01"
+                  },
+                  "curveType": {
+                    "value": "C",
+                    "timestamp": "2014-04-10T08:33:53Z",
+                    "$source": "sources.ac_monitor_01"
+                  }
                 }
               },
               "B": {

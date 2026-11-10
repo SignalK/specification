@@ -241,6 +241,35 @@
           "$ref": "../definitions.json#/definitions/numberValue",
           "description": "Apparent power.",
           "units": "W"
+        },
+        "breaker": {
+          "type": "object",
+          "title": "Breaker",
+          "description": "The circuit breaker of this line",
+          "properties": {
+            "ratedCurrent": {
+              "$ref": "../definitions.json#/definitions/numberValue",
+              "description": "Rated current of the breaker",
+              "units": "A"
+            },
+            "curveType": {
+              "type": "object",
+              "description": "Trip curve of the breaker: B, C or D from IEC 60898-1, or K or Z",
+              "allOf": [
+                {
+                  "$ref": "../definitions.json#/definitions/commonValueFields"
+                },
+                {
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "enum": ["B", "C", "D", "K", "Z"]
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       }
     },
