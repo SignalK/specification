@@ -222,15 +222,25 @@
           "unit": "ratio"
         },
         "powerFactorLagging": {
+          "type": "object",
           "description": "Lead/lag status.",
-          "example": "leading",
-          "type": "string",
-          "enum": [
-            "leading",
-            "lagging",
-            "error",
-            "not available"
-          ]
+          "allOf": [
+            {
+              "$ref": "../definitions.json#/definitions/commonValueFields"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "string",
+              "example": "leading",
+              "enum": [
+                "leading",
+                "lagging",
+                "error",
+                "not available"
+              ]
+            }
+          }
         },
         "realPower": {
           "$ref": "../definitions.json#/definitions/numberValue",

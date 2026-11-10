@@ -96,7 +96,11 @@
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01"
                 },
-                "powerFactorLagging": "leading",
+                "powerFactorLagging": {
+                  "value": "leading",
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
                 "realPower": {
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01",
@@ -151,7 +155,11 @@
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01"
                 },
-                "powerFactorLagging": "leading",
+                "powerFactorLagging": {
+                  "value": "leading",
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
                 "realPower": {
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01",
@@ -194,7 +202,11 @@
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01"
                 },
-                "powerFactorLagging": "leading",
+                "powerFactorLagging": {
+                  "value": "leading",
+                  "timestamp": "2014-04-10T08:33:53Z",
+                  "$source": "sources.ac_monitor_01"
+                },
                 "realPower": {
                   "timestamp": "2014-04-10T08:33:53Z",
                   "$source": "sources.ac_monitor_01",
